@@ -107,3 +107,16 @@ Ce cas établit deux contrôles à appliquer systématiquement, désormais consi
   vérifier plans annoncés, plans réellement chargés, tests publiés et erreurs `NonGUIDriver` ;
 - comparer les couvertures **avant** de comparer Cur et Fix : deux côtés peuvent afficher des compteurs
   d'échecs identiques tout en ayant perdu la même campagne entière.
+
+## Résolution et validation prouvée — Run 4447425
+
+- **Cause racine exacte (`FACT`)** : Balise fermante `<hashTree/>` manquante après le `JSR223PostProcessor` de `TC122` (autour de la ligne 8522), rompant l'alternance élément / sous-arbre JMeter.
+- **Correctif appliqué (`FACT`)** : Commit `be3c9ac35e3424a1a9cfb5c7b2da0bb31edc0437` sur `validation/WI-2222897-inventorytracking-azdo-20260908` insérant `<hashTree/>` après ce processeur (SHA-256 du fichier JMX : `FC39A5A8F3850293AB1A863928CFA574BC4F3B20941A17F978212F47D606E8C2`).
+- **Validation en CI réelle (`FACT`)** : Run **4447425** sur définition `2072` (achevé le 2026-09-08 à 17:55:05 UTC) :
+  - Restauration intégrale des **86 tests** de `002-Device:Reassign`.
+  - Fix (Test Run 6189957) : 1 991 tests exécutés (1 651 passés, 340 échoués).
+  - Cur (Test Run 6189960) : 1 991 tests exécutés (1 652 passés, 339 échoués).
+  - Unique delta Cur vs Fix : **`TC122`** (Passé en Cur, Échoué en Fix avec `B-XQuery:Internal Server Error`).
+  - Reproduction bit-à-bit à 100% de la signature de la baseline historique `4440884`.
+- Voir détail complet dans [finding 017](017-campagnes-reelles-azdo-inventorytracking-frenchtaxesrules-20260908.md).
+

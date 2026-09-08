@@ -1,0 +1,604 @@
+[
+  {
+    "id": 100069,
+    "testCaseTitle": "002-Device:Reassign - TC 01",
+    "outcome": "Passed",
+    "durationInMs": 814.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100070,
+    "testCaseTitle": "002-Device:Reassign - TC 02",
+    "outcome": "Passed",
+    "durationInMs": 110.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100071,
+    "testCaseTitle": "002-Device:Reassign - TC 03",
+    "outcome": "Passed",
+    "durationInMs": 100.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100072,
+    "testCaseTitle": "002-Device:Reassign - TC 100",
+    "outcome": "Passed",
+    "durationInMs": 1800.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100073,
+    "testCaseTitle": "002-Device:Reassign - TC 101",
+    "outcome": "Passed",
+    "durationInMs": 923.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100074,
+    "testCaseTitle": "002-Device:Reassign - TC 102",
+    "outcome": "Passed",
+    "durationInMs": 877.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100075,
+    "testCaseTitle": "002-Device:Reassign - TC 103",
+    "outcome": "Passed",
+    "durationInMs": 740.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100076,
+    "testCaseTitle": "002-Device:Reassign - TC 104",
+    "outcome": "Passed",
+    "durationInMs": 863.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100077,
+    "testCaseTitle": "002-Device:Reassign - TC 105",
+    "outcome": "Failed",
+    "durationInMs": 903.0,
+    "errorMessage": "A-PreQuery3:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'. ;| D-FinalQuery3:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'."
+  },
+  {
+    "id": 100078,
+    "testCaseTitle": "002-Device:Reassign - TC 106",
+    "outcome": "Passed",
+    "durationInMs": 740.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100079,
+    "testCaseTitle": "002-Device:Reassign - TC 107",
+    "outcome": "Passed",
+    "durationInMs": 717.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100080,
+    "testCaseTitle": "002-Device:Reassign - TC 108",
+    "outcome": "Passed",
+    "durationInMs": 740.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100081,
+    "testCaseTitle": "002-Device:Reassign - TC 109",
+    "outcome": "Passed",
+    "durationInMs": 713.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100082,
+    "testCaseTitle": "002-Device:Reassign - TC 120",
+    "outcome": "Passed",
+    "durationInMs": 84.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100083,
+    "testCaseTitle": "002-Device:Reassign - TC 121",
+    "outcome": "Passed",
+    "durationInMs": 646.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100084,
+    "testCaseTitle": "002-Device:Reassign - TC 122",
+    "outcome": "Failed",
+    "durationInMs": 917.0,
+    "errorMessage": "B-XQuery:Internal Server Error ;| C-PostQuery1:OK ;| C-PostQuery2:OK"
+  },
+  {
+    "id": 100085,
+    "testCaseTitle": "002-Device:Reassign - TC 200",
+    "outcome": "Passed",
+    "durationInMs": 1000.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100086,
+    "testCaseTitle": "002-Device:Reassign - TC 201",
+    "outcome": "Failed",
+    "durationInMs": 717.0,
+    "errorMessage": "A-PreQuery3:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2023'. ;| D-FinalQuery3:OK"
+  },
+  {
+    "id": 100087,
+    "testCaseTitle": "002-Device:Reassign - TC 202",
+    "outcome": "Failed",
+    "durationInMs": 746.0,
+    "errorMessage": "A-PreQuery3:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2023'. ;| B-XQuery:OK ;| D-FinalQuery3:OK"
+  },
+  {
+    "id": 100088,
+    "testCaseTitle": "002-Device:Reassign - TC 203",
+    "outcome": "Failed",
+    "durationInMs": 727.0,
+    "errorMessage": "A-PreQuery3:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2023'. ;| B-XQuery:OK ;| D-FinalQuery3:OK"
+  },
+  {
+    "id": 100089,
+    "testCaseTitle": "002-Device:Reassign - TC 204",
+    "outcome": "Failed",
+    "durationInMs": 700.0,
+    "errorMessage": "A-PreQuery3:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2023'. ;| D-FinalQuery3:OK"
+  },
+  {
+    "id": 100090,
+    "testCaseTitle": "002-Device:Reassign - TC 205",
+    "outcome": "Failed",
+    "durationInMs": 713.0,
+    "errorMessage": "A-PreQuery3:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2023'. ;| B-XQuery:Check the expected XML, differences were found! Check the C:\\__w\\1\\s\\.\\Y2_Plugins_InventoryTracking\\Tests\\Results\\Y2.Plugin.InventoryTracking-WebServices-v26-Fix\\002-Device_Reassign\\002-Device-Reassign - TC 205 - B-XQuery-diff-results.txt file for details. ;| D-FinalQuery3:OK"
+  },
+  {
+    "id": 100091,
+    "testCaseTitle": "002-Device:Reassign - TC 206",
+    "outcome": "Failed",
+    "durationInMs": 764.0,
+    "errorMessage": "A-PreQuery3:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2024'. ;| B-XQuery:Check the expected XML, differences were found! Check the C:\\__w\\1\\s\\.\\Y2_Plugins_InventoryTracking\\Tests\\Results\\Y2.Plugin.InventoryTracking-WebServices-v26-Fix\\002-Device_Reassign\\002-Device-Reassign - TC 206 - B-XQuery-diff-results.txt file for details. ;| D-FinalQuery3:OK"
+  },
+  {
+    "id": 100092,
+    "testCaseTitle": "002-Device:Reassign - TC 210",
+    "outcome": "Passed",
+    "durationInMs": 576.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100093,
+    "testCaseTitle": "002-Device:Reassign - TC 211",
+    "outcome": "Passed",
+    "durationInMs": 704.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100094,
+    "testCaseTitle": "002-Device:Reassign - TC 212",
+    "outcome": "Failed",
+    "durationInMs": 763.0,
+    "errorMessage": "A-PreQuery3:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2023'. ;| D-FinalQuery3:OK"
+  },
+  {
+    "id": 100095,
+    "testCaseTitle": "002-Device:Reassign - TC 230",
+    "outcome": "Passed",
+    "durationInMs": 720.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100096,
+    "testCaseTitle": "002-Device:Reassign - TC 231",
+    "outcome": "Failed",
+    "durationInMs": 740.0,
+    "errorMessage": "A-PreQuery4:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'. ;| D-FinalQuery5:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'."
+  },
+  {
+    "id": 100097,
+    "testCaseTitle": "002-Device:Reassign - TC 232",
+    "outcome": "Failed",
+    "durationInMs": 853.0,
+    "errorMessage": "A-PreQuery4:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'. ;| B-XQuery:Check the expected XML, differences were found! Check the C:\\__w\\1\\s\\.\\Y2_Plugins_InventoryTracking\\Tests\\Results\\Y2.Plugin.InventoryTracking-WebServices-v26-Fix\\002-Device_Reassign\\002-Device-Reassign - TC 232 - B-XQuery-diff-results.txt file for details. ;| D-FinalQuery5:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'."
+  },
+  {
+    "id": 100098,
+    "testCaseTitle": "002-Device:Reassign - TC 233",
+    "outcome": "Passed",
+    "durationInMs": 844.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100099,
+    "testCaseTitle": "002-Device:Reassign - TC 234",
+    "outcome": "Failed",
+    "durationInMs": 786.0,
+    "errorMessage": "A-PreQuery4:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'. ;| D-FinalQuery5:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'."
+  },
+  {
+    "id": 100100,
+    "testCaseTitle": "002-Device:Reassign - TC 235",
+    "outcome": "Failed",
+    "durationInMs": 1040.0,
+    "errorMessage": "A-PreQuery4:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'. ;| D-FinalQuery5:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'."
+  },
+  {
+    "id": 100101,
+    "testCaseTitle": "002-Device:Reassign - TC 236",
+    "outcome": "Passed",
+    "durationInMs": 1084.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100102,
+    "testCaseTitle": "002-Device:Reassign - TC 237",
+    "outcome": "Failed",
+    "durationInMs": 1030.0,
+    "errorMessage": "A-PreQuery4:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'. ;| D-FinalQuery5:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'."
+  },
+  {
+    "id": 100103,
+    "testCaseTitle": "002-Device:Reassign - TC 238",
+    "outcome": "Failed",
+    "durationInMs": 1266.0,
+    "errorMessage": "A-PreQuery4:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'. ;| D-FinalQuery5:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'."
+  },
+  {
+    "id": 100104,
+    "testCaseTitle": "002-Device:Reassign - TC 240",
+    "outcome": "Passed",
+    "durationInMs": 1527.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100105,
+    "testCaseTitle": "002-Device:Reassign - TC 241",
+    "outcome": "Passed",
+    "durationInMs": 943.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100106,
+    "testCaseTitle": "002-Device:Reassign - TC 242",
+    "outcome": "Passed",
+    "durationInMs": 960.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100107,
+    "testCaseTitle": "002-Device:Reassign - TC 250",
+    "outcome": "Passed",
+    "durationInMs": 1197.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100108,
+    "testCaseTitle": "002-Device:Reassign - TC 251",
+    "outcome": "Passed",
+    "durationInMs": 837.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100109,
+    "testCaseTitle": "002-Device:Reassign - TC 252",
+    "outcome": "Failed",
+    "durationInMs": 1020.0,
+    "errorMessage": "A-PreQuery4:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2060'. ;| D-FinalQuery5:OK"
+  },
+  {
+    "id": 100110,
+    "testCaseTitle": "002-Device:Reassign - TC 253",
+    "outcome": "Failed",
+    "durationInMs": 1233.0,
+    "errorMessage": "A-PreQuery4:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2060'. ;| D-FinalQuery5:OK"
+  },
+  {
+    "id": 100111,
+    "testCaseTitle": "002-Device:Reassign - TC 254",
+    "outcome": "Failed",
+    "durationInMs": 1410.0,
+    "errorMessage": "A-PreQuery4:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2060'. ;| B-XQuery:OK ;| D-FinalQuery5:OK"
+  },
+  {
+    "id": 100112,
+    "testCaseTitle": "002-Device:Reassign - TC 260",
+    "outcome": "Passed",
+    "durationInMs": 860.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100113,
+    "testCaseTitle": "002-Device:Reassign - TC 261",
+    "outcome": "Passed",
+    "durationInMs": 797.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100114,
+    "testCaseTitle": "002-Device:Reassign - TC 262",
+    "outcome": "Passed",
+    "durationInMs": 820.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100115,
+    "testCaseTitle": "002-Device:Reassign - TC 263",
+    "outcome": "Passed",
+    "durationInMs": 796.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100116,
+    "testCaseTitle": "002-Device:Reassign - TC 264",
+    "outcome": "Passed",
+    "durationInMs": 804.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100117,
+    "testCaseTitle": "002-Device:Reassign - TC 265",
+    "outcome": "Passed",
+    "durationInMs": 803.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100118,
+    "testCaseTitle": "002-Device:Reassign - TC 266",
+    "outcome": "Passed",
+    "durationInMs": 753.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100119,
+    "testCaseTitle": "002-Device:Reassign - TC 267",
+    "outcome": "Passed",
+    "durationInMs": 744.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100120,
+    "testCaseTitle": "002-Device:Reassign - TC 268",
+    "outcome": "Passed",
+    "durationInMs": 700.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100121,
+    "testCaseTitle": "002-Device:Reassign - TC 269",
+    "outcome": "Passed",
+    "durationInMs": 696.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100122,
+    "testCaseTitle": "002-Device:Reassign - TC 270",
+    "outcome": "Passed",
+    "durationInMs": 880.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100123,
+    "testCaseTitle": "002-Device:Reassign - TC 271",
+    "outcome": "Passed",
+    "durationInMs": 827.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100124,
+    "testCaseTitle": "002-Device:Reassign - TC 272",
+    "outcome": "Passed",
+    "durationInMs": 787.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100125,
+    "testCaseTitle": "002-Device:Reassign - TC 273",
+    "outcome": "Passed",
+    "durationInMs": 800.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100126,
+    "testCaseTitle": "002-Device:Reassign - TC 274",
+    "outcome": "Passed",
+    "durationInMs": 940.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100127,
+    "testCaseTitle": "002-Device:Reassign - TC 275",
+    "outcome": "Passed",
+    "durationInMs": 840.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100128,
+    "testCaseTitle": "002-Device:Reassign - TC 276",
+    "outcome": "Passed",
+    "durationInMs": 943.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100129,
+    "testCaseTitle": "002-Device:Reassign - TC 277",
+    "outcome": "Passed",
+    "durationInMs": 940.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100130,
+    "testCaseTitle": "002-Device:Reassign - TC 278",
+    "outcome": "Passed",
+    "durationInMs": 1200.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100131,
+    "testCaseTitle": "002-Device:Reassign - TC 279",
+    "outcome": "Passed",
+    "durationInMs": 983.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100132,
+    "testCaseTitle": "002-Device:Reassign - TC 280",
+    "outcome": "Passed",
+    "durationInMs": 934.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100133,
+    "testCaseTitle": "002-Device:Reassign - TC 281",
+    "outcome": "Passed",
+    "durationInMs": 650.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100134,
+    "testCaseTitle": "002-Device:Reassign - TC 282",
+    "outcome": "Passed",
+    "durationInMs": 1096.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100135,
+    "testCaseTitle": "002-Device:Reassign - TC 283",
+    "outcome": "Passed",
+    "durationInMs": 737.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100136,
+    "testCaseTitle": "002-Device:Reassign - TC 284",
+    "outcome": "Passed",
+    "durationInMs": 873.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100137,
+    "testCaseTitle": "002-Device:Reassign - TC 285",
+    "outcome": "Passed",
+    "durationInMs": 990.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100138,
+    "testCaseTitle": "002-Device:Reassign - TC 286",
+    "outcome": "Passed",
+    "durationInMs": 1170.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100139,
+    "testCaseTitle": "002-Device:Reassign - TC 287",
+    "outcome": "Passed",
+    "durationInMs": 1024.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100140,
+    "testCaseTitle": "002-Device:Reassign - TC 288",
+    "outcome": "Passed",
+    "durationInMs": 790.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100141,
+    "testCaseTitle": "002-Device:Reassign - TC 289",
+    "outcome": "Passed",
+    "durationInMs": 773.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100142,
+    "testCaseTitle": "002-Device:Reassign - TC 290",
+    "outcome": "Passed",
+    "durationInMs": 763.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100143,
+    "testCaseTitle": "002-Device:Reassign - TC 291",
+    "outcome": "Passed",
+    "durationInMs": 764.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100144,
+    "testCaseTitle": "002-Device:Reassign - TC 292",
+    "outcome": "Failed",
+    "durationInMs": 1026.0,
+    "errorMessage": "D-FinalQuery5:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'."
+  },
+  {
+    "id": 100145,
+    "testCaseTitle": "002-Device:Reassign - TC 293",
+    "outcome": "Failed",
+    "durationInMs": 1010.0,
+    "errorMessage": "D-FinalQuery5:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'."
+  },
+  {
+    "id": 100146,
+    "testCaseTitle": "002-Device:Reassign - TC 294",
+    "outcome": "Failed",
+    "durationInMs": 817.0,
+    "errorMessage": "D-FinalQuery5:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'."
+  },
+  {
+    "id": 100147,
+    "testCaseTitle": "002-Device:Reassign - TC 295",
+    "outcome": "Failed",
+    "durationInMs": 817.0,
+    "errorMessage": "D-FinalQuery7:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'."
+  },
+  {
+    "id": 100148,
+    "testCaseTitle": "002-Device:Reassign - TC 296",
+    "outcome": "Failed",
+    "durationInMs": 816.0,
+    "errorMessage": "D-FinalQuery5:com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near '2016'."
+  },
+  {
+    "id": 100149,
+    "testCaseTitle": "002-Device:Reassign - TC 300",
+    "outcome": "Passed",
+    "durationInMs": 847.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100150,
+    "testCaseTitle": "002-Device:Reassign - TC 301",
+    "outcome": "Passed",
+    "durationInMs": 970.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100151,
+    "testCaseTitle": "002-Device:Reassign - TC 302",
+    "outcome": "Passed",
+    "durationInMs": 1003.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100152,
+    "testCaseTitle": "002-Device:Reassign - TC 303",
+    "outcome": "Passed",
+    "durationInMs": 657.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100153,
+    "testCaseTitle": "002-Device:Reassign - TC 304",
+    "outcome": "Passed",
+    "durationInMs": 983.0,
+    "errorMessage": null
+  },
+  {
+    "id": 100154,
+    "testCaseTitle": "002-Device:Reassign - TC 305",
+    "outcome": "Passed",
+    "durationInMs": 957.0,
+    "errorMessage": null
+  }
+]
