@@ -1,5 +1,12 @@
 # JOURNAL — WI-2222897
 
+## 2026-09-08 — Référencement de brain-worker
+
+Ajout du guide [brain-worker](documentation/guides/BRAIN_WORKER.md), qui établit la disponibilité
+locale de l'outil sous `C:\Users\jegour\brain-worker` et renvoie vers son README pour le
+fonctionnement (`remote.ps1`, `tell.ps1`, tests et états de fin). Aucun contenu du dépôt externe,
+secret ou système distant n'a été modifié.
+
 ## 2026-09-08 — Mise en dépôt Git et réorganisation
 
 Le workspace OneDrive (~8,6 Go, non versionné) est rapatrié dans un dépôt Git dédié

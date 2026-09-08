@@ -9,6 +9,7 @@ Ce dossier sépare les guides lisibles, le contexte du WI, les documents sources
 3. [Environnement et exécution locale](guides/ENVIRONNEMENT_ET_EXECUTION_LOCALE.md) : SQL, backups, `cy2px`, Fix/Cur et exécution.
 4. [Dépannage](guides/DEPANNAGE_JMETER.md) : contrôles et diagnostic.
 5. [Fonctionnement technique](guides/FONCTIONNEMENT_TECHNIQUE.md) : comportement établi par lecture du code.
+6. [brain-worker](guides/BRAIN_WORKER.md) : disponibilité locale et fonctionnement de l'orchestrateur associé.
 
 Pour les échecs FrenchTaxesRules et Clienteling déjà analysés, partir du [handoff de l'investigation](../investigations/ecarts-jmeter-migrations/HANDOFF.md).
 
