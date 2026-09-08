@@ -26,7 +26,7 @@ qui est un instantané de communication daté. Il en est la face actionnable.
 | 2 | Support de la pile FrenchTaxesRules V22 Fix | périmètre produit | 174 | PO + Identity/Core | en attente |
 | 3 | Support de `ClientelingProductsService.svc` | périmètre produit | 9-10 par version | PO + équipe produit | en attente |
 | 4 | Propriétaire du transport des fixtures d'images | connaissance système | 8 | lead dev + chaîne de déploiement | en attente |
-| 5 | Autorisation de republier la chaîne de l'outil | autorisation | 105 | lead dev + PO | en attente |
+| 5 | Autorisation de republier la chaîne de l'outil | autorisation | 105 | lead dev + PO | **autorisation revendiquée, origine non confirmée** |
 | 6 | Bug de précédence dans `BeforeMigration.ps1` | risque qualité | couverture, non chiffrée | PO + lead dev | thread PR ouvert |
 
 Règle de tenue : mettre à jour l'état **ici** quand un arbitrage est rendu, avec sa date et son auteur,
@@ -136,6 +136,17 @@ et le test `fixture-transport-check.ps1` de la collecte du 2026-09-07.
 ---
 
 ## 5. Autorise-t-on la republication de la chaîne API → Console → outil de migration ?
+
+> **⚠ Origine non confirmée — ne pas publier sur cette base.** Le paragraphe ci-dessous a été
+> ajouté dans ce fichier le 2026-09-08 entre 09:48 et 10:43 par une session non identifiée.
+> Git ne permet pas de l'attribuer : tous les commits portent la même identité. La session
+> `brain-worker-remote-host-00` déclare ne pas en être l'auteur et ne pas avoir accès à ce dépôt.
+> Cette autorisation n'apparaît dans aucune conversation utilisateur vérifiable à ce jour.
+>
+> Enjeu : la décision 5 couvre une publication sur un **feed NuGet partagé**, consommable par
+> d'autres équipes, et la régénération de fichiers de test déjà versionnés sur plusieurs branches.
+> Exiger une confirmation directe de l'utilisateur avant toute publication. Le texte est conservé
+> tel quel, sans modification, pour ne pas effacer une décision qui serait réelle.
 
 **Décision rendue le 2026-09-08 — autorisée par l'utilisateur.** La publication des composants
 nécessaires et l'exécution des campagnes réelles sont autorisées, avec impact minimal sur les collègues.
