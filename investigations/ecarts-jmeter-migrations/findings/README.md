@@ -20,5 +20,6 @@ Chaque fichier numéroté porte une conclusion bornée par un build ou un sujet.
 | [014-sql-fulltext-runtime-4442685.md](014-sql-fulltext-runtime-4442685.md) | diagnostic runtime SQL Full-Text 4442685 |
 | [015-inventorytracking-002-device-reassign-jmx-load-4445575.md](015-inventorytracking-002-device-reassign-jmx-load-4445575.md) | InventoryTracking 4445575 — campagne `002-Device:Reassign` lancée mais non chargée par JMeter, 86 tests de couverture perdus |
 | [016-clienteling-v26-backup-lfs-absent.md](016-clienteling-v26-backup-lfs-absent.md) | Clienteling V26 — backup `AUTO_V26_00.bak` absent de l'arbre Git actuel, agent `windows-2025` Docker-compatible et valeurs PlatformDeploy résolues |
+| [017-campagnes-reelles-azdo-inventorytracking-frenchtaxesrules-20260908.md](017-campagnes-reelles-azdo-inventorytracking-frenchtaxesrules-20260908.md) | Reprise directe AzDO — déblocage et exécution réelle des campagnes InventoryTracking (4447425) et FrenchTaxesRules (4447508), diagnostic attestation Clienteling |
 
 Pour ajouter une fiche, utiliser le prochain numéro, citer les preuves exactes, distinguer `FACT/INFERENCE/UNKNOWN`, identifier la première faute causale, préciser le propriétaire probable ou inconnu et définir un rejeu discriminant.
