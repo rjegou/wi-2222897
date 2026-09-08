@@ -1,0 +1,7 @@
+item,source,observation,classification
+yaml-reference,azure-pipelines.preflight.yml:7,unqualified cegid-retail-docker-production/y2-jmeter with exact tag and digest,FACT
+historical-acr-reference,4429167 log 15,logical repository and digest match YAML,FACT
+jfrog-manifest,round5 plus authenticated Docker API,all-docker/y2-jmeter manifest HTTP 200 and Docker-Content-Digest sha256:268476...,FACT
+service-connection,AzureContainerRegistry-Docker-Retail metadata,registry resource AcrRetailDocker implies acrretaildocker.azurecr.io,FACT/inference hostname
+pull-error,4441719 log 7,pull used unqualified reference after ACR login and was denied,FACT
+local-correction,image-reference-correction.local.patch,fully qualified ACR hostname prepared but not pushed or queued,FACT

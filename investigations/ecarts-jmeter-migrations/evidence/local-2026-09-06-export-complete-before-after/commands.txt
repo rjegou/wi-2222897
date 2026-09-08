@@ -1,0 +1,3 @@
+original: C:\temp\rje-wi2222897-export-complete-20260906-175237\original\runtime\Cegid.Retail.AutoTest.Console.exe --tstj=C:\temp\rje-wi2222897-export-complete-20260906-175237\original\fixtures\Export_Run.xml --dstFolder=C:\temp\rje-wi2222897-export-complete-20260906-175237\original\out
+corrected: C:\temp\rje-wi2222897-export-complete-20260906-175237\corrected\runtime\Cegid.Retail.AutoTest.Console.exe --tstj=C:\temp\rje-wi2222897-export-complete-20260906-175237\corrected\fixtures\Export_Run.xml --dstFolder=C:\temp\rje-wi2222897-export-complete-20260906-175237\corrected\out
+exit_codes: original=0; corrected=0

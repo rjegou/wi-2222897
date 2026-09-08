@@ -1,0 +1,12 @@
+artifact,source_identifier,method,scope,status
+branch-ref,InventoryTracking_Migration_AutoTest_Jmeter_On_master,az repos ref list,current object id,FACT
+migration-builds,4434070 and 4432064,az pipelines build list,latest migration branch builds and commits,FACT
+migration-commit,4de185bb132cfbfb50643b6b53d6feb85508f4e2,az devops invoke git/commits,comment parent and provenance,FACT
+services-csproj,4de185bb and 20aa528 path Cegid.Retail.InventoryTracking.Services.Tests.csproj,az devops invoke git/items,object id reference and hint path,FACT
+externals-v26,4de185bb and 20aa528 path ExternalsToRestore_V26.xml,az devops invoke git/items,object id and package versions,FACT
+services-packages,4de185bb and 20aa528 Services.Tests/packages.config,az devops invoke git/items,package declarations,FACT
+webservices-packages,20aa528 WebServices.Tests/packages.config,az devops invoke git/items,XmlDiff and XMLDiffPatch declarations,FACT
+commit-changes,4de185bb,az devops invoke git/changes,deleted WebServices.Tests tree and related files,FACT
+build-4434070-log-44,build 4434070 log 44,az devops invoke build/logs,external package restore success,FACT
+build-4434070-log-51,build 4434070 log 51,az devops invoke build/logs,missing XmlDiff and compiler errors,FACT
+build-4435986-log-45,build 4435986 log 45,az devops invoke build/logs,working XmlDiff package path,FACT

@@ -1,0 +1,7 @@
+item,source_or_method,identifier,status_or_hash,classification
+platformdeploy-zip,AzDO 4429167 logs 242/245/261 and 244/246/263,retail-software-production/Y2.Tools.PlatformDeploy/PlatformDeploy.5.0.86.zip,HTTP 200; 7566674 bytes; SHA256 625EEC7A139AAE87886E0CE40D075B36A3EC331A0EA021478FBEEF9D6E612295,FACT
+platformdeploy-code-commit,AzDO 4429167 checkout logs 231/227,93f91487ee717185599555a42df3cb5d024ace89,code provenance distinct from ZIP,FACT
+historical-image,AzDO 4429167 log 15,y2-jmeter:sqlexpress2019-y2-aspnet-10-windowsservercore-ltsc2022,sha256:2684760378b395af6d4843036b8d3cfc310cfb30909e23c838c822647f4da9cb historical resolution,current availability UNKNOWN
+candidate-packages,prior same-day JFrog revalidation,Core 22.0.0.2068; Common 22.0.3.311; Identity 22.0.6.117,HTTP 200 and SHA256 verified; see linked revalidation,FACT
+baseline-packages,AzDO 4429167 downloadedPackages.json and install logs,Core 22.0.0.1011; Common 22.0.2.300; Identity 22.0.5.182,historical acquisition; current availability and SHA256 UNKNOWN,FACT/UNKNOWN
+current-jfrog-recheck,local PowerShell Invoke-WebRequest and curl.exe,JFrog metadata endpoints,SSL connection failure; Schannel SEC_E_NO_CREDENTIALS 0x8009030E,UNKNOWN

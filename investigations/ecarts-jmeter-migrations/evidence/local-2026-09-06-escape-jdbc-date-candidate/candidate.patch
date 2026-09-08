@@ -1,0 +1,6 @@
+diff --git a/Cegid.Retail.AutoTest.Api/JmeterCodeGen.cs b/Cegid.Retail.AutoTest.Api/JmeterCodeGen.cs
+--- a/Cegid.Retail.AutoTest.Api/JmeterCodeGen.cs
++++ b/Cegid.Retail.AutoTest.Api/JmeterCodeGen.cs
+@@
+-            query = Regex.Replace(query, @"'(\d{4})-(\d{2})-(\d{2})'", "'${1}${3}${2}'");
++            query = Regex.Replace(query, @"'(\d{4})-(\d{2})-(\d{2})'", "'${1}${2}${3}'");

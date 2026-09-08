@@ -1,0 +1,5 @@
+file,source,sha256_or_note
+README.md,local provenance and sanitized run summary,created in this collection
+candidate-image-reference,replay-prep/2026-09-07-v22-isolated/azure-pipelines.candidate.yml,8BAA13513F5F6341A9C664428364B6166C41A58CC9E5DF9C3CCF44CF5958E808
+run-4442003-log-7,Azure DevOps Build Logs API sanitized selected lines,not persisted to avoid copying raw logs
+service-endpoint,Azure DevOps Service Endpoint API non-sensitive fields,registry resource and SPN provisioning only

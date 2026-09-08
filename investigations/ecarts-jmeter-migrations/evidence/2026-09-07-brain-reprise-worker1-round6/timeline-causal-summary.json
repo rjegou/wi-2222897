@@ -1,0 +1,432 @@
+[
+  {
+    "id": "01d87499-f49f-5e26-b359-02c585d28120",
+    "type": "Task",
+    "name": "restore-externals: NuGet restore Externals from packages.config",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:47:44.44Z",
+    "finishTime": "2026-09-07T12:47:50.3566667Z",
+    "logId": 44
+  },
+  {
+    "id": "de12333d-5eb6-4be9-b73a-10512b1c2a7e",
+    "type": "Task",
+    "name": "Post-job: Checkout Y2_Plugins_InventoryTracking@validation/WI-2222897-inventorytracking-xmldiff to s",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:47:14.4633333Z",
+    "finishTime": "2026-09-07T12:47:14.7833333Z",
+    "logId": 34
+  },
+  {
+    "id": "06a827d8-1b13-50c6-a4da-14fef2429110",
+    "type": "Task",
+    "name": "Run Jmeter Tests Campaign Y2.Plugin.InventoryTracking-WebServices-v26-Fix ",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:09:04Z",
+    "finishTime": "2026-09-07T13:54:06.3866667Z",
+    "logId": 162
+  },
+  {
+    "id": "f67f8319-52a2-5949-e433-17ced0e6d551",
+    "type": "Task",
+    "name": "Prepare Jmeter Campaign Run Y2.Plugin.InventoryTracking-WebServices-v26-Fix",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:09:00.7433333Z",
+    "finishTime": "2026-09-07T13:09:03.9966667Z",
+    "logId": 152
+  },
+  {
+    "id": "353fc522-162b-50b5-efe6-1913b025e2e1",
+    "type": "Task",
+    "name": "Publish Archive Test Campaigns logs in pipeline",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:55:17.9433333Z",
+    "finishTime": "2026-09-07T13:55:24.6733333Z",
+    "logId": 174
+  },
+  {
+    "id": "aa9eedb7-e4ec-5f56-436a-1a098a61affc",
+    "type": "Task",
+    "name": "dotNet-build: Publish Quality Gate Result",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:49:59.38Z",
+    "finishTime": "2026-09-07T12:50:01.0666667Z",
+    "logId": 55
+  },
+  {
+    "id": "cfe27557-def1-507a-d355-2a5f2652ce65",
+    "type": "Job",
+    "name": "TI Jmeter V26-Fix",
+    "state": "completed",
+    "result": "succeededWithIssues",
+    "startTime": "2026-09-07T12:52:43.0233333Z",
+    "finishTime": "2026-09-07T13:55:52.11Z",
+    "logId": 196
+  },
+  {
+    "id": "6ce7c6cd-191f-5b18-b750-37cd32fa7cdc",
+    "type": "Task",
+    "name": "Convert JTL results to Junit format for Campaign Y2.Plugin.InventoryTracking-WebServices-v26-Fix",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:54:06.3966667Z",
+    "finishTime": "2026-09-07T13:54:22.15Z",
+    "logId": 164
+  },
+  {
+    "id": "f624c1da-6270-561d-262f-3a982e60cc3b",
+    "type": "Stage",
+    "name": "TI JMeter V26",
+    "state": "completed",
+    "result": "succeededWithIssues",
+    "startTime": "2026-09-07T12:52:40.3366667Z",
+    "finishTime": "2026-09-07T13:56:06.8533333Z",
+    "logId": null
+  },
+  {
+    "id": "1b8f277b-b4fa-5d9e-97fe-464f4cd07ee0",
+    "type": "Task",
+    "name": "Checkout Y2_Plugins_InventoryTracking@validation/WI-2222897-inventorytracking-xmldiff to s\\Y2_Plugins_InventoryTracking",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:03:39.7033333Z",
+    "finishTime": "2026-09-07T13:04:16.07Z",
+    "logId": 105
+  },
+  {
+    "id": "5d77dbfa-0dc1-5392-7daf-4785d7a17997",
+    "type": "Job",
+    "name": "Check generate code",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:45:52.9033333Z",
+    "finishTime": "2026-09-07T12:47:14.8Z",
+    "logId": 36
+  },
+  {
+    "id": "be3c3727-3e8b-51a7-8a59-4bbf73c7da3f",
+    "type": "Task",
+    "name": "dotNet-build: Test assemblies",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:49:08.5033333Z",
+    "finishTime": "2026-09-07T12:49:20.9933333Z",
+    "logId": 52
+  },
+  {
+    "id": "7b482fd3-735d-5292-7f53-4d14000f49b9",
+    "type": "Task",
+    "name": "Checkout Y2_Plugins_InventoryTracking@validation/WI-2222897-inventorytracking-xmldiff to s",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:47:32.7766667Z",
+    "finishTime": "2026-09-07T12:47:39.51Z",
+    "logId": 41
+  },
+  {
+    "id": "c9ae8745-8c0d-5307-bda6-5407937eb969",
+    "type": "Task",
+    "name": "Group Tests Results Campaign Y2.Plugin.InventoryTracking-WebServices-v26-Cur by TestCaseCode for leagcy result",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:54:19.76Z",
+    "finishTime": "2026-09-07T13:54:47.4833333Z",
+    "logId": 166
+  },
+  {
+    "id": "890ffe13-21c5-56eb-2a74-5ccdc4daaf52",
+    "type": "Task",
+    "name": "restore-externals: Install externals from nuget into solution",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:47:50.36Z",
+    "finishTime": "2026-09-07T12:47:52.7966667Z",
+    "logId": 45
+  },
+  {
+    "id": "5900b50b-2c84-4dfd-bafd-688b8268627c",
+    "type": "Task",
+    "name": "Post-job: Checkout Y2_Plugins_InventoryTracking@validation/WI-2222897-inventorytracking-xmldiff to s\\Y2_Plugins_InventoryTracking",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:55:50.1766667Z",
+    "finishTime": "2026-09-07T13:55:50.52Z",
+    "logId": 193
+  },
+  {
+    "id": "4cd9c2ba-3e4e-51f5-9261-6955fdaf34f9",
+    "type": "Task",
+    "name": "Extract vars for JMeter tests",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:09:09.7Z",
+    "finishTime": "2026-09-07T13:09:12.79Z",
+    "logId": 154
+  },
+  {
+    "id": "de7dcc12-643c-5279-7b7b-6d5b9d916235",
+    "type": "Task",
+    "name": "Launch Y2 deployment",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:05:12.7766667Z",
+    "finishTime": "2026-09-07T13:07:44.22Z",
+    "logId": 131
+  },
+  {
+    "id": "dbad51ab-3c2b-5472-e695-736a7d3845a1",
+    "type": "Task",
+    "name": "Launch Y2 deployment",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:05:20.0133333Z",
+    "finishTime": "2026-09-07T13:08:13.04Z",
+    "logId": 138
+  },
+  {
+    "id": "695043ab-e776-5178-ee76-76a301c1de11",
+    "type": "Job",
+    "name": "TI Jmeter V26-Cur",
+    "state": "completed",
+    "result": "succeededWithIssues",
+    "startTime": "2026-09-07T12:52:40.3366667Z",
+    "finishTime": "2026-09-07T13:55:48.02Z",
+    "logId": 190
+  },
+  {
+    "id": "56b42f17-126d-583d-b5dc-7849f42e5f61",
+    "type": "Task",
+    "name": "Archive Test Campaigns logs",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:55:07.1833333Z",
+    "finishTime": "2026-09-07T13:55:17.94Z",
+    "logId": 172
+  },
+  {
+    "id": "6cb0e2fe-c123-54bc-0100-7ea3123833ad",
+    "type": "Task",
+    "name": "Check Test campaign Result for error",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:55:07.07Z",
+    "finishTime": "2026-09-07T13:55:12.77Z",
+    "logId": 171
+  },
+  {
+    "id": "de80d2c9-6c50-5161-2527-81df7fc56dd1",
+    "type": "Task",
+    "name": "Checkout Y2_Plugins_InventoryTracking@validation/WI-2222897-inventorytracking-xmldiff to s",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:45:55.68Z",
+    "finishTime": "2026-09-07T12:46:13.3966667Z",
+    "logId": 12
+  },
+  {
+    "id": "10e534d5-98e4-548d-8c61-852cfa51f0ac",
+    "type": "Task",
+    "name": "Publish Archive Test Campaigns logs in pipeline",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:55:27.4166667Z",
+    "finishTime": "2026-09-07T13:55:33.2766667Z",
+    "logId": 178
+  },
+  {
+    "id": "60c64a16-b5d2-584b-1ff1-888571eac96c",
+    "type": "Task",
+    "name": "Extract errors from Junit results for Campaign Y2.Plugin.InventoryTracking-WebServices-v26-Cur",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:54:47.4833333Z",
+    "finishTime": "2026-09-07T13:55:07.07Z",
+    "logId": 169
+  },
+  {
+    "id": "2c7d8853-969d-5ed8-0b15-96b55ab6b5f9",
+    "type": "Task",
+    "name": "Checkout Y2_Plugins_InventoryTracking@validation/WI-2222897-inventorytracking-xmldiff to s\\Y2_Plugins_InventoryTracking",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:03:48.0233333Z",
+    "finishTime": "2026-09-07T13:04:21.69Z",
+    "logId": 106
+  },
+  {
+    "id": "c119695a-1759-57b5-ff6b-96e9872c2e1a",
+    "type": "Task",
+    "name": "restore-externals: Convert ExternalsToRestore.xml to packages.config",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:47:41.9633333Z",
+    "finishTime": "2026-09-07T12:47:44.4366667Z",
+    "logId": 43
+  },
+  {
+    "id": "6013a9fa-2c82-4765-8f41-9a6237ce204e",
+    "type": "Task",
+    "name": "Post-job: Checkout Y2_Plugins_InventoryTracking@validation/WI-2222897-inventorytracking-xmldiff to s",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:51:46.1633333Z",
+    "finishTime": "2026-09-07T12:51:46.5366667Z",
+    "logId": 82
+  },
+  {
+    "id": "7ab2a4cc-aa50-4734-bdb4-9b51ac7bfd3f",
+    "type": "Task",
+    "name": "Post-job: Checkout Y2_Plugins_InventoryTracking@validation/WI-2222897-inventorytracking-xmldiff to s",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:46:52.7533333Z",
+    "finishTime": "2026-09-07T12:46:53.0066667Z",
+    "logId": 26
+  },
+  {
+    "id": "61bdc17c-17f0-50ab-d59c-a5b42ecbe877",
+    "type": "Task",
+    "name": "Convert JTL results to Junit format for Campaign Y2.Plugin.InventoryTracking-WebServices-v26-Cur",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:54:04.24Z",
+    "finishTime": "2026-09-07T13:54:19.76Z",
+    "logId": 163
+  },
+  {
+    "id": "a061e422-5161-5be8-d8ab-a7596b7998dc",
+    "type": "Task",
+    "name": "PublishTestResults",
+    "state": "completed",
+    "result": "succeededWithIssues",
+    "startTime": "2026-09-07T13:55:12.7733333Z",
+    "finishTime": "2026-09-07T13:55:18.87Z",
+    "logId": 173
+  },
+  {
+    "id": "d80ba141-4527-5655-597d-acdfd029622c",
+    "type": "Task",
+    "name": "PublishTestResults",
+    "state": "completed",
+    "result": "succeededWithIssues",
+    "startTime": "2026-09-07T13:54:56.7033333Z",
+    "finishTime": "2026-09-07T13:55:07.1833333Z",
+    "logId": 170
+  },
+  {
+    "id": "8692fe1f-1e0d-5268-8da3-b9249c348930",
+    "type": "Task",
+    "name": "Checkout Y2_Plugins_InventoryTracking@validation/WI-2222897-inventorytracking-xmldiff to s",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:45:54.0166667Z",
+    "finishTime": "2026-09-07T12:46:07.4333333Z",
+    "logId": 10
+  },
+  {
+    "id": "42d8815a-c319-5760-bf07-bae4040d835c",
+    "type": "Task",
+    "name": "dotNet-build: Build solution **\\*.sln",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:48:10.7633333Z",
+    "finishTime": "2026-09-07T12:49:08.4966667Z",
+    "logId": 51
+  },
+  {
+    "id": "93810c14-111e-4f9a-a8df-c17037c7829d",
+    "type": "Task",
+    "name": "Post-job: Checkout Y2_Plugins_InventoryTracking@validation/WI-2222897-inventorytracking-xmldiff to s\\Y2_Plugins_InventoryTracking",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:55:46.0666667Z",
+    "finishTime": "2026-09-07T13:55:46.3933333Z",
+    "logId": 187
+  },
+  {
+    "id": "b5b509c4-fcaf-5936-bd1f-d6cfd14ca09f",
+    "type": "Task",
+    "name": "Group Tests Results Campaign Y2.Plugin.InventoryTracking-WebServices-v26-Fix by TestCaseCode for leagcy result",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:54:22.15Z",
+    "finishTime": "2026-09-07T13:54:42.2266667Z",
+    "logId": 165
+  },
+  {
+    "id": "f12bcdc5-108e-588e-2264-de889c09953c",
+    "type": "Task",
+    "name": "Run Jmeter Tests Campaign Y2.Plugin.InventoryTracking-WebServices-v26-Cur ",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:09:32.31Z",
+    "finishTime": "2026-09-07T13:54:04.2233333Z",
+    "logId": 161
+  },
+  {
+    "id": "6e85206b-b161-5a62-3fc1-e0ddcf210532",
+    "type": "Task",
+    "name": "Archive Test Campaigns logs",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:55:18.8733333Z",
+    "finishTime": "2026-09-07T13:55:27.4166667Z",
+    "logId": 175
+  },
+  {
+    "id": "b66638fb-0e5c-539a-e371-e3f7d00b3a41",
+    "type": "Task",
+    "name": "Check Test campaign Result for error",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:54:54.27Z",
+    "finishTime": "2026-09-07T13:54:56.7033333Z",
+    "logId": 168
+  },
+  {
+    "id": "5e5eeee1-2b1c-5248-5290-e4a6239c3947",
+    "type": "Task",
+    "name": "restore-externals: Init variables",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T12:47:39.51Z",
+    "finishTime": "2026-09-07T12:47:41.96Z",
+    "logId": 42
+  },
+  {
+    "id": "7086f859-3c5d-5db2-bbc5-e52cfa67d264",
+    "type": "Task",
+    "name": "Prepare Jmeter Campaign Run Y2.Plugin.InventoryTracking-WebServices-v26-Cur",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:09:29.5433333Z",
+    "finishTime": "2026-09-07T13:09:32.31Z",
+    "logId": 160
+  },
+  {
+    "id": "33d139da-a729-57b2-1f32-f531cb370bd8",
+    "type": "Task",
+    "name": "Extract vars for JMeter tests",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:08:39.55Z",
+    "finishTime": "2026-09-07T13:08:42.48Z",
+    "logId": 146
+  },
+  {
+    "id": "d855ee63-0620-5409-be6a-f563c3617b4b",
+    "type": "Task",
+    "name": "Extract errors from Junit results for Campaign Y2.Plugin.InventoryTracking-WebServices-v26-Fix",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-07T13:54:42.2266667Z",
+    "finishTime": "2026-09-07T13:54:54.27Z",
+    "logId": 167
+  }
+]

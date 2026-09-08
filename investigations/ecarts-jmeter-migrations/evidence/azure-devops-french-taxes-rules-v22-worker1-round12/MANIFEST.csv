@@ -1,0 +1,7 @@
+file,source,sha256_or_note
+README.md,local sanitized provenance and result summary,created in this collection
+commit,Azure DevOps Git push,cd632126c17f3ac95c8a29b079d0e243fa538e54
+run-4442120,Azure DevOps Build API,completed succeeded
+timeline-4442120,Azure DevOps Build Timeline API,inspection and finalization succeeded
+log-7-selected,Azure DevOps Build Logs API,digest acquired and inspection completed
+log-8-selected,Azure DevOps Build Logs API,outputs hashed in Agent.TempDirectory only

@@ -1,0 +1,95 @@
+10:01:35.0669317+02:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Ajout ligne dans MPIECECOMPL
+10:01:35.0669317+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:01:35.0669317+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:01:35.0669317+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] INSERT INTO MPIECECOMPL (MDI_NATUREPIECEG, MDI_SOUCHE, MDI_NUMERO, MDI_TYPEFISCAL, MDI_REFFISCALESIGN, MDI_DATECREPIECE, MDI_DATEMODPIECE, MDI_FISCALPRTID) VALUES ('FFO', '304', 33, '...', 'Signature', '2025-10-07', '2025-10-07', 'S20')
+10:01:35.0669317+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] INSERT INTO MPIECECOMPL (MDI_NATUREPIECEG, MDI_SOUCHE, MDI_NUMERO, MDI_TYPEFISCAL, MDI_REFFISCALESIGN, MDI_DATECREPIECE, MDI_DATEMODPIECE, MDI_FISCALPRTID ) VALUES('FFO', '304', 33, '...', 'Signature', '2025-10-07', '2025-10-07', 'S20' )
+10:01:35.0669317+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - INSERT INTO MPIECECOMPL (MDI_NATUREPIECEG, MDI_SOUCHE, MDI_NUMERO, MDI_TYPEFISCAL, MDI_REFFISCALESIGN, MDI_DATECREPIECE, MDI_DATEMODPIECE, MDI_FISCALPRTID ) VALUES('FFO', '304', 33, '...', 'Signature', '2025-10-07', '2025-10-07', 'S20' )
+10:01:35.1294315+02:00: root Error: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Exception - Cegid.Erp.Data.ErpBusinessException: An SQL command failed.
+Exception code                     : ERP00001
+Action / method                    : 
+What to do                         : Contact the hotline.
+Call stack                         :
+   at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass5b`1.<ExecuteCommand>b__57(CallingFlowLogCategory cfl)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.<>c__DisplayClass12`2.<LogFlow>b__10(T flowLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+Inner exception                    :
+   Cegid.Framework.CbpException: Error executing sql command 'INSERT INTO MPIECECOMPL (MDI_NATUREPIECEG, MDI_SOUCHE, MDI_NUMERO, MDI_TYPEFISCAL, MDI_REFFISCALESIGN, MDI_DATECREPIECE, MDI_DATEMODPIECE, MDI_FISCALPRTID ) VALUES('FFO', '304', 33, '...', 'Signature', '2025-10-07', '2025-10-07', 'S20' )'
+   Exception code              : CBP00202
+   Action / method             : Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1
+   What to do                  : Check the syntax of the sql command
+   Call stack                  :
+   
+   Inner exception             :
+      System.Data.SqlClient.SqlException (0x80131904): Cannot insert duplicate key row in object 'dbo.MPIECECOMPL' with unique index 'MDI_CLE1'. The duplicate key value is (FFO, 304, 33, ...).
+      The statement has been terminated.
+         at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+         at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+         at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+         at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+         at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+         at Cegid.Erp.Data.Sql.SqlService.GetExecuteNonQueryAffectedRows(IDbCommand command)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass5b`1.<>c__DisplayClass61.<>c__DisplayClass66.<ExecuteCommand>b__59()
+         at Cegid.Framework.Data.DbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Framework.Data.SqlServer.SqlDbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass5b`1.<>c__DisplayClass61.<ExecuteCommand>b__58()
+         at Cegid.Erp.Data.Sql.SqlService.ExecuteInTransaction[T](DbDataAccessConnection dbDataAccessConnection, Func`1 executor)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass5b`1.<ExecuteCommand>b__57(CallingFlowLogCategory cfl)
+      ClientConnectionId:3f68f343-7a5d-4a9b-b266-dbb92cfb7e95
+      Error Number:2601,State:1,Class:14
+10:01:35.1294315+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Fail, OperationDurationMs=17.3597
+10:01:35.1294315+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(a7c6944a-df32-48c2-be91-b8f2d8bb2cf1@sql_Y2_Plugin, 38397400)
+10:01:35.1294315+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:01:35.1294315+02:00: QTAgent32_40.exe Error: 0 : Error during TestCase Processing: Cegid.Erp.Data.ErpBusinessException: An SQL command failed.
+Exception code                     : ERP00001
+Action / method                    : 
+What to do                         : Contact the hotline.
+Call stack                         :
+   at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass5b`1.<ExecuteCommand>b__57(CallingFlowLogCategory cfl)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.<>c__DisplayClass12`2.<LogFlow>b__10(T flowLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T,TResult](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Func`2 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T,TResult](ILogSource logSource, String flowName, Func`2 flow)
+   at Cegid.Erp.Data.Sql.SqlService.ExecuteCommand[T](IDataAccessConnection dataAccessConnection, Func`4 commandBuilder, IEnumerable`1 parameters, Func`2 executor, Boolean createTransaction)
+   at Cegid.Erp.Data.Sql.SqlService.Execute(IDataAccessConnection dataAccessConnection, String commandText, IEnumerable`1 parameters)
+   at Cegid.Retail.QualityTools.WsTestBase.CallExecuteSql(String strSqlStmt)
+   at Cegid.Retail.FrenchTaxesRules.LegacyServices.AutoTest.DocumentSignature_SignOne.Test_02() in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.LegacyServices.Tests\AutoTest\DocumentSignature\DocumentSignature_SignOne.g.cs:line 149
+Inner exception                    :
+   Cegid.Framework.CbpException: Error executing sql command 'INSERT INTO MPIECECOMPL (MDI_NATUREPIECEG, MDI_SOUCHE, MDI_NUMERO, MDI_TYPEFISCAL, MDI_REFFISCALESIGN, MDI_DATECREPIECE, MDI_DATEMODPIECE, MDI_FISCALPRTID ) VALUES('FFO', '304', 33, '...', 'Signature', '2025-10-07', '2025-10-07', 'S20' )'
+   Exception code              : CBP00202
+   Action / method             : Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1
+   What to do                  : Check the syntax of the sql command
+   Call stack                  :
+   
+   Inner exception             :
+      System.Data.SqlClient.SqlException (0x80131904): Cannot insert duplicate key row in object 'dbo.MPIECECOMPL' with unique index 'MDI_CLE1'. The duplicate key value is (FFO, 304, 33, ...).
+      The statement has been terminated.
+         at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+         at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+         at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+         at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+         at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+         at Cegid.Erp.Data.Sql.SqlService.GetExecuteNonQueryAffectedRows(IDbCommand command)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass5b`1.<>c__DisplayClass61.<>c__DisplayClass66.<ExecuteCommand>b__59()
+         at Cegid.Framework.Data.DbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Framework.Data.SqlServer.SqlDbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass5b`1.<>c__DisplayClass61.<ExecuteCommand>b__58()
+         at Cegid.Erp.Data.Sql.SqlService.ExecuteInTransaction[T](DbDataAccessConnection dbDataAccessConnection, Func`1 executor)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass5b`1.<ExecuteCommand>b__57(CallingFlowLogCategory cfl)
+      ClientConnectionId:3f68f343-7a5d-4a9b-b266-dbb92cfb7e95
+      Error Number:2601,State:1,Class:14
+10:01:35.1294315+02:00: QTAgent32_40.exe Information: 0 : Enter finally block
+10:01:35.1294315+02:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: suppression de la ligne mpiececompl
+10:01:35.1294315+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:01:35.1294315+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:01:35.1294315+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE FROM MPIECECOMPL where MDI_SOUCHE='304' 
+10:01:35.1294315+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE FROM MPIECECOMPL WHERE MDI_SOUCHE = '304'
+10:01:35.1294315+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE FROM MPIECECOMPL WHERE MDI_SOUCHE = '304'
+10:01:35.1294315+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=1.076
+10:01:35.1450568+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+10:01:35.1450568+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=23.3484
+10:01:35.1450568+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(b45b6b25-128a-4301-a5c5-51856df98d37@sql_Y2_Plugin, 21115317)
+10:01:35.1450568+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')

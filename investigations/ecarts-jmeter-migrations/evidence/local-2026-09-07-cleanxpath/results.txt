@@ -1,0 +1,8 @@
+CleanXpath.tests.ps1 — 2026-09-07
+Assembly: local-2026-09-07-cleanxpath/bin/Cegid.Retail.AutoTest.Api.dll
+DLL SHA256: 5D7974252D1F7856A23DBBC6FACE10C751822434F7EB9CFFFE69E842EDAB4B15
+Result: PASS (6 CleanXpath cases, synthetic SOAP namespace selections)
+FixSqlUnicodeValue.tests.ps1: PASS (9 production vectors)
+Cases: /soap:Fault => //Fault; predicate => //Fault[@code = &quot;E&quot; ]; descendant preserved; non-Fault paths unchanged; XML parsed and selections count 1.
+No business SQL/HTTP/JMeter execution.
+Source provenance: indexed legacy ItemSearch_Keywords.xml under evidence/legacy/raw/primary-package-extracted; prior Unicode JMX input was already transformed and is not treated as pre-migration source.

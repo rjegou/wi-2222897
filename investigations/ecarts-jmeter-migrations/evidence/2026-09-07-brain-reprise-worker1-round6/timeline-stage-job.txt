@@ -1,0 +1,11 @@
+Job|TI Jmeter V26-Fix|completed|succeededWithIssues|log=196
+Stage|TI JMeter V26|completed|succeededWithIssues|log=
+Job|Check generate code|completed|succeeded|log=36
+Job|Snyk Security Scan|completed|succeeded|log=28
+Job|Publish to ArtifactoryCloud staging|completed|succeeded|log=94
+Job|TI Jmeter V26-Cur|completed|succeededWithIssues|log=190
+Job|Make sure the docker image exists in the ACR and is up to date and import it if not|completed|succeeded|log=19
+Stage|Build|completed|succeeded|log=
+Job|Finalize build|completed|succeeded|log=
+Stage|Promote|completed|skipped|log=
+Job|Build V26|completed|succeeded|log=84

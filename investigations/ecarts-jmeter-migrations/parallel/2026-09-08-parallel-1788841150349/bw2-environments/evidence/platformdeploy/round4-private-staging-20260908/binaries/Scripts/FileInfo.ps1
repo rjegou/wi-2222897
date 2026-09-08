@@ -1,0 +1,45 @@
+
+<#PSScriptInfo
+
+.VERSION 0.0.1
+
+.GUID 5b40a68c-006e-4069-93d8-4a9eee9b9cd7
+
+.AUTHOR Cegid retail
+
+.COMPANYNAME Cegid
+
+.COPYRIGHT 
+
+.TAGS 
+
+.LICENSEURI 
+
+.PROJECTURI 
+
+.ICONURI 
+
+.EXTERNALMODULEDEPENDENCIES 
+
+.REQUIREDSCRIPTS 
+
+.EXTERNALSCRIPTDEPENDENCIES 
+
+.RELEASENOTES
+
+
+#> 
+
+
+
+
+
+<# 
+
+.DESCRIPTION 
+ Set of scripts to manage y2 platform deployment 
+
+#> 
+Param()
+
+

@@ -1,0 +1,2 @@
+C:\Users\jegour\OneDrive - CEGID\Documents\repertoireTravailRon\missions\delivery-acceleration\context\WI-2222897\investigations\ecarts-jmeter-migrations\evidence\local-2026-09-06-api-build-candidate\obj\Cegid.Retail.AutoTest.Api.csproj.AssemblyReference.cache
+C:\Users\jegour\OneDrive - CEGID\Documents\repertoireTravailRon\missions\delivery-acceleration\context\WI-2222897\investigations\ecarts-jmeter-migrations\evidence\local-2026-09-06-api-build-candidate\obj\Cegid.Retail.AutoTest.Api.csproj.CoreCompileInputs.cache

@@ -1,0 +1,25 @@
+artifact	copy_or_runtime	sha256
+Export_Run.xml campaign descriptor	fixtures/Export_Run.xml	62F3373F55DF4539B09D4AB660AEBD787D6716532CDAF4EAB4DA84F2A4C5EBD5
+Export_Run.xml complete plan	fixtures/TestPlans-Export_Run.xml	A3F64788FCBCB1C1157DEBBCC233EABE9EA82A132A220182EE4A4999974373A4
+Console official 2.0.42 nupkg	run 4311240 local artifact	4ACE80675261D7D5DAD2DB3F0E8C7983790E1983D32C12661FF980C54B16E5DE
+Console.exe original/runtime	original/runtime/Cegid.Retail.AutoTest.Console.exe	82A1134B73F2D9CC572EC2E77E33177D49691B6A40A8DB71CFC2CFE00ED75A9F
+Console.exe corrected/runtime	corrected/runtime/Cegid.Retail.AutoTest.Console.exe	82A1134B73F2D9CC572EC2E77E33177D49691B6A40A8DB71CFC2CFE00ED75A9F
+Api.dll original/runtime	original/runtime/Cegid.Retail.AutoTest.Api.dll	21A4AC70059F1B0DA716F0AD24E5CAB8AE92B679DCDD5B17034C2F02E21D3E98
+Api.dll corrected/runtime	corrected/runtime/Cegid.Retail.AutoTest.Api.dll	51FB31F71D1BAC99114548B05AC66FF59A49F5AEBD7E09A4F970CF1E6915AD81
+001-Export_Run.jmx original	original/001-Export_Run.jmx	60398F08337B8E4EE35AE45B32568610F3B1F2228985763DEC583DB15CBD9E43
+001-Export_Run.jmx corrected	corrected/001-Export_Run.jmx	C59BD01D5C075961A781335D746A4F72B2CB331EC955CE828D4F6DE4C850EB0C
+Input Run_01	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\fixtures\TestPlans\InputFiles\Export\Run_01.xml	2FE590F489DB537FCB3E600E352FE2F313D5CB075E4778AEA18FE08E521C1674
+Input Run_02	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\fixtures\TestPlans\InputFiles\Export\Run_02.xml	2FE590F489DB537FCB3E600E352FE2F313D5CB075E4778AEA18FE08E521C1674
+Input Run_03	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\fixtures\TestPlans\InputFiles\Export\Run_03.xml	0C7278C6241FDDDA7CFE11D0767F87574D20D2A73E8A0755AD81587B473ED5B6
+Input Run_04	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\fixtures\TestPlans\InputFiles\Export\Run_04.xml	F02C816E9B663789124F3037FD70FE66B557DE94EAF14FAC270858F736BD8987
+Input Run_05	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\fixtures\TestPlans\InputFiles\Export\Run_05.xml	2FE590F489DB537FCB3E600E352FE2F313D5CB075E4778AEA18FE08E521C1674
+Input Run_06	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\fixtures\TestPlans\InputFiles\Export\Run_06.xml	62E7D946111702F74F33147AF3787BB204DC907D1DF42A150402B131FF3F6910
+Input Run_07	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\fixtures\TestPlans\InputFiles\Export\Run_07.xml	402D7A9806795C6EFE5C61E34CE132DAEBBBD4B0316B3EA0AE57CBD7CAE0AF9F
+Input Run_08	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\fixtures\TestPlans\InputFiles\Export\Run_08.xml	2FE590F489DB537FCB3E600E352FE2F313D5CB075E4778AEA18FE08E521C1674
+Input Run_09	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\fixtures\TestPlans\InputFiles\Export\Run_09.xml	2FE590F489DB537FCB3E600E352FE2F313D5CB075E4778AEA18FE08E521C1674
+Input Run_10	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\fixtures\TestPlans\InputFiles\Export\Run_10.xml	2BB73A6D243AA1D6E17C24C736998A65E6790DEB764050D4000B3905C0C6ED3D
+Output Run_05	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\out\Tests\Export_Run\OutputFiles\Export\Run_05.xml	9D1F206E5424EA7E85EF96A5714CAA9EF3176330AD3070DD63E11B6EB0E6CA72
+Output Run_06	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\out\Tests\Export_Run\OutputFiles\Export\Run_06.xml	9D1F206E5424EA7E85EF96A5714CAA9EF3176330AD3070DD63E11B6EB0E6CA72
+Output Run_07	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\out\Tests\Export_Run\OutputFiles\Export\Run_07.xml	9D1F206E5424EA7E85EF96A5714CAA9EF3176330AD3070DD63E11B6EB0E6CA72
+Output Run_08	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\out\Tests\Export_Run\OutputFiles\Export\Run_08.xml	9D1F206E5424EA7E85EF96A5714CAA9EF3176330AD3070DD63E11B6EB0E6CA72
+Output Run_09	C:\temp\rje-wi2222897-export-complete-20260906-175237\{original,corrected}\out\Tests\Export_Run\OutputFiles\Export\Run_09.xml	9D1F206E5424EA7E85EF96A5714CAA9EF3176330AD3070DD63E11B6EB0E6CA72

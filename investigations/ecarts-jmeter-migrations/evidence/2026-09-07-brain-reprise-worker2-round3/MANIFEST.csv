@@ -1,0 +1,8 @@
+kind,path,status,notes
+existing-evidence,investigations/ecarts-jmeter-migrations/evidence/local-2026-09-07-sql-fulltext-round12/README.md,reviewed,no-repeat
+candidate,azure-pipelines.sql-fulltext-build-only.yml,local-only,not-registered
+source,worktrees/Pipelines_Docker_BaseImages,read-only-inspected,existing-local-changes-preserved
+live-pool,Private VS2019,read-only,Windows_NT-10.0.17763-no-Docker-capability-reported
+live-pool,Azure Pipelines,read-only,online-agents-but-isolation-and-container-OS-unproven
+queue,none,not-created,precondition-agent-attestation-missing
+docker-desktop,not-invoked,not-applicable,explicitly excluded by delegation

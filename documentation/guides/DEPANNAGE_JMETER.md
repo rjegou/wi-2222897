@@ -1,0 +1,125 @@
+# Dépannage de la migration et des campagnes JMeter
+
+## Objet et règle de preuve
+
+Ce guide réorganise les erreurs et contrôles décrits dans `jmeterTroubleshooting.pdf` et dans la procédure générale. Une différence de résultat ne devient un écart de migration que lorsque le cas, les données, les packages, la configuration et l'environnement sont comparables.
+
+## Diagnostic rapide
+
+| Symptôme | Vérification | Action ciblée |
+|---|---|---|
+| `SqlExpectedValue` inattendu | La requête commence-t-elle par `SELECT` et renvoie-t-elle bien un compteur ? | supprimer une balise sans requête correspondante ou corriger la valeur attendue |
+| erreur de syntaxe SQL sur une chaîne | Quote simple ou double quote ? Format d'origine de la chaîne ? | utiliser les quotes SQL attendues et corriger la regex à la source |
+| date valide en local mais rejetée dans le pipeline | Format dépendant de la locale, par exemple `12/21/2099` | utiliser ISO 8601 : `yyyy-MM-dd` ou `yyyy-MM-ddTHH:mm:ss` |
+| payload XML rejeté | Déclaration XML et namespaces présents | retirer la déclaration `<?xml ...?>` si le consommateur l'interdit ; déclarer les namespaces réellement utilisés |
+| diff XML vide ou incorrect | XPath par défaut inadapté à la réponse | inspecter la réponse et ajuster l'XPath du corps métier |
+| local vert, pipeline rouge | dépendances, données ou locale différentes | rendre le JMX autonome et comparer versions, backup, paramètres et réponses |
+| déploiement JMeter en échec | packages, tenant, backup, rôles et app settings | corriger le `cy2px`, pas le plan de test |
+| HTTP 500 sur un cas EC/NC | sémantique du cas et réponse SOAP réelle | vérifier l'attente explicite ; ne pas introduire de règle globale de skip |
+
+## 1. Contrôles avant migration
+
+### `SqlExpectedValue`
+
+Le document signale des balises `SqlExpectedValue` présentes sans requête SQL `SELECT` correspondante. Dans ce cas, la balise n'a pas de résultat à contrôler et doit être supprimée ou rattachée à la bonne requête.
+
+Exemple de forme cohérente :
+
+```xml
+<SqlExpectedValue>select count(distinct et_pays) from etabliss</SqlExpectedValue>
+```
+
+Ne pas automatiser une suppression globale sans vérifier la structure du plan.
+
+### Chaînes et dates SQL
+
+- Une chaîne SQL doit généralement être entourée de quotes simples, pas de doubles quotes.
+- Toute correction automatique doit partir du format exact de la source et être testée sur des exemples représentatifs.
+- Pour rendre les requêtes indépendantes de la locale, utiliser ISO 8601 :
+
+  ```text
+  1994-06-18
+  2024-06-27T16:00:00
+  ```
+
+Ces contrôles sont particulièrement importants au regard du défaut de conversion de dates déjà prouvé dans l'investigation du WI.
+
+### Payload XML
+
+- Si la première ligne contient `<?xml version="1.0" encoding="utf-8"?>` et que le service attend seulement le fragment XML, la retirer.
+- Déclarer les namespaces utilisés par le payload. Le PDF montre notamment des déclarations de type `xmlns:i`, `xmlns:w3.org/2001/XMLSchema-instance` et un namespace métier.
+- Valider le fragment obtenu avec le contrat du service ; ne pas recopier une déclaration de namespace sans connaître le préfixe réellement utilisé.
+
+## 2. Corriger après génération
+
+### Comparer local et pipeline
+
+Un test peut réussir localement et échouer dans le pipeline si le serveur local fournit implicitement des dépendances absentes du conteneur. Le plan JMeter et son déploiement doivent donc être autonomes.
+
+Comparer au minimum :
+
+- commit et branche ;
+- version du convertisseur et du workflow ;
+- packages Fix/Cur ;
+- backup et état initial de la base ;
+- tenant, rôles et `CustomAppSettings` ;
+- paramètres de campagne ;
+- locale, fuseau, formats de date et protocole ;
+- réponse SOAP/XML complète et assertion réellement évaluée.
+
+Si la réponse est un XML complet, une simple différence de fichier peut être trop bruitée : comparer les données métier attendues élément par élément.
+
+### Dates dépendantes de la locale
+
+Le PDF illustre une date `12/21/2099` acceptée localement mais rejetée dans le pipeline par SQL Server (`conversion of a varchar data type to a datetime data type resulted in an out-of-range value`). La correction consiste à utiliser un format ISO non ambigu, pas à changer la locale du test sans autre analyse.
+
+### XPath sur une réponse XML complète
+
+Lors de la préparation d'un plan avec l'option « Diff Full Xml », le XPath par défaut peut viser un chemin de type `Body/<service>/Response` alors que le service renvoie une structure différente. Il faut :
+
+1. conserver la réponse complète ;
+2. identifier l'élément métier stable ;
+3. ajuster le XPath au namespace et à la structure réels ;
+4. rejouer le seul cas concerné avant de généraliser.
+
+## 3. Lire les résultats sans surinterpréter
+
+La procédure générale classe les erreurs en deux familles :
+
+- **déploiement** : packages, versions, tenant, rôles, configuration et backup ;
+- **campagne** : opération, assertion, payload, XPath ou donnée attendue.
+
+Les règles historiques EC/NC mentionnent :
+
+- EC : réponse SOAP en erreur avec un statut attendu de type 500 ;
+- NC : réponse SOAP métier avec un résultat attendu de type 200 ;
+- un autre préfixe peut être traité comme NC ;
+- `Fix` peut apparaître dans certains identifiants de test sans désigner le mode de déploiement Fix.
+
+Ces conventions doivent être vérifiées dans la source du plan et le générateur courant. Elles ne permettent pas d'ignorer globalement un test, un code ou un préfixe.
+
+## 4. Boucle de correction
+
+1. Identifier le premier échec causal, pas seulement les erreurs en cascade.
+2. Rejouer le JMX concerné localement avec le même backup et les mêmes packages.
+3. Inspecter les requêtes, réponses, assertions et nettoyages.
+4. Corriger au niveau propriétaire de la cause : `cy2px`, données, XML legacy, règle de conversion ou code métier.
+5. Régénérer les JMX si la source ou le convertisseur change.
+6. Rejouer sur une base propre.
+7. Archiver les logs et noter le commit, le build, la campagne, le type Fix/Cur et la version Y2.
+8. Si le défaut appartient à l'outil de migration, créer un bug distinct et conserver le cas minimal reproductible.
+
+## 5. Ne pas corriger sans preuve
+
+- Ne pas conclure « legacy vert » à partir d'un run qui ne contient pas la même campagne.
+- Ne pas accepter une erreur SQL uniquement parce que `ExpectedValue=-1` apparaît dans le test.
+- Ne pas ignorer globalement les cas `Code=99`.
+- Ne pas modifier manuellement un JMX comme correction durable d'un défaut du générateur.
+- Ne pas attribuer un échec à JMeter si les versions, le backup ou les paramètres diffèrent.
+
+Les cas déjà analysés sont classés avec leurs preuves dans [`../../investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md`](../../investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md).
+
+## Sources PDF
+
+- [`jmeterTroubleshooting.pdf`](../source-material/jmeterTroubleshooting.pdf), 2 pages.
+- [`procédureMigration.pdf`](../source-material/procédureMigration.pdf), sections d'analyse, de correction et d'exécution.

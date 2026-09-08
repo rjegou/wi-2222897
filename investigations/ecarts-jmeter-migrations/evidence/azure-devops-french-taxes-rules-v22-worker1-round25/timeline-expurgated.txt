@@ -1,0 +1,11 @@
+4442696 | completed | succeeded | sourceVersion=68f1f7a8e575e79cf3098cafcd16e10b22237ada
+Initialize job | completed | succeeded
+Authenticate to read the existing registry image | completed | succeeded
+Checkout | completed | skipped
+Read-only host/image/container inspection | completed | succeeded
+  image-digest=True image-os=True image-architecture=True target-scope=True
+  mounts=count=0;dangerous=0 networks=count=1;forbidden=0 hostPortBindings=0
+  attestation=passed=True imageOs=windows imageArchitecture=amd64 containerState=created
+  cleanup containerPresentAfterRemove=False
+Hash local expurgated inspection output | completed | succeeded
+Finalize Job | completed | succeeded

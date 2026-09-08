@@ -1,0 +1,6 @@
+path,kind,source_or_hash,status
+README.md,curated,local review round5,created
+Test-FullTextPatchRound5.ps1,test-harness,2E0D3E1279005906634B29E69BCCAC77D0BBCD22E0663B7B48ACD0A3F59FAB5F,local YAML extraction, source control-flow assertions and inert cleanup fixtures
+sql-fulltext-hosted-build.yml,reviewed-source,6C6FD9EC35AD02DA4B71DB8562888BB479441BCC44BED78D4B169E7DB66E21B3,local corrected YAML
+finding-014.md,updated-reference,local finding,review note added
+HANDOFF.md,updated-reference,local handoff,review note added

@@ -1,0 +1,74 @@
+name: SQLFullTextBuildOnly-$(Date:yyyyMMdd).$(Rev:r)
+
+trigger: none
+pr: none
+schedules: []
+
+# Candidate only. Queue only on a dedicated Windows container-capable pool with
+# capabilities Docker=true and FullTextValidation=true. No feed, registry,
+# Artifactory, promotion, tag, downstream trigger, or shared environment is used.
+pool:
+  name: SQL-FULLTEXT-ISOLATED
+  demands:
+    - Docker -equals true
+    - FullTextValidation -equals true
+
+stages:
+- stage: SQL2019
+  displayName: SQL Server 2019 Full-Text smoke
+  jobs:
+  - job: BuildAndTest2019
+    steps:
+    - checkout: self
+      clean: true
+    - powershell: |
+        $ErrorActionPreference = 'Stop'
+        $context = "$(Build.SourcesDirectory)\Images\SqlExpress\2019"
+        Copy-Item "$(Build.SourcesDirectory)\DelphiRuntime\oledlg.dll" $context -Force
+        docker build --pull=false --build-arg REPO=mcr.microsoft.com/windows/servercore --build-arg BASETAG=ltsc2022 -t sql-fulltext-smoke:2019 "$(Build.SourcesDirectory)\Images\SqlExpress\2019"
+        if ($LASTEXITCODE -ne 0) { throw 'SQL 2019 Docker build failed' }
+        $container = 'sql-fulltext-smoke-2019-$(Build.BuildId)'
+        $probePath = Join-Path "$(Build.SourcesDirectory)" 'fulltext-probe.ps1'
+        if (-not (Test-Path -LiteralPath $probePath)) { throw "Missing candidate probe: $probePath" }
+        try {
+          docker run -d --name $container sql-fulltext-smoke:2019 powershell -NoLogo -NoProfile -Command "while (`$true) { Start-Sleep -Seconds 30 }"
+          docker cp $probePath "${container}:C:\fulltext-probe.ps1"
+          docker exec $container powershell -NoLogo -NoProfile -File C:\fulltext-probe.ps1
+          if ($LASTEXITCODE -ne 0) { throw 'SQL 2019 Full-Text smoke failed' }
+        } finally {
+          docker logs $container 2>&1 | Set-Content "$(Build.ArtifactStagingDirectory)\sql-fulltext-2019-container.log"
+          docker rm -f $container 2>$null
+        }
+      displayName: Build and smoke-test SQL Server 2019 Full-Text
+    - publish: $(Build.ArtifactStagingDirectory)
+      artifact: sql-fulltext-2019-evidence
+
+- stage: SQL2025
+  displayName: SQL Server 2025 Full-Text smoke
+  dependsOn: []
+  jobs:
+  - job: BuildAndTest2025
+    steps:
+    - checkout: self
+      clean: true
+    - powershell: |
+        $ErrorActionPreference = 'Stop'
+        $context = "$(Build.SourcesDirectory)\Images\SqlExpress\2025"
+        Copy-Item "$(Build.SourcesDirectory)\DelphiRuntime\oledlg.dll" $context -Force
+        docker build --pull=false --build-arg REPO=mcr.microsoft.com/windows/servercore --build-arg BASETAG=ltsc2025 -t sql-fulltext-smoke:2025 "$(Build.SourcesDirectory)\Images\SqlExpress\2025"
+        if ($LASTEXITCODE -ne 0) { throw 'SQL 2025 Docker build failed' }
+        $container = 'sql-fulltext-smoke-2025-$(Build.BuildId)'
+        $probePath = Join-Path "$(Build.SourcesDirectory)" 'fulltext-probe.ps1'
+        if (-not (Test-Path -LiteralPath $probePath)) { throw "Missing candidate probe: $probePath" }
+        try {
+          docker run -d --name $container sql-fulltext-smoke:2025 powershell -NoLogo -NoProfile -Command "while (`$true) { Start-Sleep -Seconds 30 }"
+          docker cp $probePath "${container}:C:\fulltext-probe.ps1"
+          docker exec $container powershell -NoLogo -NoProfile -File C:\fulltext-probe.ps1
+          if ($LASTEXITCODE -ne 0) { throw 'SQL 2025 Full-Text smoke failed' }
+        } finally {
+          docker logs $container 2>&1 | Set-Content "$(Build.ArtifactStagingDirectory)\sql-fulltext-2025-container.log"
+          docker rm -f $container 2>$null
+        }
+      displayName: Build and smoke-test SQL Server 2025 Full-Text
+    - publish: $(Build.ArtifactStagingDirectory)
+      artifact: sql-fulltext-2025-evidence

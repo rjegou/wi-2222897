@@ -1,0 +1,7 @@
+subject,source,identifier,method,status
+InventoryTracking commit,Azure DevOps Git REST,Y2_Plugins_InventoryTracking ef3d87034d38b88aca04c824061b140e2a29252c,read-only requests TLS verified,current snapshot 2026-09-07
+InventoryTracking historical build,Azure DevOps build/timeline/logs,4434070 definition 2072,read-only log retrieval,completed failed historical baseline
+InventoryTracking corrected build,Azure DevOps build/timeline/logs,4440774 definition 2072 commit ef3d8703,read-only log retrieval,completed succeeded compilation
+InventoryTracking corrected JMeter build,Azure DevOps build/timeline/logs,4440884 definition 2072 commit ef3d8703,read-only log retrieval,completed partiallySucceeded; JMeter effects observed
+PlatformDeploy candidate,local worktree,worktrees/Y2_Tools_PlatformDeploy_worker3_r5b,git status/diff and local harness execution,uncommitted isolated candidate
+PlatformDeploy harness,local evidence,2026-09-07-brain-reprise-consolidated/*.ps1,PowerShell process execution with temp cleanup,read-only/inert

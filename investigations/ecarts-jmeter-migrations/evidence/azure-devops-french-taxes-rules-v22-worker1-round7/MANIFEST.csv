@@ -1,0 +1,8 @@
+item,identifier,status,evidence
+dedicated-branch,refs/heads/codex/wi-2222897-v22-preflight-20260907,created from 2d826b8f,read-only colleagues branches untouched
+dedicated-yaml-commit,5036e501ba797ab7efc861add60b111a40ff8141,remote commit,local SHA256 25CCD6EB2CAA58B8E593120587E95095488D67A4525BCCDE6177167EC352FAAE
+dedicated-definition,14246,created and previewed,trigger/pr disabled; queue 591
+run-4441699,0636ad652d3fa0d5dfe34287fca95c985a7d633e,failed before pull,stderr handling defect corrected
+run-4441719,5036e501ba797ab7efc861add60b111a40ff8141,failed image pull,login succeeded; repository denied
+historical-image,sha256:2684760378b395af6d4843036b8d3cfc310cfb30909e23c838c822647f4da9cb,not pulled by agent,ACR/JFrog availability was proven separately but service connection pull denied
+business-replay,none,not run,no restore deploy JMeter or business calls

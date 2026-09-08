@@ -1,0 +1,56 @@
+# Ce dépôt versionne la couche documentaire du WI : Markdown, index, manifestes, empreintes,
+# scripts, patches. Les artefacts bruts volumineux restent hors dépôt — voir EXTERNAL-ARTIFACTS.md.
+# Ces règles empêchent de les réimporter par inadvertance.
+
+# --- clones et snapshots de dépôts ---------------------------------------------
+worktrees/
+**/sources/
+**/parallel/**/worktrees/
+**/parallel/**/reports/
+
+# --- artefacts de build décompressés ------------------------------------------
+**/_extracted/
+
+# --- distributions tierces -----------------------------------------------------
+**/jmeter-offline/
+**/apache-jmeter-*/
+
+# --- profils Azure CLI jetables ------------------------------------------------
+.az-cli*/
+.azcli*/
+.azcfg*/
+.azconfig*/
+.tmp-az*/
+**/azcfg/
+**/.azure-config/
+**/.azure/
+
+# --- traces d'orchestration ----------------------------------------------------
+.brain-worker-archives/
+.brain-worker-control/
+
+# --- artefacts de test et de run lourds ---------------------------------------
+*.jmx
+*.jtl
+*.log
+*.bak
+*.zip
+*.nupkg
+*.dll
+*.exe
+*.pdb
+*.whl
+*.pack
+
+# --- identifiants : jamais versionnés -----------------------------------------
+*token*
+*secret*
+*credential*
+git-askpass*
+*.pfx
+*.key
+id_rsa*
+
+# --- divers --------------------------------------------------------------------
+Thumbs.db
+desktop.ini

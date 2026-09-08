@@ -1,0 +1,7 @@
+repo=Y2_Plugins_InventoryTracking
+commit=ef3d87034d38b88aca04c824061b140e2a29252c
+file=Tests/WebServices/002-Device_Reassign.jmx
+sha256=39E6036031D1AD30304405D3E08DA159DA89B94F0E1ADC7B4BB6A5C14CFBE59E
+label=002-Device:Reassign - TC 105 - A-PreQuery3
+query_shape=update MMOBILEINV set MOI_APPDATA = <PAYLOAD_REDACTED> where MOI_CODEMOBILE = 'REFER0001' SELECT @@ROWCOUNT
+payload_policy=not retained or displayed

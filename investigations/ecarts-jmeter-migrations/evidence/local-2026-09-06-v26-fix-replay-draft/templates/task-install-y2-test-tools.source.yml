@@ -1,0 +1,69 @@
+#***********************************************************************************************************
+# File: install-y2-test-tools.v1.yml
+# Author : LBAU
+# Description: install the plugin test nuget and qualitytools in Y2
+#  - For version >= 20 this library is available in the "Cegid.Retail.QualtityTools.dll" nuget.
+#    The version must match that of the "Y2.Core.Common" package.
+#  - For version < 20 this library is available in the nuget "Cegid.Retail.Y2.Core.Net.Full"
+#    The version must correspond to the version indicated in the xml file associated with the msi of the core installed.
+#
+# Parameters:
+#   - artifactRootPath: Artifact root path
+#   - componentVersion: Component version
+#   - pluginName: Plugin name
+#   - commonVersion: Y2.Core.Common version
+#   - version: Y2 major version
+#
+#***********************************************************************************************************
+# History :
+# 2024-04-08: LBAU : template creation
+# 2024-12-12: EBU  : using  PipelineTemplates\task-install-y2core-test-tools.v1.yml to install quality tools and Y2.Core.Common
+#************************************************************************************************************
+parameters:
+- name: artifactRootPath
+  type: string
+  displayName: 'Artifact root path'
+
+- name: componentVersion
+  type: string
+  displayName: 'Component version'
+
+- name: pluginName
+  type: string
+  displayName: 'Plugin name'
+
+- name: commonVersion
+  type: string
+  displayName: 'Y2.Core.Common version'
+
+- name: version
+  type: string
+  displayName: 'Y2 major version'
+
+steps:
+- task: PowerShell@2
+  displayName: "Install plugin test nuget"
+  inputs:
+    targetType: inline
+    script: |
+
+      # if file exists, copy
+      $nugetFile  = "${{ parameters.artifactRootPath }}\${{ parameters.componentVersion }}_nuget\Cegid.Retail.${{ parameters.pluginName }}.Tests.${{ parameters.componentVersion }}.nupkg"
+      $zipFile    = "$(Pipeline.Workspace)\${{ parameters.componentVersion }}_nuget\Cegid.Retail.${{ parameters.pluginName }}.Tests.${{ parameters.componentVersion }}.zip"
+      $tmpFolder  = "$(Pipeline.Workspace)\tmp"
+      $y2BinFolder = "C:\inetpub\wwwroot\Cegid Retail\Y2 ${{ parameters.version}}.0\Bin"
+
+      if (Test-Path "$nugetFile") {
+        copy-item -Path "$nugetFile" -Destination "$zipFile" -Force
+        expand-archive -Path "$zipFile" -DestinationPath "$tmpFolder" -Force
+
+        # Copy only pdb files to the Y2 bin folder
+        Get-ChildItem -Path "$tmpFolder\lib\" -Recurse -Filter "*.pdb" | Where-Object {    $_.Name -notmatch '\.Tests\.'  } | ForEach-Object {
+          copy-item -Path $_.FullName -Destination "$y2BinFolder" -Force
+        }
+      }
+
+- template: task-install-y2core-test-tools.v1.yml
+  parameters:
+    commonVersion: ${{ parameters.commonVersion }}
+    version: ${{ parameters.version }}

@@ -1,0 +1,10 @@
+item,source_or_method,identifier,result
+CLI,Azure CLI,2.80.0,verified
+azure-devops-extension,Azure CLI extension,1.0.8,installed-in-isolated-config
+build,Azure DevOps Build API,4429167,completed-failed
+definition,Azure DevOps definition API,2054,read-only
+plugin_commit,Azure DevOps Git API,2d826b8fd19ecb4d7200f574414efb7583de8ed2,read-only
+yaml,Azure DevOps Git API,/azure-pipelines.yml at plugin commit,B4CCCFB0BA49085D66B5F2C96BA687B93752EBFBFB0B7F138CBDC3E48AFE7DB8
+timeline,Azure DevOps Build timeline API,4429167,462-records-13-failed-66-skipped
+pool,Azure DevOps Agent Pool API,Azure Pipelines/591,static-agent-list-empty
+

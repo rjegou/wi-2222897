@@ -1,0 +1,9 @@
+Command (PowerShell, no runner import/execution):
+$xml=[xml](Get-Content -LiteralPath '...\campaigns\ExportRunOnly.xml')
+$selected=Select-Xml -Xml $xml -XPath '//TestCampaign/TestPlanItem'
+
+Path             : ...\local-2026-09-06-v26-fix-replay-draft\campaigns\ExportRunOnly.xml
+XPath            : //TestCampaign/TestPlanItem
+DefaultNamespace : TestAutomation
+Count            : 0
+SelectedItems    :

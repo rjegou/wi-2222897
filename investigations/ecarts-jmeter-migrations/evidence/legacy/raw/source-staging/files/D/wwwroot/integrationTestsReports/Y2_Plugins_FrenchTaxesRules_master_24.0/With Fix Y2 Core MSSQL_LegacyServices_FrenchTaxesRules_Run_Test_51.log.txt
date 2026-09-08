@@ -1,0 +1,32 @@
+16:08:06.9369023+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Date d'activation invalide
+16:08:06.9369023+01:00: QTAgent32_40.exe Information: 0 : NOTIFICATION : 1 domaine(s) invalidé(s) : LOOKUP (02/19/2026 16:08:06)
+16:08:06.9369023+01:00: root Verbose: 0 : Cegid.Erp.Data | DataWatcher | notification received from DatabaseCode:sql_Y2_Plugin, PartitionCode:, Domain:LOOKUP
+16:08:06.9369023+01:00: root Verbose: 0 : Cegid.Erp.Data | CACHE | DataChangedEvent received
+16:08:06.9369023+01:00: root Verbose: 0 : Cegid.Erp.Data | CACHE | DataChangedEvent invalidate domain : LOOKUP
+16:08:06.9369023+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:08:06.9369023+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:08:06.9369023+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE PARAMSOC SET SOC_DATA = '' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:08:06.9369023+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARAMSOC SET SOC_DATA = '' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:08:06.9369023+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARAMSOC SET SOC_DATA = '' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:08:06.9369023+01:00: root Verbose: 0 : Cegid.Framework.Services | MULTIDOSSIER | LoadFromDatabase('sql_Y2_Plugin') => SharingEnabled=True
+16:08:06.9525296+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=6.1582
+16:08:06.9525296+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:08:06.9525296+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=20.5294
+16:08:06.9525296+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(3ab14507-0f27-45d1-bda2-c4c0fe23bd21@sql_Y2_Plugin, 40883099)
+16:08:06.9525296+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:08:06.9681590+01:00: QTAgent32_40.exe Error: 0 : Error during TestCase Processing: Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException: Assert.AreEqual failed. Expected:<1>. Actual:<0>. Date d'activation invalide
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.HandleFail(String assertionName, String message, Object[] parameters)
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual[T](T expected, T actual, String message, Object[] parameters)
+   at Cegid.Retail.FrenchTaxesRules.LegacyServices.AutoTest.FrenchTaxesRules_Run.Test_51() in F:\vm-alm-agent-02-A\_work\25692\s\Cegid.Retail.FrenchTaxesRules.LegacyServices.Tests\AutoTest\FrenchTaxesRules\FrenchTaxesRules_Run.g.cs:line 3061
+16:08:06.9681590+01:00: QTAgent32_40.exe Information: 0 : Enter finally block
+16:08:06.9681590+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Mise à jour date activation NF525
+16:08:06.9681590+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:08:06.9837803+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:08:06.9837803+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE PARAMSOC SET SOC_DATA = 42370 WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:08:06.9837803+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARAMSOC SET SOC_DATA = 42370 WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:08:06.9837803+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARAMSOC SET SOC_DATA = 42370 WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:08:06.9837803+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=2.0827
+16:08:06.9837803+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:08:06.9837803+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=10.5601
+16:08:06.9837803+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(1fef7acd-7f79-4ca5-8b29-77e967d6b738@sql_Y2_Plugin, 20213360)
+16:08:06.9837803+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')

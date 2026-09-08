@@ -1,0 +1,10 @@
+artifact,source_identifier,method,scope,status
+build-4434070-meta,definition 2072 / build 4434070,az pipelines build show,metadata branch commit parameters,FACT
+build-4434070-timeline,build 4434070 timeline,az devops invoke build/timeline API 5.1,stages jobs tasks results,FACT
+build-4434070-log-51,build 4434070 log 51,az devops invoke build/logs API 5.1,VSBuild failure excerpt and compiler errors,FACT
+build-4434070-image-records,build 4434070 timeline,az devops invoke build/timeline API 5.1,ACR/image and JMeter stage results,FACT
+build-4435986-meta,definition 2072 / build 4435986,az pipelines build show,latest successful master metadata,FACT
+build-4435986-timeline,build 4435986 timeline,az devops invoke build/timeline API 5.1,Build/TestAutos/Promote stage results,FACT
+build-4402750-timeline,build 4402750 timeline,az devops invoke build/timeline API 5.1,latest master failure classification,FACT
+yaml-migration,/azure-pipelines.yml at commit 4de185bb132cfbfb50643b6b53d6feb85508f4e2,az devops invoke git/items API 5.1,exact consumed YAML content and object id,FACT
+yaml-master,/azure-pipelines.yml at commit 20aa528945ac33ba94598222b66fa3071c7e87b9,az devops invoke git/items API 5.1,exact master YAML content and object id,FACT

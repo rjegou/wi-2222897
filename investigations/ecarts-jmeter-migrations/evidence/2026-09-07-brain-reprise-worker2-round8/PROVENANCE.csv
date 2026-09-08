@@ -1,0 +1,6 @@
+item,identifier,source,method,result
+Original init-container,21607FE7F753892953A0EC02DCDCD2709EDCA8BCCBBF8A23BF60F67F68653997,worktrees/Y2_Tools_PlatformDeploy/.../Scripts/init-container.ps1,Get-FileHash SHA256 plus direct pwsh invocation,executed
+Corrected init-container,1F44AE664B207AFB0A94151A603BFE9F794FF6589B0BA4CCC52D47DFDE50758E,worktrees/Y2_Tools_PlatformDeploy_worker3_r5b/.../Scripts/init-container.ps1,Get-FileHash SHA256 plus direct pwsh invocation,executed
+Child success,mode 0,temporary deploy.ps1 boundary,real init-container process TF_BUILD=true,original and corrected Process.ExitCode 0
+Child nonzero,mode 7,temporary deploy.ps1 boundary,real init-container process TF_BUILD=true,original 0 and corrected 1
+Child exception,mode throw,temporary deploy.ps1 boundary,real init-container process TF_BUILD=true,both Process.ExitCode 1

@@ -1,0 +1,16 @@
+Read-only commands (2026-09-07):
+
+git -C worktrees/InventoryTracking_Migration_AutoTest_Jmeter_On_master_worker2 status --short --branch
+git -C worktrees/InventoryTracking_Migration_AutoTest_Jmeter_On_master_worker2 rev-parse HEAD
+Get-Content round6/log-168.json | Select-String 'A-PreQuery|Incorrect syntax|differences were found'
+Get-Content round6/log-171.json | Select-String 'A-PreQuery|Incorrect syntax|differences were found'
+Get-Content round6/log-161.json | Select-String 'Launch test Plan'
+Get-Content round6/log-162.json | Select-String 'Launch test Plan'
+git -C worktrees/InventoryTracking_Migration_AutoTest_Jmeter_On_master_worker2 show f192139aa9b8a0c7f26350b73695d9f0b24b56c2:IntegratedTests/AutoTest/Data/WebServices/TestPlans/DashBoard_GetDetail2.xml
+[xml](Get-Content Tests/WebServices/001-DashBoard_GetDetail2.jmx)
+Get-FileHash Tests/WebServices.xml,Tests/WebServices/001-DashBoard_GetDetail2.jmx -Algorithm SHA256
+rg -n 'FixSqlQuery|EscapeJdbcDate|FixSqlUnicodeValue' worktrees/Y2_Tools_AutoTest_Api -g '*.cs'
+
+The source XML command is historical local Git readback only; no remote write or
+pipeline invocation occurred. Output was filtered to labels, query metadata,
+plan names and hashes; no tokens/configuration/response bodies were retained.

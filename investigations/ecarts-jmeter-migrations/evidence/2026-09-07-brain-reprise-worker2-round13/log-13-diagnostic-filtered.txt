@@ -1,0 +1,21 @@
+2026-09-07T16:43:01.9368049Z ProcessLifetimeId: 5ab488cf-707e-4d21-bc05-5ea979e1a154
+2026-09-07T16:43:03.3027361Z    Knob: ContinueAfterCancelProcessTreeKillAttempt = true Source: $(VSTSAGENT_CONTINUE_AFTER_CANCEL_PROCESSTREEKILL_ATTEMPT) 
+2026-09-07T16:43:03.3028837Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC) 
+2026-09-07T16:43:03.3029832Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC_LOG) 
+2026-09-07T16:43:03.3030787Z    Knob: ProcessHandlerTelemetry = true Source: $(AZP_75787_ENABLE_COLLECT) 
+2026-09-07T16:43:03.3032860Z    Knob: ProcessHandlerEnableNewLogic = true Source: $(AZP_75787_ENABLE_NEW_PH_LOGIC) 
+2026-09-07T16:43:03.3458214Z Start tracking orphan processes.
+2026-09-07T16:43:03.4105120Z ##[section]Starting: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s
+2026-09-07T16:43:08.6514604Z ##[section]Finishing: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s
+2026-09-07T16:43:21.9567369Z Step 8/8 : RUN mkdir "c:\tmp" -Force;     Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/?linkid=866658" -OutFile "c:\tmp\downloader.exe";     Start-Process -Wait -FilePath "C:\tmp\downloader.exe" -ArgumentList "/ACTION=DOWNLOAD", "/Mediapath=C:/tmp", "/MediaType=Advanced", "/Quiet", "/language=en-US" > $NULL;     Start-Process -Wait -FilePath "C:\tmp\SQLEXPRADV_x64_ENU.Exe" -ArgumentList "/q", "/x:C:\tmp\SQLEXPRESS_SETUP";     Start-Process -Wait -FilePath "C:\tmp\SQLEXPRESS_SETUP\SETUP.EXE" -ArgumentList "/SAPWD=$env:sa_password", "/ENU", "/QUIET", "/INSTANCENAME=$env:sqlinstance", "/INSTANCEID=$env:sqlinstance", "/SECURITYMODE=SQL", "/IACCEPTSQLSERVERLICENSETERMS=TRUE", "/ACTION=INSTALL", "/FEATURES=SQLENGINE,FullText", "/SQLUSERDBDIR=$env:databasesFolder";     $svc = Get-Service "MSSQL`$$env:sqlinstance" -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     $svc = Get-Service 'SQLWriter'  -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     $svc = Get-Service 'SQLBrowser' -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     $svc = Get-Service 'w3svc'      -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     $svc = Get-Service 'was'        -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     cd "C:/";     Remove-Item -Path "C:/tmp" -Force -Recurse
+2026-09-07T16:49:04.3744466Z Successfully tagged sql-fulltext-smoke:2019
+2026-09-07T16:49:14.5180994Z Changed database context to 'FullTextSmoke'.
+2026-09-07T16:50:46.6021446Z Full-Text population did not finish: [1]
+2026-09-07T16:50:46.6023555Z At C:\fulltext-probe.ps1:28 char:22
+2026-09-07T16:50:46.6026401Z + ... tus -ne 0) { throw "Full-Text population did not finish: [$status]" }
+2026-09-07T16:50:46.6027234Z     + CategoryInfo          : OperationStopped: (Full-Text population did not  
+2026-09-07T16:50:46.6027865Z     + FullyQualifiedErrorId : Full-Text population did not finish: [1]
+2026-09-07T16:50:50.2793483Z sql-fulltext-smoke-2019-4442156
+2026-09-07T16:50:50.8650818Z ##[section]Starting: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s
+2026-09-07T16:50:51.5139638Z ##[section]Finishing: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s
+2026-09-07T16:50:51.5246109Z Start cleaning up orphan processes.

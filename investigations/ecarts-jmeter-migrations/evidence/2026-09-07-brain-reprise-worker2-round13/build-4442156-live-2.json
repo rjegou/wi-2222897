@@ -1,0 +1,11 @@
+{
+  "id": 4442156,
+  "status": "inProgress",
+  "result": null,
+  "buildNumber": "WI-2222897-SQLFullText-HostedBuild-20260907.4",
+  "sourceBranch": "refs/heads/sandbox/WI-2222897-sql-fulltext",
+  "sourceVersion": "0baf69c1ce3c37462364f4b5a269ee1e24a73b9a",
+  "queueTime": "2026-09-07T16:42:52.3255371Z",
+  "startTime": "2026-09-07T16:42:59.6346227Z",
+  "finishTime": null
+}

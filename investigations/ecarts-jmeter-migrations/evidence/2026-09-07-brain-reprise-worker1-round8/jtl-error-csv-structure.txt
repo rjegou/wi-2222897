@@ -1,0 +1,2 @@
+Fix file=Y2.Plugin.InventoryTracking-WebServices-v26-Fix/Y2.Plugin.InventoryTracking-WebServices-v26-Fix-errors.csv header=['TestPlan;"TestCase";"Operation";"OpError";"XmlResError";"JmxQuery";"JmxPayload"'] sample_widths=[1, 4, 1]
+Cur file=Y2.Plugin.InventoryTracking-WebServices-v26-Cur/Y2.Plugin.InventoryTracking-WebServices-v26-Cur-errors.csv header=['TestPlan;"TestCase";"Operation";"OpError";"XmlResError";"JmxQuery";"JmxPayload"'] sample_widths=[1, 4, 1]

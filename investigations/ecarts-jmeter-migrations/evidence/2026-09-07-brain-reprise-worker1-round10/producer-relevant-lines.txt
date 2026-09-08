@@ -1,0 +1,80 @@
+
+      function  New-ReportErrorCsv {
+        param(
+          [Parameter(Mandatory = $true)][string]$JunitPath,
+          [Parameter(Mandatory = $true)][string]$OutputCsvPath
+        )
+
+        $directoryName = Split-Path -Path $JunitPath -Parent
+        $xmlData = [xml](Get-Content -Path $JunitPath)
+        $outputCsv = @()
+
+        $xmlData.testsuites.testsuite | Where-Object { $_.testcase.error } | ForEach-Object {
+          $tpName = $($_.name) -replace '\.jtl$', ''
+          $tp = ""
+          $tc = ""
+          $operation = ""
+          $detailsFilePath = Join-Path -Path $directoryName -ChildPath ($tpName + "\" + $tpName + ".xml")
+
+          Write-Host "##[debug] - Get Q/A file '$detailsFilePath'"
+
+          if (Test-Path -Path $detailsFilePath) {
+              $xmlDetails = [xml](Get-Content -Path $detailsFilePath)
+              Write-Host "##[section] - Get Q/A file done!"
+          }
+          else {
+              Write-Host "##[warning] - Get Q/A file not found."
+              $xmlDetails =  $null
+          }
+
+          $_.testcase | Where-Object { $_.error } | ForEach-Object {
+              $tp = "$($_.name.split(' - ')[0])"
+              $tc = "$($_.name.split(' - ')[1])"
+              $firstOperation = $_.error.message.split(';|')[0]
+              $operation  = $firstOperation.split(':')[0]
+              $opError    = $firstOperation.split(':')[1]
+              $resError   = ""
+              $jmxQuery   = ""
+              $jmxPayload = ""
+
+              Write-Host "##[debug] - TP: $tp - TC: $tc - Operation: $operation"
+
+              if ($null -ne $xmlDetails) {
+                  # Operation request Http
+                  if (($operation -match "GET Token AuthServer") -Or
+                      ($operation -match "B-XQuery")) {
+                      $httpSample = $xmlDetails.testResults.httpSample | Where-Object { $_.lb -eq "$tp - $tc - $operation" }
+                      if ($httpSample) {
+                          $resError = $httpSample.responseData.'#text'
+                          $jmxQuery = $httpSample.'java.net.URL'
+                          $jmxPayload = $httpSample.queryString.'#text'
+
+                          if ($jmxPayload.Length -gt 4000) {
+                              $jmxPayload = $jmxPayload.Substring(0, 4000) + " (Data truncated !)"
+                          }
+                      }
+                  } # Operation request Sql
+                  elseif (($operation -match "A-PreQuery") -Or
+                          ($operation -match "C-PostQuery") -Or
+                          ($operation -match "D-FinalQuery")) {
+                      $sample = $xmlDetails.testResults.sample | Where-Object { $_.lb -eq "$tp - $tc - $operation" }
+                      if ($sample) {
+                          $resError   = $sample.responseData.'#text'
+                          $jmxQuery   = $sample.responseHeader.'#text'
+                          $jmxPayload = $sample.samplerData.'#text'
+                      }
+                  }
+
+              }
+
+              $outputCsv += [pscustomobject]@{
+                  TestPlan    = $tp
+                  TestCase    = $tc
+                  Operation   = $operation
+                  OpError     = $opError
+                  XmlResError = $resError
+                  JmxQuery    = $jmxQuery
+                  JmxPayload  = $jmxPayload
+              }
+          }
+        }

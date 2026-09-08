@@ -1,0 +1,7 @@
+Build 4440884 result signature summary (deduplicated by Cur/Fix log):
+Cur log 168: SQLServerException Incorrect syntax = 141; B-XQuery differences found = 123.
+Fix log 171: SQLServerException Incorrect syntax = 141; B-XQuery differences found = 123.
+Both campaigns: 32 Launch test Plan, 32 completed, Campaign WebServices completed.
+Compilation log 51: 0 Error(s); Services.Tests references Sln/packages/Cegid.Retail.XmlDiff.1.0.0 and XMLDiffPatch.1.0.8.28.
+Test assemblies log 52: Total tests 48, Passed 48, vstest exit 0.
+Deployment logs 131/138: Cur/Fix container deployment and MSI installs Success; Test deployment logs 145/153 completed.

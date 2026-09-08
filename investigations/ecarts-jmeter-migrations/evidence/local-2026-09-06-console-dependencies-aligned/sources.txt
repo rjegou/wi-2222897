@@ -1,0 +1,5 @@
+Cegid.Retail.Svn 1.0.4.0: local artifact packages-extracted/console-2.0.42-current, package Cegid.Retail.AutoTest.Console 2.0.42, run 4311240, nupkg SHA-256 4ACE80675261D7D5DAD2DB3F0E8C7983790E1983D32C12661FF980C54B16E5DE.
+Cegid.Retail.XmlDiff 1.0.5: Artifactory all-nuget, exact version downloaded read-only into packages/, nupkg SHA-256 05AFA18BA8304A74E9A8CC4B7FEA78C8FEA739896EAA0718B90C6AE40D50DDF7.
+Public nuget.org search for Cegid.Retail.XmlDiff: no package found.
+No secret was displayed or copied; no shared cache was used.
+XmlDiffPatch.View expected token 59dd5855c27c6c17 remains unresolved; package 1.0.5 exposes token 8d9c769b09370619, prior 1.0.3 exposes token 3675d7d1b79eb039.

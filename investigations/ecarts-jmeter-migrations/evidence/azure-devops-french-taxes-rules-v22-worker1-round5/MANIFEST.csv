@@ -1,0 +1,6 @@
+item,method,identifier,status,size_or_value,sha256,classification
+core-baseline,JFrog metadata plus direct streaming GET,Y2.Core/22.0/Y2.Core.22.0.0.1011.zip,HTTP 200,414687259,7BAB5C985D7060EBF6F8084D96A3BA7967C5B5C70387F20BDCCC9F1635310573,FACT
+common-baseline,JFrog metadata plus direct streaming GET,Y2.Core.Common/2.300/Y2.Core.Common.22.0.2.300.zip,HTTP 200,6415287,037D7C7ACC5F5C1F948CE2383177A1C31390BE74976B04C4DA31EFBD89D70CAD,FACT
+identity-baseline,JFrog metadata plus direct streaming GET,IdentityPlugin/5.182/Y2.Plugin.Identity.22.0.5.182.zip,HTTP 200,3029289,23AE1D0CFD54B34024A6312AF818AEE6CB504CF54909A69BDE672B4B11AB59FF,FACT
+historical-image-metadata,JFrog authenticated GET,all-docker/y2-jmeter/sqlexpress2019-y2-aspnet-10-windowsservercore-ltsc2022/manifest.json,HTTP 200,6838,2684760378b395af6d4843036b8d3cfc310cfb30909e23c838c822647f4da9cb,FACT
+historical-image-manifest,JFrog authenticated direct GET,same manifest,HTTP 200 schema v2,6838,digest matches metadata,FACT

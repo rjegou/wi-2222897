@@ -1,0 +1,66 @@
+﻿========== JMETER 5.6.3 XPATH CANDIDATES ==========
+Date: 2026-09-07 11:33:21
+
+COMPILE EXIT CODE: 0
+RUN EXIT CODE: 0
+
+========== RESULTS ==========
+CASE	RESULT	XPATH
+SOAP11_PREFIX_SOAP	NO_MATCH	//Fault
+SOAP11_PREFIX_ENV	NO_MATCH	//Fault
+SOAP12_PREFIX_S	NO_MATCH	//Fault
+SOAP_NO_FAULT	NO_MATCH	//Fault
+OTHER_NAMESPACE	NO_MATCH	//Fault
+UNPREFIXED_FAULT	MATCH	//Fault
+---
+SOAP11_PREFIX_SOAP	MATCH	//*[local-name()='Fault']
+SOAP11_PREFIX_ENV	MATCH	//*[local-name()='Fault']
+SOAP12_PREFIX_S	MATCH	//*[local-name()='Fault']
+SOAP_NO_FAULT	NO_MATCH	//*[local-name()='Fault']
+OTHER_NAMESPACE	MATCH	//*[local-name()='Fault']
+UNPREFIXED_FAULT	MATCH	//*[local-name()='Fault']
+---
+SOAP11_PREFIX_SOAP	MATCH	//*[name()='soap:Fault']
+SOAP11_PREFIX_ENV	NO_MATCH	//*[name()='soap:Fault']
+SOAP12_PREFIX_S	NO_MATCH	//*[name()='soap:Fault']
+SOAP_NO_FAULT	NO_MATCH	//*[name()='soap:Fault']
+OTHER_NAMESPACE	NO_MATCH	//*[name()='soap:Fault']
+UNPREFIXED_FAULT	NO_MATCH	//*[name()='soap:Fault']
+---
+SOAP11_PREFIX_SOAP	NO_MATCH	//*[name()='env:Fault']
+SOAP11_PREFIX_ENV	MATCH	//*[name()='env:Fault']
+SOAP12_PREFIX_S	NO_MATCH	//*[name()='env:Fault']
+SOAP_NO_FAULT	NO_MATCH	//*[name()='env:Fault']
+OTHER_NAMESPACE	NO_MATCH	//*[name()='env:Fault']
+UNPREFIXED_FAULT	NO_MATCH	//*[name()='env:Fault']
+---
+SOAP11_PREFIX_SOAP	NO_MATCH	//*[name()='s:Fault']
+SOAP11_PREFIX_ENV	NO_MATCH	//*[name()='s:Fault']
+SOAP12_PREFIX_S	MATCH	//*[name()='s:Fault']
+SOAP_NO_FAULT	NO_MATCH	//*[name()='s:Fault']
+OTHER_NAMESPACE	NO_MATCH	//*[name()='s:Fault']
+UNPREFIXED_FAULT	NO_MATCH	//*[name()='s:Fault']
+---
+SOAP11_PREFIX_SOAP	NO_MATCH	//*[local-name()='Fault' and namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/']
+SOAP11_PREFIX_ENV	NO_MATCH	//*[local-name()='Fault' and namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/']
+SOAP12_PREFIX_S	NO_MATCH	//*[local-name()='Fault' and namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/']
+SOAP_NO_FAULT	NO_MATCH	//*[local-name()='Fault' and namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/']
+OTHER_NAMESPACE	NO_MATCH	//*[local-name()='Fault' and namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/']
+UNPREFIXED_FAULT	NO_MATCH	//*[local-name()='Fault' and namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/']
+---
+SOAP11_PREFIX_SOAP	NO_MATCH	//*[local-name()='Fault' and namespace-uri()='http://www.w3.org/2003/05/soap-envelope']
+SOAP11_PREFIX_ENV	NO_MATCH	//*[local-name()='Fault' and namespace-uri()='http://www.w3.org/2003/05/soap-envelope']
+SOAP12_PREFIX_S	NO_MATCH	//*[local-name()='Fault' and namespace-uri()='http://www.w3.org/2003/05/soap-envelope']
+SOAP_NO_FAULT	NO_MATCH	//*[local-name()='Fault' and namespace-uri()='http://www.w3.org/2003/05/soap-envelope']
+OTHER_NAMESPACE	NO_MATCH	//*[local-name()='Fault' and namespace-uri()='http://www.w3.org/2003/05/soap-envelope']
+UNPREFIXED_FAULT	NO_MATCH	//*[local-name()='Fault' and namespace-uri()='http://www.w3.org/2003/05/soap-envelope']
+---
+SOAP11_PREFIX_SOAP	NO_MATCH	//*[local-name()='Fault' and (namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/' or namespace-uri()='http://www.w3.org/2003/05/soap-envelope')]
+SOAP11_PREFIX_ENV	NO_MATCH	//*[local-name()='Fault' and (namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/' or namespace-uri()='http://www.w3.org/2003/05/soap-envelope')]
+SOAP12_PREFIX_S	NO_MATCH	//*[local-name()='Fault' and (namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/' or namespace-uri()='http://www.w3.org/2003/05/soap-envelope')]
+SOAP_NO_FAULT	NO_MATCH	//*[local-name()='Fault' and (namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/' or namespace-uri()='http://www.w3.org/2003/05/soap-envelope')]
+OTHER_NAMESPACE	NO_MATCH	//*[local-name()='Fault' and (namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/' or namespace-uri()='http://www.w3.org/2003/05/soap-envelope')]
+UNPREFIXED_FAULT	NO_MATCH	//*[local-name()='Fault' and (namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/' or namespace-uri()='http://www.w3.org/2003/05/soap-envelope')]
+---
+
+====================================================

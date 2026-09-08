@@ -1,0 +1,38 @@
+16:12:21.0176689+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Modification type caisse PUL
+16:12:21.0176689+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:12:21.0335059+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:12:21.0335059+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE PARCAISSE SET GPK_TYPEMOBILITE = 'PUL' WHERE GPK_ETABLISSEMENT = '103' AND GPK_CAISSE = '005'
+16:12:21.0335059+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARCAISSE SET GPK_TYPEMOBILITE = 'PUL' WHERE GPK_ETABLISSEMENT = '103' AND GPK_CAISSE = '005'
+16:12:21.0335059+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARCAISSE SET GPK_TYPEMOBILITE = 'PUL' WHERE GPK_ETABLISSEMENT = '103' AND GPK_CAISSE = '005'
+16:12:21.0343220+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.3726
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=6.4372
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(9d57912c-55c7-47f3-a4a9-01d737766bac@sql_Y2_Plugin, 19933556)
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:12:21.0343220+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Modification PARAMSOC
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:12:21.0343220+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE PARAMSOC SET SOC_DATA = '3.4' WHERE SOC_NOM = 'SO_NF525VERSIONLS'
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARAMSOC SET SOC_DATA = '3.4' WHERE SOC_NOM = 'SO_NF525VERSIONLS'
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARAMSOC SET SOC_DATA = '3.4' WHERE SOC_NOM = 'SO_NF525VERSIONLS'
+16:12:21.0343220+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=2.2352
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=3.6033
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(c3d38b44-49c8-4c56-843e-5d6addec61ae@sql_Y2_Plugin, 33917374)
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:12:21.0343220+01:00: QTAgent32_40.exe Error: 0 : Error during TestCase Processing: Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException: Assert.AreEqual failed. Expected:<1>. Actual:<0>. Modification PARAMSOC
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.HandleFail(String assertionName, String message, Object[] parameters)
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual[T](T expected, T actual, String message, Object[] parameters)
+   at Cegid.Retail.FrenchTaxesRules.LegacyServices.AutoTest.DocumentSignature_SignOne.Test_09() in F:\vm-alm-agent-02-A\_work\25692\s\Cegid.Retail.FrenchTaxesRules.LegacyServices.Tests\AutoTest\DocumentSignature\DocumentSignature_SignOne.g.cs:line 683
+16:12:21.0343220+01:00: QTAgent32_40.exe Information: 0 : Enter finally block
+16:12:21.0343220+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Modification PARAMSOC
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:12:21.0343220+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE PARAMSOC SET SOC_DATA = '1.0' WHERE SOC_NOM = 'SO_NF525VERSIONLS'
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARAMSOC SET SOC_DATA = '1.0' WHERE SOC_NOM = 'SO_NF525VERSIONLS'
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARAMSOC SET SOC_DATA = '1.0' WHERE SOC_NOM = 'SO_NF525VERSIONLS'
+16:12:21.0343220+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.4096
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.3686
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(54e13490-0346-47d5-a55d-02548cd7f0c3@sql_Y2_Plugin, 60016691)
+16:12:21.0343220+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')

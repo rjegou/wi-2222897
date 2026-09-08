@@ -1,0 +1,29 @@
+16:13:28.1901558+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Modification date d'activation NF525 au 01/01/2011
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:13:28.2057806+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE PARAMSOC SET SOC_DATA = '40544' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARAMSOC SET SOC_DATA = '40544' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARAMSOC SET SOC_DATA = '40544' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:13:28.2057806+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.3184
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.2703
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(80beef7b-dc16-4918-83ad-78ed16a1e0b5@sql_Y2_Plugin, 24089430)
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:13:28.2057806+01:00: QTAgent32_40.exe Error: 0 : Error during TestCase Processing: Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException: Assert.AreEqual failed. Expected:<1>. Actual:<0>. Modification date d'activation NF525 au 01/01/2011
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.HandleFail(String assertionName, String message, Object[] parameters)
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual[T](T expected, T actual, String message, Object[] parameters)
+   at Cegid.Retail.FrenchTaxesRules.WebServices.AutoTest.Validation_ValidateDocuments.Test_22() in F:\vm-alm-agent-02-A\_work\25692\s\Cegid.Retail.FrenchTaxesRules.WebServices.Tests\AutoTest\Validation\Validation_ValidateDocuments.g.cs:line 2563
+16:13:28.2057806+01:00: QTAgent32_40.exe Information: 0 : Enter finally block
+16:13:28.2057806+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Suppression ligne taxe supplémentaire ajoutée au ticket FFO/103/8
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:13:28.2057806+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] 
+            DELETE PIEDBASE where GPB_NATUREPIECEG = 'FFO' AND GPB_SOUCHE = '103' AND GPB_NUMERO = 8 and GPB_NUMLIGNE = 2
+          
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE PIEDBASE WHERE GPB_NATUREPIECEG = 'FFO' AND GPB_SOUCHE = '103' AND GPB_NUMERO = 8 AND GPB_NUMLIGNE = 2
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE PIEDBASE WHERE GPB_NATUREPIECEG = 'FFO' AND GPB_SOUCHE = '103' AND GPB_NUMERO = 8 AND GPB_NUMLIGNE = 2
+16:13:28.2057806+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.2779
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.146
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(6b1e61cb-8c3d-4122-bb75-ca7717f3227d@sql_Y2_Plugin, 24051379)
+16:13:28.2057806+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')

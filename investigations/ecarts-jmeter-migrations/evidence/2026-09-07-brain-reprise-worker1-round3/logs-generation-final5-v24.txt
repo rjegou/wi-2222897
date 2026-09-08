@@ -1,0 +1,39 @@
+DEBUG: Logger was created successfully.. Priority: Low. Timestamp:2026-09-07 16:28:13Z.
+DEBUG: Creating module catalog.. Priority: Low. Timestamp:2026-09-07 16:28:13Z.
+Loading file: (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\tools\Parameters.xml)
+DEBUG: Configuring module catalog.. Priority: Low. Timestamp:2026-09-07 16:28:13Z.
+DEBUG: Creating Unity container.. Priority: Low. Timestamp:2026-09-07 16:28:13Z.
+DEBUG: Configuring the Unity container.. Priority: Low. Timestamp:2026-09-07 16:28:14Z.
+DEBUG: Adding UnityBootstrapperExtension to container.. Priority: Low. Timestamp:2026-09-07 16:28:14Z.
+DEBUG: Configuring ServiceLocator singleton.. Priority: Low. Timestamp:2026-09-07 16:28:14Z.
+DEBUG: Configuring the ViewModelLocator to use Unity.. Priority: Low. Timestamp:2026-09-07 16:28:14Z.
+DEBUG: Configuring region adapters.. Priority: Low. Timestamp:2026-09-07 16:28:14Z.
+DEBUG: Configuring default region behaviors.. Priority: Low. Timestamp:2026-09-07 16:28:14Z.
+DEBUG: Registering Framework Exception Types.. Priority: Low. Timestamp:2026-09-07 16:28:14Z.
+DEBUG: Creating the shell.. Priority: Low. Timestamp:2026-09-07 16:28:14Z.
+DEBUG: Initializing modules.. Priority: Low. Timestamp:2026-09-07 16:28:14Z.
+DEBUG: Bootstrapper sequence completed.. Priority: Low. Timestamp:2026-09-07 16:28:14Z.
+Loading file: (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\fixture\campaign.xml)
+Processing TestCampaign=(C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\fixture\campaign.xml) - Target Folder=(C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\generated5/Tests/campaign)
+Loading file: (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\fixture\campaign.xml)
+Processing TestPlan (Deployment_ResetFTSCustomer)
+Loading file: (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\fixture\TestPlans\Deployment_ResetFTSCustomer.xml)
+Generating TestClass for TestPlan=(001-Deployment_ResetFTSCustomer.jmx)
+Overriding (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\generated5/Tests/campaign\001-Deployment_ResetFTSCustomer.jmx)
+Processing TestPlan (Deployment_UpdateFTSCatalog)
+Loading file: (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\fixture\TestPlans\Deployment_UpdateFTSCatalog.xml)
+Generating TestClass for TestPlan=(002-Deployment_UpdateFTSCatalog.jmx)
+Overriding (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\generated5/Tests/campaign\002-Deployment_UpdateFTSCatalog.jmx)
+Processing TestPlan (Deployment_UpdateFTSCustomer)
+Loading file: (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\fixture\TestPlans\Deployment_UpdateFTSCustomer.xml)
+Generating TestClass for TestPlan=(003-Deployment_UpdateFTSCustomer.jmx)
+Overriding (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\generated5/Tests/campaign\003-Deployment_UpdateFTSCustomer.jmx)
+Processing TestPlan (Mobility_GetClientelingParameters)
+Loading file: (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\fixture\TestPlans\Mobility_GetClientelingParameters.xml)
+Generating TestClass for TestPlan=(004-Mobility_GetClientelingParameters.jmx)
+Overriding (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\generated5/Tests/campaign\004-Mobility_GetClientelingParameters.jmx)
+Processing TestPlan (Mobility_UpdateClientelingParameters)
+Loading file: (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\fixture\TestPlans\Mobility_UpdateClientelingParameters.xml)
+Generating TestClass for TestPlan=(005-Mobility_UpdateClientelingParameters.jmx)
+Overriding (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\generated5/Tests/campaign\005-Mobility_UpdateClientelingParameters.jmx)
+Overriding (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v24-162325667\generated5/Tests/campaign.xml)

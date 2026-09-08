@@ -1,0 +1,215 @@
+10:01:33.9536445+02:00: QTAgent32_40.exe Information: 0 : processing file = (D:\Temp\TempoAutoTest\3466508F-C58A-42DB-9F8C-B33B99DC901D\IntegrationTests\Y2_Plugin.Fix\sql\sources\IntegratedTests\AutoTest\Data\LegacyServices\TestPlans\InputFiles\DocumentSignature\Sign_10.xml)
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.ServiceModel | Authorization | User 'CEGIDGROUP\SvcTestAutoRetail' has access to folder 'sql_Y2_Plugin' : Claim of type 'http://www.cegid.fr/claims/erp/user/login' added.
+10:01:33.9692670+02:00: root Information: 0 : Cegid.Framework.ServiceModel | Authorization | Status=Granted, User=CEGIDGROUP\SvcTestAutoRetail, Resource=/95527251-fc2c-4aaf-a836-9a27cf475404/
+10:01:33.9692670+02:00: root Information: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Function ' - Invoke' - OperationStatus=Start
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Function ' - Invoke' - Input parameters - <<Cegid.CBR.FrenchTaxesRulesDocumentSignatureService.Sign> - <> - <'Request Tob' TOB>>
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'RegisterSigningContextForRequest' - OperationStatus=Start
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'RegisterSigningContextForRequest' - OperationStatus=Success, OperationDurationMs=0.0014
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'Cegid.CBR.FrenchTaxesRulesDocumentSignatureService.Sign' - OperationStatus=Start
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'Cegid.CBR.FrenchTaxesRulesDocumentSignatureService.Sign' - Etape 'Input parameters' - <>
+10:01:33.9692670+02:00: QTAgent32_40.exe Information: 0 : OperationName=FrenchTaxesRulesService.DocumentSignatureService, OperationStatus=Start, DaemonId=ADF, StoreId=304, ExecutionDate=01/01/2010 15:12:45, FromDate=04/07/2016 00:00:00, ToDate=06/07/2016 00:00:00, PageSize=1000
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+10:01:33.9692670+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT COUNT(*) DOCNBR
+                           FROM DAEMONDOCUMENT 
+                           WHERE MDD_DAEMONID = @param0
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT COUNT(*) AS DOCNBR FROM DAEMONDOCUMENT WHERE DAEMONDOCUMENT.MDD_DAEMONID = @param0 
+10:01:33.9692670+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0='ADF'
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT COUNT(*) AS DOCNBR FROM DAEMONDOCUMENT WHERE DAEMONDOCUMENT.MDD_DAEMONID = @param0 
+10:01:33.9692670+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=3.9072
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=4.3343
+10:01:33.9692670+02:00: QTAgent32_40.exe Information: 0 : OperationName=FrenchTaxesRulesService.DaemonRepository.HasDaemonDocuments, DaemonId=ADF, DaemonDocumentsCount=0
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(73dce739-de0b-4701-ba3c-2849d827bad5@sql_Y2_Plugin, 37827299)
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+10:01:33.9692670+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT TOP 1 DAE_DAEMONID 
+                           FROM DAEMON
+                           INNER JOIN DAEMONDOCUMENT ON DAEMON.DAE_DAEMONID = DAEMONDOCUMENT.MDD_DAEMONID  WHERE DAE_ETABLISS = @param0  AND DAE_DAEMONID != @param1 
+                        ORDER BY DAE_DATEDEBEXEC DESC
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT TOP (1) DAEMON.DAE_DAEMONID FROM DAEMON JOIN DAEMONDOCUMENT ON DAEMON.DAE_DAEMONID = DAEMONDOCUMENT.MDD_DAEMONID WHERE DAEMON.DAE_ETABLISS = @param0 AND DAEMON.DAE_DAEMONID != @param1  ORDER BY DAE_DATEDEBEXEC DESC 
+10:01:33.9692670+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0='304', param1='ADF'
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT TOP (1) DAEMON.DAE_DAEMONID FROM DAEMON JOIN DAEMONDOCUMENT ON DAEMON.DAE_DAEMONID = DAEMONDOCUMENT.MDD_DAEMONID WHERE DAEMON.DAE_ETABLISS = @param0 AND DAEMON.DAE_DAEMONID != @param1  ORDER BY DAE_DATEDEBEXEC DESC 
+10:01:33.9692670+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=2.4004
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=3.0756
+10:01:33.9692670+02:00: QTAgent32_40.exe Information: 0 : OperationName=FrenchTaxesRulesService.DaemonRepository.GetPreviousExecutionDocumentDaemonId, DaemonId=ADF, StoreId=304, Warning=No previous daemon found
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(73dce739-de0b-4701-ba3c-2849d827bad5@sql_Y2_Plugin, 35919100)
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:01:33.9692670+02:00: QTAgent32_40.exe Information: 0 : OperationName=FrenchTaxesRulesService.DocumentSignatureService, DaemonId=ADF, StoreId=304, LastExecutedDaemon=
+10:01:33.9692670+02:00: QTAgent32_40.exe Information: 0 : OperationName=FrenchTaxesRulesService.DocumentSignatureService, DaemonId=ADF, StoreId=304, LastDaemonDocument=
+10:01:33.9692670+02:00: QTAgent32_40.exe Information: 0 : OperationName=FrenchTaxesRulesService.DocumentSignatureService, DaemonId=ADF, StoreId=304, LastDocumentSignature=
+10:01:33.9692670+02:00: QTAgent32_40.exe Information: 0 : OperationName=FrenchTaxesRulesService.DocumentRepository.LoadFromDateToDate, StoreId=304, FromDate=04/07/2016 00:00:00, ToDate=06/07/2016 00:00:00
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+10:01:33.9692670+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT GP_NATUREPIECEG,GP_SOUCHE,GP_NUMERO,GP_INDICEG,GP_DATEPIECE,GP_HEURECREATION,GP_REFINTERNE,GP_CAISSE,GP_ETABLISSEMENT,GP_TYPEPROVENANCE,GP_DEVISE,GP_TOTALHTDEV,GP_TOTALTTCDEV,GPE_MODEPAIE,GPE_DEVISEESP,GPE_MONTANTDEV,GPE_MONTANTENCAIS,MDI_REFFISCALESIGN,MDI_FISCALPRTID,MDI_REFFISCALEVAL
+                           FROM PIECE
+                                LEFT JOIN MPIECECOMPL ON MDI_NATUREPIECEG = GP_NATUREPIECEG AND MDI_SOUCHE = GP_SOUCHE AND MDI_NUMERO = GP_NUMERO AND MDI_TYPEFISCAL IN (@param1,@param2)
+                                LEFT JOIN PIEDECHE ON GPE_NATUREPIECEG = GP_NATUREPIECEG AND GPE_SOUCHE = GP_SOUCHE AND GPE_NUMERO = GP_NUMERO 
+                           WHERE GP_NATUREPIECEG = @param3 AND GP_ETABLISSEMENT = @param4 
+                             AND GP_DTSVCREATE > @param5 AND GP_DTSVCREATE <= @param0
+                             AND (MDI_REFFISCALESIGN = '' OR MDI_REFFISCALESIGN IS NULL)
+                             AND (GP_CAISSE NOT IN (SELECT GPK_CAISSE FROM PARCAISSE WHERE GPK_TYPEMOBILITE in (@param6,@param7,@param8) AND GPK_ETABLISSEMENT = @param4)
+                                   OR GP_CAISSE = '' OR GP_CAISSE IS NULL)
+                           ORDER BY GP_DTSVCREATE
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT PIECE.GP_NATUREPIECEG, PIECE.GP_SOUCHE, PIECE.GP_NUMERO, PIECE.GP_INDICEG, PIECE.GP_DATEPIECE, PIECE.GP_HEURECREATION, PIECE.GP_REFINTERNE, PIECE.GP_CAISSE, PIECE.GP_ETABLISSEMENT, PIECE.GP_TYPEPROVENANCE, PIECE.GP_DEVISE, PIECE.GP_TOTALHTDEV, PIECE.GP_TOTALTTCDEV, PIEDECHE.GPE_MODEPAIE, PIEDECHE.GPE_DEVISEESP, PIEDECHE.GPE_MONTANTDEV, PIEDECHE.GPE_MONTANTENCAIS, MPIECECOMPL.MDI_REFFISCALESIGN, MPIECECOMPL.MDI_FISCALPRTID, MPIECECOMPL.MDI_REFFISCALEVAL FROM PIECE LEFT JOIN MPIECECOMPL ON MPIECECOMPL.MDI_NATUREPIECEG = PIECE.GP_NATUREPIECEG AND MPIECECOMPL.MDI_SOUCHE = PIECE.GP_SOUCHE AND MPIECECOMPL.MDI_NUMERO = PIECE.GP_NUMERO AND MPIECECOMPL.MDI_TYPEFISCAL IN (@param1, @param2 ) LEFT JOIN PIEDECHE ON PIEDECHE.GPE_NATUREPIECEG = PIECE.GP_NATUREPIECEG AND PIEDECHE.GPE_SOUCHE = PIECE.GP_SOUCHE AND PIEDECHE.GPE_NUMERO = PIECE.GP_NUMERO WHERE PIECE.GP_NATUREPIECEG = @param3 AND PIECE.GP_ETABLISSEMENT = @param4 AND PIECE.GP_DTSVCREATE > @param5 AND PIECE.GP_DTSVCREATE <= @param0 AND (MPIECECOMPL.MDI_REFFISCALESIGN = '' OR MPIECECOMPL.MDI_REFFISCALESIGN IS NULL) AND (PIECE.GP_CAISSE NOT IN (SELECT PARCAISSE.GPK_CAISSE FROM PARCAISSE WHERE PARCAISSE.GPK_TYPEMOBILITE IN (@param6, @param7, @param8 ) AND PARCAISSE.GPK_ETABLISSEMENT = @param4 ) OR PIECE.GP_CAISSE = '' OR PIECE.GP_CAISSE IS NULL)  ORDER BY GP_DTSVCREATE 
+10:01:33.9692670+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0=07/06/2016 00:00:00, param1='...', param2='RET', param3='FFO', param4='304', param5=07/04/2016 00:00:00, param6='POS', param7='PUL', param8='EXT'
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT PIECE.GP_NATUREPIECEG, PIECE.GP_SOUCHE, PIECE.GP_NUMERO, PIECE.GP_INDICEG, PIECE.GP_DATEPIECE, PIECE.GP_HEURECREATION, PIECE.GP_REFINTERNE, PIECE.GP_CAISSE, PIECE.GP_ETABLISSEMENT, PIECE.GP_TYPEPROVENANCE, PIECE.GP_DEVISE, PIECE.GP_TOTALHTDEV, PIECE.GP_TOTALTTCDEV, PIEDECHE.GPE_MODEPAIE, PIEDECHE.GPE_DEVISEESP, PIEDECHE.GPE_MONTANTDEV, PIEDECHE.GPE_MONTANTENCAIS, MPIECECOMPL.MDI_REFFISCALESIGN, MPIECECOMPL.MDI_FISCALPRTID, MPIECECOMPL.MDI_REFFISCALEVAL FROM PIECE LEFT JOIN MPIECECOMPL ON MPIECECOMPL.MDI_NATUREPIECEG = PIECE.GP_NATUREPIECEG AND MPIECECOMPL.MDI_SOUCHE = PIECE.GP_SOUCHE AND MPIECECOMPL.MDI_NUMERO = PIECE.GP_NUMERO AND MPIECECOMPL.MDI_TYPEFISCAL IN (@param1, @param2 ) LEFT JOIN PIEDECHE ON PIEDECHE.GPE_NATUREPIECEG = PIECE.GP_NATUREPIECEG AND PIEDECHE.GPE_SOUCHE = PIECE.GP_SOUCHE AND PIEDECHE.GPE_NUMERO = PIECE.GP_NUMERO WHERE PIECE.GP_NATUREPIECEG = @param3 AND PIECE.GP_ETABLISSEMENT = @param4 AND PIECE.GP_DTSVCREATE > @param5 AND PIECE.GP_DTSVCREATE <= @param0 AND (MPIECECOMPL.MDI_REFFISCALESIGN = '' OR MPIECECOMPL.MDI_REFFISCALESIGN IS NULL) AND (PIECE.GP_CAISSE NOT IN (SELECT PARCAISSE.GPK_CAISSE FROM PARCAISSE WHERE PARCAISSE.GPK_TYPEMOBILITE IN (@param6, @param7, @param8 ) AND PARCAISSE.GPK_ETABLISSEMENT = @param4 ) OR PIECE.GP_CAISSE = '' OR PIECE.GP_CAISSE IS NULL)  ORDER BY GP_DTSVCREATE 
+10:01:33.9692670+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.8374
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=2.92
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(73dce739-de0b-4701-ba3c-2849d827bad5@sql_Y2_Plugin, 57049608)
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:01:33.9692670+02:00: root Error: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'Cegid.CBR.FrenchTaxesRulesDocumentSignatureService.Sign' - Exception - Cegid.Framework.CbpException: Erreur lors de l'appel de la méthode 'Sign' de l'adaptateur 'Cegid.Retail.FrenchTaxesRules.LegacyServices.DocumentSignatureServiceDtoAdapter'.
+Code d'exception            : CBP50101
+Action / méthode            : CwasAdapter.CreateDelegate
+Conseil                     : <Vide>
+RequestTobAsXml             : <?xml version="1.0" encoding="utf-8"?><Document><Data formatVersion="ForwardRead" serializeVersion="3.1"><Tob Name="Request Tob"><Fields><Field Name="XML_CONTENT" Type="String" Value="&lt;SignRequest xmlns=&quot;http://www.cegid.fr/Retail/1.0&quot;&gt;&#xA;    &lt;CustomerKey&gt;&lt;/CustomerKey&gt;&#xA;    &lt;DaemonId&gt;ADF&lt;/DaemonId&gt;&#xA;    &lt;ExecutionDate&gt;2010-01-01T15:12:45&lt;/ExecutionDate&gt;&#xA;    &lt;FromDate&gt;2016-07-04&lt;/FromDate&gt;&#xA;    &lt;SigningVersion&gt;FR_1_0&lt;/SigningVersion&gt;&#xA;&#x9;&lt;StoreId&gt;304&lt;/StoreId&gt;&#xA;&#x9;&lt;ToDate&gt;2016-07-06&lt;/ToDate&gt;&#xA;&lt;/SignRequest&gt;" /></Fields></Tob></Data></Document>
+Pile d'appel                :
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.CwasAdapterMethodInfo.<>c__DisplayClass8d.<CreateDelegate>b__8c(ICwasAdapterContext cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.SyncCwasAdapterMethodInfo.<>c__DisplayClass9a.<CreateAction>b__99(ICwasAdapterContext`2 cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.<>c__DisplayClass29.<CreateInvoker>b__28(ICwasAdapterContext`2 cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.Invoke(ICwasAdapterContext`2 context)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapterService.Invoke(ICwasAdapterContext`2 context)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.<>c__DisplayClass7.<>c__DisplayClass9.<Invoke>b__4()
+   at Cegid.Framework.ExceptionHelper.TryHandle(Action action, Func`2 isHandled)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.<>c__DisplayClass7.<Invoke>b__3(CallingFlowLogCategory functionalLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+Exception interne           :
+   Cegid.Framework.CbpException: Le champ GP_TYPECOMPTA n'existe pas dans l'ensemble de données.
+   Code d'exception            : CBP52036
+   Action / méthode            : SqlRecord[fieldName]
+   Conseil                     : Vérifier le nom du champ.
+   Pile d'appel                :
+      at Cegid.Erp.Data.Sql.SqlRecord.get_Item(String fieldName)
+      at Cegid.Retail.Tools.Db.GetStringValueOrDefault(ISqlRecord record, String fieldName, String defaultValue)
+      at Cegid.Retail.FrenchTaxesRules.Services.Common.DocumentRepository.ExtractDocument(ISqlRecord row) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\Common\DocumentRepository.cs:line 941
+      at Cegid.Retail.FrenchTaxesRules.Services.Common.DocumentRepository.RetrieveDocuments(String query, SqlQueryParametersBuilder builder) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\Common\DocumentRepository.cs:line 822
+      at Cegid.Retail.FrenchTaxesRules.Services.Common.DocumentRepository.LoadFromDateToDate(DateTime fromDate, Nullable`1 toDate, String storeId) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\Common\DocumentRepository.cs:line 332
+      at Cegid.Retail.FrenchTaxesRules.Services.DocumentSignature.DocumentSignatureService.Sign_Impl(SignRequest request) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\DocumentSignature\DocumentSignatureService.Implementation.cs:line 243
+      at Cegid.Retail.FrenchTaxesRules.Services.DocumentSignature.DocumentSignatureService.Sign(SignRequest request) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\DocumentSignature\DocumentSignatureService.Implementation.g.cs:line 61
+      at Cegid.Retail.FrenchTaxesRules.LegacyServices.DocumentSignatureServiceDtoAdapter.Sign(ICwasAdapterContext`2 context) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.LegacyServices\DocumentSignature\DocumentSignatureService.CwasAdapter.g.cs:line 75
+10:01:33.9692670+02:00: root Information: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'Cegid.CBR.FrenchTaxesRulesDocumentSignatureService.Sign' - OperationStatus=Fail, OperationDurationMs=13.7552
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'UnregisterSigningContextForRequest' - OperationStatus=Start
+10:01:33.9692670+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'UnregisterSigningContextForRequest' - OperationStatus=Success, OperationDurationMs=0.0068
+10:01:33.9848922+02:00: root Error: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Fonction ' - Invoke' - Exception - Cegid.Framework.CbpException: Erreur lors de l'appel de la méthode 'Sign' de l'adaptateur 'Cegid.Retail.FrenchTaxesRules.LegacyServices.DocumentSignatureServiceDtoAdapter'.
+Code d'exception            : CBP50101
+Action / méthode            : CwasAdapter.CreateDelegate
+Conseil                     : <Vide>
+RequestTobAsXml             : <?xml version="1.0" encoding="utf-8"?><Document><Data formatVersion="ForwardRead" serializeVersion="3.1"><Tob Name="Request Tob"><Fields><Field Name="XML_CONTENT" Type="String" Value="&lt;SignRequest xmlns=&quot;http://www.cegid.fr/Retail/1.0&quot;&gt;&#xA;    &lt;CustomerKey&gt;&lt;/CustomerKey&gt;&#xA;    &lt;DaemonId&gt;ADF&lt;/DaemonId&gt;&#xA;    &lt;ExecutionDate&gt;2010-01-01T15:12:45&lt;/ExecutionDate&gt;&#xA;    &lt;FromDate&gt;2016-07-04&lt;/FromDate&gt;&#xA;    &lt;SigningVersion&gt;FR_1_0&lt;/SigningVersion&gt;&#xA;&#x9;&lt;StoreId&gt;304&lt;/StoreId&gt;&#xA;&#x9;&lt;ToDate&gt;2016-07-06&lt;/ToDate&gt;&#xA;&lt;/SignRequest&gt;" /></Fields></Tob></Data></Document>
+TrackingId                  : 49ccd396-7aee-42ac-85b5-de5bed8ac11a
+Pile d'appel                :
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.CwasAdapterMethodInfo.<>c__DisplayClass8d.<CreateDelegate>b__8c(ICwasAdapterContext cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.SyncCwasAdapterMethodInfo.<>c__DisplayClass9a.<CreateAction>b__99(ICwasAdapterContext`2 cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.<>c__DisplayClass29.<CreateInvoker>b__28(ICwasAdapterContext`2 cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.Invoke(ICwasAdapterContext`2 context)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapterService.Invoke(ICwasAdapterContext`2 context)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.<>c__DisplayClass7.<>c__DisplayClass9.<Invoke>b__4()
+   at Cegid.Framework.ExceptionHelper.TryHandle(Action action, Func`2 isHandled)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.<>c__DisplayClass7.<Invoke>b__3(CallingFlowLogCategory functionalLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, String flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.Invoke(String action, String parameter, IDataTob request)
+   at Cegid.Erp.Services.LegacyHost.LegacyDispatcherServiceBase.Invoke(IHub hub, String action, String parameter, IDataTob request)
+   at Cegid.Erp.Services.LegacyHost.LegacyDispatcherService.Invoke(String action, String parameter, IDataTob request)
+   at SyncInvokeInvoke(Object , Object[] , Object[] )
+   at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object instance, Object[] inputs, Object[]& outputs)
+   at Cegid.Erp.ServiceModel.Dispatcher.ErpContextInvoker.Invoke(Object instance, Object[] inputs, Object[]& outputs)
+   at Cegid.Framework.ServiceModel.Dispatcher.LogOperationInvoker`1.<>c__DisplayClass3.<Invoke>b__1(T functionalCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+Exception interne           :
+   Cegid.Framework.CbpException: Le champ GP_TYPECOMPTA n'existe pas dans l'ensemble de données.
+   Code d'exception            : CBP52036
+   Action / méthode            : SqlRecord[fieldName]
+   Conseil                     : Vérifier le nom du champ.
+   Pile d'appel                :
+      at Cegid.Erp.Data.Sql.SqlRecord.get_Item(String fieldName)
+      at Cegid.Retail.Tools.Db.GetStringValueOrDefault(ISqlRecord record, String fieldName, String defaultValue)
+      at Cegid.Retail.FrenchTaxesRules.Services.Common.DocumentRepository.ExtractDocument(ISqlRecord row) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\Common\DocumentRepository.cs:line 941
+      at Cegid.Retail.FrenchTaxesRules.Services.Common.DocumentRepository.RetrieveDocuments(String query, SqlQueryParametersBuilder builder) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\Common\DocumentRepository.cs:line 822
+      at Cegid.Retail.FrenchTaxesRules.Services.Common.DocumentRepository.LoadFromDateToDate(DateTime fromDate, Nullable`1 toDate, String storeId) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\Common\DocumentRepository.cs:line 332
+      at Cegid.Retail.FrenchTaxesRules.Services.DocumentSignature.DocumentSignatureService.Sign_Impl(SignRequest request) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\DocumentSignature\DocumentSignatureService.Implementation.cs:line 243
+      at Cegid.Retail.FrenchTaxesRules.Services.DocumentSignature.DocumentSignatureService.Sign(SignRequest request) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\DocumentSignature\DocumentSignatureService.Implementation.g.cs:line 61
+      at Cegid.Retail.FrenchTaxesRules.LegacyServices.DocumentSignatureServiceDtoAdapter.Sign(ICwasAdapterContext`2 context) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.LegacyServices\DocumentSignature\DocumentSignatureService.CwasAdapter.g.cs:line 75
+10:01:33.9848922+02:00: root Information: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Fonction ' - Invoke' - OperationStatus=Fail, OperationDurationMs=14.5773
+10:01:33.9848922+02:00: QTAgent32_40.exe Information: 0 : Reply = <s:Fault xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:a="http://www.cegid.fr/fault">a:InternalError</faultcode>
+  <faultstring xml:lang="fr-FR">Erreur lors de l'appel de la méthode 'Sign' de l'adaptateur 'Cegid.Retail.FrenchTaxesRules.LegacyServices.DocumentSignatureServiceDtoAdapter'.</faultstring>
+  <detail>
+    <CbpExceptionDetail xmlns="http://www.cegid.fr/fault" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+      <InnerException i:type="CbpExceptionDetail">
+        <Message>Le champ GP_TYPECOMPTA n'existe pas dans l'ensemble de données.</Message>
+        <StackTrace>   at Cegid.Erp.Data.Sql.SqlRecord.get_Item(String fieldName)
+   at Cegid.Retail.Tools.Db.GetStringValueOrDefault(ISqlRecord record, String fieldName, String defaultValue)
+   at Cegid.Retail.FrenchTaxesRules.Services.Common.DocumentRepository.ExtractDocument(ISqlRecord row) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\Common\DocumentRepository.cs:line 941
+   at Cegid.Retail.FrenchTaxesRules.Services.Common.DocumentRepository.RetrieveDocuments(String query, SqlQueryParametersBuilder builder) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\Common\DocumentRepository.cs:line 822
+   at Cegid.Retail.FrenchTaxesRules.Services.Common.DocumentRepository.LoadFromDateToDate(DateTime fromDate, Nullable`1 toDate, String storeId) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\Common\DocumentRepository.cs:line 332
+   at Cegid.Retail.FrenchTaxesRules.Services.DocumentSignature.DocumentSignatureService.Sign_Impl(SignRequest request) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\DocumentSignature\DocumentSignatureService.Implementation.cs:line 243
+   at Cegid.Retail.FrenchTaxesRules.Services.DocumentSignature.DocumentSignatureService.Sign(SignRequest request) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.Services\DocumentSignature\DocumentSignatureService.Implementation.g.cs:line 61
+   at Cegid.Retail.FrenchTaxesRules.LegacyServices.DocumentSignatureServiceDtoAdapter.Sign(ICwasAdapterContext`2 context) in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.LegacyServices\DocumentSignature\DocumentSignatureService.CwasAdapter.g.cs:line 75</StackTrace>
+        <Type>Cegid.Framework.CbpException</Type>
+        <Id>CBP52036</Id>
+        <ToDo>Vérifier le nom du champ.</ToDo>
+      </InnerException>
+      <Message>Erreur lors de l'appel de la méthode 'Sign' de l'adaptateur 'Cegid.Retail.FrenchTaxesRules.LegacyServices.DocumentSignatureServiceDtoAdapter'.</Message>
+      <StackTrace>   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.CwasAdapterMethodInfo.&lt;&gt;c__DisplayClass8d.&lt;CreateDelegate&gt;b__8c(ICwasAdapterContext cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.SyncCwasAdapterMethodInfo.&lt;&gt;c__DisplayClass9a.&lt;CreateAction&gt;b__99(ICwasAdapterContext`2 cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.&lt;&gt;c__DisplayClass29.&lt;CreateInvoker&gt;b__28(ICwasAdapterContext`2 cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.Invoke(ICwasAdapterContext`2 context)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapterService.Invoke(ICwasAdapterContext`2 context)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.&lt;&gt;c__DisplayClass7.&lt;&gt;c__DisplayClass9.&lt;Invoke&gt;b__4()
+   at Cegid.Framework.ExceptionHelper.TryHandle(Action action, Func`2 isHandled)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.&lt;&gt;c__DisplayClass7.&lt;Invoke&gt;b__3(CallingFlowLogCategory functionalLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, String flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.Invoke(String action, String parameter, IDataTob request)
+   at Cegid.Erp.Services.LegacyHost.LegacyDispatcherServiceBase.Invoke(IHub hub, String action, String parameter, IDataTob request)
+   at Cegid.Erp.Services.LegacyHost.LegacyDispatcherService.Invoke(String action, String parameter, IDataTob request)
+   at SyncInvokeInvoke(Object , Object[] , Object[] )
+   at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object instance, Object[] inputs, Object[]&amp; outputs)
+   at Cegid.Erp.ServiceModel.Dispatcher.ErpContextInvoker.Invoke(Object instance, Object[] inputs, Object[]&amp; outputs)
+   at Cegid.Framework.ServiceModel.Dispatcher.LogOperationInvoker`1.&lt;&gt;c__DisplayClass3.&lt;Invoke&gt;b__1(T functionalCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.ServiceModel.Dispatcher.LogOperationInvoker`1.Invoke(Object instance, Object[] inputs, Object[]&amp; outputs)
+   at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage41(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage4(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage3(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage2(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage11(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage1(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean isOperationContextSet)</StackTrace>
+      <TrackingId>49ccd396-7aee-42ac-85b5-de5bed8ac11a</TrackingId>
+      <Type>Cegid.Framework.CbpException</Type>
+      <Id>CBP50101</Id>
+      <ToDo />
+    </CbpExceptionDetail>
+  </detail>
+</s:Fault>
+10:01:33.9848922+02:00: QTAgent32_40.exe Information: 0 : Check: compare full xml
+10:01:33.9848922+02:00: QTAgent32_40.exe Error: 0 : Ajout d'un élément (<xd:add xmlns:xd="http://schemas.microsoft.com/xmltools/2002/xmldiff">
+  <faultcode>a:InternalError</faultcode>
+  <faultstring xml:lang="fr-FR">Erreur lors de l'appel de la méthode 'Sign' de l'adaptateur 'Cegid.Retail.FrenchTaxesRules.LegacyServices.DocumentSignatureServiceDtoAdapter'.</faultstring>
+</xd:add>). Voir le chemin ()
+10:01:33.9848922+02:00: QTAgent32_40.exe Error: 0 : Error during TestCase Processing: Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException: Assert.IsTrue failed. Ajout d'un élément (<xd:add xmlns:xd="http://schemas.microsoft.com/xmltools/2002/xmldiff">
+  <faultcode>a:InternalError</faultcode>
+  <faultstring xml:lang="fr-FR">Erreur lors de l'appel de la méthode 'Sign' de l'adaptateur 'Cegid.Retail.FrenchTaxesRules.LegacyServices.DocumentSignatureServiceDtoAdapter'.</faultstring>
+</xd:add>). Voir le chemin ()
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.HandleFail(String assertionName, String message, Object[] parameters)
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(Boolean condition, String message, Object[] parameters)
+   at Cegid.Retail.FrenchTaxesRules.LegacyServices.AutoTest.DocumentSignature_Sign.Test_10() in F:\vm-alm-agent-05-A\_work\12363\s\Cegid.Retail.FrenchTaxesRules.LegacyServices.Tests\AutoTest\DocumentSignature\DocumentSignature_Sign.g.cs:line 663
+10:01:33.9848922+02:00: QTAgent32_40.exe Information: 0 : Enter finally block
+10:01:33.9848922+02:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: suppression de la ligne daemondocument
+10:01:33.9848922+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:01:33.9848922+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:01:33.9848922+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE FROM DAEMONDOCUMENT where MDD_FSOUCHE='304' 
+10:01:33.9848922+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE FROM DAEMONDOCUMENT WHERE MDD_FSOUCHE = '304'
+10:01:33.9848922+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE FROM DAEMONDOCUMENT WHERE MDD_FSOUCHE = '304'
+10:01:33.9848922+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.6054
+10:01:33.9848922+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+10:01:33.9848922+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.812
+10:01:33.9848922+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(d8d9cf77-1740-4915-bcfb-efb57b75da09@sql_Y2_Plugin, 35326881)
+10:01:33.9848922+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')

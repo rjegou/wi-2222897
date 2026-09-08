@@ -1,0 +1,1 @@
+OriginalBytes=82044 NewBytes=82044 OriginalLF=1604 NewLF=1604 OriginalCRLF=1604 NewCRLF=1604 OriginalEndsWithLF=False NewEndsWithLF=False DiffCheckExitCode=0

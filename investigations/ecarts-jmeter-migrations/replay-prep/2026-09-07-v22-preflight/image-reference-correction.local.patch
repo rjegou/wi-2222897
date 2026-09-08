@@ -1,0 +1,5 @@
+--- azure-pipelines.preflight.yml
++++ azure-pipelines.preflight.yml
+@@
+-  historicalImage: 'cegid-retail-docker-production/y2-jmeter:sqlexpress2019-y2-aspnet-10-windowsservercore-ltsc2022@sha256:2684760378b395af6d4843036b8d3cfc310cfb30909e23c838c822647f4da9cb'
++  historicalImage: 'acrretaildocker.azurecr.io/cegid-retail-docker-production/y2-jmeter:sqlexpress2019-y2-aspnet-10-windowsservercore-ltsc2022@sha256:2684760378b395af6d4843036b8d3cfc310cfb30909e23c838c822647f4da9cb'

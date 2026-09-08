@@ -1,0 +1,49 @@
+2026-09-04T11:08:25.0596602Z ##[section]Starting: launch-testsAutos: Launch Y2_Plugins_Clienteling_V8 for 9.22 @ Y2-TSTAUTOXXPG2
+2026-09-04T11:08:25.0699984Z ==============================================================================
+2026-09-04T11:08:25.0700507Z Task         : PowerShell
+2026-09-04T11:08:25.0700771Z Description  : Run a PowerShell script on Linux, macOS, or Windows
+2026-09-04T11:08:25.0700934Z Version      : 2.279.0
+2026-09-04T11:08:25.0701167Z Author       : Microsoft Corporation
+2026-09-04T11:08:25.0701570Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/powershell
+2026-09-04T11:08:25.0701829Z ==============================================================================
+2026-09-04T11:08:27.0040013Z Generating script.
+2026-09-04T11:08:27.0504949Z ========================== Starting Command Output ===========================
+2026-09-04T11:08:27.0794110Z ##[command]"C:\windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command ". 'F:\vm-alm-agent-03-A\_work\_temp\c84055f0-5d93-437d-8242-05f3b898a891.ps1'"
+2026-09-04T11:08:27.6090222Z optional arguments for workflow = -D:Y2_Plugin.VersionUsed=9.22,execute.plugin
+2026-09-04T11:08:27.6222290Z arguments=<a:string>-D:Y2_Plugin.VersionUsed=9.22</a:string><a:string>execute.plugin</a:string>
+2026-09-04T11:08:27.6242013Z iteration=test.9.22-20260904_11827
+2026-09-04T11:08:27.6314521Z Invoke-WebRequest -UseBasicParsing -Method Post -Uri http://Y2-TSTAUTOXXPG2:8181/integrationlauncher -Headers System.Collections.Generic.Dictionary`2[System.String,System.String] -Body <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+2026-09-04T11:08:27.6315452Z         <s:Body>
+2026-09-04T11:08:27.6315800Z         <StartWorkflowAsync xmlns="http://www.cegid.fr/Cbp/IIntegrationTestsLauncherService">
+2026-09-04T11:08:27.6316169Z         <workflow>Y2_Plugins_Clienteling_V8</workflow>
+2026-09-04T11:08:27.6316509Z         <iteration>test.9.22-20260904_11827</iteration>
+2026-09-04T11:08:27.6317022Z         <arguments xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><a:string>-D:Y2_Plugin.VersionUsed=9.22</a:string><a:string>execute.plugin</a:string></arguments>
+2026-09-04T11:08:27.6317489Z         </StartWorkflowAsync>
+2026-09-04T11:08:27.6317768Z         </s:Body>
+2026-09-04T11:08:27.6318090Z         </s:Envelope> -ContentType 'text/xml'
+2026-09-04T11:08:27.7636242Z 
+2026-09-04T11:08:27.7639956Z 
+2026-09-04T11:08:27.7640688Z StatusCode        : 200
+2026-09-04T11:08:27.7641078Z StatusDescription : OK
+2026-09-04T11:08:27.7659240Z Content           : <s:Envelope 
+2026-09-04T11:08:27.7659787Z                     xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><StartWorkflowAsyncResponse xmlns="http
+2026-09-04T11:08:27.7660410Z                     ://www.cegid.fr/Cbp/IIntegrationTestsLauncherService"><StartWorkflowAsyncResult>228</Star...
+2026-09-04T11:08:27.7660948Z RawContent        : HTTP/1.1 200 OK
+2026-09-04T11:08:27.7661370Z                     Content-Length: 272
+2026-09-04T11:08:27.7661984Z                     Content-Type: text/xml; charset=utf-8
+2026-09-04T11:08:27.7662475Z                     Date: Fri, 04 Sep 2026 11:08:27 GMT
+2026-09-04T11:08:27.7663290Z                     Server: Microsoft-HTTPAPI/2.0
+2026-09-04T11:08:27.7663750Z                     
+2026-09-04T11:08:27.7664522Z                     <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/...
+2026-09-04T11:08:27.7665007Z Forms             : 
+2026-09-04T11:08:27.7668087Z Headers           : {[Content-Length, 272], [Content-Type, text/xml; charset=utf-8], [Date, Fri, 04 Sep 2026 11:08:27 
+2026-09-04T11:08:27.7668698Z                     GMT], [Server, Microsoft-HTTPAPI/2.0]}
+2026-09-04T11:08:27.7669170Z Images            : {}
+2026-09-04T11:08:27.7669587Z InputFields       : {}
+2026-09-04T11:08:27.7670064Z Links             : {}
+2026-09-04T11:08:27.7670600Z ParsedHtml        : 
+2026-09-04T11:08:27.7673733Z RawContentLength  : 272
+2026-09-04T11:08:27.7673857Z 
+2026-09-04T11:08:27.8653265Z 
+2026-09-04T11:08:27.8653461Z 
+2026-09-04T11:08:27.9550167Z ##[section]Finishing: launch-testsAutos: Launch Y2_Plugins_Clienteling_V8 for 9.22 @ Y2-TSTAUTOXXPG2

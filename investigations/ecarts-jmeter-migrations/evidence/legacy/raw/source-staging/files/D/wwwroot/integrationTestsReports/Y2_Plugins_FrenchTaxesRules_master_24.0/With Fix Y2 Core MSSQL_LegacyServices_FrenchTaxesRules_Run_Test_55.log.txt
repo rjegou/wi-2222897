@@ -1,0 +1,107 @@
+16:08:07.5332654+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Date d'activation 01/01/2012
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:08:07.5488925+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE PARAMSOC SET SOC_DATA = '40909' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARAMSOC SET SOC_DATA = '40909' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARAMSOC SET SOC_DATA = '40909' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:08:07.5488925+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.385
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.2559
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(0835bafb-c5a6-46f7-bca3-c07829e3a164@sql_Y2_Plugin, 46097808)
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:08:07.5488925+01:00: QTAgent32_40.exe Error: 0 : Error during TestCase Processing: Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException: Assert.AreEqual failed. Expected:<1>. Actual:<0>. Date d'activation 01/01/2012
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.HandleFail(String assertionName, String message, Object[] parameters)
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual[T](T expected, T actual, String message, Object[] parameters)
+   at Cegid.Retail.FrenchTaxesRules.LegacyServices.AutoTest.FrenchTaxesRules_Run.Test_55() in F:\vm-alm-agent-02-A\_work\25692\s\Cegid.Retail.FrenchTaxesRules.LegacyServices.Tests\AutoTest\FrenchTaxesRules\FrenchTaxesRules_Run.g.cs:line 3408
+16:08:07.5488925+01:00: QTAgent32_40.exe Information: 0 : Enter finally block
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:08:07.5488925+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'XXX'
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'XXX'
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'XXX'
+16:08:07.5488925+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.5788
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.442
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(e89490e2-e1a2-4cda-a732-27a0523897c3@sql_Y2_Plugin, 13356514)
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:08:07.5488925+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE CLOSINGTAX WHERE CTA_CLOID IN (SELECT MNG_CLOID FROM CLOSING LEFT OUTER JOIN DAEMON ON DAE_ETABLISS = '110' AND DAE_DAEMONID = MNG_DAEMONID)
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE CLOSINGTAX WHERE CTA_CLOID IN (SELECT CLOSING.MNG_CLOID FROM CLOSING LEFT OUTER JOIN DAEMON ON DAEMON.DAE_ETABLISS = '110' AND DAEMON.DAE_DAEMONID = CLOSING.MNG_DAEMONID )
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE CLOSINGTAX WHERE CTA_CLOID IN (SELECT CLOSING.MNG_CLOID FROM CLOSING LEFT OUTER JOIN DAEMON ON DAEMON.DAE_ETABLISS = '110' AND DAEMON.DAE_DAEMONID = CLOSING.MNG_DAEMONID )
+16:08:07.5488925+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.3166
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.3809
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(6d5bbe6d-d0e1-479d-a085-baa5455b1a94@sql_Y2_Plugin, 25060218)
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:08:07.5488925+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE CLOSING WHERE MNG_DAEMONID IN (SELECT DAE_DAEMONID FROM DAEMON WHERE DAE_ETABLISS = '110' OR (DAE_ETABLISS = '' OR DAE_ETABLISS IS NULL))
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE CLOSING WHERE MNG_DAEMONID IN (SELECT DAEMON.DAE_DAEMONID FROM DAEMON WHERE DAEMON.DAE_ETABLISS = '110' OR (DAEMON.DAE_ETABLISS = '' OR DAEMON.DAE_ETABLISS IS NULL) )
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE CLOSING WHERE MNG_DAEMONID IN (SELECT DAEMON.DAE_DAEMONID FROM DAEMON WHERE DAEMON.DAE_ETABLISS = '110' OR (DAEMON.DAE_ETABLISS = '' OR DAEMON.DAE_ETABLISS IS NULL) )
+16:08:07.5488925+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.392
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.4213
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(478a8b65-9055-42b2-8d65-ae5b712cd026@sql_Y2_Plugin, 559684)
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:08:07.5488925+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE DAEMON WHERE DAE_ETABLISS = '110' OR (DAE_ETABLISS = '' OR DAE_ETABLISS IS NULL)
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE DAEMON WHERE DAE_ETABLISS = '110' OR (DAE_ETABLISS = '' OR DAE_ETABLISS IS NULL)
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE DAEMON WHERE DAE_ETABLISS = '110' OR (DAE_ETABLISS = '' OR DAE_ETABLISS IS NULL)
+16:08:07.5488925+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.3246
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.1966
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(49b30210-3144-48f1-bc62-b24c74b06447@sql_Y2_Plugin, 63297569)
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:08:07.5488925+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE JOURNALEVENT WHERE GHE_CODESITE = '110' AND GHE_NUMERO > 181
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE JOURNALEVENT WHERE GHE_CODESITE = '110' AND GHE_NUMERO > 181
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE JOURNALEVENT WHERE GHE_CODESITE = '110' AND GHE_NUMERO > 181
+16:08:07.5488925+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.3203
+16:08:07.5488925+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:08:07.5645207+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.1255
+16:08:07.5645207+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(8d022c71-dbf4-46ac-83e9-2da859f863c0@sql_Y2_Plugin, 51492572)
+16:08:07.5645207+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:08:07.5645207+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:08:07.5645207+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:08:07.5645207+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '110' AND GHS_NUMERO > 181
+16:08:07.5645207+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '110' AND GHS_NUMERO > 181
+16:08:07.5645207+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '110' AND GHS_NUMERO > 181
+16:08:07.5645207+01:00: root Error: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Exception - Cegid.Erp.Data.ErpBusinessException: An SQL command failed.
+Exception code                     : ERP00001
+Action / method                    : 
+What to do                         : Contact the hotline.
+Call stack                         :
+   at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.<>c__DisplayClass5_0`2.<LogFlow>b__0(T flowLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+Inner exception                    :
+   Cegid.Framework.CbpException: Error executing sql command 'DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '110' AND GHS_NUMERO > 181'
+   Exception code              : CBP00202
+   Action / method             : Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1
+   What to do                  : Check the syntax of the sql command
+   Call stack                  :
+   
+   Inner exception             :
+      System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'JOURNALEVENTSIGN'.
+         at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+         at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+         at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+         at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+         at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+         at Cegid.Erp.Data.Sql.SqlService.GetExecuteNonQueryAffectedRows(IDbCommand command)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_2`1.<ExecuteCommand>b__2()
+         at Cegid.Framework.Data.DbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Framework.Data.SqlServer.SqlDbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_1`1.<ExecuteCommand>b__1()
+         at Cegid.Erp.Data.Sql.SqlService.ExecuteInTransaction[T](DbDataAccessConnection dbDataAccessConnection, Func`1 executor)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+      ClientConnectionId:32e37c07-0bf4-4558-9814-5f8474b0f0a2
+      Error Number:208,State:1,Class:16
+16:08:07.5645207+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Fail, OperationDurationMs=1.3713
+16:08:07.5645207+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(088f8681-2909-43d2-8ebe-12442654995f@sql_Y2_Plugin, 52391524)
+16:08:07.5645207+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')

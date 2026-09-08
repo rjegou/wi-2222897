@@ -1,0 +1,46 @@
+name: WI-2222897-SQLFullText-HostedDiagnostic-$(Date:yyyyMMdd).$(Rev:r)
+
+trigger: none
+pr: none
+schedules: []
+
+pool:
+  vmImage: windows-2025
+
+stages:
+- stage: HostedDiagnostic
+  displayName: Hosted Windows diagnostic only
+  jobs:
+  - job: HostAndDockerReadOnly
+    displayName: OS and Docker read-only probe
+    steps:
+    - checkout: none
+    - powershell: |
+        $ErrorActionPreference = 'Continue'
+        $root = "$(Build.ArtifactStagingDirectory)"
+        New-Item -ItemType Directory -Force -Path $root | Out-Null
+        $log = Join-Path $root 'host-docker-diagnostic.txt'
+        Start-Transcript -Path $log -Force | Out-Null
+        Write-Host "Agent.Name=$(Agent.Name)"
+        Write-Host "Agent.OS=$(Agent.OS)"
+        Write-Host "Agent.OSArchitecture=$(Agent.OSArchitecture)"
+        Write-Host "Agent.OSVersion=$(Agent.OSVersion)"
+        Write-Host "Agent.Version=$(Agent.Version)"
+        Write-Host "Image label=windows-2025"
+        Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber,OSArchitecture | Format-List
+        Write-Host '--- docker version ---'
+        docker version
+        $versionCode = $LASTEXITCODE
+        Write-Host "docker version exit=$versionCode"
+        Write-Host '--- docker info ---'
+        docker info
+        $infoCode = $LASTEXITCODE
+        Write-Host "docker info exit=$infoCode"
+        Write-Host '--- docker context ---'
+        docker context ls
+        Stop-Transcript | Out-Null
+        if ($versionCode -ne 0 -or $infoCode -ne 0) { throw "Docker diagnostic failed: version=$versionCode info=$infoCode" }
+      displayName: Read-only OS and Docker diagnostic
+    - publish: $(Build.ArtifactStagingDirectory)
+      artifact: hosted-diagnostic
+      displayName: Publish minimal diagnostic log

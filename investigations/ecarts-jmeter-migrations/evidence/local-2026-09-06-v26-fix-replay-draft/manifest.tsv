@@ -1,0 +1,11 @@
+kind	path	provenance_or_role
+candidate	azure-pipelines.candidate.yml	brouillon local non exécutable
+candidate	campaigns/ExportRunOnly.xml	descripteur candidat vers Export_Run.xml complet
+candidate	scripts/stage-evidence.ps1	liste explicite des fichiers à publier dans PipelineArtifact
+source	templates/task-run-campaign.source.yml	Y2_Tools_Jmeter_Workflow/PipelineTemplates/task-run-campaign.v1.yml
+candidate	templates/task-run-campaign.candidate.yml	copie locale sans PublishTestResults
+source	templates/task-install-y2-test-tools.source.yml	Y2_Tools_Jmeter_Workflow/PipelineTemplates/task-install-y2-test-tools.v1.yml
+source	templates/task-deploy-in-containerized-job.source.yml	Y2_Tools_PlatformDeploy/Src/PipelineTemplates/task-deploy-in-containerized-job.v2.yml
+candidate	templates/task-deploy-in-containerized-job.candidate.yml	copie locale sans publication interne, restauration conservée
+source	templates/docker-pipeline-deploy.source.ps1	Y2_Tools_PlatformDeploy/Src/Powershell/Code/docker-pipeline-deploy.ps1
+source	templates/docker-pipeline-deploy-ps7.source.ps1	Y2_Tools_PlatformDeploy/Src/Powershell/Code/docker-pipeline-deploy-ps7.ps1

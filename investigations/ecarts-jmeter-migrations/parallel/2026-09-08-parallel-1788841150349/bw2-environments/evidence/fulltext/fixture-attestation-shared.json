@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1",
+  "jobScope": "14251/round2/SQL2019",
+  "agentName": "shared-host",
+  "osVersion": "Windows Server 2025",
+  "exclusive": false,
+  "imageDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "mounts": ["workspace"],
+  "networks": [],
+  "ports": [],
+  "endpoints": [],
+  "cleanupOwner": "fulltext-runner"
+}

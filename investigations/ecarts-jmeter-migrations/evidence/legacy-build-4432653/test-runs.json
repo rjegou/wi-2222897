@@ -1,0 +1,19 @@
+{
+  "count": 1,
+  "value": [
+    {
+      "id": 6180481,
+      "name": "TestRun_Clienteling CI_7.326",
+      "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6180481",
+      "isAutomated": true,
+      "state": "Completed",
+      "totalTests": 0,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "passedTests": 0,
+      "unanalyzedTests": 0,
+      "revision": 4,
+      "webAccessUrl": "https://dev.azure.com/cegid/Retail/_TestManagement/Runs?runId=6180481&_a=runCharts"
+    }
+  ]
+}

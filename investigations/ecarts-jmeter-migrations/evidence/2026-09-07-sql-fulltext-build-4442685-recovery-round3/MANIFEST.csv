@@ -1,0 +1,6 @@
+path,kind,source,status
+README.md,curated,official REST methods 1 and 2,created
+method1-get-artifact-2019,api-attempt,dev.azure.com -> artprodsu6weu.artifacts.visualstudio.com,302 no ZIP
+method1-get-artifact-2025,api-attempt,dev.azure.com -> artprodsu6weu.artifacts.visualstudio.com,302 no ZIP
+method2-ticketed-2019,api-attempt,dev.azure.com ticketed artifacts endpoint,404 no ZIP
+method2-ticketed-2025,api-attempt,dev.azure.com ticketed artifacts endpoint,404 no ZIP

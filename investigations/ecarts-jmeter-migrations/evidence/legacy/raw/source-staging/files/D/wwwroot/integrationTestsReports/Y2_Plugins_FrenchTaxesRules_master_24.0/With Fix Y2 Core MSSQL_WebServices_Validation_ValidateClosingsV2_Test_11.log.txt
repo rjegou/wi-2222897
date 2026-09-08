@@ -1,0 +1,27 @@
+16:08:12.4948670+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Modification date d'activation NF525 au 23/05/2014
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:08:12.5105041+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE PARAMSOC SET SOC_DATA = '41782' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARAMSOC SET SOC_DATA = '41782' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARAMSOC SET SOC_DATA = '41782' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+16:08:12.5105041+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.538
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.6156
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(0917cbfe-0576-4c14-bd8f-166f94d362e7@sql_Y2_Plugin, 24876723)
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:08:12.5105041+01:00: QTAgent32_40.exe Error: 0 : Error during TestCase Processing: Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException: Assert.AreEqual failed. Expected:<1>. Actual:<0>. Modification date d'activation NF525 au 23/05/2014
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.HandleFail(String assertionName, String message, Object[] parameters)
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual[T](T expected, T actual, String message, Object[] parameters)
+   at Cegid.Retail.FrenchTaxesRules.WebServices.AutoTest.Validation_ValidateClosingsV2.Test_11() in F:\vm-alm-agent-02-A\_work\25692\s\Cegid.Retail.FrenchTaxesRules.WebServices.Tests\AutoTest\Validation\Validation_ValidateClosingsV2.g.cs:line 1370
+16:08:12.5105041+01:00: QTAgent32_40.exe Information: 0 : Enter finally block
+16:08:12.5105041+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: delete dans la table DAEMON
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:08:12.5105041+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE FROM DAEMON WHERE DAE_DAEMONID IN ("c67b8887-d595-4e91-801d-a8d191b6f1fe", "367eddcf-b68e-4d33-8d61-54142c99544b", "820f2658-1ea6-4054-8f8b-e64dc39fe35a", "55097179-f017-42fc-8c26-84a0c8955929", "98d92239-bcb0-466e-b64a-0ed249e3e25e")
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE FROM DAEMON WHERE DAE_DAEMONID IN ('c67b8887-d595-4e91-801d-a8d191b6f1fe', '367eddcf-b68e-4d33-8d61-54142c99544b', '820f2658-1ea6-4054-8f8b-e64dc39fe35a', '55097179-f017-42fc-8c26-84a0c8955929', '98d92239-bcb0-466e-b64a-0ed249e3e25e' )
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE FROM DAEMON WHERE DAE_DAEMONID IN ('c67b8887-d595-4e91-801d-a8d191b6f1fe', '367eddcf-b68e-4d33-8d61-54142c99544b', '820f2658-1ea6-4054-8f8b-e64dc39fe35a', '55097179-f017-42fc-8c26-84a0c8955929', '98d92239-bcb0-466e-b64a-0ed249e3e25e' )
+16:08:12.5105041+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.3299
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.306
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(163a2c7d-ca1f-4602-8b99-9531f35258e6@sql_Y2_Plugin, 22290126)
+16:08:12.5105041+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')

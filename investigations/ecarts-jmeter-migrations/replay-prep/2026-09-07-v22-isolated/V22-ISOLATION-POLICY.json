@@ -1,0 +1,46 @@
+{
+  "schema": "v22-isolation-policy-1",
+  "containerResourceName": "v22Jmeter",
+  "scopePattern": "^[0-9]+-(FixHistorical|FixCandidate)-prewrite/(FixHistorical|FixCandidate)$",
+  "destinationMode": "same-job-container-hostname-only",
+  "allowedMounts": [
+    {
+      "logical": "job-work",
+      "sourcePattern": "(?i)[\\\\/]_work[\\\\/][0-9]+(?:[\\\\/]|$)",
+      "destinationPattern": "^C:\\\\__w[\\\\/][0-9]+(?:[\\\\/]|$)",
+      "readOnly": false
+    },
+    {
+      "logical": "agent-tools",
+      "sourcePattern": "(?i)[\\\\/]_work[\\\\/]_tool(?:[\\\\/]|$)",
+      "destinationPattern": "^C:\\\\__t(?:[\\\\/]|$)",
+      "readOnly": false
+    },
+    {
+      "logical": "agent-externals",
+      "sourcePattern": "(?i)[\\\\/]externals(?:[\\\\/]|$)",
+      "destinationPattern": "^C:\\\\__a[\\\\/]externals(?:[\\\\/]|$)",
+      "readOnly": true
+    },
+    {
+      "logical": "agent-tasks-optional",
+      "sourcePattern": "(?i)[\\\\/]_work[\\\\/]_tasks(?:[\\\\/]|$)",
+      "destinationPattern": "^C:\\\\__w[\\\\/]_tasks(?:[\\\\/]|$)",
+      "readOnly": true,
+      "optional": true
+    }
+  ],
+  "forbiddenMountPatterns": [
+    "(?i)docker[\\\\/\\\\.]sock",
+    "(?i)docker_engine",
+    "(?i)\\\\\\\\.\\\\pipe"
+  ],
+  "allowedNetworks": [
+    {
+      "logical": "azure-job-network",
+      "namePattern": "^vsts_network_[0-9a-fA-F]+$",
+      "idPattern": "^[0-9a-fA-F]{12,64}$"
+    }
+  ],
+  "allowedPorts": []
+}

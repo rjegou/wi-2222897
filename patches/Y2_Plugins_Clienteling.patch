@@ -1,0 +1,96 @@
+# Travail non committe extrait le 2026-09-08
+# worktree : Y2_Plugins_Clienteling
+# branche  : master
+# HEAD     : 0c0fd26533e46b13e029276f90b5c085c1804012
+# Reapplication : git -C <clone> apply Y2_Plugins_Clienteling.patch
+#
+diff --git a/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_ResetFTSCustomer.xml b/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_ResetFTSCustomer.xml
+index 27696af2d..df2f154fc 100644
+--- a/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_ResetFTSCustomer.xml
++++ b/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_ResetFTSCustomer.xml
+@@ -1,5 +1,5 @@
+ <?xml version="1.0"?>
+-<TestPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="WebServiceTestPlan" Code="Deployment:FullTextSearchResetCustomer" IsSelected="true" Comment="Plan de test pour l'opération FullTextSearchResetCustomer" Operation="http://www.cegid.fr/Retail/1.0/IDeploymentWebService/FullTextSearchResetCustomer" WebService="DeploymentService.svc" xmlns="TestAutomation">
++<TestPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="WebServiceTestPlan" Code="Deployment:FullTextSearchResetCustomer" IsSelected="true" Comment="Plan de test pour l'opération FullTextSearchResetCustomer" Operation="http://www.cegid.fr/Retail/1.0/IDeploymentWebService/FullTextSearchResetCustomer" WebService="ClientelingDeploymentService.svc" xmlns="TestAutomation">
+   <TestCases>
+     <TestCase Id="afedb581-490d-42ce-b3db-3ab1d488aa76" Code="01" Label="NC" Input="InputFiles\Deployment\FullTextSearchResetCustomer_01.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="normal test case" Owner="guhayette@cegid.fr">
+       <PreDataQueries />
+@@ -8,4 +8,4 @@
+       <FinalDataQueries />
+     </TestCase>
+   </TestCases>
+-</TestPlan>
+\ No newline at end of file
++</TestPlan>
+diff --git a/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_UpdateFTSCatalog.xml b/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_UpdateFTSCatalog.xml
+index 32077bc9e..b62b620d1 100644
+--- a/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_UpdateFTSCatalog.xml
++++ b/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_UpdateFTSCatalog.xml
+@@ -1,5 +1,5 @@
+ <?xml version="1.0"?>
+-<TestPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="WebServiceTestPlan" Code="Deployment:FullTextSearchUpdateProduct" IsSelected="true" Comment="Plan de test pour l'opération FullTextSearchUpdateProduct" Operation="http://www.cegid.fr/Retail/1.0/IDeploymentWebService/FullTextSearchUpdateProduct" WebService="DeploymentService.svc" xmlns="TestAutomation">
++<TestPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="WebServiceTestPlan" Code="Deployment:FullTextSearchUpdateProduct" IsSelected="true" Comment="Plan de test pour l'opération FullTextSearchUpdateProduct" Operation="http://www.cegid.fr/Retail/1.0/IDeploymentWebService/FullTextSearchUpdateProduct" WebService="ClientelingDeploymentService.svc" xmlns="TestAutomation">
+   <TestCases>
+     <TestCase Id="afedb581-490d-42ce-b3db-3ab1d488aa76" Code="01" Label="NC" Input="InputFiles\Deployment\FullTextSearchUpdateProduct_01.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="normal test case" Owner="guhayette@cegid.fr">
+       <PreDataQueries />
+@@ -8,4 +8,4 @@
+       <FinalDataQueries />
+     </TestCase>
+   </TestCases>
+-</TestPlan>
+\ No newline at end of file
++</TestPlan>
+diff --git a/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_UpdateFTSCustomer.xml b/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_UpdateFTSCustomer.xml
+index 86b6ee1eb..0ccd0ec5e 100644
+--- a/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_UpdateFTSCustomer.xml
++++ b/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_UpdateFTSCustomer.xml
+@@ -1,5 +1,5 @@
+ <?xml version="1.0"?>
+-<TestPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="WebServiceTestPlan" Code="Deployment:FullTextSearchUpdateCustomer" IsSelected="true" Comment="Plan de test pour l'opération FullTextSearchUpdateCustomer" Operation="http://www.cegid.fr/Retail/1.0/IDeploymentWebService/FullTextSearchUpdateCustomer" WebService="DeploymentService.svc" xmlns="TestAutomation">
++<TestPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="WebServiceTestPlan" Code="Deployment:FullTextSearchUpdateCustomer" IsSelected="true" Comment="Plan de test pour l'opération FullTextSearchUpdateCustomer" Operation="http://www.cegid.fr/Retail/1.0/IDeploymentWebService/FullTextSearchUpdateCustomer" WebService="ClientelingDeploymentService.svc" xmlns="TestAutomation">
+   <TestCases>
+     <TestCase Id="afedb581-490d-42ce-b3db-3ab1d488aa76" Code="01" Label="NC" Input="InputFiles\Deployment\FullTextSearchUpdateCustomer_01.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="normal test case" Owner="guhayette@cegid.fr">
+       <PreDataQueries />
+@@ -8,4 +8,4 @@
+       <FinalDataQueries />
+     </TestCase>
+   </TestCases>
+-</TestPlan>
+\ No newline at end of file
++</TestPlan>
+diff --git a/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Mobility_GetClientelingParameters.xml b/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Mobility_GetClientelingParameters.xml
+index 489af9112..653b65aa3 100644
+--- a/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Mobility_GetClientelingParameters.xml
++++ b/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Mobility_GetClientelingParameters.xml
+@@ -1,5 +1,5 @@
+ <?xml version="1.0"?>
+-<TestPlan xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="WebServiceTestPlan" Code="ClientelingParameter:Get" IsSelected="true" Comment="Plan de test pour l'opération GetClientelingParameters" Operation="http://www.cegid.fr/Retail/1.0/IMobilityWebService/GetClientelingParameters" WebService="MobilityService.svc" xmlns="TestAutomation">
++<TestPlan xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="WebServiceTestPlan" Code="ClientelingParameter:Get" IsSelected="true" Comment="Plan de test pour l'opération GetClientelingParameters" Operation="http://www.cegid.fr/Retail/1.0/IMobilityWebService/GetClientelingParameters" WebService="ClientelingMobilityService.svc" xmlns="TestAutomation">
+   <TestCases>
+     <TestCase Id="c99b9699-4138-4659-8b7a-594889c0faec" Code="01" Label="NC - récupération du paramétrage" Input="InputFiles\Mobility\GetClientelingParameters_01.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="normal test case : récupération du paramétrage" Owner="spattou@cegid.fr">
+       <PreDataQueries>
+@@ -419,4 +419,4 @@
+       </FinalDataQueries>
+     </TestCase>
+   </TestCases>
+-</TestPlan>
+\ No newline at end of file
++</TestPlan>
+diff --git a/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Mobility_UpdateClientelingParameters.xml b/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Mobility_UpdateClientelingParameters.xml
+index d0e484211..d6a352273 100644
+--- a/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Mobility_UpdateClientelingParameters.xml
++++ b/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Mobility_UpdateClientelingParameters.xml
+@@ -1,5 +1,5 @@
+ <?xml version="1.0"?>
+-<TestPlan xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="WebServiceTestPlan" Code="ClientelingParameter:Update" IsSelected="true" Comment="Plan de test pour l'opération UpdateClientelingParameters" Operation="http://www.cegid.fr/Retail/1.0/IMobilityWebService/UpdateClientelingParameters" WebService="MobilityService.svc" xmlns="TestAutomation">
++<TestPlan xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="WebServiceTestPlan" Code="ClientelingParameter:Update" IsSelected="true" Comment="Plan de test pour l'opération UpdateClientelingParameters" Operation="http://www.cegid.fr/Retail/1.0/IMobilityWebService/UpdateClientelingParameters" WebService="ClientelingMobilityService.svc" xmlns="TestAutomation">
+   <TestCases>
+     <TestCase Id="dfa7c321-a50a-4127-8810-ec9026df4c9e" Code="01" Label="NC - mise à jour du paramétrage - update 1" Input="InputFiles\\Mobility\UpdateClientelingParameters_01.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="normal test case : mise à jour du paramétrage" Owner="spattou@cegid.fr">
+       <PreDataQueries />
+@@ -55,4 +55,4 @@
+       </FinalDataQueries>
+     </TestCase>
+   </TestCases>
+-</TestPlan>
+\ No newline at end of file
++</TestPlan>

@@ -1,0 +1,8 @@
+observed_at,system,identifier,method,status
+2026-09-07T15:49:45Z,Azure DevOps,build 4442007,REST build and log readback,succeeded with diagnostic defect
+2026-09-07T15:52:26Z,Azure DevOps,build 4442013,REST build and log readback,succeeded
+2026-09-07T15:53:38Z,Azure DevOps,build 4442019,REST build timeline and task log readback,SQL2019 failed probe parse; SQL2025 in progress at last read
+2026-09-07T15:49Z,Azure DevOps,definition 14250,REST definition readback,dedicated no-trigger diagnostic
+2026-09-07T15:53Z,Azure DevOps,definition 14251,REST definition readback,dedicated no-trigger smoke
+2026-09-07,Git,commit 412602e55b0e16130f3de7567e6f8979c63bf9cf,REST push and branch readback,candidates published only to dedicated branch
+2026-09-07,Git,commit 5fdc6150b5af9c41ec6a6684a7da62bd2825ac3a,REST push and branch readback,diagnostic interpolation correction

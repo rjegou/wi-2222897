@@ -1,0 +1,98 @@
+10:31:36.3437872+02:00: QTAgent32_40.exe Information: 0 : processing file = (D:\Temp\TempoAutoTest\BA011E97-536B-4D41-A2F9-DB60C2828B7C\IntegrationTests\Y2_Plugin.Current\sql\sources\IntegratedTests\AutoTest\Data\WebServices\TestPlans\InputFiles\Mobility\GetAccessRights_02.xml)
+10:31:36.3437872+02:00: root Verbose: 0 : Cegid.Framework.ServiceModel | Authorization | User 'CEGIDGROUP\SvcTestAutoRetail' has access to folder 'sql_Y2_Plugin' : Claim of type 'http://www.cegid.fr/claims/erp/user/login' added.
+10:31:36.3437872+02:00: root Information: 0 : Cegid.Framework.ServiceModel | Authorization | Status=Granted, User=CEGIDGROUP\SvcTestAutoRetail, Resource=/ca4ab36f-e23b-4969-bc95-22e5f7a3cec6/
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Function ' - GetAccessRights' - OperationStatus=Start
+10:31:36.3594112+02:00: root Verbose: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Function ' - GetAccessRights' - Input parameters - <<Cegid.Retail.Clienteling.ServiceContracts.Mobility.GetAccessRightsRequest> - <Cegid.Retail.WebServices.Tools.RetailContext>>
+10:31:36.3594112+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:31:36.3594112+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT TOP (1) RTRIM([Extent1].[MMA_CONTEXT]) AS [MMA_CONTEXT], RTRIM([Extent1].[MMA_MODULE]) AS [MMA_MODULE], [Extent1].[MMA_MN1] AS [MMA_MN1], [Extent1].[MMA_MN2] AS [MMA_MN2], RTRIM([Extent1].[MMA_PREDEFINI]) AS [MMA_PREDEFINI] FROM [MMOBILCTXMODULE] AS [Extent1] WHERE ([Extent1].[MMA_MODULE] = @p__linq__0) AND ([Extent1].[MMA_CONTEXT] = @p__linq__1) 
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='ART', p__linq__1='IPO'
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.6064
+10:31:36.3594112+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:31:36.3594112+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT [Extent1].[MN_1] AS [MN_1], [Extent1].[MN_LIBELLE] AS [MN_LIBELLE], [Extent1].[MN_TAG] AS [MN_TAG] FROM [MENU] AS [Extent1] WHERE (([Extent1].[MN_1] = @p__linq__0) AND ([Extent1].[MN_2] = @p__linq__1)) AND ([Extent1].[MN_3] > 0) 
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0=115, p__linq__1=2
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.5912
+10:31:36.3594112+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:31:36.3594112+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT TOP (1) RTRIM([Extent1].[MMA_CONTEXT]) AS [MMA_CONTEXT], RTRIM([Extent1].[MMA_MODULE]) AS [MMA_MODULE], [Extent1].[MMA_MN1] AS [MMA_MN1], [Extent1].[MMA_MN2] AS [MMA_MN2], RTRIM([Extent1].[MMA_PREDEFINI]) AS [MMA_PREDEFINI] FROM [MMOBILCTXMODULE] AS [Extent1] WHERE ([Extent1].[MMA_MODULE] = @p__linq__0) AND ([Extent1].[MMA_CONTEXT] = @p__linq__1) 
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='OPD', p__linq__1='IPO'
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.4653
+10:31:36.3594112+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:31:36.3594112+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT [Extent1].[MN_1] AS [MN_1], [Extent1].[MN_LIBELLE] AS [MN_LIBELLE], [Extent1].[MN_TAG] AS [MN_TAG] FROM [MENU] AS [Extent1] WHERE (([Extent1].[MN_1] = @p__linq__0) AND ([Extent1].[MN_2] = @p__linq__1)) AND ([Extent1].[MN_3] > 0) 
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0=115, p__linq__1=4
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.5692
+10:31:36.3594112+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:31:36.3594112+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT TOP (1) RTRIM([Extent1].[MMA_CONTEXT]) AS [MMA_CONTEXT], RTRIM([Extent1].[MMA_MODULE]) AS [MMA_MODULE], [Extent1].[MMA_MN1] AS [MMA_MN1], [Extent1].[MMA_MN2] AS [MMA_MN2], RTRIM([Extent1].[MMA_PREDEFINI]) AS [MMA_PREDEFINI] FROM [MMOBILCTXMODULE] AS [Extent1] WHERE ([Extent1].[MMA_MODULE] = @p__linq__0) AND ([Extent1].[MMA_CONTEXT] = @p__linq__1) 
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='VEN', p__linq__1='IPO'
+10:31:36.3594112+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.3637
+10:31:36.3750399+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:31:36.3750399+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:31:36.3750399+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT [Extent1].[MN_1] AS [MN_1], [Extent1].[MN_LIBELLE] AS [MN_LIBELLE], [Extent1].[MN_TAG] AS [MN_TAG] FROM [MENU] AS [Extent1] WHERE (([Extent1].[MN_1] = @p__linq__0) AND ([Extent1].[MN_2] = @p__linq__1)) AND ([Extent1].[MN_3] > 0) 
+10:31:36.3750399+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0=115, p__linq__1=3
+10:31:36.3750399+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.5152
+10:31:36.3750399+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(d2b3f635-c5ee-453d-9451-02d1fb6eede2@sql_Y2_Plugin, 28919809)
+10:31:36.3750399+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:31:36.3750399+02:00: root Verbose: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Fonction ' - GetAccessRights' - Paramètres de sortie - <<Cegid.Retail.Clienteling.ServiceContracts.Mobility.GetAccessRightsReply>>
+10:31:36.3750399+02:00: root Information: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Fonction ' - GetAccessRights' - OperationStatus=Success, OperationDurationMs=10.3419
+10:31:36.3750399+02:00: QTAgent32_40.exe Information: 0 : Reply = <GetAccessRightsResponse xmlns="http://www.cegid.fr/Retail/1.0">
+  <GetAccessRightsResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <Menus>
+      <Menu>
+        <Module>Item</Module>
+        <TagId>115101</TagId>
+        <TagLabel>Recherche article</TagLabel>
+      </Menu>
+      <Menu>
+        <Module>VariousOperation</Module>
+        <TagId>115301</TagId>
+        <TagLabel>Annuler un paiement</TagLabel>
+      </Menu>
+      <Menu>
+        <Module>VariousOperation</Module>
+        <TagId>115302</TagId>
+        <TagLabel>Imprimer un duplicata</TagLabel>
+      </Menu>
+      <Menu>
+        <Module>VariousOperation</Module>
+        <TagId>115303</TagId>
+        <TagLabel>Reprise de tickets en attente</TagLabel>
+      </Menu>
+      <Menu>
+        <Module>VariousOperation</Module>
+        <TagId>115304</TagId>
+        <TagLabel>Imprimer un ticket cadeau</TagLabel>
+      </Menu>
+      <Menu>
+        <Module>VariousOperation</Module>
+        <TagId>115305</TagId>
+        <TagLabel>Consulter l'état des paiements</TagLabel>
+      </Menu>
+      <Menu>
+        <Module>Sale</Module>
+        <TagId>115201</TagId>
+        <TagLabel>Saisie des ventes</TagLabel>
+      </Menu>
+      <Menu>
+        <Module>Sale</Module>
+        <TagId>115202</TagId>
+        <TagLabel>Saisir un retour avec contrôle</TagLabel>
+      </Menu>
+      <Menu>
+        <Module>Sale</Module>
+        <TagId>115203</TagId>
+        <TagLabel>Saisir un retour sans contrôle</TagLabel>
+      </Menu>
+    </Menus>
+  </GetAccessRightsResult>
+</GetAccessRightsResponse>
+10:31:36.3750399+02:00: QTAgent32_40.exe Information: 0 : Check: compare full xml
+10:31:36.3750399+02:00: QTAgent32_40.exe Information: 0 : Error XmlDiff confirmed ((False, Find change in diffgram))
+10:31:36.3750399+02:00: QTAgent32_40.exe Error: 0 : Modification - expected (Reprise de paniers en attente), result (Reprise de tickets en attente). Voir le chemin (/GetAccessRightsResponse[1]/GetAccessRightsResult[1]/Menus[1]/Menu[4]/TagLabel)
+10:31:36.3750399+02:00: QTAgent32_40.exe Error: 0 : Error during TestCase Processing: Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException: Assert.IsTrue failed. Modification - expected (Reprise de paniers en attente), result (Reprise de tickets en attente). Voir le chemin (/GetAccessRightsResponse[1]/GetAccessRightsResult[1]/Menus[1]/Menu[4]/TagLabel)
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.HandleFail(String assertionName, String message, Object[] parameters)
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(Boolean condition, String message, Object[] parameters)
+   at Cegid.Retail.Clienteling.WebServices.AutoTest.Mobility_GetAccessRights.Test_02() in D:\a\1\s\Cegid.Retail.Clienteling.WebServices.Tests\AutoTest\Mobility\Mobility_GetAccessRights.g.cs:line 148
+10:31:36.3750399+02:00: QTAgent32_40.exe Information: 0 : Enter finally block

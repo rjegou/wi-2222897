@@ -1,0 +1,75 @@
+# Travail non committe extrait le 2026-09-08
+# worktree : Y2_Tools_Jmeter_Workflow
+# branche  : master
+# HEAD     : 4db2dcdab647249de3cdc27eadaf15a158b3a26a
+# Reapplication : git -C <clone> apply Y2_Tools_Jmeter_Workflow.patch
+#
+diff --git a/azure-pipeline.yml b/azure-pipeline.yml
+index 74c734c..1cada56 100644
+--- a/azure-pipeline.yml
++++ b/azure-pipeline.yml
+@@ -273,7 +273,8 @@ stages:
+ 
+     - task: JFrogNuGet@1
+       displayName: 'Artifactory NuGet push'
+-      condition: and(succeeded(), eq(variables.isMasterOrReleaseOrDevMode, true) )
++      # SAFE TEST BRANCH: build the nupkg but never publish it to Artifactory.
++      condition: eq(1, 0)
+       inputs:
+         command: push
+         artifactoryConnection: ArtifactoryCloudV2-Retail
+@@ -284,13 +285,16 @@ stages:
+ 
+     - task: JFrogPublishBuildInfo@1
+       displayName: 'Publish Artifactory BuildInfo'
+-      condition: and(succeeded(), eq(variables.isMasterOrReleaseOrDevMode, true) )
++      # SAFE TEST BRANCH: do not create/update an Artifactory build record.
++      condition: eq(1, 0)
+       inputs:
+         artifactoryConnection: ArtifactoryCloudV2-Retail
+         buildName: '$(Build.DefinitionName)'
+         buildNumber: '$(Build.BuildNumber)'
+ 
+ - stage: JMeter_ServerCore_ltsc_dotnet8
++  # SAFE TEST BRANCH: Docker build template pushes the image to staging.
++  condition: eq(1, 0)
+   displayName: Build (JMeter-windowsservercore-ltsc) dotnet8
+   dependsOn:
+     - Build
+@@ -307,6 +311,8 @@ stages:
+     - template: .\Docker\Y2-JMeter\job-build.yml
+ 
+ - stage: JMeter_ServerCore_ltsc_dotnet6
++  # SAFE TEST BRANCH: Docker build template pushes the image to staging.
++  condition: eq(1, 0)
+   displayName: Build (JMeter-windowsservercore-ltsc) dotnet6
+   dependsOn:
+     - Build
+@@ -323,6 +329,8 @@ stages:
+     - template: .\Docker\Y2-JMeter\job-build.yml
+ 
+ - stage: JMeter_ServerCore_ltsc_dotnet10
++  # SAFE TEST BRANCH: Docker build template pushes the image to staging.
++  condition: eq(1, 0)
+   displayName: Build (JMeter-windowsservercore-ltsc) dotnet10
+   dependsOn:
+     - Build
+@@ -339,6 +347,8 @@ stages:
+     - template: .\Docker\Y2-JMeter\job-build.yml
+ 
+ - stage: JMeter_ServerCore_ltsc2025_dotnet10
++  # SAFE TEST BRANCH: Docker build template pushes the image to staging.
++  condition: eq(1, 0)
+   displayName: Build (JMeter-windowsservercore-ltsc2025) dotnet10
+   dependsOn:
+     - Build
+@@ -356,7 +366,8 @@ stages:
+     - template: .\Docker\Y2-JMeter\job-build.yml
+ 
+ - stage: Promote
+-  condition: and(succeeded(), eq(variables['isMasterOrRelease'], true), not(eq(variables['Build.Reason'], 'Schedule')))
++  # SAFE TEST BRANCH: no NuGet/Docker promotion and no source tag.
++  condition: eq(1, 0)
+   dependsOn:
+     - JMeter_ServerCore_ltsc_dotnet8
+     - JMeter_ServerCore_ltsc_dotnet6

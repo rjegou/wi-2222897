@@ -1,0 +1,7 @@
+SOAP_XPATH=//*[local-name()='Fault' and namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/']/detail/faultcode
+SOAP_NAMESPACE=true
+SOAP_POSTCONDITION=PASS
+NON_SOAP_XPATH=//Result
+NON_SOAP_NAMESPACE=false
+NON_SOAP_POSTCONDITION=PASS
+JMX=C:\Users\jegour\OneDrive - CEGID\Documents\repertoireTravailRon\missions\delivery-acceleration\context\WI-2222897\investigations\ecarts-jmeter-migrations\evidence\local-2026-09-07-soap-namespace-aware-round13\generated-jmx\soap-fault.jmx

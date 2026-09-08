@@ -1,0 +1,5 @@
+item,source,identifier,method,result
+PlatformDeploy differential,local evidence script,2026-09-07-brain-reprise-consolidated-round6/test-platformdeploy-differential-round6.ps1,PowerShell process execution,6/6 cases pass; init-container not invoked
+InventoryTracking commit,Azure DevOps Git REST,Y2_Plugins_InventoryTracking ef3d87034d38b88aca04c824061b140e2a29252c,read-only commit/change API,Edit=3 including one tree entry
+InventoryTracking baseline,Azure DevOps build log,4434070 log 51,read-only log retrieval,MSB3245 and CS0103 historical diagnostics
+InventoryTracking corrected,Azure DevOps build logs,4440774 log 43 and 4440884 log 51,read-only log retrieval,MSB3245=0 and CS0103=0

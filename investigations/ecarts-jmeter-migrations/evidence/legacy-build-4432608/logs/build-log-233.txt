@@ -1,0 +1,142 @@
+2026-09-04T10:53:08.0590429Z ##[section]Starting: dotNet-build: Test assemblies
+2026-09-04T10:53:08.0614989Z ==============================================================================
+2026-09-04T10:53:08.0615119Z Task         : Visual Studio Test
+2026-09-04T10:53:08.0615190Z Description  : Run unit and functional tests (Selenium, Appium, Coded UI test, etc.) using the Visual Studio Test (VsTest) runner. Test frameworks that have a Visual Studio test adapter such as MsTest, xUnit, NUnit, Chutzpah (for JavaScript tests using QUnit, Mocha and Jasmine), etc. can be run. Tests can be distributed on multiple agents using this task (version 2 and later).
+2026-09-04T10:53:08.0615452Z Version      : 2.274.0
+2026-09-04T10:53:08.0615523Z Author       : Microsoft Corporation
+2026-09-04T10:53:08.0615600Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/test/vstest
+2026-09-04T10:53:08.0615689Z ==============================================================================
+2026-09-04T10:53:09.6121015Z Running tests using vstest.console.exe runner.
+2026-09-04T10:53:09.6121425Z ======================================================
+2026-09-04T10:53:09.6121691Z Test selector : Test assemblies
+2026-09-04T10:53:09.6121974Z Test filter criteria : TestCategory!=BDD
+2026-09-04T10:53:09.6122251Z Search folder : D:\a\1\s
+2026-09-04T10:53:09.6247550Z Action when minimum tests threshold not met : donothing
+2026-09-04T10:53:09.6247915Z Minimum tests expected to be run: 0
+2026-09-04T10:53:09.6248253Z VisualStudio version selected for test execution : latest
+2026-09-04T10:53:09.6248619Z Attempting to find vstest.console from a visual studio installation with version [17.0,18.0).
+2026-09-04T10:53:09.7754677Z Run in parallel : false
+2026-09-04T10:53:09.7756382Z Run in isolation : false
+2026-09-04T10:53:09.7756996Z Path to custom adapters : undefined
+2026-09-04T10:53:09.7759677Z Other console options : undefined
+2026-09-04T10:53:09.7763564Z Code coverage enabled : true
+2026-09-04T10:53:09.7767796Z Diagnostics enabled : false
+2026-09-04T10:53:09.7789649Z Run the tests locally using vstest.console.exe
+2026-09-04T10:53:09.7790237Z ========================================================
+2026-09-04T10:53:09.7794790Z Source filter: **\Cegid.Retail.Clienteling*.Tests.dll,!**\*TestAdapter.dll,!**\obj\**
+2026-09-04T10:53:09.9923741Z [command]D:\a\_tasks\VSTest_ef087383-ee5e-42c7-9a53-ab56c98420f9\2.274.0\Modules\DTAExecutionHost.exe --inputFile D:\a\_temp\input_d16f8c20-a84e-11f1-b5c9-f70e50aa3b57.json
+2026-09-04T10:53:10.0014195Z ======================================================
+2026-09-04T10:53:10.1266335Z ##########################################################################
+2026-09-04T10:53:10.1267133Z DtaExecutionHost version 19.240.34919.1.
+2026-09-04T10:53:10.5471332Z Starting TestExecution Model...
+2026-09-04T10:53:12.0634189Z Result Attachments will be stored in LogStore
+2026-09-04T10:53:12.0982764Z Run Attachments will be stored in LogStore
+2026-09-04T10:53:12.1066848Z Result Attachments will be stored in LogStore
+2026-09-04T10:53:12.1747701Z Result Attachments will be stored in LogStore
+2026-09-04T10:53:12.1748876Z Run Attachments will be stored in LogStore
+2026-09-04T10:53:12.2125260Z Updated Run Settings:
+2026-09-04T10:53:12.2143448Z <RunSettings>
+2026-09-04T10:53:12.2144026Z   <DataCollectionRunSettings>
+2026-09-04T10:53:12.2144520Z     <DataCollectors>
+2026-09-04T10:53:12.2145265Z       <DataCollector friendlyName="Code Coverage" uri="datacollector://Microsoft/CodeCoverage/2.0" assemblyQualifiedName="Microsoft.VisualStudio.Coverage.DynamicCoverageDataCollector, Microsoft.VisualStudio.TraceCollector, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+2026-09-04T10:53:12.2145972Z         <Configuration>
+2026-09-04T10:53:12.2146379Z           <CodeCoverage>
+2026-09-04T10:53:12.2146848Z             <ModulePaths>
+2026-09-04T10:53:12.2147318Z               <Include>
+2026-09-04T10:53:12.2147771Z                 <ModulePath>.*\.dll$</ModulePath>
+2026-09-04T10:53:12.2148259Z                 <ModulePath>.*\.exe$</ModulePath>
+2026-09-04T10:53:12.2150525Z               </Include>
+2026-09-04T10:53:12.2150995Z               <Exclude>
+2026-09-04T10:53:12.2151483Z                 <ModulePath>.*CPPUnitTestFramework.*</ModulePath>
+2026-09-04T10:53:12.2151978Z               </Exclude>
+2026-09-04T10:53:12.2152845Z             </ModulePaths>
+2026-09-04T10:53:12.2153333Z             <Functions>
+2026-09-04T10:53:12.2153772Z               <Exclude>
+2026-09-04T10:53:12.2154246Z                 <Function>^Fabrikam\.UnitTest\..*</Function>
+2026-09-04T10:53:12.2154768Z                 <Function>^std::.*</Function>
+2026-09-04T10:53:12.2155261Z                 <Function>^ATL::.*</Function>
+2026-09-04T10:53:12.2155791Z                 <Function>.*::__GetTestMethodInfo.*</Function>
+2026-09-04T10:53:12.2156397Z                 <Function>^Microsoft::VisualStudio::CppCodeCoverageFramework::.*</Function>
+2026-09-04T10:53:12.2157025Z                 <Function>^Microsoft::VisualStudio::CppUnitTestFramework::.*</Function>
+2026-09-04T10:53:12.2157547Z               </Exclude>
+2026-09-04T10:53:12.2157979Z             </Functions>
+2026-09-04T10:53:12.2158399Z             <Attributes>
+2026-09-04T10:53:12.2158818Z               <Exclude>
+2026-09-04T10:53:12.2159284Z                 <Attribute>^System\.Diagnostics\.DebuggerHiddenAttribute$</Attribute>
+2026-09-04T10:53:12.2159804Z                 <Attribute>^System\.Diagnostics\.DebuggerNonUserCodeAttribute$</Attribute>
+2026-09-04T10:53:12.2160361Z                 <Attribute>^System\.Runtime\.CompilerServices\.CompilerGeneratedAttribute$</Attribute>
+2026-09-04T10:53:12.2160916Z                 <Attribute>^System\.CodeDom\.Compiler\.GeneratedCodeAttribute$</Attribute>
+2026-09-04T10:53:12.2161484Z                 <Attribute>^System\.Diagnostics\.CodeAnalysis\.ExcludeFromCodeCoverageAttribute$</Attribute>
+2026-09-04T10:53:12.2162081Z               </Exclude>
+2026-09-04T10:53:12.2162515Z             </Attributes>
+2026-09-04T10:53:12.2162942Z             <Sources>
+2026-09-04T10:53:12.2163375Z               <Exclude>
+2026-09-04T10:53:12.2163854Z                 <Source>.*\\atlmfc\\.*</Source>
+2026-09-04T10:53:12.2164314Z                 <Source>.*\\vctools\\.*</Source>
+2026-09-04T10:53:12.2164778Z                 <Source>.*\\public\\sdk\\.*</Source>
+2026-09-04T10:53:12.2165496Z                 <Source>.*\\microsoft sdks\\.*</Source>
+2026-09-04T10:53:12.2165975Z                 <Source>.*\\vc\\include\\.*</Source>
+2026-09-04T10:53:12.2166422Z               </Exclude>
+2026-09-04T10:53:12.2166852Z             </Sources>
+2026-09-04T10:53:12.2167307Z             <CompanyNames>
+2026-09-04T10:53:12.2167735Z               <Exclude>
+2026-09-04T10:53:12.2168182Z                 <CompanyName>.*microsoft.*</CompanyName>
+2026-09-04T10:53:12.2168676Z               </Exclude>
+2026-09-04T10:53:12.2169145Z             </CompanyNames>
+2026-09-04T10:53:12.2169592Z             <PublicKeyTokens>
+2026-09-04T10:53:12.2170033Z               <Exclude>
+2026-09-04T10:53:12.2170511Z                 <PublicKeyToken>^B77A5C561934E089$</PublicKeyToken>
+2026-09-04T10:53:12.2171068Z                 <PublicKeyToken>^B03F5F7F11D50A3A$</PublicKeyToken>
+2026-09-04T10:53:12.2171610Z                 <PublicKeyToken>^31BF3856AD364E35$</PublicKeyToken>
+2026-09-04T10:53:12.2172149Z                 <PublicKeyToken>^89845DCD8080CC91$</PublicKeyToken>
+2026-09-04T10:53:12.2173082Z                 <PublicKeyToken>^71E9BCE111E9429C$</PublicKeyToken>
+2026-09-04T10:53:12.2173700Z                 <PublicKeyToken>^8F50407C4E9E73B6$</PublicKeyToken>
+2026-09-04T10:53:12.2174232Z                 <PublicKeyToken>^E361AF139669C375$</PublicKeyToken>
+2026-09-04T10:53:12.2174738Z               </Exclude>
+2026-09-04T10:53:12.2175201Z             </PublicKeyTokens>
+2026-09-04T10:53:12.2175713Z             <UseVerifiableInstrumentation>True</UseVerifiableInstrumentation>
+2026-09-04T10:53:12.2176336Z             <AllowLowIntegrityProcesses>True</AllowLowIntegrityProcesses>
+2026-09-04T10:53:12.2176897Z             <CollectFromChildProcesses>True</CollectFromChildProcesses>
+2026-09-04T10:53:12.2178177Z             <CollectAspDotNet>False</CollectAspDotNet>
+2026-09-04T10:53:12.2178755Z           </CodeCoverage>
+2026-09-04T10:53:12.2179249Z         </Configuration>
+2026-09-04T10:53:12.2179709Z       </DataCollector>
+2026-09-04T10:53:12.2180145Z     </DataCollectors>
+2026-09-04T10:53:12.2180600Z   </DataCollectionRunSettings>
+2026-09-04T10:53:12.2181038Z   <RunConfiguration>
+2026-09-04T10:53:12.2181491Z     <BatchSize>1000</BatchSize>
+2026-09-04T10:53:12.2181995Z     <ResultsDirectory>D:\a\_temp\TestResults</ResultsDirectory>
+2026-09-04T10:53:12.2182479Z   </RunConfiguration>
+2026-09-04T10:53:12.2182921Z </RunSettings>
+2026-09-04T10:53:12.2232536Z **************** Starting test execution *********************
+2026-09-04T10:53:12.2312184Z [command]C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\Extensions\TestPlatform\vstest.console.exe "@D:\a\_temp\fzthpxzsaya.tmp"
+2026-09-04T10:53:12.3948331Z VSTest version 17.14.0 (x64)
+2026-09-04T10:53:12.4067336Z vstest.console.exe "D:\a\1\s\Assemblies\Bin\Cegid.Retail.Clienteling.Model.Tests.dll"
+2026-09-04T10:53:12.4068142Z "D:\a\1\s\Assemblies\Bin\Cegid.Retail.Clienteling.Services.Tests.dll"
+2026-09-04T10:53:12.4068891Z "D:\a\1\s\Assemblies\Bin\Cegid.Retail.Clienteling.WebServices.Tests.dll"
+2026-09-04T10:53:12.4069591Z /TestCaseFilter:"TestCategory!=BDD"
+2026-09-04T10:53:12.4070131Z /Settings:"D:\a\_temp\orsd32g42x3.tmp.runsettings"
+2026-09-04T10:53:12.4070672Z /EnableCodeCoverage
+2026-09-04T10:53:12.4071158Z /Logger:"trx"
+2026-09-04T10:53:12.4071752Z /TestAdapterPath:"D:\a\1\s"
+2026-09-04T10:53:14.4811765Z Starting test execution, please wait...
+2026-09-04T10:53:14.7403847Z A total of 3 test files matched the specified pattern.
+2026-09-04T10:53:17.2962271Z 2.14
+2026-09-04T10:53:20.8608862Z No test matches the given testcase filter `TestCategory!=BDD` in D:\a\1\s\Assemblies\Bin\Cegid.Retail.Clienteling.Model.Tests.dll D:\a\1\s\Assemblies\Bin\Cegid.Retail.Clienteling.Services.Tests.dll D:\a\1\s\Assemblies\Bin\Cegid.Retail.Clienteling.WebServices.Tests.dll
+2026-09-04T10:53:21.3880835Z Results File: D:\a\_temp\TestResults\VssAdministrator_runnervmohg0i_2026-09-04_10_53_21.trx
+2026-09-04T10:53:21.3967437Z Attachments:
+2026-09-04T10:53:21.3968249Z   D:\a\_temp\TestResults\06f9bc48-b8d5-407d-8e69-0ece359ce2ae\VssAdministrator_runnervmohg0i_2026-09-04.10_53_20.coverage
+2026-09-04T10:53:21.4322827Z Vstest.console.exe exited with code 0.
+2026-09-04T10:53:21.4323563Z **************** Completed test execution *********************
+2026-09-04T10:53:21.4389699Z Test results files: D:\a\_temp\TestResults\VssAdministrator_runnervmohg0i_2026-09-04_10_53_21.trx
+2026-09-04T10:53:21.4686954Z No Result Found to Publish 'D:\a\_temp\TestResults\VssAdministrator_runnervmohg0i_2026-09-04_10_53_21.trx'.
+2026-09-04T10:53:21.7396291Z Created test run: 6180484
+2026-09-04T10:53:21.7398526Z Publishing test results: 0
+2026-09-04T10:53:21.8141694Z Publishing test results to test run '6180484'.
+2026-09-04T10:53:21.8168852Z TestResults To Publish 0, Test run id:6180484
+2026-09-04T10:53:21.8169566Z Published test results: 0
+2026-09-04T10:53:21.8176580Z Publishing Attachments: 2
+2026-09-04T10:53:23.3979122Z Could not invoke Code coverage merge for Build ID 4432608
+2026-09-04T10:53:23.5625901Z Completed TestExecution Model...
+2026-09-04T10:53:23.5823856Z 
+2026-09-04T10:53:23.6278662Z ##[section]Finishing: dotNet-build: Test assemblies

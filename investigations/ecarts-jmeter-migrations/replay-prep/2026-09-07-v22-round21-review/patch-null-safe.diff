@@ -1,0 +1,5 @@
+--- round21-candidate/azure-pipelines.wi2222897-v22-preflight.yml
++++ round21-null-safe/azure-pipelines.wi2222897-v22-preflight.yml
+@@
+-          $mounts = @($inspection.Mounts | ForEach-Object { [ordered]@{type=$_.Type;source=$_.Source;destination=$_.Destination;rw=$_.RW} })
++          $mounts = @($inspection.Mounts | Where-Object { $null -ne $_ } | ForEach-Object { [ordered]@{type=$_.Type;source=$_.Source;destination=$_.Destination;rw=$_.RW} })

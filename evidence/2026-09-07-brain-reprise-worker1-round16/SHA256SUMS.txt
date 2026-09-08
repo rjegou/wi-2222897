@@ -1,0 +1,3 @@
+YAML commit pushed: afe602c397ab7a8c18a731be2652435dac81c806
+Build evidence source: Azure DevOps build 4442222, definition 14251
+Round15 reference: evidence/2026-09-07-brain-reprise-worker1-round15/README.md

@@ -1,0 +1,4 @@
+path	source_or_role	sha256	bytes	collected
+campaigns/ExportRunOnly.xml	offline descriptor; no default namespace; direct JMX item	B23129E5C66B5CC8144974AB6D1E98F0192A97B0ABB2CCAD333252C5FA38A9F1	176	2026-09-07
+verify-contract.ps1	discriminant offline resolver and hash/sampler check	CE70B1B3439D96346BBB99ECC14D0E4C06596E2169191BBC03BC7E31FBAFBA74	1109	2026-09-07
+payload/Tests/Export_Run/001-Export_Run.jmx	copy of corrected generated JMX; source 2026-09-06 proof	C59BD01D5C075961A781335D746A4F72B2CB331EC955CE828D4F6DE4C850EB0C	366843	2026-09-07

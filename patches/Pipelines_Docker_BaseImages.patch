@@ -1,0 +1,80 @@
+# Travail non committe extrait le 2026-09-08
+# worktree : Pipelines_Docker_BaseImages
+# branche  : master
+# HEAD     : cd5a72235e5f71373acb8994cb3f60f2f6975b93
+# Reapplication : git -C <clone> apply Pipelines_Docker_BaseImages.patch
+#
+diff --git a/Images/SqlExpress/2019/dockerfile b/Images/SqlExpress/2019/dockerfile
+index 42f3f1b..b789b67 100644
+--- a/Images/SqlExpress/2019/dockerfile
++++ b/Images/SqlExpress/2019/dockerfile
+@@ -43,13 +43,15 @@ COPY oledlg.dll C:/Windows/SysWOW64
+ 
+ # Perform:
+ # - Launch sqlsetup downloader injected by the ADD verb ( Need >$NULL because in quiet mode, this action wait for the user press enter )
+-# - Launch generated SQLEXPR_x64_ENU.exe to extract setup tools
++# - Download the Express with Advanced Services media: Full-Text Search is not
++#   included in the standard SQLEXPR media.
++# - Launch generated SQLEXPRADV_x64_ENU.exe to extract setup tools
+ # - Launch setup with appropriate options
+ RUN mkdir "c:\tmp" -Force; \
+     Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/?linkid=866658" -OutFile "c:\tmp\downloader.exe"; \
+-    Start-Process -Wait -FilePath "C:\tmp\downloader.exe" -ArgumentList "/ACTION=DOWNLOAD", "/Mediapath=C:/tmp", "/Quiet", "/language=en-US" > $NULL; \
+-    Start-Process -Wait -FilePath "C:\tmp\SQLEXPR_x64_ENU.Exe" -ArgumentList "/q", "/x:C:\tmp\SQLEXPRESS_SETUP"; \
+-    Start-Process -Wait -FilePath "C:\tmp\SQLEXPRESS_SETUP\SETUP.EXE" -ArgumentList "/SAPWD=$env:sa_password", "/ENU", "/QUIET", "/INSTANCENAME=$env:sqlinstance", "/INSTANCEID=$env:sqlinstance", "/SECURITYMODE=SQL", "/IACCEPTSQLSERVERLICENSETERMS=TRUE", "/ACTION=INSTALL", "/FEATURES=SQLENGINE", "/SQLUSERDBDIR=$env:databasesFolder"; \
++    Start-Process -Wait -FilePath "C:\tmp\downloader.exe" -ArgumentList "/ACTION=DOWNLOAD", "/Mediapath=C:/tmp", "/MediaType=Advanced", "/Quiet", "/language=en-US" > $NULL; \
++    Start-Process -Wait -FilePath "C:\tmp\SQLEXPRADV_x64_ENU.Exe" -ArgumentList "/q", "/x:C:\tmp\SQLEXPRESS_SETUP"; \
++    Start-Process -Wait -FilePath "C:\tmp\SQLEXPRESS_SETUP\SETUP.EXE" -ArgumentList "/SAPWD=$env:sa_password", "/ENU", "/QUIET", "/INSTANCENAME=$env:sqlinstance", "/INSTANCEID=$env:sqlinstance", "/SECURITYMODE=SQL", "/IACCEPTSQLSERVERLICENSETERMS=TRUE", "/ACTION=INSTALL", "/FEATURES=SQLENGINE,FullText", "/SQLUSERDBDIR=$env:databasesFolder"; \
+     $svc = Get-Service "MSSQL`$$env:sqlinstance" -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) }; \
+     $svc = Get-Service 'SQLWriter'  -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) }; \
+     $svc = Get-Service 'SQLBrowser' -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) }; \
+diff --git a/Images/SqlExpress/2025/dockerfile b/Images/SqlExpress/2025/dockerfile
+index ce83fe0..8af9310 100644
+--- a/Images/SqlExpress/2025/dockerfile
++++ b/Images/SqlExpress/2025/dockerfile
+@@ -60,7 +60,7 @@ RUN mkdir "c:\tmp" -Force; \
+     Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?linkid=2216019" -OutFile "c:\tmp\downloader.exe"; \
+     Start-Process -Wait -FilePath "C:\tmp\downloader.exe" -ArgumentList "/ACTION=DOWNLOAD", "/Mediapath=C:/tmp", "/Quiet", "/language=en-US" > $NULL; \
+     Start-Process -Wait -FilePath "C:\tmp\SQLEXPR_x64_ENU.Exe" -ArgumentList "/q", "/x:C:\tmp\SQLEXPRESS_SETUP"; \
+-    $setup = Start-Process -Wait -PassThru -FilePath "C:\tmp\SQLEXPRESS_SETUP\SETUP.EXE" -ArgumentList "/SAPWD=$env:sa_password", "/ENU", "/QUIET", "/INSTANCENAME=$env:sqlinstance", "/INSTANCEID=$env:sqlinstance", "/SECURITYMODE=SQL", "/IACCEPTSQLSERVERLICENSETERMS=TRUE", "/ACTION=INSTALL", "/FEATURES=SQLENGINE", "/SQLUSERDBDIR=$env:databasesFolder"; \
++    $setup = Start-Process -Wait -PassThru -FilePath "C:\tmp\SQLEXPRESS_SETUP\SETUP.EXE" -ArgumentList "/SAPWD=$env:sa_password", "/ENU", "/QUIET", "/INSTANCENAME=$env:sqlinstance", "/INSTANCEID=$env:sqlinstance", "/SECURITYMODE=SQL", "/IACCEPTSQLSERVERLICENSETERMS=TRUE", "/ACTION=INSTALL", "/FEATURES=SQLENGINE,FullText", "/SQLUSERDBDIR=$env:databasesFolder"; \
+     if ($setup.ExitCode -notin @(0, 3010)) { \
+       Get-ChildItem 'C:\Program Files\Microsoft SQL Server\*\Setup Bootstrap\Log\Summary.txt' -ErrorAction SilentlyContinue | ForEach-Object { Write-Host ('--- ' + $_.FullName + ' ---'); Get-Content $_.FullName }; \
+       throw ('SQL Server setup failed (exit code ' + $setup.ExitCode + ')') \
+diff --git a/Images/SqlExpress/tests.yml b/Images/SqlExpress/tests.yml
+index 84a5d23..a5afdd7 100644
+--- a/Images/SqlExpress/tests.yml
++++ b/Images/SqlExpress/tests.yml
+@@ -129,3 +129,32 @@ steps:
+       $data = sqlcmd -S "localhost\$env:sqlinstance" -U sa -P "$env:sa_password" -C -Q "SELECT GETDATE() AS TimeOfQuery"
+       Write-Host $data
+       if (!($data -Match "1 rows affected")) { Write-Host "[error]Query SELECT GETDATE() AS TimeOfQuery failed"; throw }
++
++# Full-Text is a prerequisite for the Clienteling search scenarios.  This is an
++# intentional functional gate: SQL Server 2019 standard Express media does not
++# include Full-Text, so the image selects Express with Advanced Services. SQL
++# Server 2025 Express includes the functionality formerly shipped as Express
++# with Advanced Services, but the downloaded bootstrap media is still checked by
++# this runtime assertion.
++- task: powershell@2
++  displayName: Check SQL Full-Text availability
++  inputs:
++    targetType: inline
++    script: |
++      $previousPreference = $ErrorActionPreference
++      $ErrorActionPreference = 'Continue'
++      $data = @(sqlcmd -S "localhost\$env:sqlinstance" -U sa -P "$env:sa_password" -C -h -1 -W -Q "SELECT FULLTEXTSERVICEPROPERTY('IsFullTextInstalled')" 2>&1)
++      $exitCode = $LASTEXITCODE
++      $ErrorActionPreference = $previousPreference
++      if ($exitCode -ne 0) {
++        Write-Host "[error]sqlcmd Full-Text probe failed (exit code $exitCode)"
++        $data | Select-Object -Last 5 | ForEach-Object { Write-Host $_ }
++        throw
++      }
++      $last = $data | Select-Object -Last 1
++      $value = if ($null -eq $last) { '' } else { ([string]$last).Trim() }
++      Write-Host "FULLTEXTSERVICEPROPERTY(IsFullTextInstalled)=$value"
++      if ([string]::IsNullOrWhiteSpace($value) -or $value -ne '1') {
++        Write-Host "[error]SQL Full-Text is not installed or enabled in this image"
++        throw
++      }

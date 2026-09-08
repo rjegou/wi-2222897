@@ -1,0 +1,7 @@
+web_dir_present=False
+legacy_dir_present=False
+integratedtests_present=False
+web_project_remaining=
+legacy_project_remaining=
+common_package_preserved=True
+console_package_removed=False

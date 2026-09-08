@@ -1,0 +1,6 @@
+item,identifier,source,method,status
+Sandbox branch,refs/heads/sandbox/WI-2222897-sql-fulltext at cd5a72235e5f71373acb8994cb3f60f2f6975b93,Azure DevOps REST,read-only requests with TLS verification,revalidated
+Dirty clone,worktrees/Pipelines_Docker_BaseImages,local git status before operation,read-only status,three round12 modifications preserved
+Isolated worktree,worktrees/Pipelines_Docker_BaseImages_worker2_round9,local git worktree detached at cd5a7223,copy and hash comparison,prepared not pushed
+Shared definitions,6823/6874/8090/10260/14079/14084,Azure DevOps Build REST,repositoryId definition inventory,CI metadata observed; no queue
+Hosted candidates,diagnostic and build YAML,round4 evidence transferred byte-for-byte,hash comparison and YAML readback,ready locally; not remote

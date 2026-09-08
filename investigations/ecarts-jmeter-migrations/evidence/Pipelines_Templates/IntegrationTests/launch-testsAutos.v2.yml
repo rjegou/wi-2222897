@@ -1,0 +1,77 @@
+﻿# File: launch-testsAutos.v2.yml
+# Author : ATR
+# THIS TASK CAN ONLY WORK WITH A JOB/AGENT 'ON-PREMISE'
+# Launch asynchronously automatics tests 
+# Parameters
+#   - hostname: Mandatory string representing the hostname where tests should be launch      
+#   - workflow: Mandatory string representing the workflow to use
+#   - buildNumber: Mandatory string representing the the build number 
+#   - arguments: Optional array string separate values by ','representing the spécifics arguments to execute execute workflow
+#
+# 2020-07-24 : template creation
+
+parameters:
+  - name: hostname # The hostname where tests should be launch; required
+    type: string
+
+  - name: workflow # Workflow to use; required
+    type: string
+
+  - name: buildNumber # build number; required
+    type: string
+      
+  - name: arguments # arguments to execute tests
+    type: object
+    default: 
+      
+steps: 
+- task: powershell@2
+  displayName: 'launch-testsAutos: Launch ${{ parameters.workflow }} for ${{ parameters.buildNumber }} @ ${{ parameters.hostname }}'
+  condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), startsWith(variables['Build.SourceBranch'],'refs/heads/releases/')))
+  inputs:
+    targetType: inline
+    script: |
+        $hostname="${{ parameters.hostname }}";
+        $workflow="${{ parameters.workflow }}";
+        $buildNumber="${{ parameters.buildNumber }}";
+
+        # Recupération des arguments optionnels        
+        $parametersCompl="${{ parameters.arguments }}"
+        Write-host ("optional arguments for workflow = $parametersCompl");
+        if (![string]::IsNullOrEmpty($parametersCompl)) 
+        {          
+          # convert in array
+          $parametersCompl=$parametersCompl -split ",";
+
+          ## ATR - ajout des arguments complémentaires nécessaires au fonctionnement du worflow multiversion
+          foreach ($parameterCompl in $parametersCompl)
+          {
+            $arguments+="<a:string>{0}</a:string>" -f $parameterCompl.Replace(" ","");
+          }
+          Write-host ("arguments=$arguments");
+        }
+        
+        ## ATR - And the iteration is the date and hour of execution of test
+        $iteration="test.{0}-{1}" -f $buildNumber,(Get-Date -Format "yyyyMMdd_hhms");
+        Write-host ("iteration=$iteration");
+          
+        ## Set SOAP headers
+        $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]";
+        $headers.Add("charset", 'utf-8');
+        $headers.Add("SOAPAction", 'http://www.cegid.fr/Cbp/IIntegrationTestsLauncherService/IIntegrationTestsLauncherService/StartWorkflowAsync');
+        
+        $urlHost = "http://{0}:8181/integrationlauncher" -f $Hostname;
+
+        $body = '<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+                <s:Body>
+                <StartWorkflowAsync xmlns="http://www.cegid.fr/Cbp/IIntegrationTestsLauncherService">
+                <workflow>{0}</workflow>
+                <iteration>{1}</iteration>
+                <arguments xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">{2}</arguments>
+                </StartWorkflowAsync>
+                </s:Body>
+                </s:Envelope>'-f $workflow, $iteration, $arguments;
+
+        Write-host "Invoke-WebRequest -UseBasicParsing -Method Post -Uri $urlHost -Headers $headers -Body $body -ContentType 'text/xml'";
+        
+        Invoke-WebRequest -UseBasicParsing -Method Post -Uri $urlHost -Headers $headers -Body $body -ContentType 'text/xml';

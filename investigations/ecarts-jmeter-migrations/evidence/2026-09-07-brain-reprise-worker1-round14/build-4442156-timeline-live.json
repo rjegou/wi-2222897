@@ -1,0 +1,135 @@
+[
+  {
+    "name": "Post-job: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s",
+    "type": "Task",
+    "state": "completed",
+    "result": "succeeded",
+    "log": 11
+  },
+  {
+    "name": "Checkpoint",
+    "type": "Checkpoint",
+    "state": "completed",
+    "result": "succeeded",
+    "log": null
+  },
+  {
+    "name": "Checkpoint",
+    "type": "Checkpoint",
+    "state": "completed",
+    "result": "succeeded",
+    "log": null
+  },
+  {
+    "name": "SQL Server 2025 Full-Text build and smoke",
+    "type": "Stage",
+    "state": "inProgress",
+    "result": null,
+    "log": null
+  },
+  {
+    "name": "BuildAndTest2025",
+    "type": "Job",
+    "state": "inProgress",
+    "result": null,
+    "log": null
+  },
+  {
+    "name": "SQL Server 2019 Full-Text build and smoke",
+    "type": "Stage",
+    "state": "completed",
+    "result": "failed",
+    "log": null
+  },
+  {
+    "name": "BuildAndTest2025",
+    "type": "Phase",
+    "state": "inProgress",
+    "result": null,
+    "log": 4
+  },
+  {
+    "name": "Finalize Job",
+    "type": "Task",
+    "state": "completed",
+    "result": "succeeded",
+    "log": 12
+  },
+  {
+    "name": "Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s",
+    "type": "Task",
+    "state": "completed",
+    "result": "succeeded",
+    "log": 7
+  },
+  {
+    "name": "Initialize job",
+    "type": "Task",
+    "state": "completed",
+    "result": "succeeded",
+    "log": 5
+  },
+  {
+    "name": "Build and smoke-test SQL Server 2019 Full-Text",
+    "type": "Task",
+    "state": "completed",
+    "result": "failed",
+    "log": 9
+  },
+  {
+    "name": "BuildAndTest2019",
+    "type": "Job",
+    "state": "completed",
+    "result": "failed",
+    "log": 13
+  },
+  {
+    "name": "Initialize job",
+    "type": "Task",
+    "state": "completed",
+    "result": "succeeded",
+    "log": 6
+  },
+  {
+    "name": "BuildAndTest2019",
+    "type": "Phase",
+    "state": "completed",
+    "result": "failed",
+    "log": 3
+  },
+  {
+    "name": "PublishPipelineArtifact",
+    "type": "Task",
+    "state": "completed",
+    "result": "skipped",
+    "log": 10
+  },
+  {
+    "name": "Build and smoke-test SQL Server 2025 Full-Text",
+    "type": "Task",
+    "state": "inProgress",
+    "result": null,
+    "log": null
+  },
+  {
+    "name": "Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s",
+    "type": "Task",
+    "state": "completed",
+    "result": "succeeded",
+    "log": 8
+  },
+  {
+    "name": "Post-job: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s",
+    "type": "Task",
+    "state": "pending",
+    "result": null,
+    "log": null
+  },
+  {
+    "name": "PublishPipelineArtifact",
+    "type": "Task",
+    "state": "pending",
+    "result": null,
+    "log": null
+  }
+]

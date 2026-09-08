@@ -1,0 +1,11 @@
+path,status,source_or_scope,notes
+README.md,created,local provenance,No live Azure DevOps response obtained
+postconditions-matrix.md,created,local synthesis,FACT/INFERENCE/UNKNOWN labels retained
+work-item-2222897.json,empty-output,Azure CLI work-item show,Extension/profile failure; not evidence of empty WI
+relations.json,empty-output,Azure CLI relation list,Extension/profile failure; not evidence of no relations
+work-item-2222897-rest.json,not-created,Azure DevOps REST,Schannel SEC_E_NO_CREDENTIALS before HTTP response
+relations-rest.json,not-created,Azure DevOps REST,Schannel SEC_E_NO_CREDENTIALS before HTTP response
+collection-status.txt,marker,local collection,CLI attempt completed with empty outputs
+collection-status-curl.txt,marker,local collection,curl attempt ended in TLS Schannel failure
+worker2-inventorytracking-live,referenced primary evidence,investigations/ecarts-jmeter-migrations/evidence/azure-devops-inventorytracking-2026-09-07-worker2,CLI metadata timeline log YAML and master comparison
+cli-r2/,attempted local collection,Azure CLI WI relations PR queries,No exploitable output after dynamic extension/profile attempt

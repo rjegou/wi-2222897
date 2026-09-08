@@ -1,0 +1,6 @@
+date	system	item	identity	status
+2026-09-08	local Git	Y2_Tools_AutoTest_Console source	fa8a5fb411bbadcef16204f149bae3a65b0f7abb	FACT
+2026-09-08	local Git	isolated clone worktrees/console	fa8a5fb411bbadcef16204f149bae3a65b0f7abb	FACT
+2026-09-08	local evidence	previous package API DLL	51FB31F71D1BAC99114548B05AC66FF59A49F5AEBD7E09A4F970CF1E6915AD81	FACT
+2026-09-08	local evidence	SOAP round13 API DLL	57BEACA20DE071673C208305A670969A943420CFCB73434FE7F30E4C13522F7B	FACT
+2026-09-08	local script	Invoke-LocalConsolePackage.ps1	identity checks only; not executed	UNKNOWN

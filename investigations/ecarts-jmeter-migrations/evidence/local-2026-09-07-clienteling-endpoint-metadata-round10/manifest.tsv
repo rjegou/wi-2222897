@@ -1,0 +1,14 @@
+kind	path	value_or_role	status
+worktree	worktrees/Y2_Plugins_Clienteling	master clean before edit	FACT
+source	worktrees/Y2_Plugins_Clienteling/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_ResetFTSCustomer.xml	ClientelingDeploymentService.svc	corrected
+source	worktrees/Y2_Plugins_Clienteling/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_UpdateFTSCatalog.xml	ClientelingDeploymentService.svc	corrected
+source	worktrees/Y2_Plugins_Clienteling/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_UpdateFTSCustomer.xml	ClientelingDeploymentService.svc	corrected
+source	worktrees/Y2_Plugins_Clienteling/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Mobility_GetClientelingParameters.xml	ClientelingMobilityService.svc	corrected
+source	worktrees/Y2_Plugins_Clienteling/IntegratedTests/AutoTest/Data/WebServices/TestPlans/Mobility_UpdateClientelingParameters.xml	ClientelingMobilityService.svc	corrected
+manifest	worktrees/Y2_Plugins_Clienteling/Kits/V26/genE_IIS_SERVER_RETAIL_CLIENTELING_msi.xml	ClientelingDeploymentService.svc; ClientelingMobilityService.svc	matched
+provenance	23176daf130403b47e270767a54325244c7870fc	Deployment source history	local git
+provenance	2b6f7f22085b554c1fcdbda0476d0ef47e9ffdf1	V26 manifest history	local git
+test	git diff --check	pass	static
+test	console-rerun.log	3D6FA5C20E4B182AED978128AC4B471D9AF8C71145C3CFA3471AADFECE482EA2	Console partial generation; exit -1 on absent indexed input
+artifact	001-plan01.partial.jmx	E9AA18772D3495E26BE5B3926CBAD68284EEAD458D9E1A00C97E9D0801E75D91	partial output only; not a successful regeneration
+limit	V22-V25 manifests; JMX; HTTP; MSI	not validated	UNKNOWN

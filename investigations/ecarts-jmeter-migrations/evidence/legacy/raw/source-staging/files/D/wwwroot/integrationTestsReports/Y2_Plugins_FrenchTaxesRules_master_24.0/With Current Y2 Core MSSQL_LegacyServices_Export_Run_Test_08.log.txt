@@ -1,0 +1,145 @@
+16:13:22.8685007+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:13:22.8685007+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:13:22.8685007+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE ETABLISS SET ET_PAYS = 'ZZZ' WHERE ET_PAYS = 'FRA' AND ET_ETABLISSEMENT != '106'
+16:13:22.8685007+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE ETABLISS SET ET_PAYS = 'ZZZ' WHERE ET_PAYS = 'FRA' AND ET_ETABLISSEMENT != '106'
+16:13:22.8685007+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE ETABLISS SET ET_PAYS = 'ZZZ' WHERE ET_PAYS = 'FRA' AND ET_ETABLISSEMENT != '106'
+16:13:22.8841247+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.7046
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<45>>
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=6.4304
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(99c8b798-7127-4415-8986-d2356ad25491@sql_Y2_Plugin, 4394795)
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:13:22.8841247+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] INSERT INTO DAEMONEXPORT (DEX_DAEMONEXPORTID, DEX_DATEDEBEXEC, DEX_DATEFINEXEC, DEX_ETABLISS, DEX_DAEMONEXPORTSIGN, DEX_SIGNVERSION, DEX_SIGNKEYVERSION, DEX_MSAFTSTEP)
+ VALUES ('4bdc73b0-b1de-4b2b-98e1-a5ee18f8c53c', '2016-01-03', '2016-01-03', 106, 'MGQCMHqpAdnrec0h-AQ0L2IFXLJzHYL9Uhk211aY-JFqwIRKc35BL7MgbZsCNgRnGLaxEwIwQCuvRGxMsRHXmOQDSlv1rQoTRhynFFprdquLz7jSs3OXAY9G4nqstQkacNeCftPe', 'S20' , 1, 'DON')
+          
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] INSERT INTO DAEMONEXPORT (DEX_DAEMONEXPORTID, DEX_DATEDEBEXEC, DEX_DATEFINEXEC, DEX_ETABLISS, DEX_DAEMONEXPORTSIGN, DEX_SIGNVERSION, DEX_SIGNKEYVERSION, DEX_MSAFTSTEP ) VALUES('4bdc73b0-b1de-4b2b-98e1-a5ee18f8c53c', '2016-01-03', '2016-01-03', 106, 'MGQCMHqpAdnrec0h-AQ0L2IFXLJzHYL9Uhk211aY-JFqwIRKc35BL7MgbZsCNgRnGLaxEwIwQCuvRGxMsRHXmOQDSlv1rQoTRhynFFprdquLz7jSs3OXAY9G4nqstQkacNeCftPe', 'S20', 1, 'DON' )
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - INSERT INTO DAEMONEXPORT (DEX_DAEMONEXPORTID, DEX_DATEDEBEXEC, DEX_DATEFINEXEC, DEX_ETABLISS, DEX_DAEMONEXPORTSIGN, DEX_SIGNVERSION, DEX_SIGNKEYVERSION, DEX_MSAFTSTEP ) VALUES('4bdc73b0-b1de-4b2b-98e1-a5ee18f8c53c', '2016-01-03', '2016-01-03', 106, 'MGQCMHqpAdnrec0h-AQ0L2IFXLJzHYL9Uhk211aY-JFqwIRKc35BL7MgbZsCNgRnGLaxEwIwQCuvRGxMsRHXmOQDSlv1rQoTRhynFFprdquLz7jSs3OXAY9G4nqstQkacNeCftPe', 'S20', 1, 'DON' )
+16:13:22.8841247+01:00: root Error: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Exception - Cegid.Erp.Data.ErpBusinessException: An SQL command failed.
+Exception code                     : ERP00001
+Action / method                    : 
+What to do                         : Contact the hotline.
+Call stack                         :
+   at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.<>c__DisplayClass5_0`2.<LogFlow>b__0(T flowLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+Inner exception                    :
+   Cegid.Framework.CbpException: Error executing sql command 'INSERT INTO DAEMONEXPORT (DEX_DAEMONEXPORTID, DEX_DATEDEBEXEC, DEX_DATEFINEXEC, DEX_ETABLISS, DEX_DAEMONEXPORTSIGN, DEX_SIGNVERSION, DEX_SIGNKEYVERSION, DEX_MSAFTSTEP ) VALUES('4bdc73b0-b1de-4b2b-98e1-a5ee18f8c53c', '2016-01-03', '2016-01-03', 106, 'MGQCMHqpAdnrec0h-AQ0L2IFXLJzHYL9Uhk211aY-JFqwIRKc35BL7MgbZsCNgRnGLaxEwIwQCuvRGxMsRHXmOQDSlv1rQoTRhynFFprdquLz7jSs3OXAY9G4nqstQkacNeCftPe', 'S20', 1, 'DON' )'
+   Exception code              : CBP00202
+   Action / method             : Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1
+   What to do                  : Check the syntax of the sql command
+   Call stack                  :
+   
+   Inner exception             :
+      System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'DAEMONEXPORT'.
+         at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+         at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+         at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+         at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+         at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+         at Cegid.Erp.Data.Sql.SqlService.GetExecuteNonQueryAffectedRows(IDbCommand command)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_2`1.<ExecuteCommand>b__2()
+         at Cegid.Framework.Data.DbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Framework.Data.SqlServer.SqlDbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_1`1.<ExecuteCommand>b__1()
+         at Cegid.Erp.Data.Sql.SqlService.ExecuteInTransaction[T](DbDataAccessConnection dbDataAccessConnection, Func`1 executor)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+      ClientConnectionId:e89d185d-33da-4ddf-9049-4ab3e47cf6af
+      Error Number:208,State:1,Class:16
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Fail, OperationDurationMs=1.9676
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(e8d595f2-9daf-4842-9d4a-5f2e0f0dedab@sql_Y2_Plugin, 58928530)
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:13:22.8841247+01:00: QTAgent32_40.exe Error: 0 : Error during TestCase Processing: Cegid.Erp.Data.ErpBusinessException: An SQL command failed.
+Exception code                     : ERP00001
+Action / method                    : 
+What to do                         : Contact the hotline.
+Call stack                         :
+   at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.<>c__DisplayClass5_0`2.<LogFlow>b__0(T flowLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T,TResult](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Func`2 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T,TResult](ILogSource logSource, String flowName, Func`2 flow)
+   at Cegid.Erp.Data.Sql.SqlService.ExecuteCommand[T](IDataAccessConnection dataAccessConnection, Func`4 commandBuilder, IEnumerable`1 parameters, Func`2 executor, Boolean createTransaction, Int32 forcedQueryCost)
+   at Cegid.Erp.Data.Sql.SqlService.Execute(IDataAccessConnection dataAccessConnection, String commandText, IEnumerable`1 parameters)
+   at Cegid.Retail.QualityTools.WsTestBase.CallExecuteSql(String strSqlStmt)
+   at Cegid.Retail.FrenchTaxesRules.LegacyServices.AutoTest.Export_Run.Test_08() in F:\vm-alm-agent-02-A\_work\25692\s\Cegid.Retail.FrenchTaxesRules.LegacyServices.Tests\AutoTest\Export\Export_Run.g.cs:line 656
+Inner exception                    :
+   Cegid.Framework.CbpException: Error executing sql command 'INSERT INTO DAEMONEXPORT (DEX_DAEMONEXPORTID, DEX_DATEDEBEXEC, DEX_DATEFINEXEC, DEX_ETABLISS, DEX_DAEMONEXPORTSIGN, DEX_SIGNVERSION, DEX_SIGNKEYVERSION, DEX_MSAFTSTEP ) VALUES('4bdc73b0-b1de-4b2b-98e1-a5ee18f8c53c', '2016-01-03', '2016-01-03', 106, 'MGQCMHqpAdnrec0h-AQ0L2IFXLJzHYL9Uhk211aY-JFqwIRKc35BL7MgbZsCNgRnGLaxEwIwQCuvRGxMsRHXmOQDSlv1rQoTRhynFFprdquLz7jSs3OXAY9G4nqstQkacNeCftPe', 'S20', 1, 'DON' )'
+   Exception code              : CBP00202
+   Action / method             : Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1
+   What to do                  : Check the syntax of the sql command
+   Call stack                  :
+   
+   Inner exception             :
+      System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'DAEMONEXPORT'.
+         at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+         at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+         at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+         at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+         at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+         at Cegid.Erp.Data.Sql.SqlService.GetExecuteNonQueryAffectedRows(IDbCommand command)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_2`1.<ExecuteCommand>b__2()
+         at Cegid.Framework.Data.DbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Framework.Data.SqlServer.SqlDbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_1`1.<ExecuteCommand>b__1()
+         at Cegid.Erp.Data.Sql.SqlService.ExecuteInTransaction[T](DbDataAccessConnection dbDataAccessConnection, Func`1 executor)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+      ClientConnectionId:e89d185d-33da-4ddf-9049-4ab3e47cf6af
+      Error Number:208,State:1,Class:16
+16:13:22.8841247+01:00: QTAgent32_40.exe Information: 0 : Enter finally block
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:13:22.8841247+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'ZZZ'
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'ZZZ'
+16:13:22.8841247+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'ZZZ'
+16:13:22.8841247+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.7036
+16:13:22.9007100+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<45>>
+16:13:22.9007100+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=6.3995
+16:13:22.9007100+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(0c9beed6-7784-4910-9540-3285d7b01cb8@sql_Y2_Plugin, 48470313)
+16:13:22.9007100+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:13:22.9007100+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Delete DAEMONEXPORT
+16:13:22.9014927+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:13:22.9016676+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:13:22.9016676+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE DAEMONEXPORT WHERE DEX_ETABLISS = '106' AND DEX_SIGNVERSION = 'S20'
+16:13:22.9016676+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE DAEMONEXPORT WHERE DEX_ETABLISS = '106' AND DEX_SIGNVERSION = 'S20'
+16:13:22.9016676+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE DAEMONEXPORT WHERE DEX_ETABLISS = '106' AND DEX_SIGNVERSION = 'S20'
+16:13:22.9016676+01:00: root Error: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Exception - Cegid.Erp.Data.ErpBusinessException: An SQL command failed.
+Exception code                     : ERP00001
+Action / method                    : 
+What to do                         : Contact the hotline.
+Call stack                         :
+   at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.<>c__DisplayClass5_0`2.<LogFlow>b__0(T flowLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+Inner exception                    :
+   Cegid.Framework.CbpException: Error executing sql command 'DELETE DAEMONEXPORT WHERE DEX_ETABLISS = '106' AND DEX_SIGNVERSION = 'S20''
+   Exception code              : CBP00202
+   Action / method             : Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1
+   What to do                  : Check the syntax of the sql command
+   Call stack                  :
+   
+   Inner exception             :
+      System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'DAEMONEXPORT'.
+         at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+         at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+         at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+         at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+         at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+         at Cegid.Erp.Data.Sql.SqlService.GetExecuteNonQueryAffectedRows(IDbCommand command)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_2`1.<ExecuteCommand>b__2()
+         at Cegid.Framework.Data.DbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Framework.Data.SqlServer.SqlDbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_1`1.<ExecuteCommand>b__1()
+         at Cegid.Erp.Data.Sql.SqlService.ExecuteInTransaction[T](DbDataAccessConnection dbDataAccessConnection, Func`1 executor)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+      ClientConnectionId:e89d185d-33da-4ddf-9049-4ab3e47cf6af
+      Error Number:208,State:1,Class:16
+16:13:22.9016676+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Fail, OperationDurationMs=1.4037
+16:13:22.9016676+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(379727a7-c8ad-4152-90b7-f7e042ffeaf4@sql_Y2_Plugin, 11949364)
+16:13:22.9016676+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')

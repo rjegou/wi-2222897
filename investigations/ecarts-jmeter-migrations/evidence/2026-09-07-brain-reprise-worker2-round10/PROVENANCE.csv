@@ -1,0 +1,6 @@
+item,identifier,source,method,result
+Branch,refs/heads/sandbox/WI-2222897-sql-fulltext at cd5a72235e5f71373acb8994cb3f60f2f6975b93,Azure DevOps Git REST,explicit branch version descriptor,revalidated
+Definitions,6823 6874 8090 10260 14079 14084,Azure DevOps Build REST,full definition readback,all repository Pipelines_Docker_BaseImages
+YAML trigger readback,definition YAML paths,Azure DevOps Git Items REST,explicit sandbox branch descriptor plus PyYAML,5 trigger none; 8090 HTTP 404
+Official semantics,YAML trigger and trigger troubleshooting documentation,Microsoft Learn,web read-only review,trigger none disables; UI may override YAML
+Decision,round10 matrix,local evidence,read-only reconciliation,stop before push due 8090 UNKNOWN

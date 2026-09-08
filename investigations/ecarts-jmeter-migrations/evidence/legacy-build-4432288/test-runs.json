@@ -1,0 +1,19 @@
+{
+  "count": 1,
+  "value": [
+    {
+      "id": 6180090,
+      "name": "TestRun_FrenchTaxesRules CI_10.70",
+      "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6180090",
+      "isAutomated": true,
+      "state": "Completed",
+      "totalTests": 522,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "passedTests": 522,
+      "unanalyzedTests": 0,
+      "revision": 4,
+      "webAccessUrl": "https://dev.azure.com/cegid/Retail/_TestManagement/Runs?runId=6180090&_a=runCharts"
+    }
+  ]
+}

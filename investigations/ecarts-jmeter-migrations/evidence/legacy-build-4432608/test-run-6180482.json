@@ -1,0 +1,90 @@
+{
+  "id": 6180482,
+  "name": "TestRun_Clienteling CI_6.696",
+  "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6180482",
+  "build": {
+    "id": "4432608",
+    "name": "6.696",
+    "url": "https://dev.azure.com/cegid/_apis/build/Builds/4432608"
+  },
+  "buildConfiguration": {
+    "id": 4432608,
+    "number": "6.696",
+    "uri": "vstfs:///Build/Build/4432608",
+    "flavor": "release",
+    "platform": "any cpu",
+    "buildDefinitionId": 2065,
+    "branchName": "refs/heads/releases/V6",
+    "project": {
+      "name": "Retail"
+    },
+    "targetBranchName": ""
+  },
+  "isAutomated": true,
+  "owner": {
+    "displayName": "Project Collection Build Service (cegid)",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/81b8de82-9774-45ea-9e48-d32ed45fba27",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/svc.NjMyMzI0YWEtMTFlMC00MjUyLWI5MDgtYWY3ZDI1NzZmMTg5OkJ1aWxkOmJjMTA5ZjZmLWIyYjYtNDMxMi04MDUxLTQ5NDFhN2I3YzQ5NA"
+      }
+    },
+    "id": "81b8de82-9774-45ea-9e48-d32ed45fba27",
+    "uniqueName": "Build\\bc109f6f-b2b6-4312-8051-4941a7b7c494",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/svc.NjMyMzI0YWEtMTFlMC00MjUyLWI5MDgtYWY3ZDI1NzZmMTg5OkJ1aWxkOmJjMTA5ZjZmLWIyYjYtNDMxMi04MDUxLTQ5NDFhN2I3YzQ5NA",
+    "descriptor": "svc.NjMyMzI0YWEtMTFlMC00MjUyLWI5MDgtYWY3ZDI1NzZmMTg5OkJ1aWxkOmJjMTA5ZjZmLWIyYjYtNDMxMi04MDUxLTQ5NDFhN2I3YzQ5NA"
+  },
+  "project": {
+    "id": "aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+    "name": "Retail"
+  },
+  "startedDate": "2026-09-04T10:52:10.883Z",
+  "completedDate": "2026-09-04T10:52:25.64Z",
+  "state": "Completed",
+  "postProcessState": "Complete",
+  "totalTests": 0,
+  "incompleteTests": 0,
+  "notApplicableTests": 0,
+  "passedTests": 0,
+  "unanalyzedTests": 0,
+  "createdDate": "2026-09-04T10:52:25.943Z",
+  "lastUpdatedDate": "2026-09-04T10:52:27.1Z",
+  "lastUpdatedBy": {
+    "displayName": "Project Collection Build Service (cegid)",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/81b8de82-9774-45ea-9e48-d32ed45fba27",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/svc.NjMyMzI0YWEtMTFlMC00MjUyLWI5MDgtYWY3ZDI1NzZmMTg5OkJ1aWxkOmJjMTA5ZjZmLWIyYjYtNDMxMi04MDUxLTQ5NDFhN2I3YzQ5NA"
+      }
+    },
+    "id": "81b8de82-9774-45ea-9e48-d32ed45fba27",
+    "uniqueName": "Build\\bc109f6f-b2b6-4312-8051-4941a7b7c494",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/svc.NjMyMzI0YWEtMTFlMC00MjUyLWI5MDgtYWY3ZDI1NzZmMTg5OkJ1aWxkOmJjMTA5ZjZmLWIyYjYtNDMxMi04MDUxLTQ5NDFhN2I3YzQ5NA",
+    "descriptor": "svc.NjMyMzI0YWEtMTFlMC00MjUyLWI5MDgtYWY3ZDI1NzZmMTg5OkJ1aWxkOmJjMTA5ZjZmLWIyYjYtNDMxMi04MDUxLTQ5NDFhN2I3YzQ5NA"
+  },
+  "revision": 4,
+  "runStatistics": [],
+  "webAccessUrl": "https://dev.azure.com/cegid/Retail/_TestManagement/Runs?runId=6180482&_a=runCharts",
+  "customFields": [
+    {
+      "fieldName": "TestRunSystem",
+      "value": "VSTS - vstest"
+    }
+  ],
+  "pipelineReference": {
+    "pipelineId": 4432608,
+    "stageReference": {
+      "stageName": "Build",
+      "attempt": 2
+    },
+    "phaseReference": {
+      "phaseName": "Build",
+      "attempt": 2
+    },
+    "jobReference": {
+      "jobName": "V23",
+      "attempt": 2
+    },
+    "pipelineDefinitionId": 2065
+  }
+}

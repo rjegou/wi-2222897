@@ -1,0 +1,131 @@
+parameters:
+- name: variant
+  type: string
+- name: coreVersion
+  type: string
+- name: commonVersion
+  type: string
+- name: identityVersion
+  type: string
+
+steps:
+- checkout: self
+  lfs: true
+  clean: false
+- checkout: pluginSource
+- checkout: jmeterTools
+- checkout: platformDeploy
+- powershell: |
+    $attestation = Join-Path "$(Agent.TempDirectory)" "V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}-isolation.json"
+    $mappedId = ((ConvertFrom-Json $env:AGENT_CONTAINERMAPPING).v22Jmeter.id)
+    & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Write-V22HostIsolationAttestation.ps1" -ContainerMappingJson $env:AGENT_CONTAINERMAPPING -ContainerResourceName v22Jmeter -ExpectedContainerId $mappedId -ExpectedRunId "$(Build.BuildId)-${{ parameters.variant }}-prewrite" -ExpectedJobName "${{ parameters.variant }}" -ExpectedJobId $env:SYSTEM_JOBID -ExpectedAttempt $env:SYSTEM_JOBATTEMPT -ExpectedImage "$(image)" -PolicyPath $env:V22_ISOLATION_POLICY_PATH -OutputPath $attestation -ValidatorPath "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Assert-V22IsolationAttestation.ps1"
+    Write-Host "##vso[task.setvariable variable=V22IsolationAttestationPath]$attestation"
+    Write-Host "##vso[task.setvariable variable=V22IsolationContainerId]$mappedId"
+  target: host
+  env:
+    V22_ISOLATION_POLICY_PATH: $(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\V22-ISOLATION-POLICY.json
+  displayName: Inspect exact job container on agent host
+- powershell: |
+    $root = "$(Agent.TempDirectory)\V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}"
+    New-Item -ItemType Directory -Path $root -Force | Out-Null
+    [xml]$x = Get-Content -LiteralPath "$(Build.SourcesDirectory)\pluginSource\Tests\Config\v22-fix.cy2px" -Raw
+    $p = @($x.configuration.packages.package)
+    ($p | ? name -eq 'Y2.Core').selectVersion = '${{ parameters.coreVersion }}'
+    ($p | ? name -eq 'Y2.Core.Common').selectVersion = '${{ parameters.commonVersion }}'
+    ($p | ? name -eq 'Y2.Plugin.Identity').selectVersion = '${{ parameters.identityVersion }}'
+    ($p | ? name -eq 'Y2.Core.AuthenticationServer').selectVersion = '2.0.0.368'
+    ($p | ? name -eq 'Y2.Plugin.FrenchTaxesRules').selectVersion = '22.0.6.478'
+    $x.Save((Join-Path $root 'v22-fix.cy2px'))
+    Write-Host "Prepared ${{ parameters.variant }} configuration; secrets omitted."
+  displayName: Prepare exact package configuration
+- powershell: |
+    & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Assert-V22IsolationAttestation.ps1" -AttestationPath $env:V22_ISOLATION_ATTESTATION_PATH -PolicyPath $env:V22_ISOLATION_POLICY_PATH -ExpectedRunId "$(Build.BuildId)-${{ parameters.variant }}-prewrite" -ExpectedJobName "${{ parameters.variant }}" -ExpectedJobId $env:SYSTEM_JOBID -ExpectedAttempt $env:SYSTEM_JOBATTEMPT -ExpectedContainerId $env:V22_ISOLATION_CONTAINER_ID -ExpectedImage "$(image)" -ExpectedDestinationHost $env:COMPUTERNAME
+  env:
+    V22_ISOLATION_ATTESTATION_PATH: $(V22IsolationAttestationPath)
+    V22_ISOLATION_POLICY_PATH: $(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\V22-ISOLATION-POLICY.json
+  displayName: Fail closed on host isolation attestation before deployment writes
+- powershell: |
+    & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Assert-V22LocalContainerRuntime.ps1" -RunId "$(Build.BuildId)-${{ parameters.variant }}-prewrite" -ExpectedImage "$(image)" -AppHost $env:COMPUTERNAME -DbHost $env:COMPUTERNAME -AuthorityHost $env:COMPUTERNAME
+  displayName: Fail closed on local target readiness before deployment writes
+- ${{ if eq(parameters.variant, 'FixCandidate') }}:
+  - pwsh: |
+      & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Assert-V22BaselineAttestation.ps1" -SummaryBase64 $env:V22_BASELINE_AUTH_SUMMARY_B64 -ExpectedImage "$(image)" -ExpectedPluginVersion "$(pluginVersion)" -ExpectedAuthenticationServerVersion "$(authenticationServerVersion)" -ExpectedBackupSha256 "$(backupSha256)" -ExpectedBaselineCoreVersion '22.0.0.1011' -ExpectedBaselineCommonVersion '22.0.2.300' -ExpectedBaselineIdentityVersion '22.0.5.182'
+    env:
+      V22_BASELINE_AUTH_SUMMARY_B64: $(V22_BASELINE_AUTH_SUMMARY_B64)
+    displayName: Refuse candidate before writes unless baseline attestation is valid
+- task: JFrogGenericArtifacts@1
+  displayName: Download exact PlatformDeploy package
+  inputs:
+    command: Download
+    connection: ArtifactoryCloudV2-Retail
+    fileSpec: '{"files":[{"pattern":"retail-software-production/Y2.Tools.PlatformDeploy/PlatformDeploy.$(platformDeployVersion).zip","target":"$(Agent.TempDirectory)/V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}/"}]}'
+    failNoOp: true
+- task: ExtractFiles@1
+  displayName: Extract pinned PlatformDeploy
+  inputs:
+    archiveFilePatterns: '$(Agent.TempDirectory)/V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}/PlatformDeploy.$(platformDeployVersion).zip'
+    destinationFolder: '$(Agent.TempDirectory)/V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}/Deploy'
+    cleanDestinationFolder: true
+- pwsh: |
+    $root = "$(Agent.TempDirectory)\V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}"
+    $zip = Join-Path $root 'PlatformDeploy.$(platformDeployVersion).zip'
+    if ((Get-FileHash $zip -Algorithm SHA256).Hash -ine '$(platformDeployZipSha256)') { throw 'PlatformDeploy ZIP hash mismatch.' }
+    & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Invoke-V22PlatformDeploy.ps1" -DeployScript (Join-Path $root 'Deploy\docker-pipeline-deploy-ps7.ps1') -DeployConfig (Join-Path $root 'v22-fix.cy2px') -DeployRoot (Join-Path $root 'Deploy')
+  env:
+    RETAIL_JFROG_API_KEY: $(RetailJfrogApiKey)
+  displayName: Restore backup and deploy inside job container
+- pwsh: |
+    $root = "$(Agent.TempDirectory)\V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}"
+    & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Assert-V22ConsumedPackages.ps1" -DeployRoot (Join-Path $root 'Deploy') -Variant '${{ parameters.variant }}' -PackageManifestPath "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\PACKAGE-SHA256SUMS.txt" -CoreVersion '${{ parameters.coreVersion }}' -CommonVersion '${{ parameters.commonVersion }}' -IdentityVersion '${{ parameters.identityVersion }}'
+  displayName: Verify downloaded package hashes and versions before campaign
+- powershell: |
+    & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Assert-V22LocalContainerRuntime.ps1" -RunId "$(Build.BuildId)-${{ parameters.variant }}-postdeploy" -ExpectedImage "$(image)" -AppHost $env:COMPUTERNAME -DbHost $env:COMPUTERNAME -AuthorityHost $env:COMPUTERNAME
+  displayName: Check local SQL/IIS readiness after deployment (not isolation proof)
+- pwsh: |
+    $root = "$(Agent.TempDirectory)\V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}"
+    $props = Join-Path $root 'parameters.properties'
+    @("USERNAME=$(testAutoUserName)","PASSWORD=$(testAutoPassword)","APPSERVER_HOST=$env:COMPUTERNAME","APPSERVER_PORT=80","APPSERVER_PROTOCOL=http","APPNAME=retail_22.0","FOLDER_ID=TESTS_AUTO_JMETER","DB_HOST=$env:COMPUTERNAME","DB_PORT=1433","DB_NAME=AUTO_V21_00","DB_INSTANCE=\\SQLEXPRESS","AUTHORITY_HOST=$env:COMPUTERNAME","AUTHORITY_PORT=80","AUTHORITY_PROTOCOL=http","AUTHORITY_APPNAME=authenticationserver") | Set-Content $props -Encoding UTF8
+    $acl = Get-Acl -LiteralPath $props
+    $acl.SetAccessRuleProtection($true, $false)
+    $identity = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
+    $rule = [System.Security.AccessControl.FileSystemAccessRule]::new($identity, 'Read,Write,Delete', 'None', 'None', 'Allow')
+    $acl.SetAccessRule($rule)
+    Set-Acl -LiteralPath $props -AclObject $acl
+    $jmeter='C:\Tools\jmeter\bin\jmeter.bat'
+    foreach($rel in @('Tests\LegacyServices\012-FrenchTaxesRules_Run.jmx','Tests\WebServices\006-Validation_SetDocumentErrorReason.jmx','Tests\WebServices\020-Purge_Execute.jmx')) { $n=[IO.Path]::GetFileNameWithoutExtension($rel); & $jmeter -n -t (Join-Path '$(Build.SourcesDirectory)\pluginSource' $rel) -p $props -j (Join-Path $root "$n.log") -l (Join-Path $root "$n.jtl"); if($LASTEXITCODE -ne 0){throw "Minimal plan failed: $rel"} }
+  displayName: Run three discriminating operations
+- powershell: |
+    $root = "$(Agent.TempDirectory)\V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}"; $props=Join-Path $root 'parameters.properties'
+    & 'C:\Tools\jmeter-cli.ps1' invoke-campaign -campaignsFolderPath "$(Build.SourcesDirectory)\pluginSource\Tests" -campaignName LegacyServices -resultFolderPath (Join-Path $root LegacyServices) -propertiesFilePath $props; if($LASTEXITCODE -ne 0){throw 'LegacyServices failed'}
+    & 'C:\Tools\jmeter-cli.ps1' invoke-campaign -campaignsFolderPath "$(Build.SourcesDirectory)\pluginSource\Tests" -campaignName WebServices -resultFolderPath (Join-Path $root WebServices) -propertiesFilePath $props; if($LASTEXITCODE -ne 0){throw 'WebServices failed'}
+  displayName: Run complete 376-test campaign
+- pwsh: |
+    $root = "$(Agent.TempDirectory)\V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}"
+    & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Assert-V22CampaignCounts.ps1" -ResultRoot $root
+  displayName: Assert exact 232 plus 144 campaign results
+- ${{ if eq(parameters.variant, 'FixHistorical') }}:
+  - pwsh: |
+      $root = "$(Agent.TempDirectory)\V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}"
+      $summary = & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Assert-V22AuthorizationComparison.ps1" -ResultRoot $root -Variant FixHistorical -ExpectedImage "$(image)" -ExpectedPluginVersion "$(pluginVersion)" -ExpectedAuthenticationServerVersion "$(authenticationServerVersion)" -ExpectedBackupSha256 "$(backupSha256)" -CoreVersion '${{ parameters.coreVersion }}' -CommonVersion '${{ parameters.commonVersion }}' -IdentityVersion '${{ parameters.identityVersion }}'
+      if ($LASTEXITCODE -ne 0) { throw 'Historical authorization baseline failed.' }
+      $b64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes(($summary -join "`n")))
+      Write-Host "##vso[task.setvariable variable=V22BaselineAuthSummary;isOutput=true]$b64"
+    name: captureBaseline
+    displayName: Capture 174-signature historical baseline by scenario
+- ${{ if eq(parameters.variant, 'FixCandidate') }}:
+  - pwsh: |
+      if ([string]::IsNullOrWhiteSpace($env:V22_BASELINE_AUTH_SUMMARY_B64)) { throw 'Historical authorization summary is missing.' }
+      $json = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($env:V22_BASELINE_AUTH_SUMMARY_B64))
+      $root = "$(Agent.TempDirectory)\V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}"
+      & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Assert-V22AuthorizationComparison.ps1" -ResultRoot $root -Variant FixCandidate -BaselineSummaryJson $json -ExpectedImage "$(image)" -ExpectedPluginVersion "$(pluginVersion)" -ExpectedAuthenticationServerVersion "$(authenticationServerVersion)" -ExpectedBackupSha256 "$(backupSha256)" -CoreVersion '${{ parameters.coreVersion }}' -CommonVersion '${{ parameters.commonVersion }}' -IdentityVersion '${{ parameters.identityVersion }}' -ExpectedBaselineCoreVersion '22.0.0.1011' -ExpectedBaselineCommonVersion '22.0.2.300' -ExpectedBaselineIdentityVersion '22.0.5.182'
+    env:
+      V22_BASELINE_AUTH_SUMMARY_B64: $(V22_BASELINE_AUTH_SUMMARY_B64)
+    displayName: Compare candidate authorization signatures by scenario
+- pwsh: |
+    $root = "$(Agent.TempDirectory)\V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}"
+    & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Collect-V22ScrubbedResults.ps1" -ResultRoot $root -OutputPath (Join-Path $root 'scrubbed-results.json') -Variant '${{ parameters.variant }}'
+  displayName: Collect scrubbed result metadata only
+- powershell: |
+    $root="$(Agent.TempDirectory)\V22-FrenchTaxesRules-$(Build.BuildId)-${{ parameters.variant }}"; if(Test-Path $root){Remove-Item $root -Recurse -Force}
+  condition: always()
+  displayName: Cleanup job-scoped replay directory

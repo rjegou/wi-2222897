@@ -1,0 +1,20 @@
+{
+  "count": 2,
+  "value": [
+    {
+      "createdDate": "2026-09-03T14:52:18Z",
+      "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6177841/Attachments/3",
+      "id": 3,
+      "fileName": "tfsbuild_vm-alm-agent-09_2026-09-03_14_52_16.trx",
+      "size": 5169
+    },
+    {
+      "createdDate": "2026-09-03T14:52:18Z",
+      "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6177841/Attachments/5",
+      "id": 5,
+      "attachmentType": "codeCoverage",
+      "fileName": "tfsbuild_vm-alm-agent-09_2026-09-03.14_52_10.coverage",
+      "size": 553457
+    }
+  ]
+}

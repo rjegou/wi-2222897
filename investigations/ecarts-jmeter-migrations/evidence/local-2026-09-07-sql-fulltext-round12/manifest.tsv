@@ -1,0 +1,15 @@
+kind	path	value_or_role	status
+worktree	worktrees/Pipelines_Docker_BaseImages	master; existing 2019 dockerfile and tests.yml changes preserved	FACT
+source	worktrees/Pipelines_Docker_BaseImages/Images/SqlExpress/2025/dockerfile:63	/FEATURES=SQLENGINE,FullText	minimal correction
+source	worktrees/Pipelines_Docker_BaseImages/Images/SqlExpress/2019/dockerfile:52	MediaType=Advanced; SQLEXPRADV_x64_ENU.Exe; FullText	preserved prior patch
+source	worktrees/Pipelines_Docker_BaseImages/Images/SqlExpress/tests.yml	actual Full-Text control block	preserved prior patch
+test	dynamic extraction of tests.yml control	1/exit0 accepted	pass
+test	dynamic extraction of tests.yml control	0/exit0 rejected	pass
+test	dynamic extraction of tests.yml control	NULL/exit0 rejected	pass
+test	dynamic extraction of tests.yml control	empty/exit0 rejected	pass
+test	dynamic extraction of tests.yml control	synthetic output/exit7 rejected	pass
+official	Microsoft Learn install command	SQLEngine only vs SQLEngine,FullText	read
+official	Microsoft Learn SQL Server 2025 release notes	Express includes former Advanced Services functionality	read
+official	Microsoft SQL Server 2019 download page	SQLEXPRADV includes Full-Text Search	read
+limit	SQL media acquisition, installation, Docker build, runtime SQL probe	not executed	UNKNOWN
+limit	2019 MediaType=Advanced bootstrap switch and output filename	not normatively confirmed	UNKNOWN

@@ -1,0 +1,8 @@
+item	path_or_scope	identity_or_result	sha256_or_status
+API runtime	runtime/Cegid.Retail.AutoTest.Api.dll	Cegid.Retail.AutoTest.Api 1.1.46.0, token fe0ce61bd76bef19	51FB31F71D1BAC99114548B05AC66FF59A49F5AEBD7E09A4F970CF1E6915AD81
+framework	races/run.log	.NET Framework v4.0.30319	PASS
+fixture	fixtures/input.xml	Root XML minimal	preserved
+program	DateJmxHarness.cs	Direct GenerateJmeter call, no reflection/transformation copy	preserved
+JMX	jmx/*.jmx	6 files, one JDBCSampler/query each	PASS
+results	results.tsv	6/6 PASS, execution exit 0	preserved
+runtime dependencies	runtime/*.dll	14 DLLs from compiled API bin; no net452 reference facades loaded	staged local

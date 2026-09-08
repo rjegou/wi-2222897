@@ -1,0 +1,420 @@
+11:16:27.9917214+02:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Date d'activation 01/01/2012
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+11:16:28.0073478+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE PARAMSOC SET SOC_DATA = '40909' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARAMSOC SET SOC_DATA = '40909' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARAMSOC SET SOC_DATA = '40909' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+11:16:28.0073478+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.5295
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=5.7083
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(37f4012d-5c64-4853-9392-23bbba2fd97e@sql_Y2_Plugin, 50616689)
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+11:16:28.0073478+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE ETABLISS SET ET_PAYS = 'XXX' WHERE ET_PAYS = 'FRA' AND ET_ETABLISSEMENT <> '110'
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE ETABLISS SET ET_PAYS = 'XXX' WHERE ET_PAYS = 'FRA' AND ET_ETABLISSEMENT <> '110'
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE ETABLISS SET ET_PAYS = 'XXX' WHERE ET_PAYS = 'FRA' AND ET_ETABLISSEMENT <> '110'
+11:16:28.0073478+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.6912
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<45>>
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=5.8714
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(31e7e023-aed8-420b-a6fc-f5ad85e5c018@sql_Y2_Plugin, 26834112)
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+11:16:28.0073478+02:00: QTAgent32_40.exe Information: 0 : forcing CBP cache refresh on Domain [SETTING]
+11:16:28.0073478+02:00: QTAgent32_40.exe Information: 0 : processing file = (D:\Temp\TempoAutoTest\BB18A6F0-3BEF-49D6-A856-42357415F300\IntegrationTests\Y2_Plugin.Current\sql\sources\IntegratedTests\AutoTest\Data\LegacyServices\TestPlans\InputFiles\FrenchTaxesRules\Run_54.xml)
+11:16:28.0073478+02:00: root Verbose: 0 : Cegid.Framework.ServiceModel | Authorization | User 'CEGIDGROUP\SvcTestAutoRetail' has access to folder 'sql_Y2_Plugin' : Claim of type 'http://www.cegid.fr/claims/erp/user/login' added.
+11:16:28.0229722+02:00: root Information: 0 : Cegid.Framework.ServiceModel | Authorization | Status=Granted, User=CEGIDGROUP\SvcTestAutoRetail, Resource=/1de85945-9e6b-4b7c-9d19-2a00230cc57c/
+11:16:28.0229722+02:00: root Information: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Function ' - Invoke' - OperationStatus=Start
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Function ' - Invoke' - Input parameters - <<Cegid.CBR.FrenchTaxesRulesFrenchTaxesRulesService.Run> - <> - <'Request Tob' TOB>>
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'CheckIfSecurityEnforcementIsActivated' - OperationStatus=Start
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+11:16:28.0229722+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT TOP (1) [Extent1].[SOC_NOM] AS [SOC_NOM], [Extent1].[SOC_DATA] AS [SOC_DATA], [Extent1].[SOC_DESIGN] AS [SOC_DESIGN], [Extent1].[SOC_TREE] AS [SOC_TREE], [Extent1].[SOC_DATECREATION] AS [SOC_DATECREATION], [Extent1].[SOC_DATEMODIF] AS [SOC_DATEMODIF], RTRIM([Extent1].[SOC_CREATEUR]) AS [SOC_CREATEUR], RTRIM([Extent1].[SOC_UTILISATEUR]) AS [SOC_UTILISATEUR], [Extent1].[SOC_NUMVERSION] AS [SOC_NUMVERSION], RTRIM([Extent1].[SOC_DOMAINE]) AS [SOC_DOMAINE] FROM [PARAMSOC] AS [Extent1] WHERE [Extent1].[SOC_NOM] = @p__linq__0 
+11:16:28.0229722+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='SO_ENFORCEDSECURITYCLIENTSERVERCNX'
+11:16:28.0229722+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.439
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(636f9fc1-a0d0-4798-ae20-b52d7109b5a1@sql_Y2_Plugin, 55873859)
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'CheckIfSecurityEnforcementIsActivated' - OperationStatus=Success, OperationDurationMs=2.2542
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'RegisterSigningContextForRequest' - OperationStatus=Start
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'RegisterSigningContextForRequest' - OperationStatus=Success, OperationDurationMs=0.0012
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'Cegid.CBR.FrenchTaxesRulesFrenchTaxesRulesService.Run' - OperationStatus=Start
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'Cegid.CBR.FrenchTaxesRulesFrenchTaxesRulesService.Run' - Etape 'Input parameters' - <>
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+11:16:28.0229722+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI]  SELECT US_UTILISATEUR,US_LIBELLE,US_GROUPE,US_ABREGE,US_DOMAINEAUTHENT,US_EMAIL,US_SUPERVISEUR,US_FONCTION,US_PRESENT,US_DESACTIVE,US_DATECONNEXION,US_IDEMPOTENCYID,USC_ETABLISSEMENT,USC_DEPOT,USC_DOMAINE,USC_PRFCULTUREL,USC_PRFCULTURELFO,USC_IMPRIMANTE,USC_AFFINDIC,USC_AFFTACHE,USC_RESTR0,USC_RESTR1,USC_RESTR7,USC_RESTR9,USC_RESTR2,USC_RESTR3,USC_RESTR5,USC_RESTR8,USC_RESTR6,USC_RESTR4,USC_PROFILRESCLI,USC_DOMAINES,USC_DOMAINESMODIF,USC_GRPDEMARQUELST,USC_FAMILLECOND,USC_FAMILLE3,USC_FAMILLE4,USC_FAMILLE5,USC_FAMILLE6,USC_FAMILLE12,USC_FAMILLE7,USC_FAMILLE8,USC_FAMILLE9,USC_FAMILLE10,USC_FAMILLE11,USC_TARIFACH,USC_TARIFVTEHT,USC_TARIFVTETTC,USC_PRGTARIFACH,USC_PRGTARIFVTEHT,USC_PRGTARIFVTETTC,USC_USECLASSIFART,USC_CLASSIFART,USC_USECLASSIFCLI,USC_CLASSIFCLI,USC_USECHPSART,USC_CHPSART,USC_USECHPSCLI,USC_CHPSCLI,USC_USECHPSFOU,USC_CHPSFOU,USC_USECHPSETA,USC_CHPSETA,USC_USECHPSCOM,USC_CHPSCOM,USC_USECHPSSAV,USC_CHPSSAV,USC_USECHPSDOC,USC_CHPSDOC,USC_LIBREUSER1,USC_LIBREUSER2,USC_LIBREUSER3,USC_DATEEXPIRE,USC_ANNUAIREEXT,USC_ANNUAIREEXTDET,USC_CASHIERROLE,USC_SALESPERSONROLE,USC_SALESPERSONID,USC_IMMUTABLEID,USC_REGISTRATIONAUTH,USC_SYSTEMUSER,USC_SPACCESS,USC_SPADMIN,USC_SPGRIDCONFIG,USC_SPAPPLICATIONS,MWD_DATEVALID,MWD_DISABLE,MWD_ESSAI,MWP_BLOCAGE,ET_LIBELLE,UG_LIBELLE,IDP_UTILISATEUR FROM UTILISAT LEFT OUTER JOIN UTILISATCOMPL ON US_UTILISATEUR = USC_UTILISATEUR  LEFT OUTER JOIN MPERSPWD ON US_UTILISATEUR = MWD_PERSONNE  AND  MWD_TYPEPERSONNE = @param0  LEFT OUTER JOIN USERGRP ON US_GROUPE = UG_GROUPE  LEFT OUTER JOIN MPARAMPWD ON UG_STRATEGIE = MWP_STRATEGIE  LEFT OUTER JOIN ETABLISS ON USC_ETABLISSEMENT = ET_ETABLISSEMENT  LEFT OUTER JOIN IDPINNUMBER ON US_UTILISATEUR = IDP_UTILISATEUR  WHERE  US_UTILISATEUR = @param1 
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT UTILISAT.US_UTILISATEUR, UTILISAT.US_LIBELLE, UTILISAT.US_GROUPE, UTILISAT.US_ABREGE, UTILISAT.US_DOMAINEAUTHENT, UTILISAT.US_EMAIL, UTILISAT.US_SUPERVISEUR, UTILISAT.US_FONCTION, UTILISAT.US_PRESENT, UTILISAT.US_DESACTIVE, UTILISAT.US_DATECONNEXION, UTILISAT.US_IDEMPOTENCYID, UTILISATCOMPL.USC_ETABLISSEMENT, UTILISATCOMPL.USC_DEPOT, UTILISATCOMPL.USC_DOMAINE, UTILISATCOMPL.USC_PRFCULTUREL, UTILISATCOMPL.USC_PRFCULTURELFO, UTILISATCOMPL.USC_IMPRIMANTE, UTILISATCOMPL.USC_AFFINDIC, UTILISATCOMPL.USC_AFFTACHE, UTILISATCOMPL.USC_RESTR0, UTILISATCOMPL.USC_RESTR1, UTILISATCOMPL.USC_RESTR7, UTILISATCOMPL.USC_RESTR9, UTILISATCOMPL.USC_RESTR2, UTILISATCOMPL.USC_RESTR3, UTILISATCOMPL.USC_RESTR5, UTILISATCOMPL.USC_RESTR8, UTILISATCOMPL.USC_RESTR6, UTILISATCOMPL.USC_RESTR4, UTILISATCOMPL.USC_PROFILRESCLI, UTILISATCOMPL.USC_DOMAINES, UTILISATCOMPL.USC_DOMAINESMODIF, UTILISATCOMPL.USC_GRPDEMARQUELST, UTILISATCOMPL.USC_FAMILLECOND, UTILISATCOMPL.USC_FAMILLE3, UTILISATCOMPL.USC_FAMILLE4, UTILISATCOMPL.USC_FAMILLE5, UTILISATCOMPL.USC_FAMILLE6, UTILISATCOMPL.USC_FAMILLE12, UTILISATCOMPL.USC_FAMILLE7, UTILISATCOMPL.USC_FAMILLE8, UTILISATCOMPL.USC_FAMILLE9, UTILISATCOMPL.USC_FAMILLE10, UTILISATCOMPL.USC_FAMILLE11, UTILISATCOMPL.USC_TARIFACH, UTILISATCOMPL.USC_TARIFVTEHT, UTILISATCOMPL.USC_TARIFVTETTC, UTILISATCOMPL.USC_PRGTARIFACH, UTILISATCOMPL.USC_PRGTARIFVTEHT, UTILISATCOMPL.USC_PRGTARIFVTETTC, UTILISATCOMPL.USC_USECLASSIFART, UTILISATCOMPL.USC_CLASSIFART, UTILISATCOMPL.USC_USECLASSIFCLI, UTILISATCOMPL.USC_CLASSIFCLI, UTILISATCOMPL.USC_USECHPSART, UTILISATCOMPL.USC_CHPSART, UTILISATCOMPL.USC_USECHPSCLI, UTILISATCOMPL.USC_CHPSCLI, UTILISATCOMPL.USC_USECHPSFOU, UTILISATCOMPL.USC_CHPSFOU, UTILISATCOMPL.USC_USECHPSETA, UTILISATCOMPL.USC_CHPSETA, UTILISATCOMPL.USC_USECHPSCOM, UTILISATCOMPL.USC_CHPSCOM, UTILISATCOMPL.USC_USECHPSSAV, UTILISATCOMPL.USC_CHPSSAV, UTILISATCOMPL.USC_USECHPSDOC, UTILISATCOMPL.USC_CHPSDOC, UTILISATCOMPL.USC_LIBREUSER1, UTILISATCOMPL.USC_LIBREUSER2, UTILISATCOMPL.USC_LIBREUSER3, UTILISATCOMPL.USC_DATEEXPIRE, UTILISATCOMPL.USC_ANNUAIREEXT, UTILISATCOMPL.USC_ANNUAIREEXTDET, UTILISATCOMPL.USC_CASHIERROLE, UTILISATCOMPL.USC_SALESPERSONROLE, UTILISATCOMPL.USC_SALESPERSONID, UTILISATCOMPL.USC_IMMUTABLEID, UTILISATCOMPL.USC_REGISTRATIONAUTH, UTILISATCOMPL.USC_SYSTEMUSER, USC_SPACCESS, USC_SPADMIN, USC_SPGRIDCONFIG, USC_SPAPPLICATIONS, MPERSPWD.MWD_DATEVALID, MPERSPWD.MWD_DISABLE, MPERSPWD.MWD_ESSAI, MPARAMPWD.MWP_BLOCAGE, ETABLISS.ET_LIBELLE, USERGRP.UG_LIBELLE, IDPINNUMBER.IDP_UTILISATEUR FROM UTILISAT LEFT OUTER JOIN UTILISATCOMPL ON UTILISAT.US_UTILISATEUR = UTILISATCOMPL.USC_UTILISATEUR LEFT OUTER JOIN MPERSPWD ON UTILISAT.US_UTILISATEUR = MPERSPWD.MWD_PERSONNE AND MPERSPWD.MWD_TYPEPERSONNE = @param0 LEFT OUTER JOIN USERGRP ON UTILISAT.US_GROUPE = USERGRP.UG_GROUPE LEFT OUTER JOIN MPARAMPWD ON USERGRP.UG_STRATEGIE = MPARAMPWD.MWP_STRATEGIE LEFT OUTER JOIN ETABLISS ON UTILISATCOMPL.USC_ETABLISSEMENT = ETABLISS.ET_ETABLISSEMENT LEFT OUTER JOIN IDPINNUMBER ON UTILISAT.US_UTILISATEUR = IDPINNUMBER.IDP_UTILISATEUR WHERE UTILISAT.US_UTILISATEUR = @param1 
+11:16:28.0229722+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0='UTI', param1='TST'
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT UTILISAT.US_UTILISATEUR, UTILISAT.US_LIBELLE, UTILISAT.US_GROUPE, UTILISAT.US_ABREGE, UTILISAT.US_DOMAINEAUTHENT, UTILISAT.US_EMAIL, UTILISAT.US_SUPERVISEUR, UTILISAT.US_FONCTION, UTILISAT.US_PRESENT, UTILISAT.US_DESACTIVE, UTILISAT.US_DATECONNEXION, UTILISAT.US_IDEMPOTENCYID, UTILISATCOMPL.USC_ETABLISSEMENT, UTILISATCOMPL.USC_DEPOT, UTILISATCOMPL.USC_DOMAINE, UTILISATCOMPL.USC_PRFCULTUREL, UTILISATCOMPL.USC_PRFCULTURELFO, UTILISATCOMPL.USC_IMPRIMANTE, UTILISATCOMPL.USC_AFFINDIC, UTILISATCOMPL.USC_AFFTACHE, UTILISATCOMPL.USC_RESTR0, UTILISATCOMPL.USC_RESTR1, UTILISATCOMPL.USC_RESTR7, UTILISATCOMPL.USC_RESTR9, UTILISATCOMPL.USC_RESTR2, UTILISATCOMPL.USC_RESTR3, UTILISATCOMPL.USC_RESTR5, UTILISATCOMPL.USC_RESTR8, UTILISATCOMPL.USC_RESTR6, UTILISATCOMPL.USC_RESTR4, UTILISATCOMPL.USC_PROFILRESCLI, UTILISATCOMPL.USC_DOMAINES, UTILISATCOMPL.USC_DOMAINESMODIF, UTILISATCOMPL.USC_GRPDEMARQUELST, UTILISATCOMPL.USC_FAMILLECOND, UTILISATCOMPL.USC_FAMILLE3, UTILISATCOMPL.USC_FAMILLE4, UTILISATCOMPL.USC_FAMILLE5, UTILISATCOMPL.USC_FAMILLE6, UTILISATCOMPL.USC_FAMILLE12, UTILISATCOMPL.USC_FAMILLE7, UTILISATCOMPL.USC_FAMILLE8, UTILISATCOMPL.USC_FAMILLE9, UTILISATCOMPL.USC_FAMILLE10, UTILISATCOMPL.USC_FAMILLE11, UTILISATCOMPL.USC_TARIFACH, UTILISATCOMPL.USC_TARIFVTEHT, UTILISATCOMPL.USC_TARIFVTETTC, UTILISATCOMPL.USC_PRGTARIFACH, UTILISATCOMPL.USC_PRGTARIFVTEHT, UTILISATCOMPL.USC_PRGTARIFVTETTC, UTILISATCOMPL.USC_USECLASSIFART, UTILISATCOMPL.USC_CLASSIFART, UTILISATCOMPL.USC_USECLASSIFCLI, UTILISATCOMPL.USC_CLASSIFCLI, UTILISATCOMPL.USC_USECHPSART, UTILISATCOMPL.USC_CHPSART, UTILISATCOMPL.USC_USECHPSCLI, UTILISATCOMPL.USC_CHPSCLI, UTILISATCOMPL.USC_USECHPSFOU, UTILISATCOMPL.USC_CHPSFOU, UTILISATCOMPL.USC_USECHPSETA, UTILISATCOMPL.USC_CHPSETA, UTILISATCOMPL.USC_USECHPSCOM, UTILISATCOMPL.USC_CHPSCOM, UTILISATCOMPL.USC_USECHPSSAV, UTILISATCOMPL.USC_CHPSSAV, UTILISATCOMPL.USC_USECHPSDOC, UTILISATCOMPL.USC_CHPSDOC, UTILISATCOMPL.USC_LIBREUSER1, UTILISATCOMPL.USC_LIBREUSER2, UTILISATCOMPL.USC_LIBREUSER3, UTILISATCOMPL.USC_DATEEXPIRE, UTILISATCOMPL.USC_ANNUAIREEXT, UTILISATCOMPL.USC_ANNUAIREEXTDET, UTILISATCOMPL.USC_CASHIERROLE, UTILISATCOMPL.USC_SALESPERSONROLE, UTILISATCOMPL.USC_SALESPERSONID, UTILISATCOMPL.USC_IMMUTABLEID, UTILISATCOMPL.USC_REGISTRATIONAUTH, UTILISATCOMPL.USC_SYSTEMUSER, USC_SPACCESS, USC_SPADMIN, USC_SPGRIDCONFIG, USC_SPAPPLICATIONS, MPERSPWD.MWD_DATEVALID, MPERSPWD.MWD_DISABLE, MPERSPWD.MWD_ESSAI, MPARAMPWD.MWP_BLOCAGE, ETABLISS.ET_LIBELLE, USERGRP.UG_LIBELLE, IDPINNUMBER.IDP_UTILISATEUR FROM UTILISAT LEFT OUTER JOIN UTILISATCOMPL ON UTILISAT.US_UTILISATEUR = UTILISATCOMPL.USC_UTILISATEUR LEFT OUTER JOIN MPERSPWD ON UTILISAT.US_UTILISATEUR = MPERSPWD.MWD_PERSONNE AND MPERSPWD.MWD_TYPEPERSONNE = @param0 LEFT OUTER JOIN USERGRP ON UTILISAT.US_GROUPE = USERGRP.UG_GROUPE LEFT OUTER JOIN MPARAMPWD ON USERGRP.UG_STRATEGIE = MPARAMPWD.MWP_STRATEGIE LEFT OUTER JOIN ETABLISS ON UTILISATCOMPL.USC_ETABLISSEMENT = ETABLISS.ET_ETABLISSEMENT LEFT OUTER JOIN IDPINNUMBER ON UTILISAT.US_UTILISATEUR = IDPINNUMBER.IDP_UTILISATEUR WHERE UTILISAT.US_UTILISATEUR = @param1 
+11:16:28.0229722+02:00: root Error: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Exception - Cegid.Erp.Data.ErpBusinessException: Une commande SQL a échoué.
+Code d'exception                   : ERP00001
+Action / méthode                   : 
+Conseil                            : Contacter l'assistance.
+Pile d'appel                       :
+   at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.<>c__DisplayClass5_0`2.<LogFlow>b__0(T flowLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+Exception interne                  :
+   Cegid.Framework.CbpException: Une erreur est survenue lors de l'exécution de la commande SQL SELECT UTILISAT.US_UTILISATEUR, UTILISAT.US_LIBELLE, UTILISAT.US_GROUPE, UTILISAT.US_ABREGE, UTILISAT.US_DOMAINEAUTHENT, UTILISAT.US_EMAIL, UTILISAT.US_SUPERVISEUR, UTILISAT.US_FONCTION, UTILISAT.US_PRESENT, UTILISAT.US_DESACTIVE, UTILISAT.US_DATECONNEXION, UTILISAT.US_IDEMPOTENCYID, UTILISATCOMPL.USC_ETABLISSEMENT, UTILISATCOMPL.USC_DEPOT, UTILISATCOMPL.USC_DOMAINE, UTILISATCOMPL.USC_PRFCULTUREL, UTILISATCOMPL.USC_PRFCULTURELFO, UTILISATCOMPL.USC_IMPRIMANTE, UTILISATCOMPL.USC_AFFINDIC, UTILISATCOMPL.USC_AFFTACHE, UTILISATCOMPL.USC_RESTR0, UTILISATCOMPL.USC_RESTR1, UTILISATCOMPL.USC_RESTR7, UTILISATCOMPL.USC_RESTR9, UTILISATCOMPL.USC_RESTR2, UTILISATCOMPL.USC_RESTR3, UTILISATCOMPL.USC_RESTR5, UTILISATCOMPL.USC_RESTR8, UTILISATCOMPL.USC_RESTR6, UTILISATCOMPL.USC_RESTR4, UTILISATCOMPL.USC_PROFILRESCLI, UTILISATCOMPL.USC_DOMAINES, UTILISATCOMPL.USC_DOMAINESMODIF, UTILISATCOMPL.USC_GRPDEMARQUELST, UTILISATCOMPL.USC_FAMILLECOND, UTILISATCOMPL.USC_FAMILLE3, UTILISATCOMPL.USC_FAMILLE4, UTILISATCOMPL.USC_FAMILLE5, UTILISATCOMPL.USC_FAMILLE6, UTILISATCOMPL.USC_FAMILLE12, UTILISATCOMPL.USC_FAMILLE7, UTILISATCOMPL.USC_FAMILLE8, UTILISATCOMPL.USC_FAMILLE9, UTILISATCOMPL.USC_FAMILLE10, UTILISATCOMPL.USC_FAMILLE11, UTILISATCOMPL.USC_TARIFACH, UTILISATCOMPL.USC_TARIFVTEHT, UTILISATCOMPL.USC_TARIFVTETTC, UTILISATCOMPL.USC_PRGTARIFACH, UTILISATCOMPL.USC_PRGTARIFVTEHT, UTILISATCOMPL.USC_PRGTARIFVTETTC, UTILISATCOMPL.USC_USECLASSIFART, UTILISATCOMPL.USC_CLASSIFART, UTILISATCOMPL.USC_USECLASSIFCLI, UTILISATCOMPL.USC_CLASSIFCLI, UTILISATCOMPL.USC_USECHPSART, UTILISATCOMPL.USC_CHPSART, UTILISATCOMPL.USC_USECHPSCLI, UTILISATCOMPL.USC_CHPSCLI, UTILISATCOMPL.USC_USECHPSFOU, UTILISATCOMPL.USC_CHPSFOU, UTILISATCOMPL.USC_USECHPSETA, UTILISATCOMPL.USC_CHPSETA, UTILISATCOMPL.USC_USECHPSCOM, UTILISATCOMPL.USC_CHPSCOM, UTILISATCOMPL.USC_USECHPSSAV, UTILISATCOMPL.USC_CHPSSAV, UTILISATCOMPL.USC_USECHPSDOC, UTILISATCOMPL.USC_CHPSDOC, UTILISATCOMPL.USC_LIBREUSER1, UTILISATCOMPL.USC_LIBREUSER2, UTILISATCOMPL.USC_LIBREUSER3, UTILISATCOMPL.USC_DATEEXPIRE, UTILISATCOMPL.USC_ANNUAIREEXT, UTILISATCOMPL.USC_ANNUAIREEXTDET, UTILISATCOMPL.USC_CASHIERROLE, UTILISATCOMPL.USC_SALESPERSONROLE, UTILISATCOMPL.USC_SALESPERSONID, UTILISATCOMPL.USC_IMMUTABLEID, UTILISATCOMPL.USC_REGISTRATIONAUTH, UTILISATCOMPL.USC_SYSTEMUSER, USC_SPACCESS, USC_SPADMIN, USC_SPGRIDCONFIG, USC_SPAPPLICATIONS, MPERSPWD.MWD_DATEVALID, MPERSPWD.MWD_DISABLE, MPERSPWD.MWD_ESSAI, MPARAMPWD.MWP_BLOCAGE, ETABLISS.ET_LIBELLE, USERGRP.UG_LIBELLE, IDPINNUMBER.IDP_UTILISATEUR FROM UTILISAT LEFT OUTER JOIN UTILISATCOMPL ON UTILISAT.US_UTILISATEUR = UTILISATCOMPL.USC_UTILISATEUR LEFT OUTER JOIN MPERSPWD ON UTILISAT.US_UTILISATEUR = MPERSPWD.MWD_PERSONNE AND MPERSPWD.MWD_TYPEPERSONNE = @param0 LEFT OUTER JOIN USERGRP ON UTILISAT.US_GROUPE = USERGRP.UG_GROUPE LEFT OUTER JOIN MPARAMPWD ON USERGRP.UG_STRATEGIE = MPARAMPWD.MWP_STRATEGIE LEFT OUTER JOIN ETABLISS ON UTILISATCOMPL.USC_ETABLISSEMENT = ETABLISS.ET_ETABLISSEMENT LEFT OUTER JOIN IDPINNUMBER ON UTILISAT.US_UTILISATEUR = IDPINNUMBER.IDP_UTILISATEUR WHERE UTILISAT.US_UTILISATEUR = @param1 .
+   Code d'exception            : CBP00202
+   Action / méthode            : Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1
+   Conseil                     : Vérifier la syntaxe de la commande SQL
+   Pile d'appel                :
+   
+   Exception interne           :
+      System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'USC_SPACCESS'.
+      Invalid column name 'USC_SPADMIN'.
+      Invalid column name 'USC_SPGRIDCONFIG'.
+      Invalid column name 'USC_SPAPPLICATIONS'.
+         at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+         at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+         at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+         at System.Data.SqlClient.SqlDataReader.get_MetaData()
+         at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+         at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+         at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+         at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+         at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+         at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass19_0`1.<ExecuteReader>b__1(IDbCommand c)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_2`1.<ExecuteCommand>b__2()
+         at Cegid.Framework.Data.DbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Framework.Data.SqlServer.SqlDbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_1`1.<ExecuteCommand>b__1()
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+      ClientConnectionId:c0bdfaac-ca38-4c7b-b1ad-092a2a427778
+      Error Number:207,State:1,Class:16
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Fail, OperationDurationMs=7.9253
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(636f9fc1-a0d0-4798-ae20-b52d7109b5a1@sql_Y2_Plugin, 64435393)
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+11:16:28.0229722+02:00: root Error: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'Cegid.CBR.FrenchTaxesRulesFrenchTaxesRulesService.Run' - Exception - Cegid.Erp.Data.ErpBusinessException: Une commande SQL a échoué.
+Code d'exception                   : ERP00001
+Action / méthode                   : 
+Conseil                            : Contacter l'assistance.
+RequestTobAsXml                    : <?xml version="1.0" encoding="utf-8"?><Document><Data formatVersion="ForwardRead" serializeVersion="3.1"><Tob Name="Request Tob"><Fields><Field Name="XML_CONTENT" Type="String" Value="&lt;RunRequest xmlns=&quot;http://www.cegid.fr/Retail/1.0&quot;&gt;&#xA;  &lt;FromDate&gt;2012-08-02&lt;/FromDate&gt;&#xA;  &lt;RunMode&gt;Default&lt;/RunMode&gt;&#xA;  &lt;ToDate&gt;2012-08-02&lt;/ToDate&gt;&#xA;&lt;/RunRequest&gt;" /></Fields></Tob></Data></Document>
+Pile d'appel                       :
+   at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.<>c__DisplayClass5_0`2.<LogFlow>b__0(T flowLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T,TResult](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Func`2 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T,TResult](ILogSource logSource, String flowName, Func`2 flow)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogCallingFlow[TResult](ILogSource logSource, String methodName, Func`2 method)
+   at Cegid.Erp.Data.Sql.SqlService.ExecuteCommand[T](IDataAccessConnection dataAccessConnection, Func`4 commandBuilder, IEnumerable`1 parameters, Func`2 executor, Boolean createTransaction, Int32 forcedQueryCost)
+   at Cegid.Erp.Data.Sql.SqlService.ExecuteReader[T](IDataAccessConnection dataAccessConnection, String commandText, IEnumerable`1 parameters, Func`2 generator, CommandBehavior commandBehavior, Int32 forcedQueryCost)
+   at Cegid.Erp.Data.Sql.SqlService.ExecuteReader[T](IDataAccessConnection dataAccessConnection, String commandText, IEnumerable`1 parameters, Func`2 generator, CommandBehavior commandBehavior)
+   at Cegid.Erp.Data.Sql.SqlServiceExtension.ExecuteReader[T](ISqlService sqlService, IDataAccessConnection dataAccessConnection, String commandText, IEnumerable`1 parameters, Func`2 generator)
+   at Cegid.Retail.Identity.Services.UserManagement.UserManagementService.GetUserById(String id, Boolean modeCreate)
+   at Cegid.Retail.Identity.Services.UserManagement.UserManagementService.GetUserFromRequest(GetDetailRequest request)
+   at Cegid.Retail.Identity.Services.UserManagement.UserManagementService.GetDetail_Impl(GetDetailRequest request)
+   at Cegid.Retail.Identity.Services.UserManagement.UserManagementService.GetDetail(GetDetailRequest request)
+   at Cegid.Retail.FrenchTaxesRules.Services.Common.TraceService.GetCurrentStoreId() in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.Services\Common\TraceService.cs:line 234
+   at Cegid.Retail.FrenchTaxesRules.Services.Common.TraceService.InitTraceSession(DaemonType daemonType) in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.Services\Common\TraceService.cs:line 103
+   at Cegid.Retail.FrenchTaxesRules.Services.FrenchTaxesRules.FrenchTaxesRulesService.Run_Impl(RunRequest request) in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.Services\FrenchTaxesRules\FrenchTaxesRulesService.Implementation.cs:line 47
+   at Cegid.Retail.FrenchTaxesRules.Services.FrenchTaxesRules.FrenchTaxesRulesService.Run(RunRequest request) in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.Services\FrenchTaxesRules\FrenchTaxesRulesService.Implementation.g.cs:line 43
+   at Cegid.Retail.FrenchTaxesRules.LegacyServices.FrenchTaxesRulesServiceDtoAdapter.Run(ICwasAdapterContext`2 context) in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.LegacyServices\FrenchTaxesRules\FrenchTaxesRulesService.CwasAdapter.g.cs:line 47
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.CwasAdapterMethodInfo.<>c__DisplayClass27_0.<CreateDelegate>b__0(ICwasAdapterContext cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.SyncCwasAdapterMethodInfo.<>c__DisplayClass4_0.<CreateAction>b__0(ICwasAdapterContext`2 cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.<>c__DisplayClass31_0.<CreateInvoker>b__0(ICwasAdapterContext`2 cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.Invoke(ICwasAdapterContext`2 context)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapterService.Invoke(ICwasAdapterContext`2 context)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.<>c__DisplayClass5_1.<Invoke>b__2()
+   at Cegid.Framework.ExceptionHelper.TryHandle(Action action, Func`2 isHandled)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.<>c__DisplayClass5_0.<Invoke>b__1(CallingFlowLogCategory functionalLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+Exception interne                  :
+   Cegid.Framework.CbpException: Une erreur est survenue lors de l'exécution de la commande SQL SELECT UTILISAT.US_UTILISATEUR, UTILISAT.US_LIBELLE, UTILISAT.US_GROUPE, UTILISAT.US_ABREGE, UTILISAT.US_DOMAINEAUTHENT, UTILISAT.US_EMAIL, UTILISAT.US_SUPERVISEUR, UTILISAT.US_FONCTION, UTILISAT.US_PRESENT, UTILISAT.US_DESACTIVE, UTILISAT.US_DATECONNEXION, UTILISAT.US_IDEMPOTENCYID, UTILISATCOMPL.USC_ETABLISSEMENT, UTILISATCOMPL.USC_DEPOT, UTILISATCOMPL.USC_DOMAINE, UTILISATCOMPL.USC_PRFCULTUREL, UTILISATCOMPL.USC_PRFCULTURELFO, UTILISATCOMPL.USC_IMPRIMANTE, UTILISATCOMPL.USC_AFFINDIC, UTILISATCOMPL.USC_AFFTACHE, UTILISATCOMPL.USC_RESTR0, UTILISATCOMPL.USC_RESTR1, UTILISATCOMPL.USC_RESTR7, UTILISATCOMPL.USC_RESTR9, UTILISATCOMPL.USC_RESTR2, UTILISATCOMPL.USC_RESTR3, UTILISATCOMPL.USC_RESTR5, UTILISATCOMPL.USC_RESTR8, UTILISATCOMPL.USC_RESTR6, UTILISATCOMPL.USC_RESTR4, UTILISATCOMPL.USC_PROFILRESCLI, UTILISATCOMPL.USC_DOMAINES, UTILISATCOMPL.USC_DOMAINESMODIF, UTILISATCOMPL.USC_GRPDEMARQUELST, UTILISATCOMPL.USC_FAMILLECOND, UTILISATCOMPL.USC_FAMILLE3, UTILISATCOMPL.USC_FAMILLE4, UTILISATCOMPL.USC_FAMILLE5, UTILISATCOMPL.USC_FAMILLE6, UTILISATCOMPL.USC_FAMILLE12, UTILISATCOMPL.USC_FAMILLE7, UTILISATCOMPL.USC_FAMILLE8, UTILISATCOMPL.USC_FAMILLE9, UTILISATCOMPL.USC_FAMILLE10, UTILISATCOMPL.USC_FAMILLE11, UTILISATCOMPL.USC_TARIFACH, UTILISATCOMPL.USC_TARIFVTEHT, UTILISATCOMPL.USC_TARIFVTETTC, UTILISATCOMPL.USC_PRGTARIFACH, UTILISATCOMPL.USC_PRGTARIFVTEHT, UTILISATCOMPL.USC_PRGTARIFVTETTC, UTILISATCOMPL.USC_USECLASSIFART, UTILISATCOMPL.USC_CLASSIFART, UTILISATCOMPL.USC_USECLASSIFCLI, UTILISATCOMPL.USC_CLASSIFCLI, UTILISATCOMPL.USC_USECHPSART, UTILISATCOMPL.USC_CHPSART, UTILISATCOMPL.USC_USECHPSCLI, UTILISATCOMPL.USC_CHPSCLI, UTILISATCOMPL.USC_USECHPSFOU, UTILISATCOMPL.USC_CHPSFOU, UTILISATCOMPL.USC_USECHPSETA, UTILISATCOMPL.USC_CHPSETA, UTILISATCOMPL.USC_USECHPSCOM, UTILISATCOMPL.USC_CHPSCOM, UTILISATCOMPL.USC_USECHPSSAV, UTILISATCOMPL.USC_CHPSSAV, UTILISATCOMPL.USC_USECHPSDOC, UTILISATCOMPL.USC_CHPSDOC, UTILISATCOMPL.USC_LIBREUSER1, UTILISATCOMPL.USC_LIBREUSER2, UTILISATCOMPL.USC_LIBREUSER3, UTILISATCOMPL.USC_DATEEXPIRE, UTILISATCOMPL.USC_ANNUAIREEXT, UTILISATCOMPL.USC_ANNUAIREEXTDET, UTILISATCOMPL.USC_CASHIERROLE, UTILISATCOMPL.USC_SALESPERSONROLE, UTILISATCOMPL.USC_SALESPERSONID, UTILISATCOMPL.USC_IMMUTABLEID, UTILISATCOMPL.USC_REGISTRATIONAUTH, UTILISATCOMPL.USC_SYSTEMUSER, USC_SPACCESS, USC_SPADMIN, USC_SPGRIDCONFIG, USC_SPAPPLICATIONS, MPERSPWD.MWD_DATEVALID, MPERSPWD.MWD_DISABLE, MPERSPWD.MWD_ESSAI, MPARAMPWD.MWP_BLOCAGE, ETABLISS.ET_LIBELLE, USERGRP.UG_LIBELLE, IDPINNUMBER.IDP_UTILISATEUR FROM UTILISAT LEFT OUTER JOIN UTILISATCOMPL ON UTILISAT.US_UTILISATEUR = UTILISATCOMPL.USC_UTILISATEUR LEFT OUTER JOIN MPERSPWD ON UTILISAT.US_UTILISATEUR = MPERSPWD.MWD_PERSONNE AND MPERSPWD.MWD_TYPEPERSONNE = @param0 LEFT OUTER JOIN USERGRP ON UTILISAT.US_GROUPE = USERGRP.UG_GROUPE LEFT OUTER JOIN MPARAMPWD ON USERGRP.UG_STRATEGIE = MPARAMPWD.MWP_STRATEGIE LEFT OUTER JOIN ETABLISS ON UTILISATCOMPL.USC_ETABLISSEMENT = ETABLISS.ET_ETABLISSEMENT LEFT OUTER JOIN IDPINNUMBER ON UTILISAT.US_UTILISATEUR = IDPINNUMBER.IDP_UTILISATEUR WHERE UTILISAT.US_UTILISATEUR = @param1 .
+   Code d'exception            : CBP00202
+   Action / méthode            : Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1
+   Conseil                     : Vérifier la syntaxe de la commande SQL
+   Pile d'appel                :
+   
+   Exception interne           :
+      System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'USC_SPACCESS'.
+      Invalid column name 'USC_SPADMIN'.
+      Invalid column name 'USC_SPGRIDCONFIG'.
+      Invalid column name 'USC_SPAPPLICATIONS'.
+         at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+         at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+         at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+         at System.Data.SqlClient.SqlDataReader.get_MetaData()
+         at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+         at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+         at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+         at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+         at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+         at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass19_0`1.<ExecuteReader>b__1(IDbCommand c)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_2`1.<ExecuteCommand>b__2()
+         at Cegid.Framework.Data.DbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Framework.Data.SqlServer.SqlDbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_1`1.<ExecuteCommand>b__1()
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+      ClientConnectionId:c0bdfaac-ca38-4c7b-b1ad-092a2a427778
+      Error Number:207,State:1,Class:16
+11:16:28.0229722+02:00: root Information: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'Cegid.CBR.FrenchTaxesRulesFrenchTaxesRulesService.Run' - OperationStatus=Fail, OperationDurationMs=9.7682
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'UnregisterSigningContextForRequest' - OperationStatus=Start
+11:16:28.0229722+02:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'UnregisterSigningContextForRequest' - OperationStatus=Success, OperationDurationMs=0.0064
+11:16:28.0229722+02:00: root Error: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Fonction ' - Invoke' - Exception - Cegid.Erp.Data.ErpBusinessException: Une commande SQL a échoué.
+Code d'exception                   : ERP00001
+Action / méthode                   : 
+Conseil                            : Contacter l'assistance.
+RequestTobAsXml                    : <?xml version="1.0" encoding="utf-8"?><Document><Data formatVersion="ForwardRead" serializeVersion="3.1"><Tob Name="Request Tob"><Fields><Field Name="XML_CONTENT" Type="String" Value="&lt;RunRequest xmlns=&quot;http://www.cegid.fr/Retail/1.0&quot;&gt;&#xA;  &lt;FromDate&gt;2012-08-02&lt;/FromDate&gt;&#xA;  &lt;RunMode&gt;Default&lt;/RunMode&gt;&#xA;  &lt;ToDate&gt;2012-08-02&lt;/ToDate&gt;&#xA;&lt;/RunRequest&gt;" /></Fields></Tob></Data></Document>
+TrackingId                         : ebd63233-bb8a-4f83-a48a-c478d9cfb181
+Pile d'appel                       :
+   at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.<>c__DisplayClass5_0`2.<LogFlow>b__0(T flowLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T,TResult](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Func`2 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T,TResult](ILogSource logSource, String flowName, Func`2 flow)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogCallingFlow[TResult](ILogSource logSource, String methodName, Func`2 method)
+   at Cegid.Erp.Data.Sql.SqlService.ExecuteCommand[T](IDataAccessConnection dataAccessConnection, Func`4 commandBuilder, IEnumerable`1 parameters, Func`2 executor, Boolean createTransaction, Int32 forcedQueryCost)
+   at Cegid.Erp.Data.Sql.SqlService.ExecuteReader[T](IDataAccessConnection dataAccessConnection, String commandText, IEnumerable`1 parameters, Func`2 generator, CommandBehavior commandBehavior, Int32 forcedQueryCost)
+   at Cegid.Erp.Data.Sql.SqlService.ExecuteReader[T](IDataAccessConnection dataAccessConnection, String commandText, IEnumerable`1 parameters, Func`2 generator, CommandBehavior commandBehavior)
+   at Cegid.Erp.Data.Sql.SqlServiceExtension.ExecuteReader[T](ISqlService sqlService, IDataAccessConnection dataAccessConnection, String commandText, IEnumerable`1 parameters, Func`2 generator)
+   at Cegid.Retail.Identity.Services.UserManagement.UserManagementService.GetUserById(String id, Boolean modeCreate)
+   at Cegid.Retail.Identity.Services.UserManagement.UserManagementService.GetUserFromRequest(GetDetailRequest request)
+   at Cegid.Retail.Identity.Services.UserManagement.UserManagementService.GetDetail_Impl(GetDetailRequest request)
+   at Cegid.Retail.Identity.Services.UserManagement.UserManagementService.GetDetail(GetDetailRequest request)
+   at Cegid.Retail.FrenchTaxesRules.Services.Common.TraceService.GetCurrentStoreId() in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.Services\Common\TraceService.cs:line 234
+   at Cegid.Retail.FrenchTaxesRules.Services.Common.TraceService.InitTraceSession(DaemonType daemonType) in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.Services\Common\TraceService.cs:line 103
+   at Cegid.Retail.FrenchTaxesRules.Services.FrenchTaxesRules.FrenchTaxesRulesService.Run_Impl(RunRequest request) in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.Services\FrenchTaxesRules\FrenchTaxesRulesService.Implementation.cs:line 47
+   at Cegid.Retail.FrenchTaxesRules.Services.FrenchTaxesRules.FrenchTaxesRulesService.Run(RunRequest request) in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.Services\FrenchTaxesRules\FrenchTaxesRulesService.Implementation.g.cs:line 43
+   at Cegid.Retail.FrenchTaxesRules.LegacyServices.FrenchTaxesRulesServiceDtoAdapter.Run(ICwasAdapterContext`2 context) in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.LegacyServices\FrenchTaxesRules\FrenchTaxesRulesService.CwasAdapter.g.cs:line 47
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.CwasAdapterMethodInfo.<>c__DisplayClass27_0.<CreateDelegate>b__0(ICwasAdapterContext cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.SyncCwasAdapterMethodInfo.<>c__DisplayClass4_0.<CreateAction>b__0(ICwasAdapterContext`2 cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.<>c__DisplayClass31_0.<CreateInvoker>b__0(ICwasAdapterContext`2 cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.Invoke(ICwasAdapterContext`2 context)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapterService.Invoke(ICwasAdapterContext`2 context)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.<>c__DisplayClass5_1.<Invoke>b__2()
+   at Cegid.Framework.ExceptionHelper.TryHandle(Action action, Func`2 isHandled)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.<>c__DisplayClass5_0.<Invoke>b__1(CallingFlowLogCategory functionalLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, String flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.Invoke(String action, String parameter, IDataTob request)
+   at Cegid.Erp.Services.LegacyHost.LegacyDispatcherServiceBase.Invoke(IHub hub, String action, String parameter, IDataTob request)
+   at Cegid.Erp.Services.LegacyHost.LegacyDispatcherService.Invoke(String action, String parameter, IDataTob request)
+   at SyncInvokeInvoke(Object , Object[] , Object[] )
+   at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object instance, Object[] inputs, Object[]& outputs)
+   at Cegid.Erp.ServiceModel.Dispatcher.ErpContextInvoker.Invoke(Object instance, Object[] inputs, Object[]& outputs)
+   at Cegid.Framework.ServiceModel.Dispatcher.LogOperationInvoker`1.<>c__DisplayClass6_0.<Invoke>b__1(T functionalCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+Exception interne                  :
+   Cegid.Framework.CbpException: Une erreur est survenue lors de l'exécution de la commande SQL SELECT UTILISAT.US_UTILISATEUR, UTILISAT.US_LIBELLE, UTILISAT.US_GROUPE, UTILISAT.US_ABREGE, UTILISAT.US_DOMAINEAUTHENT, UTILISAT.US_EMAIL, UTILISAT.US_SUPERVISEUR, UTILISAT.US_FONCTION, UTILISAT.US_PRESENT, UTILISAT.US_DESACTIVE, UTILISAT.US_DATECONNEXION, UTILISAT.US_IDEMPOTENCYID, UTILISATCOMPL.USC_ETABLISSEMENT, UTILISATCOMPL.USC_DEPOT, UTILISATCOMPL.USC_DOMAINE, UTILISATCOMPL.USC_PRFCULTUREL, UTILISATCOMPL.USC_PRFCULTURELFO, UTILISATCOMPL.USC_IMPRIMANTE, UTILISATCOMPL.USC_AFFINDIC, UTILISATCOMPL.USC_AFFTACHE, UTILISATCOMPL.USC_RESTR0, UTILISATCOMPL.USC_RESTR1, UTILISATCOMPL.USC_RESTR7, UTILISATCOMPL.USC_RESTR9, UTILISATCOMPL.USC_RESTR2, UTILISATCOMPL.USC_RESTR3, UTILISATCOMPL.USC_RESTR5, UTILISATCOMPL.USC_RESTR8, UTILISATCOMPL.USC_RESTR6, UTILISATCOMPL.USC_RESTR4, UTILISATCOMPL.USC_PROFILRESCLI, UTILISATCOMPL.USC_DOMAINES, UTILISATCOMPL.USC_DOMAINESMODIF, UTILISATCOMPL.USC_GRPDEMARQUELST, UTILISATCOMPL.USC_FAMILLECOND, UTILISATCOMPL.USC_FAMILLE3, UTILISATCOMPL.USC_FAMILLE4, UTILISATCOMPL.USC_FAMILLE5, UTILISATCOMPL.USC_FAMILLE6, UTILISATCOMPL.USC_FAMILLE12, UTILISATCOMPL.USC_FAMILLE7, UTILISATCOMPL.USC_FAMILLE8, UTILISATCOMPL.USC_FAMILLE9, UTILISATCOMPL.USC_FAMILLE10, UTILISATCOMPL.USC_FAMILLE11, UTILISATCOMPL.USC_TARIFACH, UTILISATCOMPL.USC_TARIFVTEHT, UTILISATCOMPL.USC_TARIFVTETTC, UTILISATCOMPL.USC_PRGTARIFACH, UTILISATCOMPL.USC_PRGTARIFVTEHT, UTILISATCOMPL.USC_PRGTARIFVTETTC, UTILISATCOMPL.USC_USECLASSIFART, UTILISATCOMPL.USC_CLASSIFART, UTILISATCOMPL.USC_USECLASSIFCLI, UTILISATCOMPL.USC_CLASSIFCLI, UTILISATCOMPL.USC_USECHPSART, UTILISATCOMPL.USC_CHPSART, UTILISATCOMPL.USC_USECHPSCLI, UTILISATCOMPL.USC_CHPSCLI, UTILISATCOMPL.USC_USECHPSFOU, UTILISATCOMPL.USC_CHPSFOU, UTILISATCOMPL.USC_USECHPSETA, UTILISATCOMPL.USC_CHPSETA, UTILISATCOMPL.USC_USECHPSCOM, UTILISATCOMPL.USC_CHPSCOM, UTILISATCOMPL.USC_USECHPSSAV, UTILISATCOMPL.USC_CHPSSAV, UTILISATCOMPL.USC_USECHPSDOC, UTILISATCOMPL.USC_CHPSDOC, UTILISATCOMPL.USC_LIBREUSER1, UTILISATCOMPL.USC_LIBREUSER2, UTILISATCOMPL.USC_LIBREUSER3, UTILISATCOMPL.USC_DATEEXPIRE, UTILISATCOMPL.USC_ANNUAIREEXT, UTILISATCOMPL.USC_ANNUAIREEXTDET, UTILISATCOMPL.USC_CASHIERROLE, UTILISATCOMPL.USC_SALESPERSONROLE, UTILISATCOMPL.USC_SALESPERSONID, UTILISATCOMPL.USC_IMMUTABLEID, UTILISATCOMPL.USC_REGISTRATIONAUTH, UTILISATCOMPL.USC_SYSTEMUSER, USC_SPACCESS, USC_SPADMIN, USC_SPGRIDCONFIG, USC_SPAPPLICATIONS, MPERSPWD.MWD_DATEVALID, MPERSPWD.MWD_DISABLE, MPERSPWD.MWD_ESSAI, MPARAMPWD.MWP_BLOCAGE, ETABLISS.ET_LIBELLE, USERGRP.UG_LIBELLE, IDPINNUMBER.IDP_UTILISATEUR FROM UTILISAT LEFT OUTER JOIN UTILISATCOMPL ON UTILISAT.US_UTILISATEUR = UTILISATCOMPL.USC_UTILISATEUR LEFT OUTER JOIN MPERSPWD ON UTILISAT.US_UTILISATEUR = MPERSPWD.MWD_PERSONNE AND MPERSPWD.MWD_TYPEPERSONNE = @param0 LEFT OUTER JOIN USERGRP ON UTILISAT.US_GROUPE = USERGRP.UG_GROUPE LEFT OUTER JOIN MPARAMPWD ON USERGRP.UG_STRATEGIE = MPARAMPWD.MWP_STRATEGIE LEFT OUTER JOIN ETABLISS ON UTILISATCOMPL.USC_ETABLISSEMENT = ETABLISS.ET_ETABLISSEMENT LEFT OUTER JOIN IDPINNUMBER ON UTILISAT.US_UTILISATEUR = IDPINNUMBER.IDP_UTILISATEUR WHERE UTILISAT.US_UTILISATEUR = @param1 .
+   Code d'exception            : CBP00202
+   Action / méthode            : Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1
+   Conseil                     : Vérifier la syntaxe de la commande SQL
+   Pile d'appel                :
+   
+   Exception interne           :
+      System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'USC_SPACCESS'.
+      Invalid column name 'USC_SPADMIN'.
+      Invalid column name 'USC_SPGRIDCONFIG'.
+      Invalid column name 'USC_SPAPPLICATIONS'.
+         at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+         at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+         at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+         at System.Data.SqlClient.SqlDataReader.get_MetaData()
+         at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+         at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+         at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+         at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+         at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+         at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass19_0`1.<ExecuteReader>b__1(IDbCommand c)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_2`1.<ExecuteCommand>b__2()
+         at Cegid.Framework.Data.DbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Framework.Data.SqlServer.SqlDbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_1`1.<ExecuteCommand>b__1()
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+      ClientConnectionId:c0bdfaac-ca38-4c7b-b1ad-092a2a427778
+      Error Number:207,State:1,Class:16
+11:16:28.0229722+02:00: root Information: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Fonction ' - Invoke' - OperationStatus=Fail, OperationDurationMs=12.8926
+11:16:28.0229722+02:00: QTAgent32_40.exe Information: 0 : Reply = <s:Fault xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:a="http://www.cegid.fr/fault">a:ERP00001</faultcode>
+  <faultstring xml:lang="fr-FR">Une commande SQL a échoué.</faultstring>
+  <detail>
+    <CbpExceptionDetail xmlns="http://www.cegid.fr/fault" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+      <InnerException i:type="CbpExceptionDetail">
+        <InnerException>
+          <Message>Invalid column name 'USC_SPACCESS'.
+Invalid column name 'USC_SPADMIN'.
+Invalid column name 'USC_SPGRIDCONFIG'.
+Invalid column name 'USC_SPAPPLICATIONS'.</Message>
+          <StackTrace>   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task&amp; task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task&amp; task, Boolean&amp; usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at Cegid.Erp.Data.Sql.SqlService.&lt;&gt;c__DisplayClass19_0`1.&lt;ExecuteReader&gt;b__1(IDbCommand c)
+   at Cegid.Erp.Data.Sql.SqlService.&lt;&gt;c__DisplayClass34_2`1.&lt;ExecuteCommand&gt;b__2()
+   at Cegid.Framework.Data.DbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+   at Cegid.Framework.Data.SqlServer.SqlDbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+   at Cegid.Erp.Data.Sql.SqlService.&lt;&gt;c__DisplayClass34_1`1.&lt;ExecuteCommand&gt;b__1()
+   at Cegid.Erp.Data.Sql.SqlService.&lt;&gt;c__DisplayClass34_0`1.&lt;ExecuteCommand&gt;b__0(CallingFlowLogCategory cfl)</StackTrace>
+          <Type>System.Data.SqlClient.SqlException</Type>
+        </InnerException>
+        <Message>Une erreur est survenue lors de l'exécution de la commande SQL SELECT UTILISAT.US_UTILISATEUR, UTILISAT.US_LIBELLE, UTILISAT.US_GROUPE, UTILISAT.US_ABREGE, UTILISAT.US_DOMAINEAUTHENT, UTILISAT.US_EMAIL, UTILISAT.US_SUPERVISEUR, UTILISAT.US_FONCTION, UTILISAT.US_PRESENT, UTILISAT.US_DESACTIVE, UTILISAT.US_DATECONNEXION, UTILISAT.US_IDEMPOTENCYID, UTILISATCOMPL.USC_ETABLISSEMENT, UTILISATCOMPL.USC_DEPOT, UTILISATCOMPL.USC_DOMAINE, UTILISATCOMPL.USC_PRFCULTUREL, UTILISATCOMPL.USC_PRFCULTURELFO, UTILISATCOMPL.USC_IMPRIMANTE, UTILISATCOMPL.USC_AFFINDIC, UTILISATCOMPL.USC_AFFTACHE, UTILISATCOMPL.USC_RESTR0, UTILISATCOMPL.USC_RESTR1, UTILISATCOMPL.USC_RESTR7, UTILISATCOMPL.USC_RESTR9, UTILISATCOMPL.USC_RESTR2, UTILISATCOMPL.USC_RESTR3, UTILISATCOMPL.USC_RESTR5, UTILISATCOMPL.USC_RESTR8, UTILISATCOMPL.USC_RESTR6, UTILISATCOMPL.USC_RESTR4, UTILISATCOMPL.USC_PROFILRESCLI, UTILISATCOMPL.USC_DOMAINES, UTILISATCOMPL.USC_DOMAINESMODIF, UTILISATCOMPL.USC_GRPDEMARQUELST, UTILISATCOMPL.USC_FAMILLECOND, UTILISATCOMPL.USC_FAMILLE3, UTILISATCOMPL.USC_FAMILLE4, UTILISATCOMPL.USC_FAMILLE5, UTILISATCOMPL.USC_FAMILLE6, UTILISATCOMPL.USC_FAMILLE12, UTILISATCOMPL.USC_FAMILLE7, UTILISATCOMPL.USC_FAMILLE8, UTILISATCOMPL.USC_FAMILLE9, UTILISATCOMPL.USC_FAMILLE10, UTILISATCOMPL.USC_FAMILLE11, UTILISATCOMPL.USC_TARIFACH, UTILISATCOMPL.USC_TARIFVTEHT, UTILISATCOMPL.USC_TARIFVTETTC, UTILISATCOMPL.USC_PRGTARIFACH, UTILISATCOMPL.USC_PRGTARIFVTEHT, UTILISATCOMPL.USC_PRGTARIFVTETTC, UTILISATCOMPL.USC_USECLASSIFART, UTILISATCOMPL.USC_CLASSIFART, UTILISATCOMPL.USC_USECLASSIFCLI, UTILISATCOMPL.USC_CLASSIFCLI, UTILISATCOMPL.USC_USECHPSART, UTILISATCOMPL.USC_CHPSART, UTILISATCOMPL.USC_USECHPSCLI, UTILISATCOMPL.USC_CHPSCLI, UTILISATCOMPL.USC_USECHPSFOU, UTILISATCOMPL.USC_CHPSFOU, UTILISATCOMPL.USC_USECHPSETA, UTILISATCOMPL.USC_CHPSETA, UTILISATCOMPL.USC_USECHPSCOM, UTILISATCOMPL.USC_CHPSCOM, UTILISATCOMPL.USC_USECHPSSAV, UTILISATCOMPL.USC_CHPSSAV, UTILISATCOMPL.USC_USECHPSDOC, UTILISATCOMPL.USC_CHPSDOC, UTILISATCOMPL.USC_LIBREUSER1, UTILISATCOMPL.USC_LIBREUSER2, UTILISATCOMPL.USC_LIBREUSER3, UTILISATCOMPL.USC_DATEEXPIRE, UTILISATCOMPL.USC_ANNUAIREEXT, UTILISATCOMPL.USC_ANNUAIREEXTDET, UTILISATCOMPL.USC_CASHIERROLE, UTILISATCOMPL.USC_SALESPERSONROLE, UTILISATCOMPL.USC_SALESPERSONID, UTILISATCOMPL.USC_IMMUTABLEID, UTILISATCOMPL.USC_REGISTRATIONAUTH, UTILISATCOMPL.USC_SYSTEMUSER, USC_SPACCESS, USC_SPADMIN, USC_SPGRIDCONFIG, USC_SPAPPLICATIONS, MPERSPWD.MWD_DATEVALID, MPERSPWD.MWD_DISABLE, MPERSPWD.MWD_ESSAI, MPARAMPWD.MWP_BLOCAGE, ETABLISS.ET_LIBELLE, USERGRP.UG_LIBELLE, IDPINNUMBER.IDP_UTILISATEUR FROM UTILISAT LEFT OUTER JOIN UTILISATCOMPL ON UTILISAT.US_UTILISATEUR = UTILISATCOMPL.USC_UTILISATEUR LEFT OUTER JOIN MPERSPWD ON UTILISAT.US_UTILISATEUR = MPERSPWD.MWD_PERSONNE AND MPERSPWD.MWD_TYPEPERSONNE = @param0 LEFT OUTER JOIN USERGRP ON UTILISAT.US_GROUPE = USERGRP.UG_GROUPE LEFT OUTER JOIN MPARAMPWD ON USERGRP.UG_STRATEGIE = MPARAMPWD.MWP_STRATEGIE LEFT OUTER JOIN ETABLISS ON UTILISATCOMPL.USC_ETABLISSEMENT = ETABLISS.ET_ETABLISSEMENT LEFT OUTER JOIN IDPINNUMBER ON UTILISAT.US_UTILISATEUR = IDPINNUMBER.IDP_UTILISATEUR WHERE UTILISAT.US_UTILISATEUR = @param1 .</Message>
+        <Type>Cegid.Framework.CbpException</Type>
+        <Id>CBP00202</Id>
+        <ToDo>Vérifier la syntaxe de la commande SQL</ToDo>
+      </InnerException>
+      <Message>Une commande SQL a échoué.</Message>
+      <StackTrace>   at Cegid.Erp.Data.Sql.SqlService.&lt;&gt;c__DisplayClass34_0`1.&lt;ExecuteCommand&gt;b__0(CallingFlowLogCategory cfl)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.&lt;&gt;c__DisplayClass5_0`2.&lt;LogFlow&gt;b__0(T flowLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T,TResult](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Func`2 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T,TResult](ILogSource logSource, String flowName, Func`2 flow)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogCallingFlow[TResult](ILogSource logSource, String methodName, Func`2 method)
+   at Cegid.Erp.Data.Sql.SqlService.ExecuteCommand[T](IDataAccessConnection dataAccessConnection, Func`4 commandBuilder, IEnumerable`1 parameters, Func`2 executor, Boolean createTransaction, Int32 forcedQueryCost)
+   at Cegid.Erp.Data.Sql.SqlService.ExecuteReader[T](IDataAccessConnection dataAccessConnection, String commandText, IEnumerable`1 parameters, Func`2 generator, CommandBehavior commandBehavior, Int32 forcedQueryCost)
+   at Cegid.Erp.Data.Sql.SqlService.ExecuteReader[T](IDataAccessConnection dataAccessConnection, String commandText, IEnumerable`1 parameters, Func`2 generator, CommandBehavior commandBehavior)
+   at Cegid.Erp.Data.Sql.SqlServiceExtension.ExecuteReader[T](ISqlService sqlService, IDataAccessConnection dataAccessConnection, String commandText, IEnumerable`1 parameters, Func`2 generator)
+   at Cegid.Retail.Identity.Services.UserManagement.UserManagementService.GetUserById(String id, Boolean modeCreate)
+   at Cegid.Retail.Identity.Services.UserManagement.UserManagementService.GetUserFromRequest(GetDetailRequest request)
+   at Cegid.Retail.Identity.Services.UserManagement.UserManagementService.GetDetail_Impl(GetDetailRequest request)
+   at Cegid.Retail.Identity.Services.UserManagement.UserManagementService.GetDetail(GetDetailRequest request)
+   at Cegid.Retail.FrenchTaxesRules.Services.Common.TraceService.GetCurrentStoreId() in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.Services\Common\TraceService.cs:line 234
+   at Cegid.Retail.FrenchTaxesRules.Services.Common.TraceService.InitTraceSession(DaemonType daemonType) in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.Services\Common\TraceService.cs:line 103
+   at Cegid.Retail.FrenchTaxesRules.Services.FrenchTaxesRules.FrenchTaxesRulesService.Run_Impl(RunRequest request) in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.Services\FrenchTaxesRules\FrenchTaxesRulesService.Implementation.cs:line 47
+   at Cegid.Retail.FrenchTaxesRules.Services.FrenchTaxesRules.FrenchTaxesRulesService.Run(RunRequest request) in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.Services\FrenchTaxesRules\FrenchTaxesRulesService.Implementation.g.cs:line 43
+   at Cegid.Retail.FrenchTaxesRules.LegacyServices.FrenchTaxesRulesServiceDtoAdapter.Run(ICwasAdapterContext`2 context) in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.LegacyServices\FrenchTaxesRules\FrenchTaxesRulesService.CwasAdapter.g.cs:line 47
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.CwasAdapterMethodInfo.&lt;&gt;c__DisplayClass27_0.&lt;CreateDelegate&gt;b__0(ICwasAdapterContext cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.SyncCwasAdapterMethodInfo.&lt;&gt;c__DisplayClass4_0.&lt;CreateAction&gt;b__0(ICwasAdapterContext`2 cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.&lt;&gt;c__DisplayClass31_0.&lt;CreateInvoker&gt;b__0(ICwasAdapterContext`2 cwasAdapterContext)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapter.Invoke(ICwasAdapterContext`2 context)
+   at Cegid.Framework.Legacy.CwasAdapterModel.CwasAdapterService.Invoke(ICwasAdapterContext`2 context)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.&lt;&gt;c__DisplayClass5_1.&lt;Invoke&gt;b__2()
+   at Cegid.Framework.ExceptionHelper.TryHandle(Action action, Func`2 isHandled)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.&lt;&gt;c__DisplayClass5_0.&lt;Invoke&gt;b__1(CallingFlowLogCategory functionalLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, String flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.Legacy.Dispatch.LegacyDispatcher.Invoke(String action, String parameter, IDataTob request)
+   at Cegid.Erp.Services.LegacyHost.LegacyDispatcherServiceBase.Invoke(IHub hub, String action, String parameter, IDataTob request)
+   at Cegid.Erp.Services.LegacyHost.LegacyDispatcherService.Invoke(String action, String parameter, IDataTob request)
+   at SyncInvokeInvoke(Object , Object[] , Object[] )
+   at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object instance, Object[] inputs, Object[]&amp; outputs)
+   at Cegid.Erp.ServiceModel.Dispatcher.ErpContextInvoker.Invoke(Object instance, Object[] inputs, Object[]&amp; outputs)
+   at Cegid.Framework.ServiceModel.Dispatcher.LogOperationInvoker`1.&lt;&gt;c__DisplayClass6_0.&lt;Invoke&gt;b__1(T functionalCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+   at Cegid.Framework.ServiceModel.Dispatcher.LogOperationInvoker`1.Invoke(Object instance, Object[] inputs, Object[]&amp; outputs)
+   at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage41(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage4(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage3(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage2(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage11(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage1(MessageRpc&amp; rpc)
+   at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean isOperationContextSet)</StackTrace>
+      <TrackingId>ebd63233-bb8a-4f83-a48a-c478d9cfb181</TrackingId>
+      <Type>Cegid.Erp.Data.ErpBusinessException</Type>
+      <Id>ERP00001</Id>
+      <ToDo>Contacter l'assistance.</ToDo>
+    </CbpExceptionDetail>
+  </detail>
+</s:Fault>
+11:16:28.0229722+02:00: QTAgent32_40.exe Information: 0 : Check: NC - Successful Run execution
+11:16:28.0386034+02:00: QTAgent32_40.exe Error: 0 : Error during TestCase Processing: Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException: Assert.AreEqual failed. Expected:<1>. Actual:<0>. NC - Successful Run execution
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.HandleFail(String assertionName, String message, Object[] parameters)
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual[T](T expected, T actual, String message, Object[] parameters)
+   at Cegid.Retail.FrenchTaxesRules.LegacyServices.AutoTest.FrenchTaxesRules_Run.Test_54() in F:\vm-alm-agent-06-A\_work\11682\s\Cegid.Retail.FrenchTaxesRules.LegacyServices.Tests\AutoTest\FrenchTaxesRules\FrenchTaxesRules_Run.g.cs:line 3313
+11:16:28.0386034+02:00: QTAgent32_40.exe Information: 0 : Enter finally block
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+11:16:28.0386034+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'XXX'
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'XXX'
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'XXX'
+11:16:28.0386034+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.7274
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<45>>
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=6.5448
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(53db7d44-ea7b-41df-bd79-c9c1cf752330@sql_Y2_Plugin, 37566401)
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+11:16:28.0386034+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE CLOSINGTAX WHERE CTA_CLOID IN (SELECT MNG_CLOID FROM CLOSING LEFT OUTER JOIN DAEMON ON DAE_ETABLISS = '110' AND DAE_DAEMONID = MNG_DAEMONID)
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE CLOSINGTAX WHERE CTA_CLOID IN (SELECT CLOSING.MNG_CLOID FROM CLOSING LEFT OUTER JOIN DAEMON ON DAEMON.DAE_ETABLISS = '110' AND DAEMON.DAE_DAEMONID = CLOSING.MNG_DAEMONID )
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE CLOSINGTAX WHERE CTA_CLOID IN (SELECT CLOSING.MNG_CLOID FROM CLOSING LEFT OUTER JOIN DAEMON ON DAEMON.DAE_ETABLISS = '110' AND DAEMON.DAE_DAEMONID = CLOSING.MNG_DAEMONID )
+11:16:28.0386034+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.4312
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.9328
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(4f48ccf2-b747-46dc-884f-e19887cf0060@sql_Y2_Plugin, 43406030)
+11:16:28.0386034+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+11:16:28.0542216+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE CLOSING WHERE MNG_DAEMONID IN (SELECT DAE_DAEMONID FROM DAEMON WHERE DAE_ETABLISS = '110' OR (DAE_ETABLISS = '' OR DAE_ETABLISS IS NULL))
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE CLOSING WHERE MNG_DAEMONID IN (SELECT DAEMON.DAE_DAEMONID FROM DAEMON WHERE DAEMON.DAE_ETABLISS = '110' OR (DAEMON.DAE_ETABLISS = '' OR DAEMON.DAE_ETABLISS IS NULL) )
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE CLOSING WHERE MNG_DAEMONID IN (SELECT DAEMON.DAE_DAEMONID FROM DAEMON WHERE DAEMON.DAE_ETABLISS = '110' OR (DAEMON.DAE_ETABLISS = '' OR DAEMON.DAE_ETABLISS IS NULL) )
+11:16:28.0542216+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.4227
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.8763
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(bba52ee4-1a84-43d3-bc61-aa74c600b248@sql_Y2_Plugin, 64453941)
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+11:16:28.0542216+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE DAEMON WHERE DAE_ETABLISS = '110' OR (DAE_ETABLISS = '' OR DAE_ETABLISS IS NULL)
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE DAEMON WHERE DAE_ETABLISS = '110' OR (DAE_ETABLISS = '' OR DAE_ETABLISS IS NULL)
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE DAEMON WHERE DAE_ETABLISS = '110' OR (DAE_ETABLISS = '' OR DAE_ETABLISS IS NULL)
+11:16:28.0542216+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.4262
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.8229
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(450cc61b-f12b-419c-b2a5-7ecca323689f@sql_Y2_Plugin, 63558970)
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+11:16:28.0542216+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE JOURNALEVENT WHERE GHE_CODESITE = '110' AND GHE_NUMERO > 181
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE JOURNALEVENT WHERE GHE_CODESITE = '110' AND GHE_NUMERO > 181
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE JOURNALEVENT WHERE GHE_CODESITE = '110' AND GHE_NUMERO > 181
+11:16:28.0542216+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.4243
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.6973
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(5e73f867-66c9-4793-b114-cc4abce11d27@sql_Y2_Plugin, 60846003)
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+11:16:28.0542216+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '110' AND GHS_NUMERO > 181
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '110' AND GHS_NUMERO > 181
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '110' AND GHS_NUMERO > 181
+11:16:28.0542216+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.4998
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.7093
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(9aaf5687-f513-4f28-a202-7b560a896fdb@sql_Y2_Plugin, 48415315)
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+11:16:28.0542216+02:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Remise à niveau du numéro de séquence 110
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+11:16:28.0542216+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE DESEQUENCES SET DSQ_VALEUR = 181 WHERE DSQ_CODE = 'CBR_GHE_110'
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE DESEQUENCES SET DSQ_VALEUR = 181 WHERE DSQ_CODE = 'CBR_GHE_110'
+11:16:28.0542216+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE DESEQUENCES SET DSQ_VALEUR = 181 WHERE DSQ_CODE = 'CBR_GHE_110'
+11:16:28.0542216+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.4781
+11:16:28.0698443+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+11:16:28.0698443+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=5.9193
+11:16:28.0698443+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(08448f06-7a2e-453c-ae16-785769d56c72@sql_Y2_Plugin, 25568226)
+11:16:28.0698443+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+11:16:28.0698443+02:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Mise à jour date activation NF525
+11:16:28.0698443+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+11:16:28.0698443+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+11:16:28.0698443+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] UPDATE PARAMSOC SET SOC_DATA = 42370 WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+11:16:28.0698443+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARAMSOC SET SOC_DATA = 42370 WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+11:16:28.0698443+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARAMSOC SET SOC_DATA = 42370 WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'
+11:16:28.0698443+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.5737
+11:16:28.0698443+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+11:16:28.0698443+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=5.9516
+11:16:28.0698443+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(3d254ee6-c653-49b4-9144-cc8e00a98021@sql_Y2_Plugin, 19624578)
+11:16:28.0698443+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+11:16:28.0698443+02:00: QTAgent32_40.exe Information: 0 : forcing CBP cache refresh on Domain [SETTING]

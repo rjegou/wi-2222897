@@ -1,0 +1,155 @@
+[
+  {
+    "id": 5032637,
+    "name": "26.0.7.76_Nuget",
+    "resource": {
+      "data": "04A5608CFA15C964FD30BF1B101D225AC0976FF4BBD6CC4CDC8582A09A912CAF01",
+      "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQwODg0L2FydGlmYWN0TmFtZS8yNi4wLjcuNzZfTnVnZXQ1/content?format=zip",
+      "properties": {
+        "DomainId": "0",
+        "HashType": "DEDUPNODEORCHUNK",
+        "RootId": "1CFAE9880AE0DBD690CEB63A16FA5DF92FD956700D7376A1AF2A518AF26BF2BA02",
+        "artifactsize": "1116124"
+      },
+      "type": "PipelineArtifact",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/artifacts?artifactName=26.0.7.76_Nuget&api-version=5.0"
+    },
+    "source": "2a130c04-1486-5a73-a382-fad121cfea2b"
+  },
+  {
+    "id": 5032663,
+    "name": "26.0.7.76_Software",
+    "resource": {
+      "data": "E71949E0CB05A8A26255022C5665E30BF7403004F280ABF3C923DFCFA00D62A401",
+      "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQwODg0L2FydGlmYWN0TmFtZS8yNi4wLjcuNzZfU29mdHdhcmU1/content?format=zip",
+      "properties": {
+        "DomainId": "0",
+        "HashType": "DEDUPNODEORCHUNK",
+        "RootId": "0E70C9CC0B35B90C53573EC1D052FCA89B963D3A361617F824241CB0158F9BE502",
+        "artifactsize": "1705531"
+      },
+      "type": "PipelineArtifact",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/artifacts?artifactName=26.0.7.76_Software&api-version=5.0"
+    },
+    "source": "2a130c04-1486-5a73-a382-fad121cfea2b"
+  },
+  {
+    "id": 5032664,
+    "name": "26.0.7.76_HtmlDocs",
+    "resource": {
+      "data": "C62E19C5091AA691C9FD402F705E9E663FC530B32A2F634D397FEF41C7ADF6AF01",
+      "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQwODg0L2FydGlmYWN0TmFtZS8yNi4wLjcuNzZfSHRtbERvY3M1/content?format=zip",
+      "properties": {
+        "DomainId": "0",
+        "HashType": "DEDUPNODEORCHUNK",
+        "RootId": "9FC7760E7B0001EB022A7826A55980763914F657B037D7022A3B3E3AA98E90C702",
+        "artifactsize": "3505341"
+      },
+      "type": "PipelineArtifact",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/artifacts?artifactName=26.0.7.76_HtmlDocs&api-version=5.0"
+    },
+    "source": "2a130c04-1486-5a73-a382-fad121cfea2b"
+  },
+  {
+    "id": 5032767,
+    "name": "v26-Fix_Deployment_logs-runnervmohg0i-Attempt#1",
+    "resource": {
+      "data": "61E19C0A3FFE8DAF73B40AB83866F721E5A7EFC20ED42DFE00C8AADC10F28D9001",
+      "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQwODg0L2FydGlmYWN0TmFtZS92MjYtRml4X0RlcGxveW1lbnRfbG9ncy1ydW5uZXJ2bW9oZzBpLUF0dGVtcHQlMjMx0/content?format=zip",
+      "properties": {
+        "DomainId": "0",
+        "HashType": "DEDUPNODEORCHUNK",
+        "RootId": "5D2320F1908AB45DF30259A2C0918B549C7E0642553BF745771ACE04071CAB6402",
+        "artifactsize": "328992"
+      },
+      "type": "PipelineArtifact",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/artifacts?artifactName=v26-Fix_Deployment_logs-runnervmohg0i-Attempt%231&api-version=5.0"
+    },
+    "source": "cfe27557-def1-507a-d355-2a5f2652ce65"
+  },
+  {
+    "id": 5032773,
+    "name": "v26-Cur_Deployment_logs-runnervmohg0i-Attempt#1",
+    "resource": {
+      "data": "06AE75A68B90F6ABD1EC4E1E5D89D5D2DD087C368E34D7FC666AE816233024EB01",
+      "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQwODg0L2FydGlmYWN0TmFtZS92MjYtQ3VyX0RlcGxveW1lbnRfbG9ncy1ydW5uZXJ2bW9oZzBpLUF0dGVtcHQlMjMx0/content?format=zip",
+      "properties": {
+        "DomainId": "0",
+        "HashType": "DEDUPNODEORCHUNK",
+        "RootId": "CA68E68855213C89669997FF69E357E73161731C7F51BCEB72CECC5A8C7087A602",
+        "artifactsize": "357494"
+      },
+      "type": "PipelineArtifact",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/artifacts?artifactName=v26-Cur_Deployment_logs-runnervmohg0i-Attempt%231&api-version=5.0"
+    },
+    "source": "695043ab-e776-5178-ee76-76a301c1de11"
+  },
+  {
+    "id": 5033078,
+    "name": "v26-Fix_WebServices_TestLogs-Attempt#1",
+    "resource": {
+      "data": "B28A2ED466CCABB2B1A97CD44984C22AE07CED27EEEA2B33A20633F7ACB4D47101",
+      "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQwODg0L2FydGlmYWN0TmFtZS92MjYtRml4X1dlYlNlcnZpY2VzX1Rlc3RMb2dzLUF0dGVtcHQlMjMx0/content?format=zip",
+      "properties": {
+        "DomainId": "0",
+        "HashType": "DEDUPNODEORCHUNK",
+        "RootId": "07EC97E7DA60F093302B1D830357A5AE643345034C48A2E63DD0D271A9819EB502",
+        "artifactsize": "9629738"
+      },
+      "type": "PipelineArtifact",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/artifacts?artifactName=v26-Fix_WebServices_TestLogs-Attempt%231&api-version=5.0"
+    },
+    "source": "cfe27557-def1-507a-d355-2a5f2652ce65"
+  },
+  {
+    "id": 5033079,
+    "name": "v26-Cur_WebServices_TestLogs-Attempt#1",
+    "resource": {
+      "data": "F0423638BAD27BC4E85D3FF6E81968143EF3C18F316C272EAEA51917292A160F01",
+      "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQwODg0L2FydGlmYWN0TmFtZS92MjYtQ3VyX1dlYlNlcnZpY2VzX1Rlc3RMb2dzLUF0dGVtcHQlMjMx0/content?format=zip",
+      "properties": {
+        "DomainId": "0",
+        "HashType": "DEDUPNODEORCHUNK",
+        "RootId": "1E153AF3A6E76FA432DCD14FFF8FF87D965A5C6B6EA6CAF57F8387AAD7639FEA02",
+        "artifactsize": "9740425"
+      },
+      "type": "PipelineArtifact",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/artifacts?artifactName=v26-Cur_WebServices_TestLogs-Attempt%231&api-version=5.0"
+    },
+    "source": "695043ab-e776-5178-ee76-76a301c1de11"
+  },
+  {
+    "id": 5033081,
+    "name": "v26-Cur_RunLogs-Attempt#1",
+    "resource": {
+      "data": "F8FB9F54447D06B409D1CAAE76ACA12C59ED97FF19DE2705A4215D00E1EF205601",
+      "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQwODg0L2FydGlmYWN0TmFtZS92MjYtQ3VyX1J1bkxvZ3MtQXR0ZW1wdCUyMzE1/content?format=zip",
+      "properties": {
+        "DomainId": "0",
+        "HashType": "DEDUPNODEORCHUNK",
+        "RootId": "811163B67C8CFBEE234D6F2D775A951D7F78B21400FA15CDBFD4ECCBDFC6EE7802",
+        "artifactsize": "1137433"
+      },
+      "type": "PipelineArtifact",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/artifacts?artifactName=v26-Cur_RunLogs-Attempt%231&api-version=5.0"
+    },
+    "source": "695043ab-e776-5178-ee76-76a301c1de11"
+  },
+  {
+    "id": 5033083,
+    "name": "v26-Fix_RunLogs-Attempt#1",
+    "resource": {
+      "data": "9C05F1469341A908BAC820E6EBF49C6F5BB5EECF3582A95B656D68409ED589E301",
+      "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQwODg0L2FydGlmYWN0TmFtZS92MjYtRml4X1J1bkxvZ3MtQXR0ZW1wdCUyMzE1/content?format=zip",
+      "properties": {
+        "DomainId": "0",
+        "HashType": "DEDUPNODEORCHUNK",
+        "RootId": "AEEBBC4CCAA3DD4491303A3C0F05B2DE7490303C3E714656E64E390C4F1E6CA102",
+        "artifactsize": "11264848"
+      },
+      "type": "PipelineArtifact",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/artifacts?artifactName=v26-Fix_RunLogs-Attempt%231&api-version=5.0"
+    },
+    "source": "cfe27557-def1-507a-d355-2a5f2652ce65"
+  }
+]

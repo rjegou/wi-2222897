@@ -1,0 +1,96 @@
+{
+  "id": 6178156,
+  "name": "TestRun_FrenchTaxesRules CI_6.479",
+  "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6178156",
+  "build": {
+    "id": "4429170",
+    "name": "6.479",
+    "url": "https://dev.azure.com/cegid/_apis/build/Builds/4429170"
+  },
+  "buildConfiguration": {
+    "id": 4429170,
+    "number": "6.479",
+    "uri": "vstfs:///Build/Build/4429170",
+    "flavor": "release",
+    "platform": "any cpu",
+    "buildDefinitionId": 2054,
+    "branchName": "refs/heads/releases/V5",
+    "project": {
+      "name": "Retail"
+    },
+    "targetBranchName": ""
+  },
+  "isAutomated": true,
+  "owner": {
+    "displayName": "Project Collection Build Service (cegid)",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/81b8de82-9774-45ea-9e48-d32ed45fba27",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/svc.NjMyMzI0YWEtMTFlMC00MjUyLWI5MDgtYWY3ZDI1NzZmMTg5OkJ1aWxkOmJjMTA5ZjZmLWIyYjYtNDMxMi04MDUxLTQ5NDFhN2I3YzQ5NA"
+      }
+    },
+    "id": "81b8de82-9774-45ea-9e48-d32ed45fba27",
+    "uniqueName": "Build\\bc109f6f-b2b6-4312-8051-4941a7b7c494",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/svc.NjMyMzI0YWEtMTFlMC00MjUyLWI5MDgtYWY3ZDI1NzZmMTg5OkJ1aWxkOmJjMTA5ZjZmLWIyYjYtNDMxMi04MDUxLTQ5NDFhN2I3YzQ5NA",
+    "descriptor": "svc.NjMyMzI0YWEtMTFlMC00MjUyLWI5MDgtYWY3ZDI1NzZmMTg5OkJ1aWxkOmJjMTA5ZjZmLWIyYjYtNDMxMi04MDUxLTQ5NDFhN2I3YzQ5NA"
+  },
+  "project": {
+    "id": "aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+    "name": "Retail"
+  },
+  "startedDate": "2026-09-03T15:53:18.047Z",
+  "completedDate": "2026-09-03T15:53:24.077Z",
+  "state": "Completed",
+  "postProcessState": "Complete",
+  "totalTests": 2,
+  "incompleteTests": 0,
+  "notApplicableTests": 0,
+  "passedTests": 2,
+  "unanalyzedTests": 0,
+  "createdDate": "2026-09-03T15:53:24.483Z",
+  "lastUpdatedDate": "2026-09-03T15:53:25.797Z",
+  "lastUpdatedBy": {
+    "displayName": "Project Collection Build Service (cegid)",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/81b8de82-9774-45ea-9e48-d32ed45fba27",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/svc.NjMyMzI0YWEtMTFlMC00MjUyLWI5MDgtYWY3ZDI1NzZmMTg5OkJ1aWxkOmJjMTA5ZjZmLWIyYjYtNDMxMi04MDUxLTQ5NDFhN2I3YzQ5NA"
+      }
+    },
+    "id": "81b8de82-9774-45ea-9e48-d32ed45fba27",
+    "uniqueName": "Build\\bc109f6f-b2b6-4312-8051-4941a7b7c494",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/svc.NjMyMzI0YWEtMTFlMC00MjUyLWI5MDgtYWY3ZDI1NzZmMTg5OkJ1aWxkOmJjMTA5ZjZmLWIyYjYtNDMxMi04MDUxLTQ5NDFhN2I3YzQ5NA",
+    "descriptor": "svc.NjMyMzI0YWEtMTFlMC00MjUyLWI5MDgtYWY3ZDI1NzZmMTg5OkJ1aWxkOmJjMTA5ZjZmLWIyYjYtNDMxMi04MDUxLTQ5NDFhN2I3YzQ5NA"
+  },
+  "revision": 4,
+  "runStatistics": [
+    {
+      "state": "Unspecified",
+      "outcome": "Passed",
+      "count": 2
+    }
+  ],
+  "webAccessUrl": "https://dev.azure.com/cegid/Retail/_TestManagement/Runs?runId=6178156&_a=runCharts",
+  "customFields": [
+    {
+      "fieldName": "TestRunSystem",
+      "value": "VSTS - vstest"
+    }
+  ],
+  "pipelineReference": {
+    "pipelineId": 4429170,
+    "stageReference": {
+      "stageName": "Build",
+      "attempt": 7
+    },
+    "phaseReference": {
+      "phaseName": "Build",
+      "attempt": 7
+    },
+    "jobReference": {
+      "jobName": "V22",
+      "attempt": 7
+    },
+    "pipelineDefinitionId": 2054
+  }
+}

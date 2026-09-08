@@ -1,0 +1,91 @@
+name: v22-isolated-$(Date:yyyyMMdd).$(Rev:r)
+trigger: none
+pr: none
+schedules: []
+
+variables:
+  pluginCommit: '2d826b8fd19ecb4d7200f574414efb7583de8ed2'
+  jmeterWorkflowCommit: '4db2dcdab647249de3cdc27eadaf15a158b3a26a'
+  platformDeployCommit: '93f91487ee717185599555a42df3cb5d024ace89'
+  platformDeployVersion: '5.0.86'
+  platformDeployZipSha256: '625EEC7A139AAE87886E0CE40D075B36A3EC331A0EA021478FBEEF9D6E612295'
+  pluginVersion: '22.0.6.478'
+  authenticationServerVersion: '2.0.0.368'
+  image: 'acrretaildocker-e2c3eugzbee2habm.azurecr.io/cegid-retail-docker-production/y2-jmeter:sqlexpress2019-y2-aspnet-10-windowsservercore-ltsc2022@sha256:2684760378b395af6d4843036b8d3cfc310cfb30909e23c838c822647f4da9cb'
+  backupSha256: '3F80B46422D07FE3673AA3A8ECCD7FDFF66468ABC438A3A7E73DDC95466DB2E2'
+
+resources:
+  containers:
+  - container: v22Jmeter
+    image: acrretaildocker-e2c3eugzbee2habm.azurecr.io/cegid-retail-docker-production/y2-jmeter:sqlexpress2019-y2-aspnet-10-windowsservercore-ltsc2022@sha256:2684760378b395af6d4843036b8d3cfc310cfb30909e23c838c822647f4da9cb
+    endpoint: AzureContainerRegistry-Docker-Retail
+  repositories:
+  - repository: pluginSource
+    type: git
+    name: Y2_Plugins_FrenchTaxesRules
+    ref: 2d826b8fd19ecb4d7200f574414efb7583de8ed2
+  - repository: jmeterTools
+    type: git
+    name: Y2_Tools_Jmeter_Workflow
+    ref: 4db2dcdab647249de3cdc27eadaf15a158b3a26a
+  - repository: platformDeploy
+    type: git
+    name: Y2_Tools_PlatformDeploy
+    ref: 93f91487ee717185599555a42df3cb5d024ace89
+
+stages:
+- stage: Preflight
+  jobs:
+  - job: Preflight
+    container: v22Jmeter
+    pool: { vmImage: windows-latest }
+    steps:
+    - checkout: self
+      lfs: true
+      clean: false
+    - checkout: pluginSource
+    - checkout: jmeterTools
+    - checkout: platformDeploy
+    - powershell: |
+        if ('$(platformDeployVersion)' -match 'REQUIRED' -or '$(platformDeployZipSha256)' -match 'REQUIRED') { throw 'Exact PlatformDeploy version and ZIP SHA-256 are required before queueing.' }
+        $pluginRoot = "$(Build.SourcesDirectory)\pluginSource"
+        $actualPluginCommit = (& git -C $pluginRoot rev-parse HEAD).Trim()
+        if ($actualPluginCommit -ne '$(pluginCommit)') { throw "Plugin source commit drift: $actualPluginCommit" }
+        $env:V22_BACKUP_PATH = "$pluginRoot\Tests\Backups\AUTO_V21_00.bak"
+        $env:V22_JMX_ROOT = "$pluginRoot\Tests"
+        & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Preflight-V22FrenchTaxesRules.ps1" -RepositoryRoot $pluginRoot -HistoricalSourceRoot $pluginRoot -TemplatesCommit INLINE_LOCAL_STEPS -ExpectedImage "$(image)" -ExpectedPluginVersion "$(pluginVersion)" -ExpectedAuthenticationServerVersion "$(authenticationServerVersion)" -ExpectedBackupSha256 "$(backupSha256)" -PackageManifestPath "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\PACKAGE-SHA256SUMS.txt" -ExpectedTotal 376
+      displayName: Fail-closed immutable input and JMX preflight
+    - powershell: |
+        & "$(Build.SourcesDirectory)\investigations\ecarts-jmeter-migrations\replay-prep\2026-09-07-v22-isolated\scripts\Assert-V22LocalContainerRuntime.ps1" -RunId "$(Build.BuildId)-preflight" -ExpectedImage "$(image)" -AppHost $env:COMPUTERNAME -DbHost $env:COMPUTERNAME -AuthorityHost $env:COMPUTERNAME
+      displayName: Check local SQL/IIS readiness before writes (not isolation proof)
+
+- stage: FixHistorical
+  dependsOn: Preflight
+  condition: succeeded()
+  jobs:
+  - job: FixHistorical
+    container: v22Jmeter
+    pool: { vmImage: windows-latest }
+    variables:
+      coreVersion: '22.0.0.1011'
+      commonVersion: '22.0.2.300'
+      identityVersion: '22.0.5.182'
+    steps:
+    - template: scripts/steps-replay-variant.yml
+      parameters: { variant: FixHistorical, coreVersion: $(coreVersion), commonVersion: $(commonVersion), identityVersion: $(identityVersion) }
+
+- stage: FixCandidate
+  dependsOn: FixHistorical
+  condition: succeeded()
+  jobs:
+  - job: FixCandidate
+    container: v22Jmeter
+    pool: { vmImage: windows-latest }
+    variables:
+      coreVersion: '22.0.0.2068'
+      commonVersion: '22.0.3.311'
+      identityVersion: '22.0.6.117'
+      V22_BASELINE_AUTH_SUMMARY_B64: $[ stageDependencies.FixHistorical.FixHistorical.outputs['captureBaseline.V22BaselineAuthSummary'] ]
+    steps:
+    - template: scripts/steps-replay-variant.yml
+      parameters: { variant: FixCandidate, coreVersion: $(coreVersion), commonVersion: $(commonVersion), identityVersion: $(identityVersion) }

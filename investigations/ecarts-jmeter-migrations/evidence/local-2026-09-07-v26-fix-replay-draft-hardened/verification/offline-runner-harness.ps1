@@ -1,0 +1,7 @@
+$ErrorActionPreference='Stop'
+$root=$PSScriptRoot; $campaign=Join-Path $root '..\campaigns\ExportRunOnly.xml'; $jmx=Join-Path $root '..\replay-contract\payload\Tests\Export_Run\001-Export_Run.jmx'; $fake=Join-Path $root 'fake-jmeter.ps1'; $argsFile=Join-Path $root 'invocation.args'
+function Invoke-Case([string]$Name,[bool]$Tamper,[bool]$Missing) {
+  $tmp=Join-Path $root $Name; $localDir=Join-Path $tmp 'Export_Run'; New-Item -ItemType Directory -Force $localDir | Out-Null; $local=Join-Path $localDir '001-Export_Run.jmx'; Copy-Item $jmx $local; if($Tamper){Add-Content $local '<!-- tamper -->'}; if($Missing){Remove-Item $local}
+  [xml]$x=Get-Content $campaign -Raw; $node=@(Select-Xml -Xml $x -XPath '//TestCampaign/TestPlanItem'); if($node.Count -ne 1){throw "$Name selection failed"}; if($Missing -or -not(Test-Path $local)){return "$Name REFUSED before invocation"}; if((Get-FileHash $local -Algorithm SHA256).Hash -ne 'C59BD01D5C075961A781335D746A4F72B2CB331EC955CE828D4F6DE4C850EB0C'){return "$Name REFUSED before invocation"}; & pwsh -NoProfile -File $fake -n -t $local; if($LASTEXITCODE -ne 0){throw "$Name fake runner failed"}; $captured=Get-Content $argsFile -Raw; if($captured -notmatch '(^|\n)-t\n' -or $captured -notmatch '001-Export_Run\.jmx'){throw "$Name did not pass JMX"}; return "$Name INVOKED inert substitute with direct JMX"
+}
+Invoke-Case 'valid' $false $false; Invoke-Case 'hash-mismatch' $true $false; Invoke-Case 'missing' $false $true

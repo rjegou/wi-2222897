@@ -1,0 +1,6 @@
+observed_at,system,identifier,method,status
+2026-09-07T16:00Z,Azure DevOps,4442019,REST timeline and task log,failed on first probe parse
+2026-09-07T16:17Z,Azure DevOps,4442095,REST timeline and task log,2019 failed on context noise; 2025 followed to terminal failure
+2026-09-07T16:11Z,Git,0caa102,isolated local commit,probe hardening tested locally
+2026-09-07T16:19Z,Git,62a286c48326c6eeae355e44a430e8d8b6ac63bf,REST push branch readback,context-noise correction published dedicated branch
+2026-09-07T16:22Z,Azure DevOps,4442121,manual queue and REST timeline,still in progress at latest read

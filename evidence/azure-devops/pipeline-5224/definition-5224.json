@@ -1,0 +1,102 @@
+{
+  "authoredBy": {
+    "descriptor": "aad.NDJiMDcwYjItNTM0YS03OWQ3LTk1MGUtZTUwY2MyZWI0Y2I5",
+    "directoryAlias": null,
+    "displayName": "Ludovic BAUDEAU",
+    "id": "42b070b2-534a-69d7-950e-e50cc2eb4cb9",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/aad.NDJiMDcwYjItNTM0YS03OWQ3LTk1MGUtZTUwY2MyZWI0Y2I5",
+    "inactive": null,
+    "isAadIdentity": null,
+    "isContainer": null,
+    "isDeletedInOrigin": null,
+    "profileUrl": null,
+    "uniqueName": "lubaudeau@cegid.com",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/42b070b2-534a-69d7-950e-e50cc2eb4cb9"
+  },
+  "badgeEnabled": null,
+  "buildNumberFormat": null,
+  "comment": null,
+  "createdDate": "2022-11-10T11:12:20.670000+00:00",
+  "demands": null,
+  "description": null,
+  "draftOf": null,
+  "drafts": [],
+  "dropLocation": null,
+  "id": 5224,
+  "jobAuthorizationScope": "projectCollection",
+  "jobCancelTimeoutInMinutes": 5,
+  "jobTimeoutInMinutes": 60,
+  "latestBuild": null,
+  "latestCompletedBuild": null,
+  "metrics": null,
+  "name": "Y2 Tools Jmeter Workflow",
+  "options": null,
+  "path": "\\Y2\\Tools",
+  "process": {
+    "type": 2,
+    "yamlFilename": "azure-pipeline.yml"
+  },
+  "processParameters": null,
+  "project": {
+    "abbreviation": null,
+    "defaultTeamImageUrl": null,
+    "description": null,
+    "id": "aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+    "lastUpdateTime": "2026-06-25T08:17:14.29Z",
+    "name": "Retail",
+    "revision": 7237,
+    "state": "wellFormed",
+    "url": "https://dev.azure.com/cegid/_apis/projects/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+    "visibility": "private"
+  },
+  "properties": {},
+  "quality": "definition",
+  "queue": {
+    "id": 591,
+    "name": "Azure Pipelines",
+    "pool": {
+      "id": 79,
+      "isHosted": true,
+      "name": "Azure Pipelines"
+    },
+    "url": "https://dev.azure.com/cegid/_apis/build/Queues/591"
+  },
+  "queueStatus": "enabled",
+  "repository": {
+    "checkoutSubmodules": false,
+    "clean": null,
+    "defaultBranch": "refs/heads/master",
+    "id": "44f5e1ff-0205-49f5-8e9e-5dfbf183df2a",
+    "name": "Y2_Tools_Jmeter_Workflow",
+    "properties": {
+      "cloneUrl": "https://cegid@dev.azure.com/cegid/Retail/_git/Y2_Tools_Jmeter_Workflow",
+      "defaultBranch": "refs/heads/master",
+      "fetchDepth": "1",
+      "fullName": "Y2_Tools_Jmeter_Workflow",
+      "isFork": "False",
+      "reportBuildStatus": "true",
+      "safeRepository": "44f5e1ff-0205-49f5-8e9e-5dfbf183df2a"
+    },
+    "rootFolder": null,
+    "type": "TfsGit",
+    "url": "https://dev.azure.com/cegid/Retail/_git/Y2_Tools_Jmeter_Workflow"
+  },
+  "retentionRules": null,
+  "revision": 4,
+  "tags": [],
+  "triggers": [
+    {
+      "batchChanges": false,
+      "branchFilters": [],
+      "maxConcurrentBuildsPerBranch": 1,
+      "pathFilters": [],
+      "settingsSourceType": 2,
+      "triggerType": "continuousIntegration"
+    }
+  ],
+  "type": "build",
+  "uri": "vstfs:///Build/Definition/5224",
+  "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/Definitions/5224?revision=4",
+  "variableGroups": null,
+  "variables": null
+}

@@ -1,0 +1,1 @@
+PASS: adapter invoked with inert inspection; mapping absent/invalid/substituted, digest/OS divergence, business failure cleanup and manual mode covered.

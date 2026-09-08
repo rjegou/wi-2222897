@@ -1,0 +1,83 @@
+﻿[
+    {
+        "Name":  "ISO apostrophÃ©e",
+        "Input":  "\u00272026-04-28\u0027",
+        "ExpectedCandidate":  "\u002720260428\u0027",
+        "Original":  "\u002720262804\u0027",
+        "Candidate":  "\u002720260428\u0027",
+        "Behavior":  "Candidate corrected only",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Date ambiguÃ«",
+        "Input":  "\u00272026-04-05\u0027",
+        "ExpectedCandidate":  "\u002720260405\u0027",
+        "Original":  "\u002720260504\u0027",
+        "Candidate":  "\u002720260405\u0027",
+        "Behavior":  "Candidate corrected only",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Date compacte",
+        "Input":  "\u002720260428\u0027",
+        "ExpectedCandidate":  "\u002720260428\u0027",
+        "Original":  "\u002720260428\u0027",
+        "Candidate":  "\u002720260428\u0027",
+        "Behavior":  "Candidate must equal original",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Motif hors date",
+        "Input":  "\u00272026/04/28\u0027",
+        "ExpectedCandidate":  "\u00272026/04/28\u0027",
+        "Original":  "\u00272026/04/28\u0027",
+        "Candidate":  "\u00272026/04/28\u0027",
+        "Behavior":  "Candidate must equal original",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Date bissextile",
+        "Input":  "\u00272024-02-29\u0027",
+        "ExpectedCandidate":  "\u002720240229\u0027",
+        "Original":  "\u002720242902\u0027",
+        "Candidate":  "\u002720240229\u0027",
+        "Behavior":  "Candidate corrected only",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Deux dates SQL",
+        "Input":  "SELECT \u00272026-04-28\u0027, \u00272026-04-05\u0027",
+        "ExpectedCandidate":  "SELECT \u002720260428\u0027, \u002720260405\u0027",
+        "Original":  "SELECT \u002720262804\u0027, \u002720260504\u0027",
+        "Candidate":  "SELECT \u002720260428\u0027, \u002720260405\u0027",
+        "Behavior":  "Candidate corrected only",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Texte sans date",
+        "Input":  "SELECT \u0027no date here\u0027",
+        "ExpectedCandidate":  "SELECT \u0027no date here\u0027",
+        "Original":  "SELECT \u0027no date here\u0027",
+        "Candidate":  "SELECT \u0027no date here\u0027",
+        "Behavior":  "Candidate must equal original",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "ISO sans apostrophes",
+        "Input":  "2026-04-28",
+        "ExpectedCandidate":  "\u002720260428\u0027",
+        "Original":  "\u002720260428\u0027",
+        "Candidate":  "\u002720260428\u0027",
+        "Behavior":  "Candidate must equal original",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Date-heure",
+        "Input":  "2026-04-28T12:34:56",
+        "ExpectedCandidate":  "\u00272026-04-28T12:34:56\u0027",
+        "Original":  "\u00272026-04-28T12:34:56\u0027",
+        "Candidate":  "\u00272026-04-28T12:34:56\u0027",
+        "Behavior":  "Candidate must equal original",
+        "Verdict":  "PASS"
+    }
+]

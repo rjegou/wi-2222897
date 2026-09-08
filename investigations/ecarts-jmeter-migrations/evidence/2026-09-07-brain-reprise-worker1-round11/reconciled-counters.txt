@@ -1,0 +1,7 @@
+logical_csv_jtl_records=13501 per variant
+physical_splitline_counts=13781 Cur / 13782 Fix rejected
+aggregate_log_exact_Incorrect_syntax=141 per variant
+errors_csv_SQLServerException_records=183 per variant
+errors_csv_rows=339 Cur / 340 Fix
+identity=TestPlan+TestCase+Operation; success excluded
+fallback_bogus_row=002-Device_Reassign|2290|0|

@@ -1,0 +1,8 @@
+path,kind,source_or_sha256,size_or_status
+README.md,curated,local collection,created
+runtime-signatures.md,curated,Azure DevOps build logs 4442685,created
+sql-fulltext-2019-evidence,artifact,artifact source 5035170 / metadata size 79417,download blocked SEC_E_NO_CREDENTIALS
+sql-fulltext-2025-evidence,artifact,artifact source 5035185 / metadata size 81614,download blocked SEC_E_NO_CREDENTIALS
+fulltext-probe.ps1,source,CB44CC181CE89E292676DF39D3591AF4D209C7977287301537CDEF684C8D911D,remote and local match at e3b674b
+sql-fulltext-hosted-diagnostic.yml,source,86E9634CA8CD6E9334A7858423DC442296D61F859F9172F3F8653F4999286C8F,remote and local match at e3b674b
+sql-fulltext-hosted-build.yml,source,09E0CC2FDCA88AB308526DA306C88760B60CB78DF783C3DECEB941348ED26224,remote exact YAML at e3b674b

@@ -1,0 +1,10 @@
+kind,identifier,status,notes
+work-item,2222897,read-only-http-200,rev-17-7-relations
+repository,90f886fd-8a68-483f-b798-126928e6297f,read-only,default-master
+branch,refs/heads/InventoryTracking_Migration_AutoTest_Jmeter_On_master,4de185bb132cfbfb50643b6b53d6feb85508f4e2,filter-heads-required
+build,4434070,completed-failed,7.73
+definition,2072,enabled,InventoryTracking-CI
+yaml,azure-pipelines.yml@4de185bb,read,external-templates-unpinned
+templates,master-branch-contents,read,hashes-in-README
+local-patch,ef3d87034d38b88aca04c824061b140e2a29252c,validated,restore-and-RAR-only
+ci-queue,none,not-created,shared-YAML-effects-not-isolated

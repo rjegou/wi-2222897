@@ -1,0 +1,15 @@
+========== SOAP NEGATIVE JMETER 5.6.3 ==========
+Date: 2026-09-07 14:26:41
+JMETER EXIT CODE: 0
+
+LABEL=FAULT_PRESENT SUCCESS=false FAILURE=Response was null
+LABEL=NO_FAULT SUCCESS=false FAILURE=Response was null
+LABEL=WRONG_NAMESPACE SUCCESS=false FAILURE=Response was null
+
+EXPECTED:
+FAULT_PRESENT=false
+NO_FAULT=true
+WRONG_NAMESPACE=true
+
+EXECUTION_POSTCONDITION=FAIL
+===============================================

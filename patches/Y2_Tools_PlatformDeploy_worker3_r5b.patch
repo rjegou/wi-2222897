@@ -1,0 +1,30 @@
+# Travail non committe extrait le 2026-09-08
+# worktree : Y2_Tools_PlatformDeploy_worker3_r5b
+# branche  : HEAD
+# HEAD     : 93f91487ee717185599555a42df3cb5d024ace89
+# Reapplication : git -C <clone> apply Y2_Tools_PlatformDeploy_worker3_r5b.patch
+#
+diff --git a/Src/Powershell/Code/Scripts/init-container.ps1 b/Src/Powershell/Code/Scripts/init-container.ps1
+index 11822e6..f3c2808 100644
+--- a/Src/Powershell/Code/Scripts/init-container.ps1
++++ b/Src/Powershell/Code/Scripts/init-container.ps1
+@@ -189,6 +189,12 @@ try {
+     $env:coreVersion = $coreVersion
+     # Launch deployment
+     & .\deploy.ps1 "$cy2px" -verbose:$verbose -noDownload -ignoreUpgrade
++    $deploymentExitCode = $LASTEXITCODE
++    if ($deploymentExitCode -ne 0)
++    {
++        [Logger]::Error("Deployment failed with exit code {$deploymentExitCode}")
++        throw "Deployment failed with exit code $deploymentExitCode"
++    }
+ 
+     # Perfom simple test if wanted and if deployment end with success
+     # and if we are not in a build context ( in this cas tests are running with a speicfic task)
+@@ -259,4 +265,4 @@ catch {
+         [Logger]::Error("Fail !")
+         Exit 1
+     }
+-}
+\ No newline at end of file
++}

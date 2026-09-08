@@ -1,0 +1,1 @@
+"%~dp0CBR_AUTO_SF_mssql_to_oracle_Y2CORE.bat" 1> c:\temp\trace_dbcopy_1300MC_Y2CORE.txt 2>&1

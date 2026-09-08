@@ -1,0 +1,7 @@
+file,source,sha256_or_note
+README.md,local sanitized provenance and run summary,created in this collection
+run-4442178,Azure DevOps Build API,completed failed
+timeline-4442178,Azure DevOps Build Timeline API,inspection failed cleanup/finalization succeeded
+log-7-selected,Azure DevOps Build Logs API,digest acquired cleanup passed global isolation assertion failed
+commits,Azure DevOps Git Commits API,authors committers dates and messages recorded
+definition-14246,Azure DevOps Pipeline API,neutral defaultBranch and YAML path confirmed

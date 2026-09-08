@@ -1,0 +1,74 @@
+[
+  {
+    "Variant": "original",
+    "ConsoleExit": 0,
+    "File": "001-plan01.jmx",
+    "Queries": "SELECT '20262804'"
+  },
+  {
+    "Variant": "original",
+    "ConsoleExit": 0,
+    "File": "002-plan02.jmx",
+    "Queries": "SELECT '20260504'"
+  },
+  {
+    "Variant": "original",
+    "ConsoleExit": 0,
+    "File": "003-plan03.jmx",
+    "Queries": "SELECT '20242902'"
+  },
+  {
+    "Variant": "original",
+    "ConsoleExit": 0,
+    "File": "004-plan04.jmx",
+    "Queries": "SELECT '20262804','20242902'"
+  },
+  {
+    "Variant": "original",
+    "ConsoleExit": 0,
+    "File": "005-plan05.jmx",
+    "Queries": "SELECT '20260428'"
+  },
+  {
+    "Variant": "original",
+    "ConsoleExit": 0,
+    "File": "006-plan06.jmx",
+    "Queries": "SELECT '2026/04/28'"
+  },
+  {
+    "Variant": "corrected",
+    "ConsoleExit": 0,
+    "File": "001-plan01.jmx",
+    "Queries": "SELECT '20260428'"
+  },
+  {
+    "Variant": "corrected",
+    "ConsoleExit": 0,
+    "File": "002-plan02.jmx",
+    "Queries": "SELECT '20260405'"
+  },
+  {
+    "Variant": "corrected",
+    "ConsoleExit": 0,
+    "File": "003-plan03.jmx",
+    "Queries": "SELECT '20240229'"
+  },
+  {
+    "Variant": "corrected",
+    "ConsoleExit": 0,
+    "File": "004-plan04.jmx",
+    "Queries": "SELECT '20260428','20240229'"
+  },
+  {
+    "Variant": "corrected",
+    "ConsoleExit": 0,
+    "File": "005-plan05.jmx",
+    "Queries": "SELECT '20260428'"
+  },
+  {
+    "Variant": "corrected",
+    "ConsoleExit": 0,
+    "File": "006-plan06.jmx",
+    "Queries": "SELECT '2026/04/28'"
+  }
+]

@@ -1,0 +1,10 @@
+PASS	Unicode simple	BEFORE=[select N'café']	AFTER=[select N'café']
+PASS	Unicode doubled apostrophe	BEFORE=[select 'l'N'été']	AFTER=[select N'l''été']
+PASS	ASCII doubled apostrophe	BEFORE=[select 'l''ete']	AFTER=[select 'l''ete']
+PASS	Outside literal	BEFORE=[select cafe -- été]	AFTER=[select cafe -- été]
+PASS	Already prefixed	BEFORE=[select N'l'N'été']	AFTER=[select N'l''été']
+PASS	Multiple literals	BEFORE=[select N'café', N'été']	AFTER=[select N'café', N'été']
+PASS	Line comment	BEFORE=[select 'ok' -- N'café']	AFTER=[select 'ok' -- 'café']
+PASS	Block comment	BEFORE=[select 'ok' /* N'café' */]	AFTER=[select 'ok' /* 'café' */]
+PASS	Delimited identifiers	BEFORE=[select [caféN'col], "café'col"]	AFTER=[select [café'col], "café'col"]
+PASS	ItemSearch:Keywords TC02 A-PreQuery1	BEFORE_HASH=28B4223A6228E062A1EF2D9548DF9A6586FEAD366A0B0EFC98BCD18ABE69D2EE	OLD_CHANGED=True	NEW_PRESERVES_ESCAPED_APOSTROPHE=True

@@ -1,0 +1,19 @@
+kind	path	provenance_or_role	status
+source	worktrees/Migration_Jmeter_RJE_Sandbox/step_00_miseEnPlaceRepo.ps1:220-240	generation of plugin BAT Console command	read-only
+source	worktrees/Migration_Jmeter_RJE_Sandbox/Testautos2Jmeter.bat:9-49	package check, BeforeMigration, working-directory boundary	read-only
+source	investigations/ecarts-jmeter-migrations/evidence/local-2026-09-06-console-quick-diagnosis/verified-original/fixtures/campaign.xml	indexed XML campaign source	copied to temporary staging
+source	investigations/ecarts-jmeter-migrations/evidence/local-2026-09-06-console-quick-diagnosis/verified-original/fixtures/TestPlans/*.xml	six indexed XML test plans	copied to temporary staging
+runtime	investigations/ecarts-jmeter-migrations/evidence/packages-extracted/console-2.0.42-current/tools/Cegid.Retail.AutoTest.Console.exe	Console 2.0.42 runtime	copied to temporary staging
+runtime	investigations/ecarts-jmeter-migrations/evidence/local-2026-09-06-api-build-net452-complete/obj/Debug/Cegid.Retail.AutoTest.Api.dll	corrected API DLL	copied over API in temporary runtime
+hash	Cegid.Retail.AutoTest.Console.exe	82A1134B73F2D9CC572EC2E77E33177D49691B6A40A8DB71CFC2CFE00ED75A9F	SHA-256
+hash	Cegid.Retail.AutoTest.Api.dll corrected	51FB31F71D1BAC99114548B05AC66FF59A49F5AEBD7E09A4F970CF1E6915AD81	SHA-256
+hash	campaign.xml	750E8DFEED1F22E3E1CB9E7E35B5782B65B5226234C20DA540A87C0A5372D545	SHA-256
+result	<staging>\out\Tests\campaign\001-plan01.jmx ... 006-plan06.jmx	Console output	code 0
+hash	001-plan01.jmx	B363E4E81D1C0C9B85E3C9E8182FDC22A07294058CA3E040E7E92CE19D0B036B	SHA-256
+hash	002-plan02.jmx	194D1302404CDE5733C01F274DEDD34A35F0CA61418CFB63708C2C9A972D1EC9	SHA-256
+hash	003-plan03.jmx	1058F7D35BD5619B423418F300E8C670B78263E1169145AA40078E1B63B0C16A	SHA-256
+hash	004-plan04.jmx	261BC7F3B41C8404925BB1B3FBED772F4F1ED13EB8C2B823532FA2E7BC18E657	SHA-256
+hash	005-plan05.jmx	27A0A38E683C37028B23A664DD3DE15F9936506E640681F1D5CE9F3F506BF32D	SHA-256
+hash	006-plan06.jmx	266D93B6818CA5CB01C0350CC163A877FDC840F560B1A84E66CFC599BD35F70E	SHA-256
+boundary	SQL/network/Git/Azure DevOps/JFrog/backup/commit/push/PR	outside isolated test	not executed
+hash	console-rerun.log	664C55C32787A9854A376F11F56A5CDF838903D72A090161D280A4F63EF8CB5C	SHA-256

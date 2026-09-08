@@ -1,0 +1,9 @@
+﻿Repository: Y2_Plugins_FrenchTaxesRules
+Repository ID: 1d6b05fb-70bc-4884-adba-46d9e96651d8
+Commit: 44070560cc855b461f5a307c9438a203e67cebe4
+Git object from commit changes API: 6286b8110758fa5b41e2f02b23c60f628ba0347b
+Path: /azure-pipelines.wi2222897-v22-preflight.yml
+Retrieved: 2026-09-07 21:24:36
+Method: Azure DevOps REST Git Items API, versionType=commit, download=true
+SHA256: DB8ED1DD519CB021E6A90C2504E956C7DDCBBB26D9BBE47AEBF499C9093E4E7A
+Size: 8033 bytes

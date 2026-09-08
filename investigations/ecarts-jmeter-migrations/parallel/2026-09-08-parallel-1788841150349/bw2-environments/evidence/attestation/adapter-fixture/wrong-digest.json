@@ -1,0 +1,23 @@
+{
+  "schema": "wi-2222897-host-attestation-1",
+  "producer": "host",
+  "runId": "run-3",
+  "jobName": "job-3",
+  "jobId": "job-id-3",
+  "attempt": "1",
+  "containerId": "0123456789abcdef",
+  "os": "windows-2025",
+  "imageDigest": "registry.example/y2-jmeter@sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "host": "host-3",
+  "mounts": [
+    "C:\\job-temp->C:\\job-temp;rw=True"
+  ],
+  "networks": [
+    "job-net"
+  ],
+  "ports": [
+    null
+  ],
+  "exclusiveEndpoint": "endpoint-3",
+  "collectedUtc": "2026-09-08T06:54:05.7988217+02:00"
+}

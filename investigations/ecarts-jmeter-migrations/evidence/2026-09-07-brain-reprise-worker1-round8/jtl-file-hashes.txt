@@ -1,0 +1,2 @@
+Fix	Y2.Plugin.InventoryTracking-WebServices-v26-Fix/Y2.Plugin.InventoryTracking-WebServices-v26-Fix-errors.csv	bytes=4053004	sha256=241C71A46B152D400EA2659E10AC698385589CF52864502CC6750E03EB826194
+Cur	Y2.Plugin.InventoryTracking-WebServices-v26-Cur/Y2.Plugin.InventoryTracking-WebServices-v26-Cur-errors.csv	bytes=4050064	sha256=BBF4B54E0050FEF907CA501A8ABC7D4A73D8C2083260CC84F0296D5E1827B969

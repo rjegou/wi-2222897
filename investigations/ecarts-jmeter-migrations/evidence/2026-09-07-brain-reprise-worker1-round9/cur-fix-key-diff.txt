@@ -1,0 +1,10 @@
+Compared projections on (plan,label,success,signature).
+Cur-only:
+002-Device_Reassign | 002-Device:Reassign - TC 122 - B-XQuery | false
+002-Device_Reassign | 002-Device:Reassign - TC 122 - C-PostQuery1 | false
+002-Device_Reassign | 002-Device:Reassign - TC 122 - C-PostQuery2 | false
+Fix-only:
+002-Device_Reassign | 002-Device:Reassign - TC 122 - B-XQuery | true
+002-Device_Reassign | 002-Device:Reassign - TC 122 - C-PostQuery1 | true
+002-Device_Reassign | 002-Device:Reassign - TC 122 - C-PostQuery2 | true
+All other projected keys matched at this projection level.

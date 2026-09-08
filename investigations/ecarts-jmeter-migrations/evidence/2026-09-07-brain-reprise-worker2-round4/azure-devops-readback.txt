@@ -1,0 +1,14 @@
+Collected: 2026-09-07 Europe/Paris
+Method: Python requests.Session, TLS certificate verification enabled, PAT loaded from the approved local file into process memory and cleared before exit; no token output.
+Organization/project: cegid / Retail
+Repository: Pipelines_Docker_BaseImages
+Repository ID: e64dd3e2-a63a-411a-8473-f5c0b46b1749
+master objectId: cd5a72235e5f71373acb8994cb3f60f2f6975b93
+Target branch: refs/heads/validation/WI-2222897-sql-fulltext-round4
+Target branch pre-check: HTTP 200, count 0
+Push attempt: HTTP 403
+Push response class: TF401027 / GitNeedsPermissionException
+Push response text (secret-free): Git CreateBranch permission is required; identity and repository scope were returned by Azure DevOps. No branch or commit was created.
+Hosted pool 79 readback: HTTP 200, 55 online agents at snapshot; sample agent OS Microsoft Windows, OS build 10.0.26100, agent version 5.278.0; no Docker capability key in sample.
+Private pool 94 readback: HTTP 200, 20 online agents at snapshot; sample OS build 10.0.17763; excluded because it is shared/private and Docker capability is not proven.
+Shared definition 8090: read-only inspection only; existing CI trigger and shared JMeter YAML, not used.

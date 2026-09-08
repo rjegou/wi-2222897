@@ -1,0 +1,1 @@
+PASS: valid producer/consumer; absent, stale and different-container refusals; cleanup only owned objects.

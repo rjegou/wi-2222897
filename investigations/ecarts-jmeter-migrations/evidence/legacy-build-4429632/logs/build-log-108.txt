@@ -1,0 +1,49 @@
+﻿2026-09-03T16:13:50.4259255Z ##[section]Starting: launch-testsAutos: Launch Y2_Plugins_FrenchTaxesRules_V7 for 9.25 @ Y2-TSTAUTOXXPG2
+2026-09-03T16:13:50.4414287Z ==============================================================================
+2026-09-03T16:13:50.4415057Z Task         : PowerShell
+2026-09-03T16:13:50.4416235Z Description  : Run a PowerShell script on Linux, macOS, or Windows
+2026-09-03T16:13:50.4416479Z Version      : 2.279.0
+2026-09-03T16:13:50.4416856Z Author       : Microsoft Corporation
+2026-09-03T16:13:50.4417192Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/powershell
+2026-09-03T16:13:50.4417387Z ==============================================================================
+2026-09-03T16:13:52.9219740Z Generating script.
+2026-09-03T16:13:52.9771759Z ========================== Starting Command Output ===========================
+2026-09-03T16:13:53.0138232Z ##[command]"C:\windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command ". 'F:\vm-alm-agent-04-A-A\_work\_temp\92dcef4a-8623-42a4-aea2-52232899e785.ps1'"
+2026-09-03T16:13:53.7592647Z optional arguments for workflow = -D :Y2_Plugin.VersionUsed=9.25,execute.plugin
+2026-09-03T16:13:53.7762330Z arguments=<a:string>-D:Y2_Plugin.VersionUsed=9.25</a:string><a:string>execute.plugin</a:string>
+2026-09-03T16:13:53.7791231Z iteration=test.9.25-20260903_041353
+2026-09-03T16:13:53.7889865Z Invoke-WebRequest -UseBasicParsing -Method Post -Uri http://Y2-TSTAUTOXXPG2:8181/integrationlauncher -Headers System.Collections.Generic.Dictionary`2[System.String,System.String] -Body <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+2026-09-03T16:13:53.7891923Z         <s:Body>
+2026-09-03T16:13:53.7892709Z         <StartWorkflowAsync xmlns="http://www.cegid.fr/Cbp/IIntegrationTestsLauncherService">
+2026-09-03T16:13:53.7893588Z         <workflow>Y2_Plugins_FrenchTaxesRules_V7</workflow>
+2026-09-03T16:13:53.7894371Z         <iteration>test.9.25-20260903_041353</iteration>
+2026-09-03T16:13:53.7895632Z         <arguments xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><a:string>-D:Y2_Plugin.VersionUsed=9.25</a:string><a:string>execute.plugin</a:string></arguments>
+2026-09-03T16:13:53.7896924Z         </StartWorkflowAsync>
+2026-09-03T16:13:53.7897540Z         </s:Body>
+2026-09-03T16:13:53.7898214Z         </s:Envelope> -ContentType 'text/xml'
+2026-09-03T16:13:54.0138702Z 
+2026-09-03T16:13:54.0140114Z 
+2026-09-03T16:13:54.0146683Z StatusCode        : 200
+2026-09-03T16:13:54.0147826Z StatusDescription : OK
+2026-09-03T16:13:54.0182025Z Content           : <s:Envelope 
+2026-09-03T16:13:54.0183678Z                     xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><StartWorkflowAsyncResponse xmlns="http
+2026-09-03T16:13:54.0185202Z                     ://www.cegid.fr/Cbp/IIntegrationTestsLauncherService"><StartWorkflowAsyncResult>66</Start...
+2026-09-03T16:13:54.0186365Z RawContent        : HTTP/1.1 200 OK
+2026-09-03T16:13:54.0187568Z                     Content-Length: 271
+2026-09-03T16:13:54.0188490Z                     Content-Type: text/xml; charset=utf-8
+2026-09-03T16:13:54.0189263Z                     Date: Thu, 03 Sep 2026 16:13:53 GMT
+2026-09-03T16:13:54.0190007Z                     Server: Microsoft-HTTPAPI/2.0
+2026-09-03T16:13:54.0190658Z                     
+2026-09-03T16:13:54.0191475Z                     <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/...
+2026-09-03T16:13:54.0192306Z Forms             : 
+2026-09-03T16:13:54.0194600Z Headers           : {[Content-Length, 271], [Content-Type, text/xml; charset=utf-8], [Date, Thu, 03 Sep 2026 16:13:53 
+2026-09-03T16:13:54.0196422Z                     GMT], [Server, Microsoft-HTTPAPI/2.0]}
+2026-09-03T16:13:54.0197622Z Images            : {}
+2026-09-03T16:13:54.0198759Z InputFields       : {}
+2026-09-03T16:13:54.0199681Z Links             : {}
+2026-09-03T16:13:54.0200312Z ParsedHtml        : 
+2026-09-03T16:13:54.0205692Z RawContentLength  : 271
+2026-09-03T16:13:54.0206113Z 
+2026-09-03T16:13:54.1591805Z 
+2026-09-03T16:13:54.1592253Z 
+2026-09-03T16:13:54.2526320Z ##[section]Finishing: launch-testsAutos: Launch Y2_Plugins_FrenchTaxesRules_V7 for 9.25 @ Y2-TSTAUTOXXPG2

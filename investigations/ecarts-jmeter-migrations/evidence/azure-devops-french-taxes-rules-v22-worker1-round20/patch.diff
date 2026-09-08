@@ -1,0 +1,26 @@
+--- a/azure-pipelines.wi2222897-v22-preflight.yml
++++ b/azure-pipelines.wi2222897-v22-preflight.yml
+@@ -34,1 +34,11 @@
+           $created = $false
++          function ConvertTo-ScrubbedPath([object] $value) {
++            if ($null -eq $value) { return '<absent>' }
++            $text = [string]$value
++            $text = $text -replace '(?i)^[A-Z]:\\Users\\[^\\]+', '<user-root>'
++            $text = $text -replace '(?i)^[A-Z]:\\(a|agent)\\[^\\]+', '<agent-root>'
++            $text = $text -replace '(?i)^[A-Z]:\\', '<drive>:\\'
++            $text = $text -replace '(?i)(^|[\\/])(password|passwd|token|secret|apikey|api-key)([^\\/]*)', '$1<redacted-path>'
++            $text = $text -replace '(?i)(password|passwd|token|secret|apikey|api-key)=[^;\\s]+', '$1=<redacted>'
++            return $text
++          }
+@@ -53,1 +64,6 @@
+           $mounts = @($inspection.Mounts | ForEach-Object { [ordered]@{type=$_.Type;source=$_.Source;destination=$_.Destination;rw=$_.RW} })
++          $configVolumes = @()
++          if ($null -ne $img.Config -and $null -ne $img.Config.Volumes) {
++            $configVolumes = @($img.Config.Volumes.PSObject.Properties | ForEach-Object { [ordered]@{name=(ConvertTo-ScrubbedPath $_.Name)} })
++          }
++          $scrubbedMounts = @($mounts | ForEach-Object { [ordered]@{name=$name;type=$_.type;source=(ConvertTo-ScrubbedPath $_.source);destination=(ConvertTo-ScrubbedPath $_.destination);rw=[bool]$_.rw} })
+@@ -60,2 +77,2 @@
+-            image=[ordered]@{requested=$image;id=$img.Id;repoDigests=@($img.RepoDigests);os=$img.Os;architecture=$img.Architecture;rootFsLayers=@($img.RootFS.Layers).Count};
+-            container=[ordered]@{id=$containerId.Trim();configImage=$inspection.Config.Image;state=$inspection.State.Status;hostname=$inspection.Config.Hostname;labels=$inspection.Config.Labels;mounts=$mounts;networks=$networks;standardMounts=$standardMounts;dangerousMounts=$dangerousMounts};
++            image=[ordered]@{requested=$image;id=$img.Id;repoDigests=@($img.RepoDigests);os=$img.Os;architecture=$img.Architecture;rootFsLayers=@($img.RootFS.Layers).Count;configVolumes=$configVolumes};
++            container=[ordered]@{name=$name;id=$containerId.Trim();configImage=$inspection.Config.Image;state=$inspection.State.Status;mounts=$scrubbedMounts;networks=$networks;standardMountCount=@($standardMounts).Count;dangerousMountCount=@($dangerousMounts).Count};

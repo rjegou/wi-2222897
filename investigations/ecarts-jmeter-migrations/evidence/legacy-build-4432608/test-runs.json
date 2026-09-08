@@ -1,0 +1,89 @@
+{
+  "count": 6,
+  "value": [
+    {
+      "id": 6180431,
+      "name": "TestRun_Clienteling CI_6.696",
+      "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6180431",
+      "isAutomated": true,
+      "state": "Completed",
+      "totalTests": 0,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "passedTests": 0,
+      "unanalyzedTests": 0,
+      "revision": 4,
+      "webAccessUrl": "https://dev.azure.com/cegid/Retail/_TestManagement/Runs?runId=6180431&_a=runCharts"
+    },
+    {
+      "id": 6180433,
+      "name": "TestRun_Clienteling CI_6.696",
+      "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6180433",
+      "isAutomated": true,
+      "state": "Completed",
+      "totalTests": 0,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "passedTests": 0,
+      "unanalyzedTests": 0,
+      "revision": 4,
+      "webAccessUrl": "https://dev.azure.com/cegid/Retail/_TestManagement/Runs?runId=6180433&_a=runCharts"
+    },
+    {
+      "id": 6180435,
+      "name": "TestRun_Clienteling CI_6.696",
+      "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6180435",
+      "isAutomated": true,
+      "state": "Completed",
+      "totalTests": 0,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "passedTests": 0,
+      "unanalyzedTests": 0,
+      "revision": 4,
+      "webAccessUrl": "https://dev.azure.com/cegid/Retail/_TestManagement/Runs?runId=6180435&_a=runCharts"
+    },
+    {
+      "id": 6180482,
+      "name": "TestRun_Clienteling CI_6.696",
+      "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6180482",
+      "isAutomated": true,
+      "state": "Completed",
+      "totalTests": 0,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "passedTests": 0,
+      "unanalyzedTests": 0,
+      "revision": 4,
+      "webAccessUrl": "https://dev.azure.com/cegid/Retail/_TestManagement/Runs?runId=6180482&_a=runCharts"
+    },
+    {
+      "id": 6180483,
+      "name": "TestRun_Clienteling CI_6.696",
+      "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6180483",
+      "isAutomated": true,
+      "state": "Completed",
+      "totalTests": 0,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "passedTests": 0,
+      "unanalyzedTests": 0,
+      "revision": 4,
+      "webAccessUrl": "https://dev.azure.com/cegid/Retail/_TestManagement/Runs?runId=6180483&_a=runCharts"
+    },
+    {
+      "id": 6180484,
+      "name": "TestRun_Clienteling CI_6.696",
+      "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6180484",
+      "isAutomated": true,
+      "state": "Completed",
+      "totalTests": 0,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "passedTests": 0,
+      "unanalyzedTests": 0,
+      "revision": 4,
+      "webAccessUrl": "https://dev.azure.com/cegid/Retail/_TestManagement/Runs?runId=6180484&_a=runCharts"
+    }
+  ]
+}

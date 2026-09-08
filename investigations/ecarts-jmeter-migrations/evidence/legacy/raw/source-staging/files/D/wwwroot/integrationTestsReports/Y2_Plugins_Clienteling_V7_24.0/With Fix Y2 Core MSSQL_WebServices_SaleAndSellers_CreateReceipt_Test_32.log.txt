@@ -1,0 +1,311 @@
+10:21:11.5359415+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:21:11.5515668+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] 
+            update UTILISATCOMPL set USC_USECHPSDOC='X'
+          
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE UTILISATCOMPL SET USC_USECHPSDOC = 'X' 
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE UTILISATCOMPL SET USC_USECHPSDOC = 'X' 
+10:21:11.5515668+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=1.1055
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<81>>
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=7.9994
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(67cf030b-ca0d-40ab-8abd-a5352cdec476@sql_Y2_Plugin, 36005990)
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:21:11.5515668+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] update utilisatcompl set usc_chpsdoc = '<<Tous>>'
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE utilisatcompl SET usc_chpsdoc = '<<Tous>>' 
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE utilisatcompl SET usc_chpsdoc = '<<Tous>>' 
+10:21:11.5515668+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=1.0491
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<81>>
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=6.7643
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(1397b960-0c58-4433-9d16-ba876cda3064@sql_Y2_Plugin, 51353691)
+10:21:11.5515668+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.5671945+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:11.5671945+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:21:11.5671945+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] update PARPIECECOMPL set GPC_AFFPIECETABLE='X' where GPC_NATUREPIECEG='FFO' and GPC_ETABLISSEMENT='304'
+10:21:11.5671945+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARPIECECOMPL SET GPC_AFFPIECETABLE = 'X' WHERE GPC_NATUREPIECEG = 'FFO' AND GPC_ETABLISSEMENT = '304'
+10:21:11.5671945+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARPIECECOMPL SET GPC_AFFPIECETABLE = 'X' WHERE GPC_NATUREPIECEG = 'FFO' AND GPC_ETABLISSEMENT = '304'
+10:21:11.5671945+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=1.483
+10:21:11.5671945+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+10:21:11.5671945+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=8.2871
+10:21:11.5671945+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(b5b5d6c8-0cb5-4b88-a4bf-08f6d62c8644@sql_Y2_Plugin, 1981411)
+10:21:11.5671945+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.5671945+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:11.5671945+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:21:11.5671945+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] update PARPIECECOMPL set GPC_PIECETABLE1='CP.' where GPC_NATUREPIECEG='FFO' and GPC_ETABLISSEMENT='304' 
+10:21:11.5671945+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARPIECECOMPL SET GPC_PIECETABLE1 = 'CP.' WHERE GPC_NATUREPIECEG = 'FFO' AND GPC_ETABLISSEMENT = '304'
+10:21:11.5671945+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARPIECECOMPL SET GPC_PIECETABLE1 = 'CP.' WHERE GPC_NATUREPIECEG = 'FFO' AND GPC_ETABLISSEMENT = '304'
+10:21:11.5671945+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=1.7189
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=6.4758
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(e2d7abd7-e747-436f-a719-c3f98bee6810@sql_Y2_Plugin, 19905583)
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:21:11.5828222+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] update PARPIECECOMPL set GPC_USERFIELD='1;2;3;' where GPC_NATUREPIECEG='FFO' and GPC_ETABLISSEMENT='304' 
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARPIECECOMPL SET GPC_USERFIELD = '1;2;3;' WHERE GPC_NATUREPIECEG = 'FFO' AND GPC_ETABLISSEMENT = '304'
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARPIECECOMPL SET GPC_USERFIELD = '1;2;3;' WHERE GPC_NATUREPIECEG = 'FFO' AND GPC_ETABLISSEMENT = '304'
+10:21:11.5828222+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=1.3973
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=6.2271
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(54d653e4-a8ef-4bd4-999d-5aa6178ed41d@sql_Y2_Plugin, 23433225)
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.5828222+02:00: QTAgent32_40.exe Information: 0 : forcing CBP cache refresh on Domain [USER]
+10:21:11.5828222+02:00: QTAgent32_40.exe Information: 0 : processing file = (D:\Temp\TempoAutoTest\BA011E97-536B-4D41-A2F9-DB60C2828B7C\IntegrationTests\Y2_Plugin.Fix\sql\sources\IntegratedTests\AutoTest\Data\WebServices\TestPlans\InputFiles\SaleAndSellers\CreateReceipt_32.xml)
+10:21:11.5828222+02:00: root Verbose: 0 : Cegid.Framework.ServiceModel | Authorization | User 'CEGIDGROUP\SvcTestAutoRetail' has access to folder 'sql_Y2_Plugin' : Claim of type 'http://www.cegid.fr/claims/erp/user/login' added.
+10:21:11.5828222+02:00: root Information: 0 : Cegid.Framework.ServiceModel | Authorization | Status=Granted, User=CEGIDGROUP\SvcTestAutoRetail, Resource=/fb9e9640-2b71-4a88-a9d0-e3ff0a93fcf1/
+10:21:11.5984469+02:00: root Information: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Function ' - CreateReceipt' - OperationStatus=Start
+10:21:11.5984469+02:00: root Verbose: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Function ' - CreateReceipt' - Input parameters - <<Cegid.Retail.Clienteling.ServiceContracts.SaleAndSellers.CreateReceiptRequest> - <Cegid.Retail.WebServices.Tools.RetailContext>>
+10:21:11.5984469+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.5984469+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.5984469+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT 1 AS [C1], RTRIM([Extent1].[US_UTILISATEUR]) AS [US_UTILISATEUR], [Extent1].[US_LIBELLE] AS [US_LIBELLE], [Extent1].[US_ABREGE] AS [US_ABREGE], [Extent1].[US_AUXILIAIRE] AS [US_AUXILIAIRE], [Extent1].[US_DOMAINEAUTHENT] AS [US_DOMAINEAUTHENT], RTRIM([Extent1].[US_GROUPE]) AS [US_GROUPE], RTRIM([Extent2].[UG_GROUPE]) AS [UG_GROUPE], RTRIM([Extent2].[UG_LANGUE]) AS [UG_LANGUE] FROM [UTILISAT] AS [Extent1] LEFT OUTER JOIN [USERGRP] AS [Extent2] ON [Extent1].[US_GROUPE] = [Extent2].[UG_GROUPE] WHERE (UPPER([Extent1].[US_ABREGE]) = UPPER(@p__linq__0)) AND (CASE WHEN UPPER([Extent1].[US_DOMAINEAUTHENT]) IS NULL AND UPPER(@p__linq__1) IS NULL OR UPPER([Extent1].[US_DOMAINEAUTHENT]) = UPPER(@p__linq__1) THEN 1 ELSE 0 END = CAST(1 AS BIT)) 
+10:21:11.5984469+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='SvcTestAutoRetail', p__linq__1='CEGIDGROUP'
+10:21:11.5984469+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.6553
+10:21:11.5984469+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(545e517a-9371-4f18-889d-9a4e3f596c29@sql_Y2_Plugin, 50665309)
+10:21:11.5984469+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.5984469+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.5984469+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.5984469+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT 1 AS [C1], [Extent1].[US_ABREGE] AS [US_ABREGE], CAST(CASE [Extent1].[US_CONTROLEUR] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [US_CONTROLEUR], CAST(CASE [Extent1].[US_SUPERVISEUR] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [US_SUPERVISEUR], CAST(CASE [Extent1].[US_QRCOULEUR] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [US_QRCOULEUR], [Extent1].[US_DOMAINEAUTHENT] AS [US_DOMAINEAUTHENT], [Extent1].[US_GRPSDELEGUES] AS [US_GRPSDELEGUES], RTRIM([Extent1].[US_GROUPE]) AS [US_GROUPE], RTRIM([Extent1].[US_UTILISATEUR]) AS [US_UTILISATEUR], CAST(CASE [Extent1].[US_DESACTIVE] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [US_DESACTIVE], RTRIM([Extent2].[UG_GROUPE]) AS [UG_GROUPE], [Extent2].[UG_LIBELLE] AS [UG_LIBELLE], [Extent2].[UG_CONFIDENTIEL] AS [UG_CONFIDENTIEL], [Extent2].[UG_NUMERO] AS [UG_NUMERO], [Extent2].[UG_NIVEAUACCES] AS [UG_NIVEAUACCES] FROM [UTILISAT] AS [Extent1] LEFT OUTER JOIN [USERGRP] AS [Extent2] ON [Extent1].[US_GROUPE] = [Extent2].[UG_GROUPE] WHERE [Extent1].[US_UTILISATEUR] = @p__linq__0 
+10:21:11.5984469+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='TST'
+10:21:11.5984469+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.5006
+10:21:11.5984469+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.5984469+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.5984469+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT [Project1].[MN_TAG] AS [MN_TAG] FROM (SELECT [Extent1].[MN_TAG] AS [MN_TAG] FROM [MENU] AS [Extent1] WHERE ((((((((NOT ([Extent1].[MN_LIBELLE] IS NULL)) AND (NOT ('-' = [Extent1].[MN_LIBELLE]))) AND (NOT ([Extent1].[MN_TAG] IS NULL))) AND ([Extent1].[MN_TAG] > 0)) AND (NOT ([Extent1].[MN_1] IS NULL))) AND (NOT (26 = [Extent1].[MN_1]))) AND (NOT ([Extent1].[MN_ACCESGRP] IS NULL))) AND (LEN([Extent1].[MN_ACCESGRP]) >= @p__linq__0)) AND (('0' = SUBSTRING([Extent1].[MN_ACCESGRP], (@p__linq__1 - 1) + 1, 1)) OR ('X' = SUBSTRING([Extent1].[MN_ACCESGRP], (@p__linq__2 - 1) + 1, 1))) ) AS [Project1]  ORDER BY [Project1].[MN_TAG] 
+10:21:11.5984469+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0=1, p__linq__1=1, p__linq__2=1
+10:21:11.5984469+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=2.6087
+10:21:11.5984469+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.5984469+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.5984469+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT [Extent1].[MN_1] AS [MN_1], [Extent1].[MN_2] AS [MN_2], [Extent1].[MN_3] AS [MN_3], [Extent1].[MN_4] AS [MN_4], [Extent1].[MN_TAG] AS [MN_TAG], [Extent1].[MN_ACCESGRP] AS [MN_ACCESGRP] FROM [MENU] AS [Extent1] WHERE ((26 = [Extent1].[MN_1]) AND ([Extent1].[MN_TAG] >= 26000)) AND (('0' = SUBSTRING([Extent1].[MN_ACCESGRP], (1 - 1) + 1, 1)) OR ('X' = SUBSTRING([Extent1].[MN_ACCESGRP], (1 - 1) + 1, 1))) 
+10:21:11.5984469+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.5474
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(e3ccd651-cb90-4f0d-942d-8bbc6fda7695@sql_Y2_Plugin, 21155483)
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT 1 AS [C1], RTRIM([Limit1].[USC_UTILISATEUR]) AS [USC_UTILISATEUR], [Limit1].[USC_DATEEXPIRE] AS [USC_DATEEXPIRE], RTRIM([Limit1].[USC_PRFCULTUREL]) AS [USC_PRFCULTUREL], RTRIM([Limit1].[USC_PRFCULTURELFO]) AS [USC_PRFCULTURELFO], RTRIM([Extent2].[YPC_CODE]) AS [YPC_CODE], RTRIM([Extent2].[YPC_LANGPRINC]) AS [YPC_LANGPRINC], RTRIM([Extent2].[YPC_LANGPRINCDATA]) AS [YPC_LANGPRINCDATA], RTRIM([Extent2].[YPC_LANGSECONDATA]) AS [YPC_LANGSECONDATA], CAST(CASE [Extent2].[YPC_TRADUCTEUR] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [YPC_TRADUCTEUR], RTRIM([Extent2].[YPC_LANGSECOND]) AS [YPC_LANGSECOND] FROM (SELECT TOP (2) RTRIM([Extent1].[USC_UTILISATEUR]) AS [USC_UTILISATEUR], [Extent1].[USC_ETABLISSEMENT] AS [USC_ETABLISSEMENT], [Extent1].[USC_DEPOT] AS [USC_DEPOT], RTRIM([Extent1].[USC_DOMAINE]) AS [USC_DOMAINE], RTRIM([Extent1].[USC_PRFCULTUREL]) AS [USC_PRFCULTUREL], RTRIM([Extent1].[USC_PRFCULTURELFO]) AS [USC_PRFCULTURELFO], RTRIM([Extent1].[USC_IMPRIMANTE]) AS [USC_IMPRIMANTE], CAST(CASE [Extent1].[USC_AFFINDIC] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_AFFINDIC], CAST(CASE [Extent1].[USC_AFFTACHE] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_AFFTACHE], [Extent1].[USC_IMPINDIC] AS [USC_IMPINDIC], RTRIM([Extent1].[USC_RESTR0]) AS [USC_RESTR0], RTRIM([Extent1].[USC_RESTR1]) AS [USC_RESTR1], RTRIM([Extent1].[USC_RESTR2]) AS [USC_RESTR2], RTRIM([Extent1].[USC_RESTR3]) AS [USC_RESTR3], RTRIM([Extent1].[USC_RESTR4]) AS [USC_RESTR4], RTRIM([Extent1].[USC_RESTR5]) AS [USC_RESTR5], RTRIM([Extent1].[USC_RESTR6]) AS [USC_RESTR6], RTRIM([Extent1].[USC_RESTR7]) AS [USC_RESTR7], RTRIM([Extent1].[USC_RESTR8]) AS [USC_RESTR8], RTRIM([Extent1].[USC_RESTR9]) AS [USC_RESTR9], RTRIM([Extent1].[USC_PROFILRESCLI]) AS [USC_PROFILRESCLI], [Extent1].[USC_DOMAINES] AS [USC_DOMAINES], [Extent1].[USC_DOMAINESMODIF] AS [USC_DOMAINESMODIF], [Extent1].[USC_TARIFACH] AS [USC_TARIFACH], [Extent1].[USC_TARIFVTEHT] AS [USC_TARIFVTEHT], [Extent1].[USC_TARIFVTETTC] AS [USC_TARIFVTETTC], [Extent1].[USC_PRGTARIFACH] AS [USC_PRGTARIFACH], [Extent1].[USC_PRGTARIFVTEHT] AS [USC_PRGTARIFVTEHT], [Extent1].[USC_PRGTARIFVTETTC] AS [USC_PRGTARIFVTETTC], [Extent1].[USC_GRPDEMARQUELST] AS [USC_GRPDEMARQUELST], [Extent1].[USC_FAMILLECOND] AS [USC_FAMILLECOND], [Extent1].[USC_FAMILLE3] AS [USC_FAMILLE3], [Extent1].[USC_FAMILLE4] AS [USC_FAMILLE4], [Extent1].[USC_FAMILLE5] AS [USC_FAMILLE5], [Extent1].[USC_FAMILLE6] AS [USC_FAMILLE6], [Extent1].[USC_FAMILLE7] AS [USC_FAMILLE7], [Extent1].[USC_FAMILLE8] AS [USC_FAMILLE8], [Extent1].[USC_FAMILLE9] AS [USC_FAMILLE9], [Extent1].[USC_FAMILLE10] AS [USC_FAMILLE10], [Extent1].[USC_FAMILLE11] AS [USC_FAMILLE11], [Extent1].[USC_FAMILLE12] AS [USC_FAMILLE12], [Extent1].[USC_LIBREUSER1] AS [USC_LIBREUSER1], [Extent1].[USC_LIBREUSER2] AS [USC_LIBREUSER2], [Extent1].[USC_LIBREUSER3] AS [USC_LIBREUSER3], CAST(CASE [Extent1].[USC_USECLASSIFART] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECLASSIFART], [Extent1].[USC_CLASSIFART] AS [USC_CLASSIFART], CAST(CASE [Extent1].[USC_USECLASSIFCLI] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECLASSIFCLI], [Extent1].[USC_CLASSIFCLI] AS [USC_CLASSIFCLI], CAST(CASE [Extent1].[USC_USECHPSART] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSART], [Extent1].[USC_CHPSART] AS [USC_CHPSART], CAST(CASE [Extent1].[USC_USECHPSCLI] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSCLI], [Extent1].[USC_CHPSCLI] AS [USC_CHPSCLI], CAST(CASE [Extent1].[USC_USECHPSFOU] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSFOU], [Extent1].[USC_CHPSFOU] AS [USC_CHPSFOU], CAST(CASE [Extent1].[USC_USECHPSETA] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSETA], [Extent1].[USC_CHPSETA] AS [USC_CHPSETA], CAST(CASE [Extent1].[USC_USECHPSCOM] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSCOM], [Extent1].[USC_CHPSCOM] AS [USC_CHPSCOM], CAST(CASE [Extent1].[USC_USECHPSSAV] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSSAV], [Extent1].[USC_CHPSSAV] AS [USC_CHPSSAV], CAST(CASE [Extent1].[USC_USECHPSDOC] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSDOC], [Extent1].[USC_CHPSDOC] AS [USC_CHPSDOC], [Extent1].[USC_DATEEXPIRE] AS [USC_DATEEXPIRE] FROM [UTILISATCOMPL] AS [Extent1] WHERE [Extent1].[USC_UTILISATEUR] = @p__linq__0 ) AS [Limit1] LEFT OUTER JOIN [YPRFCULTUREL] AS [Extent2] ON [Limit1].[USC_PRFCULTUREL] = [Extent2].[YPC_CODE] 
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='TST'
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.5606
+10:21:11.6140676+02:00: root Verbose: 0 : GlobalizationExtension | GlobalizationExtension | User=CEGIDGROUP\SvcTestAutoRetail, CulturalProfilId=FRA, LangPrinc=FRA, LangPrincData=FRA, LangSeconData=FRA
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT [Extent1].[YLN_CODELANG] AS [YLN_CODELANG], [Extent1].[YLN_CODEPAYS] AS [YLN_CODEPAYS], [Extent1].[YLN_CODELCID] AS [YLN_CODELCID], [Extent1].[YLN_CODELCIDREF] AS [YLN_CODELCIDREF], [Extent1].[YLN_CODEMCD] AS [YLN_CODEMCD], CAST(CASE [Extent1].[YLN_DUPLIQUER] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [YLN_DUPLIQUER] FROM [YYLANGPAYSISO] AS [Extent1] WHERE (([Extent1].[YLN_CODEMCD] = @p__linq__0) AND (NOT (CAST(CASE [Extent1].[YLN_DUPLIQUER] WHEN 'X' THEN 1 ELSE 0 END AS BIT) IS NULL))) AND (NOT (CAST(CASE [Extent1].[YLN_DUPLIQUER] WHEN 'X' THEN 1 ELSE 0 END AS BIT) = CAST(1 AS BIT))) 
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='FRA'
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.8641
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(5b2cc322-afb9-4806-b59b-2df8264f7a92@sql_Y2_Plugin, 37560967)
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT [Extent1].[YLN_CODELANG] AS [YLN_CODELANG], [Extent1].[YLN_CODEPAYS] AS [YLN_CODEPAYS], [Extent1].[YLN_CODELCID] AS [YLN_CODELCID], [Extent1].[YLN_CODELCIDREF] AS [YLN_CODELCIDREF], [Extent1].[YLN_CODEMCD] AS [YLN_CODEMCD], CAST(CASE [Extent1].[YLN_DUPLIQUER] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [YLN_DUPLIQUER] FROM [YYLANGPAYSISO] AS [Extent1] WHERE (([Extent1].[YLN_CODEMCD] = @p__linq__0) AND (NOT (CAST(CASE [Extent1].[YLN_DUPLIQUER] WHEN 'X' THEN 1 ELSE 0 END AS BIT) IS NULL))) AND (NOT (CAST(CASE [Extent1].[YLN_DUPLIQUER] WHEN 'X' THEN 1 ELSE 0 END AS BIT) = CAST(1 AS BIT))) 
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='FRA'
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.9966
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(fd86695b-2392-4a73-90a5-9a82fb0845f1@sql_Y2_Plugin, 4223338)
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT [Extent1].[YLN_CODELANG] AS [YLN_CODELANG], [Extent1].[YLN_CODEPAYS] AS [YLN_CODEPAYS], [Extent1].[YLN_CODELCID] AS [YLN_CODELCID], [Extent1].[YLN_CODELCIDREF] AS [YLN_CODELCIDREF], [Extent1].[YLN_CODEMCD] AS [YLN_CODEMCD], CAST(CASE [Extent1].[YLN_DUPLIQUER] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [YLN_DUPLIQUER] FROM [YYLANGPAYSISO] AS [Extent1] WHERE (([Extent1].[YLN_CODEMCD] = @p__linq__0) AND (NOT (CAST(CASE [Extent1].[YLN_DUPLIQUER] WHEN 'X' THEN 1 ELSE 0 END AS BIT) IS NULL))) AND (NOT (CAST(CASE [Extent1].[YLN_DUPLIQUER] WHEN 'X' THEN 1 ELSE 0 END AS BIT) = CAST(1 AS BIT))) 
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='FRA'
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.4574
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(8a6f605d-e41b-44b8-8bb5-5521d181c27f@sql_Y2_Plugin, 48897155)
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(ef53e783-8ece-4b18-829a-515d25f818c7@sql_Y2_Plugin, 38914228)
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT 1 AS [C1], RTRIM([Extent1].[US_UTILISATEUR]) AS [US_UTILISATEUR], [Extent1].[US_LIBELLE] AS [US_LIBELLE], [Extent1].[US_ABREGE] AS [US_ABREGE], [Extent1].[US_AUXILIAIRE] AS [US_AUXILIAIRE], [Extent1].[US_DOMAINEAUTHENT] AS [US_DOMAINEAUTHENT], RTRIM([Extent1].[US_GROUPE]) AS [US_GROUPE], RTRIM([Extent2].[UG_GROUPE]) AS [UG_GROUPE], RTRIM([Extent2].[UG_LANGUE]) AS [UG_LANGUE] FROM [UTILISAT] AS [Extent1] LEFT OUTER JOIN [USERGRP] AS [Extent2] ON [Extent1].[US_GROUPE] = [Extent2].[UG_GROUPE] WHERE (UPPER([Extent1].[US_ABREGE]) = UPPER(@p__linq__0)) AND (CASE WHEN UPPER([Extent1].[US_DOMAINEAUTHENT]) IS NULL AND UPPER(@p__linq__1) IS NULL OR UPPER([Extent1].[US_DOMAINEAUTHENT]) = UPPER(@p__linq__1) THEN 1 ELSE 0 END = CAST(1 AS BIT)) 
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='SvcTestAutoRetail', p__linq__1='CEGIDGROUP'
+10:21:11.6140676+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.5697
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(e24e9bd2-8a13-4b77-bac2-268fd9ae5a08@sql_Y2_Plugin, 25182677)
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6140676+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT TOP (1) [Extent1].[MPD_CODEPDA] AS [MPD_CODEPDA], [Extent1].[MPD_LIBELLE] AS [MPD_LIBELLE], [Extent1].[MPD_MODELE] AS [MPD_MODELE], [Extent1].[MPD_NUMSERIE] AS [MPD_NUMSERIE], [Extent1].[MPD_DEVICEID] AS [MPD_DEVICEID], [Extent1].[MPD_ARTLISTEPROP] AS [MPD_ARTLISTEPROP], [Extent1].[MPD_ARTLISTESTOCK] AS [MPD_ARTLISTESTOCK], [Extent1].[MPD_ARTLISTEDEV] AS [MPD_ARTLISTEDEV], [Extent1].[MPD_CAISSE] AS [MPD_CAISSE], RTRIM([Extent1].[MPD_CRITRECHCLI1]) AS [MPD_CRITRECHCLI1], RTRIM([Extent1].[MPD_CRITRECHCLI2]) AS [MPD_CRITRECHCLI2], RTRIM([Extent1].[MPD_CRITRECHCLI3]) AS [MPD_CRITRECHCLI3], RTRIM([Extent1].[MPD_TYPEMOBILITE]) AS [MPD_TYPEMOBILITE], CAST(CASE [Extent1].[MPD_ARTPHOTO] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [MPD_ARTPHOTO], RTRIM([Extent1].[MPD_CRITRECHCLI4]) AS [MPD_CRITRECHCLI4], RTRIM([Extent1].[MPD_CRITRECHCLI5]) AS [MPD_CRITRECHCLI5], RTRIM([Extent1].[MPD_CRITRECHART1]) AS [MPD_CRITRECHART1], RTRIM([Extent1].[MPD_CRITRECHART2]) AS [MPD_CRITRECHART2], RTRIM([Extent1].[MPD_CRITRECHART3]) AS [MPD_CRITRECHART3], RTRIM([Extent1].[MPD_CRITRECHART4]) AS [MPD_CRITRECHART4], RTRIM([Extent1].[MPD_CRITRECHART5]) AS [MPD_CRITRECHART5], [Extent1].[MPD_DATECREATION] AS [MPD_DATECREATION], [Extent1].[MPD_DATEMODIF] AS [MPD_DATEMODIF], RTRIM([Extent1].[MPD_CREATEUR]) AS [MPD_CREATEUR], RTRIM([Extent1].[MPD_UTILISATEUR]) AS [MPD_UTILISATEUR], [Extent1].[MPD_CLILISTEPROP] AS [MPD_CLILISTEPROP], CAST(CASE [Extent1].[MPD_CLIFIDELITE] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [MPD_CLIFIDELITE], [Extent1].[MPD_TYPEOPC] AS [MPD_TYPEOPC], CAST(CASE [Extent1].[MPD_SAISIEOPC] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [MPD_SAISIEOPC], CAST(CASE [Extent1].[MPD_DECONNECTE] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [MPD_DECONNECTE], CAST(CASE [Extent1].[MPD_APERCU] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [MPD_APERCU], CAST(CASE [Extent1].[MPD_EMAIL] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [MPD_EMAIL], CAST(CASE [Extent1].[MPD_MODECOMPTOIR] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [MPD_MODECOMPTOIR], RTRIM([Extent1].[MPD_MODEPAIE]) AS [MPD_MODEPAIE], RTRIM([Extent1].[MPD_IMPRIMANTE]) AS [MPD_IMPRIMANTE], CAST(CASE [Extent1].[MPD_FINTICK] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [MPD_FINTICK], RTRIM([Extent1].[MPD_SOLMOBILE]) AS [MPD_SOLMOBILE] FROM [MPDA] AS [Extent1] WHERE [Extent1].[MPD_DEVICEID] = UPPER(@p__linq__0) 
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='30771674-6B1E-4BAD-AE73-DB84E037C3EF'
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.5087
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(ef53e783-8ece-4b18-829a-515d25f818c7@sql_Y2_Plugin, 32112692)
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] 
+SELECT  GPK_ETABLISSEMENT
+FROM    PARCAISSE
+WHERE   GPK_CAISSE = @param0
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT PARCAISSE.GPK_ETABLISSEMENT FROM PARCAISSE WHERE PARCAISSE.GPK_CAISSE = @param0 
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0='TTT'
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT PARCAISSE.GPK_ETABLISSEMENT FROM PARCAISSE WHERE PARCAISSE.GPK_CAISSE = @param0 
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.4195
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=0.8506
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(ef53e783-8ece-4b18-829a-515d25f818c7@sql_Y2_Plugin, 42754359)
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] 
+SELECT  ET_PAYS
+FROM    ETABLISS
+WHERE   ET_ETABLISSEMENT = @param0
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT ETABLISS.ET_PAYS FROM ETABLISS WHERE ETABLISS.ET_ETABLISSEMENT = @param0 
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0='304'
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT ETABLISS.ET_PAYS FROM ETABLISS WHERE ETABLISS.ET_ETABLISSEMENT = @param0 
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.6007
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=0.9873
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(ef53e783-8ece-4b18-829a-515d25f818c7@sql_Y2_Plugin, 40836010)
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] 
+SELECT  TOP 500 SET_LEVELKIND, SET_LEVELID, SET_SCOPE, SET_KEY, SET_VALUE
+FROM    CLISETTING
+WHERE   (  SET_SCOPE = @param0)  AND ( (SET_LEVELKIND = @param1 AND SET_LEVELID IS NULL) OR (SET_LEVELKIND = @param2 AND SET_LEVELID = @param3) OR (SET_LEVELKIND = @param4 AND SET_LEVELID = @param5) OR (SET_LEVELKIND = @param6 AND SET_LEVELID = @param7) OR (SET_LEVELKIND = @param8 AND SET_LEVELID = @param9)) ORDER BY SET_SCOPE, SET_KEY, SET_LEVELKIND
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT TOP (500) SET_LEVELKIND, SET_LEVELID, SET_SCOPE, SET_KEY, SET_VALUE FROM CLISETTING WHERE (SET_SCOPE = @param0) AND ((SET_LEVELKIND = @param1 AND SET_LEVELID IS NULL) OR (SET_LEVELKIND = @param2 AND SET_LEVELID = @param3) OR (SET_LEVELKIND = @param4 AND SET_LEVELID = @param5) OR (SET_LEVELKIND = @param6 AND SET_LEVELID = @param7) OR (SET_LEVELKIND = @param8 AND SET_LEVELID = @param9))  ORDER BY SET_SCOPE, SET_KEY, SET_LEVELKIND 
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0='Sale', param1=0, param2=1, param3='FRA', param4=2, param5='304', param6=3, param7='TTT', param8=4, param9='30771674-6B1E-4BAD-AE73-DB84E037C3EF'
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT TOP (500) SET_LEVELKIND, SET_LEVELID, SET_SCOPE, SET_KEY, SET_VALUE FROM CLISETTING WHERE (SET_SCOPE = @param0) AND ((SET_LEVELKIND = @param1 AND SET_LEVELID IS NULL) OR (SET_LEVELKIND = @param2 AND SET_LEVELID = @param3) OR (SET_LEVELKIND = @param4 AND SET_LEVELID = @param5) OR (SET_LEVELKIND = @param6 AND SET_LEVELID = @param7) OR (SET_LEVELKIND = @param8 AND SET_LEVELID = @param9))  ORDER BY SET_SCOPE, SET_KEY, SET_LEVELKIND 
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.4487
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.1977
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(ef53e783-8ece-4b18-829a-515d25f818c7@sql_Y2_Plugin, 45603433)
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT CASE WHEN NOT (NOT EXISTS(SELECT 1 AS [C1] FROM [COMMERCIAL] AS [Extent1] WHERE [Extent1].[GCL_COMMERCIAL] = UPPER(@p__linq__0) )) THEN CAST(1 AS BIT)  WHEN NOT EXISTS(SELECT 1 AS [C1] FROM [COMMERCIAL] AS [Extent2] WHERE [Extent2].[GCL_COMMERCIAL] = UPPER(@p__linq__0) ) THEN CAST(0 AS BIT) END AS [C1] FROM (SELECT 1 AS [X] ) AS [SingleRowTable1] 
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='DLE'
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.4047
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(ef53e783-8ece-4b18-829a-515d25f818c7@sql_Y2_Plugin, 65129223)
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT TOP (2) RTRIM([Extent1].[USC_UTILISATEUR]) AS [USC_UTILISATEUR], [Extent1].[USC_ETABLISSEMENT] AS [USC_ETABLISSEMENT], [Extent1].[USC_DEPOT] AS [USC_DEPOT], RTRIM([Extent1].[USC_DOMAINE]) AS [USC_DOMAINE], RTRIM([Extent1].[USC_PRFCULTUREL]) AS [USC_PRFCULTUREL], RTRIM([Extent1].[USC_PRFCULTURELFO]) AS [USC_PRFCULTURELFO], RTRIM([Extent1].[USC_IMPRIMANTE]) AS [USC_IMPRIMANTE], CAST(CASE [Extent1].[USC_AFFINDIC] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_AFFINDIC], CAST(CASE [Extent1].[USC_AFFTACHE] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_AFFTACHE], [Extent1].[USC_IMPINDIC] AS [USC_IMPINDIC], RTRIM([Extent1].[USC_RESTR0]) AS [USC_RESTR0], RTRIM([Extent1].[USC_RESTR1]) AS [USC_RESTR1], RTRIM([Extent1].[USC_RESTR2]) AS [USC_RESTR2], RTRIM([Extent1].[USC_RESTR3]) AS [USC_RESTR3], RTRIM([Extent1].[USC_RESTR4]) AS [USC_RESTR4], RTRIM([Extent1].[USC_RESTR5]) AS [USC_RESTR5], RTRIM([Extent1].[USC_RESTR6]) AS [USC_RESTR6], RTRIM([Extent1].[USC_RESTR7]) AS [USC_RESTR7], RTRIM([Extent1].[USC_RESTR8]) AS [USC_RESTR8], RTRIM([Extent1].[USC_RESTR9]) AS [USC_RESTR9], RTRIM([Extent1].[USC_PROFILRESCLI]) AS [USC_PROFILRESCLI], [Extent1].[USC_DOMAINES] AS [USC_DOMAINES], [Extent1].[USC_DOMAINESMODIF] AS [USC_DOMAINESMODIF], [Extent1].[USC_TARIFACH] AS [USC_TARIFACH], [Extent1].[USC_TARIFVTEHT] AS [USC_TARIFVTEHT], [Extent1].[USC_TARIFVTETTC] AS [USC_TARIFVTETTC], [Extent1].[USC_PRGTARIFACH] AS [USC_PRGTARIFACH], [Extent1].[USC_PRGTARIFVTEHT] AS [USC_PRGTARIFVTEHT], [Extent1].[USC_PRGTARIFVTETTC] AS [USC_PRGTARIFVTETTC], [Extent1].[USC_GRPDEMARQUELST] AS [USC_GRPDEMARQUELST], [Extent1].[USC_FAMILLECOND] AS [USC_FAMILLECOND], [Extent1].[USC_FAMILLE3] AS [USC_FAMILLE3], [Extent1].[USC_FAMILLE4] AS [USC_FAMILLE4], [Extent1].[USC_FAMILLE5] AS [USC_FAMILLE5], [Extent1].[USC_FAMILLE6] AS [USC_FAMILLE6], [Extent1].[USC_FAMILLE7] AS [USC_FAMILLE7], [Extent1].[USC_FAMILLE8] AS [USC_FAMILLE8], [Extent1].[USC_FAMILLE9] AS [USC_FAMILLE9], [Extent1].[USC_FAMILLE10] AS [USC_FAMILLE10], [Extent1].[USC_FAMILLE11] AS [USC_FAMILLE11], [Extent1].[USC_FAMILLE12] AS [USC_FAMILLE12], [Extent1].[USC_LIBREUSER1] AS [USC_LIBREUSER1], [Extent1].[USC_LIBREUSER2] AS [USC_LIBREUSER2], [Extent1].[USC_LIBREUSER3] AS [USC_LIBREUSER3], CAST(CASE [Extent1].[USC_USECLASSIFART] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECLASSIFART], [Extent1].[USC_CLASSIFART] AS [USC_CLASSIFART], CAST(CASE [Extent1].[USC_USECLASSIFCLI] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECLASSIFCLI], [Extent1].[USC_CLASSIFCLI] AS [USC_CLASSIFCLI], CAST(CASE [Extent1].[USC_USECHPSART] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSART], [Extent1].[USC_CHPSART] AS [USC_CHPSART], CAST(CASE [Extent1].[USC_USECHPSCLI] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSCLI], [Extent1].[USC_CHPSCLI] AS [USC_CHPSCLI], CAST(CASE [Extent1].[USC_USECHPSFOU] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSFOU], [Extent1].[USC_CHPSFOU] AS [USC_CHPSFOU], CAST(CASE [Extent1].[USC_USECHPSETA] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSETA], [Extent1].[USC_CHPSETA] AS [USC_CHPSETA], CAST(CASE [Extent1].[USC_USECHPSCOM] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSCOM], [Extent1].[USC_CHPSCOM] AS [USC_CHPSCOM], CAST(CASE [Extent1].[USC_USECHPSSAV] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSSAV], [Extent1].[USC_CHPSSAV] AS [USC_CHPSSAV], CAST(CASE [Extent1].[USC_USECHPSDOC] WHEN 'X' THEN 1 ELSE 0 END AS BIT) AS [USC_USECHPSDOC], [Extent1].[USC_CHPSDOC] AS [USC_CHPSDOC] FROM [UTILISATCOMPL] AS [Extent1] WHERE [Extent1].[USC_UTILISATEUR] = @p__linq__0 
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='TST'
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.4168
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(ef53e783-8ece-4b18-829a-515d25f818c7@sql_Y2_Plugin, 59549571)
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT TOP (1) [Extent1].[USC_ETABLISSEMENT] AS [USC_ETABLISSEMENT] FROM [UTILISATCOMPL] AS [Extent1] WHERE [Extent1].[USC_UTILISATEUR] = @p__linq__0 
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='TST'
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.4087
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(ef53e783-8ece-4b18-829a-515d25f818c7@sql_Y2_Plugin, 2695435)
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT [Project1].[C1] AS [C1], [Project1].[GCL_COMMERCIAL] AS [GCL_COMMERCIAL], [Project1].[GCL_LIBELLE] AS [GCL_LIBELLE], [Project1].[GCL_PRENOM] AS [GCL_PRENOM] FROM (SELECT [Extent1].[GCL_COMMERCIAL] AS [GCL_COMMERCIAL], [Extent1].[GCL_LIBELLE] AS [GCL_LIBELLE], [Extent1].[GCL_PRENOM] AS [GCL_PRENOM], 1 AS [C1] FROM [COMMERCIAL] AS [Extent1] WHERE (([Extent1].[GCL_TYPECOMMERCIAL] = @p__linq__0) AND ([Extent1].[GCL_DATESUPP] > @p__linq__1)) AND ((((([Extent1].[GCL_ETABLISSEMENT] = @p__linq__2) OR ([Extent1].[GCL_LISTEETAB] = @p__linq__3)) OR (CHARINDEX(@p__linq__4 + ';', [Extent1].[GCL_LISTEETAB]) = 1)) OR (CHARINDEX(REVERSE(';' + @p__linq__5), REVERSE([Extent1].[GCL_LISTEETAB])) = 1)) OR (CHARINDEX(';' + @p__linq__6 + ';', [Extent1].[GCL_LISTEETAB]) > 0)) ) AS [Project1]  ORDER BY [Project1].[GCL_COMMERCIAL] 
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='VEN', p__linq__1=08/01/2012 00:00:00, p__linq__2='304', p__linq__3='304', p__linq__4='304', p__linq__5='304', p__linq__6='304'
+10:21:11.6296974+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.5077
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(ef53e783-8ece-4b18-829a-515d25f818c7@sql_Y2_Plugin, 3919650)
+10:21:11.6296974+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:11.6453227+02:00: QTAgent32_40.exe Information: 0 : Sending message (Cegid.Retail.Documents.Sales.CreateReceipt) on queue (FormatName:DIRECT=OS:.\private$\WorkerProcess_Cegid Retail Y2 24.0_request)
+10:21:11.6453227+02:00: QTAgent32_40.exe Information: 0 : Message (Cegid.Retail.Documents.Sales.CreateReceipt) size=15974o sent with id (a03c77d8-1cb7-4ae5-9629-8846c4f9edb6\332219)
+10:21:13.1140500+02:00: QTAgent32_40.exe Information: 0 : Managed to recover a reply for message (a03c77d8-1cb7-4ae5-9629-8846c4f9edb6\332219) from queue (FormatName:DIRECT=OS:.\private$\WorkerProcess_Cegid Retail Y2 24.0_reply) after (1,478)ms - Id=(a03c77d8-1cb7-4ae5-9629-8846c4f9edb6\332220) Label=(Cegid.Retail.Documents.Sales.CreateReceipt)
+10:21:13.1140500+02:00: QTAgent32_40.exe Information: 0 : Machine = (Y2-TSTAUTOXXPG2); Pid = (2088); ReadDuration = (16)ms; ProcessDuration = (1,453)ms
+10:21:13.1140500+02:00: root Verbose: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Fonction ' - CreateReceipt' - Paramètres de sortie - <<Cegid.Retail.Clienteling.ServiceContracts.SaleAndSellers.CreateReceiptReply>>
+10:21:13.1140500+02:00: root Information: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Fonction ' - CreateReceipt' - OperationStatus=Success, OperationDurationMs=1526.196
+10:21:13.1140500+02:00: QTAgent32_40.exe Information: 0 : Reply = <CreateReceiptResponse xmlns="http://www.cegid.fr/Retail/1.0">
+  <CreateReceiptResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <InternalReference>TTT1000000026</InternalReference>
+    <Number>54</Number>
+    <SaleDocumentType>Receipt</SaleDocumentType>
+    <Stump>304</Stump>
+  </CreateReceiptResult>
+</CreateReceiptResponse>
+10:21:13.1140500+02:00: QTAgent32_40.exe Information: 0 : Check: control reponse
+10:21:13.1140500+02:00: QTAgent32_40.exe Information: 0 : OpenSQL Count: check sale has been added
+10:21:13.1296723+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+10:21:13.1296723+02:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+10:21:13.1296723+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT 1 AS [C1], RTRIM([Extent1].[US_UTILISATEUR]) AS [US_UTILISATEUR], [Extent1].[US_LIBELLE] AS [US_LIBELLE], [Extent1].[US_ABREGE] AS [US_ABREGE], [Extent1].[US_AUXILIAIRE] AS [US_AUXILIAIRE], [Extent1].[US_DOMAINEAUTHENT] AS [US_DOMAINEAUTHENT], RTRIM([Extent1].[US_GROUPE]) AS [US_GROUPE], RTRIM([Extent2].[UG_GROUPE]) AS [UG_GROUPE], RTRIM([Extent2].[UG_LANGUE]) AS [UG_LANGUE] FROM [UTILISAT] AS [Extent1] LEFT OUTER JOIN [USERGRP] AS [Extent2] ON [Extent1].[US_GROUPE] = [Extent2].[UG_GROUPE] WHERE (UPPER([Extent1].[US_ABREGE]) = UPPER(@p__linq__0)) AND (CASE WHEN UPPER([Extent1].[US_DOMAINEAUTHENT]) IS NULL AND UPPER(@p__linq__1) IS NULL OR UPPER([Extent1].[US_DOMAINEAUTHENT]) = UPPER(@p__linq__1) THEN 1 ELSE 0 END = CAST(1 AS BIT)) 
+10:21:13.1296723+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='SvcTestAutoRetail', p__linq__1=''
+10:21:13.1296723+02:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.5735
+10:21:13.1296723+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(fe09c2b2-dfd7-43d5-9be9-794321f6a600@sql_Y2_Plugin, 32246265)
+10:21:13.1296723+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:13.1296723+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:13.1296723+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:21:13.1296723+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] 
+            select COUNT(*)
+            from PIECE
+            where GP_NATUREPIECEG = 'FFO'
+            AND GP_REFEXTERNE   = 'F86BDBDB-6606-4420-85FA-3574AF399A70'
+            and GP_TIERS        = 'SC000736'
+            and gp_representant = 'DLE'
+            and GP_CAISSE       = 'TTT'
+            and GP_LIBREPIECE1  ='CP.25000'
+
+          
+10:21:13.1296723+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT COUNT(*) FROM PIECE WHERE PIECE.GP_NATUREPIECEG = 'FFO' AND PIECE.GP_REFEXTERNE = 'F86BDBDB-6606-4420-85FA-3574AF399A70' AND PIECE.GP_TIERS = 'SC000736' AND PIECE.gp_representant = 'DLE' AND PIECE.GP_CAISSE = 'TTT' AND PIECE.GP_LIBREPIECE1 = 'CP.25000' 
+10:21:13.1296723+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - SELECT COUNT(*) FROM PIECE WHERE PIECE.GP_NATUREPIECEG = 'FFO' AND PIECE.GP_REFEXTERNE = 'F86BDBDB-6606-4420-85FA-3574AF399A70' AND PIECE.GP_TIERS = 'SC000736' AND PIECE.gp_representant = 'DLE' AND PIECE.GP_CAISSE = 'TTT' AND PIECE.GP_LIBREPIECE1 = 'CP.25000' 
+10:21:13.1452993+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=21.9083
+10:21:13.1452993+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+10:21:13.1452993+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=22.6829
+10:21:13.1452993+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(ab5eb6b8-5b8b-4aba-8e97-f70ab276e0f5@sql_Y2_Plugin, 19962359)
+10:21:13.1452993+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:13.1452993+02:00: QTAgent32_40.exe Information: 0 : OpenSQL Count: check champ utilisateur 1
+10:21:13.1452993+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:13.1452993+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:21:13.1452993+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] 
+            select COUNT(*)
+            from MCHPSUTILISATDATA where MUD_IDCHAMP='1' and MUD_VALCHAMP='001' and MUD_ENTITEMCD='DOC'
+          
+10:21:13.1452993+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT COUNT(*) FROM MCHPSUTILISATDATA WHERE MCHPSUTILISATDATA.MUD_IDCHAMP = '1' AND MCHPSUTILISATDATA.MUD_VALCHAMP = '001' AND MCHPSUTILISATDATA.MUD_ENTITEMCD = 'DOC' 
+10:21:13.1452993+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - SELECT COUNT(*) FROM MCHPSUTILISATDATA WHERE MCHPSUTILISATDATA.MUD_IDCHAMP = '1' AND MCHPSUTILISATDATA.MUD_VALCHAMP = '001' AND MCHPSUTILISATDATA.MUD_ENTITEMCD = 'DOC' 
+10:21:13.1452993+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=2.0355
+10:21:13.1452993+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+10:21:13.1452993+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=2.5281
+10:21:13.1452993+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(b1a91aee-c767-4eb4-9942-62c2fdc319a7@sql_Y2_Plugin, 61993287)
+10:21:13.1452993+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:13.1452993+02:00: QTAgent32_40.exe Information: 0 : OpenSQL Count: check champ utilisateur 2
+10:21:13.1609253+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:13.1609253+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:21:13.1609253+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] 
+            select COUNT(*)
+            from MCHPSUTILISATDATA where MUD_IDCHAMP='2' and MUD_VALCHAMP='20160906 15:20:56' and MUD_ENTITEMCD='DOC'
+          
+10:21:13.1609253+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT COUNT(*) FROM MCHPSUTILISATDATA WHERE MCHPSUTILISATDATA.MUD_IDCHAMP = '2' AND MCHPSUTILISATDATA.MUD_VALCHAMP = '20160906 15:20:56' AND MCHPSUTILISATDATA.MUD_ENTITEMCD = 'DOC' 
+10:21:13.1609253+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - SELECT COUNT(*) FROM MCHPSUTILISATDATA WHERE MCHPSUTILISATDATA.MUD_IDCHAMP = '2' AND MCHPSUTILISATDATA.MUD_VALCHAMP = '20160906 15:20:56' AND MCHPSUTILISATDATA.MUD_ENTITEMCD = 'DOC' 
+10:21:13.1609253+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.4777
+10:21:13.1609253+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+10:21:13.1609253+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=0.863
+10:21:13.1609253+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(de1e5ca7-bedd-45aa-9588-bf72739fd33a@sql_Y2_Plugin, 64311696)
+10:21:13.1609253+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:13.1609253+02:00: QTAgent32_40.exe Error: 0 : Error during TestCase Processing: Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException: Assert.AreEqual failed. Expected:<1>. Actual:<0>. check champ utilisateur 2
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.HandleFail(String assertionName, String message, Object[] parameters)
+   at Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual[T](T expected, T actual, String message, Object[] parameters)
+   at Cegid.Retail.Clienteling.WebServices.AutoTest.SaleAndSellers_CreateReceipt.Test_32() in D:\a\1\s\Cegid.Retail.Clienteling.WebServices.Tests\AutoTest\SaleAndSellers\SaleAndSellers_CreateReceipt.g.cs:line 4130
+10:21:13.1609253+02:00: QTAgent32_40.exe Information: 0 : Enter finally block
+10:21:13.1609253+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:13.1609253+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:21:13.1609253+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] update UTILISATCOMPL set USC_USECHPSDOC='-' 
+10:21:13.1609253+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE UTILISATCOMPL SET USC_USECHPSDOC = '-' 
+10:21:13.1609253+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE UTILISATCOMPL SET USC_USECHPSDOC = '-' 
+10:21:13.1609253+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=1.7378
+10:21:13.1765489+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<81>>
+10:21:13.1765489+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=21.7726
+10:21:13.1765489+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(4c505366-47d9-4efd-8a89-29b1385cf120@sql_Y2_Plugin, 11363342)
+10:21:13.1765489+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:13.1765489+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:13.1765489+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:21:13.1765489+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] update PARPIECECOMPL set GPC_AFFPIECETABLE='-' where GPC_NATUREPIECEG='FFO' and GPC_ETABLISSEMENT='304'
+10:21:13.1765489+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARPIECECOMPL SET GPC_AFFPIECETABLE = '-' WHERE GPC_NATUREPIECEG = 'FFO' AND GPC_ETABLISSEMENT = '304'
+10:21:13.1765489+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARPIECECOMPL SET GPC_AFFPIECETABLE = '-' WHERE GPC_NATUREPIECEG = 'FFO' AND GPC_ETABLISSEMENT = '304'
+10:21:13.1765489+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.4491
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=6.5926
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(c98cc179-605d-4361-83ae-3f7ecc0e334b@sql_Y2_Plugin, 38982559)
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:21:13.1921736+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] update PARPIECECOMPL set GPC_PIECETABLE1='' where GPC_NATUREPIECEG='FFO' and GPC_ETABLISSEMENT='304' 
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARPIECECOMPL SET GPC_PIECETABLE1 = '' WHERE GPC_NATUREPIECEG = 'FFO' AND GPC_ETABLISSEMENT = '304'
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARPIECECOMPL SET GPC_PIECETABLE1 = '' WHERE GPC_NATUREPIECEG = 'FFO' AND GPC_ETABLISSEMENT = '304'
+10:21:13.1921736+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=1.9843
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=7.5222
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(be651fdd-d31d-484f-ac8f-340e6a2b6952@sql_Y2_Plugin, 15354492)
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+10:21:13.1921736+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] update PARPIECECOMPL set GPC_USERFIELD='' where GPC_NATUREPIECEG='FFO' and GPC_ETABLISSEMENT='304' 
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PARPIECECOMPL SET GPC_USERFIELD = '' WHERE GPC_NATUREPIECEG = 'FFO' AND GPC_ETABLISSEMENT = '304'
+10:21:13.1921736+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PARPIECECOMPL SET GPC_USERFIELD = '' WHERE GPC_NATUREPIECEG = 'FFO' AND GPC_ETABLISSEMENT = '304'
+10:21:13.1921736+02:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.7532
+10:21:13.2083551+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+10:21:13.2083551+02:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=5.734
+10:21:13.2083551+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(229a8cb3-162a-497e-98fd-5b7208db2641@sql_Y2_Plugin, 19645206)
+10:21:13.2083551+02:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+10:21:13.2083551+02:00: QTAgent32_40.exe Information: 0 : forcing CBP cache refresh on Domain [USER]

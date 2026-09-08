@@ -1,0 +1,7 @@
+observed_at,system,identifier,method,status
+2026-09-07T16:37Z,Azure DevOps,4442121,REST build/timeline/task logs,terminal failed both variants with PopulateStatus 1 after 90s
+2026-09-07T16:39Z,Git,cc2ecfb8d7236b322fc0bfdd4de00d0e85a33d87,REST push branch readback,diagnostic YAML added but indentation later corrected
+2026-09-07T16:42Z,Git,0baf69c1ce3c37462364f4b5a269ee1e24a73b9a,REST push branch readback,diagnostic YAML accepted by queue validation
+2026-09-07T16:42Z,Azure DevOps,definition 14251,REST definition readback,triggerless dedicated definition
+2026-09-07T16:43Z,Azure DevOps,4442156,manual queue and REST timeline,in progress; diagnostic result pending
+2026-09-07,Microsoft Learn,FULLTEXTCATALOGPROPERTY documentation,official web read,PopulateStatus 1 means full population in progress

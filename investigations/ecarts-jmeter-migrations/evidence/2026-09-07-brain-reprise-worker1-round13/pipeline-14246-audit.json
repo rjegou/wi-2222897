@@ -1,0 +1,23 @@
+{
+  "definition": {
+    "id": 14246,
+    "name": "WI-2222897 V22 Runtime Preflight 20260907",
+    "repository": {
+      "properties": {
+        "cleanOptions": "0",
+        "fetchDepth": "0",
+        "gitLfsSupport": "false"
+      },
+      "id": "1d6b05fb-70bc-4884-adba-46d9e96651d8",
+      "type": "TfsGit",
+      "name": "Y2_Plugins_FrenchTaxesRules",
+      "url": "https://dev.azure.com/cegid/Retail/_git/Y2_Plugins_FrenchTaxesRules",
+      "defaultBranch": "refs/heads/codex/wi-2222897-v22-preflight-20260907",
+      "clean": null,
+      "checkoutSubmodules": false
+    },
+    "queueStatus": "enabled",
+    "path": "\\Y2\\Plugins"
+  },
+  "runs": []
+}

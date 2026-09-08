@@ -1,0 +1,24 @@
+# WI-2222897 — Round 6 read-only cross-check
+
+Date : 2026-09-07 Europe/Paris. Aucun pipeline, branche, droit, artefact distant ou worktree partagé n'a été modifié. Les ressources Azure DevOps observées sont des ressources existantes; leur création ne nous est pas attribuée.
+
+## InventoryTracking — provenance et compilation
+
+- **FACT** — Commit `ef3d87034d38b88aca04c824061b140e2a29252c`, parent `4de185bb132cfbfb50643b6b53d6feb85508f4e2`, commentaire `Fix InventoryTracking XmlDiff test dependencies`, commité le `2026-09-07T12:19:10Z` dans `Y2_Plugins_InventoryTracking` (`90f886fd-8a68-483f-b798-126928e6297f`). La branche observée est `validation/WI-2222897-inventorytracking-xmldiff`.
+- **FACT** — L'API Git déclare exactement trois éditions dans ce commit : le dossier `Cegid.Retail.InventoryTracking.Services.Tests`, son `.csproj` et `packages.config`. Le `packages.config` distant contient `Cegid.Retail.XmlDiff` `1.0.0` et `XMLDiffPatch` `1.0.8.28`; le `.csproj` pointe vers `Sln\packages\Cegid.Retail.XmlDiff.1.0.0\lib\net452\Cegid.Retail.XmlDiff.dll` et `Sln\packages\XMLDiffPatch.1.0.8.28\lib\net\XmlDiffPatch.dll`.
+- **FACT** — Build Azure DevOps `4434070`, définition 2072, référence historique sur `master`, log de compilation 51 : `MSB3245=3`, `CS0103=12`, dont quatre erreurs `XmlDiff` et une résolution manquante `Cegid.Retail.XmlDiff`.
+- **FACT** — Build `4440774`, définition 2072, branche `validation/WI-2222897-inventorytracking-xmldiff`, commit source exact `ef3d8703…`, manuel, terminé `succeeded` à `2026-09-07T12:29:19.752Z`. Son log de compilation 43 contient `MSB3245=0` et `CS0103=0`; il montre la copie des deux DLL depuis `Sln\packages`. Le stage `TI JMeter V26` est `skipped`.
+- **FACT** — Build `4440884`, même définition/branche/commit, terminé `partiallySucceeded` à `2026-09-07T13:56:07.878799Z`. Son log de compilation 51 contient aussi `MSB3245=0` et `CS0103=0`, avec les mêmes DLL copiées. Le stage JMeter s'est réellement exécuté et a produit des erreurs de tests; cette analyse laisse ce volet à Worker 1.
+- **INFERENCE bornée** — Le correctif `ef3d8703` est consommé par les deux builds et supprime les erreurs XmlDiff historiques au stade compilation. Cela ne prouve pas à lui seul une campagne JMeter réussie ni un build global exempt d'autres erreurs.
+
+## Ressources distantes et effets observés
+
+La définition 2072 `InventoryTracking CI` est une ressource préexistante, avec trigger CI et YAML partagé `/azure-pipelines.yml`. Le build 4440774 a également produit les étapes de build/package/MSI, tandis que 4440884 montre dans sa timeline des tâches JMeter, déploiement Y2, publication Artifactory/JFrog et résultats de tests en erreur. Aucun de ces éléments n'a été créé ou relancé par cette collecte.
+
+## PlatformDeploy Worker 3 — audit du diff et du harness
+
+- **FACT** — Le worktree candidat `worktrees/Y2_Tools_PlatformDeploy_worker3_r5b` est détaché (`HEAD (no branch)`) et ne contient qu'une modification de `Src/Powershell/Code/Scripts/init-container.ps1`. Le diff capture `$LASTEXITCODE` immédiatement après `& .\deploy.ps1`, journalise le code et lève une exception si le code enfant est non nul. Le worktree source n'est pas modifié.
+- **FACT** — Le harness `platformdeploy-propagation-harness.ps1` est explicitement inerte : il simule seulement `1603`, `3010` et les codes wrapper; il ne lance ni MSI, ni SQL, ni IIS. Il donne `1603 → nbErr=1/throws=true`, `3010 → nbErr=0/throws=false`, et en `TF_BUILD` `childExitCode=1 → wrapperExitCode=0/propagated=false`.
+- **FACT** — Exécution du harness de processus réel `test-platformdeploy-wrapper-process.ps1` : `mode 0 → exitCode 0`, `mode 7 → exitCode 7`, `mode throw → exitCode 1` et exception synthétique détectée. Il vérifie aussi `beforeGuardPresent=false` et `afterGuardPresent=true`.
+- **ÉCART précis à transmettre à Worker 3** — Ce harness n'invoque jamais `init-container.ps1`, ni la version avant correction ni la version après correction. Il copie et exécute le wrapper `docker-pipeline-deploy.ps1` dans un dossier temporaire, remplace son enfant PS7 par un faux script, puis lit seulement les deux fichiers `init-container.ps1` pour la présence textuelle de `$deploymentExitCode`. Il ne passe pas les mêmes entrées de déploiement à `init-container` avant/après et ne sépare donc pas, pour ce script, une exception PowerShell, un `$LASTEXITCODE` enfant et le code final du processus.
+- **Action exacte recommandée** — Ajouter au harness un faux `deploy.ps1` injecté dans un environnement de test contrôlé, appeler le vrai `init-container.ps1` avant et après avec les mêmes paramètres/entrées, puis capturer séparément : exception attrapée par le `catch`, `$LASTEXITCODE` juste après `deploy.ps1`, et `Process.ExitCode`. Cette preuve doit rester locale et inerte; aucun pipeline partagé ne doit être relancé.

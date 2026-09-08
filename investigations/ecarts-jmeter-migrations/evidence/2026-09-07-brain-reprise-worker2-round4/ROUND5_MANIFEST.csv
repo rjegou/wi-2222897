@@ -1,0 +1,5 @@
+path,status,provenance
+ROUND5_READBACK.md,read-only CI closure,Azure DevOps REST readback 2026-09-07 plus local round12/round3 evidence
+sql-fulltext-hosted-build.yml,validated in round4,local candidate; no remote branch
+sql-fulltext-hosted-diagnostic.yml,validated in round4,local candidate; no remote branch
+round3/fulltext-probe.ps1,required companion,existing prior evidence; no new copy or modification

@@ -1,0 +1,16 @@
+﻿
+Name                 Input                             Expected                      Obtained                      Verd
+                                                                                                                   ict 
+----                 -----                             --------                      --------                      ----
+ISO apostrophÃ©e     '2026-04-28'                      '20260428'                    '20260428'                    PASS
+Date ambiguÃ«        '2026-04-05'                      '20260405'                    '20260405'                    PASS
+Date compacte        '20260428'                        '20260428'                    '20260428'                    PASS
+Motif hors date      '2026/04/28'                      '2026/04/28'                  '2026/04/28'                  PASS
+Date bissextile      '2024-02-29'                      '20240229'                    '20240229'                    PASS
+Deux dates SQL       SELECT '2026-04-28', '2026-04-05' SELECT '20260428', '20260405' SELECT '20260428', '20260405' PASS
+Texte sans date      SELECT 'no date here'             SELECT 'no date here'         SELECT 'no date here'         PASS
+ISO sans apostrophes 2026-04-28                        '20260428'                    '20260428'                    PASS
+Date-heure           2026-04-28T12:34:56               '2026-04-28T12:34:56'         '2026-04-28T12:34:56'         PASS
+
+
+

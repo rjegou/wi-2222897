@@ -1,0 +1,122 @@
+trigger: none
+pr: none
+schedules: []
+
+variables:
+  pluginVersion: '26.0.10.75'
+  coreVersion: '26.0.0.1762'
+  sqlDatabase: 'AUTO_V26_00'
+  tenantId: 'TESTS_AUTO_JMETER'
+  imageRepository: 'cegid-retail-docker-production/y2-jmeter'
+  imageDigest: 'sha256:ea74f21a0d2ac3653ff843b393f6e97571500f6b41b2c2f71e94da23c0a9dbf2'
+  # BLOCKED until reviewed: agent capacity, secret variable group and package provenance.
+
+resources:
+  containers:
+  - container: acr_y2jmeter_test
+    image: $(imageRepository)@$(imageDigest)
+    endpoint: AzureContainerRegistry-Docker-Retail
+
+pool:
+  vmImage: windows-latest
+
+stages:
+- stage: TI_Jmeter_V26_Fix
+  displayName: 'RJE WI-2222897 — V26 Fix — Export_Run complet'
+  jobs:
+  - job: Rje_V26_Fix_ExportRun
+    container: acr_y2jmeter_test
+    steps:
+    - checkout: self
+      clean: false
+
+    - task: PowerShell@2
+      displayName: 'Hash backup before deployment'
+      inputs:
+        targetType: inline
+        pwsh: true
+        script: |
+          $backup = "$(Build.SourcesDirectory)\Y2_Plugins_FrenchTaxesRules\Tests\Backups\AUTO_V26_00.bak"
+          if (-not (Test-Path -LiteralPath $backup -PathType Leaf)) { throw "Backup absent: $backup" }
+          (Get-FileHash -LiteralPath $backup -Algorithm SHA256).Hash | Set-Content "$(Build.ArtifactStagingDirectory)\backup.sha256"
+
+    - template: templates/task-deploy-in-containerized-job.candidate.yml
+      parameters:
+        platformDeployVersion: '$(platformDeployVersion)' # unresolved: exact package version
+        artifactoryPackageFolder: '$(artifactoryPackageFolder)' # unresolved: exact read source
+        deployConfigFolder: '$(Build.SourcesDirectory)\Y2_Plugins_FrenchTaxesRules\Tests\Config'
+        deployConfigFile: 'v26-Fix.cy2px'
+        databasesFolder: '$(Build.SourcesDirectory)\Y2_Plugins_FrenchTaxesRules\Tests\Backups'
+        retailJfrogApiKey: '$(retailJfrogApiKey)' # secret variable, not defined here
+        artifactNameForLogsPublication: 'unused-local-candidate'
+        checkPrerequisites: true
+        dotnetMajorVersion: 4
+        pwshMinVersion: 7
+        runTests: true
+        continueOnTestFailure: false
+        timeZoneId: 'Romance Standard Time'
+
+    - task: PowerShell@2
+      displayName: 'Record resolved non-secret targets'
+      condition: always()
+      inputs:
+        targetType: inline
+        pwsh: true
+        script: |
+          $cfg = "$(Agent.TempDirectory)\Deploy\Docker\data\v26-Fix.cy2px"
+          $out = "$(Build.ArtifactStagingDirectory)\resolved-targets.txt"
+          "APPSERVER_HOST=$(hostname)" | Set-Content $out
+          "CONTAINER_HOST_TOKEN_PRESENT=$([bool](Select-String -LiteralPath $cfg -Pattern '__CONTAINER_HOST__' -Quiet))" | Add-Content $out
+          if (Test-Path -LiteralPath $cfg) {
+            [xml]$x = Get-Content -LiteralPath $cfg
+            $server = $x.SelectSingleNode('//server')
+            $tenant = $x.SelectSingleNode('//tenant')
+            "SQL_INSTANCE_CONFIGURED=$($server.instance)" | Add-Content $out
+            "TENANT=$($tenant.id)" | Add-Content $out
+            "DATABASE=$($tenant.databaseName)" | Add-Content $out
+          }
+
+    - template: templates/task-run-campaign.candidate.yml
+      parameters:
+        campaignsFolderPath: '$(Build.SourcesDirectory)\Y2_Plugins_FrenchTaxesRules\Tests'
+        campaignName: 'ExportRunOnly'
+        campaignTitle: 'Y2.Plugin.FrenchTaxesRules-ExportRunOnly-v26-Fix'
+        testUserName: '$(userSa)'
+        testUserPassword: '$(pwdSa)'
+        jmeterProperties: |
+          APPSERVER_HOST=$(hostname)
+          APPSERVER_PORT=80
+          DB_NAME=AUTO_V26_00
+          DB_USER=$(userSa)
+          DB_PASSWORD=$(pwdSa)
+        continueOnError: false
+
+    - task: PowerShell@2
+      displayName: 'Write consumed references'
+      condition: always()
+      inputs:
+        targetType: inline
+        pwsh: true
+        script: |
+          @(
+            'Build=4432510 baseline; candidate run ID=$(Build.BuildId)',
+            'ImageDigest=$(imageDigest)',
+            'Plugin=$(pluginVersion)',
+            'Core=$(coreVersion)',
+            'Campaign=ExportRunOnly.xml -> TestPlans\\Export_Run.xml',
+            'JMeter=5.6.3; Java=21'
+          ) | Set-Content "$(Build.ArtifactStagingDirectory)\references-consumed.txt"
+
+    - task: PowerShell@2
+      displayName: 'Stage explicit evidence files'
+      condition: always()
+      inputs:
+        filePath: 'scripts/stage-evidence.ps1'
+
+    - task: PublishPipelineArtifact@1
+      displayName: 'Retain isolated run evidence'
+      condition: always()
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)\rje-evidence'
+        artifact: 'rje-wi2222897-$(Build.BuildId)-evidence'
+        publishLocation: pipeline

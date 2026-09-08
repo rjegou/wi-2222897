@@ -1,0 +1,25 @@
+DEBUG: Logger was created successfully.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+DEBUG: Creating module catalog.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+Loading file: (C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v22-162248002\tools\Parameters.xml)
+DEBUG: Configuring module catalog.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+DEBUG: Creating Unity container.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+DEBUG: Configuring the Unity container.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+DEBUG: Adding UnityBootstrapperExtension to container.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+DEBUG: Configuring ServiceLocator singleton.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+DEBUG: Configuring the ViewModelLocator to use Unity.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+DEBUG: Configuring region adapters.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+DEBUG: Configuring default region behaviors.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+DEBUG: Registering Framework Exception Types.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+DEBUG: Creating the shell.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+DEBUG: Initializing modules.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+DEBUG: Bootstrapper sequence completed.. Priority: Low. Timestamp:2026-09-07 16:24:12Z.
+System.IO.DirectoryNotFoundException: Impossible de trouver une partie du chemin d'accäs 'C:\Users\jegour\AppData\Local\Temp\wi2222897-clienteling-rerun-v22-162248002\generated\IntegratedTests\AutoTest\Data\campaign\TestPlans\OutputFiles'.
+   Ö System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   Ö System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   Ö System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   Ö System.IO.Directory.GetDirectories(String path)
+   Ö Cegid.Retail.AutoTest.Api.JmeterGenerator.CloneDirectory(String root, String dest, String fileType)
+   Ö Cegid.Retail.AutoTest.Api.JmeterGenerator.Run(String testCampaignFileName, String dstFolder, IUnityContainer container)
+   Ö Cegid.Retail.AutoTest.Console.Launcher.GenerateTestsMethods(CommandLineOptions commandLineOptions)
+   Ö Cegid.Retail.AutoTest.Console.Launcher.ExecuteTest(String[] args)
+   Ö Cegid.Retail.AutoTest.Console.Program.Main(String[] args)

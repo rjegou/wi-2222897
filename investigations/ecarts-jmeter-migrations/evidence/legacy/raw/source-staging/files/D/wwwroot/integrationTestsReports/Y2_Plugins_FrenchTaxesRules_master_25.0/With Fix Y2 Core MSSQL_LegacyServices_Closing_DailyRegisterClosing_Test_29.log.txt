@@ -1,0 +1,317 @@
+16:18:36.2481254+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: "Suppression" ligne de taxe sur le ticket FFO/103/8
+16:18:36.2481254+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.2481254+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:18:36.2481254+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] update PIEDBASE set GPB_NATUREPIECEG = 'ZZZ' where GPB_NATUREPIECEG = 'FFO' AND GPB_SOUCHE = '103' AND GPB_NUMERO = 8
+16:18:36.2481254+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PIEDBASE SET GPB_NATUREPIECEG = 'ZZZ' WHERE GPB_NATUREPIECEG = 'FFO' AND GPB_SOUCHE = '103' AND GPB_NUMERO = 8
+16:18:36.2481254+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PIEDBASE SET GPB_NATUREPIECEG = 'ZZZ' WHERE GPB_NATUREPIECEG = 'FFO' AND GPB_SOUCHE = '103' AND GPB_NUMERO = 8
+16:18:36.2481254+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=2.2839
+16:18:36.2481254+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+16:18:36.2481254+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=12.8057
+16:18:36.2481254+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(ca67ea80-60c8-4ffb-9c00-64b53bb825b4@sql_Y2_Plugin, 65959248)
+16:18:36.2481254+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.2481254+01:00: QTAgent32_40.exe Information: 0 : processing file = (D:\Temp\TempoAutoTest\11C9E4B4-79D9-429D-A235-801AFBA7797D\IntegrationTests\Y2_Plugin.Fix\sql\sources\IntegratedTests\AutoTest\Data\LegacyServices\TestPlans\InputFiles\Closing\DailyRegisterClosing_27.xml)
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.ServiceModel | Authorization | User 'CEGIDGROUP\SvcTestAutoRetail' has access to folder 'sql_Y2_Plugin' : Claim of type 'http://www.cegid.fr/claims/erp/user/login' added.
+16:18:36.2637507+01:00: root Information: 0 : Cegid.Framework.ServiceModel | Authorization | Status=Granted, User=CEGIDGROUP\SvcTestAutoRetail, Resource=/e3c3288c-0f35-4373-960a-fa51f2ce5e23/
+16:18:36.2637507+01:00: root Information: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Function ' - Invoke' - OperationStatus=Start
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Function ' - Invoke' - Input parameters - <<Cegid.CBR.FrenchTaxesRulesClosingService.DailyRegisterClosing> - <> - <'Request Tob' TOB>>
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'CheckIfSecurityEnforcementIsActivated' - OperationStatus=Start
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'CheckIfSecurityEnforcementIsActivated' - OperationStatus=Success, OperationDurationMs=0.0091
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'RegisterSigningContextForRequest' - OperationStatus=Start
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'RegisterSigningContextForRequest' - OperationStatus=Success, OperationDurationMs=0.0009
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'Cegid.CBR.FrenchTaxesRulesClosingService.DailyRegisterClosing' - OperationStatus=Start
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'Cegid.CBR.FrenchTaxesRulesClosingService.DailyRegisterClosing' - Etape 'Input parameters' - <>
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+16:18:36.2637507+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT ET_DEVISE FROM ETABLISS WHERE ET_ETABLISSEMENT=@param0
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT ETABLISS.ET_DEVISE FROM ETABLISS WHERE ETABLISS.ET_ETABLISSEMENT = @param0 
+16:18:36.2637507+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0='103'
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT ETABLISS.ET_DEVISE FROM ETABLISS WHERE ETABLISS.ET_ETABLISSEMENT = @param0 
+16:18:36.2637507+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=5.3739
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=5.9419
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(2f97147b-0e65-432f-8fc3-ed48fffccc28@sql_Y2_Plugin, 54018298)
+16:18:36.2637507+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.2793749+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.2793749+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+16:18:36.2793749+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT MNG_CAISSE FROM CLOSING  WHERE MNG_LEVEL = 'REG' AND TRUNC(MNG_TARGETDATE) = TRUNC(@param0)
+16:18:36.2793749+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT CLOSING.MNG_CAISSE FROM CLOSING WHERE CLOSING.MNG_LEVEL = 'REG' AND CAST(CONVERT(CHAR(10), CLOSING.MNG_TARGETDATE, 112) as DATETIME) = CAST(CONVERT(CHAR(10), @param0, 112) as DATETIME) 
+16:18:36.2793749+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0=02/03/2011 00:00:00
+16:18:36.2793749+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT CLOSING.MNG_CAISSE FROM CLOSING WHERE CLOSING.MNG_LEVEL = 'REG' AND CAST(CONVERT(CHAR(10), CLOSING.MNG_TARGETDATE, 112) as DATETIME) = CAST(CONVERT(CHAR(10), @param0, 112) as DATETIME) 
+16:18:36.2950013+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=7.2492
+16:18:36.2950013+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+16:18:36.2950013+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=7.7773
+16:18:36.2950013+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(2f97147b-0e65-432f-8fc3-ed48fffccc28@sql_Y2_Plugin, 63796567)
+16:18:36.2950013+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.2950013+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.2950013+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+16:18:36.2950013+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT GPK_CAISSE, GPK_TYPEMOBILITE FROM PARCAISSE WHERE GPK_ETABLISSEMENT = @param0 ORDER BY GPK_CAISSE
+16:18:36.2950013+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT PARCAISSE.GPK_CAISSE, PARCAISSE.GPK_TYPEMOBILITE FROM PARCAISSE WHERE PARCAISSE.GPK_ETABLISSEMENT = @param0  ORDER BY GPK_CAISSE 
+16:18:36.2950013+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0='103'
+16:18:36.2950013+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT PARCAISSE.GPK_CAISSE, PARCAISSE.GPK_TYPEMOBILITE FROM PARCAISSE WHERE PARCAISSE.GPK_ETABLISSEMENT = @param0  ORDER BY GPK_CAISSE 
+16:18:36.3106259+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=6.9121
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=7.681
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(2f97147b-0e65-432f-8fc3-ed48fffccc28@sql_Y2_Plugin, 32931023)
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+16:18:36.3106259+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT MNG_CLOID,MNG_DAEMONID,MNG_CAISSE,MNG_LEVEL,MNG_TARGETDATE,MNG_CLOTYPE,MNG_DATEEXEC,MNG_TOTALHT,MNG_TOTALTTC,MNG_TOTALHTPERP,MNG_TOTALTTCPERP,MNG_DEVISE,MNG_CLOIDPREC,MNG_CLOSINGSIGN,DAE_ETABLISS,DAE_SIGNVERSION, NULL AS CLOSINGSIGNPREC, NULL AS CKY_SIGNKEYVERSION, NULL AS CKY_CUSTOMERKEY
+                FROM CLOSING C 
+                LEFT JOIN DAEMON    ON DAE_DAEMONID = MNG_DAEMONID
+                LEFT JOIN PARCAISSE ON GPK_CAISSE   = MNG_CAISSE WHERE C.MNG_CLOTYPE = 'DAY' AND C.MNG_LEVEL = 'REG' AND DAE_ETABLISS = @param0 AND DAE_SIGNVERSION >= @param1 AND C.MNG_TARGETDATE = (SELECT MAX(MNG_TARGETDATE) 
+                                          FROM CLOSING C2 
+                                          WHERE C2.MNG_CAISSE  = C.MNG_CAISSE AND C2.MNG_CLOTYPE = 'DAY' AND C2.MNG_LEVEL = 'REG')
+16:18:36.3106259+01:00: QTAgent32_40.exe Warning: 0 : Found 2 sources containing column MNG_TARGETDATE : C2, C
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT C.MNG_CLOID, C.MNG_DAEMONID, C.MNG_CAISSE, C.MNG_LEVEL, C.MNG_TARGETDATE, C.MNG_CLOTYPE, C.MNG_DATEEXEC, C.MNG_TOTALHT, C.MNG_TOTALTTC, C.MNG_TOTALHTPERP, C.MNG_TOTALTTCPERP, C.MNG_DEVISE, C.MNG_CLOIDPREC, C.MNG_CLOSINGSIGN, DAEMON.DAE_ETABLISS, DAEMON.DAE_SIGNVERSION, NULL AS CLOSINGSIGNPREC, NULL AS CKY_SIGNKEYVERSION, NULL AS CKY_CUSTOMERKEY FROM CLOSING AS C LEFT JOIN DAEMON ON DAEMON.DAE_DAEMONID = C.MNG_DAEMONID LEFT JOIN PARCAISSE ON PARCAISSE.GPK_CAISSE = C.MNG_CAISSE WHERE C.MNG_CLOTYPE = 'DAY' AND C.MNG_LEVEL = 'REG' AND DAEMON.DAE_ETABLISS = @param0 AND DAEMON.DAE_SIGNVERSION >= @param1 AND C.MNG_TARGETDATE = (SELECT MAX(C2.MNG_TARGETDATE) FROM CLOSING AS C2 WHERE C2.MNG_CAISSE = C.MNG_CAISSE AND C2.MNG_CLOTYPE = 'DAY' AND C2.MNG_LEVEL = 'REG' ) 
+16:18:36.3106259+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0='103', param1='S20'
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT C.MNG_CLOID, C.MNG_DAEMONID, C.MNG_CAISSE, C.MNG_LEVEL, C.MNG_TARGETDATE, C.MNG_CLOTYPE, C.MNG_DATEEXEC, C.MNG_TOTALHT, C.MNG_TOTALTTC, C.MNG_TOTALHTPERP, C.MNG_TOTALTTCPERP, C.MNG_DEVISE, C.MNG_CLOIDPREC, C.MNG_CLOSINGSIGN, DAEMON.DAE_ETABLISS, DAEMON.DAE_SIGNVERSION, NULL AS CLOSINGSIGNPREC, NULL AS CKY_SIGNKEYVERSION, NULL AS CKY_CUSTOMERKEY FROM CLOSING AS C LEFT JOIN DAEMON ON DAEMON.DAE_DAEMONID = C.MNG_DAEMONID LEFT JOIN PARCAISSE ON PARCAISSE.GPK_CAISSE = C.MNG_CAISSE WHERE C.MNG_CLOTYPE = 'DAY' AND C.MNG_LEVEL = 'REG' AND DAEMON.DAE_ETABLISS = @param0 AND DAEMON.DAE_SIGNVERSION >= @param1 AND C.MNG_TARGETDATE = (SELECT MAX(C2.MNG_TARGETDATE) FROM CLOSING AS C2 WHERE C2.MNG_CAISSE = C.MNG_CAISSE AND C2.MNG_CLOTYPE = 'DAY' AND C2.MNG_LEVEL = 'REG' ) 
+16:18:36.3106259+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=2.5781
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=4.6722
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(2f97147b-0e65-432f-8fc3-ed48fffccc28@sql_Y2_Plugin, 46139177)
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+16:18:36.3106259+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT CTA_TAUXTAXE, SUM(CTA_BASETAXE) AS CTA_BASETAXE, SUM(CTA_VALEURTAXE) AS CTA_VALEURTAXE, CTA_DEVISE, MNG_TARGETDATE
+                        FROM CLOSINGTAX
+                        LEFT JOIN CLOSING ON MNG_CLOID=CTA_CLOID
+                        LEFT JOIN DAEMON ON DAE_DAEMONID = MNG_DAEMONID WHERE MNG_CLOTYPE = 'DAY' AND MNG_LEVEL = 'REG' AND DAE_ETABLISS = @param0
+                               AND MNG_TARGETDATE >= @param1 AND MNG_TARGETDATE <  @param2
+                               GROUP BY MNG_TARGETDATE, CTA_TAUXTAXE, CTA_DEVISE
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT CLOSINGTAX.CTA_TAUXTAXE, SUM(CLOSINGTAX.CTA_BASETAXE) AS CTA_BASETAXE, SUM(CLOSINGTAX.CTA_VALEURTAXE) AS CTA_VALEURTAXE, CLOSINGTAX.CTA_DEVISE, CLOSING.MNG_TARGETDATE FROM CLOSINGTAX LEFT JOIN CLOSING ON CLOSING.MNG_CLOID = CLOSINGTAX.CTA_CLOID LEFT JOIN DAEMON ON DAEMON.DAE_DAEMONID = CLOSING.MNG_DAEMONID WHERE CLOSING.MNG_CLOTYPE = 'DAY' AND CLOSING.MNG_LEVEL = 'REG' AND DAEMON.DAE_ETABLISS = @param0 AND CLOSING.MNG_TARGETDATE >= @param1 AND CLOSING.MNG_TARGETDATE < @param2 GROUP BY CLOSING.MNG_TARGETDATE, CLOSINGTAX.CTA_TAUXTAXE, CLOSINGTAX.CTA_DEVISE 
+16:18:36.3106259+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0='103', param1=02/03/2011 00:00:00, param2=02/04/2011 00:00:00
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT CLOSINGTAX.CTA_TAUXTAXE, SUM(CLOSINGTAX.CTA_BASETAXE) AS CTA_BASETAXE, SUM(CLOSINGTAX.CTA_VALEURTAXE) AS CTA_VALEURTAXE, CLOSINGTAX.CTA_DEVISE, CLOSING.MNG_TARGETDATE FROM CLOSINGTAX LEFT JOIN CLOSING ON CLOSING.MNG_CLOID = CLOSINGTAX.CTA_CLOID LEFT JOIN DAEMON ON DAEMON.DAE_DAEMONID = CLOSING.MNG_DAEMONID WHERE CLOSING.MNG_CLOTYPE = 'DAY' AND CLOSING.MNG_LEVEL = 'REG' AND DAEMON.DAE_ETABLISS = @param0 AND CLOSING.MNG_TARGETDATE >= @param1 AND CLOSING.MNG_TARGETDATE < @param2 GROUP BY CLOSING.MNG_TARGETDATE, CLOSINGTAX.CTA_TAUXTAXE, CLOSINGTAX.CTA_DEVISE 
+16:18:36.3106259+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=2.0561
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=3.0351
+16:18:36.3106259+01:00: QTAgent32_40.exe Information: 0 : OperationName=FrenchTaxesRulesService.ClosingRepository, CumulativeTaxesFound=0
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(2f97147b-0e65-432f-8fc3-ed48fffccc28@sql_Y2_Plugin, 14124504)
+16:18:36.3106259+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3106259+01:00: QTAgent32_40.exe Information: 0 : OperationName=FrenchTaxesRulesService.ClosingService.DailyRegisterClosing, OperationStatus=Start, RegisterId=005
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+16:18:36.3262512+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT GP_NATUREPIECEG,GP_SOUCHE,GP_NUMERO,GP_INDICEG,GP_DATEPIECE,GP_HEURECREATION,GP_REFINTERNE,GP_CAISSE,GP_ETABLISSEMENT,GP_TYPEPROVENANCE,GP_DEVISE,GP_NUMPIECE,GP_TOTALHTDEV,GP_TOTALTTCDEV,GP_TOTALREMISEDEV,GP_TYPECOMPTA,GP_REPRESENTANT,GP_EDITEE,GP_TIERS,GP_NUMADRESSEFACT,GP_NUMADRESSELIVR,MDI_FISCALPRTID,MDI_REFFISCALEVAL,MDI_REFFISCALESIGN,MDI_NUMVERSION, 
+                                ISNULL(GPB_TAUXTAXE, 0) AS GPB_TAUXTAXE, ISNULL(GPB_BASEDEV, 0) AS GPB_BASEDEV, ISNULL(GPB_VALEURDEV, 0) AS GPB_VALEURDEV, ISNULL(GPB_DEVISE, GP_DEVISE) AS GPB_DEVISE
+                    FROM PIECE
+                        LEFT JOIN MPIECECOMPL ON MDI_NATUREPIECEG = GP_NATUREPIECEG AND MDI_SOUCHE = GP_SOUCHE AND MDI_NUMERO = GP_NUMERO AND MDI_TYPEFISCAL IN (@param0,@param1,@param2,@param3)
+                        LEFT JOIN PIEDBASE ON GPB_NATUREPIECEG = GP_NATUREPIECEG AND GPB_SOUCHE = GP_SOUCHE AND GPB_NUMERO = GP_NUMERO AND GPB_CATEGORIETAXE = TRIM(GP_CODEMODELETAXE) + '1'
+                    WHERE GP_NATUREPIECEG = @param4 
+                        AND GP_ETABLISSEMENT = @param5
+                        AND GP_CAISSE = @param6
+                        AND (GP_DTSVCREATE >= @param7 AND GP_DTSVCREATE < @param8)
+                        AND GP_CAISSE IN (SELECT GPK_CAISSE FROM PARCAISSE WHERE GPK_TYPEMOBILITE in (@param9,@param10,@param11) AND GPK_ETABLISSEMENT = @param5)
+                        AND GP_TYPECOMPTA != @param12
+                        AND (MDI_FISCALPRTID = '' OR MDI_FISCALPRTID IS NULL OR MDI_FISCALPRTID >= @param13)
+                    ORDER BY GP_CAISSE, MDI_REFFISCALEVAL, GPB_NUMLIGNE
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT PIECE.GP_NATUREPIECEG, PIECE.GP_SOUCHE, PIECE.GP_NUMERO, PIECE.GP_INDICEG, PIECE.GP_DATEPIECE, PIECE.GP_HEURECREATION, PIECE.GP_REFINTERNE, PIECE.GP_CAISSE, PIECE.GP_ETABLISSEMENT, PIECE.GP_TYPEPROVENANCE, PIECE.GP_DEVISE, PIECE.GP_NUMPIECE, PIECE.GP_TOTALHTDEV, PIECE.GP_TOTALTTCDEV, PIECE.GP_TOTALREMISEDEV, PIECE.GP_TYPECOMPTA, PIECE.GP_REPRESENTANT, PIECE.GP_EDITEE, PIECE.GP_TIERS, PIECE.GP_NUMADRESSEFACT, PIECE.GP_NUMADRESSELIVR, MPIECECOMPL.MDI_FISCALPRTID, MPIECECOMPL.MDI_REFFISCALEVAL, MPIECECOMPL.MDI_REFFISCALESIGN, MPIECECOMPL.MDI_NUMVERSION, ISNULL(PIEDBASE.GPB_TAUXTAXE , 0) AS GPB_TAUXTAXE, ISNULL(PIEDBASE.GPB_BASEDEV , 0) AS GPB_BASEDEV, ISNULL(PIEDBASE.GPB_VALEURDEV , 0) AS GPB_VALEURDEV, ISNULL(PIEDBASE.GPB_DEVISE , PIECE.GP_DEVISE) AS GPB_DEVISE FROM PIECE LEFT JOIN MPIECECOMPL ON MPIECECOMPL.MDI_NATUREPIECEG = PIECE.GP_NATUREPIECEG AND MPIECECOMPL.MDI_SOUCHE = PIECE.GP_SOUCHE AND MPIECECOMPL.MDI_NUMERO = PIECE.GP_NUMERO AND MPIECECOMPL.MDI_TYPEFISCAL IN (@param0, @param1, @param2, @param3 ) LEFT JOIN PIEDBASE ON PIEDBASE.GPB_NATUREPIECEG = PIECE.GP_NATUREPIECEG AND PIEDBASE.GPB_SOUCHE = PIECE.GP_SOUCHE AND PIEDBASE.GPB_NUMERO = PIECE.GP_NUMERO AND PIEDBASE.GPB_CATEGORIETAXE = RTRIM(LTRIM(PIECE.GP_CODEMODELETAXE)) + '1' WHERE PIECE.GP_NATUREPIECEG = @param4 AND PIECE.GP_ETABLISSEMENT = @param5 AND PIECE.GP_CAISSE = @param6 AND (PIECE.GP_DTSVCREATE >= @param7 AND PIECE.GP_DTSVCREATE < @param8) AND PIECE.GP_CAISSE IN (SELECT PARCAISSE.GPK_CAISSE FROM PARCAISSE WHERE PARCAISSE.GPK_TYPEMOBILITE IN (@param9, @param10, @param11 ) AND PARCAISSE.GPK_ETABLISSEMENT = @param5 ) AND PIECE.GP_TYPECOMPTA != @param12 AND (MPIECECOMPL.MDI_FISCALPRTID = '' OR MPIECECOMPL.MDI_FISCALPRTID IS NULL OR MPIECECOMPL.MDI_FISCALPRTID >= @param13)  ORDER BY GP_CAISSE, MDI_REFFISCALEVAL, GPB_NUMLIGNE 
+16:18:36.3262512+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0='...', param1='RET', param2='FAC', param3='AVO', param4='FFO', param5='103', param6='005', param7=02/03/2011 00:00:00, param8=02/04/2011 00:00:00, param9='POS', param10='PUL', param11='EXT', param12='TRE', param13='S20'
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - SELECT PIECE.GP_NATUREPIECEG, PIECE.GP_SOUCHE, PIECE.GP_NUMERO, PIECE.GP_INDICEG, PIECE.GP_DATEPIECE, PIECE.GP_HEURECREATION, PIECE.GP_REFINTERNE, PIECE.GP_CAISSE, PIECE.GP_ETABLISSEMENT, PIECE.GP_TYPEPROVENANCE, PIECE.GP_DEVISE, PIECE.GP_NUMPIECE, PIECE.GP_TOTALHTDEV, PIECE.GP_TOTALTTCDEV, PIECE.GP_TOTALREMISEDEV, PIECE.GP_TYPECOMPTA, PIECE.GP_REPRESENTANT, PIECE.GP_EDITEE, PIECE.GP_TIERS, PIECE.GP_NUMADRESSEFACT, PIECE.GP_NUMADRESSELIVR, MPIECECOMPL.MDI_FISCALPRTID, MPIECECOMPL.MDI_REFFISCALEVAL, MPIECECOMPL.MDI_REFFISCALESIGN, MPIECECOMPL.MDI_NUMVERSION, ISNULL(PIEDBASE.GPB_TAUXTAXE , 0) AS GPB_TAUXTAXE, ISNULL(PIEDBASE.GPB_BASEDEV , 0) AS GPB_BASEDEV, ISNULL(PIEDBASE.GPB_VALEURDEV , 0) AS GPB_VALEURDEV, ISNULL(PIEDBASE.GPB_DEVISE , PIECE.GP_DEVISE) AS GPB_DEVISE FROM PIECE LEFT JOIN MPIECECOMPL ON MPIECECOMPL.MDI_NATUREPIECEG = PIECE.GP_NATUREPIECEG AND MPIECECOMPL.MDI_SOUCHE = PIECE.GP_SOUCHE AND MPIECECOMPL.MDI_NUMERO = PIECE.GP_NUMERO AND MPIECECOMPL.MDI_TYPEFISCAL IN (@param0, @param1, @param2, @param3 ) LEFT JOIN PIEDBASE ON PIEDBASE.GPB_NATUREPIECEG = PIECE.GP_NATUREPIECEG AND PIEDBASE.GPB_SOUCHE = PIECE.GP_SOUCHE AND PIEDBASE.GPB_NUMERO = PIECE.GP_NUMERO AND PIEDBASE.GPB_CATEGORIETAXE = RTRIM(LTRIM(PIECE.GP_CODEMODELETAXE)) + '1' WHERE PIECE.GP_NATUREPIECEG = @param4 AND PIECE.GP_ETABLISSEMENT = @param5 AND PIECE.GP_CAISSE = @param6 AND (PIECE.GP_DTSVCREATE >= @param7 AND PIECE.GP_DTSVCREATE < @param8) AND PIECE.GP_CAISSE IN (SELECT PARCAISSE.GPK_CAISSE FROM PARCAISSE WHERE PARCAISSE.GPK_TYPEMOBILITE IN (@param9, @param10, @param11 ) AND PARCAISSE.GPK_ETABLISSEMENT = @param5 ) AND PIECE.GP_TYPECOMPTA != @param12 AND (MPIECECOMPL.MDI_FISCALPRTID = '' OR MPIECECOMPL.MDI_FISCALPRTID IS NULL OR MPIECECOMPL.MDI_FISCALPRTID >= @param13)  ORDER BY GP_CAISSE, MDI_REFFISCALEVAL, GPB_NUMLIGNE 
+16:18:36.3262512+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=2.7195
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=5.2063
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(2f97147b-0e65-432f-8fc3-ed48fffccc28@sql_Y2_Plugin, 439685)
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3262512+01:00: QTAgent32_40.exe Information: 0 : OperationName=FrenchTaxesRulesService.ClosingRepository.SignClosing, ClosingId=8088df68-776f-411f-8af1-4c296a4d04c3, ClosingType=Daily, Closinglevel=Register, StoreId=103, RegisterId=005, StringToSign=0000:000,000,000,20160401000000,20110203,N, 
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.BeginTransaction(transaction: f1bece66-6573-4fcf-9f30-97ad264a5a83:207)
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccessService | BeginTransaction(sql_Y2_Plugin, SvcTestAutoRetail@CEGIDGROUP)
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+16:18:36.3262512+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [NATIVE] INSERT CLOSING (MNG_CLOID, MNG_DAEMONID, MNG_CAISSE, MNG_LEVEL, MNG_CLOTYPE, MNG_TARGETDATE, MNG_DATEEXEC, MNG_TOTALHT, MNG_TOTALTTC, MNG_TOTALHTPERP, MNG_TOTALTTCPERP, MNG_DEVISE, MNG_CLOIDPREC, MNG_CLOSINGSIGN ) VALUES(@param0, @param1, @param2, @param3, @param4, @param5, @param6, @param7, @param7, @param7, @param7, @param8, @param9, @param10 )
+16:18:36.3262512+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0='8088df68-776f-411f-8af1-4c296a4d04c3', param1='2b42608b-252d-4682-9a95-f2a3b853709', param2='005', param3='REG', param4='DAY', param5=02/03/2011 00:00:00, param6=04/01/2016 00:00:00, param7=0, param8='EUR', param9='', param10='MGYCMQDh55IDjYk_KWzxntWkUHwhLIIH5RSqTIAC...Length=139'
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - INSERT CLOSING (MNG_CLOID, MNG_DAEMONID, MNG_CAISSE, MNG_LEVEL, MNG_CLOTYPE, MNG_TARGETDATE, MNG_DATEEXEC, MNG_TOTALHT, MNG_TOTALTTC, MNG_TOTALHTPERP, MNG_TOTALTTCPERP, MNG_DEVISE, MNG_CLOIDPREC, MNG_CLOSINGSIGN ) VALUES(@param0, @param1, @param2, @param3, @param4, @param5, @param6, @param7, @param7, @param7, @param7, @param8, @param9, @param10 )
+16:18:36.3262512+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.4669
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<1>>
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=0.722
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+16:18:36.3262512+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [NATIVE] INSERT CLOSINGTAX (CTA_TAUXTAXE, CTA_BASETAXE, CTA_VALEURTAXE, CTA_DEVISE, CTA_CLOID, CTA_CLOTAXID ) VALUES(@param0, @param0, @param0, @param1, @param2, @param3 )
+16:18:36.3262512+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0=0, param1='EUR', param2='8088df68-776f-411f-8af1-4c296a4d04c3', param3='76c8d12f-b6a6-462f-b6e6-f28c32ad9111'
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - INSERT CLOSINGTAX (CTA_TAUXTAXE, CTA_BASETAXE, CTA_VALEURTAXE, CTA_DEVISE, CTA_CLOID, CTA_CLOTAXID ) VALUES(@param0, @param0, @param0, @param1, @param2, @param3 )
+16:18:36.3262512+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.3986
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<1>>
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=0.6283
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccessService | final commit on sql_Y2_Plugin where user is SvcTestAutoRetail@CEGIDGROUP with Id 12750879 
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Commit(transaction: f1bece66-6573-4fcf-9f30-97ad264a5a83:207)
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | before DbDataAccess.transaction.complete
+16:18:36.3262512+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | before DbDataAccess.transaction.dispose
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(2f97147b-0e65-432f-8fc3-ed48fffccc28@sql_Y2_Plugin, 12750879)
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+16:18:36.3418776+01:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : SELECT [Extent1].[DSQ_CODE] AS [DSQ_CODE], [Extent1].[DSQ_VALEUR] AS [DSQ_VALEUR], [Extent1].[DSQ_INCREMENT] AS [DSQ_INCREMENT] FROM [DESEQUENCES] AS [Extent1] WHERE [Extent1].[DSQ_CODE] = @p__linq__0 
+16:18:36.3418776+01:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlParameters=p__linq__0='CBR_GHE_103'
+16:18:36.3418776+01:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.2546
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | CreateDbCommandDefinition
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Conversion terminée
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | [PGI] : UPDATE DESEQUENCES SET DSQ_VALEUR = 142 
+WHERE (DESEQUENCES . DSQ_CODE = 'CBR_GHE_103')
+AND (DESEQUENCES . DSQ_VALEUR = 141)
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Injection terminée
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Erp.Data | EFProvider | Génération terminée
+16:18:36.3418776+01:00: root Information: 0 : Cegid.Erp.Data | EFProvider | [NATIVE] : UPDATE [DESEQUENCES] SET [DSQ_VALEUR] = 142 WHERE ([DESEQUENCES].[DSQ_CODE] = 'CBR_GHE_103') AND ([DESEQUENCES].[DSQ_VALEUR] = 141)
+16:18:36.3418776+01:00: root Information: 0 : Cegid.Erp.Data | EFProvider | SqlExecutionDurationMs=0.5345
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(86e02cb6-27ff-475b-b4ae-54f6ae86eb45@sql_Y2_Plugin, 37957466)
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Génération de la commande'
+16:18:36.3418776+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [NATIVE] INSERT JOURNALEVENT (GHE_NUMERO, GHE_CODESITE, GHE_ETABLISSEMENT, GHE_NIVEAU1, GHE_NIVEAU2, GHE_NIVEAU3, GHE_PRODUIT, GHE_EXECUTABLE, GHE_RESUME, GHE_BLOCNOTES, GHE_STATUTEVENT, GHE_VISA, GHE_FICHIER, GHE_NBTRAITE, GHE_NBERREUR, GHE_NBTOTAL, GHE_RECHTABLETTE, GHE_VALTABLETTE, GHE_COMMERCIAL, GHE_DATEINTEGR, GHE_DATEDEBUT, GHE_DATEFIN, GHE_DUREE, GHE_CREATEUR, GHE_DATECREATION, GHE_UTILISATEUR, GHE_DATEMODIF ) VALUES(@param0, @param1, @param1, @param2, @param3, @param4, @param5, @param6, @param7, @param8, @param9, @param10, @param11, @param12, @param12, @param12, @param11, @param11, @param11, @param13, @param13, @param13, @param14, @param15, @param16, @param15, @param16 )
+16:18:36.3418776+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlParameters=param0=142, param1='103', param2='ADM', param3='PLA', param4='W01', param5='BO', param6='CSE', param7='Clôture journalière caisse 005 (03/02/20...Length=43', param8='Clôture journalière de la caisse 005 de ...Length=73', param9='OK', param10='-', param11='', param12=0, param13=01/01/1900 00:00:00, param14=0, param15='TST', param16=04/01/2016 00:00:00
+16:18:36.3418776+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Etape 'Exécution de la commande' - INSERT JOURNALEVENT (GHE_NUMERO, GHE_CODESITE, GHE_ETABLISSEMENT, GHE_NIVEAU1, GHE_NIVEAU2, GHE_NIVEAU3, GHE_PRODUIT, GHE_EXECUTABLE, GHE_RESUME, GHE_BLOCNOTES, GHE_STATUTEVENT, GHE_VISA, GHE_FICHIER, GHE_NBTRAITE, GHE_NBERREUR, GHE_NBTOTAL, GHE_RECHTABLETTE, GHE_VALTABLETTE, GHE_COMMERCIAL, GHE_DATEINTEGR, GHE_DATEDEBUT, GHE_DATEFIN, GHE_DUREE, GHE_CREATEUR, GHE_DATECREATION, GHE_UTILISATEUR, GHE_DATEMODIF ) VALUES(@param0, @param1, @param1, @param2, @param3, @param4, @param5, @param6, @param7, @param8, @param9, @param10, @param11, @param12, @param12, @param12, @param11, @param11, @param11, @param13, @param13, @param13, @param14, @param15, @param16, @param15, @param16 )
+16:18:36.3575034+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=6.1488
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Paramètres de sortie - <<1>>
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Méthode 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=6.5136
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(2f97147b-0e65-432f-8fc3-ed48fffccc28@sql_Y2_Plugin, 27024712)
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3575034+01:00: QTAgent32_40.exe Information: 0 : OperationName=FrenchTaxesRulesService.ClosingService.DailyRegisterClosing, OperationStatus=End, CashRegisterId=005, DurationMs=36
+16:18:36.3575034+01:00: root Information: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'Cegid.CBR.FrenchTaxesRulesClosingService.DailyRegisterClosing' - OperationStatus=Success, OperationDurationMs=96.0383
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'UnregisterSigningContextForRequest' - OperationStatus=Start
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.CwasAdapters | CallingFlow | Méthode 'UnregisterSigningContextForRequest' - OperationStatus=Success, OperationDurationMs=0.0046
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Fonction ' - Invoke' - Paramètres de sortie - <<TOB 'XML_CONTENT'>>
+16:18:36.3575034+01:00: root Information: 0 : Cegid.Framework.ServiceModel | ApplicationFlow | Fonction ' - Invoke' - OperationStatus=Success, OperationDurationMs=96.3768
+16:18:36.3575034+01:00: QTAgent32_40.exe Information: 0 : Dto in XML_CONTENT = <InvokeResponse xmlns="http://www.cegid.fr/services">
+  <InvokeResult>
+    <Document>
+      <Data formatVersion="ForwardRead" serializeVersion="3.1">
+        <Tob Name="XML_CONTENT">
+          <Fields>
+            <Field Name="XML_CONTENT" Type="String" Value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;DailyRegisterClosingReply xmlns:i=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.cegid.fr/Retail/1.0&quot;&gt;&lt;Status&gt;true&lt;/Status&gt;&lt;/DailyRegisterClosingReply&gt;" />
+            <Field Name="PROCESSTIME" Type="Integer" Value="96" />
+            <Field Name="ACTIONTIME" Type="Integer" Value="96" />
+          </Fields>
+        </Tob>
+      </Data>
+    </Document>
+  </InvokeResult>
+</InvokeResponse>
+16:18:36.3575034+01:00: QTAgent32_40.exe Information: 0 : Reply = <DailyRegisterClosingReply xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.cegid.fr/Retail/1.0">
+  <Status>true</Status>
+</DailyRegisterClosingReply>
+16:18:36.3575034+01:00: QTAgent32_40.exe Information: 0 : OpenSQL Count: Check la table CLOSING
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:18:36.3575034+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT COUNT(0) FROM CLOSING WHERE MNG_DAEMONID = "2b42608b-252d-4682-9a95-f2a3b853709"
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT COUNT(0) FROM CLOSING WHERE CLOSING.MNG_DAEMONID = '2b42608b-252d-4682-9a95-f2a3b853709' 
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - SELECT COUNT(0) FROM CLOSING WHERE CLOSING.MNG_DAEMONID = '2b42608b-252d-4682-9a95-f2a3b853709' 
+16:18:36.3575034+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.7195
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=1.0576
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(32b322ba-8338-4d50-adff-25ba695f1d90@sql_Y2_Plugin, 7761154)
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3575034+01:00: QTAgent32_40.exe Information: 0 : OpenSQL Count: Check la table CLOSING CAISSE 005 : MONTANTS PERP = MONTANTS et CLOIDPREC vide
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:18:36.3575034+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT COUNT(0) FROM CLOSING WHERE MNG_DAEMONID = '2b42608b-252d-4682-9a95-f2a3b853709' AND MNG_CAISSE = '005' AND MNG_LEVEL = 'REG' AND MNG_CLOTYPE = 'DAY' AND MNG_TOTALHT = 0 AND MNG_TOTALTTC = 0 AND MNG_TOTALHTPERP = 0 AND MNG_TOTALTTCPERP = 0 AND MNG_CLOIDPREC = ''
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT COUNT(0) FROM CLOSING WHERE CLOSING.MNG_DAEMONID = '2b42608b-252d-4682-9a95-f2a3b853709' AND CLOSING.MNG_CAISSE = '005' AND CLOSING.MNG_LEVEL = 'REG' AND CLOSING.MNG_CLOTYPE = 'DAY' AND CLOSING.MNG_TOTALHT = 0 AND CLOSING.MNG_TOTALTTC = 0 AND CLOSING.MNG_TOTALHTPERP = 0 AND CLOSING.MNG_TOTALTTCPERP = 0 AND CLOSING.MNG_CLOIDPREC = '' 
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - SELECT COUNT(0) FROM CLOSING WHERE CLOSING.MNG_DAEMONID = '2b42608b-252d-4682-9a95-f2a3b853709' AND CLOSING.MNG_CAISSE = '005' AND CLOSING.MNG_LEVEL = 'REG' AND CLOSING.MNG_CLOTYPE = 'DAY' AND CLOSING.MNG_TOTALHT = 0 AND CLOSING.MNG_TOTALTTC = 0 AND CLOSING.MNG_TOTALHTPERP = 0 AND CLOSING.MNG_TOTALTTCPERP = 0 AND CLOSING.MNG_CLOIDPREC = '' 
+16:18:36.3575034+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=2.5595
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=3.0489
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(c8d6da17-b39c-4d86-bcc0-f33ea557c8bd@sql_Y2_Plugin, 16239250)
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3575034+01:00: QTAgent32_40.exe Information: 0 : OpenSQL Count: Check la table CLOSINGTAX 
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:18:36.3575034+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT COUNT(0) FROM CLOSINGTAX
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT COUNT(0) FROM CLOSINGTAX 
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - SELECT COUNT(0) FROM CLOSINGTAX 
+16:18:36.3575034+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.2948
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=0.5695
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(f63b1e45-b009-46ce-a10e-1e67e33e96a7@sql_Y2_Plugin, 58912671)
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3575034+01:00: QTAgent32_40.exe Information: 0 : OpenSQL Count: Check la table CLOSINGTAX CAISSE 005 montants
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:18:36.3575034+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] SELECT COUNT(0) FROM CLOSINGTAX WHERE CTA_CLOID = (SELECT MNG_CLOID FROM CLOSING WHERE MNG_DAEMONID = '2b42608b-252d-4682-9a95-f2a3b853709' AND MNG_CAISSE = '005' AND MNG_LEVEL = 'REG' AND MNG_CLOTYPE = 'DAY') AND CTA_TAUXTAXE = 0 AND CTA_BASETAXE = 0 AND CTA_VALEURTAXE = 0
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] SELECT COUNT(0) FROM CLOSINGTAX WHERE CLOSINGTAX.CTA_CLOID = (SELECT CLOSING.MNG_CLOID FROM CLOSING WHERE CLOSING.MNG_DAEMONID = '2b42608b-252d-4682-9a95-f2a3b853709' AND CLOSING.MNG_CAISSE = '005' AND CLOSING.MNG_LEVEL = 'REG' AND CLOSING.MNG_CLOTYPE = 'DAY' ) AND CLOSINGTAX.CTA_TAUXTAXE = 0 AND CLOSINGTAX.CTA_BASETAXE = 0 AND CLOSINGTAX.CTA_VALEURTAXE = 0 
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - SELECT COUNT(0) FROM CLOSINGTAX WHERE CLOSINGTAX.CTA_CLOID = (SELECT CLOSING.MNG_CLOID FROM CLOSING WHERE CLOSING.MNG_DAEMONID = '2b42608b-252d-4682-9a95-f2a3b853709' AND CLOSING.MNG_CAISSE = '005' AND CLOSING.MNG_LEVEL = 'REG' AND CLOSING.MNG_CLOTYPE = 'DAY' ) AND CLOSINGTAX.CTA_TAUXTAXE = 0 AND CLOSINGTAX.CTA_BASETAXE = 0 AND CLOSINGTAX.CTA_VALEURTAXE = 0 
+16:18:36.3575034+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=2.5991
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<Cegid.Erp.Data.Sql.SqlRecordSet>>
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=3.1153
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(b123c25d-da75-4f49-824e-d6cd310652ca@sql_Y2_Plugin, 58936263)
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3575034+01:00: QTAgent32_40.exe Information: 0 : Enter finally block
+16:18:36.3575034+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: Rollback ligne de taxe sur le ticket FFO/103/8
+16:18:36.3575034+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3733275+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:18:36.3733275+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] update PIEDBASE set GPB_NATUREPIECEG = 'FFO' where GPB_NATUREPIECEG = 'ZZZ' AND GPB_SOUCHE = '103' AND GPB_NUMERO = 8
+16:18:36.3733275+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] UPDATE PIEDBASE SET GPB_NATUREPIECEG = 'FFO' WHERE GPB_NATUREPIECEG = 'ZZZ' AND GPB_SOUCHE = '103' AND GPB_NUMERO = 8
+16:18:36.3733275+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - UPDATE PIEDBASE SET GPB_NATUREPIECEG = 'FFO' WHERE GPB_NATUREPIECEG = 'ZZZ' AND GPB_SOUCHE = '103' AND GPB_NUMERO = 8
+16:18:36.3755134+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=1.8794
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=7.8949
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(bfc96556-a808-4358-817c-0147a61b46d1@sql_Y2_Plugin, 55622903)
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3809528+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: delete dans la table CLOSINGTAX
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:18:36.3809528+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE FROM CLOSINGTAX WHERE CTA_CLOID IN (SELECT MNG_CLOID FROM CLOSING WHERE MNG_DAEMONID = "2b42608b-252d-4682-9a95-f2a3b853709")
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE FROM CLOSINGTAX WHERE CTA_CLOID IN (SELECT CLOSING.MNG_CLOID FROM CLOSING WHERE CLOSING.MNG_DAEMONID = '2b42608b-252d-4682-9a95-f2a3b853709' )
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE FROM CLOSINGTAX WHERE CTA_CLOID IN (SELECT CLOSING.MNG_CLOID FROM CLOSING WHERE CLOSING.MNG_DAEMONID = '2b42608b-252d-4682-9a95-f2a3b853709' )
+16:18:36.3809528+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=0.3084
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=5.9786
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(6c14bf86-e11b-4982-a1d5-a8560fb94da3@sql_Y2_Plugin, 58201176)
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3809528+01:00: QTAgent32_40.exe Information: 0 : ExecuteSQL: delete dans la table CLOSING
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:18:36.3809528+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE FROM CLOSING WHERE MNG_DAEMONID = "2b42608b-252d-4682-9a95-f2a3b853709"
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE FROM CLOSING WHERE MNG_DAEMONID = '2b42608b-252d-4682-9a95-f2a3b853709'
+16:18:36.3809528+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE FROM CLOSING WHERE MNG_DAEMONID = '2b42608b-252d-4682-9a95-f2a3b853709'
+16:18:36.3941962+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=2.3909
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<1>>
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=10.3539
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(fa11ff07-bffe-4644-9d06-e3a35866f87b@sql_Y2_Plugin, 19084425)
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:18:36.3941962+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE FROM DAEMONERROR WHERE DER_DAEMONID in ("2b42608b-252d-4682-9a95-f2a3b853709")
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE FROM DAEMONERROR WHERE DER_DAEMONID IN ('2b42608b-252d-4682-9a95-f2a3b853709' )
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE FROM DAEMONERROR WHERE DER_DAEMONID IN ('2b42608b-252d-4682-9a95-f2a3b853709' )
+16:18:36.3941962+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | SqlExecutionDurationMs=1.3768
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Output parameters - <<0>>
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Success, OperationDurationMs=3.7109
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(e4a9e977-4d80-494a-aa5f-cf5add118ca9@sql_Y2_Plugin, 6549455)
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Start
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Génération de la commande'
+16:18:36.3941962+01:00: root Information: 0 : Cegid.Framework.Data | SqlService | [PGI] DELETE FROM JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '103' AND GHS_NUMERO > 139
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | SqlService | [NATIVE] DELETE FROM JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '103' AND GHS_NUMERO > 139
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Step 'Exécution de la commande' - DELETE FROM JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '103' AND GHS_NUMERO > 139
+16:18:36.3941962+01:00: root Error: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - Exception - Cegid.Erp.Data.ErpBusinessException: An SQL command failed.
+Exception code                     : ERP00001
+Action / method                    : 
+What to do                         : Contact the hotline.
+Call stack                         :
+   at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.<>c__DisplayClass5_0`2.<LogFlow>b__0(T flowLogCategory)
+   at Cegid.Framework.Diagnostics.ILogSourceExtensions.LogFlow[T](ILogSource logSource, Func`1 flowName, Func`1 flowInputs, Action`1 flow, Func`1 flowOutputs)
+Inner exception                    :
+   Cegid.Framework.CbpException: Error executing sql command 'DELETE FROM JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '103' AND GHS_NUMERO > 139'
+   Exception code              : CBP00202
+   Action / method             : Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1
+   What to do                  : Check the syntax of the sql command
+   Call stack                  :
+   
+   Inner exception             :
+      System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'JOURNALEVENTSIGN'.
+         at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+         at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+         at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+         at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+         at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+         at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+         at Cegid.Erp.Data.Sql.SqlService.GetExecuteNonQueryAffectedRows(IDbCommand command)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_2`1.<ExecuteCommand>b__2()
+         at Cegid.Framework.Data.DbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Framework.Data.SqlServer.SqlDbExceptionHandler.TryCatch(Action action, Func`2 isHandled)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_1`1.<ExecuteCommand>b__1()
+         at Cegid.Erp.Data.Sql.SqlService.ExecuteInTransaction[T](DbDataAccessConnection dbDataAccessConnection, Func`1 executor)
+         at Cegid.Erp.Data.Sql.SqlService.<>c__DisplayClass34_0`1.<ExecuteCommand>b__0(CallingFlowLogCategory cfl)
+      ClientConnectionId:da1c7766-f9ee-4292-badb-666b31d95416
+      Error Number:208,State:1,Class:16
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Framework.Data | CallingFlow | Method 'Cegid.Erp.Data.Sql.SqlService.ExecuteCommand`1' - OperationStatus=Fail, OperationDurationMs=1.4052
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(8f90c8b2-986a-43db-926d-c4735d67046c@sql_Y2_Plugin, 51057971)
+16:18:36.3941962+01:00: root Verbose: 0 : Cegid.Erp.Data | DbDataAccess | DbDataAccess.Dispose(transaction: 'unknown')

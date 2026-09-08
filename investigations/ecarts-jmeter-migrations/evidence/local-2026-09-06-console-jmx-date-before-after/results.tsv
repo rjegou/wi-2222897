@@ -1,0 +1,3 @@
+runtime	console_exit	jmx_count	assertions	status
+original	-1	0	not-run	BLOCKED_BEFORE_GENERATION
+corrected	-1	0	not-run	BLOCKED_BEFORE_GENERATION

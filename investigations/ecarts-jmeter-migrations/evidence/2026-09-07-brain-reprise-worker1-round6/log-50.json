@@ -1,0 +1,15 @@
+{
+  "continuation_token": null,
+  "count": 9,
+  "value": [
+    "2026-09-07T12:48:08.9623712Z ##[section]Starting: dotNet-build: Version Assemblies",
+    "2026-09-07T12:48:08.9639668Z ==============================================================================",
+    "2026-09-07T12:48:08.9639894Z Task         : Version .NET Assemblies",
+    "2026-09-07T12:48:08.9639994Z Description  : Applies a version to a .NET assembly via the assemblyinfo.cs or .vb files based on the build number. Based on Microsoft sample from https://msdn.microsoft.com/Library/vs/alm/Build/overview",
+    "2026-09-07T12:48:08.9640195Z Version      : 2.40.35",
+    "2026-09-07T12:48:08.9640281Z Author       : Black Marble",
+    "2026-09-07T12:48:08.9640790Z Help         : Version: 2.40.35. [More Information](https://github.com/rfennell/vNextBuild/wiki/Version-Assemblies-and-Packages-Tasks/)",
+    "2026-09-07T12:48:08.9640982Z ==============================================================================",
+    "2026-09-07T12:48:10.7621401Z ##[section]Finishing: dotNet-build: Version Assemblies"
+  ]
+}

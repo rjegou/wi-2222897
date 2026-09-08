@@ -1,0 +1,15 @@
+========== SOAP NEGATIVE JMETER 5.6.3 FIXED ==========
+Date: 2026-09-07 14:27:46
+JMETER EXIT CODE: 0
+
+LABEL=FAULT_PRESENT SUCCESS=false FAILURE=Specified XPath was found... Turn off negate if this is not desired
+LABEL=NO_FAULT SUCCESS=true FAILURE=No Nodes Matched //*[local-name()='Fault' and namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/']/detail/faultcode
+LABEL=WRONG_NAMESPACE SUCCESS=true FAILURE=No Nodes Matched //*[local-name()='Fault' and namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/']/detail/faultcode
+
+EXPECTED:
+FAULT_PRESENT=false
+NO_FAULT=true
+WRONG_NAMESPACE=true
+
+EXECUTION_POSTCONDITION=PASS
+=======================================================

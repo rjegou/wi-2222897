@@ -1,0 +1,7 @@
+path,kind,source_or_sha256,status
+README.md,curated,local collection,created
+log-signatures.md,curated,Azure DevOps REST logs 4442156 and 4442685,created
+artifact-download-2019,attempt,artprodsu6weu.artifacts.visualstudio.com -> spsprodweu3.vssps.visualstudio.com,203 HTML no ZIP
+artifact-download-2025,attempt,artprodsu6weu.artifacts.visualstudio.com -> spsprodweu3.vssps.visualstudio.com,203 HTML no ZIP
+4442156-build,remote,0baf69c1ce3c37462364f4b5a269ee1e24a73b9a,failed terminal
+4442685-build,remote,e3b674b007071259fd74b024f6b4b48baf0a7f5d,failed terminal

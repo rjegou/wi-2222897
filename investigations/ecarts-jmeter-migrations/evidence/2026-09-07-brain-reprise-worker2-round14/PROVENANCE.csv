@@ -1,0 +1,9 @@
+observed_at,source,identifier,scope,verdict
+2026-09-07,local evidence,worker1 round4,Clienteling V22-V25 20/20 endpoints,FACT bounded to generation/XML/endpoints
+2026-09-07,local evidence,worker1 round5,Clienteling orchestration 151 JMX,FACT bounded to local generation/parsing
+2026-09-07,local evidence,worker1 round2 and soap-package-round14,SOAP negative and SQL/date paths,FACT local harness/package only
+2026-09-07,local evidence,worker2 round8,real init-container differential,FACT propagation behavior only
+2026-09-07,Azure DevOps,4440774 and 4440884,InventoryTracking compilation/tests,FACT XmlDiff errors absent; TC105 UNKNOWN
+2026-09-07,local evidence,worker1 round11,InventoryTracking counters,FACT reconciled logical/error scopes
+2026-09-07,Azure DevOps,4442156,Full-Text diagnostic smoke,EN COURS at latest read
+2026-09-07,Azure DevOps,14246 and worker1 round13,shared naming/defaultBranch audit,FACT scoped live audit; not universal absence

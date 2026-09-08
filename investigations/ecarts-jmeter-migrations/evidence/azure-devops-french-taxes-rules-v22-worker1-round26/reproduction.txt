@@ -1,0 +1,11 @@
+PowerShell 5.1 and PowerShell 7 produced the same counts:
+
+fixture       version   input projected dangerous
+null          44070560  1     1         1
+null          68f1f7a8  1     0         0
+empty-array   44070560  0     0         0
+empty-array   68f1f7a8  0     0         0
+real-RW       44070560  1     1         1
+real-RW       68f1f7a8  1     1         1
+
+The real-RW fixture used Destination=C:\shared and RW=true. The null fixture used a null Mounts value. No raw secret, Docker output, or external resource was involved.

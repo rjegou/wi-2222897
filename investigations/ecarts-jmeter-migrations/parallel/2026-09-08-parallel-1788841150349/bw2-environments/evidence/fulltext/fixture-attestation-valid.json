@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1",
+  "jobScope": "14251/round2/SQL2019",
+  "agentName": "isolated-fulltext-agent",
+  "osVersion": "Windows Server 2025",
+  "exclusive": true,
+  "imageDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "mounts": [],
+  "networks": [],
+  "ports": [],
+  "endpoints": [],
+  "cleanupOwner": "fulltext-runner"
+}

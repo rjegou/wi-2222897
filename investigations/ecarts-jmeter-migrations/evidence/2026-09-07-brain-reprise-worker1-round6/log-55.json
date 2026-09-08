@@ -1,0 +1,18 @@
+{
+  "continuation_token": null,
+  "count": 12,
+  "value": [
+    "2026-09-07T12:49:59.3870002Z ##[section]Starting: dotNet-build: Publish Quality Gate Result",
+    "2026-09-07T12:49:59.3887876Z ==============================================================================",
+    "2026-09-07T12:49:59.3888104Z Task         : Publish Quality Gate Result",
+    "2026-09-07T12:49:59.3888257Z Description  : Publish SonarQube Cloud's Quality Gate result on the Azure Pipelines build result. To be used after the actual analysis.",
+    "2026-09-07T12:49:59.3888520Z Version      : 3.4.3",
+    "2026-09-07T12:49:59.3888663Z Author       : sonarsource",
+    "2026-09-07T12:49:59.3888814Z Help         : [More Information](https://docs.sonarcloud.io/advanced-setup/ci-based-analysis/sonarcloud-extension-for-azure-devops/)",
+    "2026-09-07T12:49:59.3889065Z ==============================================================================",
+    "2026-09-07T12:49:59.9381637Z [INFO]  SonarQube Cloud: Server version: 8.0.0.104884",
+    "2026-09-07T12:50:00.0589340Z [INFO]  SonarQube Cloud: Task AaB76wu563z9wfdaAxXF completed",
+    "2026-09-07T12:50:00.6326167Z [INFO]  SonarQube Cloud: Overall Quality Gate status: ok",
+    "2026-09-07T12:50:01.0668851Z ##[section]Finishing: dotNet-build: Publish Quality Gate Result"
+  ]
+}

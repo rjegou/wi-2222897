@@ -1,0 +1,106 @@
+name: WI2222897-V22-Preflight-$(Date:yyyyMMdd).$(Rev:r)
+trigger: none
+pr: none
+schedules: []
+
+variables:
+  historicalImage: 'acrretaildocker-e2c3eugzbee2habm.azurecr.io/cegid-retail-docker-production/y2-jmeter:sqlexpress2019-y2-aspnet-10-windowsservercore-ltsc2022@sha256:2684760378b395af6d4843036b8d3cfc310cfb30909e23c838c822647f4da9cb'
+  preflightContainerName: 'wi2222897-v22-preflight-$(Build.BuildId)'
+
+stages:
+- stage: RuntimePreflight
+  displayName: Read-only V22 runtime preflight
+  jobs:
+  - job: HostAndImageInspection
+    displayName: Inspect host, image, container, mounts and network
+    pool:
+      name: Azure Pipelines
+      vmImage: windows-latest
+    timeoutInMinutes: 10
+    cancelTimeoutInMinutes: 1
+    steps:
+    - checkout: none
+    - task: Docker@2
+      displayName: Authenticate to read the existing registry image
+      inputs:
+        command: login
+        containerRegistry: AzureContainerRegistry-Docker-Retail
+    - powershell: |
+        $ErrorActionPreference = 'Stop'
+        $image = '$(historicalImage)'
+        $name = '$(preflightContainerName)'
+        $out = Join-Path $env:AGENT_TEMPDIRECTORY 'wi2222897-v22-preflight'
+        New-Item -ItemType Directory -Path $out -Force | Out-Null
+        $created = $false
+        try {
+          $os = Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber,OSArchitecture
+          $dockerVersion = docker version --format '{{json .Server}}'
+          if ($LASTEXITCODE -ne 0) { throw 'Docker daemon is unavailable.' }
+          $savedErrorActionPreference = $ErrorActionPreference
+          $ErrorActionPreference = 'Continue'
+          $before = @(docker image inspect $image 2>$null)
+          $imageInspectExit = $LASTEXITCODE
+          $ErrorActionPreference = $savedErrorActionPreference
+          if ($imageInspectExit -ne 0) {
+            docker pull $image
+            if ($LASTEXITCODE -ne 0) { throw 'Pinned historical image pull failed.' }
+          }
+          $img = docker image inspect $image | ConvertFrom-Json
+          $containerId = docker create --name $name --label wi.scope=WI-2222897/FrenchTaxesRules/V22 --label wi.ephemeral=true --label wi.runId=$(Build.BuildId) $image powershell -NoLogo -NoProfile -Command "Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber,OSArchitecture | ConvertTo-Json -Compress"
+          if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($containerId)) { throw 'Pinned image container creation failed.' }
+          $created = $true
+          $inspection = docker container inspect $containerId | ConvertFrom-Json
+          $mounts = @($inspection.Mounts | ForEach-Object { [ordered]@{type=$_.Type;source=$_.Source;destination=$_.Destination;rw=$_.RW} })
+          $networks = @($inspection.NetworkSettings.Networks.PSObject.Properties | ForEach-Object { [ordered]@{name=$_.Name;networkId=$_.Value.NetworkID;ip=$_.Value.IPAddress} })
+          $standardMounts = @($mounts | Where-Object { $_.destination -match '(?i)(agent|work|programdata|windows)' })
+          $dangerousMounts = @($mounts | Where-Object { $_.destination -notmatch '(?i)(agent|work|programdata|windows)' -or $_.rw -eq $true })
+          $result = [ordered]@{
+            generatedUtc=[DateTime]::UtcNow.ToString('o'); buildId='$(Build.BuildId)';
+            hostOs=$os; dockerServer=($dockerVersion | ConvertFrom-Json);
+            image=[ordered]@{requested=$image;id=$img.Id;repoDigests=@($img.RepoDigests);os=$img.Os;architecture=$img.Architecture;rootFsLayers=@($img.RootFS.Layers).Count};
+            container=[ordered]@{id=$containerId.Trim();configImage=$inspection.Config.Image;state=$inspection.State.Status;hostname=$inspection.Config.Hostname;labels=$inspection.Config.Labels;mounts=$mounts;networks=$networks;standardMounts=$standardMounts;dangerousMounts=$dangerousMounts};
+            policy=[ordered]@{businessDatabaseRestore=$false;packageDeployment=$false;businessCalls=$false;publishedArtifacts=$false;sharedCleanup=$false}
+          }
+          $result | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $out 'preflight-inspection.json') -Encoding UTF8
+          $portBindings = $inspection.HostConfig.PortBindings
+          $hostPortBindings = if ($null -eq $portBindings) { @() } else { @($portBindings.PSObject.Properties) }
+          $forbiddenNetworks = @($networks | Where-Object { $_.name -eq 'host' })
+          $targetScopeValid = $inspection.Config.Labels.'wi.scope' -eq 'WI-2222897/FrenchTaxesRules/V22' -and $inspection.Config.Labels.'wi.runId' -eq '$(Build.BuildId)'
+          $expectedDigest = ($image -split '@sha256:')[-1]
+          $digestValid = @($img.RepoDigests | Where-Object { $_ -match "@sha256:$expectedDigest$" }).Count -gt 0
+          $assertions = @(
+            [ordered]@{id='image-digest';passed=$digestValid;value="repoDigestsCount=$(@($img.RepoDigests).Count)"}
+            [ordered]@{id='image-os';passed=(-not [string]::IsNullOrWhiteSpace($img.Os));value="present=$(-not [string]::IsNullOrWhiteSpace($img.Os))"}
+            [ordered]@{id='image-architecture';passed=(-not [string]::IsNullOrWhiteSpace($img.Architecture));value="present=$(-not [string]::IsNullOrWhiteSpace($img.Architecture))"}
+            [ordered]@{id='target-scope';passed=$targetScopeValid;value="valid=$targetScopeValid"}
+            [ordered]@{id='mounts';passed=($dangerousMounts.Count -eq 0);value="count=$($mounts.Count);dangerous=$($dangerousMounts.Count)"}
+            [ordered]@{id='networks';passed=($forbiddenNetworks.Count -eq 0);value="count=$($networks.Count);forbidden=$($forbiddenNetworks.Count)"}
+            [ordered]@{id='ports';passed=($hostPortBindings.Count -eq 0);value="hostPortBindings=$($hostPortBindings.Count)"}
+          )
+          $failedAssertions = @($assertions | Where-Object { -not $_.passed })
+          foreach ($assertion in $assertions) { Write-Host "V22_PREFLIGHT_ASSERTION id=$($assertion.id) passed=$($assertion.passed) value=$($assertion.value)" }
+          Write-Host "V22_PREFLIGHT_ATTESTATION passed=$($failedAssertions.Count -eq 0) digest=$($img.RepoDigests -join ',') imageOs=$($img.Os) imageArchitecture=$($img.Architecture) imageLayers=$(@($img.RootFS.Layers).Count) containerState=$($inspection.State.Status) mounts=$($mounts.Count) dangerousMounts=$($dangerousMounts.Count) networks=$($networks.name -join ',') forbiddenNetworks=$($forbiddenNetworks.Count) hostPortBindings=$($hostPortBindings.Count) targetScopeValid=$targetScopeValid failedAssertions=$($failedAssertions.id -join ',')"
+          if ($failedAssertions.Count -ne 0) { throw "Runtime isolation whitelist assertion failed: $($failedAssertions.id -join ',')." }
+          docker start -a $containerId | Set-Content -LiteralPath (Join-Path $out 'container-os.json') -Encoding UTF8
+          if ($LASTEXITCODE -ne 0) { throw 'Pinned image container execution failed.' }
+          Write-Host "Read-only preflight inspection completed; outputs are agent-temp scoped and contain no credentials."
+        } finally {
+          if ($created) {
+            docker rm -f $name 2>$null | Out-Null
+            $remaining = @(docker ps -a --filter "name=^/$name$" --format '{{.ID}}')
+            if ($remaining.Count -ne 0) { throw 'Runtime cleanup assertion failed.' }
+            Write-Host "V22_PREFLIGHT_CLEANUP containerPresentAfterRemove=$($remaining.Count -ne 0)"
+          }
+        }
+      displayName: Read-only host/image/container inspection
+    - powershell: |
+        $out = Join-Path $env:AGENT_TEMPDIRECTORY 'wi2222897-v22-preflight'
+        $files = @(Get-ChildItem -LiteralPath $out -File -ErrorAction SilentlyContinue)
+        if ($files.Count -gt 0) {
+          $files | Get-FileHash -Algorithm SHA256 | Format-Table -AutoSize
+          Write-Host 'Preflight outputs remain only in agent temp; no artifact publication is configured.'
+        } else {
+          Write-Warning 'No preflight output was produced.'
+        }
+      condition: always()
+      displayName: Hash local expurgated inspection output

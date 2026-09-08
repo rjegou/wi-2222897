@@ -1,0 +1,668 @@
+#***********************************************************************************************************
+# File: task-run-campaign.v1.yml
+# Author : LBAU
+# Description :
+#   run test campaign and publish results - require docker image jmeter
+# Parameters
+#   campaignsFolderPath : Folder Path that contain all campaigns
+#   campaignName        : Name of campaign to be tested
+#   campaignTitle       : Title of campaign to be tested
+#   testUserName        : Username for test running
+#   testUserPassword    : User password for test running
+#   jmeterProperties    : Jmeter properties for test running
+#   continueOnError     : Continue if an error occured
+#
+#***********************************************************************************************************
+# History :
+# 2022-01-01: LBAU : template creation
+# 2025-01-10: LBAU : modifiy for core tests, rework jtl to junit & group by tc
+#***********************************************************************************************************
+
+parameters:
+  - name: campaignsFolderPath
+    type: string
+    displayName: 'Folder Path that contain campaigns'
+
+  - name: campaignName
+    type: string
+    displayName: 'Campaign name'
+
+  - name: campaignTitle
+    type: string
+    displayName: 'Campaign title'
+
+  - name: testUserName
+    type: string
+    default: ''
+    displayName: 'Username for test running'
+
+  - name: testUserPassword
+    type: string
+    default: ''
+    displayName: 'User password for test running'
+
+  - name: jmeterProperties
+    type: string
+    displayName: 'Jmeter properties'
+
+  - name: continueOnError
+    type: boolean
+    default: true
+    displayName: 'Continue if an error occured'
+
+steps:
+- task: powershell@2
+  displayName: 'Prepare Jmeter Campaign Run ${{ parameters.campaignTitle }}'
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      # Declare var env jmeter Set JmeterWorkflowHome=C:\Tools\Jmeter\jmeter\bin
+      if (-not $Env:JmeterWorkflowHome){
+        Write-Host "##[command] - JmeterWorkflowHome=C:\Tools\Jmeter\jmeter\bin"
+        $env:JmeterWorkflowHome = "C:\Tools\Jmeter\jmeter\bin"
+      }
+
+      # Define variables
+      $campaignsFolderPath = "${{ parameters.campaignsFolderPath }}"
+      $campaignName        = "${{ parameters.campaignName }}"
+      $campaignTitle       = "${{ parameters.campaignTitle }}"
+      $relativCampaign     = Resolve-Path -relative "$campaignsFolderPath"
+      $resultFolderPath    = "$relativCampaign\Results\$campaignTitle"
+      $paramsFilePath      = "$campaignsFolderPath\Config\parameters.properties"
+
+      # log variables
+      Write-Host "##[debug] - campaignsFolderPath   $campaignsFolderPath"
+      Write-Host "##[debug] - campaignName          $campaignName"
+      Write-Host "##[debug] - campaignTitle         $campaignTitle"
+      Write-Host "##[debug] - relativCampaign       $relativCampaign"
+      Write-Host "##[debug] - resultFolderPath      $resultFolderPath"
+      Write-Host "##[debug] - paramsFilePath        $paramsFilePath"
+
+      Write-Host("##vso[task.setvariable variable=vartest.ResultFolder]$resultFolderPath")
+      Write-Host("##vso[task.setvariable variable=vartest.ParametersFile]$paramsFilePath")
+
+      # Create folder Results for Campaign
+      New-Item -Path "$resultFolderPath" -ItemType Directory -Force
+
+      $resPath=$resultFolderPath.Replace('\','\\')
+      # Set Parameters Properties
+      $jParams="# Jmeter properties files
+      USERNAME=${{ parameters.testUserName }}
+      PASSWORD=${{ parameters.testUserPassword }}
+      RESULT_FOLDER=$resPath
+      ${{ parameters.jmeterProperties }}"
+
+      # Create parameters properties file
+      New-Item -Path "$paramsFilePath" -ItemType "file" -Force
+      Set-Content -Path "$paramsFilePath" -Value $jParams
+
+      # Force utf8 encoding
+      $data = Get-Content -Raw "$paramsFilePath"
+      $utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
+      [System.IO.File]::WriteAllLines("$paramsFilePath", $data, $utf8NoBomEncoding)
+      $jParams | Out-File -filepath "$paramsFilePath" -Encoding "UTF8"
+
+      # Debug parameters properties file
+      Get-Content -Path "$paramsFilePath"
+
+- task: powershell@2
+  displayName: 'Run Jmeter Tests Campaign ${{ parameters.campaignTitle }} '
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+
+      # Get variables
+      $resultFolderPath     = "$(vartest.ResultFolder)"
+      $paramsFilePath       = "$(vartest.ParametersFile)"
+      $campaignName         = "${{ parameters.campaignName }}"
+      $campaignsFolderPath  = "${{ parameters.campaignsFolderPath}}"
+      $campaignFilePath     = "$campaignsFolderPath\$campaignName.xml"
+      $campaignTitle        = "${{ parameters.campaignTitle }}"
+      $jtlFilePath          = "$resultFolderPath\$campaignName-results.jtl"
+
+      # Check if legacy report
+      $reportLegacy = $false
+      Write-Host("##[info] - Check if legacy report for campaign '$campaignTitle'")
+      if (Test-Path -Path $campaignFilePath) {
+          $xmlCampaign = [xml](Get-Content -Path "$campaignFilePath" )
+          $reportLegacy = $xmlCampaign.TestCampaign.reportLegacy
+      }
+
+      Write-Host "##[debug] - resultFolderPath  $resultFolder"
+      Write-Host "##[debug] - paramsFilePath    $paramsFilePath"
+      Write-Host "##[debug] - campaignName      $campaignName"
+      Write-Host "##[debug] - campaignTitle     $campaignTitle"
+      Write-Host "##[debug] - reportLegacy      $reportLegacy"
+
+      Write-Host("##vso[task.setvariable variable=vartest.ReportLegacy]$reportLegacy")
+      $env:JmeterWorkflowHome='C:\Tools\jmeter\bin'
+
+      # Run the campaign
+      Write-Host "##[command] - 'C:\Tools\jmeter-cli.ps1' invoke-campaign -campaignsFolderPath '$campaignsFolderPath' -campaignName '$campaignName' -resultFolderPath '$resultFolderPath' -userPropertiesFilePath '$paramsFilePath' "
+      & "C:\Tools\jmeter-cli.ps1" invoke-campaign -campaignsFolderPath "$campaignsFolderPath" -campaignName "$campaignName" -resultFolderPath "$resultFolderPath" -propertiesFilePath "$paramsFilePath"
+
+      # Remove parameters properties file
+      Remove-Item -Path "$paramsFilePath"
+
+- task: powershell@2
+  displayName: 'Convert JTL results to Junit format for Campaign ${{ parameters.campaignTitle }}'
+  continueOnError: ${{ parameters.continueOnError }}
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+
+      # Get variables
+      $resultFolderPath      = Resolve-Path -Path "$(vartest.ResultFolder)"
+      $JtlToJunitPyScript    = "c:\tools\jtl_junit_converter.py"
+      $campaignName          = "${{ parameters.campaignName }}"
+      $campaignTitle         = "${{ parameters.campaignTitle }}"
+      $campaignsFolderPath   = "${{ parameters.campaignsFolderPath}}"
+      $jUnitCampaignFilePath = "$resultFolderPath\$campaignTitle-results.xml"
+      $campaignPbFilePath    = "$resultFolderPath\$campaignTitle-pb.txt"
+      $tps                   =  Get-ChildItem -Path "$resultFolderPath" -Directory
+
+      Write-Host "##[info]  - Converting JTL results to JUnit format"
+      Write-Host "##[debug] - resultFolderPath      $resultFolder"
+      Write-Host "##[debug] - campaignsFolderPath   $campaignsFolderPath"
+      Write-Host "##[debug] - jUnitCampaignFilePath $jUnitCampaignFilePath"
+
+      Write-Host("##vso[task.setvariable variable=vartest.ResultFile]$jUnitCampaignFilePath")
+
+      function New-JunitFullErrorsFromJmx {
+        param(
+          [Parameter(Mandatory = $true)][string]$TestPlanName,
+          [Parameter(Mandatory = $true)][string]$JunitFileName,
+          [Parameter(Mandatory = $true)][string]$JmxFilePath
+        )
+        # Create xml junit file with error message : no jtl file found
+        Write-Host "##[debug] - Generate '$TestPlanName' Junit file with full errors from jmx"
+
+        $outJunit = New-Object System.Xml.XmlDocument
+        $outJunit.AppendChild($outJunit.CreateXmlDeclaration("1.0", "UTF-8", $null)) | Out-Null
+        $outJunit.AppendChild($outJunit.CreateElement("testsuites")) | Out-Null
+
+        $testSuite = Get-JunitErrorFromJmx -TestPlanName $TestPlanName -jmxFilePath $JmxFilePath -xmlJunit $outJunit
+        if ($testSuite) {
+          $outJunit.SelectSingleNode("testsuites").AppendChild($testSuite) | Out-Null
+          $outJunit.Save($JunitFileName)
+
+          Write-Host "##[section] - Generate '$TestPlanName' Junit file with full errors from jmx done!"
+        }
+      }
+
+      function Get-JunitErrorFromJmx {
+        param(
+          [Parameter(Mandatory = $true)][string]$TestPlanName,
+          [Parameter(Mandatory = $true)][string]$JmxFilePath,
+          [Parameter(Mandatory = $true)][xml]$xmlJunit
+        )
+        Write-Host "##[debug] - Get '$TestPlanName' Junit file with full errors from jmx"
+
+        # check jmx file exists
+        $filePath = $JmxFilePath
+        if (-not (Test-Path -Path $filePath)) {
+          Write-Host "##[warning] - file not found '$filePath' try get jmx file similarity"
+
+          $arrPath = $filePath.split("\")
+          $arrTp = $arrPath[$arrPath.Length - 2].split("-")
+          $tpName = $arrTp[1]
+          $jmxFileName = $arrpath[$arrPath.Length - 1] -replace ".jmx", ""
+          $arrPath = $arrPath[0..($arrPath.Length - 3)]
+
+          # check if - in string # Fix migration issue
+          if ($jmxFileName.Contains("-")) {
+            $jmxFileName = $jmxFileName.Substring(0, $jmxFileName.IndexOf("-")) + "*.jmx"
+          }
+          else {
+            $jmxFileName = $jmxFileName.Substring(0, 10) + "*.jmx"
+          }
+
+          # get file name if exists 1
+          $jmxSearchPath = ($arrPath -join "\" ) + "\" + $tpName + "\"
+          $filePath = Get-ChildItem -Path $jmxSearchPath -Filter $jmxFileName
+          if (-not $filePath) {
+            Write-Host "##[error] - Jmx File not found '$filePath'"
+            return
+          }
+          else {
+            Write-Host "##[section] - Jmx File found '$filePath'"
+            $TestPlanName = $filePath.BaseName
+          }
+        }
+
+        # open the jmx file in xml
+        try {
+          [xml]$xmlDoc = Get-Content -Path "$filePath"
+        }
+        catch {
+          Write-Host "##[error] - Error while loading '$filePath' file"
+          continue
+        }
+
+        if ($xmlDoc) {
+          # Create xml junit file with error message : no jtl results file found
+          $testSuite = $xmlJunit.CreateElement("testsuite")
+          $testSuite.SetAttribute("name", $TestPlanName)
+          $testSuite.SetAttribute("package", "JmeterIntegrationTests")
+          $testSuite.SetAttribute("hostname", "Azure DevOps")
+          $testSuite.SetAttribute("time", "0")
+          $testSuite.SetAttribute("tests", "1")
+          $testSuite.SetAttribute("failures", "1")
+          $testSuite.SetAttribute("errors", "0")
+
+          # get all test case from jmx file
+          $threads = $xmlDoc.SelectNodes("//ThreadGroup") | Where-Object { $_.enabled -ne "false" } | Sort-Object -Property testname
+          foreach ($thread in $threads) {
+            $tcOps = $thread.SelectNodes("//HTTPSamplerProxy | //JDBCSampler ") | Where-Object { $_.enabled -ne "false" }
+
+            foreach ($tcOp in $tcOps) {
+              # add test case to junit file
+              $tc = $xmlJunit.CreateElement("testcase")
+              $tc.SetAttribute("classname", "httpSample")
+              $tc.SetAttribute("name", $tcOp.testname)
+              $tc.SetAttribute("time", "0")
+              $testSuite.AppendChild($tc) | Out-Null
+
+              # create node error
+              $err = $xmlJunit.CreateElement("error")
+              $err.SetAttribute("message", "Result file not found")
+              $err.SetAttribute("type", "exception")
+              $tc.AppendChild($err) | Out-Null
+            }
+          }
+
+          # set testsuite attributes
+          $testSuite.SetAttribute("time", "0")
+          $testSuite.SetAttribute("tests", $testSuite.testcase.Count)
+          $testSuite.SetAttribute("failures", $testSuite.testcase.Count)
+          $testSuite.SetAttribute("errors", "0")
+
+          Write-Host "##[section] - Get '$TestPlanName' Junit file with full errors from jmx done!" -ForegroundColor Green
+        }
+
+        return $testSuite
+      }
+
+      function Merge-JunitResultFiles {
+        param(
+          [Parameter(Mandatory = $true)][string]$InputPath,
+          [Parameter(Mandatory = $true)][string]$OutputPath,
+          [Parameter(Mandatory = $true)][string]$CampaingsPath
+        )
+
+        Write-Host "##[info] - Merge junit result file '$InputPath'"
+        Write-Host "##[debug]   to '$OutputPath'"
+
+        # Open output file as xml if exists
+        $outputXml = New-Object System.Xml.XmlDocument
+        if (Test-Path $OutputPath) {
+          $outputXml.Load($OutputPath)
+        }
+        else {
+          $outputXml.AppendChild($outputXml.CreateXmlDeclaration("1.0", "UTF-8", $null)) | Out-Null
+          $testsuites = $outputXml.CreateElement("testsuites")
+          $testsuites.SetAttribute("tests", "0")
+          $testsuites.SetAttribute("errors", "0")
+          $testsuites.SetAttribute("failures", "0")
+          $outputXml.AppendChild($testsuites ) | Out-Null
+          $outputXml.Save($OutputPath)
+        }
+
+        # Get node testsuites
+        $tssOut = $outputXml.SelectSingleNode("testsuites")
+        try {
+          $xml = New-Object System.Xml.XmlDocument
+          $xml.Load("$InputPath")
+
+          # Add xml.testsuites.testsuite to outputXml.testsuites
+          $xml.testsuites.testsuite | ForEach-Object {
+            $tssOut.AppendChild($outputXml.ImportNode($_, $true)) | Out-Null
+          }
+
+          # Update testsuite attributes
+          $outputXml.testsuites.testsuite | ForEach-Object {
+            $testCases = $_.testcase.Count
+            $errors    = $_.testcase | Where-Object { $_.error } | Measure-Object
+            $failures  = $_.testcase | Where-Object { $_.failure } | Measure-Object
+
+            $_.SetAttribute("tests", $testCases)
+            $_.SetAttribute("errors", $errors.Count)
+            $_.SetAttribute("failures", $failures.Count)
+          }
+        } catch {
+          Write-Host "##[warning] - Error while loading junit resultfile to merge, get junit errors file from jmx " -ForegroundColor Yellow
+          ## Add all erros from jmx file
+          $arr = $InputPath.Split("\")
+          $testPlanName = $arr[$arr.Length - 2]
+          $arrCampaign  = $arr[$arr.Length - 3].Split("-")
+          $jmxFilePath  = "$CampaingsPath" + "\" +$arrCampaign[1] + "\" + $testPlanName + ".jmx"
+
+          $tsOut = Get-JunitErrorFromJmx -TestPlanName $testPlanName -jmxFilePath $jmxFilePath -xmlJunit $outputXml
+          if ($tsOut) {
+              $tssOut.AppendChild($tsOut) | Out-Null
+              Write-Host "##[info] - Add All TestCase Errors to merge file done" -ForegroundColor Blue
+          }
+          continue
+        }
+
+        # Save output file
+        $outputXml.Save($OutputPath)
+        Write-Host "##[section] - Merge junit result file '$InputPath' done!"
+      }
+
+      # Create output document
+      $junitXml = New-Object System.Xml.XmlDocument
+      $junitXml.AppendChild($junitXml.CreateXmlDeclaration("1.0", "UTF-8", $null)) | Out-Null
+      $junitXml.AppendChild($junitXml.CreateElement("testsuites")) | Out-Null
+      $junitXml.Save($jUnitCampaignFilePath)
+
+      $tssOut = $junitXml.SelectSingleNode("testsuites")
+
+      foreach ($tp in $tps) {
+        $tpJtlPath = "$($tp.FullName)\$($tp.Name)-results.jtl"
+        $tpJunitPath = "$($tp.FullName)\$($tp.Name)-results.xml"
+        $tpLogPath = "$($tp.FullName)\$($tp.Name).xml"
+
+        if (Test-Path -Path $tpJtlPath) {
+          Write-Host "##[debug] - Convert '$($tp.Name)' JTL results to JUnit format ..."
+          Write-Host "##[command] - cmd> '$fix' '$tpJtlPath' '$tpJunitPath' "
+
+          # Convert Jtl to Junit
+          python "$JtlToJunitPyScript" "$tpJtlPath" "$tpJunitPath"
+
+          Write-Host "##[debug] - JTL results converted to JUnit format done. '$tpJunitPath'"
+
+          if (-not (Test-Path -Path $tpJunitPath)) {
+            Write-Host "##[warning] - Convert Error - JUnit results file not found '$tpJtlPath'"
+
+            # Create junit file with error message : no jtl file found
+            $jmxPath = "$CampaingsPath\$campaignName\$($tp.Name).jmx"
+            New-JunitFullErrorsFromJmx -TestPlanName $tp.Name -jUnitFileName $tpJunitPath -jmxFilePath $campaignFilePath  -jmxFilePath $jmxPath
+
+            Write-Host "##[section] - JTL results converted to JUnit format sucessfull. '$tpJunitPath'"
+          }
+
+          # Merge junit tp results to junit campaign results
+          Write-Host "##[debug] - Merge '$tpJunitPath' JUnit results to JUnit campaign results ..."
+          Merge-JunitResultFiles -InputPath $tpJunitPath -OutputPath $jUnitCampaignFilePath -CampaingsPath $campaignsFolderPath
+        }
+        elseif (Test-Path -Path $tpLogPath) {
+          Write-Host "##[warning] - Doublon dossier result. Log file found '$($tp.Name)'"
+          Add-Content -Path "$campaignPbFilePath" -Value "##[warning] - Doublon dossier result. Log file found '$($tp.Name)'"
+        }
+        else {
+          Write-Warning "##[error] - JTL & Log files not found for TP '$($tp.Name)'"
+          Add-Content -Path "$campaignPbFilePath " -Value "##[error] - JTL & Log files not found for TP '$($tp.Name)'"
+        }
+      }
+
+      # Set variable for test result file
+      $jUnitCampaignFilePath = (resolve-path -path "$jUnitCampaignFilePath").Path.ToString()
+      Write-Host "##[section] - JTL results converted to JUnit format sucessfull. '$jUnitCampaignFilePath'"
+
+- task: powershell@2
+  displayName: 'Group Tests Results Campaign ${{ parameters.campaignTitle }} by TestCaseCode for leagcy result'
+  condition: eq(variables['vartest.ReportLegacy'], 'true')
+  continueOnError: ${{ parameters.continueOnError }}
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+
+      # Get variables
+      $resultFolderPath         = "$(vartest.ResultFolder)"
+      $campaignTitle            = "${{ parameters.campaignTitle }}"
+      $jUnitCampaignFilePath    = "$(vartest.ResultFile)"
+      $jUnitOriCampaignFilePath = "$(vartest.ResultFile).ori"
+
+      function Group-JunitFileByTestCases {
+        param(
+          [Parameter(Mandatory = $true)][string]$InputPaths,
+          [Parameter(Mandatory = $true)][string]$OutputPath,
+          [Parameter(Mandatory = $false)][string]$CampaignTitle
+        )
+
+        # Open output file as xml
+        $outputXml = New-Object System.Xml.XmlDocument
+        $outputXml.AppendChild($outputXml.CreateXmlDeclaration("1.0", "UTF-8", $null)) | Out-Null
+        $outputXml.AppendChild($outputXml.CreateElement("testsuites")) | Out-Null
+        $outputXml.Save($OutputPath)
+
+        # Get node testuitea
+        $tssOut = $outputXml.SelectSingleNode("testsuites")
+        $tssOut.SetAttribute("campaign", $CampaignTitle)
+
+        # Open input file as xml
+        $xml = New-Object System.Xml.XmlDocument
+        $xml.Load($InputPaths)
+
+        foreach ($ts in $xml.testsuites.testsuite) {
+          $errCount = 0
+          $tcNames = @()
+
+          $tcNames = $ts.testcase | ForEach-Object {
+            $arr = $_.name.split(" - ")
+            if ($arr.Length -gt 2) {
+              $arr[0] + " - " + $arr[1]
+            } else {
+              $_.name
+            }
+          } | Select-Object -Unique
+
+          write-host "[info] - Process TestPlan '$($ts.name)' with $($tcNames.Count) TestCase(s)"
+
+          # Create testuite node
+          $tsOut = $outputXml.CreateElement("testsuite")
+          $tsOut.SetAttribute("name", $ts.name.replace(".jtl", ""))
+          $tsOut.SetAttribute("package", $ts.package)
+          $tsOut.SetAttribute("hostname", $ts.hostname)
+
+          foreach ($tcName in $tcNames) {
+            # Get test case from ts where name startWith tcName
+            $tcs = $ts.testcase | Where-Object { $_.name -like "$tcName -*" }
+            $tcTime = ($tcs | Measure-Object -Property time -Sum).Sum
+            $tce = $tcs | Where-Object { $_.error }
+            $failMessages = $tce | ForEach-Object {
+              $arr = $_.name.split(" - ")
+              if ($arr.Length -gt 2) {
+                $arr[2] + ':' + $_.error.message
+              } else {
+                $_.error.message
+              }
+            }
+            # Create testcase node
+            $tcOut = $outputXml.CreateElement("testcase")
+            $tcOut.SetAttribute("name", $tcName)
+            $tcOut.SetAttribute("classname", "httpSample")
+            $tcOut.SetAttribute("time", $tcTime)
+
+            if ($failMessages) {
+              $tcErr = $outputXml.CreateElement("error")
+              # Check failMessages is array
+              if ($failMessages -is [array]) {
+                $failMessages = $failMessages -join " ;| "
+              }
+              $tcErr.SetAttribute("message", $failMessages)
+              $tcOut.AppendChild($tcErr) | Out-Null
+              $errCount++
+            }
+
+            # Add testcase to testsuite
+            $tsOut.AppendChild($tcOut) | Out-Null
+          }
+
+          $tsOut.SetAttribute("tests", $tsOut.testcase.Count)
+          $tsOut.SetAttribute("failures", $errCount)
+          $tsOut.SetAttribute("errors", 0)
+          $tsOut.SetAttribute("time", "{0:N3}" -f (($tsOut.testcase | Measure-Object -Property time -Sum).Sum))
+          # Add testsuite to testsuites
+          $tssOut.AppendChild($tsOut) | Out-Null
+        }
+
+        # Set testsuites attributes
+        $tssOut.SetAttribute("testsuites", $tssOut.testsuite.Count)
+        $tssOut.SetAttribute("testcases", $tssOut.testsuite.testcase.Count)
+        $tssOut.SetAttribute("failures", (($tssOut.testsuite | Measure-Object -Property failures -Sum).Sum))
+        $tssOut.SetAttribute("errors", 0)
+        $tssOut.SetAttribute("time", "{0:N3}" -f (($tssOut.testsuite.testcase | Measure-Object -Property time -Sum).Sum))
+        $tssOut.SetAttribute("reportLegacy", $true)
+
+        # Save output file
+        $outputXml.Save($OutputPath)
+        write-host "##[debug] - Output file saved '$OutputPath'"
+      }
+
+      # Move file jUnitCampaignFilePath to jUnitOriCampaignFilePath
+      Write-Host "##[debug] - Backup file '$jUnitCampaignFilePath' to '$jUnitOriCampaignFilePath'" -ForegroundColor White
+      Move-Item -Path $jUnitCampaignFilePath -Destination $jUnitOriCampaignFilePath -Force
+
+      # Create junit group document
+      Write-Host "##[debug] - Group Test By TC for results Junit '$jUnitCampaignFilePath'" -ForegroundColor White
+      Group-JunitFileByTestCases -InputPaths $jUnitOriCampaignFilePath -OutputPath $jUnitCampaignFilePath
+      Write-Host "##[section] - Grouping JUnit results by TestCaseCode sucessfull." -ForegroundColor Green
+
+# export errors found to the file $campaignTitle-errors.csv
+- task: PowerShell@2
+  displayName: 'Extract errors from Junit results for Campaign ${{ parameters.campaignTitle }}'
+  continueOnError: ${{ parameters.continueOnError }}
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      # Get variables
+      $resultFolderPath = "$(vartest.ResultFolder)"
+      $campaignTitle = "${{ parameters.campaignTitle }}"
+      $jUnitCampaignFilePath =  "$(vartest.ResultFile)"
+      $csvFilePath = "$resultFolderPath\$campaignTitle-errors.csv"
+
+      function  New-ReportErrorCsv {
+        param(
+          [Parameter(Mandatory = $true)][string]$JunitPath,
+          [Parameter(Mandatory = $true)][string]$OutputCsvPath
+        )
+
+        $directoryName = Split-Path -Path $JunitPath -Parent
+        $xmlData = [xml](Get-Content -Path $JunitPath)
+        $outputCsv = @()
+
+        $xmlData.testsuites.testsuite | Where-Object { $_.testcase.error } | ForEach-Object {
+          $tpName = $($_.name) -replace '\.jtl$', ''
+          $tp = ""
+          $tc = ""
+          $operation = ""
+          $detailsFilePath = Join-Path -Path $directoryName -ChildPath ($tpName + "\" + $tpName + ".xml")
+
+          Write-Host "##[debug] - Get Q/A file '$detailsFilePath'"
+
+          if (Test-Path -Path $detailsFilePath) {
+              $xmlDetails = [xml](Get-Content -Path $detailsFilePath)
+              Write-Host "##[section] - Get Q/A file done!"
+          }
+          else {
+              Write-Host "##[warning] - Get Q/A file not found."
+              $xmlDetails =  $null
+          }
+
+          $_.testcase | Where-Object { $_.error } | ForEach-Object {
+              $tp = "$($_.name.split(' - ')[0])"
+              $tc = "$($_.name.split(' - ')[1])"
+              $firstOperation = $_.error.message.split(';|')[0]
+              $operation  = $firstOperation.split(':')[0]
+              $opError    = $firstOperation.split(':')[1]
+              $resError   = ""
+              $jmxQuery   = ""
+              $jmxPayload = ""
+
+              Write-Host "##[debug] - TP: $tp - TC: $tc - Operation: $operation"
+
+              if ($null -ne $xmlDetails) {
+                  # Operation request Http
+                  if (($operation -match "GET Token AuthServer") -Or
+                      ($operation -match "B-XQuery")) {
+                      $httpSample = $xmlDetails.testResults.httpSample | Where-Object { $_.lb -eq "$tp - $tc - $operation" }
+                      if ($httpSample) {
+                          $resError = $httpSample.responseData.'#text'
+                          $jmxQuery = $httpSample.'java.net.URL'
+                          $jmxPayload = $httpSample.queryString.'#text'
+
+                          if ($jmxPayload.Length -gt 4000) {
+                              $jmxPayload = $jmxPayload.Substring(0, 4000) + " (Data truncated !)"
+                          }
+                      }
+                  } # Operation request Sql
+                  elseif (($operation -match "A-PreQuery") -Or
+                          ($operation -match "C-PostQuery") -Or
+                          ($operation -match "D-FinalQuery")) {
+                      $sample = $xmlDetails.testResults.sample | Where-Object { $_.lb -eq "$tp - $tc - $operation" }
+                      if ($sample) {
+                          $resError   = $sample.responseData.'#text'
+                          $jmxQuery   = $sample.responseHeader.'#text'
+                          $jmxPayload = $sample.samplerData.'#text'
+                      }
+                  }
+
+              }
+
+              $outputCsv += [pscustomobject]@{
+                  TestPlan    = $tp
+                  TestCase    = $tc
+                  Operation   = $operation
+                  OpError     = $opError
+                  XmlResError = $resError
+                  JmxQuery    = $jmxQuery
+                  JmxPayload  = $jmxPayload
+              }
+          }
+        }
+
+        $outputCsv | ConvertTo-Csv -NoTypeInformation -Delimiter ';' | Out-File -FilePath $OutputCsvPath -Encoding UTF8
+      }
+
+      # run script .\Scripts\extract-errors.ps1
+      Write-Host "Extract errors from Junit results for Campaign $campaignTitle -resultFilePath $jUnitCampaignFilePath -outputCsvFilePath $csvFilePath"
+      New-ReportErrorCsv -JunitPath $jUnitCampaignFilePath -OutputCsvPath $csvFilePath
+
+      Write-Host "##[section]CSV error report for Campaign '$campaignTitle' in '$csvFilePath'"
+
+# Check if tests has error and set var hasTestFailed to true
+- task: PowerShell@2
+  displayName: 'Check Test campaign Result for error'
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+
+      # Check if at least one test failed for campaign
+      $campaignTitle = "${{ parameters.campaignTitle }}"
+
+      Write-Host ""##[debug] - Check if at least one test failed for campaign '$campaignTitle'" -ForegroundColor White
+      Write-Host "- Result file '$(vartest.ResultFile)'"
+      Write-Host("##vso[task.setvariable variable=hasTestFailed]{0};isOutput=true;" -f $true)
+      $xml = [xml](Get-Content -Path "$(vartest.ResultFile)")
+      if ($xml -eq $null) {
+        Write-Host "##[error] Jmeter '$campaignTitle' results not found"
+        exit 1
+      }
+
+      # If at least one test failed do not clean environnement
+      $xml.testsuites.testsuite.testcase.error
+      if ($errors.Length -gt 0) {
+        Write-Host "##[info] Jmeter '$campaignTitle' test campaign ended with $count errors."
+        exit 1
+      }
+      Write-Host("##vso[task.setvariable variable=hasTestFailed]{0};isOutput=true;" -f $false)
+      Write-Host "##[info] Jmeter '$campaignTitle' test campaign successfully completed."
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  continueOnError: ${{ parameters.continueOnError }}
+  inputs:
+    testRunTitle: '${{ parameters.campaignTitle }}'
+    mergeTestResults: true
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '$(vartest.ResultFile)'
+    failTaskOnFailedTests: true
+    publishRunAttachments: true

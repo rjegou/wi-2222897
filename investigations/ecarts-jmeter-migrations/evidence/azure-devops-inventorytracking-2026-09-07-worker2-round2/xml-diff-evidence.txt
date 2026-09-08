@@ -1,0 +1,28 @@
+PROVENANCE: Azure DevOps cegid/Retail, collected 2026-09-07, read-only, build logs and Git items API.
+
+MIGRATION REF
+refs/heads/InventoryTracking_Migration_AutoTest_Jmeter_On_master -> 4de185bb132cfbfb50643b6b53d6feb85508f4e2
+Builds: 4434070 (7.73, failed), 4432064 (7.71, failed), both at 4de185bb.
+
+MIGRATION SERVICES TESTS PROJECT
+ObjectId: 6d9c51077b37cc501e3dae9bb5224ae77f4f93e4 (same at 4de185bb and 20aa528)
+Reference: Cegid.Retail.XmlDiff
+HintPath: ..\Assemblies\Y2Core\Cegid.Retail.XmlDiff.dll
+
+MIGRATION EXTERNALS
+ObjectId: 08eed7dc917da2670e62f9386d4e9916968be123 (same at 4de185bb and 20aa528)
+Cegid.Retail.Y2.Core.Net.Full 26.0.0.1030
+Cegid.Retail.Common.Library 26.0.4.233
+FWK-CEGID-NET-FULL 12.9.181
+Cegid.Retail.Identity.Services 26.0.5.650
+
+PACKAGE DECLARATIONS
+Services.Tests/packages.config objectId d66e5635ea606652ae1679275b05d86c654a8068: Castle.Core, Moq, MSTest.TestAdapter, MSTest.TestFramework, System.Runtime.CompilerServices.Unsafe, System.Threading.Tasks.Extensions. No XmlDiff package.
+Master WebServices.Tests/packages.config objectId 7a7d9a8777d4cc634a64468d9cda7d2c4f855f6c: Cegid.Retail.XmlDiff 1.0.0; XMLDiffPatch 1.0.8.28.
+
+BUILD LOG FACTS
+4434070 log 44: Cegid.Retail.Y2.Core.Net.Full.26.0.0.1030 restored successfully; log 51: MSB3245, Assemblies\Y2Core\Cegid.Retail.XmlDiff.dll did not exist; four CS0103 at GlobalSettingsDtoConvertersUnitTest.cs lines 88, 159, 219, 293.
+4435986 log 45: compiler command uses Sln\packages\Cegid.Retail.XmlDiff.1.0.0\lib\net452\Cegid.Retail.XmlDiff.dll and copies it to Assemblies\Bin; Services.Tests then consumes Assemblies\Bin\Cegid.Retail.XmlDiff.dll.
+
+COMMIT CHANGE FACT
+4de185bb comment: dereferencement; parent 33bcac946d82dbb655c45b10693896286a98043f. Changes API reports deletion of /Cegid.Retail.InventoryTracking.WebServices.Tests and its packages.config. The same tree exists on master 20aa528.

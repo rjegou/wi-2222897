@@ -1,0 +1,65 @@
+﻿[
+    {
+        "Name":  "ISO apostrophÃ©e",
+        "Input":  "\u00272026-04-28\u0027",
+        "Expected":  "\u002720260428\u0027",
+        "Obtained":  "\u002720260428\u0027",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Date ambiguÃ«",
+        "Input":  "\u00272026-04-05\u0027",
+        "Expected":  "\u002720260405\u0027",
+        "Obtained":  "\u002720260405\u0027",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Date compacte",
+        "Input":  "\u002720260428\u0027",
+        "Expected":  "\u002720260428\u0027",
+        "Obtained":  "\u002720260428\u0027",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Motif hors date",
+        "Input":  "\u00272026/04/28\u0027",
+        "Expected":  "\u00272026/04/28\u0027",
+        "Obtained":  "\u00272026/04/28\u0027",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Date bissextile",
+        "Input":  "\u00272024-02-29\u0027",
+        "Expected":  "\u002720240229\u0027",
+        "Obtained":  "\u002720240229\u0027",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Deux dates SQL",
+        "Input":  "SELECT \u00272026-04-28\u0027, \u00272026-04-05\u0027",
+        "Expected":  "SELECT \u002720260428\u0027, \u002720260405\u0027",
+        "Obtained":  "SELECT \u002720260428\u0027, \u002720260405\u0027",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Texte sans date",
+        "Input":  "SELECT \u0027no date here\u0027",
+        "Expected":  "SELECT \u0027no date here\u0027",
+        "Obtained":  "SELECT \u0027no date here\u0027",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "ISO sans apostrophes",
+        "Input":  "2026-04-28",
+        "Expected":  "\u002720260428\u0027",
+        "Obtained":  "\u002720260428\u0027",
+        "Verdict":  "PASS"
+    },
+    {
+        "Name":  "Date-heure",
+        "Input":  "2026-04-28T12:34:56",
+        "Expected":  "\u00272026-04-28T12:34:56\u0027",
+        "Obtained":  "\u00272026-04-28T12:34:56\u0027",
+        "Verdict":  "PASS"
+    }
+]

@@ -1,0 +1,2 @@
+C:\Users\jegour\OneDrive - CEGID\Documents\repertoireTravailRon\missions\delivery-acceleration\context\WI-2222897\worktrees\InventoryTracking_Migration_AutoTest_Jmeter_On_master_worker2\Tests\WebServices.xml	0F2F6654C719E6F44443DC63027F9BF4A0958ECDB3C77AD5D78E59B88D868B2E
+C:\Users\jegour\OneDrive - CEGID\Documents\repertoireTravailRon\missions\delivery-acceleration\context\WI-2222897\worktrees\InventoryTracking_Migration_AutoTest_Jmeter_On_master_worker2\Tests\WebServices\001-DashBoard_GetDetail2.jmx	55822279B24ACC8374B0D97B643734D69302BD268221B5846D8521D69D511E47

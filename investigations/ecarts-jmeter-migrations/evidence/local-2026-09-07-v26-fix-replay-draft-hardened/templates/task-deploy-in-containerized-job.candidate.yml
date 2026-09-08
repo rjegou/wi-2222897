@@ -1,0 +1,275 @@
+# task-deploy-in-containerized-job.v2.yml
+# Yaml template to deploy y2 environment with Y2PlatfomrDeploy Tools inside an azure pipeline
+# Parameters
+#   platformDeployVersion            : Version of Y2PlatformDeploy to use - default is the last 2.x. 3.x and above are not supported
+#   artifactoryPackageFolder         : Artifactory folder used to download Y2PlatformDeploy package
+#                                      default : retail-software-production
+#   deployConfigFolder               : Folder containing configuration file
+#   deployConfigFile                 : Configuration filename
+#   LocalDBMode                      : LocalDB mode to use for deployment
+#                                    : can be : None or Backup
+#   databasesFolder                  : Folder containing databases to use
+#   RetailJfrogApiKey                : JFrog API Key to use for downloading packages
+#   artifactNameForLogsPublication   : Artifact name to use for deployment logs publication
+#   checkPrerequisites               : Check prerequisites before deployment ( default false )
+#                                      /!\ Should never be used when using a version 2.x og platformDeploy
+#   runTests                         : Run tests after deployment
+#   continueOnTestFailure            : Continue on test failure
+#   timeZoneId                       : Time zone to set before deployment ( default UTC )
+
+parameters:
+  - name: platformDeployVersion
+    type: string
+
+  - name: artifactoryPackageFolder
+    type: string
+    default: "retail-software-production"
+
+  - name: deployConfigFolder
+    type: string
+
+  - name: deployConfigFile
+    type: string
+
+  - name: databasesFolder
+    type: string
+
+  - name: retailJfrogApiKey
+    type: string
+
+  - name: artifactNameForLogsPublication
+    type: string
+    default: "Y2Deploy_Logs"
+
+  - name: checkPrerequisites
+    type: boolean
+    default: false
+
+  - name: dotnetMajorVersion
+    type: number
+    default: 8
+
+  - name: pwshMinVersion
+    type: string
+    default: "7.4"
+
+  - name: runTests
+    type: boolean
+    default: true
+
+  - name: continueOnTestFailure
+    type: boolean
+    default: false
+
+  - name: timeZoneId
+    type: string
+    default: "UTC"
+
+steps:
+- task: PowerShell@2
+  displayName: 'Set Time zone Id to ${{ parameters.timeZoneId }}'
+  condition: succeededOrFailed()
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      # Set the time zone
+      Set-TimeZone -Id "${{ parameters.timeZoneId }}"
+      Write-Output "Time zone changed to '${{ parameters.timeZoneId }}'."
+
+- ${{ if startsWith(parameters['platformDeployVersion'], 'lastV') }}:
+  - template: ./JFrog/task-search-artifact-buildnumber.v1.yml@azoTemplates
+    parameters:
+      artifactPattern: "${{ parameters.artifactoryPackageFolder }}/Y2.Tools.PlatformDeploy/PlatformDeploy.${{ replace(parameters.platformDeployVersion, 'lastV','') }}.*"
+      buildNumberOutPutVarName: foundPlatformDeployVersion
+- ${{ else }}:
+  - task: PowerShell@2
+    displayName: 'Fixed platformDeploy version'
+    inputs:
+      targetType: 'inline'
+      pwsh: true
+      script: |
+          Write-Host "wanted version = ${{parameters.platformDeployVersion}}"
+          Write-Host("##vso[task.setvariable variable=foundPlatformDeployVersion]{0}" -f "${{parameters.platformDeployVersion}}" )
+
+- task: PowerShell@2
+  displayName: 'Validate Version'
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      # A raw numeric build ID (e.g. 3977694) is a valid way to pin a specific build for
+      # dev/test runs — skip the SemVer range check in that case.
+      if ("$(foundPlatformDeployVersion)" -match '^\d+$')
+      {
+        Write-Host "Raw build ID $(foundPlatformDeployVersion) — skipping version-range check"
+      }
+      else
+      {
+        $deployVersion = [Version]"$(foundPlatformDeployVersion)"
+        if ($deployVersion -lt [Version]"2.1")
+        {
+          throw "PlatformDeploy version must be at least 2.1.0"
+        }
+        if ($deployVersion -ge [Version]"6.0")
+        {
+          throw "PlatformDeploy version must be 2.1.*, 4.* or 5.*"
+        }
+      }
+
+- task: JFrogGenericArtifacts@1
+  inputs:
+    command: Download
+    buildName: "Y2.Tools.PlatformDeploy"
+    buildNumber: "$(platformDeployVersion)"
+    connection: ArtifactoryCloudV2-Retail
+    fileSpec: |
+      {
+        "files": [
+          {
+            "pattern": "${{ parameters.artifactoryPackageFolder }}/Y2.Tools.PlatformDeploy/PlatformDeploy.$(foundPlatformDeployVersion).zip",
+            "target": "$(Agent.TempDirectory)/"
+          }
+        ]
+      }
+    failNoOp: true
+
+- task: ExtractFiles@1
+  displayName: 'Install PlatformDeploy.$(foundPlatformDeployVersion)'
+  inputs:
+    archiveFilePatterns: '$(Agent.TempDirectory)/Y2.Tools.PlatformDeploy/PlatformDeploy.$(foundPlatformDeployVersion).zip'
+    destinationFolder: '$(Agent.TempDirectory)/Deploy'
+    cleanDestinationFolder: true
+
+- ${{ if eq(parameters['checkPrerequisites'], 'true') }}:
+  - task: PowerShell@2
+    displayName: 'Check prerequisites'
+    inputs:
+      filePath: '$(Agent.TempDirectory)/Deploy/Scripts/check-prerequisites.ps1'
+      arguments: '-DotnetMajorVersion ${{ parameters.dotnetMajorVersion }} -PwshMinVersion "${{ parameters.pwshMinVersion }}"'
+      pwsh: true
+
+- task: PowerShell@2
+  displayName: 'Configure Cegid.Retail.JfrogCli'
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      # Configure jfrog access
+      $retailJFrogCli="$(Agent.TempDirectory)\Deploy\Tools\Cegid.Retail.JFrogCli\Cegid.Retail.JFrog.Cli.exe"
+      if ((Test-Path "$retailJFrogCli") -eq $FALSE) # Compatibilité V2
+      {
+        $retailJFrogCli="$(Agent.TempDirectory)\Deploy\Tools\Cegid.Retail.JfrogCli\tools\Cegid.Retail.JFrog.Cli.exe"
+      }
+      Write-Host ("Tools = $retailJFrogCli")
+      Write-Host ("Configure jfrog access to $retailJFrogCli")
+
+      # use & syntaxe to have standard output on pipeline logs ( unlike start process )
+      $params = "config", "jfrog", "${{parameters.RetailJfrogApiKey}}"
+      & $retailJFrogCli @params
+
+      Write-Host("##vso[task.setvariable variable=jFrogCliDeployed]Yes")
+
+- task: CopyFiles@2
+  displayName: 'Copy databases'
+  condition: succeeded()
+  inputs:
+    SourceFolder: '${{ parameters.databasesFolder }}'
+    Contents: '**'
+    TargetFolder: '$(Agent.TempDirectory)\Deploy\Docker\data'
+    OverWrite: true
+
+- task: CopyFiles@2
+  displayName: 'Copy config file'
+  inputs:
+    SourceFolder: '${{ parameters.deployConfigFolder }}'
+    Contents: '${{ parameters.deployConfigFile }}'
+    TargetFolder: '$(Agent.TempDirectory)\Deploy\Docker\data'
+    OverWrite: true
+
+- task: PowerShell@2
+  displayName: 'Launch Y2 deployment'
+  # pwsh:true is intentionally absent: docker-pipeline-deploy.ps1 is a PS5.1-safe wrapper
+  # that self-re-invokes with pwsh.exe when needed (V4+), while V2 packages run natively
+  # in PS5.1 where WebAdministration objects retain their methods (no WinPS compat shim).
+  # To do: restore pwsh:true (and simplify the wrapper) once lastV2 is no longer in use.
+  inputs:
+    filePath: '$(Agent.TempDirectory)\Deploy\docker-pipeline-deploy.ps1'
+    arguments: >
+        -deployConfig "$(Agent.TempDirectory)\Deploy\Docker\data\${{parameters.deployConfigFile}}"
+        -RetailJfrogApiKey "${{parameters.RetailJfrogApiKey}}"
+        -LocalDBInContainer "Backup"
+        -verbose
+
+- task: PowerShell@2
+  displayName: 'Clear config for Cegid.Retail.JfrogCli'
+  condition: and(succeededOrFailed(), eq(variables['jFrogCliDeployed'], 'Yes'))
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      $retailJFrogCli="$(Agent.TempDirectory)\Deploy\Tools\Cegid.Retail.JFrogCli\Cegid.Retail.JFrog.Cli.exe"
+      if ((Test-Path "$retailJFrogCli") -eq $FALSE) # Compatibilité V2
+      {
+        $retailJFrogCli="$(Agent.TempDirectory)\Deploy\Tools\Cegid.Retail.JfrogCli\tools\Cegid.Retail.JFrog.Cli.exe"
+      }
+      Write-Host ("Tools = $retailJFrogCli")
+      Write-Host ("Clear Cegid.Retail.jFrogCli configuration")
+
+      # use & syntaxe to have standard output on pipeline logs ( unlike start process )
+      $params = "config", "clear", "jfrog"
+      & $retailJFrogCli @params
+
+- task: PowerShell@2
+  displayName: 'Detect Y2 Version installed'
+  condition: succeededOrFailed()
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      # Get first kits subfolder name
+      $ver = (Get-ChildItem -Path "$(Agent.TempDirectory)\Deploy\Kits" -Force | Where-Object { $_.PSIsContainer } | Select-Object -First 1).Name
+      Write-Host("Y2 Version installed : $ver")
+      Write-Host("##vso[task.setvariable variable=y2CoreVersion]{0}" -f $ver )
+      # Set y2KitFolder to get common version from E_IIS_SERVER_RETAIL.XML for Y2 Major Version < 20
+      # => Used into template : .\task-extract-vars.v2.yml
+      Write-Host("Y2 Kits Folder")
+      Write-Host("##vso[task.setvariable variable=y2KitFolder]{0}" -f "$(Agent.TempDirectory)\Deploy\Kits\$ver")
+
+- task: CopyFiles@2
+  displayName: 'Add config file in logs'
+  inputs:
+    SourceFolder: '$(Agent.TempDirectory)\Deploy\Docker\data'
+    Contents: '${{ parameters.deployConfigFile }}'
+    TargetFolder: '$(Agent.TempDirectory)\Deploy\Kits\$(y2CoreVersion)\logs'
+    OverWrite: true
+
+- task: CopyFiles@2
+  displayName: 'Add downloaded packages info in logs'
+  inputs:
+    SourceFolder: '$(Agent.TempDirectory)\Deploy\Kits\$(y2CoreVersion)'
+    Contents: 'downloadedPackages.json'
+    TargetFolder: '$(Agent.TempDirectory)\Deploy\Kits\$(y2CoreVersion)\logs'
+    OverWrite: true
+
+- task: ArchiveFiles@2
+  displayName: 'Archive Logs ( MSI and Cptx integration )'
+  condition: succeededOrFailed()
+  inputs:
+    rootFolderOrFile: '$(Agent.TempDirectory)\Deploy\Kits\$(y2CoreVersion)\logs'
+    includeRootFolder: false
+    archiveFile: '$(Agent.TempDirectory)\Deploy\Y2-Deployment-Logs.zip'
+
+- task: PowerShell@2
+  displayName: 'Test Y2 deployment'
+  condition: and(succeeded(), eq( ${{parameters.runTests}}, true))
+  # pwsh:true intentionally absent — see comment on 'Launch Y2 deployment' step.
+  # test-container.ps1 is a PS5.1-safe wrapper that self-re-invokes with pwsh.exe for V4+.
+  # To do: restore pwsh:true once lastV2 is no longer in use.
+  inputs:
+    filePath: '$(Agent.TempDirectory)\Deploy\Scripts\test-container.ps1'
+    arguments: >
+        -dockerCy2px  "$(Agent.TempDirectory)\Deploy\Docker\data\${{parameters.deployConfigFile}}"
+        -coreVersion "$(y2CoreVersion)"
+        -verbose
+    continueOnError: ${{parameters.continueOnTestFailure}}

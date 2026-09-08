@@ -1,0 +1,7 @@
+item,source,identifier,result,classification
+historical-yaml,local immutable source snapshot,Y2_Plugins_FrenchTaxesRules-v5-build-4429167/azure-pipelines.yml:27-38;94-97,logical ACR repository/tag plus endpoint,FACT
+historical-build,Azure DevOps build 4429167 log 15,acrRepositoryName and az acr manifest digest,repository logical path and digest match,FACT
+service-connection,Azure DevOps endpoint metadata,AzureContainerRegistry-Docker-Retail resource AcrRetailDocker,loginServer not exposed,FACT/UNKNOWN
+preflight-pull,Azure DevOps run 4441719 log 7,unqualified docker pull,denied ambiguous registry,FACT
+jfrog-manifest,authenticated JFrog Docker API,all-docker/y2-jmeter manifest,HTTP 200 digest 268476...,FACT
+local-patch,replay-prep/2026-09-07-v22-preflight/image-reference-correction.local.patch,adds inferred hostname only,not pushed or queued,PROPOSAL

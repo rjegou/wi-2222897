@@ -1,0 +1,12 @@
+package	version	source	local_nupkg	sha256	project_reference_status
+CommonServiceLocator	1.3	nuget.org	packages/CommonServiceLocator.1.3/CommonServiceLocator.1.3.nupkg	B6826C427C0223FF7E8F341E3441DA6D1B8E0D172FDB405054BA6BFB76917078	HintPath DLL present
+Unity	4.0.1	nuget.org	packages/Unity.4.0.1/Unity.4.0.1.nupkg	22CCEFA0F0726AE670A61FB70E90CC5D1C6596EE768B27EA7DE71236152AC548	both net45 DLLs present
+Prism.Core	6.1.0	nuget.org	packages/Prism.Core.6.1.0/Prism.Core.6.1.0.nupkg	192EBE3EF1BD08C71961D3145B5A343BBF9D2587AA90388C4D1E27493BA33F72	Prism.dll present
+Prism.Wpf	6.1.0	nuget.org	packages/Prism.Wpf.6.1.0/Prism.Wpf.6.1.0.nupkg	14AAC89F0BAF80847F523DD375A1A06FE52F9C9D0024807AD74D9579967DCB3D	Prism.Wpf.dll present
+Prism.Unity	6.1.0	nuget.org	packages/Prism.Unity.6.1.0/Prism.Unity.6.1.0.nupkg	B41C8C1F2133B82BBA2926F0DE94CE32CB3121CF362A0CEC3117562F5C1B7C4B	expected DLL name absent
+Microsoft.NETFramework.ReferenceAssemblies.net452	1.0.3	nuget.org	packages/Microsoft.NETFramework.ReferenceAssemblies.net452.1.0.3/Microsoft.NETFramework.ReferenceAssemblies.net452.1.0.3.nupkg	4533EE146F03EE09F020D12812D02A9959B8A135BC2B867CEEFD68E030DE2CC2	mscorlib/System refs present
+Cegid.Retail.AutoTest.Model	1.0.6	Artifactory all-nuget	packages-private/Cegid.Retail.AutoTest.Model.1.0.6/Cegid.Retail.AutoTest.Model.1.0.6.nupkg	E5F4ADF4F997DDFD742F265212B8C91FD9410CBBCDC815C2F756EE23D7BB3D62	DLL present
+Cegid.Retail.CompareFileStream	1.0.0	Artifactory all-nuget	packages-private/Cegid.Retail.CompareFileStream.1.0.0/Cegid.Retail.CompareFileStream.1.0.0.nupkg	D2F792B736800FC56F004AC789849002BCC8C67A1F00C409EAF2D3AD022F3587	DLL present
+Cegid.Retail.IndentText	1.0.0	Artifactory all-nuget	packages-private/Cegid.Retail.IndentText.1.0.0/Cegid.Retail.IndentText.1.0.0.nupkg	85E4BD4C4750A463D45C20CC31979C93991A9A87988087CE065C40B1DC63B242	DLL present
+Cegid.Retail.Svn	1.0.2	Artifactory all-nuget	packages-private/Cegid.Retail.Svn.1.0.2/Cegid.Retail.Svn.1.0.2.nupkg	8374B5051F7289E56F3BB2706E63893CEA7841FCF1B8AC96FA95FDA57C734FAB	DLL present
+Cegid.Retail.XmlDiff	1.0.3	Artifactory all-nuget	packages-private/Cegid.Retail.XmlDiff.1.0.3/Cegid.Retail.XmlDiff.1.0.3.nupkg	1FDCC0CB64482B30626446E6DD5DACC34E523C2CD775CA877BEEFD1614EE4BF2	three DLLs present

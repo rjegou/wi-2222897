@@ -1,0 +1,37 @@
+﻿========== JMETER 5.6.3 REAL XPATH TEST ==========
+Date: 2026-09-07 11:32:04
+
+COMPILE EXIT CODE: 0
+RUN EXIT CODE: 0
+
+========== HARNESS OUTPUT ==========
+CASE: SOAP11_PREFIXED_FAULT
+XPATH: //Fault
+NAMESPACE: false
+FAILURE: true
+ERROR: false
+MESSAGE: No Nodes Matched //Fault
+
+CASE: SOAP11_NO_FAULT
+XPATH: //Fault
+NAMESPACE: false
+FAILURE: true
+ERROR: false
+MESSAGE: No Nodes Matched //Fault
+
+CASE: UNPREFIXED_FAULT
+XPATH: //Fault
+NAMESPACE: false
+FAILURE: false
+ERROR: false
+MESSAGE: 
+
+CASE: OTHER_PREFIXED_FAULT
+XPATH: //Fault
+NAMESPACE: false
+FAILURE: true
+ERROR: false
+MESSAGE: No Nodes Matched //Fault
+
+
+===================================================

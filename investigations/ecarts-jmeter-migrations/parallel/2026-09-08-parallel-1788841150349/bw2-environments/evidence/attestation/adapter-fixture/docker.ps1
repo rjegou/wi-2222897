@@ -1,0 +1,1 @@
+Write-Output '{"Id":"0123456789abcdef","State":{"Running":true},"Config":{"Image":"registry.example/y2-jmeter@sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"},"Mounts":[{"Source":"C:\\job-temp","Destination":"C:\\job-temp","RW":true}],"NetworkSettings":{"Networks":{"job-net":{}},"Ports":{}}}'

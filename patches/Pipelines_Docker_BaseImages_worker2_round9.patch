@@ -1,0 +1,162 @@
+# Travail non committe extrait le 2026-09-08
+# worktree : Pipelines_Docker_BaseImages_worker2_round9
+# branche  : HEAD
+# HEAD     : e3b674b007071259fd74b024f6b4b48baf0a7f5d
+# Reapplication : git -C <clone> apply Pipelines_Docker_BaseImages_worker2_round9.patch
+#
+diff --git a/validation/WI-2222897/sql-fulltext-hosted-build.yml b/validation/WI-2222897/sql-fulltext-hosted-build.yml
+index 03f1065..57a35c5 100644
+--- a/validation/WI-2222897/sql-fulltext-hosted-build.yml
++++ b/validation/WI-2222897/sql-fulltext-hosted-build.yml
+@@ -24,25 +24,64 @@ stages:
+         if ($LASTEXITCODE -ne 0) { throw 'SQL 2019 Docker build failed' }
+         $container = 'sql-fulltext-smoke-2019-$(Build.BuildId)'
+         $probePath = "$(Build.SourcesDirectory)\fulltext-probe.ps1"
++        $smokeError = $null
+         try {
+           docker run -d --name $container sql-fulltext-smoke:2019 powershell -NoLogo -NoProfile -Command "while (`$true) { Start-Sleep -Seconds 30 }"
+           docker cp $probePath "${container}:C:\fulltext-probe.ps1"
+           docker exec $container powershell -NoLogo -NoProfile -File C:\fulltext-probe.ps1
+           if ($LASTEXITCODE -ne 0) { throw 'SQL 2019 Full-Text smoke failed' }
++        } catch {
++          $smokeError = $_.Exception
+         } finally {
+-          $diagPath = "$(Build.ArtifactStagingDirectory)\sql-fulltext-2019-runtime-diagnostic.ps1"
+-          @'
+-        Get-Service "MSSQL`$DOCKERSQLEXPR" -ErrorAction Continue | Format-List *
+-        Get-Process sqlservr -ErrorAction Continue | Format-List *
+-        sc.exe query "MSSQL`$DOCKERSQLEXPR"
+-        sqlcmd -S "localhost\$env:sqlinstance" -U sa -P "$env:sa_password" -C -b -Q "SET NOCOUNT ON; SELECT FULLTEXTSERVICEPROPERTY('IsFullTextInstalled') AS IsFullTextInstalled; USE [FullTextSmoke]; SELECT FULLTEXTCATALOGPROPERTY(N'FullTextSmokeCatalog',N'PopulateStatus') AS CatalogPopulateStatus; SELECT OBJECTPROPERTYEX(OBJECT_ID(N'dbo.Documents'),N'TableFullTextPopulateStatus') AS TablePopulateStatus; SELECT * FROM sys.fulltext_index_fragments; SELECT * FROM sys.dm_fts_index_population;"
+-        Get-ChildItem 'C:\Program Files\Microsoft SQL Server\*\MSSQL\Log\ERRORLOG*' -ErrorAction SilentlyContinue | ForEach-Object { Write-Host ("--- " + $_.FullName + " ---"); Get-Content $_.FullName -Tail 120 }
++          try {
++            $diagPath = "$(Build.ArtifactStagingDirectory)\sql-fulltext-2019-runtime-diagnostic.ps1"
++            @'
++        $ErrorActionPreference = 'Continue'
++        Write-Host 'FULLTEXT_DIAGNOSTIC_BEGIN'
++        Get-Service '*FD*' -ErrorAction SilentlyContinue | Select-Object Name,Status,StartType | Format-Table -AutoSize
++        Get-Process fdhost,sqlservr -ErrorAction SilentlyContinue | Select-Object Name,Id,StartTime,Path | Format-Table -AutoSize
++        sc.exe query MSSQL`$DOCKERSQLEXPR
++        sc.exe query MSSQLFDLauncher`$DOCKERSQLEXPR
++        $q = @"
++        SET NOCOUNT ON;
++        SELECT 'SERVICE' AS Scope, FULLTEXTSERVICEPROPERTY('IsFullTextInstalled') AS IsFullTextInstalled, FULLTEXTSERVICEPROPERTY('LoadOSResources') AS LoadOSResources, FULLTEXTSERVICEPROPERTY('VerifySignature') AS VerifySignature;
++        SELECT 'CATALOG' AS Scope, FULLTEXTCATALOGPROPERTY(N'FullTextSmokeCatalog',N'PopulateStatus') AS CatalogPopulateStatus, OBJECTPROPERTYEX(OBJECT_ID(N'dbo.Documents'),N'TableFullTextPopulateStatus') AS TablePopulateStatus;
++        SELECT object_id, fulltext_catalog_id, is_enabled, change_tracking_state_desc, has_crawl_completed, crawl_type_desc, crawl_start_date, crawl_end_date FROM sys.fulltext_indexes WHERE object_id = OBJECT_ID(N'dbo.Documents');
++        SELECT database_id, catalog_id, table_id, population_type_description, status, status_description, completion_type_description, completed_range_count, outstanding_batch_count, start_time FROM sys.dm_fts_index_population WHERE database_id = DB_ID();
++        SELECT * FROM sys.dm_fts_active_catalogs WHERE database_id = DB_ID();
++        SELECT * FROM sys.dm_fts_fdhosts;
++        SELECT * FROM sys.dm_fts_outstanding_batches WHERE database_id = DB_ID();
++        SELECT * FROM sys.dm_fts_population_ranges WHERE database_id = DB_ID();
++        "@
++        & sqlcmd -S "localhost\$env:sqlinstance" -d FullTextSmoke -U sa -P "$env:sa_password" -C -b -Q $q 2>&1
++        Write-Host '--- targeted Full-Text ERRORLOG excerpts ---'
++        Get-ChildItem 'C:\Program Files\Microsoft SQL Server\*\MSSQL\Log\SQLFT*.LOG*','C:\Program Files\Microsoft SQL Server\*\MSSQL\Log\ERRORLOG*' -ErrorAction SilentlyContinue | ForEach-Object {
++          $hits = @(Select-String -Path $_.FullName -Pattern 'Full-Text|full-text|FDHOST|crawl|7609|error' -CaseSensitive:$false -ErrorAction SilentlyContinue | Select-Object -Last 40)
++          if ($hits.Count -gt 0) { Write-Host ("--- " + $_.Name + " ---"); $hits | ForEach-Object { $line = $_.Line -replace '(?i)(password|pwd|token|secret|apikey|api-key)\s*[:=]\s*[^;\s]+', '$1=<redacted>'; $line.Substring(0, [Math]::Min($line.Length, 400)) } }
++        }
++        Get-PSDrive -PSProvider FileSystem | Select-Object Name,Free,Used
++        Write-Host 'FULLTEXT_DIAGNOSTIC_END'
+         '@ | Set-Content $diagPath -Encoding UTF8
+-          docker cp $diagPath "${container}:C:\fulltext-diagnostic.ps1"
+-          docker exec $container powershell -NoLogo -NoProfile -File C:\fulltext-diagnostic.ps1 2>&1 | Set-Content "$(Build.ArtifactStagingDirectory)\sql-fulltext-2019-runtime-diagnostic.log"
+-          docker logs $container 2>&1 | Set-Content "$(Build.ArtifactStagingDirectory)\sql-fulltext-2019-container.log"
+-          docker rm -f $container 2>$null
++            docker cp $diagPath "${container}:C:\fulltext-diagnostic.ps1" | Out-Host
++            docker exec $container powershell -NoLogo -NoProfile -File C:\fulltext-diagnostic.ps1 2>&1 | Tee-Object "$(Build.ArtifactStagingDirectory)\sql-fulltext-2019-runtime-diagnostic.log"
++            if ($LASTEXITCODE -ne 0) { Write-Warning "SQL 2019 diagnostic exit=$LASTEXITCODE" }
++          } catch { Write-Warning ("SQL 2019 diagnostic collection failed: " + $_.Exception.Message) }
++          try { docker logs $container 2>&1 | Tee-Object "$(Build.ArtifactStagingDirectory)\sql-fulltext-2019-container.log" | Out-Host } catch { Write-Warning ("SQL 2019 container log collection failed: " + $_.Exception.Message) }
++          try {
++            docker rm -f $container 2>&1 | Out-Host
++            $removeCode = $LASTEXITCODE
++            $remaining = @(docker ps -a --filter "name=^$container`$" --format '{{.Names}}' 2>$null)
++            $inspectCode = $LASTEXITCODE
++            if ($inspectCode -ne 0) {
++              Write-Host "FULLTEXT_CLEANUP container=$container removeExit=$removeCode inspectExit=$inspectCode remaining=UNKNOWN"
++              Write-Warning 'SQL 2019 cleanup could not be verified: docker ps inspection failed'
++            } else {
++              Write-Host "FULLTEXT_CLEANUP container=$container removeExit=$removeCode inspectExit=$inspectCode remaining=$($remaining -join ',')"
++              if ($removeCode -ne 0 -or $remaining.Count -ne 0) { Write-Warning 'SQL 2019 cleanup could not be verified' }
++            }
++          } catch { Write-Warning ("SQL 2019 cleanup verification failed: " + $_.Exception.Message) }
+         }
++        if ($null -ne $smokeError) { throw $smokeError }
+       displayName: Build and smoke-test SQL Server 2019 Full-Text
+     - publish: $(Build.ArtifactStagingDirectory)
+       artifact: sql-fulltext-2019-evidence
+@@ -68,25 +107,64 @@ stages:
+         if ($LASTEXITCODE -ne 0) { throw 'SQL 2025 Docker build failed' }
+         $container = 'sql-fulltext-smoke-2025-$(Build.BuildId)'
+         $probePath = "$(Build.SourcesDirectory)\fulltext-probe.ps1"
++        $smokeError = $null
+         try {
+           docker run -d --name $container sql-fulltext-smoke:2025 powershell -NoLogo -NoProfile -Command "while (`$true) { Start-Sleep -Seconds 30 }"
+           docker cp $probePath "${container}:C:\fulltext-probe.ps1"
+           docker exec $container powershell -NoLogo -NoProfile -File C:\fulltext-probe.ps1
+           if ($LASTEXITCODE -ne 0) { throw 'SQL 2025 Full-Text smoke failed' }
++        } catch {
++          $smokeError = $_.Exception
+         } finally {
+-          $diagPath = "$(Build.ArtifactStagingDirectory)\sql-fulltext-2025-runtime-diagnostic.ps1"
+-          @'
+-        Get-Service "MSSQL`$DOCKERSQLEXPR" -ErrorAction Continue | Format-List *
+-        Get-Process sqlservr -ErrorAction Continue | Format-List *
+-        sc.exe query "MSSQL`$DOCKERSQLEXPR"
+-        sqlcmd -S "localhost\$env:sqlinstance" -U sa -P "$env:sa_password" -C -b -Q "SET NOCOUNT ON; SELECT FULLTEXTSERVICEPROPERTY('IsFullTextInstalled') AS IsFullTextInstalled; USE [FullTextSmoke]; SELECT FULLTEXTCATALOGPROPERTY(N'FullTextSmokeCatalog',N'PopulateStatus') AS CatalogPopulateStatus; SELECT OBJECTPROPERTYEX(OBJECT_ID(N'dbo.Documents'),N'TableFullTextPopulateStatus') AS TablePopulateStatus; SELECT * FROM sys.fulltext_index_fragments; SELECT * FROM sys.dm_fts_index_population;"
+-        Get-ChildItem 'C:\Program Files\Microsoft SQL Server\*\MSSQL\Log\ERRORLOG*' -ErrorAction SilentlyContinue | ForEach-Object { Write-Host ("--- " + $_.FullName + " ---"); Get-Content $_.FullName -Tail 120 }
++          try {
++            $diagPath = "$(Build.ArtifactStagingDirectory)\sql-fulltext-2025-runtime-diagnostic.ps1"
++            @'
++        $ErrorActionPreference = 'Continue'
++        Write-Host 'FULLTEXT_DIAGNOSTIC_BEGIN'
++        Get-Service '*FD*' -ErrorAction SilentlyContinue | Select-Object Name,Status,StartType | Format-Table -AutoSize
++        Get-Process fdhost,sqlservr -ErrorAction SilentlyContinue | Select-Object Name,Id,StartTime,Path | Format-Table -AutoSize
++        sc.exe query MSSQL`$DOCKERSQLEXPR
++        sc.exe query MSSQLFDLauncher`$DOCKERSQLEXPR
++        $q = @"
++        SET NOCOUNT ON;
++        SELECT 'SERVICE' AS Scope, FULLTEXTSERVICEPROPERTY('IsFullTextInstalled') AS IsFullTextInstalled, FULLTEXTSERVICEPROPERTY('LoadOSResources') AS LoadOSResources, FULLTEXTSERVICEPROPERTY('VerifySignature') AS VerifySignature;
++        SELECT 'CATALOG' AS Scope, FULLTEXTCATALOGPROPERTY(N'FullTextSmokeCatalog',N'PopulateStatus') AS CatalogPopulateStatus, OBJECTPROPERTYEX(OBJECT_ID(N'dbo.Documents'),N'TableFullTextPopulateStatus') AS TablePopulateStatus;
++        SELECT object_id, fulltext_catalog_id, is_enabled, change_tracking_state_desc, has_crawl_completed, crawl_type_desc, crawl_start_date, crawl_end_date FROM sys.fulltext_indexes WHERE object_id = OBJECT_ID(N'dbo.Documents');
++        SELECT database_id, catalog_id, table_id, population_type_description, status, status_description, completion_type_description, completed_range_count, outstanding_batch_count, start_time FROM sys.dm_fts_index_population WHERE database_id = DB_ID();
++        SELECT * FROM sys.dm_fts_active_catalogs WHERE database_id = DB_ID();
++        SELECT * FROM sys.dm_fts_fdhosts;
++        SELECT * FROM sys.dm_fts_outstanding_batches WHERE database_id = DB_ID();
++        SELECT * FROM sys.dm_fts_population_ranges WHERE database_id = DB_ID();
++        "@
++        & sqlcmd -S "localhost\$env:sqlinstance" -d FullTextSmoke -U sa -P "$env:sa_password" -C -b -Q $q 2>&1
++        Write-Host '--- targeted Full-Text ERRORLOG excerpts ---'
++        Get-ChildItem 'C:\Program Files\Microsoft SQL Server\*\MSSQL\Log\SQLFT*.LOG*','C:\Program Files\Microsoft SQL Server\*\MSSQL\Log\ERRORLOG*' -ErrorAction SilentlyContinue | ForEach-Object {
++          $hits = @(Select-String -Path $_.FullName -Pattern 'Full-Text|full-text|FDHOST|crawl|7609|error' -CaseSensitive:$false -ErrorAction SilentlyContinue | Select-Object -Last 40)
++          if ($hits.Count -gt 0) { Write-Host ("--- " + $_.Name + " ---"); $hits | ForEach-Object { $line = $_.Line -replace '(?i)(password|pwd|token|secret|apikey|api-key)\s*[:=]\s*[^;\s]+', '$1=<redacted>'; $line.Substring(0, [Math]::Min($line.Length, 400)) } }
++        }
++        Get-PSDrive -PSProvider FileSystem | Select-Object Name,Free,Used
++        Write-Host 'FULLTEXT_DIAGNOSTIC_END'
+         '@ | Set-Content $diagPath -Encoding UTF8
+-          docker cp $diagPath "${container}:C:\fulltext-diagnostic.ps1"
+-          docker exec $container powershell -NoLogo -NoProfile -File C:\fulltext-diagnostic.ps1 2>&1 | Set-Content "$(Build.ArtifactStagingDirectory)\sql-fulltext-2025-runtime-diagnostic.log"
+-          docker logs $container 2>&1 | Set-Content "$(Build.ArtifactStagingDirectory)\sql-fulltext-2025-container.log"
+-          docker rm -f $container 2>$null
++            docker cp $diagPath "${container}:C:\fulltext-diagnostic.ps1" | Out-Host
++            docker exec $container powershell -NoLogo -NoProfile -File C:\fulltext-diagnostic.ps1 2>&1 | Tee-Object "$(Build.ArtifactStagingDirectory)\sql-fulltext-2025-runtime-diagnostic.log"
++            if ($LASTEXITCODE -ne 0) { Write-Warning "SQL 2025 diagnostic exit=$LASTEXITCODE" }
++          } catch { Write-Warning ("SQL 2025 diagnostic collection failed: " + $_.Exception.Message) }
++          try { docker logs $container 2>&1 | Tee-Object "$(Build.ArtifactStagingDirectory)\sql-fulltext-2025-container.log" | Out-Host } catch { Write-Warning ("SQL 2025 container log collection failed: " + $_.Exception.Message) }
++          try {
++            docker rm -f $container 2>&1 | Out-Host
++            $removeCode = $LASTEXITCODE
++            $remaining = @(docker ps -a --filter "name=^$container`$" --format '{{.Names}}' 2>$null)
++            $inspectCode = $LASTEXITCODE
++            if ($inspectCode -ne 0) {
++              Write-Host "FULLTEXT_CLEANUP container=$container removeExit=$removeCode inspectExit=$inspectCode remaining=UNKNOWN"
++              Write-Warning 'SQL 2025 cleanup could not be verified: docker ps inspection failed'
++            } else {
++              Write-Host "FULLTEXT_CLEANUP container=$container removeExit=$removeCode inspectExit=$inspectCode remaining=$($remaining -join ',')"
++              if ($removeCode -ne 0 -or $remaining.Count -ne 0) { Write-Warning 'SQL 2025 cleanup could not be verified' }
++            }
++          } catch { Write-Warning ("SQL 2025 cleanup verification failed: " + $_.Exception.Message) }
+         }
++        if ($null -ne $smokeError) { throw $smokeError }
+       displayName: Build and smoke-test SQL Server 2025 Full-Text
+     - publish: $(Build.ArtifactStagingDirectory)
+       artifact: sql-fulltext-2025-evidence

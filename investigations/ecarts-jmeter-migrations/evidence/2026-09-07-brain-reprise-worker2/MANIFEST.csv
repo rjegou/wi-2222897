@@ -1,0 +1,7 @@
+kind,path,identifier,status
+source,worktrees/InventoryTracking_Migration_AutoTest_Jmeter_On_master_worker2,ef3d87034d38b88aca04c824061b140e2a29252c,clean
+base,worktrees/InventoryTracking_Migration_AutoTest_Jmeter_On_master_worker2,4de185bb132cfbfb50643b6b53d6feb85508f4e2,clean
+validation,nuget restore Sln/InventoryTracking.sln,exit=0,pass
+validation,MSBuild ResolveAssemblyReferences,exit=0,pass
+validation,MSBuild solution Build,exit=1,blocked-by-missing-Cegid-assemblies
+remote,Azure DevOps read-only,2026-09-07,blocked-TLS-and-cli-profile

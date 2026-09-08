@@ -1,0 +1,20 @@
+{
+  "count": 2,
+  "value": [
+    {
+      "createdDate": "2026-09-04T10:36:29Z",
+      "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6180435/Attachments/3",
+      "id": 3,
+      "fileName": "VssAdministrator_runnervmohg0i_2026-09-04_10_36_28.trx",
+      "size": 2016
+    },
+    {
+      "createdDate": "2026-09-04T10:36:29Z",
+      "url": "https://dev.azure.com/cegid/Retail/_apis/test/Runs/6180435/Attachments/5",
+      "id": 5,
+      "attachmentType": "codeCoverage",
+      "fileName": "VssAdministrator_runnervmohg0i_2026-09-04.10_36_27.coverage",
+      "size": 2173663
+    }
+  ]
+}

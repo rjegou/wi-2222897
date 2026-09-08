@@ -1,0 +1,6 @@
+case	sampler	original_dates	corrected_dates	verdict
+TC08	A-PreQuery2	20160301	20160103	corrected
+TC08	A-PreQuery3	20150112,20160301	20151201,20160103	corrected
+TC09	A-PreQuery2	20160303	20160303	unchanged_non_discriminating
+TC09	A-PreQuery3	20160102,20160303	20160201,20160303	corrected_first_date
+TC10	C-PostQuery3;D-FinalQuery3	20160401	20160401	unchanged

@@ -1,0 +1,98 @@
+[
+  {
+    "Variant": "original",
+    "File": "001-plan01.jmx",
+    "Expected": "SELECT '20260428'",
+    "Actual": "SELECT '20262804'",
+    "Pass": false,
+    "ConsoleExit": 0
+  },
+  {
+    "Variant": "original",
+    "File": "002-plan02.jmx",
+    "Expected": "SELECT '20260405'",
+    "Actual": "SELECT '20260504'",
+    "Pass": false,
+    "ConsoleExit": 0
+  },
+  {
+    "Variant": "original",
+    "File": "003-plan03.jmx",
+    "Expected": "SELECT '20240229'",
+    "Actual": "SELECT '20242902'",
+    "Pass": false,
+    "ConsoleExit": 0
+  },
+  {
+    "Variant": "original",
+    "File": "004-plan04.jmx",
+    "Expected": "SELECT '20260428','20240229'",
+    "Actual": "SELECT '20262804','20242902'",
+    "Pass": false,
+    "ConsoleExit": 0
+  },
+  {
+    "Variant": "original",
+    "File": "005-plan05.jmx",
+    "Expected": "SELECT '20260428'",
+    "Actual": "SELECT '20260428'",
+    "Pass": true,
+    "ConsoleExit": 0
+  },
+  {
+    "Variant": "original",
+    "File": "006-plan06.jmx",
+    "Expected": "SELECT '2026/04/28'",
+    "Actual": "SELECT '2026/04/28'",
+    "Pass": true,
+    "ConsoleExit": 0
+  },
+  {
+    "Variant": "corrected",
+    "File": "001-plan01.jmx",
+    "Expected": "SELECT '20260428'",
+    "Actual": "SELECT '20260428'",
+    "Pass": true,
+    "ConsoleExit": 0
+  },
+  {
+    "Variant": "corrected",
+    "File": "002-plan02.jmx",
+    "Expected": "SELECT '20260405'",
+    "Actual": "SELECT '20260405'",
+    "Pass": true,
+    "ConsoleExit": 0
+  },
+  {
+    "Variant": "corrected",
+    "File": "003-plan03.jmx",
+    "Expected": "SELECT '20240229'",
+    "Actual": "SELECT '20240229'",
+    "Pass": true,
+    "ConsoleExit": 0
+  },
+  {
+    "Variant": "corrected",
+    "File": "004-plan04.jmx",
+    "Expected": "SELECT '20260428','20240229'",
+    "Actual": "SELECT '20260428','20240229'",
+    "Pass": true,
+    "ConsoleExit": 0
+  },
+  {
+    "Variant": "corrected",
+    "File": "005-plan05.jmx",
+    "Expected": "SELECT '20260428'",
+    "Actual": "SELECT '20260428'",
+    "Pass": true,
+    "ConsoleExit": 0
+  },
+  {
+    "Variant": "corrected",
+    "File": "006-plan06.jmx",
+    "Expected": "SELECT '2026/04/28'",
+    "Actual": "SELECT '2026/04/28'",
+    "Pass": true,
+    "ConsoleExit": 0
+  }
+]

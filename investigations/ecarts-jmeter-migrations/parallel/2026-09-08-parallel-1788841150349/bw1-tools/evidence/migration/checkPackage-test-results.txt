@@ -1,0 +1,3 @@
+cache_restore_exit=0;exe=True;installed_nupkg=True
+installed_valid_exit=0
+mismatch_expected_2.0.42_exit=1

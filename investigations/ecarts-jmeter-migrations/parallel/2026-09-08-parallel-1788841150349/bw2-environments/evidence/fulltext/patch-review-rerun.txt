@@ -1,0 +1,85 @@
+SCRIPT_PARSE=PASS count=2
+[
+  {
+    "stage": "SQL 2019",
+    "case": "absence-confirmed",
+    "warning": false,
+    "unknown": false,
+    "output": "FULLTEXT_CLEANUP container=sql-fulltext-smoke-test removeExit=0 inspectExit=0 remaining="
+  },
+  {
+    "stage": "SQL 2019",
+    "case": "container-remains",
+    "warning": true,
+    "unknown": false,
+    "output": "FULLTEXT_CLEANUP container=sql-fulltext-smoke-test removeExit=0 inspectExit=0 remaining=sql-fulltext-smoke-test SQL 2019 cleanup could not be verified"
+  },
+  {
+    "stage": "SQL 2019",
+    "case": "remove-failed",
+    "warning": true,
+    "unknown": false,
+    "output": "FULLTEXT_CLEANUP container=sql-fulltext-smoke-test removeExit=1 inspectExit=0 remaining=sql-fulltext-smoke-test SQL 2019 cleanup could not be verified"
+  },
+  {
+    "stage": "SQL 2019",
+    "case": "docker-ps-failed",
+    "warning": true,
+    "unknown": true,
+    "output": "FULLTEXT_CLEANUP container=sql-fulltext-smoke-test removeExit=0 inspectExit=1 remaining=UNKNOWN SQL 2019 cleanup could not be verified: docker ps inspection failed"
+  },
+  {
+    "stage": "SQL 2019",
+    "case": "source-control-flow-present",
+    "diagnosticCatch": true,
+    "cleanupFinally": true,
+    "smokeRethrow": true
+  },
+  {
+    "stage": "SQL 2025",
+    "case": "absence-confirmed",
+    "warning": false,
+    "unknown": false,
+    "output": "FULLTEXT_CLEANUP container=sql-fulltext-smoke-test removeExit=0 inspectExit=0 remaining="
+  },
+  {
+    "stage": "SQL 2025",
+    "case": "container-remains",
+    "warning": true,
+    "unknown": false,
+    "output": "FULLTEXT_CLEANUP container=sql-fulltext-smoke-test removeExit=0 inspectExit=0 remaining=sql-fulltext-smoke-test SQL 2025 cleanup could not be verified"
+  },
+  {
+    "stage": "SQL 2025",
+    "case": "remove-failed",
+    "warning": true,
+    "unknown": false,
+    "output": "FULLTEXT_CLEANUP container=sql-fulltext-smoke-test removeExit=1 inspectExit=0 remaining=sql-fulltext-smoke-test SQL 2025 cleanup could not be verified"
+  },
+  {
+    "stage": "SQL 2025",
+    "case": "docker-ps-failed",
+    "warning": true,
+    "unknown": true,
+    "output": "FULLTEXT_CLEANUP container=sql-fulltext-smoke-test removeExit=0 inspectExit=1 remaining=UNKNOWN SQL 2025 cleanup could not be verified: docker ps inspection failed"
+  },
+  {
+    "stage": "SQL 2025",
+    "case": "source-control-flow-present",
+    "diagnosticCatch": true,
+    "cleanupFinally": true,
+    "smokeRethrow": true
+  },
+  {
+    "stage": "control-flow",
+    "case": "smoke-failed-preserved",
+    "cleanupRan": true,
+    "rethrow": true
+  },
+  {
+    "stage": "control-flow",
+    "case": "collection-failed-cleanup",
+    "diagnosticCaught": true,
+    "cleanupRan": true
+  }
+]

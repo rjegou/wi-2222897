@@ -1,0 +1,3 @@
+date	source	action	result
+2026-09-07	Azure DevOps REST 7.1	GET Retail/_apis/build/builds/4434070	TLS failure before HTTP; Schannel reports no credentials available
+2026-09-07	Azure CLI + AZURE_DEVOPS_EXT_PAT	az devops project show --project Retail --organization https://dev.azure.com/cegid	No usable response; global Azure profile is permission-denied and isolated attempt did not complete

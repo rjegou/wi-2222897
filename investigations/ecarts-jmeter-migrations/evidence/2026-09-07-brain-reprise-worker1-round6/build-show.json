@@ -1,0 +1,155 @@
+{
+  "appendCommitMessageToRunName": true,
+  "buildNumber": "7.76",
+  "buildNumberRevision": null,
+  "controller": null,
+  "definition": {
+    "createdDate": null,
+    "drafts": [],
+    "id": 2072,
+    "name": "InventoryTracking CI",
+    "path": "\\Y2\\Plugins",
+    "project": {
+      "abbreviation": null,
+      "defaultTeamImageUrl": null,
+      "description": null,
+      "id": "aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+      "lastUpdateTime": "2026-06-25T08:17:14.29Z",
+      "name": "Retail",
+      "revision": 7237,
+      "state": "wellFormed",
+      "url": "https://dev.azure.com/cegid/_apis/projects/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+      "visibility": "private"
+    },
+    "queueStatus": "enabled",
+    "revision": 5,
+    "type": "build",
+    "uri": "vstfs:///Build/Definition/2072",
+    "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/Definitions/2072?revision=5"
+  },
+  "deleted": null,
+  "deletedBy": null,
+  "deletedDate": null,
+  "deletedReason": null,
+  "demands": null,
+  "finishTime": "2026-09-07T13:56:07.878799+00:00",
+  "id": 4440884,
+  "keepForever": true,
+  "lastChangedBy": {
+    "descriptor": "s2s.MDAwMDAwMDItMDAwMC04ODg4LTgwMDAtMDAwMDAwMDAwMDAwQDJjODk1OTA4LTA0ZTAtNDk1Mi04OWZkLTU0YjAwNDZkNjI4OA",
+    "directoryAlias": null,
+    "displayName": "Microsoft.VisualStudio.Services.TFS",
+    "id": "00000002-0000-8888-8000-000000000000",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/s2s.MDAwMDAwMDItMDAwMC04ODg4LTgwMDAtMDAwMDAwMDAwMDAwQDJjODk1OTA4LTA0ZTAtNDk1Mi04OWZkLTU0YjAwNDZkNjI4OA",
+    "inactive": null,
+    "isAadIdentity": null,
+    "isContainer": null,
+    "isDeletedInOrigin": null,
+    "profileUrl": null,
+    "uniqueName": "00000002-0000-8888-8000-000000000000@2c895908-04e0-4952-89fd-54b0046d6288",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/00000002-0000-8888-8000-000000000000"
+  },
+  "lastChangedDate": "2026-09-07T13:56:08.427000+00:00",
+  "logs": {
+    "id": 0,
+    "type": "Container",
+    "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/logs"
+  },
+  "orchestrationPlan": {
+    "orchestrationType": null,
+    "planId": "15b67ef9-acb3-491e-b62a-f385d86096f9"
+  },
+  "parameters": null,
+  "plans": [
+    {
+      "orchestrationType": null,
+      "planId": "15b67ef9-acb3-491e-b62a-f385d86096f9"
+    }
+  ],
+  "priority": "normal",
+  "project": {
+    "abbreviation": null,
+    "defaultTeamImageUrl": null,
+    "description": null,
+    "id": "aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+    "lastUpdateTime": "2026-06-25T08:17:14.29Z",
+    "name": "Retail",
+    "revision": 7237,
+    "state": "wellFormed",
+    "url": "https://dev.azure.com/cegid/_apis/projects/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+    "visibility": "private"
+  },
+  "properties": {},
+  "quality": null,
+  "queue": {
+    "id": 591,
+    "name": "Azure Pipelines",
+    "pool": {
+      "id": 79,
+      "isHosted": true,
+      "name": "Azure Pipelines"
+    },
+    "url": null
+  },
+  "queueOptions": null,
+  "queuePosition": null,
+  "queueTime": "2026-09-07T12:45:38.100413+00:00",
+  "reason": "manual",
+  "repository": {
+    "checkoutSubmodules": false,
+    "clean": null,
+    "defaultBranch": null,
+    "id": "90f886fd-8a68-483f-b798-126928e6297f",
+    "name": "Y2_Plugins_InventoryTracking",
+    "properties": null,
+    "rootFolder": null,
+    "type": "TfsGit",
+    "url": "https://dev.azure.com/cegid/Retail/_git/Y2_Plugins_InventoryTracking"
+  },
+  "requestedBy": {
+    "descriptor": "aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4",
+    "directoryAlias": null,
+    "displayName": "Ronan JEGOU",
+    "id": "15c7d873-3790-66a0-be1b-52e0f3a3e378",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4",
+    "inactive": null,
+    "isAadIdentity": null,
+    "isContainer": null,
+    "isDeletedInOrigin": null,
+    "profileUrl": null,
+    "uniqueName": "rjegou@cegid.com",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/15c7d873-3790-66a0-be1b-52e0f3a3e378"
+  },
+  "requestedFor": {
+    "descriptor": "aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4",
+    "directoryAlias": null,
+    "displayName": "Ronan JEGOU",
+    "id": "15c7d873-3790-66a0-be1b-52e0f3a3e378",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4",
+    "inactive": null,
+    "isAadIdentity": null,
+    "isContainer": null,
+    "isDeletedInOrigin": null,
+    "profileUrl": null,
+    "uniqueName": "rjegou@cegid.com",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/15c7d873-3790-66a0-be1b-52e0f3a3e378"
+  },
+  "result": "partiallySucceeded",
+  "retainedByRelease": false,
+  "sourceBranch": "refs/heads/validation/WI-2222897-inventorytracking-xmldiff",
+  "sourceVersion": "ef3d87034d38b88aca04c824061b140e2a29252c",
+  "startTime": "2026-09-07T12:45:49.178149+00:00",
+  "status": "completed",
+  "tags": [],
+  "templateParameters": {
+    "campaignsToTest": "[\r\n  \"WebServices\"\r\n]",
+    "pipelineDevMode": "true",
+    "typesToTest": "[\r\n  \"Cur\",\r\n  \"Fix\"\r\n]",
+    "versionsToTest": "[\r\n  \"26\"\r\n]"
+  },
+  "triggerInfo": {},
+  "triggeredByBuild": null,
+  "uri": "vstfs:///Build/Build/4440884",
+  "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/Builds/4440884",
+  "validationResults": []
+}

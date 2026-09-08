@@ -1,0 +1,144 @@
+{
+  "_links": {
+    "self": {
+      "href": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/Builds/4432320"
+    },
+    "web": {
+      "href": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_build/results?buildId=4432320"
+    },
+    "sourceVersionDisplayUri": {
+      "href": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4432320/sources"
+    },
+    "timeline": {
+      "href": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4432320/Timeline"
+    },
+    "badge": {
+      "href": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/status/2054"
+    }
+  },
+  "properties": {},
+  "tags": [],
+  "validationResults": [],
+  "plans": [
+    {
+      "planId": "3f6f699d-deeb-4c47-8500-401cd0b8d54e"
+    }
+  ],
+  "templateParameters": {
+    "pipelineDevMode": "False",
+    "versionsToTest": "[\r\n  \"26\"\r\n]",
+    "typesToTest": "[\r\n  \"Cur\",\r\n  \"Fix\"\r\n]",
+    "campaignsToTest": "[\r\n  \"LegacyServices\",\r\n  \"WebServices\"\r\n]"
+  },
+  "triggerInfo": {},
+  "id": 4432320,
+  "buildNumber": "10.71",
+  "status": "completed",
+  "result": "succeeded",
+  "queueTime": "2026-09-04T09:47:18.0512849Z",
+  "startTime": "2026-09-04T09:47:30.8784951Z",
+  "finishTime": "2026-09-04T09:57:15.8595611Z",
+  "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/Builds/4432320",
+  "definition": {
+    "drafts": [],
+    "id": 2054,
+    "name": "FrenchTaxesRules CI",
+    "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/Definitions/2054?revision=5",
+    "uri": "vstfs:///Build/Definition/2054",
+    "path": "\\Y2\\Plugins",
+    "type": "build",
+    "queueStatus": "enabled",
+    "revision": 5,
+    "project": {
+      "id": "aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+      "name": "Retail",
+      "url": "https://dev.azure.com/cegid/_apis/projects/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+      "state": "wellFormed",
+      "revision": 7237,
+      "visibility": "private",
+      "lastUpdateTime": "2026-06-25T08:17:14.29Z"
+    }
+  },
+  "project": {
+    "id": "aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+    "name": "Retail",
+    "url": "https://dev.azure.com/cegid/_apis/projects/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+    "state": "wellFormed",
+    "revision": 7237,
+    "visibility": "private",
+    "lastUpdateTime": "2026-06-25T08:17:14.29Z"
+  },
+  "uri": "vstfs:///Build/Build/4432320",
+  "sourceBranch": "refs/heads/FrenchTaxesRules_Migration_AutoTest_Jmeter_On_master",
+  "sourceVersion": "f80bc731571b2b5ed8a67da171b288873de428a6",
+  "queue": {
+    "id": 591,
+    "name": "Azure Pipelines",
+    "pool": {
+      "id": 79,
+      "name": "Azure Pipelines",
+      "isHosted": true
+    }
+  },
+  "priority": "normal",
+  "reason": "manual",
+  "requestedFor": {
+    "displayName": "Ronan JEGOU",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/15c7d873-3790-66a0-be1b-52e0f3a3e378",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4"
+      }
+    },
+    "id": "15c7d873-3790-66a0-be1b-52e0f3a3e378",
+    "uniqueName": "rjegou@cegid.com",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4",
+    "descriptor": "aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4"
+  },
+  "requestedBy": {
+    "displayName": "Ronan JEGOU",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/15c7d873-3790-66a0-be1b-52e0f3a3e378",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4"
+      }
+    },
+    "id": "15c7d873-3790-66a0-be1b-52e0f3a3e378",
+    "uniqueName": "rjegou@cegid.com",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4",
+    "descriptor": "aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4"
+  },
+  "lastChangedDate": "2026-09-04T09:57:16.52Z",
+  "lastChangedBy": {
+    "displayName": "Microsoft.VisualStudio.Services.TFS",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/00000002-0000-8888-8000-000000000000",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/s2s.MDAwMDAwMDItMDAwMC04ODg4LTgwMDAtMDAwMDAwMDAwMDAwQDJjODk1OTA4LTA0ZTAtNDk1Mi04OWZkLTU0YjAwNDZkNjI4OA"
+      }
+    },
+    "id": "00000002-0000-8888-8000-000000000000",
+    "uniqueName": "00000002-0000-8888-8000-000000000000@2c895908-04e0-4952-89fd-54b0046d6288",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/s2s.MDAwMDAwMDItMDAwMC04ODg4LTgwMDAtMDAwMDAwMDAwMDAwQDJjODk1OTA4LTA0ZTAtNDk1Mi04OWZkLTU0YjAwNDZkNjI4OA",
+    "descriptor": "s2s.MDAwMDAwMDItMDAwMC04ODg4LTgwMDAtMDAwMDAwMDAwMDAwQDJjODk1OTA4LTA0ZTAtNDk1Mi04OWZkLTU0YjAwNDZkNjI4OA"
+  },
+  "orchestrationPlan": {
+    "planId": "3f6f699d-deeb-4c47-8500-401cd0b8d54e"
+  },
+  "logs": {
+    "id": 0,
+    "type": "Container",
+    "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4432320/logs"
+  },
+  "repository": {
+    "id": "1d6b05fb-70bc-4884-adba-46d9e96651d8",
+    "type": "TfsGit",
+    "name": "Y2_Plugins_FrenchTaxesRules",
+    "url": "https://dev.azure.com/cegid/Retail/_git/Y2_Plugins_FrenchTaxesRules",
+    "clean": null,
+    "checkoutSubmodules": false
+  },
+  "retainedByRelease": false,
+  "triggeredByBuild": null,
+  "appendCommitMessageToRunName": true
+}

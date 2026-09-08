@@ -1,0 +1,7 @@
+path,role,sha256,collection_date
+investigations/ecarts-jmeter-migrations/evidence/2026-09-07-clienteling-products-support-worker2-round2/README.md,prior Products audit,2AEE3806A5610A90EE7DB6B5ABD3CED5A60D297FD425A1797FC793B92B433F87,2026-09-07
+investigations/ecarts-jmeter-migrations/evidence/local-2026-09-07-sql-fulltext-round2-terminal-2026-09-07/README.md,isolated Azure CLI method reference,A750EA0B12A49186A21958C0A80A3C9C26323704069E64294107FA8B8BC2008D,2026-09-07
+investigations/ecarts-jmeter-migrations/findings/005-clienteling-v22-v23-build-4432602.md,V22/V23 Products packaging finding,C54EC3BD5CD9912C6C1D6F422E425E6D51DD288E9A12594BF6C656DCD4A536A1,2026-09-07
+investigations/ecarts-jmeter-migrations/findings/006-clienteling-v26-build-4432554.md,V26 Products packaging finding,C57D464547D1D7089374D2B11C411A093D3B39ECC2B5F1B7737EF5D989AE7F28,2026-09-07
+investigations/ecarts-jmeter-migrations/findings/007-clienteling-v24-build-4432652.md,V24 Products packaging finding,9F304820569291BC6664ECFF3010EB2F1334606F5C9857ECBB6F3A87786FAF4E,2026-09-07
+investigations/ecarts-jmeter-migrations/findings/008-clienteling-v25-build-4432672.md,V25 Products packaging finding,AD3B9293BD1A3BD277B12BC03332771FD9453B457202792144526FAD7230C921,2026-09-07

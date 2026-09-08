@@ -1,0 +1,16 @@
+﻿========== LEGACY EVIDENCE COLLECTION ==========
+Package folder : C:\Users\SvcTestAutoRetail\Desktop\LegacyEvidence-20260906-071608
+Selected files : 16235
+Copied files   : 16151
+Copy errors    : 84
+Collected size : 326.59 MB
+
+========== BY CATEGORY ==========
+AppData_RunResults        Files=    69 Size=      2.92 MB
+Legacy_Engine             Files=    12 Size=      0.08 MB
+Legacy_publishers         Files=     1 Size=      0.12 MB
+Plugin_AutoTest_Data      Files= 14794 Size=    133.29 MB
+Plugin_Workflow           Files=   242 Size=      7.23 MB
+PublishedReports_C        Files=   189 Size=      2.33 MB
+PublishedReports_D        Files=   837 Size=    179.82 MB
+PublishTRX                Files=     7 Size=      0.80 MB

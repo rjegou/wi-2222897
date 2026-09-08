@@ -1,0 +1,14 @@
+{
+  "contractVersion":"wi-2222897-frenchtaxesrules-v22-round3",
+  "created":"2026-09-08",
+  "status":"NOT RUN",
+  "historicalFix":{"build":"4429167","commit":"2d826b8fd19ecb4d7200f574414efb7583de8ed2","plugin":"Y2.Plugin.FrenchTaxesRules 22.0.6.478","core":"22.0.0.1011","common":"22.0.2.300","identity":"22.0.5.182","authenticationServer":"2.0.0.368","framework":"12.9.153.1506","backup":"AUTO_V21_00; exact hash unavailable"},
+  "candidate":{"packaging":"22.0.23","core":"22.0.0.2068","common":"22.0.3.311","identity":"22.0.6.117","plugin":"22.0.6.379; compatibility UNKNOWN","authenticationServer":"1.0.1.429; compatibility UNKNOWN","framework":"12.9.185.17; runtime proof UNKNOWN","backup":"same AUTO_V21_00 required; hash unavailable"},
+  "operations":[
+    {"name":"FrenchTaxesRules:Run","input":"historical V22 request and parameters","expected":"no CBP50101; allowedModule/FrenchTaxesRules claim present","assertion":"preserve existing response and TC22 assertions"},
+    {"name":"Validation:SetDocumentErrorReason","input":"historical V22 validation request and document fixture","expected":"no authorization fault; validation write claim present","assertion":"preserve existing response/status assertion"},
+    {"name":"Purge:Execute","input":"historical V22 purge request and fixture","expected":"no authorization fault; french-tax-rules-purge:execute claim present","assertion":"preserve existing purge assertion"}
+  ],
+  "extension":{"gate":"only after all three pass","cases":376,"expected":"preserve all existing assertions"},
+  "missingEvidence":["candidate package hashes","backup hash","effective claims","same environment and final responses"]
+}

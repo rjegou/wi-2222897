@@ -1,0 +1,5 @@
+snapshot	catalogue	consumer	operation	status
+V5-build-4429167	Cegid.Retail.FrenchTaxesRules.Services/ModuleCatalog/ModuleCatalog.cs:18-21,79-117	Cegid.Retail.FrenchTaxesRules.LegacyServices/Closing/ClosingService.CwasAdapter.g.cs:41	allowedModule/FrenchTaxesRules	catalogue name absent
+V5-build-4429167	Cegid.Retail.FrenchTaxesRules.Services/ModuleCatalog/ModuleCatalog.cs:18-21,79-117	Cegid.Retail.FrenchTaxesRules.WebServices/Purge/FrenchTaxesRulesPurgeService.svc.g.cs:99	allowedModule/french-tax-rules-purge:execute	catalogue name absent
+V7-build-4429629	Cegid.Retail.FrenchTaxesRules.Services/ModuleCatalog/ModuleCatalog.cs:18-21,79-117	matching Legacy/Purge generated consumers	FrenchTaxesRules and french-tax-rules-purge:execute	same mismatch observed
+master-V26	Cegid.Retail.FrenchTaxesRules.Services/ModuleCatalog/ModuleCatalog.cs:18-21,79-117	matching Legacy/Purge generated consumers	FrenchTaxesRules and french-tax-rules-purge:execute	same mismatch observed
