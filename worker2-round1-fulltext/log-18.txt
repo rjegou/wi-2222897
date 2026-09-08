@@ -1,0 +1,444 @@
+2026-09-08T08:04:44.2301380Z ##[section]Starting: BuildAndTest2025
+2026-09-08T08:04:44.4594597Z ##[section]Starting: Initialize job
+2026-09-08T08:04:44.4601649Z Agent name: 'Azure Pipelines 14'
+2026-09-08T08:04:44.4602413Z Agent machine name: 'runnervmohg0i'
+2026-09-08T08:04:44.4602733Z Current agent version: '5.278.0'
+2026-09-08T08:04:44.4637173Z ##[group]Runner Image Provisioner
+2026-09-08T08:04:44.4637590Z Hosted Compute Agent
+2026-09-08T08:04:44.4637864Z Version: 20260828.587
+2026-09-08T08:04:44.4638181Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-08T08:04:44.4638529Z Build Date: 2026-08-28T16:44:25Z
+2026-09-08T08:04:44.4638873Z Worker ID: {0951cce6-bfaf-40e3-a338-7454ffb2626d}
+2026-09-08T08:04:44.4639185Z Azure Region: swedencentral
+2026-09-08T08:04:44.4639444Z ##[endgroup]
+2026-09-08T08:04:44.4639713Z ##[group]_internal_runner_telemetry
+2026-09-08T08:04:44.4640064Z ProcessLifetimeId: 8591dd92-c44a-4602-b14e-efb349dcf5b8
+2026-09-08T08:04:44.4640388Z Azure Region: swedencentral
+2026-09-08T08:04:44.4640828Z ##[endgroup]
+2026-09-08T08:04:44.4641109Z ##[group]Operating System
+2026-09-08T08:04:44.4641390Z Microsoft Windows Server 2025
+2026-09-08T08:04:44.4641662Z 10.0.26100
+2026-09-08T08:04:44.4641880Z Datacenter
+2026-09-08T08:04:44.4642111Z ##[endgroup]
+2026-09-08T08:04:44.4642346Z ##[group]Runner Image
+2026-09-08T08:04:44.4642614Z Image: windows-2025
+2026-09-08T08:04:44.4642874Z Version: 20260830.247.1
+2026-09-08T08:04:44.4643294Z Included Software: https://github.com/actions/runner-images/blob/win25/20260830.247/images/windows/Windows2025-Readme.md
+2026-09-08T08:04:44.4643828Z Image Release: https://github.com/actions/runner-images/releases/tag/win25%2F20260830.247
+2026-09-08T08:04:44.4644167Z ##[endgroup]
+2026-09-08T08:04:44.4649557Z Current image version: '20260830.247.1'
+2026-09-08T08:04:44.5589770Z Agent running as: 'VssAdministrator'
+2026-09-08T08:04:44.5761741Z Prepare build directory.
+2026-09-08T08:04:44.6177985Z Set build variables.
+2026-09-08T08:04:44.6204754Z Download all required tasks.
+2026-09-08T08:04:44.6316213Z Downloading task: PowerShell (2.279.0)
+2026-09-08T08:04:45.9957212Z Downloading task: PublishPipelineArtifact (1.242.0)
+2026-09-08T08:04:46.2897112Z Checking job knob settings.
+2026-09-08T08:04:46.2901660Z    Knob: DockerActionRetries = true Source: $(VSTSAGENT_DOCKER_ACTION_RETRIES) 
+2026-09-08T08:04:46.2902456Z    Knob: AgentToolsDirectory = C:\hostedtoolcache\windows Source: ${AGENT_TOOLSDIRECTORY} 
+2026-09-08T08:04:46.2905373Z    Knob: UseGitLongPaths = true Source: $(USE_GIT_LONG_PATHS) 
+2026-09-08T08:04:46.2908359Z    Knob: UseNode24withHandlerData = True Source: $(DistributedTask.Agent.UseNode24withHandlerData) 
+2026-09-08T08:04:46.2911635Z    Knob: EnableIssueSourceValidation = true Source: $(ENABLE_ISSUE_SOURCE_VALIDATION) 
+2026-09-08T08:04:46.2913303Z    Knob: AgentEnablePipelineArtifactLargeChunkSize = true Source: $(AGENT_ENABLE_PIPELINEARTIFACT_LARGE_CHUNK_SIZE) 
+2026-09-08T08:04:46.2918045Z    Knob: ContinueAfterCancelProcessTreeKillAttempt = true Source: $(VSTSAGENT_CONTINUE_AFTER_CANCEL_PROCESSTREEKILL_ATTEMPT) 
+2026-09-08T08:04:46.2919448Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC) 
+2026-09-08T08:04:46.2920387Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC_LOG) 
+2026-09-08T08:04:46.2921341Z    Knob: ProcessHandlerTelemetry = true Source: $(AZP_75787_ENABLE_COLLECT) 
+2026-09-08T08:04:46.2923124Z    Knob: UseNewNodeHandlerTelemetry = True Source: $(DistributedTask.Agent.USENEWNODEHANDLERTELEMETRY) 
+2026-09-08T08:04:46.2924148Z    Knob: ProcessHandlerEnableNewLogic = true Source: $(AZP_75787_ENABLE_NEW_PH_LOGIC) 
+2026-09-08T08:04:46.2926105Z    Knob: EnableResourceMonitorDebugOutput = true Source: $(AZP_ENABLE_RESOURCE_MONITOR_DEBUG_OUTPUT) 
+2026-09-08T08:04:46.2927131Z    Knob: EnableResourceUtilizationWarnings = true Source: $(AZP_ENABLE_RESOURCE_UTILIZATION_WARNINGS) 
+2026-09-08T08:04:46.2928510Z    Knob: IgnoreVSTSTaskLib = true Source: $(AZP_AGENT_IGNORE_VSTSTASKLIB) 
+2026-09-08T08:04:46.2932274Z    Knob: FailJobWhenAgentDies = true Source: $(FAIL_JOB_WHEN_AGENT_DIES) 
+2026-09-08T08:04:46.2932910Z    Knob: EnhancedWorkerCrashHandling = true Source: ${AZP_ENHANCED_WORKER_CRASH_HANDLING} 
+2026-09-08T08:04:46.2934154Z    Knob: CheckForTaskDeprecation = true Source: $(AZP_AGENT_CHECK_FOR_TASK_DEPRECATION) 
+2026-09-08T08:04:46.2935489Z    Knob: CheckIfTaskNodeRunnerIsDeprecated246 = True Source: $(DistributedTask.Agent.CheckIfTaskNodeRunnerIsDeprecated246) 
+2026-09-08T08:04:46.2936566Z    Knob: UseNode20ToStartContainer = True Source: $(DistributedTask.Agent.UseNode20ToStartContainer) 
+2026-09-08T08:04:46.2937580Z    Knob: UseNode24ToStartContainer = True Source: $(DistributedTask.Agent.UseNode24ToStartContainer) 
+2026-09-08T08:04:46.2938606Z    Knob: EnableTimeoutLogFlushing = True Source: $(DistributedTask.Agent.EnableTimeoutLogFlushing) 
+2026-09-08T08:04:46.2939979Z    Knob: LogTaskNameInUserAgent = true Source: $(AZP_AGENT_LOG_TASKNAME_IN_USERAGENT) 
+2026-09-08T08:04:46.2940947Z    Knob: UseFetchFilterInCheckoutTask = true Source: $(AGENT_USE_FETCH_FILTER_IN_CHECKOUT_TASK) 
+2026-09-08T08:04:46.2942277Z    Knob: UseFetchFilterInGitSubmoduleUpdate = True Source: $(DistributedTask.Agent.UseFetchFilterInGitSubmoduleUpdate) 
+2026-09-08T08:04:46.2943625Z    Knob: Rosetta2Warning = true Source: $(ROSETTA2_WARNING) 
+2026-09-08T08:04:46.2946231Z    Knob: AddForceCredentialsToGitCheckout = True Source: $(DistributedTask.Agent.AddForceCredentialsToGitCheckout) 
+2026-09-08T08:04:46.2947611Z    Knob: AddForceCredentialsToGitCheckoutEnhanced = True Source: $(DistributedTask.Agent.AddForceCredentialsToGitCheckoutEnhanced) 
+2026-09-08T08:04:46.2949286Z    Knob: UseLatestTfExe = True Source: $(DistributedTask.Agent.UseLatestTfExe) 
+2026-09-08T08:04:46.2950254Z    Knob: UseSparseCheckoutInCheckoutTask = true Source: $(AGENT_USE_SPARSE_CHECKOUT_IN_CHECKOUT_TASK) 
+2026-09-08T08:04:46.2951521Z    Knob: AgentCDNConnectivityFailWarning = False Source: $(DistributedTask.Agent.AgentCDNConnectivityFailWarning) 
+2026-09-08T08:04:46.2952357Z    Knob: UseEnhancedLogging = true Source: ${AZP_USE_ENHANCED_LOGGING} 
+2026-09-08T08:04:46.2953383Z    Knob: EnableEnhancedContainerDiagnostics = True Source: $(DistributedTask.Agent.EnableEnhancedContainerDiagnostics) 
+2026-09-08T08:04:46.2954471Z    Knob: EnableDockerExecDiagnostics = True Source: $(DistributedTask.Agent.EnableDockerExecDiagnostics) 
+2026-09-08T08:04:46.2955871Z Finished checking job knob settings.
+2026-09-08T08:04:46.3465324Z Start tracking orphan processes.
+2026-09-08T08:04:46.3633054Z ##[section]Finishing: Initialize job
+2026-09-08T08:04:46.3769330Z ##[section]Async Command Start: DetectDockerContainer
+2026-09-08T08:04:46.3771195Z ##[section]Async Command End: DetectDockerContainer
+2026-09-08T08:04:46.3775099Z ##[section]Async Command Start: DetectDockerContainer
+2026-09-08T08:04:46.3776079Z ##[section]Async Command End: DetectDockerContainer
+2026-09-08T08:04:46.4150334Z ##[section]Starting: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s
+2026-09-08T08:04:46.4323767Z ==============================================================================
+2026-09-08T08:04:46.4325160Z Task         : Get sources
+2026-09-08T08:04:46.4326200Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2026-09-08T08:04:46.4326769Z Version      : 1.0.0
+2026-09-08T08:04:46.4327748Z Author       : Microsoft
+2026-09-08T08:04:46.4329212Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2026-09-08T08:04:46.4329698Z ==============================================================================
+2026-09-08T08:04:49.4764399Z Syncing repository: Pipelines_Docker_BaseImages (Git)
+2026-09-08T08:04:49.4780383Z Prepending Path environment variable with directory containing 'git.exe'.
+2026-09-08T08:04:49.4792312Z ##[command]git version
+2026-09-08T08:04:51.9908433Z git version 2.55.0.windows.1
+2026-09-08T08:04:51.9909460Z ##[command]git lfs version
+2026-09-08T08:04:51.9918519Z git-lfs/3.7.1 (GitHub; windows amd64; go 1.25.1; git b84b3384)
+2026-09-08T08:04:51.9920434Z ##[command]git init "D:\a\1\s"
+2026-09-08T08:04:51.9927378Z Initialized empty Git repository in D:/a/1/s/.git/
+2026-09-08T08:04:54.0292072Z ##[command]git remote add origin https://cegid@dev.azure.com/cegid/Retail/_git/Pipelines_Docker_BaseImages
+2026-09-08T08:04:54.0841882Z ##[command]git sparse-checkout disable
+2026-09-08T08:04:54.0866199Z ##[command]git config gc.auto 0
+2026-09-08T08:04:54.0881696Z ##[command]git config core.longpaths true
+2026-09-08T08:04:54.1798678Z ##[command]git config --get-all http.https://cegid@dev.azure.com/cegid/Retail/_git/Pipelines_Docker_BaseImages.extraheader
+2026-09-08T08:04:54.2212885Z ##[command]git config --get-all http.extraheader
+2026-09-08T08:04:54.2680322Z ##[command]git config --get-regexp .*extraheader
+2026-09-08T08:04:54.3156197Z ##[command]git config --get-all http.proxy
+2026-09-08T08:04:54.3638286Z ##[command]git config http.version HTTP/1.1
+2026-09-08T08:04:54.4504062Z ##[command]git config --get-all remote.origin.promisor
+2026-09-08T08:04:54.5281662Z ##[command]git config --get-all remote.origin.partialclonefilter
+2026-09-08T08:04:54.7342812Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +b691d357411f92a83828c52a1edda43439ab097b:refs/remotes/origin/b691d357411f92a83828c52a1edda43439ab097b
+2026-09-08T08:04:55.3193779Z remote: Azure Repos        
+2026-09-08T08:04:55.4451178Z remote: 
+2026-09-08T08:04:55.4471547Z remote: Found 59 objects to send. (128 ms)        
+2026-09-08T08:04:55.7798379Z From https://dev.azure.com/cegid/Retail/_git/Pipelines_Docker_BaseImages
+2026-09-08T08:04:55.7827617Z  * [new ref]         b691d357411f92a83828c52a1edda43439ab097b -> origin/b691d357411f92a83828c52a1edda43439ab097b
+2026-09-08T08:04:55.8491798Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +b691d357411f92a83828c52a1edda43439ab097b
+2026-09-08T08:04:56.3995402Z remote: Azure Repos        
+2026-09-08T08:04:57.4446091Z remote: 
+2026-09-08T08:04:57.4481409Z remote: Found 0 objects to send. (1047 ms)        
+2026-09-08T08:04:57.5358092Z From https://dev.azure.com/cegid/Retail/_git/Pipelines_Docker_BaseImages
+2026-09-08T08:04:57.5359594Z  * branch            b691d357411f92a83828c52a1edda43439ab097b -> FETCH_HEAD
+2026-09-08T08:04:57.5957573Z ##[command]git checkout --progress --force refs/remotes/origin/b691d357411f92a83828c52a1edda43439ab097b
+2026-09-08T08:04:57.7173580Z Note: switching to 'refs/remotes/origin/b691d357411f92a83828c52a1edda43439ab097b'.
+2026-09-08T08:04:57.7173815Z 
+2026-09-08T08:04:57.7185545Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-09-08T08:04:57.7190288Z changes and commit them, and you can discard any commits you make in this
+2026-09-08T08:04:57.7193269Z state without impacting any branches by switching back to a branch.
+2026-09-08T08:04:57.7194755Z 
+2026-09-08T08:04:57.7195779Z If you want to create a new branch to retain commits you create, you may
+2026-09-08T08:04:57.7196138Z do so (now or later) by using -c with the switch command. Example:
+2026-09-08T08:04:57.7197182Z 
+2026-09-08T08:04:57.7198238Z   git switch -c <new-branch-name>
+2026-09-08T08:04:57.7198998Z 
+2026-09-08T08:04:57.7199701Z Or undo this operation with:
+2026-09-08T08:04:57.7200340Z 
+2026-09-08T08:04:57.7201152Z   git switch -
+2026-09-08T08:04:57.7201756Z 
+2026-09-08T08:04:57.7202593Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-09-08T08:04:57.7203989Z 
+2026-09-08T08:04:57.7208612Z HEAD is now at b691d35 WI-2222897 collect Full-Text runtime diagnostics
+2026-09-08T08:04:57.7607351Z ##[section]Finishing: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s
+2026-09-08T08:04:57.7700154Z ##[section]Starting: Build and smoke-test SQL Server 2025 Full-Text
+2026-09-08T08:04:57.7710576Z ==============================================================================
+2026-09-08T08:04:57.7710789Z Task         : PowerShell
+2026-09-08T08:04:57.7710878Z Description  : Run a PowerShell script on Linux, macOS, or Windows
+2026-09-08T08:04:57.7711013Z Version      : 2.279.0
+2026-09-08T08:04:57.7711098Z Author       : Microsoft Corporation
+2026-09-08T08:04:57.7711203Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/powershell
+2026-09-08T08:04:57.7711324Z ==============================================================================
+2026-09-08T08:05:04.4577747Z Generating script.
+2026-09-08T08:05:04.5373588Z ========================== Starting Command Output ===========================
+2026-09-08T08:05:04.5693750Z ##[command]"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command ". 'D:\a\_temp\3c0d8a84-ac6a-4a5f-9e14-9524f3e7d840.ps1'"
+2026-09-08T08:05:16.2194532Z 29.7.2
+2026-09-08T08:05:16.5109944Z Sending build context to Docker daemon  160.8kB
+2026-09-08T08:05:16.5110728Z 
+2026-09-08T08:05:16.5563208Z Step 1/8 : ARG REPO=mcr.microsoft.com/windows/servercore
+2026-09-08T08:05:16.5563919Z Step 2/8 : ARG BASETAG=ltsc2025
+2026-09-08T08:05:16.5564302Z Step 3/8 : FROM $REPO:$BASETAG
+2026-09-08T08:05:16.8819111Z ltsc2025: Pulling from windows/servercore
+2026-09-08T08:05:17.0396074Z 97e96e9cbeb1: Pulling fs layer
+2026-09-08T08:05:17.0402977Z 26f730467be2: Pulling fs layer
+2026-09-08T08:05:20.8024780Z 26f730467be2: Verifying Checksum
+2026-09-08T08:05:20.8025180Z 26f730467be2: Download complete
+2026-09-08T08:05:34.1484112Z 97e96e9cbeb1: Verifying Checksum
+2026-09-08T08:05:34.1540225Z 97e96e9cbeb1: Download complete
+2026-09-08T08:07:56.8276168Z 97e96e9cbeb1: Pull complete
+2026-09-08T08:11:31.8639307Z 26f730467be2: Pull complete
+2026-09-08T08:11:32.2703288Z Digest: sha256:eeaa17aefe5d949f03b1db17182f5855cf40e757533468cf5b50e07c7c385ada
+2026-09-08T08:11:32.2713124Z Status: Downloaded newer image for mcr.microsoft.com/windows/servercore:ltsc2025
+2026-09-08T08:11:32.2748664Z  ---> f46425738d39
+2026-09-08T08:11:32.4828935Z Step 4/8 : EXPOSE 1433
+2026-09-08T08:11:32.4829654Z  ---> Running in 06e5a1963bab
+2026-09-08T08:11:33.0179882Z  ---> Removed intermediate container 06e5a1963bab
+2026-09-08T08:11:33.0181209Z  ---> 493f8dfa4b61
+2026-09-08T08:11:33.0181984Z Step 5/8 : ENV sa_password=Cegid.2025     sqlinstance=DOCKERSQLEXPR     databasesFolder=c:\\databases
+2026-09-08T08:11:33.4907641Z  ---> Running in 3aa19b09b099
+2026-09-08T08:11:34.0040942Z  ---> Removed intermediate container 3aa19b09b099
+2026-09-08T08:11:34.0041734Z  ---> c96474dc3515
+2026-09-08T08:11:34.0044640Z Step 6/8 : SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';"]
+2026-09-08T08:11:34.5808505Z  ---> Running in ac6d4da38d77
+2026-09-08T08:11:35.0215709Z  ---> Removed intermediate container ac6d4da38d77
+2026-09-08T08:11:35.0216436Z  ---> f89dcd61d211
+2026-09-08T08:11:35.0216716Z Step 7/8 : COPY oledlg.dll C:/Windows/SysWOW64
+2026-09-08T08:11:36.7669227Z  ---> 7e07089a9cbe
+2026-09-08T08:11:36.8181822Z Step 8/8 : RUN mkdir "c:\tmp" -Force;     Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?linkid=2216019" -OutFile "c:\tmp\downloader.exe";     Start-Process -Wait -FilePath "C:\tmp\downloader.exe" -ArgumentList "/ACTION=DOWNLOAD", "/Mediapath=C:/tmp", "/Quiet", "/language=en-US" > $NULL;     Start-Process -Wait -FilePath "C:\tmp\SQLEXPR_x64_ENU.Exe" -ArgumentList "/q", "/x:C:\tmp\SQLEXPRESS_SETUP";     $setup = Start-Process -Wait -PassThru -FilePath "C:\tmp\SQLEXPRESS_SETUP\SETUP.EXE" -ArgumentList "/SAPWD=$env:sa_password", "/ENU", "/QUIET", "/INSTANCENAME=$env:sqlinstance", "/INSTANCEID=$env:sqlinstance", "/SECURITYMODE=SQL", "/IACCEPTSQLSERVERLICENSETERMS=TRUE", "/ACTION=INSTALL", "/FEATURES=SQLENGINE,FullText", "/SQLUSERDBDIR=$env:databasesFolder";     if ($setup.ExitCode -notin @(0, 3010)) {       Get-ChildItem 'C:\Program Files\Microsoft SQL Server\*\Setup Bootstrap\Log\Summary.txt' -ErrorAction SilentlyContinue | ForEach-Object { Write-Host ('--- ' + $_.FullName + ' ---'); Get-Content $_.FullName };       throw ('SQL Server setup failed (exit code ' + $setup.ExitCode + ')')     };     $svcName = 'MSSQL$' + $env:sqlinstance;     $svcKey = 'HKLM:\SYSTEM\CurrentControlSet\Services\' + $svcName;     & sc.exe config $svcName start= auto;     if ($LASTEXITCODE -ne 0) { throw ('sc.exe config failed (exit code ' + $LASTEXITCODE + ')') };     Set-ItemProperty -Path $svcKey -Name DelayedAutostart -Value 0 -Type DWord -Force;     & sc.exe qc $svcName;     if ((Get-ItemProperty -Path $svcKey -Name DelayedAutostart).DelayedAutostart -ne 0) { throw ($svcName + ' is still Automatic (Delayed Start)') };     $svc = Get-Service $svcName -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     $svc = Get-Service 'SQLWriter'  -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     $svc = Get-Service 'SQLBrowser' -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     $svc = Get-Service 'w3svc'      -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     $svc = Get-Service 'was'        -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     cd "C:/";     Remove-Item -Path "C:/tmp" -Force -Recurse
+2026-09-08T08:11:37.2271795Z  ---> Running in 40119a759ab7
+2026-09-08T08:11:44.2889070Z 
+2026-09-08T08:11:44.2939664Z 
+2026-09-08T08:11:44.3040394Z     Directory: C:\
+2026-09-08T08:11:44.3043307Z 
+2026-09-08T08:11:44.3057131Z 
+2026-09-08T08:11:44.3130116Z Mode                 LastWriteTime         Length Name                         
+2026-09-08T08:11:44.3143907Z ----                 -------------         ------ ----                         
+2026-09-08T08:11:44.3176435Z d-----          9/8/2026   8:11 AM                tmp                          
+2026-09-08T08:16:31.1915656Z [SC] ChangeServiceConfig SUCCESS
+2026-09-08T08:16:31.2311842Z [SC] QueryServiceConfig SUCCESS
+2026-09-08T08:16:31.2312428Z 
+2026-09-08T08:16:31.2313053Z SERVICE_NAME: MSSQL$DOCKERSQLEXPR
+2026-09-08T08:16:31.2313496Z         TYPE               : 10  WIN32_OWN_PROCESS 
+2026-09-08T08:16:31.2313937Z         START_TYPE         : 2   AUTO_START
+2026-09-08T08:16:31.2314343Z         ERROR_CONTROL      : 1   NORMAL
+2026-09-08T08:16:31.2314872Z         BINARY_PATH_NAME   : "C:\Program Files\Microsoft SQL Server\MSSQL17.DOCKERSQLEXPR\MSSQL\Binn\sqlservr.exe" -sDOCKERSQLEXPR
+2026-09-08T08:16:31.2319650Z         LOAD_ORDER_GROUP   : 
+2026-09-08T08:16:31.2319993Z         TAG                : 0
+2026-09-08T08:16:31.2324318Z         DISPLAY_NAME       : SQL Server (DOCKERSQLEXPR)
+2026-09-08T08:16:31.2324554Z         DEPENDENCIES       : KEYISO
+2026-09-08T08:16:31.2324743Z         SERVICE_START_NAME : NT Service\MSSQL$DOCKERSQLEXPR
+2026-09-08T08:16:32.0554588Z 
+2026-09-08T08:16:32.0555177Z 
+2026-09-08T08:17:55.9873346Z  ---> Removed intermediate container 40119a759ab7
+2026-09-08T08:17:56.1052362Z  ---> e697b731d9ed
+2026-09-08T08:17:56.1906370Z Successfully built e697b731d9ed
+2026-09-08T08:17:56.1910594Z Successfully tagged sql-fulltext-smoke:2025
+2026-09-08T08:18:01.0455884Z aae1421497b2143fcb9c110cb5f2b450225ff12fb4cbb79d15ed09494bd437ac
+2026-09-08T08:18:10.6665750Z FULLTEXT_PREFLIGHT_UTC=2026-09-08T08:18:10.1424199Z
+2026-09-08T08:18:12.0003181Z Changed database context to 'FullTextSmoke'.
+2026-09-08T08:18:17.5874278Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:18:17.5908419Z 2026-09-08T08:18:17.5738852 1 1
+2026-09-08T08:18:17.5908879Z 3 Starting 1 0 0
+2026-09-08T08:18:17.5913456Z 0
+2026-09-08T08:18:17.5913542Z 
+2026-09-08T08:18:23.1438076Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:18:23.1439420Z 2026-09-08T08:18:23.1276223 1 1
+2026-09-08T08:18:23.1440157Z 3 Starting 1 0 0
+2026-09-08T08:18:23.1441094Z 0
+2026-09-08T08:18:23.1489005Z 
+2026-09-08T08:18:28.6986558Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:18:28.6987755Z 2026-09-08T08:18:28.6868157 1 1
+2026-09-08T08:18:28.6988484Z 3 Starting 1 0 0
+2026-09-08T08:18:28.6989345Z 0
+2026-09-08T08:18:28.6989679Z 
+2026-09-08T08:18:34.2484532Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:18:34.2485557Z 2026-09-08T08:18:34.2351880 1 1
+2026-09-08T08:18:34.2487291Z 3 Starting 1 0 0
+2026-09-08T08:18:34.2487831Z 0
+2026-09-08T08:18:34.2488009Z 
+2026-09-08T08:18:39.7967100Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:18:39.7968078Z 2026-09-08T08:18:39.7833627 1 1
+2026-09-08T08:18:39.7968573Z 3 Starting 1 0 0
+2026-09-08T08:18:39.7973693Z 0
+2026-09-08T08:18:39.7973832Z 
+2026-09-08T08:18:45.3542018Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:18:45.3542760Z 2026-09-08T08:18:45.3417708 1 1
+2026-09-08T08:18:45.3543048Z 3 Starting 1 0 0
+2026-09-08T08:18:45.3543239Z 0
+2026-09-08T08:18:45.3543301Z 
+2026-09-08T08:18:50.9030428Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:18:50.9031415Z 2026-09-08T08:18:50.8888179 1 1
+2026-09-08T08:18:50.9032643Z 3 Starting 1 0 0
+2026-09-08T08:18:50.9033353Z 0
+2026-09-08T08:18:50.9034093Z 
+2026-09-08T08:18:56.4932610Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:18:56.4933703Z 2026-09-08T08:18:56.4806245 1 1
+2026-09-08T08:18:56.4933992Z 3 Starting 1 0 0
+2026-09-08T08:18:56.4934484Z 0
+2026-09-08T08:18:56.4934904Z 
+2026-09-08T08:19:02.1725966Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:19:02.1726797Z 2026-09-08T08:19:02.1595707 1 1
+2026-09-08T08:19:02.1727125Z 3 Starting 1 0 0
+2026-09-08T08:19:02.1727372Z 0
+2026-09-08T08:19:02.1727519Z 
+2026-09-08T08:19:07.7492463Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:19:07.7493403Z 2026-09-08T08:19:07.7353599 1 1
+2026-09-08T08:19:07.7494577Z 3 Starting 1 0 0
+2026-09-08T08:19:07.7494927Z 0
+2026-09-08T08:19:07.7495257Z 
+2026-09-08T08:19:13.3058438Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:19:13.3058894Z 2026-09-08T08:19:13.2929541 1 1
+2026-09-08T08:19:13.3059169Z 3 Starting 1 0 0
+2026-09-08T08:19:13.3059392Z 0
+2026-09-08T08:19:13.3059471Z 
+2026-09-08T08:19:18.8618927Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:19:18.8619508Z 2026-09-08T08:19:18.8493398 1 1
+2026-09-08T08:19:18.8623608Z 3 Starting 1 0 0
+2026-09-08T08:19:18.8623762Z 0
+2026-09-08T08:19:18.8623838Z 
+2026-09-08T08:19:24.4071090Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:19:24.4071908Z 2026-09-08T08:19:24.3948610 1 1
+2026-09-08T08:19:24.4076619Z 3 Starting 1 0 0
+2026-09-08T08:19:24.4076909Z 0
+2026-09-08T08:19:24.4076991Z 
+2026-09-08T08:19:29.9389129Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:19:29.9390132Z 2026-09-08T08:19:29.9259282 1 1
+2026-09-08T08:19:29.9390692Z 3 Starting 1 0 0
+2026-09-08T08:19:29.9391084Z 0
+2026-09-08T08:19:29.9391184Z 
+2026-09-08T08:19:35.4897099Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:19:35.4898623Z 2026-09-08T08:19:35.4768334 1 1
+2026-09-08T08:19:35.4899308Z 3 Starting 1 0 0
+2026-09-08T08:19:35.4899500Z 0
+2026-09-08T08:19:35.4899937Z 
+2026-09-08T08:19:41.0381409Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:19:41.0382328Z 2026-09-08T08:19:41.0246715 1 1
+2026-09-08T08:19:41.0383147Z 3 Starting 1 0 0
+2026-09-08T08:19:41.0384023Z 0
+2026-09-08T08:19:41.0384447Z 
+2026-09-08T08:19:46.5958804Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:19:46.5959224Z 2026-09-08T08:19:46.5833155 1 1
+2026-09-08T08:19:46.5959503Z 3 Starting 1 0 0
+2026-09-08T08:19:46.5959737Z 0
+2026-09-08T08:19:46.5959807Z 
+2026-09-08T08:19:46.8043910Z Full-Text population did not finish: [1]
+2026-09-08T08:19:46.8045359Z At C:\fulltext-probe.ps1:32 char:22
+2026-09-08T08:19:46.8046234Z + ... tus -ne 0) { throw "Full-Text population did not finish: [$status]" }
+2026-09-08T08:19:46.8050988Z +                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-09-08T08:19:46.8051537Z     + CategoryInfo          : OperationStopped: (Full-Text population did not  
+2026-09-08T08:19:46.8051859Z    finish: [1]:String) [], RuntimeException
+2026-09-08T08:19:46.8052175Z     + FullyQualifiedErrorId : Full-Text population did not finish: [1]
+2026-09-08T08:19:46.8052450Z  
+2026-09-08T08:19:54.6963493Z FULLTEXT_DIAGNOSTIC_BEGIN
+2026-09-08T08:19:54.7618151Z 
+2026-09-08T08:19:54.7834969Z Name                           Status StartType
+2026-09-08T08:19:54.7869547Z ----                           ------ ---------
+2026-09-08T08:19:54.7893838Z MSSQLFDLauncher$DOCKERSQLEXPR Running    Manual
+2026-09-08T08:19:54.8039343Z 
+2026-09-08T08:19:54.8156339Z 
+2026-09-08T08:19:54.8164087Z 
+2026-09-08T08:19:54.8198293Z Name       Id StartTime           Path                                         
+2026-09-08T08:19:54.8210734Z ----       -- ---------           ----                                         
+2026-09-08T08:19:54.8245963Z fdhost   5632 9/8/2026 8:18:09 AM C:\Program Files\Microsoft SQL Server\MSSQ...
+2026-09-08T08:19:54.8297885Z sqlservr 6376 9/8/2026 8:18:04 AM C:\Program Files\Microsoft SQL Server\MSSQ...
+2026-09-08T08:19:54.8299729Z 
+2026-09-08T08:19:54.8305354Z 
+2026-09-08T08:19:54.8487978Z 
+2026-09-08T08:19:54.8488762Z SERVICE_NAME: MSSQL$DOCKERSQLEXPR 
+2026-09-08T08:19:54.8497971Z         TYPE               : 10  WIN32_OWN_PROCESS  
+2026-09-08T08:19:54.8498519Z         STATE              : 4  RUNNING 
+2026-09-08T08:19:54.8498962Z                                 (STOPPABLE, PAUSABLE, ACCEPTS_SHUTDOWN)
+2026-09-08T08:19:54.8503264Z         WIN32_EXIT_CODE    : 0  (0x0)
+2026-09-08T08:19:54.8594237Z         SERVICE_EXIT_CODE  : 0  (0x0)
+2026-09-08T08:19:54.8594514Z         CHECKPOINT         : 0x0
+2026-09-08T08:19:54.8594755Z         WAIT_HINT          : 0x0
+2026-09-08T08:19:54.8594843Z 
+2026-09-08T08:19:54.8599466Z SERVICE_NAME: MSSQLFDLauncher$DOCKERSQLEXPR 
+2026-09-08T08:19:54.8600184Z         TYPE               : 10  WIN32_OWN_PROCESS  
+2026-09-08T08:19:54.8603186Z         STATE              : 4  RUNNING 
+2026-09-08T08:19:54.8612391Z                                 (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+2026-09-08T08:19:54.8612774Z         WIN32_EXIT_CODE    : 0  (0x0)
+2026-09-08T08:19:54.8613041Z         SERVICE_EXIT_CODE  : 0  (0x0)
+2026-09-08T08:19:54.8613312Z         CHECKPOINT         : 0x0
+2026-09-08T08:19:54.8613550Z         WAIT_HINT          : 0x0
+2026-09-08T08:19:55.2153999Z Msg 207, Level 16, State 1, Server aae1421497b2\DOCKERSQLEXPR, Line 9
+2026-09-08T08:19:55.2154846Z Invalid column name 'database_id'.
+2026-09-08T08:19:55.2244883Z --- targeted Full-Text ERRORLOG excerpts ---
+2026-09-08T08:19:55.3133000Z --- SQLFT0000500005.LOG ---
+2026-09-08T08:19:55.3355573Z 2026-09-08 08:18:12.00 spid40s     Informational: Full-text Full population initialized for table or indexed view '[FullTextSmoke].[dbo].[Documents]' (table or indexed view ID '1525580473', database ID '5'). Population sub-tasks: 1.
+2026-09-08T08:19:55.3359227Z 2026-09-08 08:18:17.29 spid40s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3361685Z 2026-09-08 08:18:22.85 spid36s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3366980Z 2026-09-08 08:18:28.41 spid36s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3371506Z 2026-09-08 08:18:33.95 spid36s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3376394Z 2026-09-08 08:18:39.49 spid53s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3384846Z 2026-09-08 08:18:45.05 spid53s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3389620Z 2026-09-08 08:18:50.61 spid53s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3395499Z 2026-09-08 08:18:56.19 spid53s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3400945Z 2026-09-08 08:19:01.87 spid53s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3409319Z 2026-09-08 08:19:07.42 spid53s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3410159Z 2026-09-08 08:19:13.01 spid54s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3411585Z 2026-09-08 08:19:18.56 spid54s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3415057Z 2026-09-08 08:19:24.11 spid54s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3421226Z 2026-09-08 08:19:29.67 spid54s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3423039Z 2026-09-08 08:19:35.21 spid54s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3937297Z 2026-09-08 08:19:40.76 spid54s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3938140Z 2026-09-08 08:19:46.32 spid54s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3939011Z 2026-09-08 08:19:55.14 spid54s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '1525580473', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:19:55.3939508Z --- errorlog ---
+2026-09-08T08:19:55.3939858Z 2026-09-08 08:18:05.00 Server      Logging SQL Server messages in file 'C:\Program Files\Microsoft SQL Server\MSSQL17.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG'.
+2026-09-08T08:19:55.3940272Z 	 -e C:\Program Files\Microsoft SQL Server\MSSQL17.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG
+2026-09-08T08:19:55.3940682Z 2026-09-08 08:18:09.71 spid30s     A new instance of the full-text filter daemon host process has been successfully started with version = V2.
+2026-09-08T08:19:55.3944561Z --- ERRORLOG.1 ---
+2026-09-08T08:19:55.3944965Z 2026-09-08 08:16:01.00 Server      Logging SQL Server messages in file 'C:\Program Files\Microsoft SQL Server\MSSQL17.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG'.
+2026-09-08T08:19:55.3945374Z 	 -e C:\Program Files\Microsoft SQL Server\MSSQL17.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG
+2026-09-08T08:19:55.3945788Z 2026-09-08 08:16:01.98 spid28s     A new instance of the full-text filter daemon host process has been successfully started with version = V2.
+2026-09-08T08:19:55.3946131Z --- ERRORLOG.2 ---
+2026-09-08T08:19:55.3946498Z 2026-09-08 08:15:53.34 Server      Logging SQL Server messages in file 'C:\Program Files\Microsoft SQL Server\MSSQL17.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG'.
+2026-09-08T08:19:55.3950943Z 	 -e C:\Program Files\Microsoft SQL Server\MSSQL17.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG
+2026-09-08T08:19:55.3951440Z 2026-09-08 08:15:54.30 spid25s     A new instance of the full-text filter daemon host process has been successfully started with version = V2.
+2026-09-08T08:19:55.3951916Z 2026-09-08 08:15:54.97 spid51      Configuration option 'default full-text language' changed from 1033 to 1033. Run the RECONFIGURE statement to install.
+2026-09-08T08:19:55.3952273Z --- ERRORLOG.3 ---
+2026-09-08T08:19:55.3952639Z 2026-09-08 08:15:47.23 Server      Logging SQL Server messages in file 'C:\Program Files\Microsoft SQL Server\MSSQL17.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG'.
+2026-09-08T08:19:55.3953040Z 	 -e C:\Program Files\Microsoft SQL Server\MSSQL17.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG
+2026-09-08T08:19:55.3953442Z 2026-09-08 08:15:49.72 spid25s     A new instance of the full-text filter daemon host process has been successfully started with version = V2.
+2026-09-08T08:19:55.3957498Z 2026-09-08 08:15:50.76 spid51      Configuration option 'default full-text language' changed from 1033 to 1033. Run the RECONFIGURE statement to install.
+2026-09-08T08:19:56.0264918Z 
+2026-09-08T08:19:56.0272173Z FULLTEXT_DIAGNOSTIC_END
+2026-09-08T08:19:56.0283713Z Name         Free      Used
+2026-09-08T08:19:56.0290294Z ----         ----      ----
+2026-09-08T08:19:56.0297011Z C    136057098240 172822528
+2026-09-08T08:19:56.0298081Z 
+2026-09-08T08:19:56.0301213Z 
+2026-09-08T08:19:56.9753939Z sql-fulltext-smoke-2025-4444173
+2026-09-08T08:19:57.3613363Z FULLTEXT_CLEANUP container=sql-fulltext-smoke-2025-4444173 removeExit=0 inspectExit=0 remaining=
+2026-09-08T08:19:58.5376503Z SQL 2025 Full-Text smoke failed
+2026-09-08T08:19:58.5377826Z At D:\a\_temp\3c0d8a84-ac6a-4a5f-9e14-9524f3e7d840.ps1:70 char:30
+2026-09-08T08:19:58.5378592Z + if ($null -ne $smokeError) { throw $smokeError }
+2026-09-08T08:19:58.5378966Z +                              ~~~~~~~~~~~~~~~~~
+2026-09-08T08:19:58.5379274Z     + CategoryInfo          : NotSpecified: (:) [], ParentContainsErrorRecordException
+2026-09-08T08:19:58.5379912Z     + FullyQualifiedErrorId : RuntimeException
+2026-09-08T08:19:58.5380763Z  
+2026-09-08T08:19:59.7361743Z ##[error]PowerShell exited with code '1'.
+2026-09-08T08:20:00.2218031Z ##[section]Finishing: Build and smoke-test SQL Server 2025 Full-Text
+2026-09-08T08:20:00.3754225Z ##[section]Starting: PublishPipelineArtifact
+2026-09-08T08:20:00.4358415Z ==============================================================================
+2026-09-08T08:20:00.4358558Z Task         : Publish Pipeline Artifacts
+2026-09-08T08:20:00.4358625Z Description  : Publish (upload) a file or directory as a named artifact for the current run
+2026-09-08T08:20:00.4358716Z Version      : 1.242.0
+2026-09-08T08:20:00.4358796Z Author       : Microsoft Corporation
+2026-09-08T08:20:00.4358858Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/publish-pipeline-artifact
+2026-09-08T08:20:00.4358976Z ==============================================================================
+2026-09-08T08:20:03.9974759Z Artifact name input: sql-fulltext-2025-evidence
+2026-09-08T08:20:04.2236898Z Uploading pipeline artifact from D:\a\1\a for build #4444173
+2026-09-08T08:20:07.2215537Z Using default max parallelism.
+2026-09-08T08:20:07.2219735Z Max dedup parallelism: 192
+2026-09-08T08:20:07.2220394Z DomainId: 0
+2026-09-08T08:20:07.6700799Z ApplicationInsightsTelemetrySender will correlate events with X-TFS-Session aa364ca9-5ae5-455f-90f1-3886391ec694
+2026-09-08T08:20:07.6916970Z Hashtype: Dedup64K
+2026-09-08T08:20:07.7307311Z DedupManifestArtifactClient will correlate http requests with X-TFS-Session aa364ca9-5ae5-455f-90f1-3886391ec694
+2026-09-08T08:20:07.9573731Z 2 files processed.
+2026-09-08T08:20:07.9588170Z Processed 2 files from D:\a\1\a successfully.
+2026-09-08T08:20:08.5827776Z Uploaded 18,203 out of 20,700 bytes
+2026-09-08T08:20:08.5828158Z Content upload is done!
+2026-09-08T08:20:08.5844311Z 
+2026-09-08T08:20:08.5844993Z Content upload statistics:
+2026-09-08T08:20:08.5845472Z Total Content: 41.0 KB
+2026-09-08T08:20:08.5845895Z Physical Content Uploaded: 2.3 KB
+2026-09-08T08:20:08.5846319Z Logical Content Uploaded: 18.2 KB
+2026-09-08T08:20:08.5846759Z Compression Saved: 15.9 KB
+2026-09-08T08:20:08.5851110Z Deduplication Saved: 22.8 KB
+2026-09-08T08:20:08.5851511Z Number of Chunks Uploaded: 2
+2026-09-08T08:20:08.5851774Z Total Number of Chunks: 5
+2026-09-08T08:20:08.5851868Z 
+2026-09-08T08:20:08.9272791Z Associated artifact 5036418 with build 4444173
+2026-09-08T08:20:08.9814662Z ApplicationInsightsTelemetrySender correlated 2 events with X-TFS-Session aa364ca9-5ae5-455f-90f1-3886391ec694
+2026-09-08T08:20:08.9827059Z Uploading pipeline artifact finished.
+2026-09-08T08:20:09.3023533Z ##[section]Finishing: PublishPipelineArtifact
+2026-09-08T08:20:09.3071662Z ##[section]Starting: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s
+2026-09-08T08:20:09.3079151Z ==============================================================================
+2026-09-08T08:20:09.3079331Z Task         : Get sources
+2026-09-08T08:20:09.3079427Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2026-09-08T08:20:09.3079590Z Version      : 1.0.0
+2026-09-08T08:20:09.3079687Z Author       : Microsoft
+2026-09-08T08:20:09.3079784Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2026-09-08T08:20:09.3079928Z ==============================================================================
+2026-09-08T08:20:09.6375557Z Cleaning any cached credential from repository: Pipelines_Docker_BaseImages (Git)
+2026-09-08T08:20:09.6502673Z ##[section]Finishing: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s
+2026-09-08T08:20:09.6680550Z ##[section]Starting: Finalize Job
+2026-09-08T08:20:09.7252298Z Cleaning up task key
+2026-09-08T08:20:09.7254252Z Start cleaning up orphan processes.
+2026-09-08T08:20:09.8299632Z ##[section]Finishing: Finalize Job
+2026-09-08T08:20:09.8455949Z ##[section]Finishing: BuildAndTest2025

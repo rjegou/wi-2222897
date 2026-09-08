@@ -1,0 +1,10 @@
+2026-09-08T08:12:54.1592031Z ##[section]Starting: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s
+2026-09-08T08:12:54.1602428Z ==============================================================================
+2026-09-08T08:12:54.1602688Z Task         : Get sources
+2026-09-08T08:12:54.1602790Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2026-09-08T08:12:54.1602952Z Version      : 1.0.0
+2026-09-08T08:12:54.1605455Z Author       : Microsoft
+2026-09-08T08:12:54.1605598Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2026-09-08T08:12:54.1605791Z ==============================================================================
+2026-09-08T08:12:54.4322958Z Cleaning any cached credential from repository: Pipelines_Docker_BaseImages (Git)
+2026-09-08T08:12:54.4435857Z ##[section]Finishing: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s

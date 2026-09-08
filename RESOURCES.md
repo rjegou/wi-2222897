@@ -2,6 +2,10 @@
 
 Snapshot local : **2026-09-06**. Ce registre ne contient aucune valeur de secret.
 
+Ajout documentaire 2026-09-08 : conserver les collectes `investigations/ecarts-jmeter-migrations/evidence/2026-09-08-inventorytracking-azdo-access-diagnosis-round2/` (réponses AzDO Python/OpenSSL, builds `4440774`/`4440884`, artefacts et résultats Cur/Fix) et `investigations/ecarts-jmeter-migrations/evidence/2026-09-08-inventorytracking-azdo-independent/` (échecs clients Schannel/CLI). Aucune ressource externe n'a été créée dans cette mise à jour.
+
+Ajout documentaire 2026-09-08 : le plan `investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/bw3-plugins/PLAN-round2-safe-pipeline.md` reste indexé et à son emplacement pendant l'utilisation par son propriétaire. Toute prochaine exécution InventoryTracking doit maîtriser les effets ACR/Artifactory staging et le compteur partagé.
+
 Ajout local 2026-09-07 Full-Text : conserver le patch non publié `worktrees/Pipelines_Docker_BaseImages_worker2_round9/validation/WI-2222897/sql-fulltext-hosted-build.yml` et le finding `investigations/ecarts-jmeter-migrations/findings/014-sql-fulltext-runtime-4442685.md`. Il cible uniquement la branche sandbox Full-Text et la définition 14251 ; aucune publication, queue ou ressource externe n’a été effectuée dans cette session.
 
 Ajout local 2026-09-07 : le candidat V22 null-safe et sa preuve Worker 2 round3 sont conservés pour revue/publication autorisée ; aucun artefact distant, secret ou ressource partagée n’a été créé.
@@ -110,3 +114,13 @@ Ajouter ici toute branche, PR, pipeline temporaire, clone, environnement, token 
 
 ## 2026-09-08 — Ressources des trois BW paralleles
 Lot : investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/README.md. Trois orchestrateurs PID 18468/6100/22320; controle et archives habituels a la racine du WI. Chaque instance tient son RESOURCES.md exclusif. Aucun nettoyage des ressources historiques ni modification de leurs sessions. Les anciennes mentions running seules ne sont pas une preuve de processus actif.
+
+## 2026-09-08 — Worker 2 — reprise FrenchTaxesRules
+
+- Tentative de clone propre : `worktrees/frenchtaxesrules-wi2222897/`; Git exit 128, aucun répertoire
+  de clone créé. Aucun nettoyage externe requis.
+- Aucun package, branche, définition, pipeline, artefact, conteneur, image, feed ou PR créé dans cette
+  reprise. Aucun secret lu ou copié.
+- Les fichiers non suivis et modifications d'autres workers observés par `git status` ont été préservés.
+- Le profil Azure CLI global est resté inchangé ; la tentative d'accès a échoué sur les permissions du
+  profil local. Toute reprise doit réutiliser un profil temporaire autorisé et le supprimer après preuve.

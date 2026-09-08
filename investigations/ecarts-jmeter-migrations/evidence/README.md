@@ -31,6 +31,8 @@ Un dossier dont la colonne « hors dépôt » est à `0` est intégralement pré
 | [`2026-09-07-brain-reprise-worker1-round4/`](2026-09-07-brain-reprise-worker1-round4/) | Collecte Worker 1 — validation Clienteling V24/V25 | 1 | 18 fich. / 0.5 Mo |
 | [`2026-09-07-brain-reprise-worker1-round5/`](2026-09-07-brain-reprise-worker1-round5/) | Collecte Worker 1 — orchestration locale Clienteling | 3 | 311 fich. / 94.3 Mo |
 | [`2026-09-07-brain-reprise-worker1-round6/`](2026-09-07-brain-reprise-worker1-round6/) | InventoryTracking build 4440884 — analyse primaire read-only | 27 | — |
+| [`2026-09-08-inventorytracking-azdo-access-diagnosis-round2/`](2026-09-08-inventorytracking-azdo-access-diagnosis-round2/) | InventoryTracking — validation AzDO Python/OpenSSL — builds 4440774/4440884 et résultats Cur/Fix | 22 | — |
+| [`2026-09-08-inventorytracking-azdo-independent/`](2026-09-08-inventorytracking-azdo-independent/) | InventoryTracking — tentative indépendante AzDO Schannel/CLI — accès bloqué | 9 | — |
 | [`2026-09-07-brain-reprise-worker1-round7/`](2026-09-07-brain-reprise-worker1-round7/) | Portée | 7 | — |
 | [`2026-09-07-brain-reprise-worker1-round8/`](2026-09-07-brain-reprise-worker1-round8/) | Résultat | 9 | — |
 | [`2026-09-07-brain-reprise-worker1-round9/`](2026-09-07-brain-reprise-worker1-round9/) | FACT | 10 | 3 fich. / 2.4 Mo |
@@ -78,6 +80,8 @@ Un dossier dont la colonne « hors dépôt » est à `0` est intégralement pré
 | [`2026-09-07-v22-runtime-contract-worker2-round11/`](2026-09-07-v22-runtime-contract-worker2-round11/) | Collecte ciblée — contrat runtime V22 | 1 | — |
 | [`Pipelines_Templates/`](Pipelines_Templates/) | — | 1 | — |
 | [`azure-devops-2026-09-07-allowedmodule-projection/`](azure-devops-2026-09-07-allowedmodule-projection/) | Preuve Azure DevOps — projection `allowedModule` (2026-09-07) | 1 | — |
+| [`azure-devops-api-console-publication-access-blocker/`](azure-devops-api-console-publication-access-blocker/) | Accès publication API → Console → migration — blocage de permission | 1 | — |
+| [`azure-devops-api-console-publication-worker1-round1/`](azure-devops-api-console-publication-worker1-round1/) | Publication API → Console → migration — Worker 1 round 1 — blocage d’accès | 1 | — |
 | [`azure-devops-french-taxes-rules-v22-exact-yaml-44070560/`](azure-devops-french-taxes-rules-v22-exact-yaml-44070560/) | — | 2 | — |
 | [`azure-devops-french-taxes-rules-v22-worker1-round10/`](azure-devops-french-taxes-rules-v22-worker1-round10/) | Préflight ACR V22 corrigé — Worker 1 round 10 | 2 | — |
 | [`azure-devops-french-taxes-rules-v22-worker1-round11/`](azure-devops-french-taxes-rules-v22-worker1-round11/) | Correction provenance préflight V22 — Worker 1 round 11 | 1 | — |

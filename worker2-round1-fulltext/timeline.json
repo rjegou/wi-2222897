@@ -1,0 +1,202 @@
+[
+  {
+    "type": "Task",
+    "name": "Post-job: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-08T08:20:09.3033333Z",
+    "finishTime": "2026-09-08T08:20:09.65Z",
+    "log": {
+      "id": 16,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/16"
+    }
+  },
+  {
+    "type": "Stage",
+    "name": "SQL Server 2025 Full-Text build and smoke",
+    "state": "completed",
+    "result": "failed",
+    "startTime": "2026-09-08T08:04:44.2233333Z",
+    "finishTime": "2026-09-08T08:20:19.08Z",
+    "log": null
+  },
+  {
+    "type": "Job",
+    "name": "BuildAndTest2025",
+    "state": "completed",
+    "result": "failed",
+    "startTime": "2026-09-08T08:04:44.2233333Z",
+    "finishTime": "2026-09-08T08:20:09.8466667Z",
+    "log": {
+      "id": 18,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/18"
+    }
+  },
+  {
+    "type": "Stage",
+    "name": "SQL Server 2019 Full-Text build and smoke",
+    "state": "completed",
+    "result": "failed",
+    "startTime": "2026-09-08T08:04:52.34Z",
+    "finishTime": "2026-09-08T08:13:53.3866667Z",
+    "log": null
+  },
+  {
+    "type": "Task",
+    "name": "Initialize job",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-08T08:04:52.4633333Z",
+    "finishTime": "2026-09-08T08:04:53.72Z",
+    "log": {
+      "id": 6,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/6"
+    }
+  },
+  {
+    "type": "Task",
+    "name": "Finalize Job",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-08T08:12:54.45Z",
+    "finishTime": "2026-09-08T08:12:54.4766667Z",
+    "log": {
+      "id": 12,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/12"
+    }
+  },
+  {
+    "type": "Task",
+    "name": "Initialize job",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-08T08:04:44.46Z",
+    "finishTime": "2026-09-08T08:04:46.3633333Z",
+    "log": {
+      "id": 5,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/5"
+    }
+  },
+  {
+    "type": "Task",
+    "name": "Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-08T08:04:53.7333333Z",
+    "finishTime": "2026-09-08T08:04:58.7366667Z",
+    "log": {
+      "id": 8,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/8"
+    }
+  },
+  {
+    "type": "Task",
+    "name": "Build and smoke-test SQL Server 2019 Full-Text",
+    "state": "completed",
+    "result": "failed",
+    "startTime": "2026-09-08T08:04:58.74Z",
+    "finishTime": "2026-09-08T08:12:51.6666667Z",
+    "log": {
+      "id": 9,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/9"
+    }
+  },
+  {
+    "type": "Job",
+    "name": "BuildAndTest2019",
+    "state": "completed",
+    "result": "failed",
+    "startTime": "2026-09-08T08:04:52.34Z",
+    "finishTime": "2026-09-08T08:12:54.4833333Z",
+    "log": {
+      "id": 13,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/13"
+    }
+  },
+  {
+    "type": "Task",
+    "name": "Finalize Job",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-08T08:20:09.6666667Z",
+    "finishTime": "2026-09-08T08:20:09.83Z",
+    "log": {
+      "id": 17,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/17"
+    }
+  },
+  {
+    "type": "Task",
+    "name": "PublishPipelineArtifact",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-08T08:12:51.6766667Z",
+    "finishTime": "2026-09-08T08:12:54.1533333Z",
+    "log": {
+      "id": 10,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/10"
+    }
+  },
+  {
+    "type": "Task",
+    "name": "Build and smoke-test SQL Server 2025 Full-Text",
+    "state": "completed",
+    "result": "failed",
+    "startTime": "2026-09-08T08:04:57.7666667Z",
+    "finishTime": "2026-09-08T08:20:00.2233333Z",
+    "log": {
+      "id": 14,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/14"
+    }
+  },
+  {
+    "type": "Task",
+    "name": "Post-job: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-08T08:12:54.1533333Z",
+    "finishTime": "2026-09-08T08:12:54.4433333Z",
+    "log": {
+      "id": 11,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/11"
+    }
+  },
+  {
+    "type": "Task",
+    "name": "Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-08T08:04:46.38Z",
+    "finishTime": "2026-09-08T08:04:57.76Z",
+    "log": {
+      "id": 7,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/7"
+    }
+  },
+  {
+    "type": "Task",
+    "name": "PublishPipelineArtifact",
+    "state": "completed",
+    "result": "succeeded",
+    "startTime": "2026-09-08T08:20:00.3066667Z",
+    "finishTime": "2026-09-08T08:20:09.3033333Z",
+    "log": {
+      "id": 15,
+      "type": "Container",
+      "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/logs/15"
+    }
+  }
+]

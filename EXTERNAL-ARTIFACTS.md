@@ -20,18 +20,33 @@ Emplacement du workspace d'origine :
 C:\Users\jegour\OneDrive - CEGID\Documents\repertoireTravailRon\missions\delivery-acceleration\context\WI-2222897
 ```
 
-## Vue d'ensemble
+## Vue d'ensemble — nettoyage exécuté le 2026-09-08
 
-| Catégorie | Poids | Reconstituable ? | Verdict |
-|---|---:|---|---|
-| Clones Git et worktrees | 1,7 Go | oui, `git clone` depuis `cegid/Retail` | supprimable, le travail est dans [`patches/`](patches/README.md) |
-| Snapshots de dépôts (`sources/`) | 1,9 Go | oui, `git clone` + `checkout <commit>` | supprimable, commits notés ci-dessous |
-| Artefacts bruts de preuve | 2,9 Go | partiellement, selon la rétention Azure DevOps | **à décider** — voir la mise en garde |
-| Sorties des sessions parallèles | 2,1 Go | non pour les preuves, oui pour les clones qu'elles contiennent | tri nécessaire |
+Le dossier OneDrive d'origine est passé de **8,6 Go à 72 Mo**. Trois emplacements se partagent
+désormais le contenu :
 
-## 1. Clones Git et worktrees — supprimables
+| Emplacement | Poids | Contenu |
+|---|---:|---|
+| `C:/clones/wi-2222897` | 151 Mo | ce dépôt : couche documentaire versionnée |
+| `C:/clones/wi-2222897-evidence` | 3,1 Go | artefacts bruts de preuve, hors OneDrive, arborescence conservée |
+| dossier OneDrive d'origine | 72 Mo | résidu documentaire, plus la référence — voir `LISEZ-MOI-DEPLACE.md` |
 
-Treize clones sous `worktrees/`. **Tout le travail non committé a été extrait** dans
+Détail de ce qui a été fait :
+
+| Catégorie | Poids | Action réalisée |
+|---|---:|---|
+| Clones Git et worktrees | 1,7 Go | **supprimés** ; travail non committé sauvé dans [`patches/`](patches/README.md) |
+| Snapshots de dépôts (`sources/`) | 1,9 Go | **supprimés** ; commits de reconstitution en section 2 |
+| Artefacts bruts de preuve | 3,1 Go | **déplacés** vers `C:/clones/wi-2222897-evidence` |
+| Clones et copies des sessions parallèles | 2,0 Go | **supprimés** ou déplacés vers `…-evidence/_parallel/` |
+| Profils Azure CLI, traces d'orchestration, clone égaré | ~370 Mo | **supprimés**, sauf 5 coquilles vides bloquées par ACL (section 5) |
+
+Chemin du dossier d'origine : `…/missions/delivery-acceleration/context/WI-2222897` sous
+`OneDrive - CEGID/Documents/repertoireTravailRon`.
+
+## 1. Clones Git et worktrees — supprimés le 2026-09-08
+
+Les treize clones qui étaient sous `worktrees/` ont été supprimés. **Tout le travail non committé avait été extrait au préalable** dans
 [`patches/`](patches/README.md) le 2026-09-08 : les quatre corrections du générateur JMX, le correctif
 Full-Text, les cinq métadonnées Clienteling, la propagation d'erreur PlatformDeploy et la modification
 utilisateur du workflow JMeter. Vérifié worktree par worktree ; six étaient sales, les autres propres.
@@ -61,9 +76,9 @@ Deux points à connaître avant de recloner :
   recloner proprement. Le seul fichier unique qu'il contenait est conservé ici, voir
   [`patches/README.md`](patches/README.md).
 
-## 2. Snapshots de dépôts — supprimables
+## 2. Snapshots de dépôts — supprimés le 2026-09-08
 
-`investigations/ecarts-jmeter-migrations/sources/` contenait des copies exactes de dépôts au commit
+`investigations/ecarts-jmeter-migrations/sources/` a été supprimé. Il contenait des copies exactes de dépôts au commit
 d'un build, servant de preuve de code. Chaque snapshot est reconstituable par `git clone` puis
 `git checkout <commit>` :
 
@@ -86,39 +101,36 @@ source à citer.
 qu'aucune preuve unique n'y réside avant suppression — c'était déjà la réserve inscrite dans
 `RESOURCES.md`.
 
-## 3. Artefacts bruts de preuve — à décider, ne pas supprimer à l'aveugle
+## 3. Artefacts bruts de preuve — déplacés hors OneDrive le 2026-09-08
 
 Environ 2,9 Go répartis sur 68 des 178 dossiers de preuve : logs de run, `.jmx`, `.jtl`, dumps XML de
 réponses, archives `.zip` d'artefacts de build, backups. Le détail dossier par dossier, avec le poids
 resté dehors, est dans
 [l'index des preuves](investigations/ecarts-jmeter-migrations/evidence/README.md).
 
-**Mise en garde.** Ces fichiers sont des artefacts téléchargés depuis Azure DevOps pour des builds de
-début septembre 2026. Ils sont soumis à la rétention Azure DevOps : passé ce délai, ils ne sont plus
-téléchargeables. Or plusieurs `findings/` s'appuient sur eux avec des empreintes précises, et
-l'ensemble du diagnostic causal — les 485 cas Clienteling classés, les 174 refus V22, les 6 échecs
-FrenchTaxesRules — a été établi à partir de ces artefacts.
+**Décision retenue** : déplacement hors OneDrive plutôt que suppression, pour conserver la capacité
+de re-vérifier une conclusion contestée sur la donnée brute. Ces artefacts viennent de builds de début
+septembre 2026 et sont soumis à la rétention Azure DevOps : passé ce délai, ils ne sont plus
+téléchargeables, et tout le diagnostic causal — les 485 cas Clienteling classés, les 174 refus V22, les
+6 échecs FrenchTaxesRules — a été établi à partir d'eux.
 
-Ce qui est conservé ici et suffit à relire le raisonnement : les `README.md` de provenance, les
-`MANIFEST.csv`, les `SHA256SUMS.txt`, les CSV d'erreurs, les timelines JSON et les `findings/`.
-Ce qui disparaîtrait : la capacité de **re-vérifier** une conclusion contestée sur la donnée brute.
+**Emplacement** : `C:/clones/wi-2222897-evidence/`, arborescence identique à celle de
+`investigations/ecarts-jmeter-migrations/evidence/`, plus un sous-dossier `_parallel/` pour les
+binaires des sessions parallèles. La correspondance avec l'index du dépôt reste donc directe : pour un
+dossier de preuve donné, remplacer le préfixe du chemin par celui de l'archive.
 
-Trois options, par ordre de prudence :
+Ce que ce dépôt conserve et qui suffit à relire le raisonnement : les `README.md` de provenance, les
+`MANIFEST.csv`, les `SHA256SUMS.txt`, les CSV d'erreurs de moins de 512 Ko, les timelines JSON et les
+`findings/`. Les 25 fichiers documentaires qui dépassaient 512 Ko — surtout des CSV d'erreurs de 4 à
+6 Mo — ont rejoint l'archive pour ne rester orphelins nulle part.
 
-1. déplacer les 2,9 Go hors OneDrive, par exemple `C:\clones\wi-2222897-evidence\`, en conservant
-   l'arborescence pour que l'index reste exact ;
-2. archiver en un `.7z`/`.zip` unique hors OneDrive, avec son empreinte notée ici ;
-3. supprimer, en acceptant que les verdicts deviennent non re-vérifiables sur la donnée brute.
+Cette archive n'est **pas** versionnée et n'est **pas** sauvegardée par OneDrive. Si elle compte,
+prévoir une sauvegarde propre.
 
-Les gros contributeurs, si l'on veut cibler : les deux `serilog_authserver_*.log` du build 4432554
-pèsent 38,8 Mo chacun, la collecte `2026-09-07-brain-reprise-worker1-round5` 94,3 Mo, les dossiers
-`_extracted/` des builds `4426342`, `4429167`, `4432510`, `4432554`, `4432602`, `4432652` et `4432672`
-l'essentiel du reste.
-
-## 4. Sorties des sessions parallèles — tri nécessaire
+## 4. Sorties des sessions parallèles — traitées le 2026-09-08
 
 `investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-.../` pesait 2,1 Go pour trois
-sessions BW1, BW2 et BW3. Leur couche documentaire — `MISSION.md`, `RESULT.md`, `CORRECTIONS.md`,
+sessions BW1, BW2 et BW3. Les clones et les copies d'arborescences ont été supprimés, les binaires déplacés vers `…-evidence/_parallel/`. Leur couche documentaire — `MISSION.md`, `RESULT.md`, `CORRECTIONS.md`,
 `INTEGRATION.md`, `RESOURCES.md` et les README de preuve — est versionnée ici. Le poids venait de :
 
 - clones Git complets sous `bw*/worktrees/` → reclonables ;
@@ -129,9 +141,9 @@ sessions BW1, BW2 et BW3. Leur couche documentaire — `MISSION.md`, `RESULT.md`
 
 Aucun de ces quatre postes n'est une preuve unique.
 
-## 5. Éléments à supprimer sans réserve
+## 5. Éléments supprimés sans réserve
 
-Présents dans le workspace d'origine, non versionnés ici, sans valeur de preuve :
+Supprimés du workspace d'origine le 2026-09-08, sans valeur de preuve :
 
 - six profils Azure CLI jetables à la racine : `.az-cli-4434070`, `.az-cli-worker1-r2`,
   `.azcfg-v22-read10`, `.azcli-worker1`, `.azconfig-worker2-r3`, `.tmp-az-fulltext-round2` ;
@@ -142,6 +154,21 @@ Présents dans le workspace d'origine, non versionnés ici, sans valeur de preuv
 - `.v22-isolated-publish/` — clone égaré de 152 Mo, dont un `SAFT.XML` de 77,6 Mo ;
 - `.v22-preview-body.json` — corps de requête temporaire ;
 - `.brain-worker-archives/` et `.brain-worker-control/` — traces d'orchestration.
+
+**Restent à supprimer, blocage technique.** Cinq coquilles de profils Azure CLI, 8 Ko chacune, dont le
+sous-dossier `cliextensions/azure-devops/azext_devops` refuse l'accès : `Get-Acl` lui-même échoue en
+« opération non autorisée ». `takeown` et `icacls` sans élévation n'y suffisent pas. Depuis un terminal
+**administrateur**, en se plaçant dans le dossier WI :
+
+```powershell
+takeown /f . /r /d O
+icacls . /grant "$($env:USERNAME):(OI)(CI)F" /t
+Remove-Item .az-cli-4434070, .az-cli-worker1-r2, .azcli-worker1, .azconfig-worker2-r3, .tmp-az-fulltext-round2 -Recurse -Force
+```
+
+Le même blocage touche `parallel/.../bw3-plugins/reports/inventorytracking/azcfg/` et
+`evidence/azure-devops/work-item-2222897/2026-09-07/.azcfg/`. Aucun de ces dossiers ne contient de
+preuve : ce sont des caches d'extension `az`.
 
 ## 6. Points de sécurité relevés au passage
 

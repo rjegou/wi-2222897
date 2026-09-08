@@ -1,0 +1,25 @@
+TC122 — artefacts ciblés du build 4440884
+
+Téléchargement hors dépôt : C:\Users\jegour\AppData\Local\Temp\WI-2222897-InventoryTracking-4440884
+
+JTL Fix : 002-Device_Reassign/002-Device_Reassign-results.jtl
+timestamp=1788786715104 (2026-09-07T13:11:55.104Z)
+label=002-Device:Reassign - TC 122 - B-XQuery
+responseCode=500; responseMessage=Internal Server Error; success=false
+failureMessage=code expected 200, received 500; bytes=2425; sentBytes=2290
+
+JTL Cur : 002-Device_Reassign/002-Device_Reassign-results.jtl
+timestamp=1788786728970 (2026-09-07T13:12:08.970Z)
+label=002-Device:Reassign - TC 122 - B-XQuery
+responseCode=200; responseMessage=OK; success=true
+bytes=30219; sentBytes=2290
+
+Les deux JTL contiennent le même label, threadName et plan; aucun corps de requête n'est conservé dans la ligne JTL. Aucun fichier response.xml TC122 n'existe sous 002-Device_Reassign dans les deux lots TestLogs; seuls les response.xml d'autres plans portant TC122 sont présents.
+
+Log serveur Fix : WebApplication_2026.09.07_001.Log, fenêtre 13:11:55Z
+Le journal montre InventoryTrackingDeviceService.svc - Reassign, puis OperationName=Reassign, OperationStatus=Failed, ErrorType=Business, ErrorId=CBR_181_0054 et l'exception Biz181Exception « L'utilisateur (T@T) n'existe pas. ». Il montre aussi les mêmes opérations SQL sur device tstauto-ts et serial NUMSERIE-1978-AA03.
+
+FACT : le JTL Fix observe HTTP 500 pour TC122 et le JTL Cur observe HTTP 200.
+FACT : le log serveur Fix observe une opération Reassign échouée dans la même seconde, avec une erreur métier CBR_181_0054.
+INFERENCE : cette opération serveur est probablement la requête Fix TC122, car timestamp, endpoint métier et séquence Reassign concordent.
+UNKNOWN : corrélation technique définitive entre la ligne JTL et la ligne serveur, corps exact de requête, réponse XML HTTP 500 et raison de la différence Cur/Fix.

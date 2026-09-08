@@ -1,0 +1,39 @@
+{
+  "count": 2,
+  "value": [
+    {
+      "id": 5036344,
+      "name": "sql-fulltext-2019-evidence",
+      "source": "b2a68c7f-abcb-5c8a-a985-a35fc92554c1",
+      "resource": {
+        "type": "PipelineArtifact",
+        "data": "BC9EEBDB2511A379A6005CF3D6E1D6B839DF8A9B8C5E1085F06F47B162A3FE9601",
+        "properties": {
+          "RootId": "1E96409620CD65F4414EAEB880AC8A2F527602834056B2F9D27F987B2427425302",
+          "artifactsize": "20741",
+          "HashType": "DEDUPNODEORCHUNK",
+          "DomainId": "0"
+        },
+        "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/artifacts?artifactName=sql-fulltext-2019-evidence&api-version=7.1",
+        "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQ0MTczL2FydGlmYWN0TmFtZS9zcWwtZnVsbHRleHQtMjAxOS1ldmlkZW5jZQ2/content?format=zip"
+      }
+    },
+    {
+      "id": 5036418,
+      "name": "sql-fulltext-2025-evidence",
+      "source": "e5741829-507f-5dd5-d8d3-551894d35ccd",
+      "resource": {
+        "type": "PipelineArtifact",
+        "data": "8DC3A1078CFA8F576035B61E53BCFE6E27CFCE2E867048CAC496CEB0104EF5D301",
+        "properties": {
+          "RootId": "CF6FCD4F4914EDB885C7BE0417E465ADFCFFC7987CBB4ACF3B17EF13CE351BE802",
+          "artifactsize": "20343",
+          "HashType": "DEDUPNODEORCHUNK",
+          "DomainId": "0"
+        },
+        "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4444173/artifacts?artifactName=sql-fulltext-2025-evidence&api-version=7.1",
+        "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQ0MTczL2FydGlmYWN0TmFtZS9zcWwtZnVsbHRleHQtMjAyNS1ldmlkZW5jZQ2/content?format=zip"
+      }
+    }
+  ]
+}

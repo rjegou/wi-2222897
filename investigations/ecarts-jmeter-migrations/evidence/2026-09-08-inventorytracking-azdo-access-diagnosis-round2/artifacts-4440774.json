@@ -1,0 +1,56 @@
+{
+  "count": 3,
+  "value": [
+    {
+      "id": 5032402,
+      "name": "26.0.7.75_Nuget",
+      "source": "2a130c04-1486-5a73-a382-fad121cfea2b",
+      "resource": {
+        "type": "PipelineArtifact",
+        "data": "E299F241E664F9C074FE48BFF394062084E94E6B0DB09887267BB138D45BEACA01",
+        "properties": {
+          "RootId": "BB21B590F7F98F3CE8D15AC9EC425D493AFE4E86ED7D589077EDAB4414ADF80A02",
+          "artifactsize": "1116139",
+          "HashType": "DEDUPNODEORCHUNK",
+          "DomainId": "0"
+        },
+        "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440774/artifacts?artifactName=26.0.7.75_Nuget&api-version=7.1",
+        "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQwNzc0L2FydGlmYWN0TmFtZS8yNi4wLjcuNzVfTnVnZXQ1/content?format=zip"
+      }
+    },
+    {
+      "id": 5032413,
+      "name": "26.0.7.75_Software",
+      "source": "2a130c04-1486-5a73-a382-fad121cfea2b",
+      "resource": {
+        "type": "PipelineArtifact",
+        "data": "D6D14C8092432EB303DAAA44C47B1FBC10AE2A353D6DCB00A1CB3D0A35CC4A6701",
+        "properties": {
+          "RootId": "46BB3F6BB9849C728D3A32C7B13CC6475BA8982B0C420E296DA2B57A9EAAC3A002",
+          "artifactsize": "1705531",
+          "HashType": "DEDUPNODEORCHUNK",
+          "DomainId": "0"
+        },
+        "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440774/artifacts?artifactName=26.0.7.75_Software&api-version=7.1",
+        "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQwNzc0L2FydGlmYWN0TmFtZS8yNi4wLjcuNzVfU29mdHdhcmU1/content?format=zip"
+      }
+    },
+    {
+      "id": 5032414,
+      "name": "26.0.7.75_HtmlDocs",
+      "source": "2a130c04-1486-5a73-a382-fad121cfea2b",
+      "resource": {
+        "type": "PipelineArtifact",
+        "data": "482274F0B6B00FEA6B9A7E5483AB1AB5946C7CE2E1B41D32F4CAA3DB6EE2195601",
+        "properties": {
+          "RootId": "4CB0563987E904EE5209B4567ED3F937FFB7DDD5A8A36F89D282D1731AB7001E02",
+          "artifactsize": "3505341",
+          "HashType": "DEDUPNODEORCHUNK",
+          "DomainId": "0"
+        },
+        "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440774/artifacts?artifactName=26.0.7.75_HtmlDocs&api-version=7.1",
+        "downloadUrl": "https://artprodsu6weu.artifacts.visualstudio.com/Abc109f6f-b2b6-4312-8051-4941a7b7c494/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NlZ2lkL3Byb2plY3RJZC9hZWZkYzZjYi04NTE3LTRmYWYtYjVlZC04ZDU5Mjk3YTZkMGUvYnVpbGRJZC80NDQwNzc0L2FydGlmYWN0TmFtZS8yNi4wLjcuNzVfSHRtbERvY3M1/content?format=zip"
+      }
+    }
+  ]
+}

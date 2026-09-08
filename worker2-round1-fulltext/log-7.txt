@@ -1,0 +1,59 @@
+2026-09-08T08:04:46.4150281Z ##[section]Starting: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s
+2026-09-08T08:04:46.4323722Z ==============================================================================
+2026-09-08T08:04:46.4325125Z Task         : Get sources
+2026-09-08T08:04:46.4326171Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2026-09-08T08:04:46.4326755Z Version      : 1.0.0
+2026-09-08T08:04:46.4327723Z Author       : Microsoft
+2026-09-08T08:04:46.4329178Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2026-09-08T08:04:46.4329688Z ==============================================================================
+2026-09-08T08:04:49.4764342Z Syncing repository: Pipelines_Docker_BaseImages (Git)
+2026-09-08T08:04:49.4780354Z Prepending Path environment variable with directory containing 'git.exe'.
+2026-09-08T08:04:49.4792287Z ##[command]git version
+2026-09-08T08:04:51.9908324Z git version 2.55.0.windows.1
+2026-09-08T08:04:51.9909441Z ##[command]git lfs version
+2026-09-08T08:04:51.9918495Z git-lfs/3.7.1 (GitHub; windows amd64; go 1.25.1; git b84b3384)
+2026-09-08T08:04:51.9920422Z ##[command]git init "D:\a\1\s"
+2026-09-08T08:04:51.9927358Z Initialized empty Git repository in D:/a/1/s/.git/
+2026-09-08T08:04:54.0292027Z ##[command]git remote add origin https://cegid@dev.azure.com/cegid/Retail/_git/Pipelines_Docker_BaseImages
+2026-09-08T08:04:54.0841826Z ##[command]git sparse-checkout disable
+2026-09-08T08:04:54.0866167Z ##[command]git config gc.auto 0
+2026-09-08T08:04:54.0881669Z ##[command]git config core.longpaths true
+2026-09-08T08:04:54.1798617Z ##[command]git config --get-all http.https://cegid@dev.azure.com/cegid/Retail/_git/Pipelines_Docker_BaseImages.extraheader
+2026-09-08T08:04:54.2212819Z ##[command]git config --get-all http.extraheader
+2026-09-08T08:04:54.2680239Z ##[command]git config --get-regexp .*extraheader
+2026-09-08T08:04:54.3156123Z ##[command]git config --get-all http.proxy
+2026-09-08T08:04:54.3638230Z ##[command]git config http.version HTTP/1.1
+2026-09-08T08:04:54.4503990Z ##[command]git config --get-all remote.origin.promisor
+2026-09-08T08:04:54.5281615Z ##[command]git config --get-all remote.origin.partialclonefilter
+2026-09-08T08:04:54.7342743Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +b691d357411f92a83828c52a1edda43439ab097b:refs/remotes/origin/b691d357411f92a83828c52a1edda43439ab097b
+2026-09-08T08:04:55.3193719Z remote: Azure Repos        
+2026-09-08T08:04:55.4451118Z remote: 
+2026-09-08T08:04:55.4471508Z remote: Found 59 objects to send. (128 ms)        
+2026-09-08T08:04:55.7798311Z From https://dev.azure.com/cegid/Retail/_git/Pipelines_Docker_BaseImages
+2026-09-08T08:04:55.7827571Z  * [new ref]         b691d357411f92a83828c52a1edda43439ab097b -> origin/b691d357411f92a83828c52a1edda43439ab097b
+2026-09-08T08:04:55.8491733Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +b691d357411f92a83828c52a1edda43439ab097b
+2026-09-08T08:04:56.3995358Z remote: Azure Repos        
+2026-09-08T08:04:57.4446052Z remote: 
+2026-09-08T08:04:57.4481381Z remote: Found 0 objects to send. (1047 ms)        
+2026-09-08T08:04:57.5358036Z From https://dev.azure.com/cegid/Retail/_git/Pipelines_Docker_BaseImages
+2026-09-08T08:04:57.5359562Z  * branch            b691d357411f92a83828c52a1edda43439ab097b -> FETCH_HEAD
+2026-09-08T08:04:57.5957544Z ##[command]git checkout --progress --force refs/remotes/origin/b691d357411f92a83828c52a1edda43439ab097b
+2026-09-08T08:04:57.7173540Z Note: switching to 'refs/remotes/origin/b691d357411f92a83828c52a1edda43439ab097b'.
+2026-09-08T08:04:57.7173809Z 
+2026-09-08T08:04:57.7185528Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-09-08T08:04:57.7188762Z changes and commit them, and you can discard any commits you make in this
+2026-09-08T08:04:57.7193257Z state without impacting any branches by switching back to a branch.
+2026-09-08T08:04:57.7194741Z 
+2026-09-08T08:04:57.7195762Z If you want to create a new branch to retain commits you create, you may
+2026-09-08T08:04:57.7196133Z do so (now or later) by using -c with the switch command. Example:
+2026-09-08T08:04:57.7197169Z 
+2026-09-08T08:04:57.7198228Z   git switch -c <new-branch-name>
+2026-09-08T08:04:57.7198987Z 
+2026-09-08T08:04:57.7199693Z Or undo this operation with:
+2026-09-08T08:04:57.7200332Z 
+2026-09-08T08:04:57.7201144Z   git switch -
+2026-09-08T08:04:57.7201746Z 
+2026-09-08T08:04:57.7202576Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-09-08T08:04:57.7203972Z 
+2026-09-08T08:04:57.7208597Z HEAD is now at b691d35 WI-2222897 collect Full-Text runtime diagnostics
+2026-09-08T08:04:57.7607318Z ##[section]Finishing: Checkout Pipelines_Docker_BaseImages@sandbox/WI-2222897-sql-fulltext to s

@@ -1,5 +1,9 @@
 # Résultat InventoryTracking — 2026-09-08
 
+## Handoff opérationnel Console SOAP
+
+La vérification de la piste `2.0.42-soapnamespace.20260907` est dans [evidence/console-candidate-round4.md](evidence/console-candidate-round4.md). Le package `803D…`, l'API `57BE…`, la Console `82A1…` et les `151/151` hashes JMX ont été recalculés. Portée limitée à Clienteling/local : aucun lien direct avec les JMX InventoryTracking `ef3d8703` ni avec les quatre corrections API n'est prouvé.
+
 ## Verdict
 
 **FACT** — Le build `4434070`, branche `InventoryTracking_Migration_AutoTest_Jmeter_On_master`, commit `4de185bb...`, échoue d'abord sur `MSB3245` pour `Cegid.Retail.XmlDiff`, puis sur quatre `CS0103`; les stages JMeter sont skipped. Preuve primaire relue : `evidence/azure-devops-inventorytracking-2026-09-07-worker2-round2/README.md`.
@@ -15,4 +19,4 @@
 - Build complet : **NOT RUN / non concluant**. Le poste manque le targeting pack .NET 4.8 et plusieurs assemblies Cegid externes; cette limite est distincte de XmlDiff.
 - Contrôle avant strict avec suppression de la DLL : **NOT RUN** (le test de copie de 311 MB dans le chemin long n'a pas permis de relancer MSBuild avec un répertoire de travail valide). Le baseline statique conserve le HintPath `..\Assemblies\Y2Core\...`; aucune prétention de reproduire le MSB3245 localement.
 
-**UNKNOWN** — restauration/package réellement consommés par le pipeline au commit `4de185bb`, propagation au générateur/migrateur et résultat métier JMeter. Les revendications distantes `4440774`/`4440884` restent non revérifiées dans ce round.
+**UNKNOWN** — restauration/package réellement consommés par le pipeline au commit `4de185bb`, propagation au générateur/migrateur et résultat métier JMeter. Les builds `4440774`/`4440884` ont depuis été vérifiés indépendamment; voir le handoff Console et la collecte AzDO round 2 dans le dépôt parent.

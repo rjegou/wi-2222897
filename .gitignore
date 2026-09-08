@@ -54,3 +54,7 @@ id_rsa*
 # --- divers --------------------------------------------------------------------
 Thumbs.db
 desktop.ini
+
+# --- stagings temporaires deposes par des sessions parallelles ---
+.worker*-tmp/
+.worker*/

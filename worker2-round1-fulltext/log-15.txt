@@ -1,0 +1,34 @@
+2026-09-08T08:20:00.3754176Z ##[section]Starting: PublishPipelineArtifact
+2026-09-08T08:20:00.4358382Z ==============================================================================
+2026-09-08T08:20:00.4358554Z Task         : Publish Pipeline Artifacts
+2026-09-08T08:20:00.4358622Z Description  : Publish (upload) a file or directory as a named artifact for the current run
+2026-09-08T08:20:00.4358713Z Version      : 1.242.0
+2026-09-08T08:20:00.4358794Z Author       : Microsoft Corporation
+2026-09-08T08:20:00.4358855Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/publish-pipeline-artifact
+2026-09-08T08:20:00.4358974Z ==============================================================================
+2026-09-08T08:20:03.9974710Z Artifact name input: sql-fulltext-2025-evidence
+2026-09-08T08:20:04.2236845Z Uploading pipeline artifact from D:\a\1\a for build #4444173
+2026-09-08T08:20:07.2215485Z Using default max parallelism.
+2026-09-08T08:20:07.2216090Z Max dedup parallelism: 192
+2026-09-08T08:20:07.2220385Z DomainId: 0
+2026-09-08T08:20:07.6700749Z ApplicationInsightsTelemetrySender will correlate events with X-TFS-Session aa364ca9-5ae5-455f-90f1-3886391ec694
+2026-09-08T08:20:07.6916919Z Hashtype: Dedup64K
+2026-09-08T08:20:07.7307261Z DedupManifestArtifactClient will correlate http requests with X-TFS-Session aa364ca9-5ae5-455f-90f1-3886391ec694
+2026-09-08T08:20:07.9573682Z 2 files processed.
+2026-09-08T08:20:07.9588153Z Processed 2 files from D:\a\1\a successfully.
+2026-09-08T08:20:08.5827737Z Uploaded 18,203 out of 20,700 bytes
+2026-09-08T08:20:08.5828151Z Content upload is done!
+2026-09-08T08:20:08.5844284Z 
+2026-09-08T08:20:08.5844982Z Content upload statistics:
+2026-09-08T08:20:08.5845464Z Total Content: 41.0 KB
+2026-09-08T08:20:08.5845889Z Physical Content Uploaded: 2.3 KB
+2026-09-08T08:20:08.5846315Z Logical Content Uploaded: 18.2 KB
+2026-09-08T08:20:08.5846755Z Compression Saved: 15.9 KB
+2026-09-08T08:20:08.5851091Z Deduplication Saved: 22.8 KB
+2026-09-08T08:20:08.5851490Z Number of Chunks Uploaded: 2
+2026-09-08T08:20:08.5851769Z Total Number of Chunks: 5
+2026-09-08T08:20:08.5851861Z 
+2026-09-08T08:20:08.9272741Z Associated artifact 5036418 with build 4444173
+2026-09-08T08:20:08.9814615Z ApplicationInsightsTelemetrySender correlated 2 events with X-TFS-Session aa364ca9-5ae5-455f-90f1-3886391ec694
+2026-09-08T08:20:08.9827045Z Uploading pipeline artifact finished.
+2026-09-08T08:20:09.3023509Z ##[section]Finishing: PublishPipelineArtifact

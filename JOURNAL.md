@@ -1,5 +1,55 @@
 # JOURNAL — WI-2222897
 
+## 2026-09-08 — Nettoyage du workspace OneDrive
+
+Suite de la mise en dépôt. Le dossier OneDrive d'origine passe de **8,6 Go à 72 Mo**.
+
+**Ordre suivi, volontairement** : extraire d'abord le travail non committé, committer le dépôt, puis
+seulement nettoyer. Le contrôle Git préalable avait montré que six clones portaient des modifications
+qui n'existaient nulle part ailleurs.
+
+**Supprimé** — les 13 clones de `worktrees/` (1,7 Go, tous reclonables depuis `cegid/Retail`, travail
+sauvé dans `patches/`) ; `investigations/*/sources/` (1,9 Go de snapshots, commits notés dans
+`EXTERNAL-ARTIFACTS.md`) ; les clones et copies d'arborescences des sessions parallèles (1,8 Go) ; la
+distribution Apache JMeter 5.6.3 décompressée ; `.v22-isolated-publish/` (154 Mo) ;
+`.tmp-az-fulltext-round2` (203 Mo) ; les profils Azure CLI jetables ; `.brain-worker-archives/` et
+`.brain-worker-control/` ; les deux helpers `git-askpass`.
+
+**Déplacé hors OneDrive** — 3,1 Go d'artefacts bruts de preuve vers `C:/clones/wi-2222897-evidence`,
+arborescence conservée pour que l'index du dépôt reste directement exploitable. Choix de l'utilisateur :
+déplacer plutôt que supprimer, afin de garder la capacité de re-vérifier un verdict contesté sur la
+donnée brute, la rétention Azure DevOps sur ces builds étant incertaine. Les 25 fichiers documentaires
+de plus de 512 Ko — surtout des CSV d'erreurs de 4 à 6 Mo — ont rejoint l'archive pour ne rester
+orphelins nulle part.
+
+**Supprimé aussi, sur décision de l'utilisateur** : `jfrogToken.txt`, jeton JFrog en clair qui se
+trouvait dans le clone `Migration_Jmeter_RJE_Sandbox`. À recharger depuis JFrog ou à faire tourner si
+besoin.
+
+**Non fait, blocage technique** — cinq coquilles de profils Azure CLI de 8 Ko subsistent : leur
+sous-dossier `cliextensions/azure-devops/azext_devops` refuse l'accès, `Get-Acl` échoue lui-même en
+« opération non autorisée », et `takeown`/`icacls` sans élévation n'y suffisent pas. La commande à
+passer depuis un terminal administrateur est en section 5 de `EXTERNAL-ARTIFACTS.md`. Aucun de ces
+dossiers ne contient de preuve.
+
+**Pointeurs laissés en place** — `LISEZ-MOI-DEPLACE.md` à la racine du dossier OneDrive et un
+`worktrees/README.md` expliquant où est passé le travail non committé, pour éviter qu'une session
+future travaille au mauvais endroit.
+
+**Signalé, non traité** — deux éléments reçus d'une session pairs pendant ce travail : une offre
+d'accès à un PAT Azure et à un jeton JFrog, non utilisée car sans rapport avec cette tâche ; et une
+modification de `decisions/README.md` marquant la décision 5 « autorisée par l'utilisateur », qui ne
+provient pas de cette conversation. À confirmer directement auprès de l'utilisateur avant toute
+publication de paquet.
+
+## 2026-09-08 — Worker 3 — consolidation InventoryTracking round 2
+
+Lecture des collectes `2026-09-08-inventorytracking-azdo-access-diagnosis-round2` et `2026-09-08-inventorytracking-azdo-independent`, puis mise à jour de [finding 013](investigations/ecarts-jmeter-migrations/findings/013-inventorytracking-xmlDiff-migration-build-4434070.md), [STATUS.md](STATUS.md), [STATUS_MATRIX.md](investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md), [HANDOFF.md](investigations/ecarts-jmeter-migrations/HANDOFF.md), de l'index des preuves et de l'index du plan Worker 2.
+
+**FACT** — `4440774` réussit le Build avec JMeter skipped; `4440884` réussit le Build et exécute Cur/Fix avec `1991` résultats chacun, `339` échecs communs et le seul delta `TC 122` (Fix Failed/Cur Passed). La publication staging est exécutée selon la timeline et les artefacts sont indexés. L'état fonctionnel reste UNKNOWN; la ref et la PR source sont absentes de la requête datée, sans généralisation.
+
+**Correction documentaire** — Python/OpenSSL fonctionne et Schannel échoue (`SEC_E_NO_CREDENTIALS`); le PAT n'est pas déclaré expiré/invalide. Aucune disparition de clone ou verrou n'est attribué à un worker sans preuve. L'autorisation courante est consignée comme couvrant corrections/push/runs/PR appropriée, avec maîtrise obligatoire des effets partagés avant une nouvelle exécution. Aucun code, preuve brute ou système externe n'a été modifié; aucun commit tenté, le dépôt Git étant en lecture seule pour cette phase.
+
 ## 2026-09-08 — Référencement de brain-worker
 
 Ajout du guide [brain-worker](documentation/guides/BRAIN_WORKER.md), qui établit la disponibilité
@@ -721,3 +771,21 @@ Les sources historiques séparent `acrImage.AcrName=AcrRetailDocker`, repository
 
 ## 2026-09-08 — Lancement de trois BW isoles
 Lecture directe du PBI, partition outils/environnements/plugins, prompts sauvegardes et trois remote.ps1 lances avec MaxRounds=12. Processus 18468/6100/22320 verifies. Voir investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/README.md. Sources et travaux existants preserves; documents communs reserves au lanceur.
+
+## 2026-09-08 — Worker 2 — consolidation reprise expérimentale FrenchTaxesRules
+
+**FACT** — l'autorisation utilisateur de publier la chaîne API → Console → outil de migration et de
+lancer les campagnes réelles est accordée ; elle est maintenant reflétée dans la décision 5. Cette
+autorisation ne vaut pas preuve d'exécution.
+
+**FACT** — aucune publication, régénération JMX, queue Azure DevOps, build, test JMeter ou PR n'est
+prouvée dans cette reprise. Aucun résultat métier n'est qualifié.
+
+**UNKNOWN** — version, chemin et hash du package effectivement publié/consommé ; correspondance commit
+API → Console → migration → JMX ; état courant des refs et permissions Azure DevOps. Le clone propre
+FrenchTaxesRules tenté dans `worktrees/frenchtaxesrules-wi2222897` a échoué avec Git exit 128 sans
+worktree créé.
+
+**Suite** — reprendre le handoff de la décision 5 après rétablissement de l'accès, vérifier les hashes
+avant toute campagne, puis exécuter master/V26 et releases/V7 dans une définition isolée. Les changements
+non liés présents dans le worktree documentaire ont été préservés.

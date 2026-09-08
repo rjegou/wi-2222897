@@ -1,0 +1,38 @@
+339 échecs communs Cur/Fix — classification des résultats publiés
+
+Source : test-results-6185924.json et test-results-6185925.json; jointure exacte sur testCaseTitle, automatedTestName et testCaseReferenceId.
+
+common_failed=339
+operation signature (première signature relevée par testcase):
+B-XQuery=152
+A-PreQuery2=72
+A-PreQuery3=23
+A-PreQuery4=22
+D-FinalQuery3=13
+D-FinalQuery4=12
+A-PreQuery1=10
+D-FinalQuery1=8
+A-PreQuery5=5
+D-FinalQuery2=4
+A-PreQuery9=4
+D-FinalQuery5=4
+C-PostQuery5=3
+C-PostQuery4=2
+C-PostQuery2=2
+D-FinalQuery7=1
+C-PostQuery3=1
+A-PreQuery10=1
+
+Signature text counts, non exclusifs :
+Check the expected XML=197
+Incorrect syntax near=187
+Internal Server Error=1
+SQL/XML overlap=78
+only SQL syntax=109
+only XML diff=119
+other signatures=33
+
+FACT : les 339 cas sont Failed dans Cur et Fix; ils ne constituent pas une régression de migration.
+FACT : les signatures dominantes sont des erreurs SQL de syntaxe et des différences XML déjà communes aux deux variantes.
+INFERENCE : une partie des différences XML peut être une conséquence des erreurs SQL préalables; la classification ne prouve pas la cause produit de chaque testcase.
+UNKNOWN : cause racine individuelle des 339 cas sans corrélation avec scénario, données, version de package et environnement.

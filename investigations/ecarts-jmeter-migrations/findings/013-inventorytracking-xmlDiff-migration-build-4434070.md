@@ -6,7 +6,7 @@
 - Pipeline : définition `2072`, `InventoryTracking CI`.
 - Build : `4434070` (`7.73`), branche source `refs/heads/InventoryTracking_Migration_AutoTest_Jmeter_On_master`.
 - Commit migration : `4de185bb132cfbfb50643b6b53d6feb85508f4e2`.
-- Preuve primaire : `../evidence/azure-devops-inventorytracking-2026-09-07-worker2-round2/README.md`, `MANIFEST.csv`, `SHA256SUMS.txt`.
+- Preuves : cause initiale dans `../evidence/azure-devops-inventorytracking-2026-09-07-worker2-round2/README.md`; validation AzDO dans `../evidence/2026-09-08-inventorytracking-azdo-access-diagnosis-round2/README.md`, `MANIFEST.csv` et `SHA256SUMS.txt`; contre-vérification d'accès dans `../evidence/2026-09-08-inventorytracking-azdo-independent/README.md`.
 
 ## Conclusion bornée
 
@@ -28,16 +28,26 @@ Test local autorisé : checkout isolé du commit `4de185bb...`, changement minim
 
 ## Suite PBI
 
-Relire les PR de la branche de migration et les relations du WI via la collecte live dédiée avant toute conclusion. Ne pas lancer de pipeline dans ce lot. Les campagnes JMeter, la validation du correctif, la PR de migration et le tableau Excel/notification restent non prouvés.
+La correction candidate a maintenant été exercée par les builds `4440774` et `4440884` ci-dessous. L'état fonctionnel reste non validé : le delta `TC 122` est observé dans les résultats publiés, mais sa cause et sa reproductibilité restent `UNKNOWN`. La PR source n'a pas été retrouvée dans la requête datée; cela ne généralise pas à d'autres branches ou PR.
 
-## Complément du 2026-09-07 — deux handoffs manuels externes, runs ADO réels revendiqués (non revérifiés)
+## Complément du 2026-09-08 — validation AzDO des runs InventoryTracking
 
-**Non revérifié dans ce processus.** Deux documents manuels reçus hors `brain-worker` le même jour sont rangés sous [`evidence/local-2026-09-07-inventorytracking-xmldiff-ado-validation-handoff/`](../evidence/local-2026-09-07-inventorytracking-xmldiff-ado-validation-handoff/README.md). Ils rapportent, sans preuve jointe revérifiée ici :
+**FACT** — la collecte REST Python/OpenSSL authentifiée relit la définition `2072`, les builds, timelines, artefacts et résultats individuels. Le build `4440774` (`7.75`) est `completed/succeeded` au commit `ef3d87034d38b88aca04c824061b140e2a29252c` sur `refs/heads/validation/WI-2222897-inventorytracking-xmldiff`; Build réussit et JMeter est skipped.
+
+**FACT** — le build `4440884` (`7.76`) est `completed/partiallySucceeded` au même commit. Build réussit; Cur et Fix sont exécutés avec `1991` résultats chacun : Cur `1652 passed / 339 failed`, Fix `1651 passed / 340 failed`. Les artefacts Cur/Fix et la publication Artifactory staging sont présents dans l'index du build.
+
+**FACT** — la jointure exacte des résultats donne `1991` clés communes, `1651 Pass/Pass`, `339 Fail/Fail`, un seul `Fail/Pass` et aucun `Pass/Fail`. Le seul delta est `002-Device:Reassign - TC 122` (référence `1127761`) : Fix échoue sur `B-XQuery:Internal Server Error`, Cur passe. Les autres différences de texte d'erreur restent des `Failed/Failed`.
+
+**FACT** — la relecture de la ref exacte renvoie zéro résultat au moment de la collecte et la recherche de PR dont la source est cette branche renvoie zéro résultat. Cette absence est bornée à la requête datée et ne prouve ni suppression par un worker ni absence de toute PR historique.
+
+**UNKNOWN** — cause applicative/reproductibilité de `TC 122`, mapping vers le sample JMeter brut, contenu exact des logs/artefacts au-delà des résultats publiés, et état fonctionnel métier. `4440884` ne constitue donc pas une validation fonctionnelle globale.
+
+**FACT d'accès** — Python/OpenSSL fonctionne jusqu'à AzDO; Schannel échoue avec `SEC_E_NO_CREDENTIALS`. L'hypothèse d'un PAT expiré/invalide n'est pas établie. Les disparitions de clone ou verrous ne sont attribués à aucun worker sans preuve directe.
+
+**FACT d'autorisation et prudence** — l'autorisation actuelle couvre les corrections, push, runs et la PR appropriée. La prochaine exécution doit toutefois maîtriser les effets partagés : `Ensure_Docker_Image_Up_To_Date`, publication staging, compteur de version et toute ressource ACR/Artifactory. Aucun nouveau run n'est lancé dans cette mise à jour documentaire.
+
+## Complément du 2026-09-07 — deux handoffs manuels externes, runs ADO réels revendiqués (supersédé)
+
+Deux documents manuels reçus hors processus sont conservés sous [`evidence/local-2026-09-07-inventorytracking-xmldiff-ado-validation-handoff/`](../evidence/local-2026-09-07-inventorytracking-xmldiff-ado-validation-handoff/README.md). Leurs affirmations de runs sont désormais supersédées par la collecte datée du 2026-09-08 ci-dessus; ils restent utiles pour la provenance du correctif candidat.
 
 - **FACT rapporté** — un correctif appliqué sur une branche distante `validation/WI-2222897-inventorytracking-xmldiff` (commit `ef3d87034d38b88aca04c824061b140e2a29252c`), ajoutant explicitement `Cegid.Retail.XmlDiff 1.0.0` et `XMLDiffPatch 1.0.8.28` au `.csproj`/`packages.config` de `Services.Tests` — cohérent avec le correctif candidat déjà proposé ci-dessus.
-- **FACT rapporté** — un run réel `Build ID 4440774` (`pipelineDevMode=false`) sur ce commit serait `SUCCEEDED`, avec `Build V26` passant et `TI JMeter V26` skipped (comportement attendu hors `master`/`releases/*`).
-- **FACT rapporté, point supplémentaire du second document** — un second run réel `Build ID 4440884` (`pipelineDevMode=true`) aurait exécuté réellement les campagnes JMeter Cur/Fix (`partiallySucceeded`, `succeededWithIssues`) : 1991 tests publiés de chaque côté, 339 échecs Cur, 340 échecs Fix, avec un **delta net d'un seul test** — `002-Device:Reassign - TC 122` (Run `6185924` Fix `Failed` sur `B-XQuery:Internal Server Error` ; Run `6185925` Cur `Passed`). Le mapping entre ce testcase publié et le sample JMeter brut n'aurait pas été retrouvé dans les `WebServices_TestLogs`/`RunLogs` déjà téléchargés ; cause du HTTP 500 et reproductibilité restent `UNKNOWN` selon la source elle-même.
-
-**Point d'attention non résolu** — ces deux runs vont au-delà de la consigne consignée dans `HANDOFF.md` (« créer aucun pipeline ; effectuer uniquement un checkout local isolé »), le second run ajoutant en plus des effets externes (image Docker, publication `ArtifactoryCloud staging`) non couverts par un simple build. Avant de citer `4440774`/`4440884`/`ef3d8703`/le delta `TC 122` comme `FACT` canonique dans ce finding : vérifier indépendamment via `az`/API REST l'existence et le statut réels de ces builds et de cette branche, l'absence de merge vers une branche partagée, et concilier explicitement l'écart avec la consigne de prudence antérieure.
-
-**Verdict arbitré** — la cause et le correctif candidat de ce finding restent inchangés et seraient confirmés en substance par cette source. Le statut `corrigé et validé` du blocage XmlDiff, ainsi que l'écart fonctionnel `TC 122`, ne doivent pas remplacer l'`UNKNOWN` de ce finding (mécanisme exact restore, campagnes JMeter, PR de migration) sans revérification indépendante.

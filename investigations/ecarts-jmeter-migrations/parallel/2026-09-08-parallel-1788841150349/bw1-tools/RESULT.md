@@ -38,3 +38,17 @@ Injecter une DLL API finale hashée, fournir toutes les dépendances, fabriquer 
 - Compilation Console source, package final, cache/version migration, génération XML legacy→JMX avec ce package et rejeu métier restent non prouvés.
 - Les XML quatre-plans exacts restent introuvables dans les sources persistantes ; seul un ancien staging est indexé.
 - Un fichier secret aurait été exporté transitoirement puis retiré selon le rapport migration. Aucune valeur n'a été lue, affichée ou copiée ; nettoyage non vérifié indépendamment.
+
+## Round 2 — provenance package et faisabilité
+
+**FACT** — le bundle API local est propre sur la branche `WI-2222897/clienteling/autotest-api-1.1.47`, commit `16a03a83c7e4d9a7c65237f556a4167604ed294b`, avec source `JmeterCodeGen.cs` SHA-256 `01489EDC1AB556C903E9D40EA94356B161048A2F0FD5ED64D3545CAC1BDA605D` et version proposée `1.1.47`.
+
+**FACT** — le push de cette branche a été refusé par AzDO `VS403660` pour l'identité `rjegou@cegid.com`, scope `repository`, permission `CreateBranch`. Aucun contournement ni push vers `master` n'a été tenté.
+
+**FACT borné** — le candidat WORKER 3 `2.0.42-soapnamespace.20260907` (`803DDBAA...`) / API `57BEACA2...` est seulement décrit par les preuves locales; aucun fichier correspondant n'est présent pour extraction indépendante.
+
+**FACT borné** — les preuves existantes relient `57BE...` à la génération SOAP namespace-aware et, dans une collecte de réflexion distincte, à `EscapeJdbcDate` et `FixSqlUnicodeValue`. **UNKNOWN** — lien hashé de `57BE...` avec `RemoveSpecialCharsForXQuery`; les mentions « quatre transformations » n'identifient pas explicitement ce hash.
+
+**FACT** — un package local distinct réellement disponible est conservé dans `evidence/local-2026-09-08-console-package-2.0.42-cleanxpath/`, SHA-256 `82F9C7EE19E635DB14F937078339ED5424A2EDE5BE13B2A10F75A790400D70C0`, API embarquée `51FB31...`; une preuve ciblée établit qu'il ne contient pas le correctif Unicode complet. Il est exploitable pour diagnostic uniquement, pas comme release candidate.
+
+**BLOCAGE** — le build source ne peut pas être reproduit ici sans les reference assemblies officielles .NET Framework 4.5.2 utilisées précédemment; leur téléchargement NuGet a échoué sur `SEC_E_NO_CREDENTIALS`, et aucune installation globale/cible alternative n'a été effectuée.

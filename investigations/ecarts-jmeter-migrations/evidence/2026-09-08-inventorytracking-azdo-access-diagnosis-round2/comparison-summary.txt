@@ -1,0 +1,16 @@
+2026-09-08 — comparaison REST AzDO des résultats individuels
+
+Build 4440774: completed/succeeded; Build succeeded; JMeter Cur/Fix skipped.
+Build 4440884: completed/partiallySucceeded; Build succeeded; JMeter Cur/Fix succeededWithIssues.
+Source: refs/heads/validation/WI-2222897-inventorytracking-xmldiff
+Commit: ef3d87034d38b88aca04c824061b140e2a29252c
+
+Test run Fix 6185924: total=1991, passed=1651, failed=340.
+Test run Cur 6185925: total=1991, passed=1652, failed=339.
+Exact key join: common=1991, only-Fix=0, only-Cur=0.
+Outcome pairs: Pass/Pass=1651, Fail/Fail=339, Fail/Pass=1, Pass/Fail=0.
+Only outcome delta: 002-Device:Reassign - TC 122 (reference 1127761), Fix Failed / Cur Passed.
+Fix TC122 errorMessage: B-XQuery:Internal Server Error ;| C-PostQuery1:OK ;| C-PostQuery2:OK
+Cur TC122 errorMessage: absent (passed result).
+
+Current exact branch ref: 0 results. Current PR search from exact source branch: 0 results.

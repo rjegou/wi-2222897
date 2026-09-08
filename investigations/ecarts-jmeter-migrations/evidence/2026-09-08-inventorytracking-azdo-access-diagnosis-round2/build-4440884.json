@@ -1,0 +1,144 @@
+{
+  "_links": {
+    "self": {
+      "href": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/Builds/4440884"
+    },
+    "web": {
+      "href": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_build/results?buildId=4440884"
+    },
+    "sourceVersionDisplayUri": {
+      "href": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/sources"
+    },
+    "timeline": {
+      "href": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/Timeline"
+    },
+    "badge": {
+      "href": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/status/2072"
+    }
+  },
+  "properties": {},
+  "tags": [],
+  "validationResults": [],
+  "plans": [
+    {
+      "planId": "15b67ef9-acb3-491e-b62a-f385d86096f9"
+    }
+  ],
+  "templateParameters": {
+    "pipelineDevMode": "true",
+    "versionsToTest": "[\r\n  \"26\"\r\n]",
+    "typesToTest": "[\r\n  \"Cur\",\r\n  \"Fix\"\r\n]",
+    "campaignsToTest": "[\r\n  \"WebServices\"\r\n]"
+  },
+  "triggerInfo": {},
+  "id": 4440884,
+  "buildNumber": "7.76",
+  "status": "completed",
+  "result": "partiallySucceeded",
+  "queueTime": "2026-09-07T12:45:38.1004131Z",
+  "startTime": "2026-09-07T12:45:49.1781497Z",
+  "finishTime": "2026-09-07T13:56:07.878799Z",
+  "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/Builds/4440884",
+  "definition": {
+    "drafts": [],
+    "id": 2072,
+    "name": "InventoryTracking CI",
+    "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/Definitions/2072?revision=5",
+    "uri": "vstfs:///Build/Definition/2072",
+    "path": "\\Y2\\Plugins",
+    "type": "build",
+    "queueStatus": "enabled",
+    "revision": 5,
+    "project": {
+      "id": "aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+      "name": "Retail",
+      "url": "https://dev.azure.com/cegid/_apis/projects/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+      "state": "wellFormed",
+      "revision": 7237,
+      "visibility": "private",
+      "lastUpdateTime": "2026-06-25T08:17:14.29Z"
+    }
+  },
+  "project": {
+    "id": "aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+    "name": "Retail",
+    "url": "https://dev.azure.com/cegid/_apis/projects/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e",
+    "state": "wellFormed",
+    "revision": 7237,
+    "visibility": "private",
+    "lastUpdateTime": "2026-06-25T08:17:14.29Z"
+  },
+  "uri": "vstfs:///Build/Build/4440884",
+  "sourceBranch": "refs/heads/validation/WI-2222897-inventorytracking-xmldiff",
+  "sourceVersion": "ef3d87034d38b88aca04c824061b140e2a29252c",
+  "queue": {
+    "id": 591,
+    "name": "Azure Pipelines",
+    "pool": {
+      "id": 79,
+      "name": "Azure Pipelines",
+      "isHosted": true
+    }
+  },
+  "priority": "normal",
+  "reason": "manual",
+  "requestedFor": {
+    "displayName": "Ronan JEGOU",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/15c7d873-3790-66a0-be1b-52e0f3a3e378",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4"
+      }
+    },
+    "id": "15c7d873-3790-66a0-be1b-52e0f3a3e378",
+    "uniqueName": "rjegou@cegid.com",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4",
+    "descriptor": "aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4"
+  },
+  "requestedBy": {
+    "displayName": "Ronan JEGOU",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/15c7d873-3790-66a0-be1b-52e0f3a3e378",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4"
+      }
+    },
+    "id": "15c7d873-3790-66a0-be1b-52e0f3a3e378",
+    "uniqueName": "rjegou@cegid.com",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4",
+    "descriptor": "aad.MTVjN2Q4NzMtMzc5MC03NmEwLWJlMWItNTJlMGYzYTNlMzc4"
+  },
+  "lastChangedDate": "2026-09-07T13:56:08.427Z",
+  "lastChangedBy": {
+    "displayName": "Microsoft.VisualStudio.Services.TFS",
+    "url": "https://spsprodweu3.vssps.visualstudio.com/A632324aa-11e0-4252-b908-af7d2576f189/_apis/Identities/00000002-0000-8888-8000-000000000000",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/s2s.MDAwMDAwMDItMDAwMC04ODg4LTgwMDAtMDAwMDAwMDAwMDAwQDJjODk1OTA4LTA0ZTAtNDk1Mi04OWZkLTU0YjAwNDZkNjI4OA"
+      }
+    },
+    "id": "00000002-0000-8888-8000-000000000000",
+    "uniqueName": "00000002-0000-8888-8000-000000000000@2c895908-04e0-4952-89fd-54b0046d6288",
+    "imageUrl": "https://dev.azure.com/cegid/_apis/GraphProfile/MemberAvatars/s2s.MDAwMDAwMDItMDAwMC04ODg4LTgwMDAtMDAwMDAwMDAwMDAwQDJjODk1OTA4LTA0ZTAtNDk1Mi04OWZkLTU0YjAwNDZkNjI4OA",
+    "descriptor": "s2s.MDAwMDAwMDItMDAwMC04ODg4LTgwMDAtMDAwMDAwMDAwMDAwQDJjODk1OTA4LTA0ZTAtNDk1Mi04OWZkLTU0YjAwNDZkNjI4OA"
+  },
+  "orchestrationPlan": {
+    "planId": "15b67ef9-acb3-491e-b62a-f385d86096f9"
+  },
+  "logs": {
+    "id": 0,
+    "type": "Container",
+    "url": "https://dev.azure.com/cegid/aefdc6cb-8517-4faf-b5ed-8d59297a6d0e/_apis/build/builds/4440884/logs"
+  },
+  "repository": {
+    "id": "90f886fd-8a68-483f-b798-126928e6297f",
+    "type": "TfsGit",
+    "name": "Y2_Plugins_InventoryTracking",
+    "url": "https://dev.azure.com/cegid/Retail/_git/Y2_Plugins_InventoryTracking",
+    "clean": null,
+    "checkoutSubmodules": false
+  },
+  "retainedByRelease": false,
+  "triggeredByBuild": null,
+  "appendCommitMessageToRunName": true
+}

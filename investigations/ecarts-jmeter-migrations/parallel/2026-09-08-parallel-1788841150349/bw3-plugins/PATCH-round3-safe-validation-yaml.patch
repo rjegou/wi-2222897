@@ -1,0 +1,11 @@
+--- azure-pipelines.yml
++++ azure-pipelines.yml
+@@ -98,7 +98,7 @@ stages:
+       - job: Ensure_Docker_Image_Up_To_Date
+-        condition: and(succeeded(), eq(variables.isMasterOrReleaseOrDevMode, true))
++        condition: and(succeeded(), eq(variables.isMasterOrReleaseOrDevMode, true), not(eq(variables['Build.SourceBranch'], 'refs/heads/validation/WI-2222897-inventorytracking-xmldiff')))
+@@ -243,7 +243,7 @@ stages:
+       - job: Publish
+         displayName: Publish to ArtifactoryCloud staging
+-        condition: and(succeeded(), eq(variables.isMasterOrReleaseOrDevMode, true))
++        condition: and(succeeded(), eq(variables.isMasterOrReleaseOrDevMode, true), not(eq(variables['Build.SourceBranch'], 'refs/heads/validation/WI-2222897-inventorytracking-xmldiff')))

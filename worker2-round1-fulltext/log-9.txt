@@ -1,0 +1,241 @@
+2026-09-08T08:04:58.7421248Z ##[section]Starting: Build and smoke-test SQL Server 2019 Full-Text
+2026-09-08T08:04:58.7429266Z ==============================================================================
+2026-09-08T08:04:58.7429387Z Task         : PowerShell
+2026-09-08T08:04:58.7429446Z Description  : Run a PowerShell script on Linux, macOS, or Windows
+2026-09-08T08:04:58.7429527Z Version      : 2.279.0
+2026-09-08T08:04:58.7429592Z Author       : Microsoft Corporation
+2026-09-08T08:04:58.7429656Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/powershell
+2026-09-08T08:04:58.7429750Z ==============================================================================
+2026-09-08T08:05:05.6048151Z Generating script.
+2026-09-08T08:05:05.6854882Z ========================== Starting Command Output ===========================
+2026-09-08T08:05:05.7173762Z ##[command]"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command ". 'D:\a\_temp\0ed78ef5-f47e-4f67-81f6-04ed4f3118bc.ps1'"
+2026-09-08T08:05:13.8722639Z 29.7.2
+2026-09-08T08:05:14.1573489Z Sending build context to Docker daemon  161.3kB
+2026-09-08T08:05:14.1574102Z 
+2026-09-08T08:05:14.2248912Z Step 1/8 : ARG REPO=mcr.microsoft.com/windows/servercore
+2026-09-08T08:05:14.2249363Z Step 2/8 : ARG BASETAG=ltsc2022
+2026-09-08T08:05:14.2249825Z Step 3/8 : FROM $REPO:$BASETAG
+2026-09-08T08:05:14.2250370Z  ---> f02b623bbbc1
+2026-09-08T08:05:14.2250713Z Step 4/8 : EXPOSE 1433
+2026-09-08T08:05:16.2884183Z  ---> Running in 0421d0aef2b7
+2026-09-08T08:05:17.7994272Z  ---> Removed intermediate container 0421d0aef2b7
+2026-09-08T08:05:17.7995578Z  ---> 31d775f7d6d2
+2026-09-08T08:05:17.7996768Z Step 5/8 : ENV sa_password=Cegid.2019     sqlinstance=DOCKERSQLEXPR     databasesFolder=c:\\databases
+2026-09-08T08:05:19.5621446Z  ---> Running in e579adebb79b
+2026-09-08T08:05:19.5621720Z  ---> Removed intermediate container e579adebb79b
+2026-09-08T08:05:19.5621887Z  ---> 2fee7b646213
+2026-09-08T08:05:19.5622078Z Step 6/8 : SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';"]
+2026-09-08T08:05:20.5846917Z  ---> Running in 26c5747c3713
+2026-09-08T08:05:20.7329752Z  ---> Removed intermediate container 26c5747c3713
+2026-09-08T08:05:20.7330323Z  ---> 5c8fc65cb06c
+2026-09-08T08:05:20.7330841Z Step 7/8 : COPY oledlg.dll C:/Windows/SysWOW64
+2026-09-08T08:05:22.9182400Z  ---> a4fdcc33afa5
+2026-09-08T08:05:22.9185454Z Step 8/8 : RUN mkdir "c:\tmp" -Force;     Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/?linkid=866658" -OutFile "c:\tmp\downloader.exe";     Start-Process -Wait -FilePath "C:\tmp\downloader.exe" -ArgumentList "/ACTION=DOWNLOAD", "/Mediapath=C:/tmp", "/MediaType=Advanced", "/Quiet", "/language=en-US" > $NULL;     Start-Process -Wait -FilePath "C:\tmp\SQLEXPRADV_x64_ENU.Exe" -ArgumentList "/q", "/x:C:\tmp\SQLEXPRESS_SETUP";     Start-Process -Wait -FilePath "C:\tmp\SQLEXPRESS_SETUP\SETUP.EXE" -ArgumentList "/SAPWD=$env:sa_password", "/ENU", "/QUIET", "/INSTANCENAME=$env:sqlinstance", "/INSTANCEID=$env:sqlinstance", "/SECURITYMODE=SQL", "/IACCEPTSQLSERVERLICENSETERMS=TRUE", "/ACTION=INSTALL", "/FEATURES=SQLENGINE,FullText", "/SQLUSERDBDIR=$env:databasesFolder";     $svc = Get-Service "MSSQL`$$env:sqlinstance" -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     $svc = Get-Service 'SQLWriter'  -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     $svc = Get-Service 'SQLBrowser' -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     $svc = Get-Service 'w3svc'      -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     $svc = Get-Service 'was'        -ErrorAction SilentlyContinue; if ($svc) { Stop-Service $svc -Force -ErrorAction SilentlyContinue; $svc.WaitForStatus('Stopped', (New-TimeSpan -Seconds 30)) };     cd "C:/";     Remove-Item -Path "C:/tmp" -Force -Recurse
+2026-09-08T08:05:23.6138403Z  ---> Running in becde2ac322b
+2026-09-08T08:05:39.4668941Z 
+2026-09-08T08:05:39.4716792Z 
+2026-09-08T08:05:39.4815180Z     Directory: C:\
+2026-09-08T08:05:39.4817924Z 
+2026-09-08T08:05:39.4831546Z 
+2026-09-08T08:05:39.4917963Z Mode                 LastWriteTime         Length Name                         
+2026-09-08T08:05:39.4930968Z ----                 -------------         ------ ----                         
+2026-09-08T08:05:39.4962155Z d-----          9/8/2026   8:05 AM                tmp                          
+2026-09-08T08:09:51.7539477Z 
+2026-09-08T08:09:51.7552306Z 
+2026-09-08T08:11:02.9187717Z  ---> Removed intermediate container becde2ac322b
+2026-09-08T08:11:02.9189468Z  ---> 4a27ebaac557
+2026-09-08T08:11:02.9620797Z Successfully built 4a27ebaac557
+2026-09-08T08:11:02.9621534Z Successfully tagged sql-fulltext-smoke:2019
+2026-09-08T08:11:03.7977831Z 7ffd346b8e6a0b9958bdee155884d4a4ab17bd452ed93d2a517df8e68c05dbc3
+2026-09-08T08:11:11.9616449Z FULLTEXT_PREFLIGHT_UTC=2026-09-08T08:11:11.4915124Z
+2026-09-08T08:11:13.0618883Z Changed database context to 'FullTextSmoke'.
+2026-09-08T08:11:18.2438850Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:11:18.2439604Z 2026-09-08T08:11:18.2153680 1 1
+2026-09-08T08:11:18.2443139Z 5 Processing normally 1 0 0
+2026-09-08T08:11:18.2443418Z 0
+2026-09-08T08:11:18.2443539Z 
+2026-09-08T08:11:23.4052746Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:11:23.4053591Z 2026-09-08T08:11:23.3886172 1 1
+2026-09-08T08:11:23.4057032Z 5 Processing normally 1 0 0
+2026-09-08T08:11:23.4057293Z 0
+2026-09-08T08:11:23.4057342Z 
+2026-09-08T08:11:28.5635887Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:11:28.5636858Z 2026-09-08T08:11:28.5544421 1 1
+2026-09-08T08:11:28.5640412Z 5 Processing normally 1 0 0
+2026-09-08T08:11:28.5640631Z 0
+2026-09-08T08:11:28.5640709Z 
+2026-09-08T08:11:33.7460074Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:11:33.7461147Z 2026-09-08T08:11:33.7289509 1 1
+2026-09-08T08:11:33.7461445Z 5 Processing normally 1 0 0
+2026-09-08T08:11:33.7461692Z 0
+2026-09-08T08:11:33.7462016Z 
+2026-09-08T08:11:38.9169999Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:11:38.9170719Z 2026-09-08T08:11:38.9013248 1 1
+2026-09-08T08:11:38.9171321Z 5 Processing normally 1 0 0
+2026-09-08T08:11:38.9171862Z 0
+2026-09-08T08:11:38.9172277Z 
+2026-09-08T08:11:44.0898986Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:11:44.0899950Z 2026-09-08T08:11:44.0709342 1 1
+2026-09-08T08:11:44.0902526Z 5 Processing normally 1 0 0
+2026-09-08T08:11:44.0902806Z 0
+2026-09-08T08:11:44.0902878Z 
+2026-09-08T08:11:49.2448414Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:11:49.2455139Z 2026-09-08T08:11:49.2355465 1 1
+2026-09-08T08:11:49.2455597Z 5 Processing normally 1 0 0
+2026-09-08T08:11:49.2455953Z 0
+2026-09-08T08:11:49.2456176Z 
+2026-09-08T08:11:54.4262644Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:11:54.4265761Z 2026-09-08T08:11:54.4163482 1 1
+2026-09-08T08:11:54.4267159Z 5 Processing normally 1 0 0
+2026-09-08T08:11:54.4268311Z 0
+2026-09-08T08:11:54.4269063Z 
+2026-09-08T08:11:59.5842698Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:11:59.5846721Z 2026-09-08T08:11:59.5734252 1 1
+2026-09-08T08:11:59.5846984Z 5 Processing normally 1 0 0
+2026-09-08T08:11:59.5847127Z 0
+2026-09-08T08:11:59.5847171Z 
+2026-09-08T08:12:04.7438053Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:12:04.7439078Z 2026-09-08T08:12:04.7305335 1 1
+2026-09-08T08:12:04.7442452Z 5 Processing normally 1 0 0
+2026-09-08T08:12:04.7442684Z 0
+2026-09-08T08:12:04.7442755Z 
+2026-09-08T08:12:09.9161732Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:12:09.9162247Z 2026-09-08T08:12:09.8966830 1 1
+2026-09-08T08:12:09.9162558Z 5 Processing normally 1 0 0
+2026-09-08T08:12:09.9165854Z 0
+2026-09-08T08:12:09.9165926Z 
+2026-09-08T08:12:15.0858300Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:12:15.0859915Z 2026-09-08T08:12:15.0693627 1 1
+2026-09-08T08:12:15.0860901Z 5 Processing normally 1 0 0
+2026-09-08T08:12:15.0861720Z 0
+2026-09-08T08:12:15.0861808Z 
+2026-09-08T08:12:20.2556264Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:12:20.2557055Z 2026-09-08T08:12:20.2394668 1 1
+2026-09-08T08:12:20.2557942Z 5 Processing normally 1 0 0
+2026-09-08T08:12:20.2558241Z 0
+2026-09-08T08:12:20.2558403Z 
+2026-09-08T08:12:25.4213996Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:12:25.4218455Z 2026-09-08T08:12:25.4114911 1 1
+2026-09-08T08:12:25.4218818Z 5 Processing normally 1 0 0
+2026-09-08T08:12:25.4219042Z 0
+2026-09-08T08:12:25.4219115Z 
+2026-09-08T08:12:30.5779756Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:12:30.5780277Z 2026-09-08T08:12:30.5639254 1 1
+2026-09-08T08:12:30.5783915Z 5 Processing normally 1 0 0
+2026-09-08T08:12:30.5784100Z 0
+2026-09-08T08:12:30.5784418Z 
+2026-09-08T08:12:35.7366664Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:12:35.7368739Z 2026-09-08T08:12:35.7247437 1 1
+2026-09-08T08:12:35.7369547Z 5 Processing normally 1 0 0
+2026-09-08T08:12:35.7370750Z 0
+2026-09-08T08:12:35.7371509Z 
+2026-09-08T08:12:40.8908159Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:12:40.8909033Z 2026-09-08T08:12:40.8796198 1 1
+2026-09-08T08:12:40.8909703Z 5 Processing normally 1 0 0
+2026-09-08T08:12:40.8910343Z 0
+2026-09-08T08:12:40.8910634Z 
+2026-09-08T08:12:46.0519160Z FULLTEXT_OBSERVATION_EXIT=0
+2026-09-08T08:12:46.0524607Z 2026-09-08T08:12:46.0402549 1 1
+2026-09-08T08:12:46.0524987Z 5 Processing normally 1 0 0
+2026-09-08T08:12:46.0525251Z 0
+2026-09-08T08:12:46.0525331Z 
+2026-09-08T08:12:46.2316826Z Full-Text population did not finish: [1]
+2026-09-08T08:12:46.2319832Z At C:\fulltext-probe.ps1:32 char:22
+2026-09-08T08:12:46.2320301Z + ... tus -ne 0) { throw "Full-Text population did not finish: [$status]" }
+2026-09-08T08:12:46.2324702Z +                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-09-08T08:12:46.2325094Z     + CategoryInfo          : OperationStopped: (Full-Text population did not  
+2026-09-08T08:12:46.2325450Z    finish: [1]:String) [], RuntimeException
+2026-09-08T08:12:46.2325764Z     + FullyQualifiedErrorId : Full-Text population did not finish: [1]
+2026-09-08T08:12:46.2326051Z  
+2026-09-08T08:12:48.7990382Z FULLTEXT_DIAGNOSTIC_BEGIN
+2026-09-08T08:12:49.0922625Z 
+2026-09-08T08:12:49.1136854Z Name                           Status StartType
+2026-09-08T08:12:49.1160484Z ----                           ------ ---------
+2026-09-08T08:12:49.1409157Z MSSQLFDLauncher$DOCKERSQLEXPR Running    Manual
+2026-09-08T08:12:49.1423086Z 
+2026-09-08T08:12:49.1424990Z 
+2026-09-08T08:12:49.1431041Z 
+2026-09-08T08:12:49.1454357Z Name       Id StartTime           Path                                         
+2026-09-08T08:12:49.1476346Z ----       -- ---------           ----                                         
+2026-09-08T08:12:49.1507028Z fdhost   4724 9/8/2026 8:11:11 AM C:\Program Files\Microsoft SQL Server\MSSQ...
+2026-09-08T08:12:49.1556243Z sqlservr 5780 9/8/2026 8:11:06 AM C:\Program Files\Microsoft SQL Server\MSSQ...
+2026-09-08T08:12:49.1557181Z 
+2026-09-08T08:12:49.1559736Z 
+2026-09-08T08:12:49.1889674Z 
+2026-09-08T08:12:49.1891710Z SERVICE_NAME: MSSQL$DOCKERSQLEXPR 
+2026-09-08T08:12:49.1898680Z         TYPE               : 10  WIN32_OWN_PROCESS  
+2026-09-08T08:12:49.1899187Z         STATE              : 4  RUNNING 
+2026-09-08T08:12:49.1900180Z                                 (STOPPABLE, PAUSABLE, ACCEPTS_SHUTDOWN)
+2026-09-08T08:12:49.1901140Z         WIN32_EXIT_CODE    : 0  (0x0)
+2026-09-08T08:12:49.1904246Z         SERVICE_EXIT_CODE  : 0  (0x0)
+2026-09-08T08:12:49.1904586Z         CHECKPOINT         : 0x0
+2026-09-08T08:12:49.1904847Z         WAIT_HINT          : 0x0
+2026-09-08T08:12:49.1975149Z 
+2026-09-08T08:12:49.1985085Z SERVICE_NAME: MSSQLFDLauncher$DOCKERSQLEXPR 
+2026-09-08T08:12:49.1985469Z         TYPE               : 10  WIN32_OWN_PROCESS  
+2026-09-08T08:12:49.1985930Z         STATE              : 4  RUNNING 
+2026-09-08T08:12:49.1986662Z                                 (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+2026-09-08T08:12:49.1987294Z         WIN32_EXIT_CODE    : 0  (0x0)
+2026-09-08T08:12:49.1989689Z         SERVICE_EXIT_CODE  : 0  (0x0)
+2026-09-08T08:12:49.1990014Z         CHECKPOINT         : 0x0
+2026-09-08T08:12:49.1990240Z         WAIT_HINT          : 0x0
+2026-09-08T08:12:49.3437741Z Msg 207, Level 16, State 1, Server 7FFD346B8E6A\DOCKERSQLEXPR, Line 9
+2026-09-08T08:12:49.3438527Z Invalid column name 'database_id'.
+2026-09-08T08:12:49.3520057Z --- targeted Full-Text ERRORLOG excerpts ---
+2026-09-08T08:12:49.4421006Z --- SQLFT0000500005.LOG ---
+2026-09-08T08:12:49.4618033Z 2026-09-08 08:11:13.05 spid30s     Informational: Full-text Full population initialized for table or indexed view '[FullTextSmoke].[dbo].[Documents]' (table or indexed view ID '581577110', database ID '5'). Population sub-tasks: 1.
+2026-09-08T08:12:49.4622827Z 2026-09-08 08:11:18.16 spid38s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4632203Z 2026-09-08 08:11:23.34 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4633675Z 2026-09-08 08:11:28.50 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4638811Z 2026-09-08 08:11:33.69 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4640583Z 2026-09-08 08:11:38.85 spid29s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4646542Z 2026-09-08 08:11:44.02 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4649823Z 2026-09-08 08:11:49.18 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4653020Z 2026-09-08 08:11:54.36 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4656103Z 2026-09-08 08:11:59.52 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4660937Z 2026-09-08 08:12:04.68 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4666568Z 2026-09-08 08:12:09.86 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4669149Z 2026-09-08 08:12:15.02 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4673681Z 2026-09-08 08:12:20.19 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4675573Z 2026-09-08 08:12:25.36 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.4681371Z 2026-09-08 08:12:30.52 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.5035586Z 2026-09-08 08:12:35.67 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.5036666Z 2026-09-08 08:12:40.83 spid70s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.5037463Z 2026-09-08 08:12:45.99 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.5038209Z 2026-09-08 08:12:49.30 spid28s     Informational: Resuming full-text population for table or indexed view '[FullTextSmoke].[dbo].[Documents]' in database 'FullTextSmoke' (table or indexed view ID '581577110', database ID '5'). Prior number of documents processed: 0, error encountered: 0.
+2026-09-08T08:12:49.5038928Z --- errorlog ---
+2026-09-08T08:12:49.5039341Z 2026-09-08 08:11:07.18 Server      Logging SQL Server messages in file 'C:\Program Files\Microsoft SQL Server\MSSQL15.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG'.
+2026-09-08T08:12:49.5039809Z 	 -e C:\Program Files\Microsoft SQL Server\MSSQL15.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG
+2026-09-08T08:12:49.5040200Z 2026-09-08 08:11:11.84 spid22s     A new instance of the full-text filter daemon host process has been successfully started.
+2026-09-08T08:12:49.5040544Z --- ERRORLOG.1 ---
+2026-09-08T08:12:49.5040878Z 2026-09-08 08:09:40.00 Server      Logging SQL Server messages in file 'C:\Program Files\Microsoft SQL Server\MSSQL15.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG'.
+2026-09-08T08:12:49.5041290Z 	 -e C:\Program Files\Microsoft SQL Server\MSSQL15.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG
+2026-09-08T08:12:49.5041704Z 2026-09-08 08:09:40.65 spid20s     A new instance of the full-text filter daemon host process has been successfully started.
+2026-09-08T08:12:49.5042081Z --- ERRORLOG.2 ---
+2026-09-08T08:12:49.5042469Z 2026-09-08 08:09:32.91 Server      Logging SQL Server messages in file 'C:\Program Files\Microsoft SQL Server\MSSQL15.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG'.
+2026-09-08T08:12:49.5043732Z 	 -e C:\Program Files\Microsoft SQL Server\MSSQL15.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG
+2026-09-08T08:12:49.5044301Z 2026-09-08 08:09:33.79 spid18s     A new instance of the full-text filter daemon host process has been successfully started.
+2026-09-08T08:12:49.5044774Z 2026-09-08 08:09:34.76 spid51      Configuration option 'default full-text language' changed from 1033 to 1033. Run the RECONFIGURE statement to install.
+2026-09-08T08:12:49.5045136Z --- ERRORLOG.3 ---
+2026-09-08T08:12:49.5045502Z 2026-09-08 08:09:27.73 Server      Logging SQL Server messages in file 'C:\Program Files\Microsoft SQL Server\MSSQL15.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG'.
+2026-09-08T08:12:49.5045926Z 	 -e C:\Program Files\Microsoft SQL Server\MSSQL15.DOCKERSQLEXPR\MSSQL\Log\ERRORLOG
+2026-09-08T08:12:49.5046342Z 2026-09-08 08:09:29.21 spid18s     A new instance of the full-text filter daemon host process has been successfully started.
+2026-09-08T08:12:49.5051209Z 2026-09-08 08:09:30.50 spid51      Configuration option 'default full-text language' changed from 1033 to 1033. Run the RECONFIGURE statement to install.
+2026-09-08T08:12:50.1111530Z 
+2026-09-08T08:12:50.1118524Z FULLTEXT_DIAGNOSTIC_END
+2026-09-08T08:12:50.1130838Z Name         Free      Used
+2026-09-08T08:12:50.1136159Z ----         ----      ----
+2026-09-08T08:12:50.1138505Z C    136063250432 166670336
+2026-09-08T08:12:50.1141903Z 
+2026-09-08T08:12:50.1145458Z 
+2026-09-08T08:12:50.9329094Z sql-fulltext-smoke-2019-4444173
+2026-09-08T08:12:51.0031579Z FULLTEXT_CLEANUP container=sql-fulltext-smoke-2019-4444173 removeExit=0 inspectExit=0 remaining=
+2026-09-08T08:12:51.2835900Z SQL 2019 Full-Text smoke failed
+2026-09-08T08:12:51.2836919Z At D:\a\_temp\0ed78ef5-f47e-4f67-81f6-04ed4f3118bc.ps1:70 char:30
+2026-09-08T08:12:51.2837930Z + if ($null -ne $smokeError) { throw $smokeError }
+2026-09-08T08:12:51.2838280Z +                              ~~~~~~~~~~~~~~~~~
+2026-09-08T08:12:51.2838571Z     + CategoryInfo          : NotSpecified: (:) [], ParentContainsErrorRecordException
+2026-09-08T08:12:51.2838900Z     + FullyQualifiedErrorId : RuntimeException
+2026-09-08T08:12:51.2839145Z  
+2026-09-08T08:12:51.5475467Z ##[error]PowerShell exited with code '1'.
+2026-09-08T08:12:51.6682475Z ##[section]Finishing: Build and smoke-test SQL Server 2019 Full-Text

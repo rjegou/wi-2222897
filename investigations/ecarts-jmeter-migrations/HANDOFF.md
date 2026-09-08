@@ -1,5 +1,19 @@
 # Handoff — causes des résultats JMeter non passés sur les migrations restantes
 
+## 2026-09-08 — InventoryTracking : validation technique AzDO, fonctionnel encore UNKNOWN
+
+**FACT** — la collecte [AzDO round 2](evidence/2026-09-08-inventorytracking-azdo-access-diagnosis-round2/README.md) relit par Python/OpenSSL la définition `2072`, les builds, timelines, artefacts et résultats individuels. `4440774` est `completed/succeeded` au commit `ef3d87034d38b88aca04c824061b140e2a29252c` : Build réussi, JMeter skipped. `4440884` est `completed/partiallySucceeded` au même commit : Build réussi, Cur/Fix exécutés, `1991` résultats chacun.
+
+**FACT** — Cur compte `1652 passed / 339 failed`, Fix `1651 passed / 340 failed`. La jointure exacte donne `339 Fail/Fail`, `1651 Pass/Pass`, un seul `Fail/Pass` et aucun `Pass/Fail`; le seul delta est `002-Device:Reassign - TC 122` (réf. `1127761`), Fix `Failed` sur `B-XQuery:Internal Server Error`, Cur `Passed`. La publication Artifactory staging et les artefacts Cur/Fix sont présents pour `4440884`.
+
+**FACT borné** — la ref `validation/WI-2222897-inventorytracking-xmldiff` et la PR source ne sont pas retrouvées dans la requête datée. Cela ne prouve pas une suppression par un worker ni l'absence de toute PR historique.
+
+**UNKNOWN** — cause/reproductibilité de TC 122, mapping vers le sample JMeter brut, contenu exact des logs au-delà des résultats publiés et validation fonctionnelle métier. Ne pas transformer le statut partiellement réussi en validation de migration.
+
+**FACT d'accès et de prudence** — Python/OpenSSL fonctionne; Schannel échoue avec `SEC_E_NO_CREDENTIALS`. L'hypothèse PAT expiré/invalide est donc corrigée. Ne pas attribuer disparition de clone ou verrous à un worker sans preuve. L'autorisation courante couvre corrections, push, runs et PR appropriée, mais toute prochaine exécution doit maîtriser les effets partagés (image/ACR, publication staging, compteur de version et ressources communes).
+
+**Suite** — lire les artefacts Cur/Fix pour TC 122 avant tout nouveau run; conserver le plan [round 2](parallel/2026-09-08-parallel-1788841150349/bw3-plugins/PLAN-round2-safe-pipeline.md) à son emplacement pendant l'utilisation; préparer la PR appropriée seulement si la source est retrouvée et après revue des effets partagés.
+
 ## 2026-09-07 — Worker 2 round7 : 4442696 terminé avec préflight borné réussi
 
 **FACT** — la collecte [Worker 1 round25](evidence/azure-devops-french-taxes-rules-v22-worker1-round25/README.md) supersède l’état provisoire round24 : le run unique `4442696` est `completed/succeeded`, au commit `68f1f7a8e575e79cf3098cafcd16e10b22237ada`, avec le YAML `659DE89ECC92E279B87BEE0D07DC51B388DE99EF4910A5BE913B75B672CD0BD2`.

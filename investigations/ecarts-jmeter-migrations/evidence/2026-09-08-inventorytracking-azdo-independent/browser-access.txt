@@ -1,0 +1,4 @@
+2026-09-08 — tentative de lecture via onglet Edge déjà connecté
+
+Navigation ciblée : https://dev.azure.com/cegid/Retail/_build/results?buildId=4440774&view=results
+Résultat : accès refusé par la politique de sécurité du navigateur; aucune donnée AzDO n'a été lue.

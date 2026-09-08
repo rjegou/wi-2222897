@@ -1,0 +1,6 @@
+2026-09-08 — tentative API REST lecture seule
+
+Base : https://dev.azure.com/cegid/Retail
+Endpoints visés : Build 4440774, Build 4440884, definition 2072, refs de validation, PR source, timelines et artefacts.
+Méthode : Invoke-RestMethod avec authentification Basic construite en mémoire depuis le secret opérationnel; le secret n'est pas consigné.
+Résultat : Authentication failed, aucune réponse AzDO exploitable.

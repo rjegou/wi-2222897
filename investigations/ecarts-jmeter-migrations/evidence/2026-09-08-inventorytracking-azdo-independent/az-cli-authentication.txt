@@ -1,0 +1,10 @@
+2026-09-08 — commandes de lecture seule
+
+az devops login --organization https://dev.azure.com/cegid
+Résultat : Failed to authenticate using the supplied token.
+
+az pipelines build show --id 4440774 --org https://dev.azure.com/cegid --project Retail
+az pipelines build show --id 4440884 --org https://dev.azure.com/cegid --project Retail
+Résultat : non exécutables après l'échec d'authentification.
+
+Tentative antérieure avec le profil global : PermissionError sur C:\Users\jegour\.azure\azureProfile.json.

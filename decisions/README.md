@@ -137,6 +137,11 @@ et le test `fixture-transport-check.ps1` de la collecte du 2026-09-07.
 
 ## 5. Autorise-t-on la republication de la chaîne API → Console → outil de migration ?
 
+**Décision rendue le 2026-09-08 — autorisée par l'utilisateur.** La publication des composants
+nécessaires et l'exécution des campagnes réelles sont autorisées, avec impact minimal sur les collègues.
+Cette décision ne constitue pas une preuve d'exécution : l'accès Azure DevOps/feed et les permissions
+effectives restent à rétablir. Aucune campagne ne doit utiliser l'ancien package.
+
 **Constat.** Les quatre défauts du générateur sont corrigés, compilés et testés localement dans
 `Cegid.Retail.AutoTest.Api/JmeterCodeGen.cs`, et sauvegardés dans
 [`patches/`](../patches/README.md). À eux seuls ils expliquent **105 cas** : 75 XPath SOAP invalides,
@@ -152,15 +157,39 @@ et le test `fixture-transport-check.ps1` de la collecte du 2026-09-07.
 5. rejouer : scénarios minimaux d'abord, campagnes ensuite
 ```
 
-Les étapes 1 et 2 publient sur un feed **partagé**, donc consommable par d'autres équipes. L'étape 4
-réécrit des fichiers de test déjà versionnés sur toutes les branches concernées.
+Les étapes 1 et 2 peuvent publier sur un feed **partagé**, donc consommable par d'autres équipes. La
+campagne doit utiliser une version explicitement identifiée et hashée ; l'étape 4 réécrit des fichiers
+de test déjà versionnés sur les branches concernées.
 
-**Garde-fous déjà décidés** (2026-09-06) : NuGet d'essai exclusivement en artefacts de pipeline, aucun
-push vers un feed partagé avant validation ; Docker local ou en artefact ; publication éventuelle sous
-une identité dédiée après validation de sa destination.
+**Garde-fous maintenus** : branche de mission neutre `investigation/wi-2222897-frenchtaxesrules-replay-20260908`,
+triggers `none`, aucun `Publish/Promote/Tag/TestAutos` non nécessaire, aucun nettoyage partagé, et
+artefacts de package/JMX hashés. La destination de feed et le build de publication doivent être relus
+avant toute écriture distante.
 
-**Coût de l'attente** : les 105 cas restent rouges quoi qu'il soit fait par ailleurs. Le travail de
-correction est fait ; il attend le droit de sortir.
+**Handoff compact — ordre exact à reprendre après rétablissement de l'accès.**
+
+```powershell
+git status --short --branch
+git rev-parse HEAD
+Get-FileHash -Algorithm SHA256 $apiDll
+Get-FileHash -Algorithm SHA256 $consoleNupkg
+& .\checkPackage.ps1
+& .\packageInstaller.ps1
+"%AutoTestConsole%" --tstj=%TEST_CAMPAGNE_BASE_PATH%\<campagne>\<campagne>.xml --dstFolder=%GIT_CHECKOUT%
+Get-ChildItem -LiteralPath $jmxRoot -Filter *.jmx -Recurse | Get-FileHash -Algorithm SHA256
+& .\Jmeter_Launch_TestCampaigns.cmd
+```
+
+La version, le chemin et le hash des deux packages restent `UNKNOWN` jusqu'à lecture de l'artefact
+publié. La consommation JMX doit être prouvée par le manifeste/hash du fichier effectivement transmis
+au job, pas par le YAML seul. Priorité expérimentale : master/V26 (`358fe950...`, six cas historiques),
+puis releases/V7 (`657a61cd...`, 132 cas historiques), avec cas absents/skipped conservés visibles.
+Rejeu minimal : `Export_Run` TC08 puis TC09/TC10, et `DocumentSignature_SignOne` TC02 ; campagne complète
+seulement après disparition de la première faute et vérification de la postcondition.
+
+**État opérationnel au 2026-09-08** : aucune publication, régénération JMX, queue ou campagne n'est
+prouvée. Les 105 cas restent non mesurés après correction ; le blocage actuel est l'accès/les permissions,
+pas l'autorisation utilisateur.
 
 **Preuve** : [CORRECTION_PLAN.md](../investigations/ecarts-jmeter-migrations/CORRECTION_PLAN.md)
 items 1 à 4 et sa section « Ordre d'implémentation et garde-fous ».
