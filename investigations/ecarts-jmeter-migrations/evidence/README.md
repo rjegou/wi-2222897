@@ -211,10 +211,11 @@ Un dossier dont la colonne « hors dépôt » est à `0` est intégralement pré
 | [`manifests/`](manifests/) | — | 0 | — |
 | [`packages-current/`](packages-current/) | — | 0 | 2 fich. / 0.5 Mo |
 | [`packages-extracted/`](packages-extracted/) | — | 0 | 50 fich. / 1.9 Mo |
+| [`run-4447425-4447508-reprise-azdo-2026-09-08/`](run-4447425-4447508-reprise-azdo-2026-09-08/) | Reprise directe Azure DevOps — InventoryTracking, FrenchTaxesRules et Clienteling | 7 | — |
 
 ## Total
 
-178 dossiers, dont 68 contiennent des artefacts bruts restés hors du dépôt (2939.3 Mo au total).
+179 dossiers, dont 68 contiennent des artefacts bruts restés hors du dépôt (2939.3 Mo au total).
 
 ## Dossiers à retitrer (43)
 
