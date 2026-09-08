@@ -20,8 +20,9 @@ Au **2026-09-08** : le diagnostic est terminé sur 8 des 9 couples suivis — ch
 rattaché à une cause. Les quatre défauts du générateur JMX sont corrigés localement. Le périmètre
 Clienteling est fixé à `master`, `releases/V6`, `releases/V7`, `releases/V8` ; les minima de
 configuration FrenchTaxesRules V22 Fix doivent être relevés. Les images Clienteling sont à
-investiguer. Trois arbitrages restent ouverts : Products, BeforeMigration.ps1 et publication NuGet
-partagée (ces deux derniers à clarifier).
+investiguer. BeforeMigration.ps1 : mesurer le delta, corriger et régénérer les tests concernés.
+NuGet : valider les packages corrigés en isolation avant de décider d'une publication partagée
+avec versions et destination précises. Products reste à trancher.
 
 S'y ajoutent trois blocages techniques du rejeu, ouverts par les
 [synthèses de pause du 2026-09-08](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-syntheses-techniques-reprise-handoff/README.md)
@@ -34,7 +35,7 @@ encore exécutés.
 
 | Je veux… | Lire |
 |---|---|
-| savoir ce qui bloque et qui doit trancher | **[decisions/README.md](decisions/README.md)** — 3 arbitrages ouverts et 1 investigation technique |
+| savoir ce qui bloque et qui doit trancher | **[decisions/README.md](decisions/README.md)** — Products en attente, publication après validation isolée |
 | l'état par domaine | [STATUS.md](STATUS.md) |
 | ce qu'on dit au PO et au lead dev | [reporting/2026-09-08-synthese-onenote-pbi.md](reporting/2026-09-08-synthese-onenote-pbi.md) |
 | la cause d'un échec précis | [matrice de statut](investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md), puis le `findings/` cité |

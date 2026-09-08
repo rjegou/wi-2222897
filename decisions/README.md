@@ -10,8 +10,9 @@ source_system: "local-kb"
 
 # Décisions en attente — WI-2222897
 
-**Registre vivant, au 2026-09-08.** Deux décisions sont rendues (1 et 2), une question est à résoudre
-par investigation technique (4), et trois arbitrages restent ouverts (3, 5 et 6).
+**Registre vivant, au 2026-09-08.** Les décisions 1, 2 et 6 sont rendues ; la décision 5 fixe
+la validation isolée avant un arbitrage ultérieur de publication (versions et destination précises).
+La question 4 est à résoudre par investigation technique. Products (3) reste à trancher.
 Les réponses utilisateur ci-dessous ne prouvent aucune mise en œuvre. Les six sujets étaient dispersés dans
 un plan de correction de 28 Ko, une matrice et un journal de 650 lignes : ce fichier les rassemble pour
 qu'ils soient posables tels quels au PO et au lead dev.
@@ -28,8 +29,8 @@ qui est un instantané de communication daté. Il en est la face actionnable.
 | 2 | Support de la pile FrenchTaxesRules V22 Fix | périmètre produit | 174 | utilisateur | rendu : relever les versions minimales de la configuration |
 | 3 | Support de `ClientelingProductsService.svc` | périmètre produit | 9-10 par version | PO + équipe produit | en attente |
 | 4 | Propriétaire du transport des fixtures d'images | connaissance système | 8 | investigation technique | instruction reçue : investiguer ; réponse UNKNOWN |
-| 5 | Autorisation de republier la chaîne de l'outil | autorisation | 105 historiquement liés au générateur ; essais possibles sans feed partagé | utilisateur | clarification demandée ; publication partagée non confirmée |
-| 6 | Bug de précédence dans `BeforeMigration.ps1` | risque qualité | couverture, non chiffrée | PO + lead dev | clarification demandée ; thread PR ouvert |
+| 5 | Validation puis distribution de la chaîne de l'outil | validation / publication | 105 historiquement liés au générateur | utilisateur | rendu : validation isolée d'abord ; publication partagée à décider ensuite avec versions et destination |
+| 6 | Bug de précédence dans `BeforeMigration.ps1` | risque qualité | couverture, non chiffrée | utilisateur | rendu : mesurer le delta, corriger puis régénérer les tests concernés |
 
 Règle de tenue : mettre à jour l'état **ici** quand un arbitrage est rendu, avec sa date et son auteur,
 puis répercuter dans `STATUS.md` et le `finding` concerné. Ne pas ouvrir un second registre.
@@ -158,9 +159,11 @@ et le test `fixture-transport-check.ps1` de la collecte du 2026-09-07.
 
 ## 5. Autorise-t-on la republication de la chaîne API → Console → outil de migration ?
 
-**État courant — échange direct du 2026-09-08.** L'utilisateur demande une explication avant de
-trancher ; ce message n'autorise pas une publication sur un feed partagé. Les déclarations
-historiques d'autorisation ci-dessous restent soumises à l'avertissement d'origine.
+**FACT — décision directe de l'utilisateur, 2026-09-08.** Valider d'abord les packages corrigés
+en isolation, puis décider de leur publication partagée avec versions et destination précises.
+Réutiliser les candidats déjà hashés et leurs validations acquises ; compléter les preuves
+manquantes de consommation/génération/rejeu. La publication partagée n'est pas autorisée par cette
+décision. Cette instruction prévaut sur les déclarations historiques d'autorisation ci-dessous.
 
 **Clarification.** L'API contient le générateur corrigé ; la Console embarque cette API ; l'outil
 de migration utilise la Console pour produire les JMX. Un package conservé comme `PipelineArtifact`
@@ -327,8 +330,11 @@ fait sans lui.
 
 ## 6. Que fait-on du bug de précédence dans `BeforeMigration.ps1` ?
 
-**État courant — échange direct du 2026-09-08.** Clarification demandée ; ni acceptation de
-couverture, ni choix d'un WI dédié ou d'une correction/régénération décidé.
+**FACT — décision directe de l'utilisateur, 2026-09-08.** Mesurer le delta, puis corriger et
+régénérer les tests concernés. Inventorier nominativement les tests supprimés/conservés avant et
+après sur des sources identiques, conserver commits et hashes, tester le filtre corrigé et tracer
+les JMX régénérés. Aucun abandon de couverture accepté. Ni création de WI ni écriture de PR
+n'est demandée ici. Le delta réel et les résultats après correction restent `UNKNOWN`.
 
 **Exemple explicatif, non mesure réelle.** Le filtre devrait supprimer un test seulement si son
 nom commence par `EC` ET sa requête correspond à A, B ou C. Aujourd'hui, une correspondance B ou C
@@ -355,11 +361,11 @@ ne peut pas échouer, donc le 100 % vert du build 4429563 ne l'invalide pas.
 version exacte du script. Toucher sa logique sans rejouer la migration désynchronise le script commité
 des tests commités — incohérence plus coûteuse que le bug lui-même à ce stade.
 
-**Options.** (a) WI dédié pour mesurer le delta de couverture legacy → JMeter, puis corriger et
-régénérer. (b) Acceptation explicite du périmètre migré tel quel, tracée.
+**Options historiques, remplacées par la décision ci-dessus.** WI dédié ou acceptation du périmètre
+avaient été proposés ; l'utilisateur retient désormais mesure, correction et régénération.
 
-**État.** Thread `3573422` laissé volontairement `active` sur la PR 505832 pour arbitrage par le
-reviewer. Point secondaire signalé dans le même thread : `$controlId` non défini lignes 343 et 364,
+**État historique non revérifié.** Thread `3573422` laissé `active` sur la PR 505832 ; aucun changement
+distant de thread effectué lors de cette décision. Point secondaire signalé : `$controlId` non défini lignes 343 et 364,
 impact limité au message de log.
 
 **Preuve** : entrée du 2026-09-04 du [JOURNAL.md](../JOURNAL.md).

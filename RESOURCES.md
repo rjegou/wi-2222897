@@ -1,5 +1,17 @@
 # Ressources et dépollution — WI-2222897
 
+## Espaces BW préparés le 2026-09-08 — instances non lancées
+
+- `C:/clones/wi-2222897-bw/20260908/couverture`
+- `C:/clones/wi-2222897-bw/20260908/inventorytracking`
+- `C:/clones/wi-2222897-bw/20260908/clienteling`
+
+Ils contiennent seulement AGENTS.md et README.md au moment de la préparation. Aucun clone,
+processus, service, conteneur ni ressource distante créé. Les conserver pour les
+[commandes proposées](investigations/ecarts-jmeter-migrations/parallel/2026-09-08-chantiers-isoles/README.md).
+Après lancement éventuel, chaque instance doit inventorier ses seules ressources dans son RESULT.md ;
+aucun nettoyage partagé. Les instructions reproductibles sont versionnées dans le plan.
+
 Snapshot local : **2026-09-06**. Ce registre ne contient aucune valeur de secret.
 
 Ajout documentaire 2026-09-08 : conserver les collectes `investigations/ecarts-jmeter-migrations/evidence/2026-09-08-inventorytracking-azdo-access-diagnosis-round2/` (réponses AzDO Python/OpenSSL, builds `4440774`/`4440884`, artefacts et résultats Cur/Fix) et `investigations/ecarts-jmeter-migrations/evidence/2026-09-08-inventorytracking-azdo-independent/` (échecs clients Schannel/CLI). Aucune ressource externe n'a été créée dans cette mise à jour.

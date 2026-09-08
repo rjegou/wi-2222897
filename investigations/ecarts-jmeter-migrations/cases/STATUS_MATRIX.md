@@ -2,6 +2,13 @@
 
 Les valeurs de la colonne Observation utilisateur proviennent de la capture du 2026-09-05. Elles ne deviennent des faits qu'après lecture des runs et artefacts Azure DevOps.
 
+**FACT — décisions utilisateur du 2026-09-08** : périmètre Clienteling fixé à `master`,
+`releases/V6`, `releases/V7`, `releases/V8` ; FrenchTaxesRules V22 Fix à corriger en relevant les
+minima de configuration ; transport des images Clienteling à résoudre par investigation technique.
+Ces décisions orientent les prochaines actions sans modifier les résultats historiques ci-dessous.
+Versions exactes, transport et résultats après correction restent à établir.
+Source canonique : [registre des décisions](../../../decisions/README.md).
+
 | Plugin | Branche | Versions | Build | Commit du build | Observation utilisateur | Vérification courante | Statut | Prochaine preuve |
 |---|---|---|---:|---|---|---|---|---|
 | FrenchTaxesRules | master | 26 | 4426342 | 358fe9507e0eb1a4601437ec0c9db6bf197015cc | LegacyServices 4 ; WebServices 2 | Runs : 4 Legacy + 2 Web dans Cur comme Fix ; mêmes six clés que 4432510 ; 19/19 JMX byte-identiques | TERMINE, CAUSES REPRODUITES | appliquer le correctif et les rejeux de findings/001 et findings/009 ; ne pas conclure à une régression legacy sans baseline comparable |

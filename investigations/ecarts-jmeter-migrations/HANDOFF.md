@@ -1,5 +1,14 @@
 # Handoff — causes des résultats JMeter non passés sur les migrations restantes
 
+## Priorité de reprise — décisions directes du 2026-09-08
+
+Le [registre des décisions](../../decisions/README.md) prévaut sur les autorisations historiques
+ci-dessous : BeforeMigration.ps1, mesurer le delta puis corriger et régénérer ; NuGet, valider en
+isolation puis décider de la publication avec versions et destination précises. Clienteling :
+master, releases/V6/V7/V8 ; FrenchTaxesRules V22 Fix : relever les minima ; images : investiguer.
+Les [trois missions proposées](parallel/2026-09-08-chantiers-isoles/README.md) ne sont pas lancées.
+Elles réservent des espaces externes distincts et la consolidation documentaire à un intégrateur.
+
 ## 2026-09-08 — InventoryTracking : validation technique AzDO, fonctionnel encore UNKNOWN
 
 **FACT** — la collecte [AzDO round 2](evidence/2026-09-08-inventorytracking-azdo-access-diagnosis-round2/README.md) relit par Python/OpenSSL la définition `2072`, les builds, timelines, artefacts et résultats individuels. `4440774` est `completed/succeeded` au commit `ef3d87034d38b88aca04c824061b140e2a29252c` : Build réussi, JMeter skipped. `4440884` est `completed/partiallySucceeded` au même commit : Build réussi, Cur/Fix exécutés, `1991` résultats chacun.

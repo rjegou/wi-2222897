@@ -8,6 +8,8 @@ et [016](findings/016-clienteling-v26-backup-lfs-absent.md).
 
 ## Reprendre l'enquête
 
+Préparation sans lancement : [trois chantiers BW isolés](parallel/2026-09-08-chantiers-isoles/README.md).
+
 1. Lire [HANDOFF.md](HANDOFF.md).
 2. Identifier le couple plugin/branche dans [cases/STATUS_MATRIX.md](cases/STATUS_MATRIX.md).
 3. Lire la fiche correspondante dans [findings/](findings/README.md).

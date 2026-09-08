@@ -189,6 +189,15 @@ Les fichiers templates locaux ont été hashés (`task-run-campaign.v1.yml` SHA-
 
 Le préflight accepte désormais les 32 JMX historiques comme entrées directes ; il n'exige pas de régénération. Le runner local est confirmé statiquement jusqu'à `jmeter.bat -n -t` (script `jmeter-cli.ps1`, lignes 161-169), sans exécution métier.
 
+## Décision utilisateur du 2026-09-08 — relever les minima V22 Fix
+
+**FACT** — réponse directe de l'utilisateur : relever les versions minimales de la configuration.
+L'arbitrage est consigné dans [le registre, décision 2](../../../decisions/README.md).
+La suite vise `Tests/Config/v22-fix.cy2px`, après vérification de la disponibilité et compatibilité
+des versions retenues. Les candidats historiques ci-dessous ne deviennent pas des versions validées
+par cette décision. **UNKNOWN** — versions exactes retenues, consommation runtime et disparition
+des 174 cas non passés. Aucun fichier de configuration ni système distant modifié dans cette session.
+
 ## Complément du 2026-09-07 — handoff manuel, piste DLL d'autorisation
 
 **Non revérifié dans ce processus.** Un handoff manuel reçu hors `brain-worker` est rangé sous [`evidence/local-2026-09-07-french-taxes-rules-v22-authorization-handoff/`](../evidence/local-2026-09-07-french-taxes-rules-v22-authorization-handoff/README.md). Il rapporte, sans preuve jointe revérifiée ici :

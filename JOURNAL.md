@@ -1,5 +1,39 @@
 # JOURNAL — WI-2222897
 
+## 2026-09-08 — Décisions BeforeMigration/NuGet et préparation de trois commandes BW
+
+**FACT — source : réponse directe de l'utilisateur.** BeforeMigration.ps1 : mesurer le delta,
+corriger puis régénérer les tests concernés. NuGet : valider les packages corrigés en isolation,
+puis décider de leur publication partagée avec versions et destination précises. Décisions,
+README, STATUS, plan de correction et handoff actualisés avant cette entrée.
+
+Trois chantiers sélectionnés : couverture BeforeMigration/chaîne isolée, InventoryTracking
+(86 tests absents), Clienteling (backup LFS V26 et transport des images). Missions et commandes
+dans [le plan](investigations/ecarts-jmeter-migrations/parallel/2026-09-08-chantiers-isoles/README.md).
+Trois espaces externes créés avec AGENTS/README, inscrits dans RESOURCES. Chaque instance possède
+ses clones/sorties ; dépôt canonique, preuves et espaces voisins en lecture seule ; intégration
+documentaire réservée à une seule session après restitution. Aucun lancement BW ni action distante.
+
+Syntaxe contrôlée par lecture des wrappers installés, sans exécuter bw. `MaxRounds` est un plafond ;
+jusqu'à trois workers internes par instance dans le code actuel. Résultats métier, delta réel,
+backup disponible et transport IIS restent UNKNOWN. Les trois modifications restées non committées
+de notre intégration précédente sont reprises dans la même unité documentaire, sans travail tiers.
+
+## 2026-09-08 — Réponses utilisateur aux questions bloquantes
+
+**FACT — source : réponse directe dans cette conversation.** Clienteling : migrer `master`,
+`releases/V6`, `releases/V7`, `releases/V8`. FrenchTaxesRules V22 Fix : relever les versions
+minimales de la configuration. Images Clienteling : résoudre le transport et le chemin IIS par
+investigation technique. BeforeMigration.ps1 et publication NuGet : explications demandées,
+sans arbitrage ni autorisation supplémentaire de publication.
+
+Registre des décisions, README, STATUS, plan de correction, matrice et finding 004 actualisés.
+**UNKNOWN maintenus** : versions minimales exactes, transport des images, delta réel de couverture
+du filtre BeforeMigration, décision Products et autorisation de publication partagée.
+Aucun code, configuration de plugin, preuve brute ou système distant modifié ; aucune ressource
+temporaire créée. Les nombreuses modifications préexistantes du dépôt sont préservées ; aucun
+commit global ne doit les embarquer comme s'il appartenait à cette intégration.
+
 ## 2026-09-08 — Nettoyage du workspace OneDrive
 
 Suite de la mise en dépôt. Le dossier OneDrive d'origine passe de **8,6 Go à 72 Mo**.

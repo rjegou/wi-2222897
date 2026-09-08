@@ -139,9 +139,15 @@ Les éléments suivants restent `UNKNOWN` ou nécessitent une décision fonction
 
 ## Ordre d'implémentation et garde-fous
 
+**FACT — décisions utilisateur du 2026-09-08.** BeforeMigration.ps1 : mesurer le delta nominatif
+du filtre sur les mêmes sources, corriger puis régénérer les seuls tests concernés ; prouver le
+chargement des JMX et conserver la couverture. NuGet : valider d'abord les packages corrigés en
+isolation ; décider ensuite de la publication partagée avec versions et destination précises.
+Réutiliser les validations acquises et candidats hashés, sans recompilation systématique.
+
 1. Créer le projet de tests API, corriger et tester les quatre transformations sans modifier les JMX générés à la main.
 2. Corriger les images SQL de base 2019/2025 et bloquer leur publication si le smoke test Full-Text échoue.
-3. Après autorisation, republier API puis Console, mettre à jour le package de migration et régénérer tous les JMX.
+3. Valider la chaîne API/Console/migration avec les packages corrigés en isolation et des JMX hashés ; préparer ensuite les versions et la destination pour une décision distincte de publication partagée.
 4. Corriger les cinq métadonnées Clienteling ; prendre la décision Products et identifier le mécanisme de transport des fixtures avant de modifier manifests ou chemins d'images.
 5. Choisir des piles Fix compatibles et identifier la version PlatformDeploy réellement utilisée avant toute modification de propagation des erreurs.
 6. Appliquer la décision utilisateur : identifier puis relever les minima de configuration FrenchTaxesRules V22 Fix ; vérifier les droits et rejouer les cas discriminants.
