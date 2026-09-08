@@ -14,6 +14,8 @@ aucun nettoyage partagé. Les instructions reproductibles sont versionnées dans
 
 Snapshot local : **2026-09-06**. Ce registre ne contient aucune valeur de secret.
 
+Ajout documentaire 2026-09-08 (reprise directe AzDO) : les runs Azure DevOps `4447425` (InventoryTracking), `4447499` / `4447508` (FrenchTaxesRules), `4447427` / `4447443` (Clienteling) ont tous atteint leur état terminal. Leurs conteneurs d'exécution et agents hôtes éphémères ont été automatiquement libérés par Azure Pipelines. Aucune ressource distante persistante (branche partagée, PR, image promue, package NuGet ou secret) n'a été créée ou n'est à dépolluer.
+
 Ajout documentaire 2026-09-08 : conserver les collectes `investigations/ecarts-jmeter-migrations/evidence/2026-09-08-inventorytracking-azdo-access-diagnosis-round2/` (réponses AzDO Python/OpenSSL, builds `4440774`/`4440884`, artefacts et résultats Cur/Fix) et `investigations/ecarts-jmeter-migrations/evidence/2026-09-08-inventorytracking-azdo-independent/` (échecs clients Schannel/CLI). Aucune ressource externe n'a été créée dans cette mise à jour.
 
 Ajout documentaire 2026-09-08 : le plan `investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/bw3-plugins/PLAN-round2-safe-pipeline.md` reste indexé et à son emplacement pendant l'utilisation par son propriétaire. Toute prochaine exécution InventoryTracking doit maîtriser les effets ACR/Artifactory staging et le compteur partagé.
@@ -242,3 +244,17 @@ Lot : investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-17888
   identiques (19 de chaque côté, 0 différence). Ne pas régénérer sans contradiction factuelle nouvelle.
 - Ne pas télécharger ni republier le backup Clienteling V26 (`156 663 808` o) dans Git classique : la
   piste retenue est le pointeur Git LFS, sous réserve que l'objet historique soit encore disponible.
+
+## 2026-09-08 — Reprise directe AzDO sans bw : inventaire et dépollution
+
+- **InventoryTracking (run `4447425`, déf. `2072`)** :
+  - Statut terminal : `completed` / `partiallySucceeded`.
+  - Nettoyage runtime : tâche `Stop Containers` exécutée avec statut `succeeded` à 17:44:08 UTC (Fix) et 17:55:00 UTC (Cur). Aucun conteneur résiduel actif sur les agents VMSS.
+- **FrenchTaxesRules (runs `4447499` et `4447508`, déf. `2054`)** :
+  - Statut terminal : `completed` / `failed` (`Launch Y2 deployment`).
+  - Aucun conteneur persistant créé. Runs orphelins `4447417` (déf. 14268) et `4447436` (déf. 14269) annulés.
+- **Clienteling (runs `4447427` et `4447443`, déf. `14264`)** :
+  - Statut terminal : `completed` (diagnostic `succeeded` / préflight `failed`).
+  - Zéro conteneur et zéro image créés (rapporté par `docker info` de l'étape diagnostic).
+- **Secrets** : PAT Azure DevOps utilisé en mémoire vive uniquement, aucun token ni secret écrit sur disque, journalisé ou persisté.
+
