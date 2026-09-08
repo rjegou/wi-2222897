@@ -1,0 +1,29 @@
+{
+  "collectedAt": "2026-09-08",
+  "system": "Azure DevOps cegid/Retail",
+  "definitionId": 14264,
+  "runId": 4445464,
+  "runResult": "partiallySucceeded",
+  "sourceCommit": "4ec1fb0865954118278a6b7bb60019cb15fe3b2c",
+  "sourceBranch": "sandbox/clienteling/wi2222897-isolated-replay",
+  "queueId": 665,
+  "poolName": "Private VS2019",
+  "poolId": 94,
+  "agentName": "vm-alm-agent-02-A",
+  "agentMachineName": "vm-alm-agent-02",
+  "agentVersion": "4.270.0",
+  "osVersion": "Microsoft Windows NT 10.0.17763.0",
+  "artifactId": 5037721,
+  "artifactName": "wi2222897-target-diagnostic-4445464",
+  "file": "target-diagnostic.txt",
+  "fileSize": 118622,
+  "sha256": "3FD7190E71581F4066F9C0B0DA5E22F4F772BC012C6152E2AB9521CB26EFAC3A",
+  "dockerCommandAvailable": false,
+  "backupDetectedUnderCheckout": false,
+  "campaignStagesExecuted": false,
+  "acceptedConsole": {
+    "buildId": 4445025,
+    "artifactId": 5037277,
+    "packageSha256": "796563797BBA329B2D041A2921735BC86C5F2DCADAED269FEDF77BB13542F1BE"
+  }
+}

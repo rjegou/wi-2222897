@@ -1,0 +1,19 @@
+{
+  "sourceSystem": "Azure DevOps",
+  "project": "Retail",
+  "definitionId": 2637,
+  "runId": 4444962,
+  "sourceBranch": "refs/heads/sandbox/clienteling/api-jmeter-fixes",
+  "sourceVersion": "4c22cb2850a150161f44080815375527c4daad48",
+  "result": "succeeded",
+  "artifact": "Nuget",
+  "artifactId": 5037204,
+  "artifactType": "PipelineArtifact",
+  "package": "Cegid.Retail.AutoTest.Api.1.1.46.nupkg",
+  "packageSha256": "B416C52F58D5129C36540C13E9C9BA36CCB064FE5433EE3D21C8094A9E3E5AC4",
+  "nuspecVersion": "1.1.46",
+  "nuspecSha256": "FC9922F6CC9807B9D7D836D6FF086A20171BCC66DA27E0D18F83BF2C4CACEC16",
+  "apiDllSha256": "38E7BA8D507FB73A661DD111224DCFABBF78C22AB2ECE23BD9D2EF67ACCD2F3",
+  "sharedFeedPublication": false,
+  "readback": "downloaded via Azure DevOps artifact URL; hashes recalculated from extracted files"
+}

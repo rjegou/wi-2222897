@@ -1,0 +1,32 @@
+{
+  "buildId": 4445476,
+  "definitionId": 14265,
+  "commit": "408091c6e65c774876541ae979eac3d4877a2a1b",
+  "branch": "refs/heads/sandbox/frenchtaxesrules/v26-preflight-20260908",
+  "status": "completed",
+  "result": "failed",
+  "finishTimeUtc": "2026-09-08T11:47:52.5203411Z",
+  "jobTimeoutMinutes": 10,
+  "dockerLogin": "succeeded",
+  "imagePull": "succeeded",
+  "imageDigestObserved": "sha256:ea74f21a0d2ac3653ff843b393f6e97571500f6b41b2c2f71e94da23c0a9dbf2",
+  "inspectionAttestation": "not produced before timeout",
+  "cleanupAssertion": "not proven; cancellation occurred before the cleanup assertion completed",
+  "expurgatedOutputHash": "92A41510A395FA404ABE346DFEFB2F3377D8D59AA3A97964E6589029CAD44022",
+  "logs": {
+    "inspection": 7,
+    "postInspection": 8,
+    "timeout": 11
+  },
+  "sideEffects": {
+    "businessDatabaseRestore": false,
+    "packageDeployment": false,
+    "businessCalls": false,
+    "publishedArtifacts": false,
+    "sharedCleanup": false
+  },
+  "unknowns": [
+    "container OS/mount/network attestation was not emitted",
+    "whether the uniquely named container remained after cancellation"
+  ]
+}

@@ -1,0 +1,591 @@
+<?xml version="1.0"?>
+<TestPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="DtoLegacyServiceTestPlan" Code="ExportService:Run" IsSelected="true" Comment="Test plan du service Export" Operation="http://www.cegid.fr/services/ILegacyDispatcherService/Invoke" WebService="LegacyDispatcherService.svc" DatabaseId="CBR_AUTO" Action="Cegid.CBR.FrenchTaxesRulesExportService.Run" xmlns="TestAutomation">
+  <TestCases>
+    <TestCase Id="0f9ae2c5-0388-4d1b-a541-0d8fae0b1f4e" Code="01" Label="EC - NF525 pas activé" Input="InputFiles\Export\Run_01.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="" Owner="sbuczynski@cegid.com">
+      <PreDataQueries>
+        <Control Id="2d9eea50-e864-41a3-8c94-f5793dc80e09">
+          <Label>Désactivation NF525</Label>
+          <Query>UPDATE PARAMSOC SET SOC_DATA = '-' WHERE SOC_NOM = 'SO_NF525ACTIF'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control Id="1f190b8b-7763-422b-b3be-35ad0d9ec408">
+          <Label>expecting error </Label>
+          <Query>//cbr:RunMessages/cbr:RunMessage/cbr:Message[contains(text(),"CBR_062_0031")]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries />
+      <FinalDataQueries>
+        <Control Id="1998e607-7a44-4aa7-a847-6ffe04f2576d">
+          <Label>Réactivation NF525</Label>
+          <Query>UPDATE PARAMSOC SET SOC_DATA = 'X' WHERE SOC_NOM = 'SO_NF525ACTIF'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="3d358d23-cc6b-4f84-ac9f-b010294e22ab" Code="02" Label="EC - NF525 date activation invalide" Input="InputFiles\Export\Run_02.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="" Owner="sbuczynski@cegid.com">
+      <PreDataQueries>
+        <Control Id="1672ae37-2ce5-423d-ad0e-863d5442272d">
+          <Label>Date d'activation invalide</Label>
+          <Query>UPDATE PARAMSOC SET SOC_DATA = '' WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control Id="1dcc040b-ce06-4962-bbf6-2c049b479302">
+          <Label>expecting error </Label>
+          <Query>//cbr:RunMessages/cbr:RunMessage/cbr:Message[contains(text(),"CBR_062_0031")]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries />
+      <FinalDataQueries>
+        <Control Id="d0a6c4fa-e9d8-4a08-a507-08354cfd97f8">
+          <Label>Mise à jour date activation NF525</Label>
+          <Query>UPDATE PARAMSOC SET SOC_DATA = 42370 WHERE SOC_NOM = 'SO_NF525DATEACTIVATION'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="19223fef-9c3c-4689-9a24-8b47b5103df2" Code="03" Label="EC - FromDate inférieur date activation NF525" Input="InputFiles\Export\Run_03.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="" Owner="sbuczynski@cegid.com">
+      <PreDataQueries />
+      <XmlQueries>
+        <Control Id="46168303-e8b4-43ae-9b1f-fdcf2c463dde">
+          <Label>expecting error </Label>
+          <Query>//cbr:RunMessages/cbr:RunMessage/cbr:Message[contains(text(),"CBR_062_0032")]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries />
+      <FinalDataQueries />
+    </TestCase>
+    <TestCase Id="591e4afb-685f-4784-96cb-bf536c187e04" Code="04" Label="EC - FromDate supérieur à ToDate" Input="InputFiles\Export\Run_04.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="" Owner="sbuczynski@cegid.com">
+      <PreDataQueries />
+      <XmlQueries>
+        <Control Id="fcec4cbb-2036-4183-881b-57dec045cfb2">
+          <Label>expecting error </Label>
+          <Query>//cbr:RunMessages/cbr:RunMessage/cbr:Message[contains(text(),"CBR_062_0011")]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries />
+      <FinalDataQueries />
+    </TestCase>
+    <TestCase Id="401aa9fb-4cd9-4ba3-9d48-4b1748c9a0e4" Code="05" Label="NC - Export du mois précédent la date du jour-2 (01/04/2016-&gt;février)" Input="InputFiles\Export\Run_05.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="2 établissements FRA (106 et 206)" Owner="sbuczynski@cegid.com">
+      <PreDataQueries>
+        <Control Id="dfa894df-120a-41c0-9169-cbc2991f700a">
+          <Label>2 établissements FRA (106 et 206)</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'ZZZ' WHERE ET_PAYS = 'FRA' AND ET_ETABLISSEMENT NOT IN ('106', '206')</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control xsi:type="OutputControl" Id="97e6a659-9344-4a84-a813-d87f0555b500">
+          <Label>compare full xml</Label>
+          <Query />
+          <ExpectedValue>1</ExpectedValue>
+          <ExpectedOutput>OutputFiles\Export\Run_05.xml</ExpectedOutput>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="1aed9bf8-58da-41e3-bb8e-b5328c7f254e">
+          <Label>DAEMONEXPORT des établissements 106 et 206</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONEXPORT WHERE DEX_ETABLISS in ('106', '206') AND DEX_SIGNVERSION = 'S20' AND DEX_SIGNKEYVERSION = 1 AND DEX_MSAFTSTEP = 'DON'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="d45a0375-0818-40ae-ad16-b424d8a59074">
+          <Label>DAEMONSAFT des établissements 106 et 206 (février)</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160201' AND DSA_DAEMONSAFTIDPREC='' AND DSA_SIGN != ''</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="cc2f7f4a-2be7-4ef2-a732-3bd25363e958">
+          <Label>Génération de 2 fichiers SAFT mois de février (106 et 206)</Label>
+          <Query>SELECT COUNT(0) from MSAFTFILE WHERE SAT_STORE in ('106', '206') AND SAT_LIBELLE LIKE '%_201602_%'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries>
+        <Control Id="90872c6a-d26c-4d39-9b7f-211dbfb697c5">
+          <Label>RAZ pays des établissement</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'ZZZ'</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="b3bc6465-7488-428d-a883-77135e2eff4e">
+          <Label>Delete DAEMONEXPORT</Label>
+          <Query>DELETE DAEMONEXPORT WHERE DEX_ETABLISS in ('106', '206') AND DEX_SIGNVERSION = 'S20'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="9c044776-2171-492e-9fff-bd1a54e22ad6">
+          <Label>Delete DAEMONSAFT</Label>
+          <Query>DELETE DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160201'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="27288d3e-6df4-4b2d-a0f9-b9cd50f08c47">
+          <Label>Delete MSAFTFILE</Label>
+          <Query>DELETE MSAFTFILE WHERE SAT_STORE in ('106', '206')</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="a514d20a-1f8d-4ce5-b112-66714128fef1">
+          <Label>Delete JOURNALEVENTSIGN inserted data</Label>
+          <Query>DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '106' AND GHS_NUMERO &gt; 50</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="50b050e5-c867-47b5-b222-c26088aeee54">
+          <Label>Delete JOURNALEVENTSIGN inserted data</Label>
+          <Query>DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '206' AND GHS_NUMERO &gt; 67</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="c974d67d-6e78-4da0-8ce2-9454302984ec">
+          <Label>Delete JOURNALEVENT inserted data</Label>
+          <Query>DELETE JOURNALEVENT WHERE GHE_CODESITE = '106' AND GHE_NUMERO &gt; 50</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="d4460dd5-0ba2-433e-a957-92cc93d099f2">
+          <Label>Delete JOURNALEVENT inserted data</Label>
+          <Query>DELETE JOURNALEVENT WHERE GHE_CODESITE = '206' AND GHE_NUMERO &gt; 67</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="0be992ec-dc3b-4a49-b2b5-f7f588c833d5">
+          <Label>Remise à niveau du numéro de séquence 106</Label>
+          <Query>UPDATE DESEQUENCES SET DSQ_VALEUR = 50 WHERE DSQ_CODE = 'CBR_GHE_106'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="84829919-59be-43ef-87b5-757708616c40">
+          <Label>Remise à niveau du numéro de séquence 206</Label>
+          <Query>UPDATE DESEQUENCES SET DSQ_VALEUR = 67 WHERE DSQ_CODE = 'CBR_GHE_206'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="b147dce5-2c8f-4025-a8bd-d18d589fda01" Code="06" Label="NC - Export du mois précédent fromDate (03/03/2016-&gt;février)" Input="InputFiles\Export\Run_06.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="2 établissements FRA (106 et 206)" Owner="sbuczynski@cegid.com">
+      <PreDataQueries>
+        <Control Id="90dde8d2-b126-4e02-a49c-c7ee59564ea2">
+          <Label>2 établissements FRA (106 et 206)</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'ZZZ' WHERE ET_PAYS = 'FRA' AND ET_ETABLISSEMENT NOT IN ('106', '206')</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control xsi:type="OutputControl" Id="07e0b367-1bd6-4993-9245-c9187c953875">
+          <Label>compare full xml</Label>
+          <Query />
+          <ExpectedValue>1</ExpectedValue>
+          <ExpectedOutput>OutputFiles\Export\Run_06.xml</ExpectedOutput>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="7cc719b0-bb62-4dd9-845d-af64d50cba74">
+          <Label>DAEMONEXPORT des établissements 106 et 206</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONEXPORT WHERE DEX_ETABLISS in ('106', '206') AND DEX_SIGNVERSION = 'S20' AND DEX_SIGNKEYVERSION = 1 AND DEX_MSAFTSTEP = 'DON'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="5ead19b9-511a-46c6-ab75-348d3c16e896">
+          <Label>DAEMONSAFT des établissements 106 et 206 (février)</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160201' AND DSA_DAEMONSAFTIDPREC='' AND DSA_SIGN != ''</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="1a2f3391-70c1-4844-8323-382b413befac">
+          <Label>Génération de 2 fichiers SAFT mois de février (106 et 206)</Label>
+          <Query>SELECT COUNT(0) from MSAFTFILE WHERE SAT_STORE in ('106', '206') AND SAT_LIBELLE LIKE '%_201602_%'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries>
+        <Control Id="ef40a9b6-7ea8-4044-ab05-e896aadb2d6e">
+          <Label>RAZ pays des établissement</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'ZZZ'</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="a26ee4e5-d533-4785-a87e-d693d4c03e10">
+          <Label>Delete DAEMONEXPORT</Label>
+          <Query>DELETE DAEMONEXPORT WHERE DEX_ETABLISS in ('106', '206') AND DEX_SIGNVERSION = 'S20'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="1e1bfc20-5390-429b-86a7-0e15db3a1220">
+          <Label>Delete DAEMONDELETE</Label>
+          <Query>DELETE DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160201'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="1f51cd66-e55f-402d-9f66-21e2c5a3d61c">
+          <Label>Delete MSAFTFILE</Label>
+          <Query>DELETE MSAFTFILE WHERE SAT_STORE in ('106', '206')</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="c9d2bb0b-1906-4c4b-b3d4-b43a27550286">
+          <Label>Delete JOURNALEVENTSIGN inserted data</Label>
+          <Query>DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '106' AND GHS_NUMERO &gt; 50</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="ea791e7f-e028-456d-bec8-0dde119567b9">
+          <Label>Delete JOURNALEVENTSIGN inserted data</Label>
+          <Query>DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '206' AND GHS_NUMERO &gt; 67</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="69e8f45a-70d6-4951-8bb5-c154ce36a05d">
+          <Label>Delete JOURNALEVENT inserted data</Label>
+          <Query>DELETE JOURNALEVENT WHERE GHE_CODESITE = '106' AND GHE_NUMERO &gt; 50</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="e38e39d3-d929-4fb6-9e15-9f9d796ec94d">
+          <Label>Delete JOURNALEVENT inserted data</Label>
+          <Query>DELETE JOURNALEVENT WHERE GHE_CODESITE = '206' AND GHE_NUMERO &gt; 67</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="fb9990bb-c652-44eb-a14f-729340392304">
+          <Label>Remise à niveau du numéro de séquence 106</Label>
+          <Query>UPDATE DESEQUENCES SET DSQ_VALEUR = 50 WHERE DSQ_CODE = 'CBR_GHE_106'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="82c3a88b-0e27-4c57-a7bf-d0e045104560">
+          <Label>Remise à niveau du numéro de séquence 206</Label>
+          <Query>UPDATE DESEQUENCES SET DSQ_VALEUR = 67 WHERE DSQ_CODE = 'CBR_GHE_206'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="b888f68d-796f-45ac-8405-e0d98951d19d" Code="07" Label="NC - Export 2 mois (02/03/2016-03/03/2016;janvier-février)" Input="InputFiles\Export\Run_07.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="1 établissements FRA (106)" Owner="sbuczynski@cegid.com">
+      <PreDataQueries>
+        <Control Id="a0e75a69-bc7b-4a79-9d20-8fe6fbd30663">
+          <Label>1 établissement FRA (106)</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'ZZZ' WHERE ET_PAYS = 'FRA' AND ET_ETABLISSEMENT != '106'</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control xsi:type="OutputControl" Id="953f6301-8802-46e3-9ac7-a513d91b00b0">
+          <Label>compare full xml</Label>
+          <Query />
+          <ExpectedValue>1</ExpectedValue>
+          <ExpectedOutput>OutputFiles\Export\Run_07.xml</ExpectedOutput>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="ae171e02-a6c1-4d26-9400-d32c6bf4e969">
+          <Label>DAEMONEXPORT établissement 106</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONEXPORT WHERE DEX_ETABLISS = '106' AND DEX_SIGNVERSION = 'S20' AND DEX_SIGNKEYVERSION = 1 AND DEX_MSAFTSTEP = 'DON'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="f6489650-11f2-4a63-8c85-e8fe629a2d5a">
+          <Label>DAEMONSAFT établissement 106 (janvier)</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160101' AND DSA_DAEMONSAFTIDPREC='' AND DSA_SIGN != ''</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="8fedca42-2558-41f6-b84c-5b44fab107ef">
+          <Label>DAEMONSAFT établissement 106 (février)</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160201' AND DSA_DAEMONSAFTIDPREC=(SELECT DSA_DAEMONSAFTID FROM DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160101') AND DSA_SIGN != ''</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="2d887615-62ab-4979-9af8-dbc25c31d66e">
+          <Label>Génération de 1 fichiers SAFT mois de janvier (106)</Label>
+          <Query>SELECT COUNT(0) from MSAFTFILE WHERE SAT_STORE = '106' AND SAT_LIBELLE LIKE '%_201601_%'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="6f5123cc-c773-46a3-9570-03d38b6b9573">
+          <Label>Génération de 1 fichiers SAFT mois de février (106)</Label>
+          <Query>SELECT COUNT(0) from MSAFTFILE WHERE SAT_STORE = '106' AND SAT_LIBELLE LIKE '%_201602_%'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries>
+        <Control Id="6d711b56-61ac-4cd0-8a28-f35efe4fac1a">
+          <Label>RAZ pays des établissement</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'ZZZ'</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="b4448852-81fd-4aba-ae4e-123e44624df4">
+          <Label>Delete DAEMONEXPORT</Label>
+          <Query>DELETE DAEMONEXPORT WHERE DEX_ETABLISS = '106' AND DEX_SIGNVERSION = 'S20'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="a7ad4d43-4711-4f78-af08-9f5d0241ba38">
+          <Label>Delete DAEMONDELETE</Label>
+          <Query>DELETE DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE in ('20160101', '20160201')</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="b0e4cca2-6b6c-45b0-8eb0-a64971a4f6a7">
+          <Label>Delete MSAFTFILE</Label>
+          <Query>DELETE MSAFTFILE WHERE SAT_STORE = '106'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="0814a5b8-8174-4ffc-b55b-c9b8ed83f5b5">
+          <Label>Delete JOURNALEVENTSIGN inserted data</Label>
+          <Query>DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '106' AND GHS_NUMERO &gt; 50</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="a7762dc2-0d12-4698-8cbe-1f0467291f2c">
+          <Label>Delete JOURNALEVENTSIGN inserted data</Label>
+          <Query>DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '206' AND GHS_NUMERO &gt; 67</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="f8757218-7a8b-4ec9-b221-4f516aa8fd36">
+          <Label>Delete JOURNALEVENT inserted data</Label>
+          <Query>DELETE JOURNALEVENT WHERE GHE_CODESITE = '106' AND GHE_NUMERO &gt; 50</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="d76b9f88-d078-4378-8b52-3eeadc9d25df">
+          <Label>Delete JOURNALEVENT inserted data</Label>
+          <Query>DELETE JOURNALEVENT WHERE GHE_CODESITE = '206' AND GHE_NUMERO &gt; 67</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="4f3cc66d-5eb6-401e-8d07-019390cab275">
+          <Label>Remise à niveau du numéro de séquence 106</Label>
+          <Query>UPDATE DESEQUENCES SET DSQ_VALEUR = 50 WHERE DSQ_CODE = 'CBR_GHE_106'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="cd5b2faf-9a00-4232-9a5d-8664a8fdfe3c" Code="08" Label="NC - Export existant en décembre, 2 mois à exporter" Input="InputFiles\Export\Run_08.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="1 établissements FRA (106)" Owner="sbuczynski@cegid.com">
+      <PreDataQueries>
+        <Control Id="8c197659-a971-4bce-8716-17c7db85b267">
+          <Label>1 établissement FRA (106)</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'ZZZ' WHERE ET_PAYS = 'FRA' AND ET_ETABLISSEMENT != '106'</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="b18b974e-6b1d-4da7-b698-c7eded331604">
+          <Label>DAEMONEXPORT janvier</Label>
+          <Query>INSERT INTO DAEMONEXPORT (DEX_DAEMONEXPORTID, DEX_DATEDEBEXEC, DEX_DATEFINEXEC, DEX_ETABLISS, DEX_DAEMONEXPORTSIGN, DEX_SIGNVERSION, DEX_SIGNKEYVERSION, DEX_MSAFTSTEP)
+ VALUES ('4bdc73b0-b1de-4b2b-98e1-a5ee18f8c53c', '2016-01-03', '2016-01-03', 106, 'MGQCMHqpAdnrec0h-AQ0L2IFXLJzHYL9Uhk211aY-JFqwIRKc35BL7MgbZsCNgRnGLaxEwIwQCuvRGxMsRHXmOQDSlv1rQoTRhynFFprdquLz7jSs3OXAY9G4nqstQkacNeCftPe', 'S20' , 1, 'DON')
+          </Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="467be674-b685-4d85-9af4-0fac0d905dce">
+          <Label>DAEMONSAFT décembre</Label>
+          <Query>INSERT INTO DAEMONSAFT (DSA_DAEMONSAFTID, DSA_DAEMONEXPORTID, DSA_LEVEL, DSA_TYPE, DSA_TARGETDATE, DSA_DATEEXEC, DSA_SAFTFILEID, DSA_DAEMONSAFTIDPREC, DSA_SIGN)
+ VALUES ('6d6755bc-fdc8-4c85-bf41-d2ecd66e2b83', '4bdc73b0-b1de-4b2b-98e1-a5ee18f8c53c', 'STO', 'MON', '2015-12-01', '2016-01-03', '91676c09-e072-4f01-b6b5-28e4c436a82f', '', 'MGQCMGqVNTBmenp0lQ7Cjg4JeIxo4EcddziMTLHU1urOEVurQI2Fo4POS2MNDupYL-gyVAIwN19bFtjM6sYFc3jz3IfY5OzR_iXSiyFCet-U4Ab_E5p3LM6pMBC4B8FaERTB4TTu')
+          </Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control xsi:type="OutputControl" Id="d08f5ce5-bd3e-4a34-a006-c598e1515c17">
+          <Label>compare full xml</Label>
+          <Query />
+          <ExpectedValue>1</ExpectedValue>
+          <ExpectedOutput>OutputFiles\Export\Run_08.xml</ExpectedOutput>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="ab3b3ea8-d730-4d54-ae43-d7fda7999e2f">
+          <Label>DAEMONEXPORT établissement 106 (1 inséré et 1 généré)</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONEXPORT WHERE DEX_ETABLISS = '106' AND DEX_SIGNVERSION = 'S20' AND DEX_SIGNKEYVERSION = 1 AND DEX_MSAFTSTEP = 'DON'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="cb6d6a82-ea36-4d64-8faa-11a4886abd52">
+          <Label>DAEMONSAFT établissement 106 (1 inséré et 2 générés)</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON'</Query>
+          <ExpectedValue>3</ExpectedValue>
+        </Control>
+        <Control Id="ffbaeb1a-151a-4949-9aee-75c8f56c0c24">
+          <Label>DAEMONSAFT établissement 106 (janvier)</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160101' AND DSA_DAEMONSAFTIDPREC='6d6755bc-fdc8-4c85-bf41-d2ecd66e2b83' AND DSA_SIGN != ''</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="37baee36-91bc-46e2-9d96-23c133bd61e8">
+          <Label>DAEMONSAFT établissement 106 (février)</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160201' AND DSA_DAEMONSAFTIDPREC=(SELECT DSA_DAEMONSAFTID FROM DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160101') AND DSA_SIGN != ''</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="b12429dc-4ee2-4b07-bb6c-d38cc0657919">
+          <Label>Génération de 1 fichiers SAFT mois de janvier (106)</Label>
+          <Query>SELECT COUNT(0) from MSAFTFILE WHERE SAT_STORE = '106' AND SAT_LIBELLE LIKE '%_201601_%'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="99e30dcf-216e-47c2-913c-b37f0a3cbb17">
+          <Label>Génération de 1 fichiers SAFT mois de février (106)</Label>
+          <Query>SELECT COUNT(0) from MSAFTFILE WHERE SAT_STORE = '106' AND SAT_LIBELLE LIKE '%_201602_%'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries>
+        <Control Id="81018eae-f779-4d52-b400-fdf7cc250366">
+          <Label>RAZ pays des établissement</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'ZZZ'</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="042c4cc3-d5b9-45f2-a937-56fd17d2ea89">
+          <Label>Delete DAEMONEXPORT</Label>
+          <Query>DELETE DAEMONEXPORT WHERE DEX_ETABLISS = '106' AND DEX_SIGNVERSION = 'S20'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="24909c15-cc9d-4ca5-afa4-bc5cb8c46eea">
+          <Label>Delete DAEMONDELETE</Label>
+          <Query>DELETE DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE in ('20151201', '20160101', '20160201')</Query>
+          <ExpectedValue>3</ExpectedValue>
+        </Control>
+        <Control Id="936cce7e-e7b7-43fe-b01d-a0726e89e507">
+          <Label>Delete MSAFTFILE</Label>
+          <Query>DELETE MSAFTFILE WHERE SAT_STORE = '106'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="345db531-8fa7-4f34-a925-29c1990c7415">
+          <Label>Delete JOURNALEVENTSIGN inserted data</Label>
+          <Query>DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '106' AND GHS_NUMERO &gt; 50</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="b110fb49-6f29-4a4d-af93-f082ba81fff7">
+          <Label>Delete JOURNALEVENTSIGN inserted data</Label>
+          <Query>DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '206' AND GHS_NUMERO &gt; 67</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="1aabf06b-a5fe-4f37-9410-aa0ac7680e6c">
+          <Label>Delete JOURNALEVENT inserted data</Label>
+          <Query>DELETE JOURNALEVENT WHERE GHE_CODESITE = '106' AND GHE_NUMERO &gt; 50</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="ac7b8c64-1be6-4e64-9a9f-353ac1c2ec4a">
+          <Label>Delete JOURNALEVENT inserted data</Label>
+          <Query>DELETE JOURNALEVENT WHERE GHE_CODESITE = '206' AND GHE_NUMERO &gt; 67</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="0d08261c-4aab-4c2a-800e-c5c3f86c8a88">
+          <Label>Remise à niveau du numéro de séquence 106</Label>
+          <Query>UPDATE DESEQUENCES SET DSQ_VALEUR = 50 WHERE DSQ_CODE = 'CBR_GHE_106'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="453be462-93aa-4076-8b58-8138031a83a2" Code="09" Label="NC - Export existant février, rien à exporter" Input="InputFiles\Export\Run_09.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="1 établissements FRA (106)" Owner="sbuczynski@cegid.com">
+      <PreDataQueries>
+        <Control Id="78e41c1f-b923-4f36-afe3-bda08a0721df">
+          <Label>1 établissement FRA (106)</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'ZZZ' WHERE ET_PAYS = 'FRA' AND ET_ETABLISSEMENT != '106'</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="b7b4b83a-bdc4-497e-8e0f-fabae17bbe65">
+          <Label>DAEMONEXPORT janvier</Label>
+          <Query>INSERT INTO DAEMONEXPORT (DEX_DAEMONEXPORTID, DEX_DATEDEBEXEC, DEX_DATEFINEXEC, DEX_ETABLISS, DEX_DAEMONEXPORTSIGN, DEX_SIGNVERSION, DEX_SIGNKEYVERSION, DEX_MSAFTSTEP)
+ VALUES ('4bdc73b0-b1de-4b2b-98e1-a5ee18f8c53c', '2016-03-03', '2016-03-03', 106, 'MGQCMHqpAdnrec0h-AQ0L2IFXLJzHYL9Uhk211aY-JFqwIRKc35BL7MgbZsCNgRnGLaxEwIwQCuvRGxMsRHXmOQDSlv1rQoTRhynFFprdquLz7jSs3OXAY9G4nqstQkacNeCftPe', 'S20' , 1, 'DON')
+          </Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="d63974fb-c246-4812-9bcf-eeeb5278e209">
+          <Label>DAEMONSAFT décembre</Label>
+          <Query>INSERT INTO DAEMONSAFT (DSA_DAEMONSAFTID, DSA_DAEMONEXPORTID, DSA_LEVEL, DSA_TYPE, DSA_TARGETDATE, DSA_DATEEXEC, DSA_SAFTFILEID, DSA_DAEMONSAFTIDPREC, DSA_SIGN)
+ VALUES ('6d6755bc-fdc8-4c85-bf41-d2ecd66e2b83', '4bdc73b0-b1de-4b2b-98e1-a5ee18f8c53c', 'STO', 'MON', '2016-02-01', '2016-03-03', '91676c09-e072-4f01-b6b5-28e4c436a82f', '', 'MGQCMGqVNTBmenp0lQ7Cjg4JeIxo4EcddziMTLHU1urOEVurQI2Fo4POS2MNDupYL-gyVAIwN19bFtjM6sYFc3jz3IfY5OzR_iXSiyFCet-U4Ab_E5p3LM6pMBC4B8FaERTB4TTu')
+          </Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control xsi:type="OutputControl" Id="1eeb8503-b146-4a60-b09f-38f3694901b6">
+          <Label>compare full xml</Label>
+          <Query />
+          <ExpectedValue>1</ExpectedValue>
+          <ExpectedOutput>OutputFiles\Export\Run_09.xml</ExpectedOutput>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="4768e05b-849e-416f-a60f-f546b1890ba4">
+          <Label>DAEMONEXPORT établissement 106 (1 inséré et 1 généré)</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONEXPORT WHERE DEX_ETABLISS = '106' AND DEX_SIGNVERSION = 'S20' AND DEX_SIGNKEYVERSION = 1 AND DEX_MSAFTSTEP = 'DON'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="55996142-401e-4be4-a5ab-faac85e9bafe">
+          <Label>DAEMONSAFT établissement 106 (1 inséré et 0 générés)</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="f1421117-e610-483e-a282-9ca4efcdf128">
+          <Label>Pas de génération de ficheir SAFT (106)</Label>
+          <Query>SELECT COUNT(0) from MSAFTFILE WHERE SAT_STORE = '106'</Query>
+          <ExpectedValue>0</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries>
+        <Control Id="986f85f9-9a87-4f48-ba1d-95bb4d183253">
+          <Label>RAZ pays des établissement</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'ZZZ'</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="29b5e1a1-425e-428e-9970-695c4b035adf">
+          <Label>Delete DAEMONEXPORT</Label>
+          <Query>DELETE DAEMONEXPORT WHERE DEX_ETABLISS = '106' AND DEX_SIGNVERSION = 'S20'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="70b5be04-15b6-4819-921d-91eba133d298">
+          <Label>Delete DAEMONSAFT</Label>
+          <Query>DELETE DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160201'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="717dc0f6-7601-4baf-86c6-33eaa4e877c7" Code="10" Label="NC - Export du mois en cours (fromDate M+1 et RunMode Debug)" Input="InputFiles\Export\Run_10.xml" IsSelected="true" IsValidated="true" Defect="0" Comment="1 établissements FRA (106)" Owner="sbuczynski@cegid.com">
+      <PreDataQueries>
+        <Control Id="bab27c5a-422b-460c-b20b-c083bdbbbbc1">
+          <Label>1 établissement FRA (106)</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'ZZZ' WHERE ET_PAYS = 'FRA' AND ET_ETABLISSEMENT != '106'</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control xsi:type="OutputControl" Id="ef681ef5-4297-4d51-9710-2d60b2a21038">
+          <Label>compare full xml</Label>
+          <Query />
+          <ExpectedValue>1</ExpectedValue>
+          <ExpectedOutput>OutputFiles\Export\Run_07.xml</ExpectedOutput>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="2cec89f2-9f1e-47f0-8d5b-8b470e8746d0">
+          <Label>DAEMONEXPORT établissement 106</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONEXPORT WHERE DEX_ETABLISS = '106' AND DEX_SIGNVERSION = 'S20' AND DEX_SIGNKEYVERSION = 1 AND DEX_MSAFTSTEP = 'DON'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="8452ee7c-5e8e-4c14-88c2-31d1f218ec9c">
+          <Label>1 seul DAEMONSAFT</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="e1a9b59c-2989-47e8-bf3c-ddb97c7dfc35">
+          <Label>DAEMONSAFT établissement 106 (avril)</Label>
+          <Query>SELECT COUNT(0) FROM DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160401' AND DSA_DAEMONSAFTIDPREC='' AND DSA_SIGN != ''</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="e5f008ec-9c9d-484d-9eef-43f80022f28a">
+          <Label>Génération de 1 fichiers SAFT mois d'avril (106)</Label>
+          <Query>SELECT COUNT(0) from MSAFTFILE WHERE SAT_STORE = '106' AND SAT_LIBELLE LIKE '%_201604_%'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries>
+        <Control Id="465ff3f0-2d24-4a9d-a95a-c6a40514a7ad">
+          <Label>RAZ pays des établissement</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_PAYS = 'ZZZ'</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="04156fcf-63f2-4d6e-b7cc-eeeb0951b506">
+          <Label>Delete DAEMONEXPORT</Label>
+          <Query>DELETE DAEMONEXPORT WHERE DEX_ETABLISS = '106' AND DEX_SIGNVERSION = 'S20'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="9abeb8b8-8cb8-49a3-9c18-30bd53ffa8b9">
+          <Label>Delete DAEMONDELETE</Label>
+          <Query>DELETE DAEMONSAFT WHERE DSA_LEVEL = 'STO' AND DSA_TYPE = 'MON' AND DSA_TARGETDATE = '20160401'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="f8201dab-c9a3-4c3e-8660-cbfe9b36d639">
+          <Label>Delete MSAFTFILE</Label>
+          <Query>DELETE MSAFTFILE WHERE SAT_STORE = '106'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="c7991f56-9818-47db-a929-42c628fd2424">
+          <Label>Delete JOURNALEVENTSIGN inserted data</Label>
+          <Query>DELETE JOURNALEVENTSIGN WHERE GHS_ETABLISSEMENT = '106' AND GHS_NUMERO &gt; 50</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="5c0c9b57-90ad-4bd1-bd96-4cf9ef5293f4">
+          <Label>Delete JOURNALEVENT inserted data</Label>
+          <Query>DELETE JOURNALEVENT WHERE GHE_CODESITE = '106' AND GHE_NUMERO &gt; 50</Query>
+          <ExpectedValue>-1</ExpectedValue>
+        </Control>
+        <Control Id="1fd903fa-3594-4319-9d42-36932a603078">
+          <Label>Remise à niveau du numéro de séquence 106</Label>
+          <Query>UPDATE DESEQUENCES SET DSQ_VALEUR = 50 WHERE DSQ_CODE = 'CBR_GHE_106'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+  </TestCases>
+</TestPlan>

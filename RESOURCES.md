@@ -6,6 +6,12 @@ Ajout documentaire 2026-09-08 : conserver les collectes `investigations/ecarts-j
 
 Ajout documentaire 2026-09-08 : le plan `investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/bw3-plugins/PLAN-round2-safe-pipeline.md` reste indexé et à son emplacement pendant l'utilisation par son propriétaire. Toute prochaine exécution InventoryTracking doit maîtriser les effets ACR/Artifactory staging et le compteur partagé.
 
+Ajout documentaire 2026-09-08 : conserver les deux dossiers complémentaires de reprise `investigations/ecarts-jmeter-migrations/evidence/build-4444389-inventorytracking-docker-reprise-20260908/` (provenance, manifeste et synthèse) et `investigations/ecarts-jmeter-migrations/evidence/build-4444389-inventorytracking-docker-reprise/` (extraits expurgés de timeline). Aucun secret ni artefact brut non expurgé n'y est conservé; aucune ressource externe n'a été créée ou nettoyée dans cette consolidation. Le build `4444389` est terminal/canceled; la cause de l'annulation Cur/global et l'absence du daemon Fix restent UNKNOWN.
+
+Ajout documentaire 2026-09-08 : conserver `investigations/ecarts-jmeter-migrations/evidence/build-4444720-inventorytracking-docker-init/` et son manifeste. `4444700`/`4444703` sont des essais annulés avant JMeter (`pipelineDevMode=False`); `4444720` a Build/preflight réussis mais Cur/Fix bloqués à `Initialize containers`, sans campagne ni artefact métier. Les trois enrichissements `source-comparison.md`, `xmlDiff-minimal.patch` et `cur-fix-collection-plan.md` restent dans le lot daté 4444389 et sont séparés dans son `MANIFEST.csv`; aucune preuve antérieure n'a été réécrite.
+
+Ajout documentaire 2026-09-08 : conserver le lot `investigations/ecarts-jmeter-migrations/evidence/build-4444720-inventorytracking-review-correction-20260908/`. Il rectifie la qualification 4444720 (initialisation non achevée pendant un téléchargement actif, panne Docker non démontrée), sépare le fait daemon absent de 4444389, et consigne la décision supervisée d'un rejeu unique sans réécriture Docker. Aucun acte distant ni nettoyage partagé n'a été effectué.
+
 Ajout local 2026-09-07 Full-Text : conserver le patch non publié `worktrees/Pipelines_Docker_BaseImages_worker2_round9/validation/WI-2222897/sql-fulltext-hosted-build.yml` et le finding `investigations/ecarts-jmeter-migrations/findings/014-sql-fulltext-runtime-4442685.md`. Il cible uniquement la branche sandbox Full-Text et la définition 14251 ; aucune publication, queue ou ressource externe n’a été effectuée dans cette session.
 
 Ajout local 2026-09-07 : le candidat V22 null-safe et sa preuve Worker 2 round3 sont conservés pour revue/publication autorisée ; aucun artefact distant, secret ou ressource partagée n’a été créé.
@@ -115,6 +121,12 @@ Ajouter ici toute branche, PR, pipeline temporaire, clone, environnement, token 
 ## 2026-09-08 — Ressources des trois BW paralleles
 Lot : investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/README.md. Trois orchestrateurs PID 18468/6100/22320; controle et archives habituels a la racine du WI. Chaque instance tient son RESOURCES.md exclusif. Aucun nettoyage des ressources historiques ni modification de leurs sessions. Les anciennes mentions running seules ne sont pas une preuve de processus actif.
 
+## 2026-09-08 — Worker 1 round 4 — candidat / Full-Text
+
+- Candidat local conservé : `C:\Users\jegour\AppData\Local\Temp\wi2222897-orchestration-clienteling-164805710`; hashes dans le rapport round3 du sous-dossier worker.
+- Full-Text : snapshots `4442156`/`4442685` relus; aucun artefact brut nouveau copié. `4442156` reste sans état final dans la preuve disponible; téléchargement `4442685` bloqué par redirection/ticket, sans secret transmis.
+- Processus : PID orchestrateurs `18468/6100/22320` absents de `Get-Process`; relation parent/enfant refusée par `Get-CimInstance`. Aucun arrêt effectué; nettoyage des descendants non attribuables UNKNOWN.
+
 ## 2026-09-08 — Worker 2 — reprise FrenchTaxesRules
 
 - Tentative de clone propre : `worktrees/frenchtaxesrules-wi2222897/`; Git exit 128, aucun répertoire
@@ -124,3 +136,97 @@ Lot : investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-17888
 - Les fichiers non suivis et modifications d'autres workers observés par `git status` ont été préservés.
 - Le profil Azure CLI global est resté inchangé ; la tentative d'accès a échoué sur les permissions du
   profil local. Toute reprise doit réutiliser un profil temporaire autorisé et le supprimer après preuve.
+
+## 2026-09-08 — API FrenchTaxesRules publiée et revue Console
+
+- Preuve API build `4444765` et artefacts hashés : `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-api-publish-round2/`.
+- Revue indépendante et handoff Worker 2 : `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-api-console-review-round3/` et dossier parallèle associé.
+- Le candidat Console local embarque l'API historique `1.1.46.0`; ne pas le présenter comme chaîne corrigée avant remplacement par la DLL API `A7D3…` et rehash.
+- Ressource temporaire de publication API : `C:\Users\jegour\AppData\Local\Temp\wi2222897-api-publish-r2`; conserver jusqu'à confirmation de transmission, puis dépollution ciblée uniquement.
+
+## 2026-09-08 — InventoryTracking 4444887 : décision de transport
+
+- Preuve primaire conservée sous `investigations/ecarts-jmeter-migrations/evidence/build-4444887-inventorytracking-container-replay-20260908/`; lecture terminal live du run `4444887`, sans collecte redondante.
+- Le package InventoryTracking attendu n'est pas présent dans `retail-software-staging` car la publication de la branche isolée est neutralisée. PlatformDeploy échoue avant JMeter; aucune conclusion fonctionnelle/plugin ne doit en être tirée.
+- Suite autorisée à préparer : transport par artefact privilégié strictement isolé, sans réactivation du staging partagé, promotion ou tag. Aucun système distant n'a été modifié dans cette consolidation.
+
+## 2026-09-08 — InventoryTracking : contrat transport round5
+
+- Preuves conservées et indexées sans recopie : `investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/bw1-tools/evidence/local-2026-09-08-inventorytracking-transport-contract-round5/` et `investigations/ecarts-jmeter-migrations/evidence/build-4444887-inventorytracking-platformdeploy-review-20260908/`.
+- Ressource Build attestée : PipelineArtifact `26.0.7.83_Software`, ID `5037140`, taille déclarée `1 705 531` octets. Le contrat actuel reste JFrog-only; l'entrée locale du plugin n'existe pas dans ce contrat.
+- Décision supervisée : substitution locale expérimentale du seul plugin via PipelineArtifact, à implémenter/tester sans staging partagé. Aucun nouveau secret, service connection, feed, publication ou ressource distante créé; les chemins temporaires des preuves existantes restent inchangés.
+
+## 2026-09-08 — InventoryTracking : round6 artefact et préparation
+
+- Preuves indexées sans recopie : `investigations/ecarts-jmeter-migrations/evidence/build-5037140-inventorytracking-transport-review-20260908/` et `investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/bw1-tools/evidence/local-2026-09-08-inventorytracking-pipelineartifact-5037140-round6/`.
+- Ressource inspectée : PipelineArtifact `5037140`, quatre fichiers (deux MSI/deux XML), hashes et version `26.0.7.83`; contrat `ArtifactItem` rattaché au commit `93f91487ee717185599555a42df3cb5d024ace89`.
+- Contraintes séparées : verrou actif du clone PlatformDeploy d'une part, `.git` documentaire en lecture seule d'autre part. Ne toucher à aucun verrou; la préparation indépendante dans un dossier inscriptible reste possible en principe, sans preuve de patch encore disponible.
+- Décision : préparer puis publier via REST sur branche dédiée après revue. Aucun nouveau secret, artefact distant, branche, run ou publication créé dans cette consolidation.
+
+## 2026-09-08 — InventoryTracking : candidat transport round7
+
+- Candidat local conservé dans `.work/transport-round7/`; preuves indexées sans recopie dans `evidence/local-2026-09-08-inventorytracking-transport-tests-round7/` et `parallel/.../bw1-tools/evidence/local-2026-09-08-inventorytracking-transport-candidate-round7/`.
+- Les tests indépendants du contrat et les tests locaux du candidat sont documentés séparément. Les tests opérateur sont annoncés PASS, mais aucune exécution dans un conteneur PlatformDeploy réel n'est prouvée.
+- Revue indépendante des hashes, commits et runs opérateur encore attendus. Aucun nouveau secret, branche, run, publication ou ressource distante créé.
+
+## 2026-09-08 — InventoryTracking : revues transport round8
+
+- Preuves indexées : `investigations/ecarts-jmeter-migrations/evidence/build-5037140-inventorytracking-transport-review-round8/` et `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-inventorytracking-transport-review-round8/`.
+- Tests locaux du transport PASS; mécanisme favorable sous réserve. Correction requise avant run : distinguer `sourceBuildId=Build.BuildId` de `artifactName=$(componentVersion)_Software` et vérifier les hashes des quatre fichiers MSI/XML effectivement transportés.
+- Aucun hash d’archive exigé. Commits, revue corrigée et run restent à venir; aucune ressource distante créée ou modifiée.
+- Checkout Console réel : `C:\clones\wi-2222897\.work\console-source`, branche `sandbox/frenchtaxesrules/console-api-artifact`, diff `7d0667c…`; conserver pour revue du correctif et ne pas modifier sans nouveau lot.
+- Preuve build Console `4444888` : `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-console-2.0.43-build-4444888-round4/`; aucun artefact Console produit, ne pas lancer de relance identique.
+- Build Console corrigé `4445025` : PipelineArtifact `5037277`, nupkg `796563797BBA329B2D041A2921735BC86C5F2DCADAED269FEDF77BB13542F1BE`, récupérable sous `C:\clones\wi-2222897\.work\console-4445025\x\Nuget\`; staging migration isolé sous `C:\clones\wi-2222897\.work\migration-candidate-4445025\`. Ne pas modifier le snapshot source; JMX/manifeste/rejeu restent à produire.
+- Génération JMX réelle `4445025` : preuve `investigations/ecarts-jmeter-migrations/evidence/build-4445025-jmx-generation/`, staging source `C:\clones\wi-2222897\.work\frenchtaxes-source-07a42172`, sorties générées `C:\clones\wi-2222897\.work\jfull\Tests`. 19 JMX code 0; manifeste exige 32 et échoue explicitement. Conserver pour revue des 13 plans manquants; aucun JMeter exécuté.
+
+## 2026-09-08 — 14264 Round 7 — ressources et blocage courant
+
+- Configuration dédiée publiée et relue sur la branche `sandbox/clienteling/wi2222897-isolated-replay`, commit `b790767c1cecb90d6913c8726aea532c29ea4582`; aucune queue nouvelle après `4444892`.
+- API réelle disponible : build `4444962`, PipelineArtifact `5037204`. Le nupkg Console local `803D...` n'a pas été transporté; le build Console `4445025/5037277` est une variante distincte et ne doit pas être injecté.
+- Le runtime JMeter 5.6.3 est acquis localement et hashé; aucune cible Cur/Fix live, image/digest, backup, réseau ou cleanup dédié n'est attesté. Les ressources temporaires `.work` restent à conserver jusqu'à décision de dépollution ciblée.
+- La tentative ArtifactTool vers le run terminé `4444892` a échoué localement sur `SEC_E_NO_CREDENTIALS` avant requête; aucun artefact distant n'a été créé et aucun credential global n'a été modifié.
+- Lecture live des runs 14264 : `4445072`, `4445085`, `4445099` sont `completed/canceled` sur les commits intermédiaires; aucun résultat Build/JMX/JMeter n'en est déduit. Le commit courant `b790767c` n'a pas de run observé.
+- Diagnostic cible round8 : `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-clienteling-target-preflight-round8/Invoke-Wi2222897TargetPreflight.ps1`; aucune image, permission, donnée ou ressource externe créée. Le script doit être exécuté uniquement par le responsable 14264 dans un agent Docker-compatible.
+- Revue cible round9 : `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-clienteling-target-review-round9/README.md`; le script round8 est à corriger avant usage distant. Aucun job, YAML, image, permission ou donnée partagé modifié.
+- Scripts runtime round10 : `replay-prep/2026-09-08-clienteling-isolated/scripts/Assert-Wi2222897ClientelingRuntime.ps1` et `Remove-Wi2222897OwnedTarget.ps1`; parse et tests négatifs locaux PASS, aucune ressource externe créée.
+- Contrat producteurs round11 : `Invoke-Wi2222897PlatformDeploy.ps1` et `Invoke-Wi2222897JmeterContainer.ps1`; aucun chemin PlatformDeploy/config ou digest JMeter réel fourni, aucun lancement effectué.
+- **FrenchTaxesRules round7** — `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-frenchtaxesrules-round7/` : inventaire nominatif 19/19, origine du compteur 32, métadonnées backup/config et limites du préflight V26 ; ne pas télécharger/restaurer le backup sans cible runtime résolue.
+- **FrenchTaxesRules round8** — `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-frenchtaxesrules-v26-preflight-round8/` : YAML publié, définition 14265, build 4445476 ; digest vérifié mais timeout avant attestation et cleanup non prouvé ; vérifier uniquement le conteneur `wi2222897-frenchtaxesrules-v26-preflight-4445476`.
+
+## 2026-09-08 — Clôture documentaire Clienteling 14264
+
+- Point d’entrée : `STATUS.md`, section « Clôture documentaire — reprise future Clienteling 14264 »,
+  puis `investigations/ecarts-jmeter-migrations/HANDOFF.md`.
+- Preuves déterminantes : `evidence/local-2026-09-08-clienteling-14264-initialization-comparison-round11/`,
+  `evidence/local-2026-09-08-clienteling-14264-agent-diagnostic-round10/` et `...round9/`.
+- À conserver : scripts `replay-prep/2026-09-08-clienteling-isolated/`, artefacts `.work` et preuves
+  immuables jusqu’à dépollution ciblée; ne pas réimporter les binaires.
+- État terminal : aucun nouveau run/push/provisionnement après la demande de clôture; les postconditions
+  Build/GenerateJmx/Cur/Fix Clienteling restent non prouvées.
+
+## 2026-09-08 — Rangement des trois synthèses techniques de pause
+
+- Sources reçues : `C:\Users\jegour\Downloads\WI-2222897_FrenchTaxesRules_V26_synthese_technique_2026-09-08.md`,
+  `…_InventoryTracking_synthese-technique_2026-09-08.md` et `…_Clienteling_JMeter_synthese_technique_2026-09-08.md`.
+  Copiées sans modification dans
+  `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-syntheses-techniques-reprise-handoff/`
+  avec leurs SHA-256. Les originaux de `Downloads` peuvent être supprimés par l'utilisateur : le dépôt
+  en porte désormais la copie de référence.
+- Aucune ressource distante n'a été créée, lue, relancée ou nettoyée dans ce rangement ; aucun secret
+  n'est consigné.
+- Ressources distantes **rapportées par ces documents et non revérifiées**, à connaître avant toute
+  action : branche `sandbox/frenchtaxesrules/v26-preflight-20260908` (définition dédiée `14265`,
+  build `4446410`) ; branche
+  `validation/WI-2222897-frenchtaxesrules-v26-corrected-jmeter-20260908` (HEAD `c9a7c6fe…`, push
+  `5136500`) ; branche `sandbox/WI-2222897-inventorytracking-local-transport` (commit `a490cd53…`,
+  push `5135960`) ; branche `validation/WI-2222897-inventorytracking-isolated-20260908` (commit
+  `95aede77…`, run `4445575`) ; branche `sandbox/clienteling/wi2222897-isolated-replay` (commit
+  `c20755d8…`, run `4446303`).
+- **Action de dépollution encore due, inchangée** : vérifier et supprimer uniquement le conteneur
+  labellisé `wi2222897-frenchtaxesrules-v26-preflight-4445476`. Le cleanup vert du préflight `4446410`
+  porte sur son propre conteneur et ne dit rien de celui-ci.
+- À conserver en l'état : le jeu canonique des 19 JMX sous
+  `evidence/build-4445025-jmx-generation/generated-jmx` et le jeu local `.work\jfull\Tests`, rapportés
+  identiques (19 de chaque côté, 0 différence). Ne pas régénérer sans contradiction factuelle nouvelle.
+- Ne pas télécharger ni republier le backup Clienteling V26 (`156 663 808` o) dans Git classique : la
+  piste retenue est le pointeur Git LFS, sous réserve que l'objet historique soit encore disponible.

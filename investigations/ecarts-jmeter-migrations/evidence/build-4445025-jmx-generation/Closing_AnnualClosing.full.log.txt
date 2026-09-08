@@ -1,0 +1,23 @@
+DEBUG: Logger was created successfully.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+DEBUG: Creating module catalog.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+Loading file: (C:\clones\wi-2222897\.work\console-4445025\runtime\tools\Parameters.xml)
+DEBUG: Configuring module catalog.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+DEBUG: Creating Unity container.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+DEBUG: Configuring the Unity container.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+DEBUG: Adding UnityBootstrapperExtension to container.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+DEBUG: Configuring ServiceLocator singleton.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+DEBUG: Configuring the ViewModelLocator to use Unity.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+DEBUG: Configuring region adapters.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+DEBUG: Configuring default region behaviors.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+DEBUG: Registering Framework Exception Types.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+DEBUG: Creating the shell.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+DEBUG: Initializing modules.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+DEBUG: Bootstrapper sequence completed.. Priority: Low. Timestamp:2026-09-08 13:03:46Z.
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Closing_AnnualClosing\Closing_AnnualClosing.xml)
+Processing TestCampaign=(C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Closing_AnnualClosing\Closing_AnnualClosing.xml) - Target Folder=(C:\clones\wi-2222897\.work\jfull/Tests/Closing_AnnualClosing)
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Closing_AnnualClosing\Closing_AnnualClosing.xml)
+Processing TestPlan (Closing_AnnualClosing)
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Closing_AnnualClosing\TestPlans\Closing_AnnualClosing.xml)
+Generating TestClass for TestPlan=(001-Closing_AnnualClosing.jmx)
+Overriding (C:\clones\wi-2222897\.work\jfull/Tests/Closing_AnnualClosing\001-Closing_AnnualClosing.jmx)
+Overriding (C:\clones\wi-2222897\.work\jfull/Tests/Closing_AnnualClosing.xml)

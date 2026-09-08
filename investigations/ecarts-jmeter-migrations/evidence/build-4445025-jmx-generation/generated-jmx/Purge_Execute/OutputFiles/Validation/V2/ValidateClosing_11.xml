@@ -1,0 +1,96 @@
+﻿<ValidateClosingsV2Response xmlns="http://www.cegid.fr/Retail/1.0">
+  <ValidateClosingsV2Result xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <Errors>
+      <ErrorListItem>
+        <CashRegisterId>020</CashRegisterId>
+        <ClosingId />
+        <ComplId>20140524|Daily|Register|206|020</ComplId>
+        <Error>
+          <Nature>Closure</Nature>
+          <Scope>Validation</Scope>
+          <Type>IncoherentItem</Type>
+        </Error>
+        <Level>Register</Level>
+        <StoreId>206</StoreId>
+        <TargetDate>2014-05-24T00:00:00</TargetDate>
+        <Type>Daily</Type>
+      </ErrorListItem>
+      <ErrorListItem>
+        <CashRegisterId>111</CashRegisterId>
+        <ClosingId />
+        <ComplId>20140524|Daily|Register|206|111</ComplId>
+        <Error>
+          <Nature>Closure</Nature>
+          <Scope>Validation</Scope>
+          <Type>IncoherentItem</Type>
+        </Error>
+        <Level>Register</Level>
+        <StoreId>206</StoreId>
+        <TargetDate>2014-05-24T00:00:00</TargetDate>
+        <Type>Daily</Type>
+      </ErrorListItem>
+      <ErrorListItem>
+        <CashRegisterId />
+        <ClosingId />
+        <ComplId>20140524|Daily|Store|206|</ComplId>
+        <Error>
+          <Nature>Closure</Nature>
+          <Scope>Validation</Scope>
+          <Type>IncoherentItem</Type>
+        </Error>
+        <Level>Store</Level>
+        <StoreId>206</StoreId>
+        <TargetDate>2014-05-24T00:00:00</TargetDate>
+        <Type>Daily</Type>
+      </ErrorListItem>
+      <ErrorListItem>
+        <CashRegisterId>020</CashRegisterId>
+        <ClosingId />
+        <ComplId>20140525|Daily|Register|206|020</ComplId>
+        <Error>
+          <Nature>Closure</Nature>
+          <Scope>Validation</Scope>
+          <Type>IncoherentItem</Type>
+        </Error>
+        <Level>Register</Level>
+        <StoreId>206</StoreId>
+        <TargetDate>2014-05-25T00:00:00</TargetDate>
+        <Type>Daily</Type>
+      </ErrorListItem>
+      <ErrorListItem>
+        <CashRegisterId>111</CashRegisterId>
+        <ClosingId />
+        <ComplId>20140525|Daily|Register|206|111</ComplId>
+        <Error>
+          <Nature>Closure</Nature>
+          <Scope>Validation</Scope>
+          <Type>IncoherentItem</Type>
+        </Error>
+        <Level>Register</Level>
+        <StoreId>206</StoreId>
+        <TargetDate>2014-05-25T00:00:00</TargetDate>
+        <Type>Daily</Type>
+      </ErrorListItem>
+    </Errors>
+    <Statistics>
+      <CashRegistersProcessed>2</CashRegistersProcessed>
+      <CashRegistersToProcess>2</CashRegistersToProcess>
+      <ClosingsProcessed>4</ClosingsProcessed>
+      <ClosingsToProcess>28</ClosingsToProcess>
+      <DailyRegisterClosingsProcessed>2</DailyRegisterClosingsProcessed>
+      <DailyRegisterClosingsToProcess>18</DailyRegisterClosingsToProcess>
+      <DailyStoreClosingsProcessed>1</DailyStoreClosingsProcessed>
+      <DailyStoreClosingsToProcess>9</DailyStoreClosingsToProcess>
+      <DaysProcessed>9</DaysProcessed>
+      <MonthlyStoreClosingsProcessed>1</MonthlyStoreClosingsProcessed>
+      <MonthlyStoreClosingsToProcess>1</MonthlyStoreClosingsToProcess>
+      <StoresProcessed>1</StoresProcessed>
+      <StoresToProcess>1</StoresToProcess>
+      <TotalNumberOfStores>71</TotalNumberOfStores>
+      <YearlyStoreClosingsProcessed>0</YearlyStoreClosingsProcessed>
+      <YearlyStoreClosingsToProcess>0</YearlyStoreClosingsToProcess>
+    </Statistics>
+    <Status>false</Status>
+    <TotalErrors>24</TotalErrors>
+  </ValidateClosingsV2Result>
+</ValidateClosingsV2Response>

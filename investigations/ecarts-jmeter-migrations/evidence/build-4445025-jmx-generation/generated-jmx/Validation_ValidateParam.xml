@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<TestCampaign code="Auto Tests Validation_ValidateParam" reportLegacy="true" >
+    <TestPlanItem item="Validation_ValidateParam\001-Validation_ValidateParam.jmx" />
+</TestCampaign >

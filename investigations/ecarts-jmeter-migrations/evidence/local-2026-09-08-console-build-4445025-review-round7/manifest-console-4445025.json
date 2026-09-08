@@ -1,0 +1,28 @@
+{
+  "sourceSystem": "Azure DevOps",
+  "definitionId": 2641,
+  "runId": 4445025,
+  "artifactId": 5037277,
+  "result": "succeeded",
+  "sourceBranch": "refs/heads/sandbox/frenchtaxesrules/console-api-artifact",
+  "sourceVersion": "dfda5e52e637e423432023d9fb6b870e92104703",
+  "consolePackageVersion": "2.0.43-wi2222897-console-candidate",
+  "consolePackageSha256": "796563797BBA329B2D041A2921735BC86C5F2DCADAED269FEDF77BB13542F1BE",
+  "apiPackageVersion": "1.1.47-wi2222897-api-candidate",
+  "apiBuildId": 4444765,
+  "apiDllSha256": "A7D3BB84C4105ADCB626AFE570C42167FADC9F5A04602A6EF223530C98A9021E",
+  "consoleExeSha256": "AB4BBB596409B3A60107905E82577E9BC42C55467A8E602B7194DD2D8CE9B2AF",
+  "embeddedApiAssemblyVersion": "1.1.46.0",
+  "localCandidatePackageSha256": "803DDBAAEB545A901ACD500195F5372F1E42F2FBD5FC1AC88626830F14EEE55B",
+  "localCandidateEmbeddedApiDllSha256": "57BEACA20DE071673C208305A670969A943420CFCB73434FE7F30E4C13522F7B",
+  "functionalDiscriminants": {
+    "EscapeJdbcDate": "PASS",
+    "FixSqlUnicodeValue": "PASS",
+    "RemoveSpecialCharsForXQuery": "PASS",
+    "CleanXpath": "PASS",
+    "PrepareXPathAssertionSoap11": "PASS"
+  },
+  "sharedFeedPublication": false,
+  "provenanceDistinctFromLocalCandidate": true,
+  "readback": "PipelineArtifact downloaded and package/DLL/EXE hashes recalculated independently"
+}

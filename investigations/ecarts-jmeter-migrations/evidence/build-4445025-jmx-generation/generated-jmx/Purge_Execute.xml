@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<TestCampaign code="Auto Tests Purge_Execute" reportLegacy="true" >
+    <TestPlanItem item="Purge_Execute\001-Purge_Execute.jmx" />
+</TestCampaign >

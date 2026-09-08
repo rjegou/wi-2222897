@@ -1,0 +1,15 @@
+﻿<GetFrenchStoresResponse xmlns="http://www.cegid.fr/Retail/1.0">
+  <GetFrenchStoresResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <Stores>
+      <Store>
+        <Address1>7 Rue d'Orléans</Address1>
+        <Address2 />
+        <City>ST JULIEN SUR BIBOST</City>
+        <Code>403</Code>
+        <Label>ST JULIEN SUR BIBOST</Label>
+        <Phone>02 99 79 65 18</Phone>
+        <ZipCode>69690</ZipCode>
+      </Store>
+    </Stores>
+  </GetFrenchStoresResult>
+</GetFrenchStoresResponse>

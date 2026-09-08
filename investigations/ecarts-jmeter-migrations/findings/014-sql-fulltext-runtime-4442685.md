@@ -14,6 +14,16 @@ Date : 2026-09-07 (Europe/Paris).
 
 **UNKNOWN** — aucune exécution Docker réelle du patch corrigé; le hash n’est pas publié et aucune queue n’est autorisée dans cette tâche.
 
+## Addendum 2026-09-08 — lecture finale et limite causale
+
+**FACT** — la collecte live [round5](../parallel/2026-09-08-parallel-1788841150349/bw3-plugins/evidence/local-2026-09-08-fulltext-live-4442156-round5/README.md) établit que `4442156`, `4442254` et `4442685` sont tous `completed/failed`. Dans `4442156`, les deux stages SQL échouent et les artefacts sont absents ; dans `4442685`, les deux artefacts sont disponibles.
+
+**FACT** — les diagnostics `4442685` montrent `IsFullTextInstalled=1`, un service SQL `RUNNING`, `CatalogPopulateStatus=1`, `TablePopulateStatus=1` et une ligne `sys.dm_fts_index_population` en `status=5 / Processing normally`, puis l'échec `Full-Text population did not finish: [1]`. Le script d'artefact ne contient ni attente de stabilisation ni appel `CONTAINSTABLE`.
+
+**UNKNOWN** — ces observations prouvent l'absence d'achèvement dans la fenêtre du probe, mais pas la cause racine (FDHOST, crawl, configuration, timing, ressources ou autre), ni l'effet d'une nouvelle image sur les 224 cas historiques Clienteling. Aucun résultat Clienteling/JMeter n'est déduit.
+
+**Suite minimale** — sur une cible/image isolée seulement, instrumenter une attente horodatée et bornée des mêmes propriétés/DMV, l'état de `MSSQLFDLauncher`/FDHOST, un `CONTAINSTABLE` explicite, puis le cleanup. Arrêter si la cible, le commit ou l'image sont ambigus ; ne pas modifier l'image partagée.
+
 ## Verdict
 
 **FACT** — le build Azure DevOps `4442685`, définition `14251`, exécute exactement le commit `e3b674b007071259fd74b024f6b4b48baf0a7f5d` sur `sandbox/WI-2222897-sql-fulltext`. SQL2019 et SQL2025 terminent en échec. SQL2019 émet 18 observations exit 0 puis reste à `PopulateStatus=1` pendant 90 secondes ; les logs récupérés au round suivant établissent le même timeout pour SQL2025. `CONTAINSTABLE` n’est atteint dans aucune variante.

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<TestCampaign code="Auto Tests Validation_ValidateEvents" reportLegacy="true" >
+    <TestPlanItem item="Validation_ValidateEvents\001-Validation_ValidateEvents.jmx" />
+</TestCampaign >

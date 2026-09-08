@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<TestCampaign code="Auto Tests Purge_CreateParam" reportLegacy="true" >
+    <TestPlanItem item="Purge_CreateParam\001-Purge_CreateParam.jmx" />
+</TestCampaign >

@@ -1,0 +1,16 @@
+﻿<ValidateDocumentsResponse xmlns="http://www.cegid.fr/Retail/1.0">
+  <ValidateDocumentsResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <Errors i:nil="true" />
+    <Statistics>
+      <CashRegistersProcessed>0</CashRegistersProcessed>
+      <CashRegistersToProcess>1</CashRegistersToProcess>
+      <DaysProcessed>30</DaysProcessed>
+      <DocumentsProcessed>0</DocumentsProcessed>
+      <ReceiptsProcessed>0</ReceiptsProcessed>
+      <StoresProcessed>0</StoresProcessed>
+      <StoresToProcess>1</StoresToProcess>
+      <TotalNumberOfStores>71</TotalNumberOfStores>
+    </Statistics>
+    <Status>true</Status>
+  </ValidateDocumentsResult>
+</ValidateDocumentsResponse>

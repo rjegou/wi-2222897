@@ -1,0 +1,32 @@
+DEBUG: Logger was created successfully.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+DEBUG: Creating module catalog.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+Loading file: (C:\clones\wi-2222897\.work\console-4445025\runtime\tools\Parameters.xml)
+DEBUG: Configuring module catalog.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+DEBUG: Creating Unity container.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+DEBUG: Configuring the Unity container.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+DEBUG: Adding UnityBootstrapperExtension to container.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+DEBUG: Configuring ServiceLocator singleton.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+DEBUG: Configuring the ViewModelLocator to use Unity.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+DEBUG: Configuring region adapters.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+DEBUG: Configuring default region behaviors.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+DEBUG: Registering Framework Exception Types.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+DEBUG: Creating the shell.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+DEBUG: Initializing modules.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+DEBUG: Bootstrapper sequence completed.. Priority: Low. Timestamp:2026-09-08 12:57:41Z.
+System.IO.PathTooLongException: Le chemin d'accŠs sp‚cifi‚, le nom de fichier ou les deux sont trop longs. Le nom de fichier qualifi‚ complet doit comprendre moins deÿ260ÿcaractŠres et le nom du r‚pertoire moins de 248ÿcaractŠres.
+   … System.IO.PathHelper.GetFullPathName()
+   … System.IO.Path.LegacyNormalizePath(String path, Boolean fullCheck, Int32 maxPathLength, Boolean expandShortPaths)
+   … System.IO.Path.NormalizePath(String path, Boolean fullCheck, Int32 maxPathLength, Boolean expandShortPaths)
+   … System.IO.Path.GetFullPathInternal(String path)
+   … System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   … System.IO.File.Copy(String sourceFileName, String destFileName)
+   … Cegid.Retail.AutoTest.Api.JmeterGenerator.<>c__DisplayClass1_0.<CloneDirectory>b__1(String file)
+   … System.Collections.Generic.List`1.ForEach(Action`1 action)
+   … Cegid.Retail.AutoTest.Api.JmeterGenerator.CloneDirectory(String root, String dest, String fileType)
+   … Cegid.Retail.AutoTest.Api.JmeterGenerator.<>c__DisplayClass1_0.<CloneDirectory>b__0(String directory)
+   … System.Collections.Generic.List`1.ForEach(Action`1 action)
+   … Cegid.Retail.AutoTest.Api.JmeterGenerator.CloneDirectory(String root, String dest, String fileType)
+   … Cegid.Retail.AutoTest.Api.JmeterGenerator.Run(String testCampaignFileName, String dstFolder, IUnityContainer container)
+   … Cegid.Retail.AutoTest.Console.Launcher.GenerateTestsMethods(CommandLineOptions commandLineOptions)
+   … Cegid.Retail.AutoTest.Console.Launcher.ExecuteTest(String[] args)
+   … Cegid.Retail.AutoTest.Console.Program.Main(String[] args)

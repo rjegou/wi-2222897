@@ -1,0 +1,4 @@
+path,role,status
+README.md,test contract and limits,FACT
+artifact-item-fixtures.json,four ArtifactItem fixture metadata from Build 5037140,FACT
+Test-ArtifactTransportContract.ps1,positive and negative inert tests,prepared

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<TestCampaign code="Auto Tests FrenchTaxesRules_Run" reportLegacy="true" >
+    <TestPlanItem item="FrenchTaxesRules_Run\001-FrenchTaxesRules_Run.jmx" />
+</TestCampaign >

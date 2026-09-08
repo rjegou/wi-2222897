@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<TestCampaign code="Auto Tests Closing_DailyStoreClosing" reportLegacy="true" >
+    <TestPlanItem item="Closing_DailyStoreClosing\001-Closing_DailyStoreClosing.jmx" />
+</TestCampaign >

@@ -1,0 +1,6 @@
+<SignOneRequest xmlns="http://www.cegid.fr/Retail/1.0">
+  <FrontVersion>2.3</FrontVersion>
+  <Number>33</Number>
+  <Stub>304</Stub>
+  <Type>Receipt</Type>
+</SignOneRequest>

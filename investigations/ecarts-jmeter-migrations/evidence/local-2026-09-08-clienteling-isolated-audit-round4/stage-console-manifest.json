@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "4c22cb2850a150161f44080815375527c4daad48",
+  "packagePath": "C:\\clones\\wi-2222897-evidence\\local-2026-09-07-soap-package-round14\\checkPackage-tools-v2\\Cegid.Retail.AutoTest.Console.2.0.42-soapnamespace.20260907-v2.nupkg",
+  "packageVersion": "2.0.42-soapnamespace.20260907",
+  "packageSha256": "803DDBAAEB545A901ACD500195F5372F1E42F2FBD5FC1AC88626830F14EEE55B",
+  "apiDllSha256": "57BEACA20DE071673C208305A670969A943420CFCB73434FE7F30E4C13522F7B",
+  "consoleExeSha256": "82A1134B73F2D9CC572EC2E77E33177D49691B6A40A8DB71CFC2CFE00ED75A9F",
+  "publication": "PipelineArtifact-only",
+  "sharedFeedPublication": false,
+  "observedAt": "2026-09-08",
+  "method": "stage-console-candidate.ps1 positive local replay"
+}

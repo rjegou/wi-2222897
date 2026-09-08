@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Cegid.Retail.AutoTest.Api</id>
+    <version>1.1.47-wi2222897-api-candidate</version>
+    <title>Cegid.Retail.AutoTest.Api</title>
+    <authors>Cegid</authors>
+    <owners>Cegid</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>http://www.cegid.fr/</projectUrl>
+    <description>Api to manage Testing Manager and code generation</description>
+    <releaseNotes>First release</releaseNotes>
+    <copyright>Copyright © Cegid 2018</copyright>
+    <tags>Cegid.Retail.AutoTest.Api</tags>
+    <dependencies>
+      <dependency id="Cegid.Retail.AutoTest.Model" version="1.0.6" />
+      <dependency id="Cegid.Retail.CompareFileStream" version="1.0.0" />
+      <dependency id="Cegid.Retail.IndentText" version="1.0.0" />
+      <dependency id="Cegid.Retail.Svn" version="1.0.2" />
+      <dependency id="Prism.Unity" version="6.1.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,23 @@
+DEBUG: Logger was created successfully.. Priority: Low. Timestamp:2026-09-08 13:06:19Z.
+DEBUG: Creating module catalog.. Priority: Low. Timestamp:2026-09-08 13:06:19Z.
+Loading file: (C:\clones\wi-2222897\.work\console-4445025\runtime\tools\Parameters.xml)
+DEBUG: Configuring module catalog.. Priority: Low. Timestamp:2026-09-08 13:06:19Z.
+DEBUG: Creating Unity container.. Priority: Low. Timestamp:2026-09-08 13:06:19Z.
+DEBUG: Configuring the Unity container.. Priority: Low. Timestamp:2026-09-08 13:06:19Z.
+DEBUG: Adding UnityBootstrapperExtension to container.. Priority: Low. Timestamp:2026-09-08 13:06:19Z.
+DEBUG: Configuring ServiceLocator singleton.. Priority: Low. Timestamp:2026-09-08 13:06:19Z.
+DEBUG: Configuring the ViewModelLocator to use Unity.. Priority: Low. Timestamp:2026-09-08 13:06:19Z.
+DEBUG: Configuring region adapters.. Priority: Low. Timestamp:2026-09-08 13:06:19Z.
+DEBUG: Configuring default region behaviors.. Priority: Low. Timestamp:2026-09-08 13:06:20Z.
+DEBUG: Registering Framework Exception Types.. Priority: Low. Timestamp:2026-09-08 13:06:20Z.
+DEBUG: Creating the shell.. Priority: Low. Timestamp:2026-09-08 13:06:20Z.
+DEBUG: Initializing modules.. Priority: Low. Timestamp:2026-09-08 13:06:20Z.
+DEBUG: Bootstrapper sequence completed.. Priority: Low. Timestamp:2026-09-08 13:06:20Z.
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Validation_ExportNf525\Validation_ExportNf525.xml)
+Processing TestCampaign=(C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Validation_ExportNf525\Validation_ExportNf525.xml) - Target Folder=(C:\clones\wi-2222897\.work\jfull/Tests/Validation_ExportNf525)
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Validation_ExportNf525\Validation_ExportNf525.xml)
+Processing TestPlan (Validation_ExportNf525)
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Validation_ExportNf525\TestPlans\Validation_ExportNf525.xml)
+Generating TestClass for TestPlan=(001-Validation_ExportNf525.jmx)
+Overriding (C:\clones\wi-2222897\.work\jfull/Tests/Validation_ExportNf525\001-Validation_ExportNf525.jmx)
+Overriding (C:\clones\wi-2222897\.work\jfull/Tests/Validation_ExportNf525.xml)

@@ -1,0 +1,7 @@
+<AnnualStoreClosingRequest xmlns="http://www.cegid.fr/Retail/1.0">
+	<CustomerKey>B5F1AB7F-182A-4D53-8999-7DA81F1894A6</CustomerKey>
+	<DaemonId>1</DaemonId>
+	<FromDate>2017-01-01</FromDate>
+	<SigningVersion>FR_2_0</SigningVersion>
+	<ToDate>2017-04-03</ToDate>
+</AnnualStoreClosingRequest>

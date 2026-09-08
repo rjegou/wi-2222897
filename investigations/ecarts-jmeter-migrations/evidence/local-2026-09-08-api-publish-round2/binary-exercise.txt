@@ -1,0 +1,6 @@
+BINARY EXERCISE — build 4444765 / Cegid.Retail.AutoTest.Api.dll
+DLL SHA256=A7D3BB84C4105ADCB626AFE570C42167FADC9F5A04602A6EF223530C98A9021E
+EscapeJdbcDate(''2026-04-28'') => '20260428' [PASS]
+FixSqlUnicodeValue(SELECT 'NN''é' AS V) => SELECT N'NN''é' AS V [PASS]
+RemoveSpecialCharsForXQuery(&amp;lt;ClientelingParameters&amp;gt;) => &amp;amp;lt;ClientelingParameters&amp;amp;gt; [PASS]
+CleanXpath(/soap:Fault) => //Fault [PASS]

@@ -86,6 +86,10 @@ Les clones sous `sources/*-build-*` sont des snapshots de preuve, souvent détac
 
 ### 7. Chemins et fixtures d'images Clienteling
 
+**FACT — instruction utilisateur du 2026-09-08** : résoudre par investigation technique le
+propriétaire du transport et le chemin accessible depuis IIS (décision 4). L'investigation reste
+à effectuer ; ne plus présenter ce sujet comme un arbitrage PO préalable.
+
 - **Verdict / preuve** : `FACT` — `CustomImageLocation` reste littéralement `${tests.folder}\\${CustomImageFolder}` et les images présentes dans l'historique ne sont plus dans le snapshot migré ; 8 cas `Image:GetSerialNumberImage` échouent avec `CBR_005_0344`.
 - **Dépôt / fichiers** : dépôt plugin Clienteling — `Tests/Config/v22-*.cy2px` à `v26-*.cy2px` pour le périmètre exécuté et `IntegratedTests/Workflow/config_PLG/GetItemImage` dans les parents des commits de migration. V21 porte également le placeholder, mais son comportement n'est pas validé par un run puisqu'il était skipped.
 - **Décision préalable** : choisir le chemin canonique visible par IIS dans le conteneur et identifier le mécanisme propriétaire qui copiera ou montera les onze images. Ce mécanisme exact n'est pas établi dans les preuves actuelles et reste `UNKNOWN`.
@@ -111,7 +115,7 @@ Les clones sous `sources/*-build-*` sont des snapshots de preuve, souvent détac
 
 - **Verdict / preuve** : `FACT` — le build 4429167 publie 174 cas non passés en V22 Fix, soit 138 LegacyServices et 36 WebServices. Les acquisitions de jeton réussissent, mais les appels sont refusés avec `CBP50101` / `FailedAuthentication` et le droit `allowedModule` attendu n'est pas projeté.
 - **Premier dépôt / fichier** : dépôt plugin FrenchTaxesRules — `Tests/Config/v22-fix.cy2px`, qui épingle notamment Core, Common, Identity et Technical. Le snapshot exact est `sources/Y2_Plugins_FrenchTaxesRules-v5-build-4429167` ; il reste une preuve, pas une branche de modification.
-- **Décision préalable** : vérifier avec les propriétaires si cette combinaison de versions doit rester supportée. Si elle ne l'est plus, relever les minima vers une pile supportée. Si elle doit rester supportée, le correctif appartient aux composants Identity/Core responsables du catalogue ou de la projection des droits ; le dépôt et le fichier produit exacts restent `UNKNOWN`.
+- **FACT — décision utilisateur du 2026-09-08** : relever les versions minimales de la configuration V22 Fix (décision 2). Identifier une combinaison compatible et disponible avant édition ; les numéros exacts et le résultat du rejeu restent `UNKNOWN`. Aucun correctif Identity/Core n'est choisi par cet arbitrage.
 - **Tests à ajouter** : vérifier l'acquisition du jeton, inventorier la présence du droit `allowedModule/FrenchTaxesRules`, puis confirmer l'absence de `CBP50101` sur un appel Legacy et deux appels Web représentatifs.
 - **Chaîne à appliquer** : configuration V22 Fix et validation de compatibilité → déploiement propre → contrôle du jeton et des droits → rejeu JMeter ciblé. Ne pas supprimer les attributs d'autorisation du code généré pour masquer le défaut.
 - **Rejeu minimal** : un cas `FrenchTaxesRules:Run`, un cas `SetDocumentErrorReason` et un cas `Purge:Execute`.
@@ -140,7 +144,7 @@ Les éléments suivants restent `UNKNOWN` ou nécessitent une décision fonction
 3. Après autorisation, republier API puis Console, mettre à jour le package de migration et régénérer tous les JMX.
 4. Corriger les cinq métadonnées Clienteling ; prendre la décision Products et identifier le mécanisme de transport des fixtures avant de modifier manifests ou chemins d'images.
 5. Choisir des piles Fix compatibles et identifier la version PlatformDeploy réellement utilisée avant toute modification de propagation des erreurs.
-6. Trancher le support de la pile FrenchTaxesRules V22 Fix, puis corriger soit sa configuration, soit la projection des droits dans son véritable dépôt propriétaire.
+6. Appliquer la décision utilisateur : identifier puis relever les minima de configuration FrenchTaxesRules V22 Fix ; vérifier les droits et rejouer les cas discriminants.
 7. Pour tout rejeu autorisé, vérifier d'abord les prérequis d'infrastructure, conserver les artefacts et exécuter les scénarios minimaux avant les campagnes complètes.
 8. Ne rouvrir les questions `UNKNOWN` que lorsqu'une preuve nouvelle ou une décision fonctionnelle est disponible.
 

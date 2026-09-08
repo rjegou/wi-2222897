@@ -1,0 +1,14 @@
+Build 4444888 | definition 2641 | completed/failed
+sourceBranch=refs/heads/sandbox/frenchtaxesrules/console-api-artifact
+sourceVersion=202f8a6a22784786ed90d417f24626e0381bc07e
+
+Download exact API candidate PipelineArtifact: succeeded
+Download destination: D:\a\1\s\api-artifact
+
+Install exact API candidate from PipelineArtifact: failed
+Resolve-Path : Cannot find path 'D:\a\1\s\Cegid.Retail.AutoTest.Api.1.1.47-wi2222897-api-candidate.nupkg'
+PowerShell exited with code '1'.
+
+Build stage: failed
+Snyk Security Scan: succeeded
+Promote: skipped

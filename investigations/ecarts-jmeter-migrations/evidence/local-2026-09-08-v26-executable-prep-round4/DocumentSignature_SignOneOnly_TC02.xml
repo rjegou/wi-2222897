@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestPlan xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="DtoLegacyServiceTestPlan" Code="DocumentSignature:SignOne" IsSelected="true" Comment="Test plan du service DocumentSignature" Operation="http://www.cegid.fr/services/ILegacyDispatcherService/Invoke" WebService="LegacyDispatcherService.svc" DatabaseId="CBR_AUTO" Action="Cegid.CBR.FrenchTaxesRulesDocumentSignatureService.Sign" xmlns="TestAutomation">
+  <TestCases>
+    <TestCase Id="3b512f60-bd43-4f15-8b64-089e1df56c60" Code="02" Label="EC - Signature déjà présente" Input="InputFiles\DocumentSignature\SignOne_02.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries>
+        <Control Id="4fbdc97e-95dd-4e63-9be0-fca7d160dbb2">
+          <Label>Ajout ligne dans MPIECECOMPL</Label>
+          <Query>INSERT INTO MPIECECOMPL (MDI_NATUREPIECEG, MDI_SOUCHE, MDI_NUMERO, MDI_TYPEFISCAL, MDI_REFFISCALESIGN, MDI_DATECREPIECE, MDI_DATEMODPIECE, MDI_FISCALPRTID) VALUES ('FFO', '304', 33, '...', 'Signature', '2025-10-07', '2025-10-07', 'S20')</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control Id="1b70ad8b-454b-4460-a0b4-7f1bf0870eec">
+          <Label>expecting error </Label>
+          <Query>/soap:Fault/faultcode[text()='a:CBR_062_0028']</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries />
+      <FinalDataQueries>
+        <Control Id="bd9228ea-0e11-44eb-8eac-ca6f19f1dc3a">
+          <Label>suppression de la ligne mpiececompl</Label>
+          <Query>DELETE FROM MPIECECOMPL where MDI_SOUCHE='304' </Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+  </TestCases>
+</TestPlan>

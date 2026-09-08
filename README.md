@@ -17,12 +17,24 @@ le diagnostic des écarts entre les tests legacy et les tests JMeter.
 ## État en une minute
 
 Au **2026-09-08** : le diagnostic est terminé sur 8 des 9 couples suivis — chaque cas non passé est
-rattaché à une cause. Les quatre défauts du générateur JMX sont corrigés localement. Ce qui bloque
-maintenant n'est plus technique mais décisionnel.
+rattaché à une cause. Les quatre défauts du générateur JMX sont corrigés localement. Le périmètre
+Clienteling est fixé à `master`, `releases/V6`, `releases/V7`, `releases/V8` ; les minima de
+configuration FrenchTaxesRules V22 Fix doivent être relevés. Les images Clienteling sont à
+investiguer. Trois arbitrages restent ouverts : Products, BeforeMigration.ps1 et publication NuGet
+partagée (ces deux derniers à clarifier).
+
+S'y ajoutent trois blocages techniques du rejeu, ouverts par les
+[synthèses de pause du 2026-09-08](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-syntheses-techniques-reprise-handoff/README.md)
+et non encore revérifiés : InventoryTracking perd les 86 tests de `002-Device:Reassign`, que JMeter
+échoue à charger ([finding 015](investigations/ecarts-jmeter-migrations/findings/015-inventorytracking-002-device-reassign-jmx-load-4445575.md)) ;
+Clienteling ne peut plus matérialiser son backup V26, absent de l'arbre Git actuel
+([finding 016](investigations/ecarts-jmeter-migrations/findings/016-clienteling-v26-backup-lfs-absent.md)) ;
+FrenchTaxesRules a ses 18 JMX corrigés poussés sur une branche de validation, mais aucun run ne les a
+encore exécutés.
 
 | Je veux… | Lire |
 |---|---|
-| savoir ce qui bloque et qui doit trancher | **[decisions/README.md](decisions/README.md)** — 6 arbitrages en attente |
+| savoir ce qui bloque et qui doit trancher | **[decisions/README.md](decisions/README.md)** — 3 arbitrages ouverts et 1 investigation technique |
 | l'état par domaine | [STATUS.md](STATUS.md) |
 | ce qu'on dit au PO et au lead dev | [reporting/2026-09-08-synthese-onenote-pbi.md](reporting/2026-09-08-synthese-onenote-pbi.md) |
 | la cause d'un échec précis | [matrice de statut](investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md), puis le `findings/` cité |
@@ -33,9 +45,10 @@ maintenant n'est plus technique mais décisionnel.
 
 ## Le résultat à retenir
 
-Un nombre d'échecs n'est pas un nombre de régressions. Sur Clienteling master V26, les 485 cas non
-passés — identiques en Cur et en Fix — se répartissent ainsi : **224 relèvent d'un seul problème
-d'infrastructure** (SQL Full-Text), **105 de quatre défauts du générateur JMX** (tous corrigés,
+Un nombre d'échecs n'est pas un nombre de régressions. Sur la campagne Clienteling master V26
+documentée, les 485 cas non passés — identiques en Cur et en Fix — se répartissaient ainsi :
+**224 étaient associés à un problème d'infrastructure** (SQL Full-Text), **105 à quatre défauts
+du générateur JMX** (tous corrigés,
 [`patches/`](patches/README.md)), le reste de métadonnées, de fixtures et de sujets produit à trancher.
 Détail dans [finding 006](investigations/ecarts-jmeter-migrations/findings/006-clienteling-v26-build-4432554.md).
 

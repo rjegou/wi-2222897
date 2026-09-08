@@ -1,0 +1,5 @@
+path,role,status
+README.md,independent transport review,FACT/INFERENCE/UNKNOWN
+../../parallel/2026-09-08-parallel-1788841150349/bw1-tools/evidence/local-2026-09-08-inventorytracking-transport-contract-round5/README.md,artifact and consumer contract,FACT
+../../parallel/2026-09-08-parallel-1788841150349/bw2-environments/evidence/platformdeploy/round4-private-staging-20260908/extracted/Scripts/download-packages.ps1,producer and downloadedPackages contract,FACT
+../../evidence/2026-09-07-brain-reprise-consolidated-round6/test-platformdeploy-differential-round6.ps1,existing wrapper exit-code test,PARTIAL

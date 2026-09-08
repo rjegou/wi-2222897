@@ -1,0 +1,336 @@
+diff --git a/Cegid.Retail.AutoTest.Api/JmeterCodeGen.cs b/Cegid.Retail.AutoTest.Api/JmeterCodeGen.cs
+index 8f35206..99fefba 100644
+--- a/Cegid.Retail.AutoTest.Api/JmeterCodeGen.cs
++++ b/Cegid.Retail.AutoTest.Api/JmeterCodeGen.cs
+@@ -24,6 +24,8 @@ namespace Cegid.Retail.AutoTest.Api
+         const string DOMAIN_CBR = "CBR_AUTO";
+         const string DOMAIN_FOLDER_ID = "${FOLDER_ID}";
+         const string XPATH_TOB_XMLCONTENT = "//Field[@Name='XML_CONTENT']/@Value | //Field[@Name='XML_CONTENT']/text() ";
++        const string SOAP_11_NAMESPACE = "http://schemas.xmlsoap.org/soap/envelope/";
++        const string SOAP_FAULT_XPATH = "//*[local-name()=&apos;Fault&apos; and namespace-uri()=&apos;" + SOAP_11_NAMESPACE + "&apos;]";
+ 
+         readonly string _campaignPath;
+         string service;
+@@ -684,7 +686,7 @@ namespace Cegid.Retail.AutoTest.Api
+         private static string EscapeJdbcDate(string query)
+         {
+             // fix date 
+-            query = Regex.Replace(query, @"'(\d{4})-(\d{2})-(\d{2})'", "'${1}${3}${2}'");
++            query = Regex.Replace(query, @"'(\d{4})-(\d{2})-(\d{2})'", "'${1}${2}${3}'");
+ 
+             // fix date  (yyyy-mm-ddThh:mm:ss(.sss))  time with simple quote
+             query = Regex.Replace(query, @"(?<![\w'])\b(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{3})?)\b(?![\w'])", "'$1'");
+@@ -714,14 +716,78 @@ namespace Cegid.Retail.AutoTest.Api
+         /// </summary>
+         /// <param name="query">The SQL query to be fixed.</param>
+         /// <returns>The fixed SQL query with 'N' prefix for Unicode string literals.</returns>
+-        private static string FixSqlUnicodeValue(string query)
++        public static string FixSqlUnicodeValue(string query)
+         {
+-            // Define the regex pattern to match string literals containing non-ASCII characters.
+-            const string pattern = @"'([^']*[^\x00-\x7F][^']*)'";
+-            const string replacement = "N'$1'";
+-
+-            // Use Regex.Replace to apply the pattern and replacement to the input query.
+-            return Regex.Replace(query, pattern, replacement);
++            if (string.IsNullOrEmpty(query)) return query;
++            var result = new StringBuilder(query.Length + 16);
++            for (int i = 0; i < query.Length; i++)
++            {
++                if (query[i] == '-' && i + 1 < query.Length && query[i + 1] == '-')
++                {
++                    int endComment = query.IndexOf('\n', i + 2);
++                    if (endComment < 0) endComment = query.Length;
++                    result.Append(query, i, endComment - i);
++                    i = endComment - 1;
++                    continue;
++                }
++                if (query[i] == '/' && i + 1 < query.Length && query[i + 1] == '*')
++                {
++                    int endComment = query.IndexOf("*/", i + 2, StringComparison.Ordinal);
++                    endComment = endComment < 0 ? query.Length : endComment + 2;
++                    result.Append(query, i, endComment - i);
++                    i = endComment - 1;
++                    continue;
++                }
++                if (query[i] == '[')
++                {
++                    int endIdentifier = i + 1;
++                    while (endIdentifier < query.Length)
++                    {
++                        if (query[endIdentifier] == ']')
++                        {
++                            if (endIdentifier + 1 < query.Length && query[endIdentifier + 1] == ']') { endIdentifier += 2; continue; }
++                            endIdentifier++;
++                            break;
++                        }
++                        endIdentifier++;
++                    }
++                    result.Append(query, i, endIdentifier - i);
++                    i = endIdentifier - 1;
++                    continue;
++                }
++                if (query[i] == '"')
++                {
++                    int endIdentifier = i + 1;
++                    while (endIdentifier < query.Length)
++                    {
++                        if (query[endIdentifier] == '"')
++                        {
++                            if (endIdentifier + 1 < query.Length && query[endIdentifier + 1] == '"') { endIdentifier += 2; continue; }
++                            endIdentifier++;
++                            break;
++                        }
++                        endIdentifier++;
++                    }
++                    result.Append(query, i, endIdentifier - i);
++                    i = endIdentifier - 1;
++                    continue;
++                }
++                if (query[i] != '\'') { result.Append(query[i]); continue; }
++                bool alreadyUnicode = i > 0 && (query[i - 1] == 'N' || query[i - 1] == 'n');
++                int end = i + 1;
++                bool hasNonAscii = false;
++                while (end < query.Length)
++                {
++                    if (query[end] > 0x7F) hasNonAscii = true;
++                    if (query[end] != '\'') { end++; continue; }
++                    if (end + 1 < query.Length && query[end + 1] == '\'') { end += 2; continue; }
++                    break;
++                }
++                if (hasNonAscii && !alreadyUnicode) result.Append('N');
++                result.Append(query, i, Math.Min(end + 1, query.Length) - i);
++                i = Math.Min(end, query.Length - 1);
++            }
++            return result.ToString();
+         }
+ 
+         /// <summary>
+@@ -1078,7 +1144,7 @@ log.info(&apos;---------- Stop MiniFy Request Body ----------&apos; )</stringPro
+         /// <param name="varName"></param>
+         private void XPathJmeter(Control query, string queryName, string code, string varName = null)
+         {
+-            var path = CleanXpath(query.Query);
++            var path = PrepareXPathAssertion(query.Query, out var namespaceAware);
+             path = path.Replace(DOMAIN_CBR, DOMAIN_FOLDER_ID);
+ 
+             var label = RemoveSpecialCharsForLabel(query.Label);
+@@ -1093,7 +1159,7 @@ log.info(&apos;---------- Stop MiniFy Request Body ----------&apos; )</stringPro
+             <boolProp name=""XPath.validate"">false</boolProp>
+             <boolProp name=""XPath.whitespace"">false</boolProp>
+             <boolProp name=""XPath.tolerant"">false</boolProp>
+-            <boolProp name=""XPath.namespace"">false</boolProp>");
++            <boolProp name=""XPath.namespace"">{namespaceAware.ToString().ToLowerInvariant()}</boolProp>");
+ 
+             if (!string.IsNullOrEmpty(varName))
+             {
+@@ -1109,7 +1175,7 @@ log.info(&apos;---------- Stop MiniFy Request Body ----------&apos; )</stringPro
+         /// </summary>
+         /// <param name="path">The XPath expression to clean.</param>
+         /// <returns>The cleaned XPath expression.</returns>
+-        private static string CleanXpath(string path)
++        public static string CleanXpath(string path)
+         {
+             // fix for legacy service 
+             if (path.StartsWith("/soap:Fault["))
+@@ -1119,7 +1185,9 @@ log.info(&apos;---------- Stop MiniFy Request Body ----------&apos; )</stringPro
+             }
+ 
+             // Remove prefixe from path
+-            path = path.Replace("soap:Fault", string.Empty);
++            // Keep the node name when removing the legacy namespace prefix.
++            // Removing the complete token turns /soap:Fault into / and then //.
++            path = path.Replace("soap:Fault", "Fault");
+             path = path.Replace("soapF:", string.Empty);
+             path = path.Replace("cbr:", string.Empty);
+             path = path.Replace("cbpC:", string.Empty);
+@@ -1143,6 +1211,27 @@ log.info(&apos;---------- Stop MiniFy Request Body ----------&apos; )</stringPro
+             return path;
+         }
+ 
++        /// <summary>
++        /// Prepares an XPath assertion without changing non-SOAP assertions.
++        /// SOAP 1.1 Fault controls are expressed with an inline namespace URI
++        /// predicate so JMeter needs no external namespace mapping file.
++        /// </summary>
++        private static string PrepareXPathAssertion(string path, out bool namespaceAware)
++        {
++            namespaceAware = path != null &&
++                Regex.IsMatch(path, @"(^|/)soap:Fault(\[|/|$)", RegexOptions.CultureInvariant);
++
++            var cleaned = CleanXpath(path);
++            if (!namespaceAware)
++                return cleaned;
++
++            return Regex.Replace(
++                cleaned,
++                @"^//Fault(?=\[|/|$)",
++                SOAP_FAULT_XPATH,
++                RegexOptions.CultureInvariant);
++        }
++
+         /// <summary>
+         /// JBRA 2021/10/26 - Generate the XPath Extractor
+         /// </summary>
+@@ -1459,8 +1548,9 @@ log.info(&apos; - [XmlDiff End] ----------&apos; );
+         /// </summary>
+         /// <param name="content">The content.</param>
+         /// <returns></returns>
+-        private static string RemoveSpecialCharsForXQuery(string content)
+-            => content.Replace("<", "&lt;")
++        public static string RemoveSpecialCharsForXQuery(string content)
++            => content.Replace("&", "&amp;")
++                      .Replace("<", "&lt;")
+                       .Replace(">", "&gt;")
+                       .Replace("'", HTML_APOS);
+ 
+@@ -1602,4 +1692,4 @@ modules:
+             return regex.Replace(input, substitution);
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/azure-pipelines.yml b/azure-pipelines.yml
+index d1b5233..3a96ca8 100644
+--- a/azure-pipelines.yml
++++ b/azure-pipelines.yml
+@@ -1,4 +1,4 @@
+-name: $(date:yyyyMMdd)$(rev:.r)
++name: wi2222897-api-candidate-$(Date:yyyyMMdd)$(Rev:.r)
+ 
+ variables:
+   - group: CodeSigningVariables
+@@ -9,22 +9,12 @@ variables:
+   - name: BuildConfiguration
+     value: 'release'
+   - name: ComponentVersion
+-    value: 'undefined'
++    value: '1.1.47-wi2222897-api-candidate'
+   - name: jfrogFolder
+     value: 'AutoTest.Api'
+ 
+-trigger:
+-  branches:
+-    include:
+-    - master
+-
+-schedules:
+-- cron: "0 7 1-7 * Sat"
+-  displayName: Run Every first Saturday of the month at 7:00 UTC-0
+-  branches:
+-    include:
+-    - master
+-    - releases/*
++trigger: none
++pr: none
+ 
+ resources:
+   repositories:
+@@ -53,24 +43,11 @@ stages:
+ 
+     steps:
+     - task: powershell@2
+-      displayName: 'Get Version from SolutionInfo.cs and maj variable ComponentVersion'
++      displayName: 'Use explicit isolated candidate version'
+       inputs:
+         targetType: inline
+         Script: |
+-          $path = ".\SolutionInfo.cs"
+-          $pattern = '^\[assembly: AssemblyVersion\("(.*)"\)\]\s?$'
+-          (Get-Content $path) | ForEach-Object{
+-              if($_ -match $pattern){
+-                  # We have found the matching line
+-                  # Edit the version number and put back.
+-                  $fileVersion =  [version]$matches[1]
+-                  $setVersion = "{0}.{1}.{2}" -f $fileVersion.Major, $fileVersion.Minor, $fileVersion.Build
+-                  # $fileVersion.Revision contain revision number
+-                  Write-Host "##vso[task.setvariable variable=ComponentVersion]$setVersion"
+-                  Write-Output "Version is : $setVersion"
+-              }
+-          }
+-
++          Write-Host "Candidate version is $(ComponentVersion)"
+     - task: ArtifactoryNuGet@1
+       displayName: 'Artifactory NuGet restore'
+       inputs:
+@@ -146,79 +123,3 @@ stages:
+         targetPath: '$(Build.ArtifactStagingDirectory)/Nuget/'
+         artifact: 'Nuget'
+         publishLocation: 'pipeline'
+-
+-    - task: ArtifactoryGenericUpload@2
+-      condition: and(succeeded(), or( eq(variables['Build.SourceBranchName'], 'master' ) , startsWith(variables['Build.SourceBranch'],'refs/heads/releases/' ) ))
+-      displayName: 'Artifactory Generic Upload'
+-      inputs:
+-        artifactoryService: ArtifactoryCloud
+-        fileSpec: |
+-          {
+-            "files": [
+-              {
+-                "pattern": "$(Build.ArtifactStagingDirectory)/Nuget/*.*",
+-                "target": "retail-nuget-staging/$(jfrogFolder)/$(Build.BuildNumber)/"
+-              }
+-            ]
+-          }
+-        collectBuildInfo: true
+-
+-    - task: ArtifactoryPublishBuildInfo@1
+-      condition: and(succeeded(), or( eq(variables['Build.SourceBranchName'], 'master' ) , startsWith(variables['Build.SourceBranch'],'refs/heads/releases/' ) ))
+-      displayName: 'Publish Artifactory BuildInfo'
+-      inputs:
+-        artifactoryService: 'ArtifactoryCloud'
+-        buildName: '$(Build.DefinitionName)'
+-        buildNumber: '$(Build.BuildNumber)'
+-
+-- stage: Promote
+-  condition: and(succeeded(), or( eq(variables['Build.SourceBranchName'], 'master' ) , startsWith(variables['Build.SourceBranch'],'refs/heads/releases/' ) ))
+-  variables:
+-    - group : RetailJfrogVariables
+-
+-  jobs:
+-    - deployment: JFrog_promotion
+-      condition: and(succeeded(), or( eq(variables['Build.SourceBranchName'], 'master' ) , startsWith(variables['Build.SourceBranch'],'refs/heads/releases/' ) ))
+-      displayName: 'Promote artifacts'
+-      environment: 'Promote_Jfrog_Modernization'
+-      pool:
+-        name: Azure Pipelines
+-        vmImage : 'windows-latest'
+-      strategy:
+-        runOnce:
+-          deploy:
+-            steps:
+-              - checkout: none
+-
+-              - task: DownloadPipelineArtifact@2
+-                displayName: 'Get pipelines artifacts'
+-                inputs:
+-                  source: 'current' # Options: current, specific
+-                  path: '$(Build.ArtifactStagingDirectory)/Publish'
+-
+-              - task: ArtifactoryToolsInstaller@1
+-                displayName: 'Install artifactory tools'
+-                inputs:
+-                  artifactoryService: ArtifactoryCloud
+-                  cliInstallationRepo: 'jfrog-cli'
+-
+-              - task: powershell@2
+-                displayName: 'promote-artifacts: Promote all artifacts'
+-                inputs:
+-                  targetType: inline
+-                  script: |
+-                    Write-Host( "Agent.ToolsDirectory is $(Agent.ToolsDirectory)")
+-
+-                    # Jfrog is installed into a folder containing the version number. This folder could change so we search where jfrog.exe is installed
+-                    Get-ChildItem -path "$(Agent.ToolsDirectory)/jfrog" -Recurse -Filter "jfrog.exe" | % { $jfrogCliFolder = $_.Directory}
+-
+-                    Write-Host( "jFrog.exe found in $jfrogCliFolder")
+-                    Set-Location $jfrogCliFolder
+-
+-                    $env:JFROG_CLI_OFFER_CONFIG=false
+-                    $env:JFROG_CLI_LOG_LEVEL="ERROR"
+-
+-                    $promoteFrom = "retail-nuget-staging/{0}/{1}" -f "$(jfrogFolder)", "$(Build.BuildNumber)"
+-                    $promoteTo = "retail-nuget-production/{0}" -f "$(Build.BuildNumber)"
+-                    Write-Host( ("Promoting {0} from {1} to {2}" -f "$(jfrogFolder)", $promoteFrom, $promoteTo) )
+-                    ./jfrog.exe rt mv $promoteFrom $promoteTo --url=https://cegid.jfrog.io/cegid --apikey=$(RetailJfrogApiKey) --fail-no-op

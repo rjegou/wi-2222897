@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<TestCampaign code="Auto Tests Closing_AnnualClosing" reportLegacy="true" >
+    <TestPlanItem item="Closing_AnnualClosing\001-Closing_AnnualClosing.jmx" />
+</TestCampaign >

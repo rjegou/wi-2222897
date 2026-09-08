@@ -1,0 +1,4 @@
+file,source,identifier,method,scope,notes
+README.md,Azure DevOps evidence and local PlatformDeploy review,4444887 and PlatformDeploy round4,document review,transport contract and PR recommendation,no secrets
+run-4444887,Azure DevOps evidence,4444887,operator REST/CLI reread,Cur/Fix container and deployment outcome,source README referenced
+platformdeploy-contract,local evidence,PlatformDeploy 5.0.86 and local patch,static and harness review,package resolution error propagation and packaging,no remote mutation

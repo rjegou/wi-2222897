@@ -1,0 +1,5 @@
+<GetParamResponse xmlns="http://www.cegid.fr/Retail/1.0">
+  <GetParamResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <ParamValue>123</ParamValue>
+  </GetParamResult>
+</GetParamResponse>

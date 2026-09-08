@@ -1,0 +1,2 @@
+file,kind,source,identifier,method,scope,notes
+README.md,analysis,Azure DevOps REST/CLI,build 4444720 and exploratory runs 4444700 4444703,operator readback,terminal states Build/preflight/JMeter initialization,no raw logs or secrets

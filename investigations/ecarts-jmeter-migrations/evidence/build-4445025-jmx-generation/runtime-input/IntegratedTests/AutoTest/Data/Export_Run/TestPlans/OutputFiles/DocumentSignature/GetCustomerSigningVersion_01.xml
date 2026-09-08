@@ -1,0 +1,4 @@
+<GetCustomerSigningVersionReply xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.cegid.fr/Retail/1.0">
+  <CustomerKey>931E1CAD-C955-421D-ADDF-8C2A290DAB50</CustomerKey>
+  <DaemonSignKeyVersion>1</DaemonSignKeyVersion>
+</GetCustomerSigningVersionReply>

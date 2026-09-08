@@ -1,0 +1,3 @@
+﻿<SignReply xmlns:i="http://schemas.datacontract.org/2004/07/Cegid.Retail.Common.ServiceContracts.EventSignature.Dto">
+  <Status>true</Status>
+</SignReply>

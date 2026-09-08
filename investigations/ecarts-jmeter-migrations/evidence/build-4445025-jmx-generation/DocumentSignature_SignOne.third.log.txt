@@ -1,0 +1,23 @@
+DEBUG: Logger was created successfully.. Priority: Low. Timestamp:2026-09-08 13:02:46Z.
+DEBUG: Creating module catalog.. Priority: Low. Timestamp:2026-09-08 13:02:46Z.
+Loading file: (C:\clones\wi-2222897\.work\console-4445025\runtime\tools\Parameters.xml)
+DEBUG: Configuring module catalog.. Priority: Low. Timestamp:2026-09-08 13:02:46Z.
+DEBUG: Creating Unity container.. Priority: Low. Timestamp:2026-09-08 13:02:46Z.
+DEBUG: Configuring the Unity container.. Priority: Low. Timestamp:2026-09-08 13:02:46Z.
+DEBUG: Adding UnityBootstrapperExtension to container.. Priority: Low. Timestamp:2026-09-08 13:02:46Z.
+DEBUG: Configuring ServiceLocator singleton.. Priority: Low. Timestamp:2026-09-08 13:02:46Z.
+DEBUG: Configuring the ViewModelLocator to use Unity.. Priority: Low. Timestamp:2026-09-08 13:02:46Z.
+DEBUG: Configuring region adapters.. Priority: Low. Timestamp:2026-09-08 13:02:46Z.
+DEBUG: Configuring default region behaviors.. Priority: Low. Timestamp:2026-09-08 13:02:46Z.
+DEBUG: Registering Framework Exception Types.. Priority: Low. Timestamp:2026-09-08 13:02:47Z.
+DEBUG: Creating the shell.. Priority: Low. Timestamp:2026-09-08 13:02:47Z.
+DEBUG: Initializing modules.. Priority: Low. Timestamp:2026-09-08 13:02:47Z.
+DEBUG: Bootstrapper sequence completed.. Priority: Low. Timestamp:2026-09-08 13:02:47Z.
+Loading file: (C:\clones\wi-2222897\.work\j\IntegratedTests\AutoTest\Data\DocumentSignature_SignOne\DocumentSignature_SignOne.xml)
+Processing TestCampaign=(C:\clones\wi-2222897\.work\j\IntegratedTests\AutoTest\Data\DocumentSignature_SignOne\DocumentSignature_SignOne.xml) - Target Folder=(C:\clones\wi-2222897\.work\j/Tests/DocumentSignature_SignOne)
+Loading file: (C:\clones\wi-2222897\.work\j\IntegratedTests\AutoTest\Data\DocumentSignature_SignOne\DocumentSignature_SignOne.xml)
+Processing TestPlan (DocumentSignature_SignOne)
+Loading file: (C:\clones\wi-2222897\.work\j\IntegratedTests\AutoTest\Data\DocumentSignature_SignOne\TestPlans\DocumentSignature_SignOne.xml)
+Generating TestClass for TestPlan=(001-DocumentSignature_SignOne.jmx)
+Overriding (C:\clones\wi-2222897\.work\j/Tests/DocumentSignature_SignOne\001-DocumentSignature_SignOne.jmx)
+Overriding (C:\clones\wi-2222897\.work\j/Tests/DocumentSignature_SignOne.xml)

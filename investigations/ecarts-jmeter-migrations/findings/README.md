@@ -18,5 +18,7 @@ Chaque fichier numéroté porte une conclusion bornée par un build ou un sujet.
 | [012-jmeter-5-6-3-xpath-namespace.md](012-jmeter-5-6-3-xpath-namespace.md) | sémantique réelle XPathAssertion et impact CleanXpath |
 | [013-inventorytracking-xmlDiff-migration-build-4434070.md](013-inventorytracking-xmlDiff-migration-build-4434070.md) | InventoryTracking migration 4434070 et dépendance XmlDiff |
 | [014-sql-fulltext-runtime-4442685.md](014-sql-fulltext-runtime-4442685.md) | diagnostic runtime SQL Full-Text 4442685 |
+| [015-inventorytracking-002-device-reassign-jmx-load-4445575.md](015-inventorytracking-002-device-reassign-jmx-load-4445575.md) | InventoryTracking 4445575 — campagne `002-Device:Reassign` lancée mais non chargée par JMeter, 86 tests de couverture perdus |
+| [016-clienteling-v26-backup-lfs-absent.md](016-clienteling-v26-backup-lfs-absent.md) | Clienteling V26 — backup `AUTO_V26_00.bak` absent de l'arbre Git actuel, agent `windows-2025` Docker-compatible et valeurs PlatformDeploy résolues |
 
 Pour ajouter une fiche, utiliser le prochain numéro, citer les preuves exactes, distinguer `FACT/INFERENCE/UNKNOWN`, identifier la première faute causale, préciser le propriétaire probable ou inconnu et définir un rejeu discriminant.

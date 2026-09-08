@@ -1,0 +1,6 @@
+path,role,status
+README.md,independent patch review,FACT/INFERENCE/UNKNOWN
+../../../../.work/transport-round7/test-local-transport.ps1,operator positive and negative tests,passed
+../../../../.work/transport-round7/prepare-local-inventorytracking-package.ps1,local package verifier,reviewed
+../../../../.work/transport-round7/download-packages.ps1,PlatformDeploy producer/consumer bridge,reviewed
+../../../../.work/transport-round7/inventorytracking.azure-pipelines.yml,Cur/Fix artifact download and manifest,reviewed

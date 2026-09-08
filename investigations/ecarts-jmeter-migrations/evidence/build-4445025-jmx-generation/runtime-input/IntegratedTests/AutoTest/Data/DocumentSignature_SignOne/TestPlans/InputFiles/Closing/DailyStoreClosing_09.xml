@@ -1,0 +1,8 @@
+<DailyStoreClosingRequest xmlns="http://www.cegid.fr/Retail/1.0">
+	<CustomerKey>B5F1AB7F-182A-4D53-8999-7DA81F1894A6</CustomerKey>
+	<DaemonId>2b42608b-252d-4682-9a95-f2a3b853709</DaemonId>
+	<FromDate>ZZZZ</FromDate>
+	<SigningVersion>FR_2_0</SigningVersion>
+	<StoreId>206</StoreId>
+	<ToDate>2016-06-01</ToDate>
+</DailyStoreClosingRequest>

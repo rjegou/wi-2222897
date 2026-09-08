@@ -1,0 +1,112 @@
+name: WI2222897-FrenchTaxesRules-V26-Preflight-$(Date:yyyyMMdd).$(Rev:r)
+
+trigger: none
+pr: none
+schedules: []
+
+variables:
+  # Tag and digest come from the historical V26 runtime evidence; this job only
+  # inspects the image and never deploys a package, backup, or JMX.
+  v26Image: 'acrretaildocker-e2c3eugzbee2habm.azurecr.io/cegid-retail-docker-production/y2-jmeter:sqlexpress2025-y2-aspnet-10-windowsservercore-ltsc2025@sha256:ea74f21a0d2ac3653ff843b393f6e97571500f6b41b2c2f71e94da23c0a9dbf2'
+  preflightContainerName: 'wi2222897-frenchtaxesrules-v26-preflight-$(Build.BuildId)'
+
+stages:
+- stage: RuntimePreflight
+  displayName: FrenchTaxesRules V26 read-only runtime preflight
+  jobs:
+  - job: DockerInspection
+    displayName: Inspect pinned V26 image and ephemeral container
+    pool:
+      name: Azure Pipelines
+      vmImage: windows-latest
+    # The first run spent 9m25s pulling the pinned Windows image on a fresh
+    # hosted VM. Reserve time for pull, create, start, inspection and cleanup.
+    timeoutInMinutes: 20
+    cancelTimeoutInMinutes: 1
+    steps:
+    - checkout: none
+    - task: Docker@2
+      displayName: Authenticate to read the existing registry image
+      inputs:
+        command: login
+        containerRegistry: AzureContainerRegistry-Docker-Retail
+    - powershell: |
+        $ErrorActionPreference = 'Stop'
+        $image = '$(v26Image)'
+        $name = '$(preflightContainerName)'
+        $out = Join-Path $env:AGENT_TEMPDIRECTORY 'wi2222897-frenchtaxesrules-v26-preflight'
+        New-Item -ItemType Directory -Path $out -Force | Out-Null
+        $created = $false
+        function Invoke-DockerBounded([string] $arguments, [int] $timeoutSeconds, [string] $prefix) {
+          $stdout = "$prefix.stdout"
+          $stderr = "$prefix.stderr"
+          $process = Start-Process -FilePath 'docker.exe' -ArgumentList $arguments -NoNewWindow -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          if (-not $process.WaitForExit($timeoutSeconds * 1000)) {
+            & taskkill.exe /PID $process.Id /T /F 2>$null | Out-Null
+            throw "Docker command timed out after $timeoutSeconds seconds: $arguments"
+          }
+          $errorText = Get-Content -LiteralPath $stderr -Raw -ErrorAction SilentlyContinue
+          if (-not [string]::IsNullOrWhiteSpace($errorText)) {
+            throw "Docker command failed: $arguments $errorText"
+          }
+          return Get-Content -LiteralPath $stdout -Raw -ErrorAction SilentlyContinue
+        }
+        function Scrub([object] $value) {
+          if ($null -eq $value) { return '<absent>' }
+          $text = [string]$value
+          $text = $text -replace '(?i)^[A-Z]:\\Users\\[^\\]+', '<user-root>'
+          $text = $text -replace '(?i)^[A-Z]:\\(a|agent)\\[^\\]+', '<agent-root>'
+          $text = $text -replace '(?i)^[A-Z]:\\', '<drive>:\\'
+          $text = $text -replace '(?i)(^|[\\/])(password|passwd|token|secret|apikey|api-key)([^\\/]*)', '$1<redacted-path>'
+          $text = $text -replace '(?i)(password|passwd|token|secret|apikey|api-key)=[^;\\s]+', '$1=<redacted>'
+          return $text
+        }
+        try {
+          $dockerVersionRaw = docker version --format '{{json .Server}}'
+          if ($LASTEXITCODE -ne 0) { throw 'Docker daemon is unavailable.' }
+          $dockerVersion = $dockerVersionRaw | ConvertFrom-Json
+          $inspectPath = Join-Path $out 'docker-image-inspect'
+          try { $img = Invoke-DockerBounded "image inspect $image" 60 $inspectPath | ConvertFrom-Json } catch {
+            Invoke-DockerBounded "pull $image" 720 (Join-Path $out 'docker-pull') | Out-Null
+            $img = Invoke-DockerBounded "image inspect $image" 60 $inspectPath | ConvertFrom-Json
+          }
+          $expectedDigest = ($image -split '@sha256:')[-1]
+          $digestValid = @($img.RepoDigests | Where-Object { $_ -match "@sha256:$expectedDigest$" }).Count -gt 0
+          if (-not $digestValid) { throw 'Pinned V26 image digest assertion failed.' }
+          $createArgs = "create --name $name --label wi.scope=WI-2222897/FrenchTaxesRules/V26 --label wi.ephemeral=true --label wi.runId=$(Build.BuildId) $image powershell -NoLogo -NoProfile -Command `"Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber,OSArchitecture | ConvertTo-Json -Compress`""
+          $containerId = (Invoke-DockerBounded $createArgs 180 (Join-Path $out 'docker-create')).Trim()
+          if ([string]::IsNullOrWhiteSpace($containerId)) { throw 'V26 preflight container creation returned no id.' }
+          $created = $true
+          $inspection = Invoke-DockerBounded "container inspect $containerId" 60 (Join-Path $out 'docker-container-inspect') | ConvertFrom-Json
+          $mounts = @($inspection.Mounts | Where-Object { $null -ne $_ } | ForEach-Object { [ordered]@{type=$_.Type;source=(Scrub $_.Source);destination=(Scrub $_.Destination);rw=[bool]$_.RW} })
+          $networks = @($inspection.NetworkSettings.Networks.PSObject.Properties | ForEach-Object { [ordered]@{name=$_.Name;ip=$_.Value.IPAddress} })
+          $hostPorts = @($inspection.HostConfig.PortBindings.PSObject.Properties)
+          $dangerousMounts = @($mounts | Where-Object { $_.destination -notmatch '(?i)(agent|work|programdata|windows)' -or $_.rw })
+          $forbiddenNetworks = @($networks | Where-Object { $_.name -eq 'host' })
+          $result = [ordered]@{
+            generatedUtc=[DateTime]::UtcNow.ToString('o'); buildId='$(Build.BuildId)';
+            dockerServer=($dockerVersion | ConvertFrom-Json)
+            image=[ordered]@{requested=$image;id=$img.Id;repoDigests=@($img.RepoDigests);os=$img.Os;architecture=$img.Architecture;layers=@($img.RootFS.Layers).Count}
+            container=[ordered]@{name=$name;id=$containerId.Trim();state=$inspection.State.Status;mounts=$mounts;networks=$networks;hostPortBindings=$hostPorts.Count;dangerousMounts=$dangerousMounts.Count;forbiddenNetworks=$forbiddenNetworks.Count}
+            policy=[ordered]@{businessDatabaseRestore=$false;packageDeployment=$false;businessCalls=$false;publishedArtifacts=$false;sharedCleanup=$false}
+          }
+          $result | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $out 'preflight-inspection.json') -Encoding UTF8
+          if ($dangerousMounts.Count -ne 0 -or $forbiddenNetworks.Count -ne 0 -or $hostPorts.Count -ne 0) { throw 'Runtime isolation whitelist assertion failed.' }
+          Invoke-DockerBounded "start -a $containerId" 120 (Join-Path $out 'docker-start') | Set-Content -LiteralPath (Join-Path $out 'container-os.json') -Encoding UTF8
+          Write-Host "WI2222897_V26_PREFLIGHT passed=true digest=$($img.RepoDigests -join ',') imageOs=$($img.Os) imageArchitecture=$($img.Architecture) mounts=$($mounts.Count) dangerousMounts=$($dangerousMounts.Count) hostPortBindings=$($hostPorts.Count) forbiddenNetworks=$($forbiddenNetworks.Count)"
+        } finally {
+          if ($created) {
+            try { Invoke-DockerBounded "rm -f $name" 60 (Join-Path $out 'docker-cleanup') | Out-Null } catch { Write-Warning $_.Exception.Message }
+            $remaining = @(docker ps -a --filter "name=^/$name$" --format '{{.ID}}')
+            if ($remaining.Count -ne 0) { throw 'Runtime cleanup assertion failed.' }
+            Write-Host "WI2222897_V26_PREFLIGHT_CLEANUP containerPresentAfterRemove=$($remaining.Count -ne 0)"
+          }
+        }
+      displayName: Read-only host/image/container inspection
+    - powershell: |
+        $out = Join-Path $env:AGENT_TEMPDIRECTORY 'wi2222897-frenchtaxesrules-v26-preflight'
+        $files = @(Get-ChildItem -LiteralPath $out -File -ErrorAction SilentlyContinue)
+        if ($files.Count -gt 0) { $files | Get-FileHash -Algorithm SHA256 | Format-Table -AutoSize }
+        Write-Host 'Preflight outputs remain only in agent temp; no artifact publication is configured.'
+      condition: always()
+      displayName: Hash local expurgated inspection output

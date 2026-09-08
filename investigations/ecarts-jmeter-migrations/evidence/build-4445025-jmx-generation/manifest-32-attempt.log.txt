@@ -1,0 +1,7 @@
+Expected exactly 32 generated JMX files, found 19.
+Au caractère C:\clones\wi-2222897\.work\migration-current-source\migration-tools\Write-Wi2222897JmxManifest.ps1:26 : 26
++ ... t -ne 32) { throw "Expected exactly 32 generated JMX files, found $($ ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Expected exactl...iles, found 19.:String) [], RuntimeException
+    + FullyQualifiedErrorId : Expected exactly 32 generated JMX files, found 19.
+ 

@@ -1,18 +1,25 @@
 --- Tests/WebServices/002-Device_Reassign.jmx
 +++ Tests/WebServices/002-Device_Reassign.jmx
-@@ -<after-TC122-B-XQuery-sampler> @@
-+        <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="TC 122 - B-XQuery - Diagnostic correlation" enabled="true">
-+          <stringProp name="scriptLanguage">groovy</stringProp>
-+          <stringProp name="cacheKey">WI2222897-TC122-BXQuery-v1</stringProp>
-+          <stringProp name="script"><![CDATA[
+@@ -8627,2 +8627,16 @@
+         </HTTPSamplerProxy>
+         <hashTree>
++          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="TC 122 - B-XQuery - Diagnostic correlation" enabled="true">
++            <stringProp name="scriptLanguage">groovy</stringProp>
++            <stringProp name="cacheKey">WI2222897-TC122-BXQuery-v1</stringProp>
++            <stringProp name="script"><![CDATA[
 +import java.security.MessageDigest
-+def digest = MessageDigest.getInstance('SHA-256').digest(prev.getResponseData())
-+def bodySha256 = digest.collect { String.format('%02x', it & 0xff) }.join()
++def sha256 = { byte[] bytes ->
++    MessageDigest.getInstance('SHA-256').digest(bytes).collect { String.format('%02x', it & 0xff) }.join()
++}
++def bodySha256 = sha256(prev.getResponseData())
 +def correlation = prev.getResponseHeaders().readLines().findAll { line ->
-+    line ==~ /(?i)^(x-correlation-id|request-id|traceparent):\\s*.+$/
-+}.collect { it.trim() }.join(';')
++    line ==~ /(?i)^(x-correlation-id|request-id|traceparent):\s*.+$/
++}.collect { line ->
++    def p = line.split(':', 2)
++    "${p[0].toLowerCase()}=sha256:${sha256(p[1].trim().getBytes('UTF-8'))}"
++}.join(';')
 +def path = prev.getURL() == null ? '' : prev.getURL().getPath()
-+log.info("WI2222897|TC122|B-XQuery|path=${path}|code=${prev.getResponseCode()}|bytes=${prev.getBodySize()}|sha256=${bodySha256}|correlation=${correlation ?: 'absent'}")
-+          ]]></stringProp>
-+        </JSR223PostProcessor>
-# Apply manually immediately after the TC122 B-XQuery sampler hashTree entry; do not alter assertions.
++def pathSha256 = sha256(path.getBytes('UTF-8'))
++log.info("WI2222897|TC122|B-XQuery|pathSha256=${pathSha256}|code=${prev.getResponseCode()}|bytes=${prev.getBodySize()}|sha256=${bodySha256}|correlation=${correlation ?: 'absent'}")
++            ]]></stringProp>
++          </JSR223PostProcessor>

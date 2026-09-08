@@ -1,0 +1,30 @@
+{
+  "collectedAt": "2026-09-08",
+  "definitionId": 14264,
+  "runId": 4445516,
+  "runResult": "partiallySucceeded",
+  "sourceCommit": "f8858ad73df9c9eca7e438e609b6effebb677a9b",
+  "pushId": 5135278,
+  "queueId": 665,
+  "poolId": 94,
+  "poolName": "Private VS2019",
+  "agentDemand": "Agent.Name -equals vm-alm-agent-02-B",
+  "agentName": "vm-alm-agent-02-B",
+  "agentVersion": "4.270.0",
+  "osVersion": "Microsoft Windows NT 10.0.17763.0",
+  "artifactId": 5037823,
+  "artifactName": "wi2222897-target-diagnostic-4445516",
+  "file": "target-diagnostic.txt",
+  "fileSize": 118627,
+  "sha256": "FDF1082CCA3CCA76ACB4E64BE002F3E9661388FEFCF074020B659923E04E2EA5",
+  "dockerCommandAvailable": false,
+  "backupDetectedUnderCheckout": false,
+  "campaignStagesExecuted": false,
+  "historical4440884": {
+    "agentName": "vm-alm-agent-02-A",
+    "dockerApiVersion": "1.55",
+    "image": "sqlexpress2025-y2-aspnet-10-windowsservercore-ltsc2025",
+    "imageDigest": "sha256:ea74f21a0d2ac3653ff843b393f6e97571500f6b41b2c2f71e94da23c0a9dbf2",
+    "sourceLogs": [99, 101]
+  }
+}

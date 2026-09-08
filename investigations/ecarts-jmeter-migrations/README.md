@@ -1,6 +1,10 @@
 # Écarts JMeter des migrations restantes
 
-Dernière consolidation locale : **2026-09-07 — reprise documentaire Round 2**.
+Dernière consolidation locale : **2026-09-08 — intégration des trois synthèses techniques de pause**
+(FrenchTaxesRules V26, InventoryTracking, Clienteling 14264), rangées sous
+[evidence/local-2026-09-08-syntheses-techniques-reprise-handoff/](evidence/local-2026-09-08-syntheses-techniques-reprise-handoff/README.md)
+et **non revérifiées**. Elles ouvrent les fiches [015](findings/015-inventorytracking-002-device-reassign-jmx-load-4445575.md)
+et [016](findings/016-clienteling-v26-backup-lfs-absent.md).
 
 ## Reprendre l'enquête
 

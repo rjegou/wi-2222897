@@ -1,0 +1,12 @@
+<SignRequest xmlns="http://schemas.datacontract.org/2004/07/Cegid.Retail.Common.ServiceContracts.EventSignature.Dto">
+  <Classification>
+    <Level1>ADM</Level1>
+    <Level2>TMT</Level2>
+    <Level3>SO3</Level3>
+  </Classification>
+  <CreationDate>2010-12-08T13:16:25.000</CreationDate>
+  <CreationUser>DCA</CreationUser>
+  <Number>999</Number>
+  <StoreId>403</StoreId>
+  <Summary>Test event level3 SO3</Summary>
+</SignRequest>

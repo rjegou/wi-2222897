@@ -1,0 +1,23 @@
+DEBUG: Logger was created successfully.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+DEBUG: Creating module catalog.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+Loading file: (C:\clones\wi-2222897\.work\console-4445025\runtime\tools\Parameters.xml)
+DEBUG: Configuring module catalog.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+DEBUG: Creating Unity container.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+DEBUG: Configuring the Unity container.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+DEBUG: Adding UnityBootstrapperExtension to container.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+DEBUG: Configuring ServiceLocator singleton.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+DEBUG: Configuring the ViewModelLocator to use Unity.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+DEBUG: Configuring region adapters.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+DEBUG: Configuring default region behaviors.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+DEBUG: Registering Framework Exception Types.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+DEBUG: Creating the shell.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+DEBUG: Initializing modules.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+DEBUG: Bootstrapper sequence completed.. Priority: Low. Timestamp:2026-09-08 13:04:01Z.
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Export_Run\Export_Run.xml)
+Processing TestCampaign=(C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Export_Run\Export_Run.xml) - Target Folder=(C:\clones\wi-2222897\.work\jfull/Tests/Export_Run)
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Export_Run\Export_Run.xml)
+Processing TestPlan (Export_Run)
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Export_Run\TestPlans\Export_Run.xml)
+Generating TestClass for TestPlan=(001-Export_Run.jmx)
+Overriding (C:\clones\wi-2222897\.work\jfull/Tests/Export_Run\001-Export_Run.jmx)
+Overriding (C:\clones\wi-2222897\.work\jfull/Tests/Export_Run.xml)

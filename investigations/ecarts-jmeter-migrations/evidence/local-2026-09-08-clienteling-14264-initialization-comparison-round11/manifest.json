@@ -1,0 +1,16 @@
+{
+  "collectedAt": "2026-09-08",
+  "historicalBuild": 4440884,
+  "diagnosticRuns": [4445464, 4445516],
+  "historicalJobs": [
+    {"name":"Build V26","queueId":665,"agent":"vm-alm-agent-02-A","logId":84,"dockerInJob":false},
+    {"name":"TI Jmeter V26-Cur","queueId":591,"agent":"Azure Pipelines 2","logId":190,"runnerImage":"windows-2025","dockerApi":"1.55"},
+    {"name":"TI Jmeter V26-Fix","queueId":591,"agent":"Azure Pipelines 3","logId":196,"runnerImage":"windows-2025","dockerApi":"1.55"}
+  ],
+  "historicalImage":"sqlexpress2025-y2-aspnet-10-windowsservercore-ltsc2025",
+  "historicalImageDigest":"sha256:ea74f21a0d2ac3653ff843b393f6e97571500f6b41b2c2f71e94da23c0a9dbf2",
+  "diagnosticStage":"direct PowerShell on Private VS2019",
+  "backupAcquisition":"UNKNOWN",
+  "acceptedConsole":{"buildId":4445025,"artifactId":5037277,"packageSha256":"796563797BBA329B2D041A2921735BC86C5F2DCADAED269FEDF77BB13542F1BE"},
+  "additionalDiagnosticLaunched":false
+}

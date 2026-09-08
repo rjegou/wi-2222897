@@ -1,0 +1,18 @@
+{
+  "sourceCommit": "07a42172bebc65d17093e166ac08de22e4fe7248",
+  "validatorOriginCommit": "c5aebe9a31ff23370ac6df196c8475970b97db3f",
+  "validatorExpectedCount": 32,
+  "sourcePlanCount": 19,
+  "generatedJmxCount": 19,
+  "sourcePlans": {
+    "LegacyServices": [
+      "Closing_AnnualClosing", "Closing_DailyRegisterClosing", "Closing_DailyStoreClosing", "Closing_MonthlyClosing", "DocumentSignature_GetCustomerSigningVersion", "DocumentSignature_GetDaemonSigningVersion", "DocumentSignature_SignOne", "EventSignature_Sign", "Export_Run", "FrenchTaxesRules_Run"
+    ],
+    "WebServices": [
+      "Purge_CreateParam", "Purge_Execute", "Purge_GetParam", "Validation_ExportNf525", "Validation_GetFrenchStores", "Validation_ValidateClosingsV2", "Validation_ValidateDocuments", "Validation_ValidateEvents", "Validation_ValidateParam"
+    ]
+  },
+  "outputManifest": "../build-4445025-jmx-generation/manifest-observed.json",
+  "outputHashes": "../build-4445025-jmx-generation/jmx-hashes.tsv",
+  "verdict": "19 source plans map one-to-one to 19 generated JMX; fixed 32 is unsupported for this source scope"
+}

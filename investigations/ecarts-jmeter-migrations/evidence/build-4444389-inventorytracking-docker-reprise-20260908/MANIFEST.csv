@@ -1,0 +1,8 @@
+file,kind,source,identifier,method,scope,notes
+README.md,analysis,local,2026-09-08,manual synthesis,build 4444389,expurgated no secrets
+timeline-expurgated.md,expurgated evidence,Azure DevOps REST,build 4444389 timeline and logs 102 103 129 178,Python urllib GET,terminal state and Docker excerpts,no raw logs copied
+definition-provenance,metadata,Azure DevOps REST,definition 2072 revision 5,Python urllib GET,definition repository YAML pool and trigger,source YAML SHA recorded in README
+refs-concurrency,metadata,Azure DevOps REST,repository refs and builds,Python urllib GET,current isolated ref active runs PR search,no writes
+source-comparison.md,enrichment,Azure DevOps REST,commits 4de185bb ef3d8703 master 20aa5289,read-only source comparison,InventoryTracking source and exact two-file XmlDiff diff,added as a distinct source-provenance lot
+xmlDiff-minimal.patch,enrichment,Azure DevOps REST,ef3d87034d38b88aca04c824061b140e2a29252c parent 4de185bb,read-only diff capture,Services.Tests csproj and packages.config only,not a new source patch
+cur-fix-collection-plan.md,enrichment,local,2026-09-08,manual preparation,TC122 Cur/Fix discriminating collection plan,preparatory no remote execution

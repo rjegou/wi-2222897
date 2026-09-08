@@ -1,0 +1,5 @@
+<RunRequest xmlns="http://www.cegid.fr/Retail/1.0">
+  <FromDate>2012-08-01</FromDate>
+  <RunMode>Debug</RunMode>
+  <ToDate>2012-08-01</ToDate>
+</RunRequest>

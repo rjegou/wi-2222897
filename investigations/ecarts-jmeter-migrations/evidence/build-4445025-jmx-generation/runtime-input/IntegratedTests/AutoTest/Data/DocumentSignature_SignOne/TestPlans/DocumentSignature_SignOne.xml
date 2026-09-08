@@ -1,0 +1,446 @@
+<?xml version="1.0"?>
+<TestPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="DtoLegacyServiceTestPlan" Code="DocumentSignature:SignOne" IsSelected="true" Comment="Test plan du service DocumentSignature" Operation="http://www.cegid.fr/services/ILegacyDispatcherService/Invoke" WebService="LegacyDispatcherService.svc" DatabaseId="CBR_AUTO" Action="Cegid.CBR.FrenchTaxesRulesDocumentSignatureService.SignOne" xmlns="TestAutomation">
+  <TestCases>
+    <TestCase Id="1856ef99-afcc-4891-a1fb-d5c38b55f437" Code="01" Label="EC - Document inexistant" Input="InputFiles\DocumentSignature\SignOne_01.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries />
+      <XmlQueries>
+        <Control Id="b5fc6082-c89e-4e9c-86af-e110336620a7">
+          <Label>expecting error </Label>
+          <Query>/soap:Fault/faultcode[text()='a:CBR_062_0017']</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries />
+      <FinalDataQueries />
+    </TestCase>
+    <TestCase Id="3b512f60-bd43-4f15-8b64-089e1df56c60" Code="02" Label="EC - Signature déjà présente" Input="InputFiles\DocumentSignature\SignOne_02.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries>
+        <Control Id="4fbdc97e-95dd-4e63-9be0-fca7d160dbb2">
+          <Label>Ajout ligne dans MPIECECOMPL</Label>
+          <Query>INSERT INTO MPIECECOMPL (MDI_NATUREPIECEG, MDI_SOUCHE, MDI_NUMERO, MDI_TYPEFISCAL, MDI_REFFISCALESIGN, MDI_DATECREPIECE, MDI_DATEMODPIECE, MDI_FISCALPRTID) VALUES ('FFO', '304', 33, '...', 'Signature', '2025-10-07', '2025-10-07', 'S20')</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control Id="1b70ad8b-454b-4460-a0b4-7f1bf0870eec">
+          <Label>expecting error </Label>
+          <Query>/soap:Fault/faultcode[text()='a:CBR_062_0028']</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries />
+      <FinalDataQueries>
+        <Control Id="bd9228ea-0e11-44eb-8eac-ca6f19f1dc3a">
+          <Label>suppression de la ligne mpiececompl</Label>
+          <Query>DELETE FROM MPIECECOMPL where MDI_SOUCHE='304' </Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="eea52543-2403-4c91-987d-2dfe1dbdfc78" Code="03" Label="NC - Signature ticket ok, 1ère signature, sauvegarde" Input="InputFiles\DocumentSignature\SignOne_03.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries />
+      <XmlQueries>
+        <Control Id="dbed478b-73e8-4224-8eb3-fbfd70feeab3">
+          <Label>Check signature non vide</Label>
+          <Query>/cbr:SignOneReply[cbr:Signature[not(text()='')] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="5bc13525-438e-4d4e-96af-963f878b8e27">
+          <Label>Check version signature</Label>
+          <Query>/cbr:SignOneReply[cbr:SignatureVersionId[text()='S20'] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="0875252d-04ab-4994-ac6c-5f6bf2b4f44b">
+          <Label>vérification signlink</Label>
+          <Query>SELECT COUNT(*) FROM SIGNLINK where SIL_TYPE = 'TIC' and SIL_RANG = 'O' and SIL_ETABLISSEMENT = '304' and SIL_NATUREPIECEG = '' and SIL_SOUCHE = '' and SIL_NUMERO = 0 and SIL_ORDER = 1</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="f7dc401f-3603-4edb-9058-c39a4eeb700a">
+          <Label>vérification signlink</Label>
+          <Query>SELECT COUNT(*) FROM SIGNLINK where SIL_TYPE = 'TIC' and SIL_RANG = 'D' and SIL_ETABLISSEMENT = '304' and SIL_NATUREPIECEG = 'FFO' and SIL_SOUCHE = '304' and SIL_NUMERO = 33 and SIL_ORDER = 1</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="3e8a98e9-fdd0-45e7-a310-76643f042588">
+          <Label>vérification MPIECECOMPL </Label>
+          <Query>SELECT COUNT(*) FROM MPIECECOMPL where MDI_SOUCHE = '304' and MDI_NUMERO = 33 and MDI_TYPEFISCAL = '...' and MDI_FISCALPRTID = 'S20' and MDI_REFFISCALESIGN &lt;&gt; ''</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries>
+        <Control Id="6a63055a-5f18-440a-960e-9c0e7f63b1b1">
+          <Label>suppression de la ligne MPIECECOMPL</Label>
+          <Query>DELETE FROM MPIECECOMPL where MDI_SOUCHE='304' </Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="05646470-ecf5-4cb4-93a9-f2c0c65670e0">
+          <Label>suppression de la ligne SIGNLINK</Label>
+          <Query>DELETE FROM SIGNLINK where SIL_ETABLISSEMENT = '304'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="6ddaa80a-f08f-4a2b-bd75-a3aac633b31f" Code="04" Label="NC - Signature facture ok, 1ère signature, sauvegarde" Input="InputFiles\DocumentSignature\SignOne_03.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries>
+        <Control Id="33c40e5a-0d5d-4884-8a85-da19684b1cf7">
+          <Label>Modification type comptabilisation pour ticket 33</Label>
+          <Query>update piece set GP_TYPECOMPTA = 'FAC' where GP_NATUREPIECEG = 'FFO' and GP_SOUCHE = '304' and GP_NUMERO = 33</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control Id="c3a5e54c-ddde-450f-8c9a-aad92ed42116">
+          <Label>Check signature non vide</Label>
+          <Query>/cbr:SignOneReply[cbr:Signature[not(text()='')] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="d0e96dfb-6802-4b84-9ea7-c84bc8383c0b">
+          <Label>Check version signature</Label>
+          <Query>/cbr:SignOneReply[cbr:SignatureVersionId[text()='S20'] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="842a978a-bdbd-4630-8366-0b6f5fd98f1d">
+          <Label>vérification signlink</Label>
+          <Query>SELECT COUNT(*) FROM SIGNLINK where SIL_TYPE = 'FAC' and SIL_RANG = 'O' and SIL_ETABLISSEMENT = '304' and SIL_NATUREPIECEG = '' and SIL_SOUCHE = '' and SIL_NUMERO = 0 and SIL_ORDER = 1</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="a0f51223-da32-4a4d-bdd4-6ebeea1719bc">
+          <Label>vérification signlink</Label>
+          <Query>SELECT COUNT(*) FROM SIGNLINK where SIL_TYPE = 'FAC' and SIL_RANG = 'D' and SIL_ETABLISSEMENT = '304' and SIL_NATUREPIECEG = 'FFO' and SIL_SOUCHE = '304' and SIL_NUMERO = 33 and SIL_ORDER = 1</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="d4f762a8-cfdc-4dbd-865b-55294505af95">
+          <Label>vérification MPIECECOMPL </Label>
+          <Query>SELECT COUNT(*) FROM MPIECECOMPL where MDI_SOUCHE = '304' and MDI_NUMERO = 33 and MDI_TYPEFISCAL = 'FAC' and MDI_FISCALPRTID = 'S20' and MDI_REFFISCALESIGN &lt;&gt; ''</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries>
+        <Control Id="db51f915-343f-4d4d-a6e9-33851228c835">
+          <Label>suppression de la ligne MPIECECOMPL</Label>
+          <Query>DELETE FROM MPIECECOMPL where MDI_SOUCHE = '304' </Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="8eabe20e-489e-4d12-b569-83abc2db8f34">
+          <Label>suppression de la ligne SIGNLINK</Label>
+          <Query>DELETE FROM SIGNLINK where SIL_ETABLISSEMENT = '304'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="d851322f-057e-453b-80f0-6c256859068f">
+          <Label>Restauration type comptabilisation pour ticket 33</Label>
+          <Query>update piece set GP_TYPECOMPTA = 'TIC' where GP_NATUREPIECEG = 'FFO' and GP_SOUCHE = '304' and GP_NUMERO = 33</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="a2fc2048-67de-40cc-bdef-73d26aaadee0" Code="05" Label="NC - Signature ticket ok, 1ère signature, pas de sauvegarde" Input="InputFiles\DocumentSignature\SignOne_05.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries />
+      <XmlQueries>
+        <Control Id="60a4a10a-b938-4b04-a850-fa163721fe95">
+          <Label>Check signature non vide</Label>
+          <Query>/cbr:SignOneReply[cbr:Signature[not(text()='')] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="d8fe4aee-a423-408f-93f0-f6033a3a1d08">
+          <Label>Check version signature</Label>
+          <Query>/cbr:SignOneReply[cbr:SignatureVersionId[text()='S20'] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="a9e61769-8831-49ed-9094-5889a67b42dd">
+          <Label>vérification signlink</Label>
+          <Query>SELECT COUNT(*) FROM SIGNLINK where SIL_TYPE = 'TIC' and SIL_RANG = 'O' and SIL_ETABLISSEMENT = '304' and SIL_NATUREPIECEG = '' and SIL_SOUCHE = '' and SIL_NUMERO = 0 and SIL_ORDER = 1</Query>
+          <ExpectedValue>0</ExpectedValue>
+        </Control>
+        <Control Id="c0ae69f2-eae1-4605-8edd-3ac5cebe492c">
+          <Label>vérification signlink</Label>
+          <Query>SELECT COUNT(*) FROM SIGNLINK where SIL_TYPE = 'TIC' and SIL_RANG = 'D' and SIL_ETABLISSEMENT = '304' and SIL_NATUREPIECEG = 'FFO' and SIL_SOUCHE = '304' and SIL_NUMERO = 33 and SIL_ORDER = 1</Query>
+          <ExpectedValue>0</ExpectedValue>
+        </Control>
+        <Control Id="f0e951c5-d68b-400c-ae83-5f4c1d4c8c4f">
+          <Label>vérification MPIECECOMPL </Label>
+          <Query>SELECT COUNT(*) FROM MPIECECOMPL where MDI_SOUCHE = '304' and MDI_NUMERO = 33 and MDI_TYPEFISCAL = '...' and MDI_FISCALPRTID = 'S20' and MDI_REFFISCALESIGN &lt;&gt; ''</Query>
+          <ExpectedValue>0</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries />
+    </TestCase>
+    <TestCase Id="69920cea-8be2-4184-bcdf-fca84bb27855" Code="06" Label="NC - Signature ticket ok, 2ème signature, pas de sauvegarde" Input="InputFiles\DocumentSignature\SignOne_06.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries>
+        <Control Id="60cc6a66-ae09-4384-aecc-1be1711fac38">
+          <Label>Ajout ligne dans SIGNLINK</Label>
+          <Query>INSERT INTO SIGNLINK (SIL_LINKID, SIL_TYPE, SIL_RANG, SIL_ETABLISSEMENT, SIL_NATUREPIECEG, SIL_SOUCHE, SIL_NUMERO, SIL_INDICEG, SIL_DATECREATION, SIL_ORDER) VALUES ('d93397a1-f52f-4dfb-b3b7-336f9a6f7de7', 'TIC', 'D', '304', 'FFO', '304', 32, 0, '2010-01-01', 1) </Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="8f299c32-663f-44e8-9353-8bfdddc3ce15">
+          <Label>Ajout ligne dans SIGNLINK</Label>
+          <Query>INSERT INTO SIGNLINK (SIL_LINKID, SIL_TYPE, SIL_RANG, SIL_ETABLISSEMENT, SIL_NATUREPIECEG, SIL_SOUCHE, SIL_NUMERO, SIL_INDICEG, SIL_DATECREATION, SIL_ORDER) VALUES ('d93397a1-f52f-4dfb-b3b7-336f9a6f7de7', 'TIC', 'O', '304', 'FFO', '304', 31, 0, '2010-01-01', 1) </Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control Id="cf7d5664-1caa-40ee-91fe-6e1197e2b6af">
+          <Label>Check signature non vide</Label>
+          <Query>/cbr:SignOneReply[cbr:Signature[not(text()='')] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="695c1639-9235-4088-8b1f-7b6f2ab004c1">
+          <Label>Check version signature</Label>
+          <Query>/cbr:SignOneReply[cbr:SignatureVersionId[text()='S20'] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="d9a38a5c-63c2-4a16-91ce-8fc8be8bcb96">
+          <Label>vérification signlink</Label>
+          <Query>SELECT COUNT(*) FROM SIGNLINK where SIL_TYPE = 'TIC' and SIL_RANG = 'O' and SIL_ETABLISSEMENT = '304' and SIL_NATUREPIECEG = 'FFO' and SIL_SOUCHE = '304' and SIL_NUMERO = 32 and SIL_ORDER = 1</Query>
+          <ExpectedValue>0</ExpectedValue>
+        </Control>
+        <Control Id="3ba7b9c9-1092-49fb-8556-4414a75051b6">
+          <Label>vérification signlink</Label>
+          <Query>SELECT COUNT(*) FROM SIGNLINK where SIL_TYPE = 'TIC' and SIL_RANG = 'D' and SIL_ETABLISSEMENT = '304' and SIL_NATUREPIECEG = 'FFO' and SIL_SOUCHE = '304' and SIL_NUMERO = 33 and SIL_ORDER = 1</Query>
+          <ExpectedValue>0</ExpectedValue>
+        </Control>
+        <Control Id="99df67e0-e66b-4db5-a8d5-e994eb81380b">
+          <Label>vérification MPIECECOMPL </Label>
+          <Query>SELECT COUNT(*) FROM MPIECECOMPL where MDI_SOUCHE = '304' and MDI_NUMERO = 33 and MDI_TYPEFISCAL = '...' and MDI_FISCALPRTID = 'S20' and MDI_REFFISCALESIGN &lt;&gt; ''</Query>
+          <ExpectedValue>0</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries>
+        <Control Id="c787e508-516e-4f54-9bec-9d43f7e4e525">
+          <Label>suppression de la ligne SIGNLINK</Label>
+          <Query>DELETE FROM SIGNLINK where SIL_ETABLISSEMENT = '304'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="d069fa0b-80e0-4514-8f30-c14bee9e69c8" Code="07" Label="NC - Signature ticket ok, 1ère signature, sauvegarde, numéro version caisse POS" Input="InputFiles\DocumentSignature\SignOne_07.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries />
+      <XmlQueries>
+        <Control Id="8d6a498b-7af5-4ad1-9be4-44bd9d5d3ea6">
+          <Label>Check signature non vide</Label>
+          <Query>/cbr:SignOneReply[cbr:Signature[not(text()='')] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="9f77dbb8-641b-4b9f-82c8-68c2f4399875">
+          <Label>Check version signature</Label>
+          <Query>/cbr:SignOneReply[cbr:SignatureVersionId[text()='S20'] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="a70b485a-b251-46c6-9839-0b1b32d57674">
+          <Label>Check numero version</Label>
+          <Query>/cbr:SignOneReply[cbr:FiscalVersionNumber[text()='1.0-2.3'] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="7b7345cf-f222-4998-a081-250897b5411f">
+          <Label>vérification signlink</Label>
+          <Query>SELECT COUNT(*) FROM SIGNLINK where SIL_TYPE = 'TIC' and SIL_RANG = 'O' and SIL_ETABLISSEMENT = '304' and SIL_NATUREPIECEG = '' and SIL_SOUCHE = '' and SIL_NUMERO = 0 and SIL_ORDER = 1</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="17a8348b-fc38-4d32-b134-40f0c4e386d1">
+          <Label>vérification signlink</Label>
+          <Query>SELECT COUNT(*) FROM SIGNLINK where SIL_TYPE = 'TIC' and SIL_RANG = 'D' and SIL_ETABLISSEMENT = '304' and SIL_NATUREPIECEG = 'FFO' and SIL_SOUCHE = '304' and SIL_NUMERO = 33 and SIL_ORDER = 1</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="61c1fe17-d3d3-4dda-ac33-caae2b93084c">
+          <Label>vérification MPIECECOMPL </Label>
+          <Query>SELECT COUNT(*) FROM MPIECECOMPL where MDI_SOUCHE = '304' and MDI_NUMERO = 33 and MDI_TYPEFISCAL = '...' and MDI_FISCALPRTID = 'S20' and MDI_NUMVERSION = '1.0-2.3' and MDI_REFFISCALESIGN &lt;&gt; ''</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries>
+        <Control Id="0b3dc4e3-c0be-4f88-88a8-723469d288fc">
+          <Label>suppression de la ligne MPIECECOMPL</Label>
+          <Query>DELETE FROM MPIECECOMPL where MDI_SOUCHE='304' </Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="a2ff2a85-68a8-4a10-888b-7f24de700cc2">
+          <Label>suppression de la ligne SIGNLINK</Label>
+          <Query>DELETE FROM SIGNLINK where SIL_ETABLISSEMENT = '304'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="57ac962d-cd0f-4c3a-b72c-564f80a6a14e" Code="08" Label="NC - Signature ticket, numéro version caisse PUL par défaut" Input="InputFiles\DocumentSignature\SignOne_08.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries>
+        <Control Id="2ef46695-af1c-4cc0-a117-9033b951d84a">
+          <Label>Modification type caisse PUL</Label>
+          <Query>UPDATE PARCAISSE SET GPK_TYPEMOBILITE = 'PUL' WHERE GPK_ETABLISSEMENT = '103' AND GPK_CAISSE = '005'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control Id="eb2c3274-3c85-4e6f-a156-0e28c1cf2bf4">
+          <Label>Check signature non vide</Label>
+          <Query>/cbr:SignOneReply[cbr:Signature[not(text()='')] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="5b7f0119-caba-40b3-bae4-18d0bc9cb2c4">
+          <Label>Check version signature</Label>
+          <Query>/cbr:SignOneReply[cbr:SignatureVersionId[text()='S20'] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="a40d2e2b-6ec7-4021-83d6-cc28c477534f">
+          <Label>Check numero version</Label>
+          <Query>/cbr:SignOneReply[cbr:FiscalVersionNumber[text()='1.0'] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries />
+      <FinalDataQueries>
+        <Control Id="942c81bd-0635-4077-a549-98792b3d6084">
+          <Label>Modification type caisse : POS</Label>
+          <Query>UPDATE PARCAISSE SET GPK_TYPEMOBILITE = 'POS' WHERE GPK_ETABLISSEMENT = '103' AND GPK_CAISSE = '005'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="5b4fdf2d-2e44-4640-8cc9-7e663d4f65fd" Code="09" Label="NC - Signature ticket, numéro version caisse PUL modifié" Input="InputFiles\DocumentSignature\SignOne_08.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries>
+        <Control Id="47ece0fc-e161-48cb-9918-edc3785f9187">
+          <Label>Modification type caisse PUL</Label>
+          <Query>UPDATE PARCAISSE SET GPK_TYPEMOBILITE = 'PUL' WHERE GPK_ETABLISSEMENT = '103' AND GPK_CAISSE = '005'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="00b4430a-553e-4a3b-9359-38f300cc2015">
+          <Label>Modification PARAMSOC</Label>
+          <Query>UPDATE PARAMSOC SET SOC_DATA = '3.4' WHERE SOC_NOM = 'SO_NF525VERSIONLS'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control Id="87992142-0250-48b3-857a-b1638faa359a">
+          <Label>Check signature non vide</Label>
+          <Query>/cbr:SignOneReply[cbr:Signature[not(text()='')] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="75a8979f-fc70-4ede-a673-f5d2ae709b3a">
+          <Label>Check version signature</Label>
+          <Query>/cbr:SignOneReply[cbr:SignatureVersionId[text()='S20'] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="02eb2706-6714-4960-a762-b790c8f33797">
+          <Label>Check numero version</Label>
+          <Query>/cbr:SignOneReply[cbr:FiscalVersionNumber[text()='3.4'] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries />
+      <FinalDataQueries>
+        <Control Id="d4dd8a35-8e92-4e47-804b-8a25b44f6f0a">
+          <Label>Modification PARAMSOC</Label>
+          <Query>UPDATE PARAMSOC SET SOC_DATA = '1.0' WHERE SOC_NOM = 'SO_NF525VERSIONLS'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="fdf253f3-5e46-4f28-9c39-ede8029eeed5">
+          <Label>Modification type caisse : POS</Label>
+          <Query>UPDATE PARCAISSE SET GPK_TYPEMOBILITE = 'POS' WHERE GPK_ETABLISSEMENT = '103' AND GPK_CAISSE = '005'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="e866aea1-d4f6-498d-99c2-a431f2ebd39a" Code="10" Label="NC - Etablissement non français, retour vide" Input="InputFiles\DocumentSignature\SignOne_07.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries>
+        <Control Id="2bbf9547-a087-4d37-866c-35aaf2b7add0">
+          <Label>Modification du pays de l'établissement</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'ESP' WHERE ET_ETABLISSEMENT = '304'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control Id="f1df364e-bd54-4afa-a6ab-edc62b2a3ccd">
+          <Label>Check version signature</Label>
+          <Query>/cbr:SignOneReply[cbr:SignatureVersionId[text()='S20'] ]</Query>
+          <ExpectedValue>0</ExpectedValue>
+        </Control>
+        <Control Id="d2bb83e7-b340-4acd-b99a-5e3f26a9c869">
+          <Label>Check numero version</Label>
+          <Query>/cbr:SignOneReply[cbr:FiscalVersionNumber[text()='1.0-2.3'] ]</Query>
+          <ExpectedValue>0</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="e61d2b6b-8fdc-4440-b79a-dccba3f8105d">
+          <Label>vérification MPIECECOMPL </Label>
+          <Query>SELECT COUNT(*) FROM MPIECECOMPL where MDI_SOUCHE = '304' and MDI_NUMERO = 33 and MDI_TYPEFISCAL = '...' and MDI_FISCALPRTID = 'S20' and MDI_NUMVERSION = '1.0-2.3' and MDI_REFFISCALESIGN &lt;&gt; ''</Query>
+          <ExpectedValue>0</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries>
+        <Control Id="0f4642ea-d242-4f2f-91c5-1a841ee3ce37">
+          <Label>Modification du pays de l'établissement</Label>
+          <Query>UPDATE ETABLISS SET ET_PAYS = 'FRA' WHERE ET_ETABLISSEMENT = '304'</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="6b4a45c2-1c89-41f9-a364-dd40031378eb" Code="11" Label="NC - Signature ticket trésorerie ok, 1ère signature, sauvegarde" Input="InputFiles\DocumentSignature\SignOne_03.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries>
+        <Control Id="70419a08-58d0-4282-a1ac-3d74ff6f8d4a">
+          <Label>Modification type comptabilisation pour ticket 33</Label>
+          <Query>update piece set GP_TYPECOMPTA = 'TRE' where GP_NATUREPIECEG = 'FFO' and GP_SOUCHE = '304' and GP_NUMERO = 33</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PreDataQueries>
+      <XmlQueries>
+        <Control Id="44062dd5-1ef2-486e-837d-05c61eb16cd7">
+          <Label>Check signature non vide</Label>
+          <Query>/cbr:SignOneReply[cbr:Signature[not(text()='')] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="8f2204ca-a0fe-4eda-85fe-d496159e0cbc">
+          <Label>Check version signature</Label>
+          <Query>/cbr:SignOneReply[cbr:SignatureVersionId[text()='S20'] ]</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </XmlQueries>
+      <PostDataQueries>
+        <Control Id="e40a141c-4258-40d9-ba49-28d2732d341a">
+          <Label>vérification signlink</Label>
+          <Query>SELECT COUNT(*) FROM SIGNLINK where SIL_TYPE = 'TIC' and SIL_RANG = 'O' and SIL_ETABLISSEMENT = '304' and SIL_NATUREPIECEG = '' and SIL_SOUCHE = '' and SIL_NUMERO = 0 and SIL_ORDER = 1</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="a08d39c8-1f7e-41f6-9a91-e3b2c9e72dd2">
+          <Label>vérification signlink</Label>
+          <Query>SELECT COUNT(*) FROM SIGNLINK where SIL_TYPE = 'TIC' and SIL_RANG = 'D' and SIL_ETABLISSEMENT = '304' and SIL_NATUREPIECEG = 'FFO' and SIL_SOUCHE = '304' and SIL_NUMERO = 33 and SIL_ORDER = 1</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="cd594442-29a3-42e9-ae5e-3b13cc102030">
+          <Label>vérification MPIECECOMPL </Label>
+          <Query>SELECT COUNT(*) FROM MPIECECOMPL where MDI_SOUCHE = '304' and MDI_NUMERO = 33 and MDI_TYPEFISCAL = '...' and MDI_FISCALPRTID = 'S20' and MDI_REFFISCALESIGN &lt;&gt; ''</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </PostDataQueries>
+      <FinalDataQueries>
+        <Control Id="cc5e6675-076a-4d4d-9597-d6164a757ed7">
+          <Label>suppression de la ligne MPIECECOMPL</Label>
+          <Query>DELETE FROM MPIECECOMPL where MDI_SOUCHE = '304' </Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+        <Control Id="3d9af1c8-b964-49dd-b388-8f049ef4a6cc">
+          <Label>suppression de la ligne SIGNLINK</Label>
+          <Query>DELETE FROM SIGNLINK where SIL_ETABLISSEMENT = '304'</Query>
+          <ExpectedValue>2</ExpectedValue>
+        </Control>
+        <Control Id="54c1f21b-d043-4f40-a98c-a6c023e990fd">
+          <Label>Restauration type comptabilisation pour ticket 33</Label>
+          <Query>update piece set GP_TYPECOMPTA = 'TIC' where GP_NATUREPIECEG = 'FFO' and GP_SOUCHE = '304' and GP_NUMERO = 33</Query>
+          <ExpectedValue>1</ExpectedValue>
+        </Control>
+      </FinalDataQueries>
+    </TestCase>
+    <TestCase Id="fc214bf9-0136-4813-b1c9-2bf43a5f0d14" Code="99" Label="NC - Tests" Input="InputFiles\DocumentSignature\SignOne_99.xml" IsSelected="true" IsValidated="true" Defect="0" Owner="mgallene@cegid.com">
+      <PreDataQueries />
+      <XmlQueries />
+      <PostDataQueries />
+      <FinalDataQueries />
+    </TestCase>
+  </TestCases>
+</TestPlan>

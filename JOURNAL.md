@@ -50,6 +50,60 @@ Lecture des collectes `2026-09-08-inventorytracking-azdo-access-diagnosis-round2
 
 **Correction documentaire** — Python/OpenSSL fonctionne et Schannel échoue (`SEC_E_NO_CREDENTIALS`); le PAT n'est pas déclaré expiré/invalide. Aucune disparition de clone ou verrou n'est attribué à un worker sans preuve. L'autorisation courante est consignée comme couvrant corrections/push/runs/PR appropriée, avec maîtrise obligatoire des effets partagés avant une nouvelle exécution. Aucun code, preuve brute ou système externe n'a été modifié; aucun commit tenté, le dépôt Git étant en lecture seule pour cette phase.
 
+## 2026-09-08 — Worker 3 — consolidation reprise Docker InventoryTracking
+
+Lecture des deux dossiers complémentaires `build-4444389-inventorytracking-docker-reprise-20260908` et `build-4444389-inventorytracking-docker-reprise`, sans modification de leurs preuves. Mise à jour de [STATUS.md](STATUS.md), [finding 013](investigations/ecarts-jmeter-migrations/findings/013-inventorytracking-xmlDiff-migration-build-4434070.md), [STATUS_MATRIX.md](investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md), [HANDOFF.md](investigations/ecarts-jmeter-migrations/HANDOFF.md), [RESOURCES.md](RESOURCES.md) et de l'index des preuves.
+
+**FACT** — `4444389` est `completed/canceled`; Fix échoue avant création du conteneur sur le pipe Docker absent, Cur crée et démarre son conteneur puis est annulé. **UNKNOWN** — cause de l'annulation globale/Cur et raison de l'absence du daemon Fix. La tête `efba57ea...` est ultérieure au commit exécuté `13d0db91...`; aucune absence de ref actuelle ne permet de nier le commit historique. Les faits Cur/Fix de `4440884` et l'inconnue TC122 restent inchangés.
+
+**Autorisation** — les formulations d'absence générale d'autorisation ont été corrigées : la mission autorise corrections, push de branches de travail, pipelines et PR appropriée avec impact minimal; aucun push documentaire n'a été effectué. Aucun code, système distant ou artefact brut n'a été modifié.
+
+## 2026-09-08 — Worker 3 — consolidation InventoryTracking round 3
+
+Lecture de la preuve opérateur `build-4444720-inventorytracking-docker-init` et des enrichissements du lot 4444389. Mise à jour des canoniques avant cette entrée, sans altérer les preuves antérieures. `ef3d8703` est désormais traçable comme enfant de `4de185bb`, limité à deux fichiers; `master` actuel est `20aa5289`.
+
+**FACT** — 4444700/4444703 sont annulés volontairement avant JMeter (`pipelineDevMode=False`). 4444720 exécute Build et le préflight Docker, mais Cur/Fix restent bloqués à `Initialize containers` puis sont annulés après plus de quinze minutes; aucune campagne JMeter n'est exécutée. **UNKNOWN** — sous-cause runtime agents 29/44, image/package/JMX/données consommés et résultat TC122.
+
+## 2026-09-08 — Worker 3 — rectification 4444720 et décision de rejeu
+
+Ajout du [complément daté](investigations/ecarts-jmeter-migrations/evidence/build-4444720-inventorytracking-review-correction-20260908/README.md), sans réécriture des preuves antérieures. La formulation de 4444720 est corrigée: initialisation non achevée pendant un téléchargement actif, aucune panne Docker démontrée; le daemon absent reste limité au Fix 4444389. L'identité enregistrée par AzDO pour l'annulation ne suffit pas à établir une intervention manuelle.
+
+**Décision supervisée** — un seul rejeu du candidat isolé existant, durée adaptée, suivi terminal, sans réécriture Docker. La PR candidate vise migration complète + XmlDiff; diagnostics exclus. Aucun rejeu ou acte distant n'a été réalisé dans cette consolidation.
+
+## 2026-09-08 — Worker 3 — consolidation 4444887 et décision transport
+
+Lecture de la preuve primaire [4444887](investigations/ecarts-jmeter-migrations/evidence/build-4444887-inventorytracking-container-replay-20260908/README.md), collectée le 2026-09-08 par lecture REST/CLI Azure DevOps de la définition `2072`, run terminal `completed/failed`, branche isolée et commit `efba57ea5a96d346170f4407e37050985244dcee`. Les canons ont été mis à jour avant cette entrée; aucune preuve antérieure n'a été réécrite.
+
+**FACT** — Build, préflight Docker et initialisation Cur/Fix réussissent. Le package `Y2.Plugin.InventoryTracking.26.0.7.83` est absent du staging car la publication est neutralisée; PlatformDeploy échoue dans Cur et Fix, puis JMeter est skipped. **INFERENCE** — obstacle de transport/déploiement de l'essai isolé, pas échec fonctionnel du plugin. Le daemon absent reste limité au Fix de 4444389; les campagnes et TC122 restent UNKNOWN.
+
+Les recommandations Docker de la revue round3 et du retour worker 2 round4 sont marquées supersédées dans les canons, sans modification de leurs preuves historiques. Décision : transport par artefact privilégié strictement isolé, sans réactivation du staging partagé. Aucun acte distant, commit ou tentative de contournement du verrou Git n'a été effectué.
+
+## 2026-09-08 — Worker 3 — indexation du contrat transport round5
+
+Indexées sans recopie les preuves [contrat transport round5](investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/bw1-tools/evidence/local-2026-09-08-inventorytracking-transport-contract-round5/README.md) et [revue PlatformDeploy 4444887](investigations/ecarts-jmeter-migrations/evidence/build-4444887-inventorytracking-platformdeploy-review-20260908/README.md). Provenance : collecte/revue du 2026-09-08, Azure DevOps `cegid/Retail`, run `4444887`, définition `2072`, commit `efba57ea5a96d346170f4407e37050985244dcee`.
+
+**FACT** — l'artefact Build `26.0.7.83_Software` (PipelineArtifact ID `5037140`) existe; le contrat PlatformDeploy actuel impose JFrog et n'accepte aucune entrée locale, PipelineArtifact, URL ou cache. **INFERENCE** — l'entrée locale absente est une limitation technique de transport, non un arbitrage fonctionnel ni un défaut métier.
+
+**DÉCISION supervisée** — implémenter et tester une substitution locale expérimentale du seul plugin via PipelineArtifact, sans staging partagé. Les canons renvoient aux deux preuves, les preuves restent immuables; aucun acte distant, commit ou nouvelle tentative Git n'a été effectué.
+
+## 2026-09-08 — Worker 3 — artefact 5037140 inspecté et contrat round6
+
+Indexation des preuves [revue transport 5037140](investigations/ecarts-jmeter-migrations/evidence/build-5037140-inventorytracking-transport-review-20260908/README.md) et [inventaire PipelineArtifact round6](investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/bw1-tools/evidence/local-2026-09-08-inventorytracking-pipelineartifact-5037140-round6/README.md). **FACT** — l'artefact contient exactement deux MSI et deux XML hashés; le contrat `ArtifactItem` est établi au commit `93f91487ee717185599555a42df3cb5d024ace89`, mais l'implémentation locale reste absente.
+
+Le verrou actif du clone PlatformDeploy et la restriction lecture seule du `.git` documentaire sont consignés comme contraintes distinctes; aucun ne prouve l'impossibilité de préparer un dossier inscriptible. **DÉCISION** — préparation indépendante puis publication REST sur branche dédiée après revue, sans toucher aux verrous. Aucun patch, résultat de test ou run effectif nouveau n'est intégré, aucun acte distant ou commit n'a été effectué.
+
+## 2026-09-08 — Worker 3 — candidat transport round7
+
+Indexés sans recopie les lots [tests contrat round7](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-inventorytracking-transport-tests-round7/README.md) et [candidat transport round7](investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/bw1-tools/evidence/local-2026-09-08-inventorytracking-transport-candidate-round7/README.md). **FACT** — le candidat est présent dans `.work/transport-round7/`; les tests opérateur sont annoncés PASS. **FACT borné** — les tests indépendants du contrat sur fixtures et les tests locaux du candidat sont distincts; aucune exécution PlatformDeploy réelle en conteneur n'est établie.
+
+L'état « implémentation absente » est remplacé par « candidat implémenté, revue indépendante attendue ». Commits/runs opérateur et hashes de revue restent UNKNOWN. Aucun acte distant, commit ou contournement de permission effectué.
+
+## 2026-09-08 — Worker 3 — revues transport round8
+
+Indexées sans recopie les deux revues [round8 indépendante](investigations/ecarts-jmeter-migrations/evidence/build-5037140-inventorytracking-transport-review-round8/README.md) et [round8 du patch](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-inventorytracking-transport-review-round8/README.md). **FACT** — tests locaux du transport PASS et mécanisme favorable sous réserve. **FACT** — défaut de provenance identifié : `artifactId=Build.BuildId` ne distingue pas le `sourceBuildId` de l’`artifactName` `$(componentVersion)_Software`.
+
+Décision : corriger et revoir `sourceBuildId` + `artifactName` avant queue, puis attester les hashes des quatre fichiers réellement transportés; aucun hash d’archive arbitraire. Aucun commit, run, push ou acte distant effectué.
+
 ## 2026-09-08 — Référencement de brain-worker
 
 Ajout du guide [brain-worker](documentation/guides/BRAIN_WORKER.md), qui établit la disponibilité
@@ -786,6 +840,259 @@ API → Console → migration → JMX ; état courant des refs et permissions Az
 FrenchTaxesRules tenté dans `worktrees/frenchtaxesrules-wi2222897` a échoué avec Git exit 128 sans
 worktree créé.
 
+## 2026-09-08 — Worker 1 — candidat Console et état Full-Text
+
+**FACT** — candidat local `2.0.42-soapnamespace.20260907` préservé; hashes package/API/EXE
+et quatre corrections vérifiés par réflexion sur la DLL embarquée. Aucun rebuild,
+publication ou queue n'a été tenté dans ce round.
+
+**FACT / UNKNOWN** — trace Full-Text `4442156` : snapshot `inProgress` (SQL 2019 failed,
+SQL 2025 inProgress), sans état final. Les PID orchestrateurs ont disparu; les processus
+génériques restants ne sont pas attribuables sans arguments, dont la lecture a été refusée.
+Aucun processus n'a été tué.
+
+**Suite** — authentification AzDo, identité/scopes sur cibles isolées, lecture fraîche
+runs/logs/artefacts, puis contrôle de concurrence avant queue.
+
 **Suite** — reprendre le handoff de la décision 5 après rétablissement de l'accès, vérifier les hashes
 avant toute campagne, puis exécuter master/V26 et releases/V7 dans une définition isolée. Les changements
 non liés présents dans le worktree documentaire ont été préservés.
+# 2026-09-08 — Worker 3 Round 2 — Full-Text final et test discriminant
+
+**FACT** — lecture live read-only des builds Azure DevOps `4442156`, `4442685` et `4442254`, timelines, logs ciblés et artefacts `4442685`. Les trois builds sont terminés en échec ; `4442156` n'a pas d'artefact, `4442685` expose les diagnostics SQL2019/SQL2025.
+
+**FACT** — `4442685` prouve Full-Text installé, SQL démarré, mais population/catalogue/table encore à `1` et DMV en `status=5 / Processing normally` dans la fenêtre du probe ; le probe échoue ensuite sur `Full-Text population did not finish: [1]`. Le script livré n'exécute pas `CONTAINSTABLE`.
+
+**UNKNOWN** — cause racine runtime et effet d'une nouvelle image sur les 224 cas historiques Clienteling. Le résultat Clienteling/JMeter n'a pas été relancé ni inféré.
+
+**Action documentaire** — STATUS, HANDOFF, finding 014 et l'index des preuves mis à jour ; collecte détaillée et hashes conservés dans `parallel/2026-09-08-parallel-1788841150349/bw3-plugins/evidence/local-2026-09-08-fulltext-live-4442156-round5/`. Aucun système distant modifié.
+# 2026-09-08 — Worker 3 Round 3 — script Full-Text borné
+
+**FACT** — préparation locale du script `Invoke-FullTextBoundedDiagnostic.ps1` pour intégration par Worker 2. Parse PowerShell : zéro erreur ; 193 lignes ; SHA-256 `CEF3F0B5C324C258E08D87F06777C622E9456E4EF728A653BB9A374ED32C2A20`.
+
+**FACT** — le contrat exige `MSSQL_SA_PASSWORD` fourni par l’environnement du processus, `SetupQuery` et `ContainstableQuery` fournis selon l’image, une fenêtre bornée de 120 secondes, observations horodatées DMV/FDHOST/services, assertion `CONTAINSTABLE`, et cleanup limité au conteneur marqué par cette exécution. Aucun secret n’a été affiché ou persisté ; aucun pipeline, image partagée ou système distant n’a été modifié.
+
+**FACT** — vérification read-only du dépôt : `.git/index.lock` absent ; ACL du dossier `.git` lues sans modification. Le refus de commit reste distinct : les permissions précédemment observées empêchent toujours la création de `.git/index.lock`.
+
+## 2026-09-08 — Worker 3 — préconditions JMeter et attestation cible round5
+
+Lecture bornée du YAML/scripts isolés 14264, des index round4 et du contrat d'attestation. Vérification locale read-only d'Apache JMeter 5.6.3 : `jmeter.bat -v` retourne 5.6.3; archive SHA-512 `387FADCA...016307`, manifeste et dépendances dans [la collecte round5](investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/bw3-plugins/evidence/local-2026-09-08-jmeter-preconditions-round5/README.md).
+
+**FACT / UNKNOWN** — `jmeter.bat` est réel et caractérisé localement, mais aucun build/artifact PipelineArtifact exact, cible Cur/Fix, image/digest, backup/paramètres, réseau, ressources dédiées ou cleanup réel n'est attesté. Les fixtures de cible sont synthétiques. Aucun YAML, pipeline, image ou environnement partagé n'a été modifié; aucune campagne n'a été lancée. Le dépôt reste non committé; les modifications d'autres workers sont préservées.
+
+## 2026-09-08 — Worker 3 — mécanismes Clienteling et scripts de cible round6
+
+Lecture des sources Clienteling historiques indexées et du handoff live : V26 Cur/Fix/WebServices, image taguée `sqlexpress2025-y2-aspnet-10-windowsservercore-ltsc2025`, mode `-LocalDBInContainer Backup`, backup `Tests/Backups/AUTO_V26_00.bak`, base `AUTO_V26_00`, tenant `TESTS_AUTO_JMETER`. Le digest historique et le hash de backup ne sont pas attribués au prochain run.
+
+Préparation, sans exécution, de `Invoke-Wi2222897EphemeralTarget.ps1` et `Remove-Wi2222897EphemeralTarget.ps1` : exigences digest/backup/hash/reçu de restauration, labels run-scope, réseau dédié sans ports, inspection et cleanup borné. Handoffs Worker 1/2 ajoutés. Aucun YAML, pipeline, image ou donnée collègue modifié; aucune campagne lancée.
+
+Lecture de la collecte amont round6 : aucun JMX ni artefact distant Console/Migration/JMeter n'est encore acquis; le transport API `4444962/5037204` est réel mais incompatible avec le contrat Console préparé (version 1.1.46). Le JMeter local reste à déposer par Worker 1; aucun contournement par chemin local n'est autorisé.
+
+Lecture de la preuve Round7 du contrat 14264 : la branche isolée `b790767c1cecb90d6913c8726aea532c29ea4582` acquiert désormais JMeter 5.6.3 directement dans Cur/Fix et vérifie sa SHA-512. Le transport PipelineArtifact JMeter est retiré comme dépendance; cible Cur/Fix, image/digest, backup/hash et attestation post-provisionnement restent à produire. Tentative REST locale read-only de définition/agents échouée avant réponse par TLS; aucun secret affiché, aucune relance.
+
+# 2026-09-08 — Worker 1 Round 3 — revue API/Console et handoff
+
+**FACT** — le build API `4444765` de la définition `2637` est réussi sur le commit
+`9081ecfe7aa07f5e584073d2af1828d3ac9f7235`; l'artefact `Nuget` `5036993` et les hashes nupkg/DLL
+sont conservés dans la preuve de publication. Les quatre méthodes passent sur la DLL réellement
+construite; ce n'est ni un VSTest ni un résultat métier JMeter.
+
+**FACT historique — défaut bloquant du candidat précédent** — le candidat Console local `2.0.42-soapnamespace.20260907` contient
+encore l'API 1.1.46, hash `57BE…`, et non la DLL API du build `4444765`, hash `A7D3…`. Il a été
+rejeté comme chaîne corrigée et ce défaut a été transmis au Worker 2 avec les chemins exacts de
+l'artefact API.
+
+**UNKNOWN** — le diff Console `7d0667c…` n'a pas pu être relu depuis un checkout source dans ce
+processus; la lecture Azure CLI était bloquée par le profil local protégé. Aucun build Console
+concurrent, feed partagé, queue aval ou run JMeter n'a été lancé.
+## 2026-09-08 — Worker 1 Round 4 — vrai candidat Console 2.0.43
+
+**FACT** — lecture du checkout Console et du diff `7d0667c90db1eca8e18e94f8fb4b572f9a9ee8e8`,
+ainsi que du YAML exécuté au commit `202f8a6a22784786ed90d417f24626e0381bc07e`. Le YAML épingle
+API build `4444765`, nupkg `296D…`, DLL `A7D3…`, triggers/pr none et publication PipelineArtifact-only.
+
+**FACT** — build `4444888` terminé en échec à l'installation du candidat API après téléchargement
+réussi de l'artifact. La compilation, VSTest, pack et artifact Console sont skipped; Snyk et Key
+Vault ont exécuté; aucun effet de publication partagée ou run JMeter n'est prouvé.
+
+**SUITE** — corriger le chemin réellement utilisé par `DownloadPipelineArtifact`, conserver les
+contrôles hash, puis relire avant toute relance. Preuve : `local-2026-09-08-console-2.0.43-build-4444888-round4`.
+
+## 2026-09-08 — Worker 1 Round 5 — Console corrigée et staging migration
+
+**FACT** — avant mutation, aucun run 2641 actif n'a été observé; les processus locaux ne pouvaient
+pas être attribués de façon fiable au build interrompu (lecture WMI refusée). La branche Console
+distante a été relue à `dfda5e52e637e423432023d9fb6b870e92104703`; aucun nouveau build n'a été lancé
+par cette collecte.
+
+**FACT** — le build `4445025` a réussi après correction du chemin d'installation API. Le nupkg
+Console `2.0.43-wi2222897-console-candidate` de l'artifact `5037277` est hashé
+`796563797BBA329B2D041A2921735BC86C5F2DCADAED269FEDF77BB13542F1BE`; l'entrée API embarquée
+vérifie `A7D3BB84...9021E`. VSTest n'a trouvé aucun assembly de test; aucun JMeter/TestAutos/feed
+partagé n'est prouvé.
+
+**FACT** — copie vers `C:\clones\wi-2222897\.work\migration-candidate-4445025` effectuée sans
+modifier le snapshot source. **UNKNOWN** — génération des JMX de la campagne, manifeste final et
+rejeu métier. Preuve : `evidence/local-2026-09-08-console-2.0.43-build-4444888-round4/`.
+
+## 2026-09-08 — Worker 2 Round 7 — 14264 révisé, sans queue
+
+**FACT** — relecture Git REST HTTP 200 de la branche dédiée au commit
+`b790767c1cecb90d6913c8726aea532c29ea4582`. Les stages `Preflight`, `Build`,
+`GenerateJmx` et `JMeter` sont présents; la génération migration est depuis le
+checkout et JMeter 5.6.3 est téléchargé par URL fixe puis vérifié SHA-512.
+
+**FACT** — API `4444962/5037204` est utilisable. Le Console `4445025/5037277`
+est exclu car son package `796563...` n'est pas le candidat SOAP `803D...`.
+La tentative locale ArtifactTool de transport n'a pas atteint Azure (`SEC_E_NO_CREDENTIALS`);
+aucun artefact, feed partagé, publication, promotion, tag ou run nouveau n'a été créé.
+
+**UNKNOWN / STOP** — attestation live de cible Cur/Fix et transport isolé du package
+Console restent requis. Les résultats Build/GenerateJmx/Cur/Fix n'existent donc pas.
+
+**Complément live** — la définition 14264 liste trois runs postérieurs aux
+publications intermédiaires (`4445072`, `4445085`, `4445099`), tous terminés
+`canceled`; aucun stage utile n'est attesté. Le commit courant `b790767c` n'a pas
+de run observé. La cause exacte de ces annulations reste UNKNOWN.
+
+## 2026-09-08 — Worker 2 Round 8 — diagnostic cible borné
+
+**FACT** — le contrôle local montre Docker CLI `27.4.0` sans daemon joignable;
+`docker_engine` est absent et aucun backup/image n’est présent dans le périmètre
+local. Aucune tentative de désactivation TLS, d’élévation ou de mutation partagée
+n’a été faite.
+
+**LIVRABLE** — script round8 avec acquisition image digestée, copie/sha256 du
+backup, restauration SQL effective, vérification `sys.databases`, réseau interne
+sans ports et attestation post-contrôles. Parse PowerShell PASS; aucune exécution
+14264 ni ressource externe créée.
+
+**STOP** — exécution à transférer au job Windows isolé autorisé; le diagnostic
+local ne peut pas produire d’observation live tant que le daemon, l’image digestée,
+le backup réel et l’injection SQL éphémère ne sont pas disponibles.
+
+## 2026-09-08 — Worker 2 Round 9 — revue indépendante du diagnostic cible
+
+**FACT** — revue statique du script round8 : restauration SQL et `sys.databases`
+ne prouvent pas IIS/Clienteling; le JMeter du YAML 14264 n’est pas attaché au
+réseau Docker interne; `DataRoot` n’est pas créé; le secret SQL apparaît dans
+les arguments de `docker exec`; un réseau préexistant peut être supprimé sans
+preuve de possession.
+
+**FACT Azure DevOps** — les jobs `4440884` Cur agent 2 et Fix agent 3 Windows
+2025 ont Docker opérationnel; Fix `4444389` agent 9 échoue sur le pipe Docker.
+Ces observations ne sont pas une attestation 14264.
+
+**STOP** — corrections requises avant toute queue : probe des endpoints
+Clienteling, secret hors arguments, ownership réseau strict, création de
+DataRoot et JMeter dans le même contexte réseau privé. Aucun job n’a été lancé.
+
+## 2026-09-08 — Worker 2 Round 10 — scripts runtime corrigés
+
+**FACT** — deux scripts ont été ajoutés au replay-prep : attestation runtime
+Clienteling (W3SVC, SQL, endpoints Deployment/Mobility, réseau/JMeter) et
+cleanup à ownership strict. Le secret SQL n’est pas un argument; le forwarding
+utilise uniquement le nom de variable d’environnement puis restaure la variable.
+
+**FACT** — parse PowerShell sans erreur; tests négatifs de réseau non scoped et
+cleanup hors périmètre PASS. Aucun YAML, job, image, permission ou donnée
+partagée n’a été modifié; aucune exécution distante effectuée.
+
+## 2026-09-08 — Worker 2 Round 11 — complétude provisionnement
+
+**FACT** — le YAML 14264 actuel ne produit ni reçu PlatformDeploy, ni DataRoot,
+ni cible IIS, ni conteneur JMeter; il ne consomme qu’une attestation téléchargée
+et lance JMeter hors réseau cible.
+
+**LIVRABLE** — wrappers replay-prep ajoutés pour l’invocation réelle
+`PlatformDeploy -LocalDBInContainer Backup` et la création contrôlée d’un
+sidecar JMeter sur le réseau privé. Huit scripts replay-prep ciblés parsés sans
+erreur; aucun Docker/Azure DevOps réel lancé.
+
+**STOP** — intégration YAML, chemins PlatformDeploy/config, image JMeter
+digestée et agent Windows Docker-compatible restent à fournir par le responsable.
+
+## 2026-09-08 — Worker 1 Round 6 — génération Console réelle
+
+**FACT** — le point d'entrée réel exige un wrapper `TestCampaign`/`TestPlanItem`; les `TestPlan`
+source directs échouent à la désérialisation. Des wrappers temporaires, sans modification des XML
+source, ont été créés dans un staging court autorisé.
+
+**FACT** — Console 4445025 a généré Export_Run et DocumentSignature_SignOne code `0`, puis les
+19 plans top-level du commit source FrenchTaxesRules `07a42172...` (10 LegacyServices + 9
+WebServices), un JMX par plan, code `0`. Les JMX et logs sont conservés dans
+`evidence/build-4445025-jmx-generation/`; handoff immédiat V26 inclus.
+
+**FACT** — le manifeste officiel a échoué sur sa postcondition stricte `19` observés contre `32`
+attendus. Aucun JMX n'a été inventé ou supprimé. Aucun JMeter, SQL, HTTP, TestAutos ou résultat
+métier n'a été produit. La collecte round7 établit que `32` vient du commit de validateur `c5aebe9...` sans inventaire, alors que le commit source `07a42172...` contient 19 plans correspondant aux 19 sorties. Une campagne externe à 32 reste UNKNOWN.
+
+**FACT** — les métadonnées distantes historiques V26 identifient le backup LFS `23bfb0b670918fbe5f63ceeff36f66ef1855b46fd82c29bda9d34dfa6b7fc25f` (150765568 octets) et les hashes des deux configurations ; le backup n'a pas été téléchargé/restauré. Le préflight autonome a ensuite été publié sur une définition dédiée et exécuté une fois ; le run 4423394 de la CI partagée n'a pas été modifié. Voir la preuve round8 pour le timeout et l'UNKNOWN cleanup.
+
+**FACT** — le build V26 préflight `4445476` a réussi le login ACR et la vérification du digest `ea74f21a...`, puis a dépassé le timeout de 10 minutes lors de l'opération Docker avant l'attestation. Aucun effet métier ou artefact partagé n'a été produit ; l'état résiduel du conteneur exact reste UNKNOWN.
+
+## 2026-09-08 — Intégration de trois synthèses techniques de pause
+
+Trois documents reçus dans `Downloads` — FrenchTaxesRules V26, InventoryTracking, Clienteling 14264 —
+ont été rangés puis intégrés aux documents canoniques. Ils sont conservés tels que reçus, avec leurs
+SHA-256, sous
+[evidence/local-2026-09-08-syntheses-techniques-reprise-handoff/](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-syntheses-techniques-reprise-handoff/README.md).
+
+**Niveau de preuve, explicite partout** — aucune de leurs affirmations n'a été réexécutée ni relue par
+`az`/REST dans cette session. Les identifiants `4446410`, `4445575`, `4446303`, `6188849`, `6188843`,
+`5136500`, `5135960`, `c9a7c6fe…`, `95aede77…`, `c20755d8…`, `27644f21…` et `a490cd53…` n'existaient
+dans aucun document canonique avant ce rangement : ils ne sont soutenus que par ces trois fichiers.
+Toutes les insertions les qualifient « rapporté, non revérifié », selon la convention déjà utilisée
+pour les handoffs manuels externes du 2026-09-07.
+
+**Trois conclusions nouvelles.** InventoryTracking : le run `4445575` franchit enfin le transport
+local et exécute réellement Build, préflight Docker et JMeter Cur/Fix, mais publie `1905` tests au
+lieu de `1991` — les `86` manquants sont tous ceux du plan `002-Device:Reassign`, que JMeter 5.6.3
+lance puis échoue à charger (`HeaderManager cannot be cast to HashTree`, ligne 8522), le runner
+enchaînant sur le plan suivant sans rougir la tâche. L'égalité parfaite des `314` non-passés Cur/Fix
+porte donc sur un périmètre amputé et ne vaut pas absence de régression ; `TC122` reste `UNKNOWN`.
+Nouvelle fiche [finding 015](investigations/ecarts-jmeter-migrations/findings/015-inventorytracking-002-device-reassign-jmx-load-4445575.md).
+Clienteling : l'agent Docker est résolu (`vmImage: windows-2025`, Docker `29.7.2`, run `4446303`) et
+les valeurs runtime PlatformDeploy V26 sont résolues depuis les logs de `4432554`, mais le backup
+`Tests/Backups/AUTO_V26_00.bak` a disparu de l'arbre Git actuel : le rejeu est bloqué en amont du
+provisionnement. Nouvelle fiche [finding 016](investigations/ecarts-jmeter-migrations/findings/016-clienteling-v26-backup-lfs-absent.md).
+FrenchTaxesRules : le préflight V26 est rapporté réussi (`4446410`), ce qui supersède le timeout de
+`4445476`, et les 18 JMX corrigés sont rapportés poussés sur une branche de validation — sans aucun
+run pour les exécuter.
+
+**Deux écarts signalés, non tranchés.** La « clôture documentaire Clienteling 14264 » du 2026-09-08
+enregistrait « aucun nouveau run, push, provisionnement » et le commit distant `f8858ad7…` : la source
+rapporte un commit postérieur et un run. Le fait est consigné tel quel, sans attribution à une session
+identifiée. Et deux fichiers homonymes `AUTO_V26_00.bak` coexistent — `23bfb0b6…` / `150 765 568` o
+dans FrenchTaxesRules, `8B95C2BA…` / `156 663 808` o dans Clienteling : ne jamais les confondre.
+
+**Périmètre d'écriture constaté** — les écritures rapportées restent sur des branches `sandbox/*` et
+`validation/*`, des définitions isolées et des `PipelineArtifact`. Aucune publication de feed NuGet
+partagé, `Promote`, `Tag` ou `TestAutos` n'est revendiquée : les deux étapes de la
+[décision 5](decisions/README.md) qui touchent un feed partagé restent non exercées, et la
+confirmation directe exigée reste requise.
+
+**Leçons réutilisables versées dans les guides**, plutôt que laissées dans les documents sources :
+vérifier la couverture avant de comparer Cur/Fix et distinguer « absent / non sélectionné / non lancé /
+lancé mais non chargé » ([DEPANNAGE_JMETER.md](documentation/guides/DEPANNAGE_JMETER.md), section 3 et
+diagnostic rapide) ; verrouiller les écritures REST Azure DevOps par relecture du HEAD et
+`oldObjectId`, pièges PowerShell 5.1 associés, collecte ciblée et lecture correcte d'une ligne de
+succès quand les sorties sont redirigées ([protocole](documentation/guides/PROTOCOLE_INVESTIGATION_ECARTS_LEGACY_JMETER.md),
+nouvelles sections 0.6 et 0.7).
+
+**Documents mis à jour** : `README.md`, `STATUS.md` (section Clienteling 14264 rouverte, lignes de
+synthèse InventoryTracking et rejeu métier, nouveaux `UNKNOWN`), `decisions/README.md`,
+[HANDOFF.md](investigations/ecarts-jmeter-migrations/HANDOFF.md) (quatre entrées),
+[STATUS_MATRIX.md](investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md) (trois lignes
+ajoutées, ligne InventoryTracking corrigée), findings 013/015/016 et leur index, index des preuves,
+`RESOURCES.md`.
+
+**Rien d'exécuté** — aucun run, push, queue, publication, provisionnement ni nettoyage distant. La
+seule action de dépollution encore due est inchangée : vérifier et supprimer uniquement le conteneur
+`wi2222897-frenchtaxesrules-v26-preflight-4445476`.
+
+**Prochaines actions, une par domaine** : comparer les octets des deux versions de
+`002-Device_Reassign.jmx` autour de la ligne 8522 avant tout nouveau run InventoryTracking ; vérifier
+que l'objet LFS `8B95C2BA…` est encore téléchargeable avant de toucher à la branche Clienteling
+isolée ; relire la ref de validation FrenchTaxesRules puis exécuter `Export_Run` TC08/TC09/TC10 et
+`DocumentSignature_SignOne` TC02 à contrat Cur/Fix constant.

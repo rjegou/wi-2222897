@@ -1,0 +1,5 @@
+file,source,identifier,method,scope,notes
+README.md,Azure DevOps REST,build 4444720 and repository refs,Python urllib GET,independent Docker and PR review,expurgated
+build-4444720-timeline,Azure DevOps REST,build 4444720 timeline,Python urllib GET,stage/job/agent/results,selected facts transcribed
+build-4444720-logs,Azure DevOps REST,logs 77 87 159 185,Python urllib GET,preflight and container initialization,selected lines only
+repository-diff,Azure DevOps REST,4de185bb to master 20aa5289,Python urllib GET,diff counts and top-level distribution,no source content copied

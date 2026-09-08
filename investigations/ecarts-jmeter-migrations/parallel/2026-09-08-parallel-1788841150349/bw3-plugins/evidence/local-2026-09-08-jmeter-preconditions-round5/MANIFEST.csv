@@ -1,0 +1,10 @@
+path,kind,source,version,sha256_or_sha512,bytes,status
+apache-jmeter-5.6.3.zip,archive,C:\Users\jegour\AppData\Local\Temp\jmeter-5.6.3-download\apache-jmeter-5.6.3.zip,5.6.3,387FADCA903EE0AA30E3F2115FDFEDB3898B102E6B9FE7CC3942703094BD2E65B235DF2B0C6D0D3248E74C9A7950A36E42625FD74425368342C12E40B016307,,local source; same SHA-512 at 3 paths
+bin/jmeter.bat,entrypoint,C:\Users\jegour\AppData\Local\Temp\jmeter-5.6.3-runtime\apache-jmeter-5.6.3\bin\jmeter.bat,5.6.3,2BF83EC8A782018DA51122F3F7411FA374FF45A55F698B50B5EE40972684F99B,8377,verified present
+bin/jmeter.properties,configuration,C:\Users\jegour\AppData\Local\Temp\jmeter-5.6.3-runtime\apache-jmeter-5.6.3\bin\jmeter.properties,5.6.3,28F615FB66FEE752A5647E590E7231E0734856A546D88AA0CD62341985FF634F,58774,verified present
+lib/,dependencies,C:\Users\jegour\AppData\Local\Temp\jmeter-5.6.3-runtime\apache-jmeter-5.6.3\lib,5.6.3,,77928820,157 files
+lib/ext/,dependencies,C:\Users\jegour\AppData\Local\Temp\jmeter-5.6.3-runtime\apache-jmeter-5.6.3\lib\ext,5.6.3,,3965117,15 JAR files
+Invoke-Wi2222897EphemeralTarget.ps1,provision-script,workspace evidence,round6,CA1682459A22F420CD234BE6F5E8A3F81D044AEA919F5921DFA45E473E8B311A,,PowerShell SHA-256; parseErrors=0; not executed
+Remove-Wi2222897EphemeralTarget.ps1,cleanup-script,workspace evidence,round6,466765A76F01BBB51CDF011F2AA537982FE6E411C0DA51DB974E4100CD983A25,,PowerShell SHA-256; parseErrors=0; not executed
+WORKER1-HANDOFF-JMETER.md,handoff,workspace evidence,round6,B5489BD82508FA4CD90B71EF1498DE4932389875310CECFFF7D64ADDF3631B6E,,SHA-256
+WORKER2-HANDOFF-TARGET.md,handoff,workspace evidence,round6,88D5AC48DE118FCDC9DAFB95910CA080CF31F19FE9ACBDE687107E6DA8CC7398,,SHA-256

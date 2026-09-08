@@ -1,0 +1,23 @@
+DEBUG: Logger was created successfully.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+DEBUG: Creating module catalog.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+Loading file: (C:\clones\wi-2222897\.work\console-4445025\runtime\tools\Parameters.xml)
+DEBUG: Configuring module catalog.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+DEBUG: Creating Unity container.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+DEBUG: Configuring the Unity container.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+DEBUG: Adding UnityBootstrapperExtension to container.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+DEBUG: Configuring ServiceLocator singleton.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+DEBUG: Configuring the ViewModelLocator to use Unity.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+DEBUG: Configuring region adapters.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+DEBUG: Configuring default region behaviors.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+DEBUG: Registering Framework Exception Types.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+DEBUG: Creating the shell.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+DEBUG: Initializing modules.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+DEBUG: Bootstrapper sequence completed.. Priority: Low. Timestamp:2026-09-08 13:03:48Z.
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Closing_DailyRegisterClosing\Closing_DailyRegisterClosing.xml)
+Processing TestCampaign=(C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Closing_DailyRegisterClosing\Closing_DailyRegisterClosing.xml) - Target Folder=(C:\clones\wi-2222897\.work\jfull/Tests/Closing_DailyRegisterClosing)
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Closing_DailyRegisterClosing\Closing_DailyRegisterClosing.xml)
+Processing TestPlan (Closing_DailyRegisterClosing)
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Closing_DailyRegisterClosing\TestPlans\Closing_DailyRegisterClosing.xml)
+Generating TestClass for TestPlan=(001-Closing_DailyRegisterClosing.jmx)
+Overriding (C:\clones\wi-2222897\.work\jfull/Tests/Closing_DailyRegisterClosing\001-Closing_DailyRegisterClosing.jmx)
+Overriding (C:\clones\wi-2222897\.work\jfull/Tests/Closing_DailyRegisterClosing.xml)

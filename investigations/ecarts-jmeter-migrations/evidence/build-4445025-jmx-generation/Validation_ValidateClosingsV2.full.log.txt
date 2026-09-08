@@ -1,0 +1,23 @@
+DEBUG: Logger was created successfully.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+DEBUG: Creating module catalog.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+Loading file: (C:\clones\wi-2222897\.work\console-4445025\runtime\tools\Parameters.xml)
+DEBUG: Configuring module catalog.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+DEBUG: Creating Unity container.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+DEBUG: Configuring the Unity container.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+DEBUG: Adding UnityBootstrapperExtension to container.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+DEBUG: Configuring ServiceLocator singleton.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+DEBUG: Configuring the ViewModelLocator to use Unity.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+DEBUG: Configuring region adapters.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+DEBUG: Configuring default region behaviors.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+DEBUG: Registering Framework Exception Types.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+DEBUG: Creating the shell.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+DEBUG: Initializing modules.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+DEBUG: Bootstrapper sequence completed.. Priority: Low. Timestamp:2026-09-08 13:06:25Z.
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Validation_ValidateClosingsV2\Validation_ValidateClosingsV2.xml)
+Processing TestCampaign=(C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Validation_ValidateClosingsV2\Validation_ValidateClosingsV2.xml) - Target Folder=(C:\clones\wi-2222897\.work\jfull/Tests/Validation_ValidateClosingsV2)
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Validation_ValidateClosingsV2\Validation_ValidateClosingsV2.xml)
+Processing TestPlan (Validation_ValidateClosingsV2)
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Validation_ValidateClosingsV2\TestPlans\Validation_ValidateClosingsV2.xml)
+Generating TestClass for TestPlan=(001-Validation_ValidateClosingsV2.jmx)
+Overriding (C:\clones\wi-2222897\.work\jfull/Tests/Validation_ValidateClosingsV2\001-Validation_ValidateClosingsV2.jmx)
+Overriding (C:\clones\wi-2222897\.work\jfull/Tests/Validation_ValidateClosingsV2.xml)

@@ -52,3 +52,24 @@ Injecter une DLL API finale hashée, fournir toutes les dépendances, fabriquer 
 **FACT** — un package local distinct réellement disponible est conservé dans `evidence/local-2026-09-08-console-package-2.0.42-cleanxpath/`, SHA-256 `82F9C7EE19E635DB14F937078339ED5424A2EDE5BE13B2A10F75A790400D70C0`, API embarquée `51FB31...`; une preuve ciblée établit qu'il ne contient pas le correctif Unicode complet. Il est exploitable pour diagnostic uniquement, pas comme release candidate.
 
 **BLOCAGE** — le build source ne peut pas être reproduit ici sans les reference assemblies officielles .NET Framework 4.5.2 utilisées précédemment; leur téléchargement NuGet a échoué sur `SEC_E_NO_CREDENTIALS`, et aucune installation globale/cible alternative n'a été effectuée.
+
+## Round 3 — vérification indépendante du candidat local (2026-09-08)
+
+Le candidat décrit précédemment comme non retrouvé a été localisé dans le staging
+`C:\Users\jegour\AppData\Local\Temp\wi2222897-orchestration-clienteling-164805710`.
+La preuve détaillée est dans
+`evidence/local-2026-09-08-console-candidate-round3/README.md`.
+
+**FACT** — le nupkg `2.0.42-soapnamespace.20260907` est présent et son hash est
+`803DDBAAEB545A901ACD500195F5372F1E42F2FBD5FC1AC88626830F14EEE55B`. La DLL API
+réellement embarquée et l'EXE correspondent respectivement à `57BEACA2...F30E4C13522F7B`
+et `82A1134B...ED75A9F`.
+
+**FACT** — réflexion directe sur la DLL extraite : `EscapeJdbcDate`,
+`FixSqlUnicodeValue`, `RemoveSpecialCharsForXQuery` et `CleanXpath` passent les
+vecteurs discriminants locaux. Le chemin adjacent `PrepareXPathAssertion` produit
+également le prédicat SOAP 1.1 namespace-aware attendu.
+
+**UNKNOWN** — aucune publication, feed, pipeline, cache distant, SQL/HTTP/IIS ou
+campagne JMeter n'a été exécuté. Le nuspec déclare lui-même un artefact isolé jamais
+publié; il ne prouve donc pas les versions contractuelles proposées `1.1.47`/`2.0.43`.

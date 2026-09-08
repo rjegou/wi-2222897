@@ -1,0 +1,26 @@
+DEBUG: Logger was created successfully.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+DEBUG: Creating module catalog.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+Loading file: (C:\clones\wi-2222897\.work\console-4445025\runtime\tools\Parameters.xml)
+DEBUG: Configuring module catalog.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+DEBUG: Creating Unity container.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+DEBUG: Configuring the Unity container.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+DEBUG: Adding UnityBootstrapperExtension to container.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+DEBUG: Configuring ServiceLocator singleton.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+DEBUG: Configuring the ViewModelLocator to use Unity.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+DEBUG: Configuring region adapters.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+DEBUG: Configuring default region behaviors.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+DEBUG: Registering Framework Exception Types.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+DEBUG: Creating the shell.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+DEBUG: Initializing modules.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+DEBUG: Bootstrapper sequence completed.. Priority: Low. Timestamp:2026-09-08 12:57:38Z.
+Loading file: (C:\clones\wi-2222897\.work\frenchtaxes-source-07a42172\IntegratedTests\AutoTest\Data\LegacyServices\TestPlans\Export_Run.xml)
+System.InvalidOperationException: Il existe une erreur dans le document XML (2, 2). ---> System.InvalidOperationException: <TestPlan xmlns='TestAutomation'> n'‚tait pas attendu.
+   … Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderTestCampaign.Read4_TestCampaign()
+   --- Fin de la trace de la pile d'exception interne ---
+   … System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   … Cegid.Retail.AutoTest.Model.Tools.XmlSerializerHelper.InternalReadFromFile[T](String fileName, XmlSerializer xs, XmlSchema schema)
+   … Cegid.Retail.AutoTest.Model.Tools.XmlSerializerHelper.ReadFromFile[T](String fileName, Type[] extraTypes, XmlSchema schema)
+   … Cegid.Retail.AutoTest.Api.JmeterGenerator.Run(String testCampaignFileName, String dstFolder, IUnityContainer container)
+   … Cegid.Retail.AutoTest.Console.Launcher.GenerateTestsMethods(CommandLineOptions commandLineOptions)
+   … Cegid.Retail.AutoTest.Console.Launcher.ExecuteTest(String[] args)
+   … Cegid.Retail.AutoTest.Console.Program.Main(String[] args)

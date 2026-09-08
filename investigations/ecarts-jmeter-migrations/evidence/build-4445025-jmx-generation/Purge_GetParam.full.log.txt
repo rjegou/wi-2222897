@@ -1,0 +1,23 @@
+DEBUG: Logger was created successfully.. Priority: Low. Timestamp:2026-09-08 13:06:15Z.
+DEBUG: Creating module catalog.. Priority: Low. Timestamp:2026-09-08 13:06:15Z.
+Loading file: (C:\clones\wi-2222897\.work\console-4445025\runtime\tools\Parameters.xml)
+DEBUG: Configuring module catalog.. Priority: Low. Timestamp:2026-09-08 13:06:15Z.
+DEBUG: Creating Unity container.. Priority: Low. Timestamp:2026-09-08 13:06:15Z.
+DEBUG: Configuring the Unity container.. Priority: Low. Timestamp:2026-09-08 13:06:15Z.
+DEBUG: Adding UnityBootstrapperExtension to container.. Priority: Low. Timestamp:2026-09-08 13:06:15Z.
+DEBUG: Configuring ServiceLocator singleton.. Priority: Low. Timestamp:2026-09-08 13:06:16Z.
+DEBUG: Configuring the ViewModelLocator to use Unity.. Priority: Low. Timestamp:2026-09-08 13:06:16Z.
+DEBUG: Configuring region adapters.. Priority: Low. Timestamp:2026-09-08 13:06:16Z.
+DEBUG: Configuring default region behaviors.. Priority: Low. Timestamp:2026-09-08 13:06:16Z.
+DEBUG: Registering Framework Exception Types.. Priority: Low. Timestamp:2026-09-08 13:06:16Z.
+DEBUG: Creating the shell.. Priority: Low. Timestamp:2026-09-08 13:06:16Z.
+DEBUG: Initializing modules.. Priority: Low. Timestamp:2026-09-08 13:06:16Z.
+DEBUG: Bootstrapper sequence completed.. Priority: Low. Timestamp:2026-09-08 13:06:16Z.
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Purge_GetParam\Purge_GetParam.xml)
+Processing TestCampaign=(C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Purge_GetParam\Purge_GetParam.xml) - Target Folder=(C:\clones\wi-2222897\.work\jfull/Tests/Purge_GetParam)
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Purge_GetParam\Purge_GetParam.xml)
+Processing TestPlan (Purge_GetParam)
+Loading file: (C:\clones\wi-2222897\.work\jfull\IntegratedTests\AutoTest\Data\Purge_GetParam\TestPlans\Purge_GetParam.xml)
+Generating TestClass for TestPlan=(001-Purge_GetParam.jmx)
+Overriding (C:\clones\wi-2222897\.work\jfull/Tests/Purge_GetParam\001-Purge_GetParam.jmx)
+Overriding (C:\clones\wi-2222897\.work\jfull/Tests/Purge_GetParam.xml)

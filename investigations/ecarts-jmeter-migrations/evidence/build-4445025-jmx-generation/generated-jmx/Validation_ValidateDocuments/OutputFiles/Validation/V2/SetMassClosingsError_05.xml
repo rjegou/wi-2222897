@@ -1,0 +1,9 @@
+﻿<SetMassClosingsErrorReasonResponse xmlns="http://www.cegid.fr/Retail/1.0">
+  <SetMassClosingsErrorReasonResult  xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <Statistics>
+      <ErrorReasonInserted>3</ErrorReasonInserted>
+      <ErrorReasonUpdated>1</ErrorReasonUpdated>
+      <UnknownElements>0</UnknownElements>
+    </Statistics>
+  </SetMassClosingsErrorReasonResult >
+</SetMassClosingsErrorReasonResponse>

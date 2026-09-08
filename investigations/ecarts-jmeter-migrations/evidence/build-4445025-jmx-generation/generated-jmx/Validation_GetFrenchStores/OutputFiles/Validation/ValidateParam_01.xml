@@ -1,0 +1,7 @@
+﻿<ValidateParamResponse xmlns="http://www.cegid.fr/Retail/1.0">
+  <ValidateParamResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <Errors xmlns:b="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    <Status>true</Status>
+    <Warnings xmlns:b="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  </ValidateParamResult>
+</ValidateParamResponse>

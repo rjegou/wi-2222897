@@ -1,0 +1,34 @@
+<ValidateEventsResponse xmlns="http://www.cegid.fr/Retail/1.0">
+  <ValidateEventsResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <Errors>
+      <Error>
+        <Error>
+          <Nature>Event</Nature>
+          <Scope>Validation</Scope>
+          <Type>MissingSignature</Type>
+        </Error>
+        <Number>1</Number>
+        <StoreId>104</StoreId>
+      </Error>
+      <Error>
+        <Error>
+          <Nature>Event</Nature>
+          <Scope>Validation</Scope>
+          <Type>MissingSignature</Type>
+        </Error>
+        <Number>2</Number>
+        <StoreId>104</StoreId>
+      </Error>
+    </Errors>
+    <Statistics>
+      <CashRegistersProcessed>1</CashRegistersProcessed>
+      <CashRegistersToProcess>1</CashRegistersToProcess>
+      <DaysProcessed>1</DaysProcessed>
+      <EventsProcessed>2</EventsProcessed>
+      <StoresProcessed>1</StoresProcessed>
+      <StoresToProcess>1</StoresToProcess>
+      <TotalNumberOfStores>71</TotalNumberOfStores>
+    </Statistics>
+    <Status>false</Status>
+  </ValidateEventsResult>
+</ValidateEventsResponse>

@@ -8,7 +8,7 @@ Date : 2026-09-08 (Europe/Paris)
 - Commit : `ef3d87034d38b88aca04c824061b140e2a29252c`
 - JMX : `Tests/WebServices/002-Device_Reassign.jmx`
 - Test case Azure : reference `1127761`, title `002-Device:Reassign - TC 122`
-- Collecte JMX : API Git REST read-only, `includeContent=true`, réponse 200, 4,095,936 octets; contenu non copié dans le dépôt documentaire.
+- Collecte JMX : API Git REST read-only, `includeContent=true`, réponse 200, 4,097,371 octets; SHA-256 `39E6036031D1AD30304405D3E08DA159DA89B94F0E1ADC7B4BB6A5C14CFBE59E`; contenu non copié dans le dépôt documentaire.
 
 ## Séquence et données non sensibles
 
@@ -35,6 +35,6 @@ Le reliquat de 33 est réel et identifié dans les résultats bruts : 29 `017-Mo
 
 ## Patch d'instrumentation
 
-Voir `TC122-INSTRUMENTATION.patch`. Il ajoute un `JSR223PostProcessor` sous le sampler `TC 122 - B-XQuery` qui journalise uniquement : code HTTP, taille de réponse, SHA-256 du corps, chemin HTTP et en-têtes de corrélation `x-correlation-id`, `request-id`, `traceparent` lorsqu'ils existent. Aucun corps, cookie, identifiant utilisateur ou secret n'est journalisé; les assertions métier restent inchangées.
+Voir `TC122-INSTRUMENTATION.patch`. Il ajoute un `JSR223PostProcessor` sous le sampler `TC 122 - B-XQuery` qui journalise uniquement : code HTTP, taille de réponse, SHA-256 du corps, SHA-256 du chemin HTTP et, pour les seuls en-têtes de corrélation `x-correlation-id`, `request-id`, `traceparent`, un SHA-256 de leur valeur. Aucun corps, cookie, identifiant utilisateur, valeur brute de chemin/corrélateur ou secret n'est journalisé; les assertions métier restent inchangées.
 
 Rejouer strictement Cur puis Fix avec le même setup, ordre et dataset; comparer les corrélateurs, codes, tailles, hashes et logs serveur. Une répétition unique ne suffit pas à établir la reproductibilité.

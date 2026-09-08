@@ -1,0 +1,15 @@
+{
+  "definitionId": 14264,
+  "existingRunId": 4444892,
+  "attempt": "PipelineArtifact upload of isolated upstream staging",
+  "result": "not_acquired",
+  "apiRunId": 4444962,
+  "apiArtifactId": 5037204,
+  "apiSourceVersion": "4c22cb2850a150161f44080815375527c4daad48",
+  "consolePackageSha256": "803DDBAAEB545A901ACD500195F5372F1E42F2FBD5FC1AC88626830F14EEE55B",
+  "migrationCacheSha256": "212D33F7BE8DE8AC5923E82AC7BE0A0CEECBA5A71B631337B729F37CC889BE03",
+  "jmeterArtifact": null,
+  "sharedFeedPublication": false,
+  "failureStage": "local Azure DevOps CLI extension before request",
+  "failure": "Permission denied: C:\\Users\\jegour\\.azure-devops\\python-sdk\\cache\\options.json"
+}

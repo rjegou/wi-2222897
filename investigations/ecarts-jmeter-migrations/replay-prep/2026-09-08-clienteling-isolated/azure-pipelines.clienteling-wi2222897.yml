@@ -1,0 +1,316 @@
+name: wi2222897-clienteling-isolated-$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger: none
+pr: none
+schedules: []
+
+parameters:
+- name: apiBuildId
+  type: string
+  default: ''
+- name: apiDefinitionId
+  type: string
+  default: '2637'
+- name: apiCommit
+  type: string
+  default: '4c22cb2850a150161f44080815375527c4daad48'
+- name: expectedConsolePackageSha256
+  type: string
+  default: '803DDBAAEB545A901ACD500195F5372F1E42F2FBD5FC1AC88626830F14EEE55B'
+- name: expectedApiPackageSha256
+  type: string
+  default: 'B416C52F58D5129C36540C13E9C9BA36CCB064FE5433EE3D21C8094A9E3E5AC4'
+- name: expectedApiPackageDllSha256
+  type: string
+  default: '38E7BA8D507FB73A661DD111224DCFABBF78C22AB2ECE23BD9D2EF67ACCD2F3E'
+- name: expectedApiDllSha256
+  type: string
+  default: '57BEACA20DE071673C208305A670969A943420CFCB73434FE7F30E4C13522F7B'
+- name: consoleBuildId
+  type: string
+  default: ''
+- name: consoleDefinitionId
+  type: string
+  default: ''
+- name: jmeterZipSha512
+  type: string
+  default: '387FADCA903EE0AA30E3F2115FDFEDB3898B102E6B9FE7CC3942703094BD2E65B235DF2B0C6D0D3248E74C9A7950A36E42625FD74425368342C12E40B016307'
+- name: attestationBuildId
+  type: string
+  default: ''
+- name: attestationDefinitionId
+  type: string
+  default: ''
+- name: attestationArtifactName
+  type: string
+  default: ''
+- name: typesToTest
+  type: object
+  default:
+  - Cur
+  - Fix
+- name: campaignFiles
+  type: object
+  default:
+  - 'IntegratedTests/AutoTest/Data/WebServices/TestPlans/Deployment_ResetFTSCustomer.jmx'
+  - 'IntegratedTests/AutoTest/Data/WebServices/TestPlans/Mobility_GetClientelingParameters.jmx'
+
+variables:
+  wiScope: 'WI-2222897'
+  evidenceArtifact: 'wi2222897-clienteling-evidence-$(Build.BuildId)'
+  BuildConfiguration: 'Release'
+
+stages:
+- stage: Preflight
+  displayName: 'Preflight — exact artifacts and isolated target'
+  jobs:
+  - job: VerifyInputs
+    pool:
+      vmImage: windows-latest
+    steps:
+    - checkout: self
+      clean: true
+    - task: PowerShell@2
+      displayName: 'Reject missing exact input IDs'
+      inputs:
+        pwsh: true
+        targetType: inline
+        script: |
+          $ErrorActionPreference = 'Stop'
+          foreach ($name in @('apiBuildId','consoleBuildId','consoleDefinitionId','attestationBuildId','attestationDefinitionId','attestationArtifactName')) {
+            $value = switch ($name) {
+              'apiBuildId' { '${{ parameters.apiBuildId }}' }
+              'consoleBuildId' { '${{ parameters.consoleBuildId }}' }
+              'consoleDefinitionId' { '${{ parameters.consoleDefinitionId }}' }
+              'attestationBuildId' { '${{ parameters.attestationBuildId }}' }
+              'attestationDefinitionId' { '${{ parameters.attestationDefinitionId }}' }
+              'attestationArtifactName' { '${{ parameters.attestationArtifactName }}' }
+            }
+            if ([string]::IsNullOrWhiteSpace($value)) { throw "Required input is missing: $name" }
+          }
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download API artifact by exact build ID'
+      inputs:
+        buildType: specific
+        project: '$(System.TeamProject)'
+        definition: '${{ parameters.apiDefinitionId }}'
+        specificBuildWithTriggering: false
+        buildVersionToDownload: specific
+        pipelineId: '${{ parameters.apiBuildId }}'
+        artifactName: 'Nuget'
+        path: '$(Pipeline.Workspace)\inputs\api'
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download Console artifact by exact build ID'
+      inputs:
+        buildType: specific
+        project: '$(System.TeamProject)'
+        definition: '${{ parameters.consoleDefinitionId }}'
+        specificBuildWithTriggering: false
+        buildVersionToDownload: specific
+        pipelineId: '${{ parameters.consoleBuildId }}'
+        artifactName: 'Nuget'
+        path: '$(Pipeline.Workspace)\inputs\console'
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download dedicated target attestation by exact build ID'
+      inputs:
+        buildType: specific
+        project: '$(System.TeamProject)'
+        definition: '${{ parameters.attestationDefinitionId }}'
+        specificBuildWithTriggering: false
+        buildVersionToDownload: specific
+        pipelineId: '${{ parameters.attestationBuildId }}'
+        artifactName: '${{ parameters.attestationArtifactName }}'
+        path: '$(Pipeline.Workspace)\inputs\attestation'
+    - task: PowerShell@2
+      displayName: 'Create migration XML manifest from checked-out Clienteling sources'
+      inputs:
+        pwsh: true
+        targetType: filePath
+        filePath: '$(Build.SourcesDirectory)\ci\wi2222897\scripts\New-Wi2222897MigrationManifest.ps1'
+        arguments: >-
+          -SourceRoot "$(Build.SourcesDirectory)"
+          -OutputRoot "$(Pipeline.Workspace)\inputs\migration"
+          -CampaignFilesText "${{ join(';', parameters.campaignFiles) }}"
+    - task: PowerShell@2
+      displayName: 'Verify commits, package/JMX hashes and target attestation'
+      inputs:
+        pwsh: true
+        targetType: filePath
+        filePath: '$(Build.SourcesDirectory)\ci\wi2222897\scripts\Assert-Wi2222897ArtifactManifest.ps1'
+        arguments: '-InputRoot "$(Pipeline.Workspace)\inputs" -ExpectedApiCommit "${{ parameters.apiCommit }}" -ExpectedApiPackageSha256 "${{ parameters.expectedApiPackageSha256 }}" -ExpectedApiDllSha256 "${{ parameters.expectedApiPackageDllSha256 }}" -ExpectedConsolePackageSha256 "${{ parameters.expectedConsolePackageSha256 }}" -ExpectedConsoleApiDllSha256 "${{ parameters.expectedApiDllSha256 }}" -ExpectedScope "$(wiScope)" -TargetAttestation "$(Pipeline.Workspace)\inputs\attestation\target-attestation.json" -OutputPath "$(Build.ArtifactStagingDirectory)\preflight-manifest.json"'
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish scrubbed preflight manifest only'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)\preflight-manifest.json'
+        artifact: '$(evidenceArtifact)-preflight'
+        publishLocation: pipeline
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish migration XML manifest only'
+      inputs:
+        targetPath: '$(Pipeline.Workspace)\inputs\migration'
+        artifact: '$(evidenceArtifact)-migration'
+        publishLocation: pipeline
+
+- stage: Build
+  displayName: 'Build — Clienteling source only'
+  dependsOn: Preflight
+  condition: succeeded()
+  jobs:
+  - job: BuildClienteling
+    pool:
+      vmImage: windows-latest
+    steps:
+    - checkout: self
+      clean: true
+    - task: VSBuild@1
+      displayName: 'Build Clienteling solution'
+      inputs:
+        solution: '**\*.sln'
+        platform: 'any cpu'
+        configuration: '$(BuildConfiguration)'
+    - task: VSTest@2
+      displayName: 'Run Clienteling unit tests'
+      inputs:
+        testAssembly: '**\*test*.dll;-:**\obj\**'
+        configuration: '$(BuildConfiguration)'
+        runInParallel: false
+    - task: PowerShell@2
+      displayName: 'Write build identity manifest'
+      inputs:
+        pwsh: true
+        targetType: inline
+        script: |
+          $ErrorActionPreference = 'Stop'
+          $out = Join-Path '$(Build.ArtifactStagingDirectory)' 'build-manifest.json'
+          @{ scope='WI-2222897'; buildId='$(Build.BuildId)'; sourceVersion='$(Build.SourceVersion)'; sourceBranch='$(Build.SourceBranch)'; files=@() } | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $out -Encoding UTF8
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish build manifest only'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)\build-manifest.json'
+        artifact: '$(evidenceArtifact)-build'
+        publishLocation: pipeline
+
+- stage: GenerateJmx
+  displayName: 'Generate JMX — candidate Console from exact artifact'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - job: Generate
+    pool:
+      vmImage: windows-latest
+    steps:
+    - checkout: self
+      clean: true
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download exact preflight inputs'
+      inputs:
+        buildType: current
+        artifactName: '$(evidenceArtifact)-preflight'
+        path: '$(Pipeline.Workspace)\preflight'
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download exact Console input'
+      inputs:
+        buildType: specific
+        project: '$(System.TeamProject)'
+        definition: '${{ parameters.consoleDefinitionId }}'
+        specificBuildWithTriggering: false
+        buildVersionToDownload: specific
+        pipelineId: '${{ parameters.consoleBuildId }}'
+        artifactName: 'Nuget'
+        path: '$(Pipeline.Workspace)\inputs\console'
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download migration XML manifest from current preflight'
+      inputs:
+        buildType: current
+        artifactName: '$(evidenceArtifact)-migration'
+        path: '$(Pipeline.Workspace)\inputs\migration'
+    - task: PowerShell@2
+      displayName: 'Regenerate JMX from XML with candidate Console'
+      inputs:
+        pwsh: true
+        targetType: filePath
+        filePath: '$(Build.SourcesDirectory)\ci\wi2222897\scripts\Invoke-Wi2222897JmxRegeneration.ps1'
+        arguments: >-
+          -InputRoot "$(Pipeline.Workspace)\inputs"
+          -ExpectedPackageSha256 "${{ parameters.expectedConsolePackageSha256 }}"
+          -ExpectedApiDllSha256 "${{ parameters.expectedApiDllSha256 }}"
+          -OutputRoot "$(Build.ArtifactStagingDirectory)\jmx"
+          -CampaignFilesText "${{ join(';', parameters.campaignFiles) }}"
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish generated JMX and manifest only'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)\jmx'
+        artifact: '$(evidenceArtifact)-jmx'
+        publishLocation: pipeline
+
+- stage: JMeter
+  displayName: 'JMeter — Cur and Fix'
+  dependsOn: GenerateJmx
+  condition: succeeded()
+  jobs:
+  - ${{ each variant in parameters.typesToTest }}:
+    - job: JMeter_${{ variant }}
+      displayName: 'JMeter V26 ${{ variant }}'
+      pool:
+        vmImage: windows-latest
+      timeoutInMinutes: 90
+      steps:
+      - checkout: self
+        clean: true
+      - task: DownloadPipelineArtifact@2
+        displayName: 'Download preflight inputs'
+        inputs:
+          buildType: current
+          artifactName: '$(evidenceArtifact)-preflight'
+          path: '$(Pipeline.Workspace)\preflight'
+      - task: DownloadPipelineArtifact@2
+        displayName: 'Download generated JMX'
+        inputs:
+          buildType: current
+          artifactName: '$(evidenceArtifact)-jmx'
+          path: '$(Pipeline.Workspace)\generated'
+      - task: PowerShell@2
+        displayName: 'Download and verify Apache JMeter 5.6.3'
+        inputs:
+          pwsh: true
+          targetType: inline
+          script: |
+            $ErrorActionPreference = 'Stop'
+            $root = Join-Path '$(Pipeline.Workspace)' 'inputs\jmeter'
+            $zip = Join-Path $root 'apache-jmeter-5.6.3.zip'
+            New-Item -ItemType Directory -Force -Path $root | Out-Null
+            Invoke-WebRequest -UseBasicParsing -Uri 'https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.3.zip' -OutFile $zip
+            $actual = (Get-FileHash -LiteralPath $zip -Algorithm SHA512).Hash.ToUpperInvariant()
+            if ($actual -ne '${{ parameters.jmeterZipSha512 }}') { throw "JMeter ZIP SHA-512 mismatch: $actual" }
+            Expand-Archive -LiteralPath $zip -DestinationPath $root -Force
+      - task: DownloadPipelineArtifact@2
+        displayName: 'Download exact target attestation'
+        inputs:
+          buildType: specific
+          project: '$(System.TeamProject)'
+          definition: '${{ parameters.attestationDefinitionId }}'
+          specificBuildWithTriggering: false
+          buildVersionToDownload: specific
+          pipelineId: '${{ parameters.attestationBuildId }}'
+          artifactName: '${{ parameters.attestationArtifactName }}'
+          path: '$(Pipeline.Workspace)\inputs\attestation'
+      - task: PowerShell@2
+        displayName: 'Run isolated JMeter ${{ variant }}'
+        inputs:
+          pwsh: true
+          targetType: filePath
+          filePath: '$(Build.SourcesDirectory)\ci\wi2222897\scripts\Invoke-Wi2222897JmeterVariant.ps1'
+          arguments: >-
+            -Variant "${{ variant }}"
+            -InputRoot "$(Pipeline.Workspace)\inputs"
+            -JmxManifest "$(Pipeline.Workspace)\generated\manifest.json"
+            -TargetAttestation "$(Pipeline.Workspace)\inputs\attestation\target-attestation.json"
+            -OutputRoot "$(Build.ArtifactStagingDirectory)\${{ variant }}"
+            -CampaignFilesText "${{ join(';', parameters.campaignFiles) }}"
+      - task: PublishPipelineArtifact@1
+        displayName: 'Publish scrubbed JMeter ${{ variant }} evidence'
+        condition: always()
+        inputs:
+          targetPath: '$(Build.ArtifactStagingDirectory)\${{ variant }}'
+          artifact: '$(evidenceArtifact)-${{ variant }}'
+          publishLocation: pipeline

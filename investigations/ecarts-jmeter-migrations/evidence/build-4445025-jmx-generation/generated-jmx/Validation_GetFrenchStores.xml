@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<TestCampaign code="Auto Tests Validation_GetFrenchStores" reportLegacy="true" >
+    <TestPlanItem item="Validation_GetFrenchStores\001-Validation_GetFrenchStores.jmx" />
+</TestCampaign >

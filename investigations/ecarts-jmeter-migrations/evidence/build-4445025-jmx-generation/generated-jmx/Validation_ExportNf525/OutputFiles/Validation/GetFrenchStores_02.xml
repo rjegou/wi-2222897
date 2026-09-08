@@ -1,0 +1,5 @@
+﻿<GetFrenchStoresResponse xmlns="http://www.cegid.fr/Retail/1.0">
+  <GetFrenchStoresResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <Stores i:nil="true" />
+  </GetFrenchStoresResult>
+</GetFrenchStoresResponse>

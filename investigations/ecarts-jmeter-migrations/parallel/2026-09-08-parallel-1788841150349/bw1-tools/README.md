@@ -12,6 +12,8 @@ Date: 2026-09-08 Europe/Paris. Scope: `Y2_Tools_AutoTest_Api`, `Y2_Tools_AutoTes
 - [`worktrees/api`](../../../../../EXTERNAL-ARTIFACTS.md): independent local clone/copy baseline plus patch.
 - [`INTEGRATION.md`](INTEGRATION.md): contract for Console/package consumers.
 - [`RESOURCES.md`](RESOURCES.md): resources and cleanup status.
+- [`evidence/local-2026-09-08-inventorytracking-pipelineartifact-5037140-round6/README.md`](evidence/local-2026-09-08-inventorytracking-pipelineartifact-5037140-round6/README.md): live artifact 5037140 inventory, hashes, and the proven `downloadedPackages.json` contract for the experimental local transport.
+- [`evidence/local-2026-09-08-inventorytracking-transport-candidate-round7/README.md`](evidence/local-2026-09-08-inventorytracking-transport-candidate-round7/README.md): independent candidate diff, exact file hashes, positive/negative fixture tests, and review gates.
 
 The baseline source snapshot was clean at `worktrees/Y2_Tools_AutoTest_Api` HEAD `220de3d978e7f10acda1c09dd0bf95ffaa4a2ca2`; the independent local baseline is commit `8461c8db6ec532834f1b047013716fbc2dd3c718`. No source repository was modified.
 

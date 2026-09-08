@@ -1,0 +1,300 @@
+name: wi2222897-v26-isolated-$(Date:yyyyMMdd).$(Rev:r)
+
+trigger: none
+pr: none
+schedules: []
+
+# This file is a reviewable candidate. It must be copied with replay-assets/ into
+# a dedicated YAML definition before any queue. Empty identity variables are
+# intentional fail-closed inputs, not values to guess at queue time.
+variables:
+  pluginCommit: 'f80bc731571b2b5ed8a67da171b288873de428a6'
+  apiBranch: 'refs/heads/sandbox/frenchtaxesrules/api-jmeter-fixes'
+  apiCommit: '220de3d978e7f10acda1c09dd0bf95ffaa4a2ca2'
+  pluginVersion: '26.0.10.75'
+  coreVersion: '26.0.0.1762'
+  imageRepository: 'cegid-retail-docker-production/y2-jmeter'
+  imageDigest: 'sha256:ea74f21a0d2ac3653ff843b393f6e97571500f6b41b2c2f71e94da23c0a9dbf2'
+  sqlDatabase: 'AUTO_V26_00'
+  tenantId: 'WI2222897_FTR_V26_DEDICATED'
+  approvedAppServerHost: ''
+  approvedSqlHost: ''
+  consolePackageVersion: '2.0.43'
+  consolePackageSha256: ''
+  correctedExportJmxSha256: 'C59BD01D5C075961A781335D746A4F72B2CB331EC955CE828D4F6DE4C850EB0C'
+  # Supplied only by the dedicated variable group after target review.
+  platformDeployVersion: ''
+  artifactoryPackageFolder: ''
+  runFullCampaign: 'false'
+  fullCampaignName: ''
+
+resources:
+  containers:
+  - container: acr_y2jmeter_test
+    image: $(imageRepository)@$(imageDigest)
+    endpoint: AzureContainerRegistry-Docker-Retail
+
+pool:
+  vmImage: windows-latest
+
+stages:
+- stage: Build
+  displayName: 'WI-2222897 V26 isolated Build'
+  jobs:
+  - job: Build
+    steps:
+    - checkout: self
+      clean: true
+    - task: PowerShell@2
+      displayName: 'Verify plugin commit and candidate package identity'
+      inputs:
+        targetType: inline
+        pwsh: true
+        script: |
+          $ErrorActionPreference = 'Stop'
+          if ('$(Build.SourceVersion)' -ne '$(pluginCommit)') { throw "REFUSE: plugin commit mismatch" }
+          if ([string]::IsNullOrWhiteSpace('$(consolePackageSha256)')) { throw 'REFUSE: Console package SHA-256 is unresolved' }
+          if ([string]::IsNullOrWhiteSpace('$(platformDeployVersion)')) { throw 'REFUSE: PlatformDeploy version is unresolved' }
+          if ([string]::IsNullOrWhiteSpace('$(artifactoryPackageFolder)')) { throw 'REFUSE: package source is unresolved' }
+    - task: VSBuild@1
+      displayName: 'Build FrenchTaxesRules solution (no package publication)'
+      inputs:
+        solution: '**/*.sln'
+        platform: 'any cpu'
+        configuration: release
+        clean: false
+    - task: VSTest@2
+      displayName: 'Run build tests only'
+      inputs:
+        testSelector: testAssemblies
+        testAssemblyVer2: |
+          **\*test*.dll
+          !**\obj\**
+          !**\TestAdapter.dll
+        searchFolder: '$(System.DefaultWorkingDirectory)'
+        runInParallel: false
+    - task: PowerShell@2
+      displayName: 'Write build provenance'
+      inputs:
+        targetType: inline
+        pwsh: true
+        script: |
+          @(
+            'PluginCommit=$(Build.SourceVersion)',
+            'ApiBranch=$(apiBranch)',
+            'ApiCommit=$(apiCommit)',
+            'Plugin=$(pluginVersion)',
+            'Core=$(coreVersion)',
+            'Image=$(imageRepository)@$(imageDigest)',
+            'ConsoleVersion=$(consolePackageVersion)',
+            'ConsoleSha256=$(consolePackageSha256)'
+          ) | Set-Content '$(Build.ArtifactStagingDirectory)\build-provenance.txt'
+    - task: PublishPipelineArtifact@1
+      displayName: 'Retain build evidence only'
+      condition: always()
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)'
+        artifact: 'wi2222897-v26-build-$(Build.BuildId)'
+        publishLocation: pipeline
+
+# Cur and Fix use separate dedicated targets. The sequence is intentional:
+# Export_Run is executed first, then DocumentSignature_SignOne; TC09/TC10 are
+# evaluated only after TC08 and its postconditions have been retained.
+- stage: JMeter_Cur
+  displayName: 'WI-2222897 V26 Cur — minimal replay'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - job: Cur_Minimal
+    container: acr_y2jmeter_test
+    variables:
+      variant: Cur
+      deployConfig: v26-Cur.cy2px
+      isolationMarker: WI-2222897-V26-Cur-DEDICATED
+    steps:
+    - checkout: self
+      clean: true
+    - template: replay-assets/templates/preflight-v26.candidate.yml
+      parameters:
+        variant: Cur
+        expectedMarker: '$(isolationMarker)'
+        expectedAppServerHost: '$(approvedAppServerHost)'
+        expectedSqlHost: '$(approvedSqlHost)'
+        expectedExportJmxSha256: '$(correctedExportJmxSha256)'
+        expectedConsolePackageSha256: '$(consolePackageSha256)'
+    - template: replay-assets/templates/task-deploy-in-containerized-job.candidate.yml
+      parameters:
+        variant: Cur
+        platformDeployVersion: '$(platformDeployVersion)'
+        artifactoryPackageFolder: '$(artifactoryPackageFolder)'
+        deployConfigFile: '$(deployConfig)'
+        database: '$(sqlDatabase)'
+        tenantId: '$(tenantId)'
+        runTests: false
+        publishExternal: false
+    - template: replay-assets/templates/task-run-campaign.candidate.yml
+      parameters:
+        campaignName: ExportRunOnly
+        campaignTitle: 'FrenchTaxesRules-V26-Cur-ExportRun-minimal'
+        requiredCases: 'Export_Run:TC08,TC09,TC10'
+        continueOnError: false
+    - template: replay-assets/templates/task-run-campaign.candidate.yml
+      parameters:
+        campaignName: DocumentSignatureSignOneOnly
+        campaignTitle: 'FrenchTaxesRules-V26-Cur-DocumentSignature-minimal'
+        requiredCases: 'DocumentSignature_SignOne:TC02'
+        continueOnError: false
+    - template: replay-assets/templates/stage-evidence.candidate.yml
+      parameters:
+        variant: Cur
+        publishExternal: false
+      condition: always()
+
+- stage: JMeter_Fix
+  displayName: 'WI-2222897 V26 Fix — minimal replay'
+  dependsOn: JMeter_Cur
+  condition: succeeded()
+  jobs:
+  - job: Fix_Minimal
+    container: acr_y2jmeter_test
+    variables:
+      variant: Fix
+      deployConfig: v26-Fix.cy2px
+      isolationMarker: WI-2222897-V26-Fix-DEDICATED
+    steps:
+    - checkout: self
+      clean: true
+    - template: replay-assets/templates/preflight-v26.candidate.yml
+      parameters:
+        variant: Fix
+        expectedMarker: '$(isolationMarker)'
+        expectedAppServerHost: '$(approvedAppServerHost)'
+        expectedSqlHost: '$(approvedSqlHost)'
+        expectedExportJmxSha256: '$(correctedExportJmxSha256)'
+        expectedConsolePackageSha256: '$(consolePackageSha256)'
+    - template: replay-assets/templates/task-deploy-in-containerized-job.candidate.yml
+      parameters:
+        variant: Fix
+        platformDeployVersion: '$(platformDeployVersion)'
+        artifactoryPackageFolder: '$(artifactoryPackageFolder)'
+        deployConfigFile: '$(deployConfig)'
+        database: '$(sqlDatabase)'
+        tenantId: '$(tenantId)'
+        runTests: false
+        publishExternal: false
+    - template: replay-assets/templates/task-run-campaign.candidate.yml
+      parameters:
+        campaignName: ExportRunOnly
+        campaignTitle: 'FrenchTaxesRules-V26-Fix-ExportRun-minimal'
+        requiredCases: 'Export_Run:TC08,TC09,TC10'
+        continueOnError: false
+    - template: replay-assets/templates/task-run-campaign.candidate.yml
+      parameters:
+        campaignName: DocumentSignatureSignOneOnly
+        campaignTitle: 'FrenchTaxesRules-V26-Fix-DocumentSignature-minimal'
+        requiredCases: 'DocumentSignature_SignOne:TC02'
+        continueOnError: false
+    - template: replay-assets/templates/stage-evidence.candidate.yml
+      parameters:
+        variant: Fix
+        publishExternal: false
+      condition: always()
+
+# This stage is deliberately opt-in. The exact full-campaign descriptor and
+# hash must be supplied after the minimal cases pass; an empty name refuses the
+# stage before any deployment or JMeter invocation.
+- stage: JMeter_FullCampaign
+  displayName: 'WI-2222897 V26 Cur/Fix — full campaign (opt-in)'
+  dependsOn: JMeter_Fix
+  condition: and(succeeded(), eq(variables['runFullCampaign'], 'true'))
+  jobs:
+  - job: Cur_Full
+    container: acr_y2jmeter_test
+    variables:
+      variant: Cur
+      isolationMarker: WI-2222897-V26-Cur-DEDICATED
+    steps:
+    - checkout: self
+      clean: true
+    - task: PowerShell@2
+      displayName: 'Require reviewed full-campaign descriptor'
+      inputs:
+        targetType: inline
+        pwsh: true
+        script: |
+          $ErrorActionPreference = 'Stop'
+          if ([string]::IsNullOrWhiteSpace('$(fullCampaignName)')) { throw 'REFUSE: full campaign descriptor is unresolved' }
+    - template: replay-assets/templates/preflight-v26.candidate.yml
+      parameters:
+        variant: Cur
+        expectedMarker: '$(isolationMarker)'
+        expectedAppServerHost: '$(approvedAppServerHost)'
+        expectedSqlHost: '$(approvedSqlHost)'
+        expectedExportJmxSha256: '$(correctedExportJmxSha256)'
+        expectedConsolePackageSha256: '$(consolePackageSha256)'
+    - template: replay-assets/templates/task-deploy-in-containerized-job.candidate.yml
+      parameters:
+        variant: Cur
+        platformDeployVersion: '$(platformDeployVersion)'
+        artifactoryPackageFolder: '$(artifactoryPackageFolder)'
+        deployConfigFile: v26-Cur.cy2px
+        database: '$(sqlDatabase)'
+        tenantId: '$(tenantId)'
+        runTests: false
+        publishExternal: false
+    - template: replay-assets/templates/task-run-campaign.candidate.yml
+      parameters:
+        campaignName: '$(fullCampaignName)'
+        campaignTitle: 'FrenchTaxesRules-V26-Cur-full'
+        requiredCases: '*'
+        continueOnError: false
+    - template: replay-assets/templates/stage-evidence.candidate.yml
+      parameters:
+        variant: Cur-full
+        publishExternal: false
+      condition: always()
+  - job: Fix_Full
+    container: acr_y2jmeter_test
+    variables:
+      variant: Fix
+      isolationMarker: WI-2222897-V26-Fix-DEDICATED
+    steps:
+    - checkout: self
+      clean: true
+    - task: PowerShell@2
+      displayName: 'Require reviewed full-campaign descriptor'
+      inputs:
+        targetType: inline
+        pwsh: true
+        script: |
+          $ErrorActionPreference = 'Stop'
+          if ([string]::IsNullOrWhiteSpace('$(fullCampaignName)')) { throw 'REFUSE: full campaign descriptor is unresolved' }
+    - template: replay-assets/templates/preflight-v26.candidate.yml
+      parameters:
+        variant: Fix
+        expectedMarker: '$(isolationMarker)'
+        expectedAppServerHost: '$(approvedAppServerHost)'
+        expectedSqlHost: '$(approvedSqlHost)'
+        expectedExportJmxSha256: '$(correctedExportJmxSha256)'
+        expectedConsolePackageSha256: '$(consolePackageSha256)'
+    - template: replay-assets/templates/task-deploy-in-containerized-job.candidate.yml
+      parameters:
+        variant: Fix
+        platformDeployVersion: '$(platformDeployVersion)'
+        artifactoryPackageFolder: '$(artifactoryPackageFolder)'
+        deployConfigFile: v26-Fix.cy2px
+        database: '$(sqlDatabase)'
+        tenantId: '$(tenantId)'
+        runTests: false
+        publishExternal: false
+    - template: replay-assets/templates/task-run-campaign.candidate.yml
+      parameters:
+        campaignName: '$(fullCampaignName)'
+        campaignTitle: 'FrenchTaxesRules-V26-Fix-full'
+        requiredCases: '*'
+        continueOnError: false
+    - template: replay-assets/templates/stage-evidence.candidate.yml
+      parameters:
+        variant: Fix-full
+        publishExternal: false
+      condition: always()

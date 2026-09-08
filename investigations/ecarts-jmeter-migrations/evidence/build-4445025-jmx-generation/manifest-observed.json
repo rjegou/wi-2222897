@@ -1,0 +1,177 @@
+{
+  "generatedAtUtc": "2026-09-08T11:07:47.7180053Z",
+  "sourceCommit": "07a42172bebc65d17093e166ac08de22e4fe7248",
+  "consoleBuild": 4445025,
+  "apiBuild": 4444765,
+  "package": {
+    "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\Cegid.Retail.AutoTest.Console.2.0.43-wi2222897-console-candidate.nupkg",
+    "sha256": "796563797BBA329B2D041A2921735BC86C5F2DCADAED269FEDF77BB13542F1BE",
+    "version": "2.0.43-wi2222897-console-candidate"
+  },
+  "apiDll": {
+    "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\Cegid.Retail.AutoTest.Api.dll",
+    "sha256": "A7D3BB84C4105ADCB626AFE570C42167FADC9F5A04602A6EF223530C98A9021E"
+  },
+  "consoleExe": {
+    "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\Cegid.Retail.AutoTest.Console.exe",
+    "sha256": "AB4BBB596409B3A60107905E82577E9BC42C55467A8E602B7194DD2D8CE9B2AF"
+  },
+  "sourceTestPlans": [
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\LegacyServices\\TestPlans\\Closing_AnnualClosing.xml",
+      "sha256": "081FE691BF2AE541A9C7BD1A070EE1E0C1D4493D32BD857FF291CBA469339F99"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\LegacyServices\\TestPlans\\Closing_DailyRegisterClosing.xml",
+      "sha256": "D33D3CF9CD2FE70138B422193408F26ACA8419620B2D62E37CA6CDECA5B246CC"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\LegacyServices\\TestPlans\\Closing_DailyStoreClosing.xml",
+      "sha256": "9AE96040592C148459E50D7CAAE393634D12AFEC7D3B911996706AF87AE49A54"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\LegacyServices\\TestPlans\\Closing_MonthlyClosing.xml",
+      "sha256": "E4D965C0BB2F7B1ABA0EB02D0735F2D28E6E591184327754A621BA4083A07648"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\LegacyServices\\TestPlans\\DocumentSignature_GetCustomerSigningVersion.xml",
+      "sha256": "76343647AB1BD0AFF34500112A92C7E8051DAF0BFDA1D4ECA9DED099C1A8B723"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\LegacyServices\\TestPlans\\DocumentSignature_GetDaemonSigningVersion.xml",
+      "sha256": "9143B71DB107C7E6040E740319D1A6D62D50C7C37E316A73DF1DFE03602AA1D0"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\LegacyServices\\TestPlans\\DocumentSignature_SignOne.xml",
+      "sha256": "BF4E662E76758CE1C84D92B2D6C054DB47B535BBB73ECD9E198E4C1D344744AB"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\LegacyServices\\TestPlans\\EventSignature_Sign.xml",
+      "sha256": "4AC7586DEB92EF8632F37C10BDC259205048DDF67E7E7930DA59727B62C2B09A"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\LegacyServices\\TestPlans\\Export_Run.xml",
+      "sha256": "45736864E4FF31F2E722F3BF1B389270C05D5F319619F4AF04458C54FD42298D"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\LegacyServices\\TestPlans\\FrenchTaxesRules_Run.xml",
+      "sha256": "09B89CFBBA522330710C95420ED83717A23EEA278D8BDCF6FECE8EC9B69A22B4"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\WebServices\\TestPlans\\Purge_CreateParam.xml",
+      "sha256": "8E91E083F9ACC02F938BB0C21EB99053271BBF07B375D972B354EE5F7CC90195"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\WebServices\\TestPlans\\Purge_Execute.xml",
+      "sha256": "63D5AA5A78F674CF6428374E73344729A0360598202003236D547EF7E36ED989"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\WebServices\\TestPlans\\Purge_GetParam.xml",
+      "sha256": "67C69188F58D07E042C83815672A28DD76488EEFB57549513B5B991575ED3CFE"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\WebServices\\TestPlans\\Validation_ExportNf525.xml",
+      "sha256": "35D7D24FE118BABC14945A6A143D39ECFB724DEB10C8697EBC6099C9D32722F5"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\WebServices\\TestPlans\\Validation_GetFrenchStores.xml",
+      "sha256": "100A8689BBFA705C9E0168B0FEAEF21055CE3FD65079D3081AB8D3D3EE41B937"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\WebServices\\TestPlans\\Validation_ValidateClosingsV2.xml",
+      "sha256": "74B17972360010CF4B6A52F04F046703ED858B15A2D27753529E10C566E0EC0A"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\WebServices\\TestPlans\\Validation_ValidateDocuments.xml",
+      "sha256": "EF34E579E6D5C41F8F9A902A3319D3CEFB0243CB2652058FEC4F6DCD6FEBB959"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\WebServices\\TestPlans\\Validation_ValidateEvents.xml",
+      "sha256": "D8BF56D82C3F963A8C5FBE5A4533123CD040BD25A1C45C2D2721155C74AFA1D0"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\.work\\frenchtaxes-source-07a42172\\IntegratedTests\\AutoTest\\Data\\WebServices\\TestPlans\\Validation_ValidateParam.xml",
+      "sha256": "CF6DAB7D9D75E067ADF75D340F54F98B71064956230F49FE0468F4CE8E5FD8FA"
+    }
+  ],
+  "generatedJmx": [
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Closing_AnnualClosing\\001-Closing_AnnualClosing.jmx",
+      "sha256": "E11A418591D922C884727A1F1F0545D74671474459ED4C0098CE92D93EFDEFBF"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Closing_DailyRegisterClosing\\001-Closing_DailyRegisterClosing.jmx",
+      "sha256": "4AC262EC0FF04FD4CF30C6F3F0B208D4E4D5AB893F2AE68270AF43330B4FA211"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Closing_DailyStoreClosing\\001-Closing_DailyStoreClosing.jmx",
+      "sha256": "F09028E03405388076D857C0A250F8C96280AF208C7FBE3859083C5B39601C27"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Closing_MonthlyClosing\\001-Closing_MonthlyClosing.jmx",
+      "sha256": "28E48163AD5B6741D0DEB78C0C0A18E54FDEAB744C9C185541329CD2165F39E5"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\DocumentSignature_GetCustomerSigningVersion\\001-DocumentSignature_GetCustomerSigningVersion.jmx",
+      "sha256": "F62C12790EB66EC8C9EC3E976A2F4AA4175252A2E5037DCC84868AD9FBD46DEF"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\DocumentSignature_GetDaemonSigningVersion\\001-DocumentSignature_GetDaemonSigningVersion.jmx",
+      "sha256": "8E35E9B06B75F1E52C0478C9511F59C26E9C92A7D361A7D4EBDD06B1C1A5CEC8"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\DocumentSignature_SignOne\\001-DocumentSignature_SignOne.jmx",
+      "sha256": "432AA8C477E875652D4A4991D84DB19DB0B3790469EB2DE81212F85F0F341AE9"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\EventSignature_Sign\\001-EventSignature_Sign.jmx",
+      "sha256": "5731B1E2765992C3CD64EE264F1097A18BA3D3CB0A88658E1820E0390F53FF82"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Export_Run\\001-Export_Run.jmx",
+      "sha256": "C59BD01D5C075961A781335D746A4F72B2CB331EC955CE828D4F6DE4C850EB0C"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\FrenchTaxesRules_Run\\001-FrenchTaxesRules_Run.jmx",
+      "sha256": "FCBB0E5CBF01028168B20A58FB260C1B2432324920A0851E71030332B7CED626"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Purge_CreateParam\\001-Purge_CreateParam.jmx",
+      "sha256": "88009EF9D4D3365AE6190C110356B09FEFA3FC26A0D5C9472EE7028CD1BF8C93"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Purge_Execute\\001-Purge_Execute.jmx",
+      "sha256": "BB7D4ACF635A0AA600432152270C7DD1E7E99C7A127808F0FACC4240A1A30996"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Purge_GetParam\\001-Purge_GetParam.jmx",
+      "sha256": "A2C701C851129CF0CBF6690DBFEF412F8499F2064CCB33BFE292470F91A3B79D"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Validation_ExportNf525\\001-Validation_ExportNf525.jmx",
+      "sha256": "4E34A8FD8B4D268A3E9E77DB87C4A048A505D30087FD4266375DB5E733C7CECD"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Validation_GetFrenchStores\\001-Validation_GetFrenchStores.jmx",
+      "sha256": "024A6EBDD55F9FE9197F067BE0B95E725362D097F9B866680CD7E93817CB48A5"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Validation_ValidateClosingsV2\\001-Validation_ValidateClosingsV2.jmx",
+      "sha256": "1339DA9E5ABF567CCF78615AB71DDF328FFE4C8017EA48EDAA0155D127269C41"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Validation_ValidateDocuments\\001-Validation_ValidateDocuments.jmx",
+      "sha256": "A3D40FD0685821151F8BDC0E954469524815D5333B84C6491389600A18063F0A"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Validation_ValidateEvents\\001-Validation_ValidateEvents.jmx",
+      "sha256": "9739E8C22BB6C8C690F0B38AD71B11377934FCBA4AB57B05FDB0553DF551A1AD"
+    },
+    {
+      "path": "C:\\clones\\wi-2222897\\investigations\\ecarts-jmeter-migrations\\evidence\\build-4445025-jmx-generation\\generated-jmx\\Validation_ValidateParam\\001-Validation_ValidateParam.jmx",
+      "sha256": "CC3B898C5860E9D5F92016F94440A846C010908A08A94E3EA66EA08C35F01718"
+    }
+  ],
+  "observedJmxCount": 19,
+  "expectedJmxCount": 32
+}

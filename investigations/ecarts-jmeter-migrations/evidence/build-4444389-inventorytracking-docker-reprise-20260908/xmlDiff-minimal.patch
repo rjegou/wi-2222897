@@ -1,0 +1,33 @@
+From ef3d87034d38b88aca04c824061b140e2a29252c Mon Sep 17 00:00:00 2001
+Subject: [PATCH] InventoryTracking: use packaged XmlDiff dependencies
+
+This is a review-only reconstruction of the exact two-file change in
+ef3d87034d38b88aca04c824061b140e2a29252c, whose parent is 4de185bb.
+
+diff --git a/Cegid.Retail.InventoryTracking.Services.Tests/Cegid.Retail.InventoryTracking.Services.Tests.csproj b/Cegid.Retail.InventoryTracking.Services.Tests/Cegid.Retail.InventoryTracking.Services.Tests.csproj
+--- a/Cegid.Retail.InventoryTracking.Services.Tests/Cegid.Retail.InventoryTracking.Services.Tests.csproj
++++ b/Cegid.Retail.InventoryTracking.Services.Tests/Cegid.Retail.InventoryTracking.Services.Tests.csproj
+@@ -103,8 +103,9 @@
+-    <Reference Include="Cegid.Retail.XmlDiff">
+-      <HintPath>..\Assemblies\Y2Core\Cegid.Retail.XmlDiff.dll</HintPath>
++    <Reference Include="Cegid.Retail.XmlDiff, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3ea389785c619660, processorArchitecture=MSIL">
++      <SpecificVersion>False</SpecificVersion>
++      <HintPath>..\Sln\packages\Cegid.Retail.XmlDiff.1.0.0\lib\net452\Cegid.Retail.XmlDiff.dll</HintPath>
+@@ -122,8 +123,11 @@
+-    <Reference Include="System.Xml" />
+-    <Reference Include="System.Xml.Linq" />
++    <Reference Include="System.Xml" />
++    <Reference Include="System.Xml.Linq" />
++    <Reference Include="XmlDiffPatch, Version=1.0.8.28, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
++      <HintPath>..\Sln\packages\XMLDiffPatch.1.0.8.28\lib\net\XmlDiffPatch.dll</HintPath>
++    </Reference>
+diff --git a/Cegid.Retail.InventoryTracking.Services.Tests/packages.config b/Cegid.Retail.InventoryTracking.Services.Tests/packages.config
+--- a/Cegid.Retail.InventoryTracking.Services.Tests/packages.config
++++ b/Cegid.Retail.InventoryTracking.Services.Tests/packages.config
+@@ -1,9 +1,11 @@
+ <packages>
++  <package id="Cegid.Retail.XmlDiff" version="1.0.0" targetFramework="net48" />
+@@
+   <package id="System.Threading.Tasks.Extensions" version="4.5.4" targetFramework="net48" />
++  <package id="XMLDiffPatch" version="1.0.8.28" targetFramework="net48" />
+ </packages>

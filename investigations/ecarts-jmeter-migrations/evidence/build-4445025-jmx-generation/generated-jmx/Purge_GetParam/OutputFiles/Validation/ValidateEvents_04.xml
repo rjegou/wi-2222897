@@ -1,0 +1,15 @@
+<ValidateEventsResponse xmlns="http://www.cegid.fr/Retail/1.0">
+  <ValidateEventsResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <Errors />
+    <Statistics>
+      <CashRegistersProcessed>1</CashRegistersProcessed>
+      <CashRegistersToProcess>1</CashRegistersToProcess>
+      <DaysProcessed>1</DaysProcessed>
+      <EventsProcessed>2</EventsProcessed>
+      <StoresProcessed>1</StoresProcessed>
+      <StoresToProcess>1</StoresToProcess>
+      <TotalNumberOfStores>71</TotalNumberOfStores>
+    </Statistics>
+    <Status>true</Status>
+  </ValidateEventsResult>
+</ValidateEventsResponse>

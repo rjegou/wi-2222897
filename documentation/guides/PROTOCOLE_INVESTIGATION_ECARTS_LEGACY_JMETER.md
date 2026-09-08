@@ -81,6 +81,57 @@ Après le run, contrôler les tâches réellement exécutées et les ressources 
 
 Nettoyer seulement les ressources de l'essai identifiées dans le registre, après conservation des preuves et selon le périmètre autorisé. Vérifier propriétaire et identifiant exact avant suppression ; pour une image publiée, vérifier qu'aucun consommateur ne la référence encore. Aucun `docker system prune`, nettoyage global de cache, suppression par wildcard ou purge de registre partagé. Préserver les images de base, volumes et artefacts des collègues. La validation d'une correction ouvre une étape distincte d'intégration au circuit collectif ; elle ne déclenche aucune promotion automatique de l'essai.
 
+### 0.6. Écritures Azure DevOps par REST : verrouiller avant, vérifier après
+
+Toute écriture sur une branche existante suit le même ordre, sans exception : relire le HEAD réel,
+le comparer au HEAD attendu, puis l'utiliser comme `oldObjectId` du push. Pour créer une branche,
+vérifier d'abord que la ref cible n'existe pas, puis utiliser
+`oldObjectId = 0000000000000000000000000000000000000000` ; une seconde tentative doit détecter la ref
+existante et s'arrêter sans écrire.
+
+Après toute écriture : relire la ref, vérifier que son HEAD correspond exactement au commit produit,
+relire les changements du commit et contrôler qu'il n'y a ni fichier manquant ni fichier inattendu.
+Ne pousser que les fichiers réellement différents — comparer les SHA-256 distants et locaux avant le
+push évite de modifier artificiellement un fichier déjà correct et rend la vérification post-push
+triviale.
+
+Trois pièges de client, tous rencontrés :
+
+- PowerShell 5.1 déroule un tableau à un seul élément ; `$Body | ConvertTo-Json` produit alors un
+  objet là où l'API attend un tableau (`Value cannot be null. Parameter name: refUpdates`). Utiliser
+  `ConvertTo-Json -InputObject $RefUpdates`.
+- une variable suivie immédiatement de `?` dans une URL est mal interpolée : écrire
+  `".../builds/${BuildId}?api-version=7.1"`.
+- l'API `/items` change de représentation selon `includeContent`, `download` et `resolveLfs`. Avec
+  `download=true`, `Invoke-WebRequest` expose des octets : décoder explicitement
+  `[Text.Encoding]::UTF8.GetString([byte[]]$Response.Content)` au lieu d'afficher `.Content`.
+
+Ne jamais nommer une variable métier `$Matches` : c'est une variable automatique réécrite par
+l'opérateur `-match`.
+
+### 0.7. Collecter de façon ciblée, et savoir ce qu'une ligne de log prouve
+
+Une collecte efficace part d'une source autoritative précise, dans cet ordre : build historique connu,
+timeline, log du job concerné, puis blob Git au commit exact. Éviter les scans récursifs et les dumps
+complets de timeline ou de logs : une question par probe, quelques dizaines de lignes, un fichier
+temporaire. Cela distingue immédiatement fait prouvé, hypothèse et donnée historique.
+
+Deux règles de lecture :
+
+- **un stage vert ne prouve rien si les stages métier sont `skipped`.** Vérifier explicitement la
+  timeline avant de qualifier un run. À l'inverse, un `partiallySucceeded` dont la timeline montre
+  Build, déploiements et jobs JMeter exécutés est une meilleure baseline qu'un `failed` précoce.
+- **quand les sorties sont redirigées, raisonner sur l'ordre d'exécution et les points de `throw`.**
+  Si un script écrit `passed=true` après l'opération qu'on veut prouver, et que le build est
+  `succeeded`, l'opération a terminé sans exception : c'est une `INFERENCE` valide, à condition
+  d'avoir relu le script réellement exécuté. Relancer un pipeline pour « voir la ligne » est inutile.
+
+Ne pas deviner les chemins runtime d'un outil de déploiement : les relever dans les logs d'un build
+qui a réellement exécuté le job. Ne pas supposer non plus qu'un fichier présent dans un ancien
+checkout existe encore dans l'arbre Git actuel — pour un fichier Git LFS, le SHA-256 de l'objet réel
+se lit dans le pointeur (`oid sha256:<hash>`), et restaurer un pointeur vaut mieux que republier un
+gros binaire si l'objet historique existe encore côté serveur.
+
 ## 1. Ouvrir une fiche par expérience
 
 Partir du [handoff](../../investigations/ecarts-jmeter-migrations/HANDOFF.md), de la [matrice de statut](../../investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md) et de l'[index des preuves](../../investigations/ecarts-jmeter-migrations/evidence/README.md). Réutiliser la fiche de cause existante ; ne pas recommencer une collecte globale.
@@ -195,6 +246,8 @@ Ne reprendre la recherche des anciennes corrélations TestAutos que si une nouve
 Si une baseline release reste indisponible, poursuivre la validation des corrections techniques prouvées et les tests de contrat accessibles, tout en laissant l'équivalence legacy/JMeter UNKNOWN. Une décision de support peut retirer un périmètre ; elle doit être explicite et ne vaut pas résultat de test.
 
 Après succès des rejeux minimaux, étendre à tous les cas de la famille puis aux campagnes attendues, séparément par version et Cur/Fix. Vérifier les stages réellement exécutés, les volumes attendus, les skips et les postconditions. Un build vert avec stage sauté n'est pas une validation.
+
+Descendre le contrôle au niveau du plan, pas du seul stage : comparer le total publié au total d'une exécution de référence identifiée, et grouper les tests manquants par préfixe de plan avant de les inspecter un par un. Une campagne entière peut disparaître sans rougir le pipeline, et l'égalité des échecs Cur/Fix sur un périmètre amputé ne vaut pas absence de régression. Le mode opératoire est dans [DEPANNAGE_JMETER.md](DEPANNAGE_JMETER.md), section 3.
 
 ## 7. Conserver les preuves et fermer chaque lot
 

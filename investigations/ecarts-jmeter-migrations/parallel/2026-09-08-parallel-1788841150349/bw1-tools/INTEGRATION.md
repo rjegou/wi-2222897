@@ -2,6 +2,22 @@
 
 ## Addendum 2026-09-08 — épinglage release candidate
 
+### Vérification round 3 — candidat local retrouvé
+
+Le candidat local signalé par WORKER 3 est finalement présent dans
+`C:\Users\jegour\AppData\Local\Temp\wi2222897-orchestration-clienteling-164805710`.
+Le nupkg `2.0.42-soapnamespace.20260907` a le hash
+`803DDBAAEB545A901ACD500195F5372F1E42F2FBD5FC1AC88626830F14EEE55B`; sa DLL API
+et son EXE ont respectivement les hashes `57BEACA20DE071673C208305A670969A943420CFCB734FE7F30E4C13522F7B`
+et `82A1134B73F2D9CC572EC2E77E33177D49691B6A40A8DB71CFC2CFE00ED75A9F`.
+La vérification comportementale directe des quatre méthodes est PASS; voir
+`evidence/local-2026-09-08-console-candidate-round3/README.md`.
+
+Ce candidat reste un artefact local isolé : le nuspec indique qu'il n'a jamais été
+publié. Il ne remplace donc pas le contrat proposé `1.1.47`/`2.0.43` et ne doit pas
+être injecté dans un feed ou une campagne sans décision et preuve de consommation
+explicite.
+
 Le candidat local épingle `Cegid.Retail.AutoTest.Api` `1.1.47` au commit `16a03a83c7e4d9a7c65237f556a4167604ed294b`. Après déblocage de la création de branche, le contrat de consommation WORKER 3 est : `Cegid.Retail.AutoTest.Console` `2.0.43`, `versionConsole=2.0.43`, puis contrôle `checkPackage.ps1` et hashes API/Console/NuGet/JMX. La commande de migration doit consommer le cache local explicitement nommé `Cegid.Retail.AutoTest.Console.2.0.43.nupkg`; aucune résolution `latest` ou version flottante.
 
 État : **UNKNOWN**, car la branche distante n'a pas pu être créée (`VS403660`) et aucun package final n'existe encore. Ne pas lancer la campagne sur ce candidat tant que les hashes du package et des JMX ne sont pas fournis.

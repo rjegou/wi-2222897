@@ -1,0 +1,9 @@
+item,source,identifier,status_or_size,sha256_or_value
+build,Azure DevOps Build API,4442156,completed/failed,0baf69c1ce3c37462364f4b5a269ee1e24a73b9a
+build,Azure DevOps Build API,4442685,completed/failed,e3b674b007071259fd74b024f6b4b48baf0a7f5d
+build,Azure DevOps Build API,4442254,completed/failed,4bb5830236585369f74645d88e1505eeccc183d7
+artifact,Azure DevOps PipelineArtifact,4442685/sql-fulltext-2019-evidence,11104 bytes,6d509ef6f21fa9adc8db2f20954cdd2376142479b4c24d242e804a6fcfba5dcd
+diagnostic,downloaded in memory,4442685/sql-fulltext-2019-runtime-diagnostic.log,78548 bytes,82d02d5324587faecdceb312d5041a93de9305569cdd0ac8297fe72249755f25
+artifact,Azure DevOps PipelineArtifact,4442685/sql-fulltext-2025-evidence,11798 bytes,1eeff8feafb3f879e5feac4856b71b1ce67269091846149430f98e460d0cfa52
+diagnostic,downloaded in memory,4442685/sql-fulltext-2025-runtime-diagnostic.log,80745 bytes,58afba9c5305b5090cf4f1dbc706ab8c7580c4f2f736744bd0b01df3e2cadc26
+script,local PowerShell parser validation,Invoke-FullTextBoundedDiagnostic.ps1,193 lines,CEF3F0B5C324C258E08D87F06777C622E9456E4EF728A653BB9A374ED32C2A20

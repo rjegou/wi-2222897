@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<TestCampaign code="Auto Tests EventSignature_Sign" reportLegacy="true" >
+    <TestPlanItem item="EventSignature_Sign\001-EventSignature_Sign.jmx" />
+</TestCampaign >

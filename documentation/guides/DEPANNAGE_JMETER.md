@@ -16,6 +16,8 @@ Ce guide réorganise les erreurs et contrôles décrits dans `jmeterTroubleshoot
 | local vert, pipeline rouge | dépendances, données ou locale différentes | rendre le JMX autonome et comparer versions, backup, paramètres et réponses |
 | déploiement JMeter en échec | packages, tenant, backup, rôles et app settings | corriger le `cy2px`, pas le plan de test |
 | HTTP 500 sur un cas EC/NC | sémantique du cas et réponse SOAP réelle | vérifier l'attente explicite ; ne pas introduire de règle globale de skip |
+| total de tests publiés en baisse alors que la tâche d'exécution est verte | grouper les tests manquants par préfixe de plan : un groupe entier disparu signale un plan non chargé | chercher `Problem loading XML` / `NonGUIDriver` dans le log du plan concerné, pas dans les résultats |
+| `IllegalArgumentException: Problem loading XML` avec `… cannot be cast to org.apache.jorphan.collections.HashTree` | alternance élément JMeter / `<hashTree>` rompue autour de l'élément et de la ligne cités | comparer les **octets** du JMX avec la version qui se chargeait, autour de la ligne signalée ; corriger chez le producteur du fichier, pas à la main |
 
 ## 1. Contrôles avant migration
 
@@ -84,6 +86,31 @@ Lors de la préparation d'un plan avec l'option « Diff Full Xml », le XPath pa
 
 ## 3. Lire les résultats sans surinterpréter
 
+### Vérifier la couverture avant de comparer Cur et Fix
+
+Un plan peut être présent dans Git, sélectionné, lancé, et malgré tout ne produire aucun résultat :
+le runner poursuit avec le plan suivant après un échec de chargement, ce qui laisse
+`Run Jmeter Tests Campaign` en `succeeded`. Deux campagnes peuvent alors afficher des compteurs
+d'échecs strictement identiques tout en ayant perdu la même campagne entière — c'est exactement ce
+qu'a produit le run InventoryTracking `4445575`
+([finding 015](../../investigations/ecarts-jmeter-migrations/findings/015-inventorytracking-002-device-reassign-jmx-load-4445575.md)).
+
+Ordre d'analyse à respecter :
+
+1. total attendu, repris d'une exécution de référence identifiée ;
+2. total réellement publié ;
+3. périmètre commun, par **identité de test** et non par nombre ;
+4. seulement ensuite, comparaison Cur / Fix.
+
+Distinguer quatre états, jamais confondus : absent du dépôt, non sélectionné, non lancé, lancé mais
+non chargé. Surveiller aussi les plans annoncés contre les plans réellement chargés, les erreurs
+`NonGUIDriver`, et toute variation brutale de couverture. Côté Azure DevOps, les cas non passés
+remontent en `unanalyzedTests` : ne pas lire uniquement `failedTests`, et ne pas confondre le
+`succeededWithIssues` d'un `PublishTestResults` (« one or more test failures detected ») avec une
+panne de publication.
+
+### Familles d'erreurs
+
 La procédure générale classe les erreurs en deux familles :
 
 - **déploiement** : packages, versions, tenant, rôles, configuration et backup ;
@@ -116,6 +143,13 @@ Ces conventions doivent être vérifiées dans la source du plan et le générat
 - Ne pas ignorer globalement les cas `Code=99`.
 - Ne pas modifier manuellement un JMX comme correction durable d'un défaut du générateur.
 - Ne pas attribuer un échec à JMeter si les versions, le backup ou les paramètres diffèrent.
+- Ne pas conclure à l'égalité de deux gros fichiers depuis un champ d'API ambigu : télécharger les
+  octets, comparer la taille, puis le SHA-256. Une comparaison par le champ JSON `content` de l'API
+  Git a déjà produit un faux « fichiers identiques » sur un JMX de 4 Mo qui différait de 1 230 octets.
+- Ne pas comparer des plans par leur nom de fichier complet : les préfixes numériques diffèrent entre
+  un jeu régénéré et une branche (`001-Export_Run.jmx` contre `010-Export_Run.jmx`). Mapper par nom
+  fonctionnel après retrait du préfixe `^\d+-`, exiger exactement une correspondance de chaque côté et
+  refuser l'écriture si le mapping est ambigu.
 
 Les cas déjà analysés sont classés avec leurs preuves dans [`../../investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md`](../../investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md).
 

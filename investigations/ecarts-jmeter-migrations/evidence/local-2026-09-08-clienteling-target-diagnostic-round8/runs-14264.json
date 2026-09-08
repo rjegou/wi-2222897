@@ -1,0 +1,5 @@
+[
+  {"runId":4445072,"definitionId":14264,"result":"canceled","status":"completed","reason":"individualCI","sourceVersion":"23830d47c0cdb31d8c84020ecd3a701824c03661"},
+  {"runId":4445085,"definitionId":14264,"result":"canceled","status":"completed","reason":"individualCI","sourceVersion":"13b4443675bcdbb62e6da9fcdb9565dd5e671fb5"},
+  {"runId":4445099,"definitionId":14264,"result":"canceled","status":"completed","reason":"individualCI","sourceVersion":"0cf1736787def6d4fe2788b73cafdd8777768730"}
+]

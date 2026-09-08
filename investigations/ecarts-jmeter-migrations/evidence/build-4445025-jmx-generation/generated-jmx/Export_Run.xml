@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<TestCampaign code="Auto Tests Export_Run" reportLegacy="true" >
+    <TestPlanItem item="Export_Run\001-Export_Run.jmx" />
+</TestCampaign >

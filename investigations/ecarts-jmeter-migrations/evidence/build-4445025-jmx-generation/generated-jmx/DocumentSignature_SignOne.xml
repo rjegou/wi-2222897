@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<TestCampaign code="Auto Tests DocumentSignature_SignOne" reportLegacy="true" >
+    <TestPlanItem item="DocumentSignature_SignOne\001-DocumentSignature_SignOne.jmx" />
+</TestCampaign >
