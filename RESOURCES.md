@@ -258,3 +258,20 @@ Lot : investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-17888
   - Zéro conteneur et zéro image créés (rapporté par `docker info` de l'étape diagnostic).
 - **Secrets** : PAT Azure DevOps utilisé en mémoire vive uniquement, aucun token ni secret écrit sur disque, journalisé ou persisté.
 
+## 2026-09-09 — Rangement de l'audit BW3 et des leçons FrenchTaxesRules V26
+
+- Sources reçues : `C:\Users\jegour\Downloads\WI-2222897_BW3_travail_et_lecons.md` et
+  `C:\Users\jegour\Downloads\2026-09-09-lecons-apprises-ftr-v26-jmeter.md`. Copiées sans modification
+  dans `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-bw3-audit-et-ftr-v26-execution-reelle/`
+  avec leurs SHA-256. Les originaux de `Downloads` peuvent être supprimés par l'utilisateur : le dépôt
+  en porte désormais la copie de référence.
+- Aucune ressource distante n'a été créée, lue, relancée ou nettoyée dans ce rangement ; aucun secret
+  n'est consigné.
+- Ressource distante **rapportée par ces documents et non revérifiée** : livrable
+  `C:\clones\wi-2222897-bw\relais-20260909-01\validation\RESULT.md` (hors de ce dépôt, existence non
+  confirmée ici) et build FrenchTaxesRules CI `4448787` (déf. `2054`) sur la branche de validation V26.
+  Ne pas présenter `4448787` comme vérifié avant lecture directe Azure DevOps.
+- Intégration documentaire faite dans [finding 018](investigations/ecarts-jmeter-migrations/findings/018-frenchtaxesrules-v26-jmeter-execution-4448787.md),
+  la mise à jour du [finding 017](investigations/ecarts-jmeter-migrations/findings/017-campagnes-reelles-azdo-inventorytracking-frenchtaxesrules-20260908.md),
+  [STATUS.md](STATUS.md) et la section 6 de [DEPANNAGE_JMETER.md](documentation/guides/DEPANNAGE_JMETER.md).
+

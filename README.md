@@ -30,8 +30,9 @@ et non encore revérifiés : InventoryTracking perd les 86 tests de `002-Device:
 échoue à charger ([finding 015](investigations/ecarts-jmeter-migrations/findings/015-inventorytracking-002-device-reassign-jmx-load-4445575.md)) ;
 Clienteling ne peut plus matérialiser son backup V26, absent de l'arbre Git actuel
 ([finding 016](investigations/ecarts-jmeter-migrations/findings/016-clienteling-v26-backup-lfs-absent.md)) ;
-FrenchTaxesRules a ses 18 JMX corrigés poussés sur une branche de validation, mais aucun run ne les a
-encore exécutés.
+FrenchTaxesRules a ses 18 JMX corrigés poussés sur une branche de validation. Un document rapporté le
+2026-09-09, non revérifié, indique qu'un run les a désormais exécutés (build `4448787` : 253 tests
+Cur/Fix, 51 échecs communs identiques) — voir [finding 018](investigations/ecarts-jmeter-migrations/findings/018-frenchtaxesrules-v26-jmeter-execution-4448787.md).
 
 | Je veux… | Lire |
 |---|---|

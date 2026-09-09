@@ -1,5 +1,33 @@
 # JOURNAL — WI-2222897
 
+## 2026-09-09 — Intégration de l'audit BW3 et des leçons FrenchTaxesRules V26 (rapporté, non revérifié)
+
+**Source : deux documents reçus dans `Downloads`**, copiés sans modification avec SHA-256 dans
+[evidence/local-2026-09-09-bw3-audit-et-ftr-v26-execution-reelle/](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-bw3-audit-et-ftr-v26-execution-reelle/README.md).
+Aucune lecture Azure DevOps indépendante effectuée dans ce processus ; tout ce qui suit est qualifié
+`rapporté, non revérifié`.
+
+1. **Audit BW3** (validateur de comparaison finalisé, collecte LIVE) : confirme la restauration des
+   86 tests `002-Device:Reassign` d'InventoryTracking (déjà [finding 015](investigations/ecarts-jmeter-migrations/findings/015-inventorytracking-002-device-reassign-jmx-load-4445575.md)/[017](investigations/ecarts-jmeter-migrations/findings/017-campagnes-reelles-azdo-inventorytracking-frenchtaxesrules-20260908.md)),
+   ajoute l'inventaire hashé des 32 JMX attendus sur trois `sourceVersion`, et reconfirme que
+   FrenchTaxesRules (`4447926`) et Clienteling (`4447427`/`4447443`) restaient sans JMeter exécuté sur
+   les builds revérifiés par ce run.
+2. **Leçons FrenchTaxesRules V26** : rapporte une suite allant jusqu'à une exécution JMeter réelle,
+   build `4448787` — 253 tests Cur, 253 tests Fix, 51 échecs communs strictement identiques. Nouveau
+   [finding 018](investigations/ecarts-jmeter-migrations/findings/018-frenchtaxesrules-v26-jmeter-execution-4448787.md),
+   qui résout partiellement l'`UNKNOWN` du finding 017 sous réserve de revérification.
+3. **Méthode généralisable** ajoutée à la [section 6 de DEPANNAGE_JMETER.md](documentation/guides/DEPANNAGE_JMETER.md#6-leçons-opérationnelles-rapportées-audit-bw3-et-frenchtaxesrules-v26-2026-09-09) :
+   comparaison par identité fonctionnelle plutôt que par ID d'exécution, pagination REST par endpoint,
+   distinction build/déploiement/campagne/verdict métier, incidents CI transitoires vs bug de pipeline,
+   alignement strict `localPackageRoot`/manifest.
+
+**Documents mis à jour** : [STATUS.md](STATUS.md) (ligne FrenchTaxesRules V26, faits établis, UNKNOWN),
+[RESOURCES.md](RESOURCES.md), [finding 017](investigations/ecarts-jmeter-migrations/findings/017-campagnes-reelles-azdo-inventorytracking-frenchtaxesrules-20260908.md),
+nouveau [finding 018](investigations/ecarts-jmeter-migrations/findings/018-frenchtaxesrules-v26-jmeter-execution-4448787.md),
+[documentation/guides/DEPANNAGE_JMETER.md](documentation/guides/DEPANNAGE_JMETER.md). Aucune décision du
+registre [decisions/README.md](decisions/README.md) n'est affectée : ce sont des faits d'exécution
+rapportés, pas un arbitrage. Aucun système distant lu, modifié ou nettoyé.
+
 ## 2026-09-08 — Reprise directe AzDO sans BW : validation terminale InventoryTracking et diagnostic FrenchTaxesRules
 
 **FACT — source : exécution et observation directe via API REST Azure DevOps sécurisée en mémoire (PAT).**

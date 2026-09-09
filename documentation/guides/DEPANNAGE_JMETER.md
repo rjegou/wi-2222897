@@ -153,6 +153,78 @@ Ces conventions doivent être vérifiées dans la source du plan et le générat
 
 Les cas déjà analysés sont classés avec leurs preuves dans [`../../investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md`](../../investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md).
 
+## 6. Leçons opérationnelles rapportées (audit BW3 et FrenchTaxesRules V26, 2026-09-09)
+
+Ces points viennent de deux documents reçus dans `Downloads`, rangés sans modification dans
+[`evidence/local-2026-09-09-bw3-audit-et-ftr-v26-execution-reelle/`](../../investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-bw3-audit-et-ftr-v26-execution-reelle/README.md)
+et détaillés dans le [finding 018](../../investigations/ecarts-jmeter-migrations/findings/018-frenchtaxesrules-v26-jmeter-execution-4448787.md).
+Statut : `rapporté, non revérifié` — utile comme méthode même sans revérification indépendante des
+chiffres cités.
+
+### Comparaison de campagnes
+
+- **Un écart de volume ne se résume jamais à un chiffre.** `1991 -> 1905` doit devenir une liste
+  nominative regroupée par plan, pas « 86 tests manquants ». C'est ce regroupement qui a révélé que
+  les 86 absences de `002-Device:Reassign` étaient un seul plan non chargé, pas un bruit diffus.
+- **Comparer des identités métier (`plugin | variante | plan | cas`), jamais des `runId`/`resultId`/
+  `attempt`.** Ces derniers restent utiles comme provenance, mais deux exécutions du même test
+  deviennent artificiellement incomparables si l'identité les inclut.
+- **Vérifier la pagination de chaque endpoint REST séparément.** Un endpoint Azure DevOps peut
+  renvoyer un résultat partiel tout en semblant valide ; l'exhaustivité doit être démontrée par
+  endpoint, pas supposée parce qu'un autre endpoint était complet.
+- **Chercher les deltas dans les deux sens.** Absents, ajoutés, changements de statut, changements de
+  message, retries/doublons — un build peut présenter à la fois des absences et des changements de
+  statut sur les cas restants (7 changements en plus des 86 absences sur `4445575`).
+- **Un hash source ne prouve pas les octets consommés au runtime.** Le SHA-256 d'un JMX à une
+  `sourceVersion` prouve le contenu Git ; un message de chargement prouve qu'un plan nommé a été
+  tenté, mais aucun des deux ne prouve seul que ce sont ces octets qui ont été exécutés. Rester en
+  `UNKNOWN` quand cette preuve manque plutôt que de l'inférer.
+- **Ne jamais attribuer une preuve au mauvais build.** Un manifeste produit par une génération
+  distincte (ex. build `4445025`) ne doit pas servir de preuve du contenu exécuté par un autre build
+  (ex. `4432510`) : toujours consigner BuildId, commit/`sourceVersion`, provenance du fichier et date.
+
+### Distinguer build/déploiement, campagne et verdict métier
+
+- **Un build sans JMeter n'est pas un échec fonctionnel.** Quand JMeter est `skipped` ou n'est jamais
+  atteint (échec avant restore, avant déploiement), la conclusion correcte est « aucune preuve de
+  succès métier ni de régression métier », jamais « les tests ont échoué ».
+- **Séparer systématiquement trois questions** : les campagnes se sont-elles réellement exécutées ?
+  la couverture attendue est-elle présente ? les tests métier sont-ils tous verts ? Un statut
+  `partiallySucceeded` ne répond à aucune des trois à lui seul.
+- **Cur et Fix identiques sur les mêmes échecs orientent le diagnostic vers une cause commune**
+  (scénario, données, environnement, produit), pas vers le packaging Fix seul. À l'inverse, un Cur
+  vert et un Fix rouge oriente vers la pile/packaging Fix en priorité.
+- **Vérifier explicitement les cas discriminants historiques**, même quand le total d'échecs a changé :
+  leur absence de la liste des échecs est un signal de validation plus fort qu'un simple comptage
+  global.
+
+### Incidents CI et artefacts
+
+- **Ne pas transformer trop vite un incident transitoire en bug de pipeline.** Si un rejeu strictement
+  identique (même agent, même compte, même package) réussit ensuite, privilégier l'hypothèse d'un
+  incident filesystem transitoire plutôt que de modifier le code ou le template sans preuve de cause
+  (ex. ne pas remplacer `Move-Item` par `Copy-Item` sans preuve).
+- **Ajouter un diagnostic minimal juste avant la commande fautive**, pas une instrumentation large :
+  une hypothèse précise, une observation, puis décision.
+- **Vérifier les noms réels produits par le build avant de corriger un contrôle d'artifact.** Un
+  contrôle qui attend un nom supposé peut échouer alors que l'artifact réel, cohérent avec le kit
+  déclaré, porte un nom légèrement différent.
+- **Distinguer artifact de build complet et sous-ensemble nécessaire au scénario.** Le bon contrôle
+  est « les fichiers requis sont présents exactement une fois », pas « l'artifact ne contient que ces
+  fichiers ».
+- **Le contenu physique transmis à un déploiement piloté par manifest doit correspondre exactement au
+  manifest.** Si l'outil de déploiement valide par manifest, ne pas lui transmettre un dossier
+  contenant d'autres fichiers : construire un sous-dossier dédié contenant uniquement les fichiers
+  attendus, tout en conservant la provenance (BuildId source, nom d'artifact, version, hashes) à côté.
+- **Préférer une correction locale et réversible dans le dépôt consommateur** à une modification d'un
+  template partagé, tant que la cause n'est pas générale et démontrée.
+- **Après un remplacement manuel de YAML dans Azure DevOps, vérifier l'indentation et les parents**,
+  pas seulement le contenu modifié : un remplacement peut casser silencieusement la structure
+  `jobs → job → steps` autour d'un bloc pourtant correct.
+- **Dès qu'un incident transitoire n'empêche plus l'objectif principal, revenir au chemin critique** :
+  ne pas prolonger le diagnostic d'un incident déjà suffisamment expliqué au détriment de l'obtention
+  des campagnes réelles.
+
 ## Sources PDF
 
 - [`jmeterTroubleshooting.pdf`](../source-material/jmeterTroubleshooting.pdf), 2 pages.

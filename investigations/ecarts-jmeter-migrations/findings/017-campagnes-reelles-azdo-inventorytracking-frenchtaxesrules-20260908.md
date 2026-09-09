@@ -41,3 +41,10 @@
 
 - Les résultats effectifs des 19 JMX de FrenchTaxesRules sous JMeter (`Export_Run` TC08/TC09/TC10 et `DocumentSignature_SignOne` TC02) restent `UNKNOWN` tant que le package MSI n'est pas transporté localement dans le conteneur (comme le fait InventoryTracking) ou mis à disposition dans un staging éphémère.
 - Aucune modification partagée, création de PR, publication NuGet partagée ou promotion d'image n'a été effectuée.
+
+## Mise à jour 2026-09-09 (rapportée, non revérifiée)
+
+Le [finding 018](018-frenchtaxesrules-v26-jmeter-execution-4448787.md) rapporte que ce transport local
+a été raffiné (sous-dossier `localPackageRoot` dédié aux 4 fichiers du manifest) et que le build
+`4448787` a exécuté JMeter Cur et Fix réellement : 253 tests chacun, 51 échecs communs identiques.
+Cette mise à jour n'a pas été revérifiée par une lecture Azure DevOps indépendante dans ce processus.
