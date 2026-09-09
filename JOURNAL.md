@@ -1,5 +1,38 @@
 # JOURNAL — WI-2222897
 
+## 2026-09-09 — Intégration de la suite Clienteling V26 GenerateJmx (rapporté, non revérifié)
+
+**Source : un document reçu dans `Downloads`**, copié sans modification avec SHA-256 dans
+[evidence/local-2026-09-09-clienteling-v26-generatejmx-testcampaign/](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-clienteling-v26-generatejmx-testcampaign/README.md).
+Aucune lecture Azure DevOps indépendante effectuée dans ce processus ; tout ce qui suit est qualifié
+`rapporté, non revérifié`. Suite chronologique du [finding 016](investigations/ecarts-jmeter-migrations/findings/016-clienteling-v26-backup-lfs-absent.md)
+(backup `AUTO_V26_00.bak` déjà rapporté matérialisé).
+
+1. Deux variables de pipeline manquantes rétablies (`Product.Version: '26.0.10.23'`,
+   `BuildPlatform: 'any cpu'`), permettant d'atteindre le stage `GenerateJmx`.
+2. Première faute causale dans `GenerateJmx` : le manifeste de migration
+   (`New-Wi2222897MigrationManifest.ps1`) ne copiait que le XML racine des plans, sans leurs
+   `InputFiles`/`ExpectedOutput` référencés, pourtant présents et complets côté dépôt. Correctif
+   poussé (push `5138407`, HEAD `8cc14f2f8b83ea642a021e0e2ba8b872ab95c664`).
+3. Deuxième faute causale : la Console (`--tstj`) recevait un `TestPlan` alors qu'elle attend un
+   `TestCampaign`. Correctif appliqué dans `Invoke-Wi2222897JmxRegeneration.ps1` (fixture canonique,
+   wrapper `TestCampaign`, vérification du JMX unique généré, hash SHA-256) ; push `5138712`, HEAD
+   `28f71268426de6f196c2f4672b526489819c6393`.
+4. Nouveau [finding 019](investigations/ecarts-jmeter-migrations/findings/019-clienteling-v26-generatejmx-testcampaign-outputfiles.md) :
+   aucun JMeter Cur/Fix n'est encore atteint ; prochain test à faire sur `28f71268…` avec
+   `apiBuildId=4444962`, `consoleBuildId=4445025`, `consoleDefinitionId=2641`.
+5. Méthode ajoutée à la [section 7 de DEPANNAGE_JMETER.md](documentation/guides/DEPANNAGE_JMETER.md#7-leçons-opérationnelles-rapportées-clienteling-v26-generatejmx-2026-09-09) :
+   contexte de pipeline isolé à reproduire explicitement, contrat `TestCampaign` vs `TestPlan`,
+   dépendance fonctionnelle des plans, suivre la profondeur atteinte plutôt que `Result=failed` seul.
+
+**Documents mis à jour** : [STATUS.md](STATUS.md) (section reprise Clienteling 14264, ligne rejeu
+métier Clienteling, UNKNOWN), [README.md](README.md), [RESOURCES.md](RESOURCES.md),
+[investigations/ecarts-jmeter-migrations/findings/README.md](investigations/ecarts-jmeter-migrations/findings/README.md),
+nouveau [finding 019](investigations/ecarts-jmeter-migrations/findings/019-clienteling-v26-generatejmx-testcampaign-outputfiles.md),
+[documentation/guides/DEPANNAGE_JMETER.md](documentation/guides/DEPANNAGE_JMETER.md). Aucune décision du
+registre [decisions/README.md](decisions/README.md) n'est affectée : ce sont des faits d'exécution
+rapportés, pas un arbitrage. Aucun système distant lu, modifié ou nettoyé.
+
 ## 2026-09-09 — Intégration de l'audit BW3 et des leçons FrenchTaxesRules V26 (rapporté, non revérifié)
 
 **Source : deux documents reçus dans `Downloads`**, copiés sans modification avec SHA-256 dans

@@ -29,7 +29,11 @@ S'y ajoutent trois blocages techniques du rejeu, ouverts par les
 et non encore revérifiés : InventoryTracking perd les 86 tests de `002-Device:Reassign`, que JMeter
 échoue à charger ([finding 015](investigations/ecarts-jmeter-migrations/findings/015-inventorytracking-002-device-reassign-jmx-load-4445575.md)) ;
 Clienteling ne peut plus matérialiser son backup V26, absent de l'arbre Git actuel
-([finding 016](investigations/ecarts-jmeter-migrations/findings/016-clienteling-v26-backup-lfs-absent.md)) ;
+([finding 016](investigations/ecarts-jmeter-migrations/findings/016-clienteling-v26-backup-lfs-absent.md)) —
+un document rapporté le 2026-09-09, non revérifié, indique le backup matérialisé et `GenerateJmx`
+débloqué de deux fautes successives (`OutputFiles` manquants, `TestPlan` fourni à la place d'un
+`TestCampaign`), sans qu'aucun JMeter Cur/Fix soit encore atteint — voir
+[finding 019](investigations/ecarts-jmeter-migrations/findings/019-clienteling-v26-generatejmx-testcampaign-outputfiles.md) ;
 FrenchTaxesRules a ses 18 JMX corrigés poussés sur une branche de validation. Un document rapporté le
 2026-09-09, non revérifié, indique qu'un run les a désormais exécutés (build `4448787` : 253 tests
 Cur/Fix, 51 échecs communs identiques) — voir [finding 018](investigations/ecarts-jmeter-migrations/findings/018-frenchtaxesrules-v26-jmeter-execution-4448787.md).

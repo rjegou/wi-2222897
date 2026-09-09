@@ -225,6 +225,41 @@ chiffres cités.
   ne pas prolonger le diagnostic d'un incident déjà suffisamment expliqué au détriment de l'obtention
   des campagnes réelles.
 
+## 7. Leçons opérationnelles rapportées (Clienteling V26, GenerateJmx, 2026-09-09)
+
+Ces points viennent d'un document reçu dans `Downloads`, rangé sans modification dans
+[`evidence/local-2026-09-09-clienteling-v26-generatejmx-testcampaign/`](../../investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-clienteling-v26-generatejmx-testcampaign/README.md)
+et détaillé dans le [finding 019](../../investigations/ecarts-jmeter-migrations/findings/019-clienteling-v26-generatejmx-testcampaign-outputfiles.md).
+Statut : `rapporté, non revérifié` — utile comme méthode même sans revérification indépendante des
+identifiants cités.
+
+- **Un pipeline isolé n'hérite pas implicitement du contexte du pipeline historique.** Des variables
+  comme `Product.Version` ou `BuildPlatform` peuvent manquer silencieusement et produire des erreurs
+  qui ressemblent à des défauts de code (`Version Assemblies`, `solution configuration "Release|$(BuildPlatform)"
+  invalid`) alors qu'elles viennent uniquement du contexte de pipeline. Comparer explicitement les
+  variables du pipeline isolé à celles du pipeline d'origine avant de diagnostiquer plus loin.
+- **`--tstj` de la Console attend un `TestCampaign`, jamais un `TestPlan` brut.** Lui fournir un
+  `TestPlan` produit une erreur de désérialisation XML (`<TestPlan ...> was not expected`) qui peut
+  se lire comme un défaut du plan alors que le plan est valide : seul le wrapper fourni à la Console
+  est fautif. Un XML techniquement valide ne respecte pas forcément le contrat métier attendu par
+  l'outil qui le consomme.
+- **Un plan de test n'est pas autonome : la génération JMX peut dépendre de `InputFiles`/`ExpectedOutput`
+  référencés.** Un manifeste de migration qui ne copie que le XML racine du plan peut produire un
+  artefact incomplet (`DirectoryNotFoundException` sur `OutputFiles`) même quand le dépôt source
+  contient bien toutes les ressources. Le manifeste doit représenter la dépendance fonctionnelle du
+  plan, pas seulement son fichier racine — et ne copier que ce qui est réellement référencé
+  (`TestCase/@Input`, `ExpectedOutput`), pas un répertoire entier, pour ne pas gonfler l'artefact.
+- **Suivre la profondeur maximale atteinte dans le pipeline, pas seulement `Result=failed`.** Une
+  séquence d'échecs de plus en plus loin (`Version Assemblies` → `VSBuild` → `OutputFiles` manquants →
+  `TestPlan` au lieu de `TestCampaign`) confirme à chaque étape que la couche précédente est franchie ;
+  c'est un signal de progrès, pas seulement une liste d'échecs indépendants.
+- **Chercher une preuve d'exécution réelle avant de reconstruire une convention par hypothèse.** La
+  structure `TestCampaign` correcte a été retrouvée dans un artefact local d'une génération JMX déjà
+  réussie plutôt que déduite du nom de l'option `--tstj`.
+- **Séparer strictement la définition de replay isolée de la définition CI normale du même plugin**
+  (ici `14264` contre `2065` pour Clienteling). Un incident observé dans l'une ne doit pas être corrigé
+  au titre de l'autre sans preuve qu'il est réellement partagé.
+
 ## Sources PDF
 
 - [`jmeterTroubleshooting.pdf`](../source-material/jmeterTroubleshooting.pdf), 2 pages.

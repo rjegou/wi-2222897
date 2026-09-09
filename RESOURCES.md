@@ -275,3 +275,20 @@ Lot : investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-17888
   la mise à jour du [finding 017](investigations/ecarts-jmeter-migrations/findings/017-campagnes-reelles-azdo-inventorytracking-frenchtaxesrules-20260908.md),
   [STATUS.md](STATUS.md) et la section 6 de [DEPANNAGE_JMETER.md](documentation/guides/DEPANNAGE_JMETER.md).
 
+## 2026-09-09 — Rangement de la suite Clienteling V26 (GenerateJmx : Product.Version, BuildPlatform, OutputFiles, TestCampaign)
+
+- Source reçue : `C:\Users\jegour\Downloads\2026-09-09-clienteling-v26-jmeter-synthese-technique.md`.
+  Copiée sans modification dans
+  `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-clienteling-v26-generatejmx-testcampaign/`
+  avec son SHA-256. L'original de `Downloads` peut être supprimé par l'utilisateur : le dépôt en porte
+  désormais la copie de référence.
+- Aucune ressource distante n'a été créée, lue, relancée ou nettoyée dans ce rangement ; aucun secret
+  n'est consigné.
+- Ressources distantes **rapportées par ce document et non revérifiées** : push Azure DevOps `5138407`
+  (HEAD `8cc14f2f8b83ea642a021e0e2ba8b872ab95c664`) et `5138712` (HEAD
+  `28f71268426de6f196c2f4672b526489819c6393`) sur `sandbox/clienteling/wi2222897-isolated-replay` ;
+  builds `4449477` et `4449640` de la définition `14264`. Ne pas présenter ces identifiants comme
+  vérifiés avant lecture directe Azure DevOps.
+- Intégration documentaire faite dans [finding 019](investigations/ecarts-jmeter-migrations/findings/019-clienteling-v26-generatejmx-testcampaign-outputfiles.md),
+  [STATUS.md](STATUS.md) et la section 7 de [DEPANNAGE_JMETER.md](documentation/guides/DEPANNAGE_JMETER.md).
+
