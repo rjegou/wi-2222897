@@ -260,6 +260,71 @@ identifiants cités.
   (ici `14264` contre `2065` pour Clienteling). Un incident observé dans l'une ne doit pas être corrigé
   au titre de l'autre sans preuve qu'il est réellement partagé.
 
+## 8. Leçons opérationnelles rapportées (attestation de campagne round 4, 2026-09-09)
+
+Ces points viennent d'un collecteur et de ses rapports copiés sans modification dans
+[`evidence/local-2026-09-09-attestation-campagne-round4/`](../../investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-attestation-campagne-round4/README.md)
+et détaillés dans le [finding 020](../../investigations/ecarts-jmeter-migrations/findings/020-attestation-campagne-round4-transport-local-candidat.md).
+Statut : `rapporté, non revérifié` par ce processus — utile comme méthode même sans revérification
+indépendante des chiffres cités.
+
+- **Un grep de ligne de log (`Remove-Item`, `docker rm`) n'est pas un résultat de tâche.** Une ligne de
+  commande de nettoyage dans un log de préparation ne prouve ni son exécution ni sa réussite ; seul le
+  résultat d'une tâche identifiée (ex. `Stop Containers` = `succeeded` dans la timeline du build) est
+  une preuve de cleanup. Les deux signaux ne se contredisent pas : ils répondent à des questions
+  différentes, et l'absence du second ne doit pas être présentée comme une régression du premier quand
+  il existe déjà pour un build donné.
+- **Un même nombre dans deux systèmes différents peut être une coïncidence, pas une preuve.** Le
+  compteur « 32 » du validateur JMX de FrenchTaxesRules (un dépôt) et le compte « 32 blobs JMX » de
+  l'inventaire Git InventoryTracking (un autre dépôt) sont sans rapport malgré la valeur identique.
+  Toujours qualifier un compteur par son système d'origine avant de le comparer.
+- **Une whitelist stricte de builds, opposable avant tout appel réseau, est un garde-fou réutilisable**
+  pour tout script de collecte : refuser explicitement un identifiant hors périmètre (ici le build
+  `2054`, hors champ de ce collecteur) avant la première requête évite qu'une erreur de paramètre
+  élargisse silencieusement la portée d'une lecture même en lecture seule.
+- **Refuser d'écrire dans un dossier de sortie non vide** évite d'mélanger deux collectes ou d'écraser
+  une preuve déjà versionnée — cohérent avec la règle de ce dépôt de toujours créer un nouveau dossier
+  de preuve daté plutôt que de réutiliser un dossier existant.
+- **La convergence de plusieurs collectes indépendantes renforce la confiance sans remplacer une
+  lecture directe.** Quatre comptes Cur/Fix confirmés à l'identique par deux collecteurs différents
+  (celui-ci et l'audit BW3 du même jour) sont un signal fort, mais aucun des deux ne constitue à lui
+  seul la revérification Azure DevOps indépendante que la règle de fraîcheur exige avant conclusion.
+
+## 9. Leçons opérationnelles rapportées (FrenchTaxesRules V26, run 4452790, 2026-09-09)
+
+Ces points viennent de la [synthèse technique reçue](../../investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-frenchtaxesrules-v26-synthese-technique/README.md)
+et du [finding 021](../../investigations/ecarts-jmeter-migrations/findings/021-frenchtaxesrules-v26-run-4452790-cy2px.md).
+Statut : `rapporté, non revérifié`.
+
+- **Un nom logique de pile n'est pas nécessairement un tag de registry.** Le mapping Docker doit être
+  confirmé sur un run fonctionnel et dans le manifest réellement consommé ; ne pas injecter
+  automatiquement `win2025sql2025dotnet10` comme tag sans cette preuve.
+- **Tester l'idempotence d'un outil de migration.** Une seconde exécution de `Step_04_modifYml.py`
+  sur un YAML déjà migré est rapportée comme générant des doublons et du bruit ; distinguer une base
+  non migrée d'un patch minimal sur une base déjà transformée.
+- **Un blocage `*.cy2px` est antérieur au verdict JMeter.** Même si le job Docker est dépassé,
+  l'absence des fichiers attendus par `Configure cy2px files` ne prouve ni l'exécution des 19 JMX ni
+  un échec métier ; identifier d'abord leur producteur et leur provenance.
+
+## 10. Leçons opérationnelles rapportées (Clienteling V26, PlatformDeploy/JFrog, 2026-09-09)
+
+Ces points viennent de la [synthèse du replay isolé](../../investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-clienteling-v26-replay/README.md)
+et du [finding 022](../../investigations/ecarts-jmeter-migrations/findings/022-clienteling-v26-replay-jfrog-download-4452826.md).
+Statut : `rapporté, non revérifié`.
+
+- **Reconstituer le contrat runtime, pas seulement le checkout.** La source rapporte que
+  PlatformDeploy exigeait dans le job JMeter son outil JFrog construit/publié, son backup dans
+  `Docker\Data`, et ses conventions de configuration portable.
+- **Tokeniser les valeurs historiques seulement selon le contrat consommateur.** Le host et
+  l'instance SQL historiques sont rapportés remplacés par `__CONTAINER_HOST__` après lecture du
+  code PlatformDeploy ; cette méthode ne vaut pas preuve de correction sans lecture directe du run.
+- **Un diagnostic sécurisé doit extraire des champs bornés.** Le run rapporté `4452826` atteint le
+  téléchargement de packages mais le filtre whitelisté reste vide ; ne pas remplacer ce résultat
+  par un dump brut potentiellement sensible. Vérifier d'abord le format réel de sortie (`##[error]`,
+  package courant ou fichier temporaire) avant tout nouveau patch.
+- **La profondeur du pipeline n'est pas un résultat JMeter.** Atteindre `download-packages.ps1`
+  réduit le blocage, mais ne prouve ni `GenerateJmx`, ni les stages Cur/Fix, ni un résultat métier.
+
 ## Sources PDF
 
 - [`jmeterTroubleshooting.pdf`](../source-material/jmeterTroubleshooting.pdf), 2 pages.

@@ -1,0 +1,16 @@
+relative_path,kind,source
+RESULT.md,consolidated attestation,local review of recollected2 reports
+scripts/invoke_bw3_collector.py,reusable read-only collector,copied from prior relay then hardened
+tests/test_collector.py,discriminating local tests,collector contract
+evidence/campaign-attestation/RESULT.md,derived matrix,local evidence aggregation
+evidence/local-package-transport/RESULT.md,transport candidate,documentary findings 017/018
+evidence/local-package-transport/README.md,provenance,documentary findings 017/018
+evidence/recollected2-build-4447425/collector-report.json,primary evidence,read-only REST recollection
+evidence/recollected2-build-4447425/README.md,provenance,read-only REST recollection
+evidence/recollected2-build-4440884/collector-report.json,primary evidence,read-only REST recollection
+evidence/recollected2-build-4440884/README.md,provenance,read-only REST recollection
+evidence/recollected2-build-4445575/collector-report.json,primary evidence,read-only REST recollection
+evidence/recollected2-build-4445575/README.md,provenance,read-only REST recollection
+evidence/recollected2-build-4432554/collector-report.json,primary evidence,read-only REST recollection
+evidence/recollected2-build-4432554/README.md,provenance,read-only REST recollection
+evidence/campaign-attestation/README.md,provenance,derived local review

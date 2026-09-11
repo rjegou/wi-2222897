@@ -16,7 +16,7 @@ le diagnostic des écarts entre les tests legacy et les tests JMeter.
 
 ## État en une minute
 
-Au **2026-09-08** : le diagnostic est terminé sur 8 des 9 couples suivis — chaque cas non passé est
+Au **2026-09-10** : le diagnostic est terminé sur 8 des 9 couples suivis — chaque cas non passé est
 rattaché à une cause. Les quatre défauts du générateur JMX sont corrigés localement. Le périmètre
 Clienteling est fixé à `master`, `releases/V6`, `releases/V7`, `releases/V8` ; les minima de
 configuration FrenchTaxesRules V22 Fix doivent être relevés. Les images Clienteling sont à
@@ -24,19 +24,27 @@ investiguer. BeforeMigration.ps1 : mesurer le delta, corriger et régénérer le
 NuGet : valider les packages corrigés en isolation avant de décider d'une publication partagée
 avec versions et destination précises. Products reste à trancher.
 
+Une synthèse reçue le 2026-09-10 rapporte en outre la validation V22 Fix avec le trio Core/Common/Identity
+du packaging `22.0.23`, et un nouveau blocage V23 Fix avant JMeter sur `sectionGroupName`. Ces éléments
+restent rapportés, non revérifiés ; voir le [finding 023](investigations/ecarts-jmeter-migrations/findings/023-frenchtaxesrules-v22-v23-packaging-validation-20260910.md).
+
 S'y ajoutent trois blocages techniques du rejeu, ouverts par les
 [synthèses de pause du 2026-09-08](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-syntheses-techniques-reprise-handoff/README.md)
 et non encore revérifiés : InventoryTracking perd les 86 tests de `002-Device:Reassign`, que JMeter
 échoue à charger ([finding 015](investigations/ecarts-jmeter-migrations/findings/015-inventorytracking-002-device-reassign-jmx-load-4445575.md)) ;
 Clienteling ne peut plus matérialiser son backup V26, absent de l'arbre Git actuel
 ([finding 016](investigations/ecarts-jmeter-migrations/findings/016-clienteling-v26-backup-lfs-absent.md)) —
-un document rapporté le 2026-09-09, non revérifié, indique le backup matérialisé et `GenerateJmx`
-débloqué de deux fautes successives (`OutputFiles` manquants, `TestPlan` fourni à la place d'un
-`TestCampaign`), sans qu'aucun JMeter Cur/Fix soit encore atteint — voir
-[finding 019](investigations/ecarts-jmeter-migrations/findings/019-clienteling-v26-generatejmx-testcampaign-outputfiles.md) ;
+des documents rapportés le 2026-09-09, non revérifiés, indiquent le backup matérialisé, `GenerateJmx`
+débloqué de deux fautes successives puis une progression jusqu'au téléchargement JFrog, sans qu'aucun
+JMeter Cur/Fix soit encore atteint — voir les [findings 019](investigations/ecarts-jmeter-migrations/findings/019-clienteling-v26-generatejmx-testcampaign-outputfiles.md)
+et [022](investigations/ecarts-jmeter-migrations/findings/022-clienteling-v26-replay-jfrog-download-4452826.md) ;
 FrenchTaxesRules a ses 18 JMX corrigés poussés sur une branche de validation. Un document rapporté le
 2026-09-09, non revérifié, indique qu'un run les a désormais exécutés (build `4448787` : 253 tests
 Cur/Fix, 51 échecs communs identiques) — voir [finding 018](investigations/ecarts-jmeter-migrations/findings/018-frenchtaxesrules-v26-jmeter-execution-4448787.md).
+Une autre synthèse rapportée le même jour décrit ensuite `4452567` bloqué sur l'image Docker puis
+`4452790` bloqué avant JMeter sur l'absence de `*.cy2px` — voir [finding 021](investigations/ecarts-jmeter-migrations/findings/021-frenchtaxesrules-v26-run-4452790-cy2px.md).
+Le 2026-09-11, le même arrêt Legacy est rapporté sur les VM PG2 et PG3 avec deux plugins différents,
+ce qui renforce une hypothèse de cause commune JFrog/PowerShell sans la prouver — voir [finding 025](investigations/ecarts-jmeter-migrations/findings/025-frenchtaxesrules-legacy-log-recovery-4459782.md).
 
 | Je veux… | Lire |
 |---|---|

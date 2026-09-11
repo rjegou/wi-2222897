@@ -9,6 +9,48 @@ master, releases/V6/V7/V8 ; FrenchTaxesRules V22 Fix : relever les minima ; imag
 Les [trois missions proposées](parallel/2026-09-08-chantiers-isoles/README.md) ne sont pas lancées.
 Elles réservent des espaces externes distincts et la consolidation documentaire à un intégrateur.
 
+## 2026-09-11 — baseline Legacy FrenchTaxesRules master disponible
+
+**FACT — vérifiée localement.** Le run `10.95` / build `4462232` est archivé dans
+[la preuve locale](evidence/legacy/Y2_Plugins_FrenchTaxesRules/master/10.95-build-4462232/README.md).
+Fix et Current ont chacun 274 tests exécutés selon le compteur TRX ; les résultats élémentaires
+comptent respectivement 1 et 44 échecs. Le workflow confirme Fix → Current, Identity `26.0.7.221`,
+MSTest et la génération des TRX. Cette archive est la baseline Legacy locale de référence pour
+`FrenchTaxesRules/master`. **UNKNOWN** : aucune comparabilité JMeter n'est déduite sans aligner
+cas, contrat, versions, backup, paramètres et environnement.
+
+## 2026-09-11 — FrenchTaxesRules Legacy : run 4459782 arrêté avant MSTest, rapporté
+
+**Rapporté, non revérifié** — la fiche reçue dans [la preuve dédiée](evidence/local-2026-09-11-frenchtaxesrules-legacy-log-recovery/README.md)
+indique que le workflow `Y2_Plugins_FrenchTaxesRules_master` a atteint `executeWorkflowPlugin`
+sur `Y2-TSTAUTOXXPG2`, sans atteindre `executeWF_PluginOneCore` ni `executeIntegrationTest`,
+et sans TRX ou `.mstest.log` retrouvé. L'hypothèse proposée est un blocage PowerShell 5.1 dans
+`Invoke-WebRequest` JFrog sans `-UseBasicParsing`.
+
+**Limite** — aucun artefact brut de `4459782` n'est intégré ici ; il n'y a donc pas de preuve
+indépendante de l'absence de test, de la reproduction du blocage ou de sa cause. Ne pas utiliser
+ce run comme baseline Legacy ni en déduire une régression JMeter. Reprise : relire les logs via
+UNC en lecture seule, filtrer les secrets, puis vérifier un rejeu autorisé jusqu'à la création
+effective des résultats.
+
+## 2026-09-10 — FrenchTaxesRules : V22 rapporté vert, V23 bloqué avant JMeter
+
+**Rapporté, non revérifié** — la synthèse technique conservée dans [la preuve dédiée](evidence/local-2026-09-10-frenchtaxesrules-v22-v23-validation/README.md)
+rapporte que le trio Core/Common/Identity issu du packaging `22.0.23` rend V22 Cur/Fix vert dans
+`4453591`, mais ne permet pas d'isoler la version minimale causale. Elle rapporte aussi V23 Cur vert
+et V23 Fix arrêté avant JMeter sur `sectionGroupName` dans Identity.
+
+**Reprise unique** — relire directement la branche et la timeline du test Identity seul
+(`sandbox/WI-2222897-frenchtaxesrules-v23-identity-validation-20260910`, commit `07397fd…`),
+contrôler les paramètres réellement pris et qualifier le premier stage terminal. Si le déploiement
+V23 démarre, mesurer Cur/Fix avec couverture complète ; sinon aligner Core puis Common un à un,
+sans compter l'arrêt de déploiement comme un échec JMeter. Pour V22, relire `4453591` avant de
+documenter des minima individuels.
+
+Le compte rendu signale également qu'une publication JFrog Staging était nécessaire au contrat de
+test, tandis qu'ACR/Promote/Tag étaient désactivés. Cela reste un retour opératoire rapporté, pas une
+autorisation de publication ou de relance.
+
 ## 2026-09-08 — InventoryTracking : validation technique AzDO, fonctionnel encore UNKNOWN
 
 **FACT** — la collecte [AzDO round 2](evidence/2026-09-08-inventorytracking-azdo-access-diagnosis-round2/README.md) relit par Python/OpenSSL la définition `2072`, les builds, timelines, artefacts et résultats individuels. `4440774` est `completed/succeeded` au commit `ef3d87034d38b88aca04c824061b140e2a29252c` : Build réussi, JMeter skipped. `4440884` est `completed/partiallySucceeded` au même commit : Build réussi, Cur/Fix exécutés, `1991` résultats chacun.
@@ -1333,3 +1375,20 @@ quel, sans attribution à une session identifiée.
   les wrappers `replay-prep`, attester image/digest/backup/SQL/`W3SVC`/endpoints/réseau/cleanup, puis
   Build → GenerateJmx → Cur/Fix avec API `4444962` et Console `4445025`. Détail dans
   [finding 016](findings/016-clienteling-v26-backup-lfs-absent.md).
+
+## 2026-09-11 — Symptôme Legacy rapporté sur PG2 et PG3
+
+- **Rapporté, non revérifié** — le run FrenchTaxesRules `4459782` sur `Y2-TSTAUTOXXPG2` s'arrête
+  dans `executeWorkflowPlugin` sans atteindre `executeWF_PluginOneCore`, `executeIntegrationTest`
+  ou `StartWorkflowAsync`, avec XML NAnt à `0` octet rapporté.
+- **Rapporté, non revérifié** — le même symptôme est observé sur `Y2-TSTAUTOXXPG3` avec
+  `Y2_Plugins_InventoryTracking_V5`. Les deux VM utilisent `Artifactory_fct.ps1`, dont le SHA-256
+  est rapporté identique ; sa valeur et les octets comparés ne sont pas fournis.
+- **INFERENCE rapportée** — le problème paraît transversal au socle VM Legacy PG2/PG3 et au code
+  commun JFrog, plutôt que propre à un plugin ou une branche. Le suspect principal reste
+  `Invoke-WebRequest` PowerShell 5.1 sans `-UseBasicParsing` ni timeout explicite.
+- **UNKNOWN** — première instruction bloquante, réponse JFrog, timeout, hash vérifiable et cause
+  exacte. Ne pas corriger ni relancer avant collecte read-only ciblée des deux cas.
+
+Références : [finding 025](findings/025-frenchtaxesrules-legacy-log-recovery-4459782.md) et
+[complément de preuve](evidence/local-2026-09-11-legacy-jfrog-cross-vm-symptom/README.md).

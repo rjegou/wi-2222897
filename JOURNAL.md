@@ -1,5 +1,65 @@
 # JOURNAL — WI-2222897
 
+## 2026-09-09 — Intégration de la synthèse technique FrenchTaxesRules V26 (rapporté, non revérifié)
+
+Source : `C:\Users\jegour\Downloads\WI-2222897_FrenchTaxesRules_V26_synthese_technique_2026-09-09.md`,
+empreinte SHA-256 `28D1332375F964903C85B7FA184D2353B529A7098D8DF1624143531DA5DC3C5C`. La provenance et
+l'extraction sont dans [la preuve dédiée](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-frenchtaxesrules-v26-synthese-technique/README.md)
+et la conclusion dans [le finding 021](investigations/ecarts-jmeter-migrations/findings/021-frenchtaxesrules-v26-run-4452790-cy2px.md).
+
+Le document rapporte : validation locale 48/48 des faux échecs du générateur ; mapping explicite des
+tags Docker V26 et V22-V25 ; tests de frontière et défaut de non-idempotence de `Step_04_modifYml.py` ;
+run `4452567` bloqué avant JMeter sur l'image Docker, puis run `4452790` dépassant ce point mais
+bloqué avant JMeter sur l'absence de `*.cy2px`. Aucun de ces éléments n'a été revérifié directement
+dans Azure DevOps par cette intégration. Aucun code, pipeline ou système externe n'a été modifié.
+
+## 2026-09-09 — Intégration de l'attestation de campagne round 4 et du gabarit de transport local (rapporté, non revérifié)
+
+**Source : clone de travail hors dépôt** `C:\clones\wi-2222897-bw\relais-20260909-02\attestation\`
+(espace « BW », non versionné). Couche documentaire copiée sans modification (binaire, pas de
+retranscription) dans [evidence/local-2026-09-09-attestation-campagne-round4/](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-attestation-campagne-round4/README.md) :
+`RESULT.md`, manifestes, collecteur `scripts/invoke_bw3_collector.py`, ses tests, et les README de
+provenance de chaque sous-dossier source. Empreintes SHA-256 recalculées ici et confrontées avec
+succès à celles déclarées par la source pour les 12 fichiers qu'elle hachait. Les quatre
+`collector-report.json` bruts (≈ 7,4 Mo) restent volontairement hors dépôt. Aucune lecture Azure
+DevOps indépendante effectuée dans ce processus ; tout ce qui suit est qualifié `rapporté, non
+revérifié`, même si le collecteur source a effectué des lectures REST réelles dans son propre
+processus (whitelist stricte de 4 builds, refus explicite du build `2054`, PAT lu en mémoire seule).
+
+1. **Re-collecte fraîche des 4 builds** `4447425`, `4440884`, `4445575` (InventoryTracking) et
+   `4432554` (Clienteling master V26) : stages/tâches JMeter `completed`, non `skipped` ; découverte
+   des runs par `buildUri` canonique exact ; comptes Cur/Fix — `1991/1991`, `1991/1991`, `1905/1905`,
+   `2118/2118` — qui convergent exactement avec ce qui était déjà versionné dans les findings 006,
+   015 et 017 ; inventaire JMX Git haché au `sourceVersion` (32 blobs pour les trois builds
+   InventoryTracking, 151 pour Clienteling).
+2. **Cleanup requalifié `UNKNOWN` de façon générale** : le signal de ce round est un grep de lignes
+   `Remove-Item`/`docker rm` dans des logs de préparation, pas un résultat de tâche — cela ne
+   contredit pas le fait déjà établi le 2026-09-08 pour `4447425` seul (tâche `Stop Containers`
+   `succeeded`, lu directement dans la timeline), mais ne l'étend pas non plus aux trois autres
+   builds.
+3. **Gabarit candidat de transport local de package** (`local-package-transport/`), dérivé
+   uniquement des findings 017 et 018, pour un prochain couple non nommé : sélection stricte d'un
+   manifeste, copie limitée à ses `N` entrées, refus de chemin absolu/traversée, preuve de cleanup
+   séparée d'un statut vert. Tous les paramètres concrets restent `UNKNOWN` faute de couple cible.
+4. Nouveau [finding 020](investigations/ecarts-jmeter-migrations/findings/020-attestation-campagne-round4-transport-local-candidat.md).
+5. **Méthode ajoutée à la [section 8 de DEPANNAGE_JMETER.md](documentation/guides/DEPANNAGE_JMETER.md#8-leçons-opérationnelles-rapportées-attestation-de-campagne-round-4-2026-09-09)** :
+   grep de log vs résultat de tâche pour le cleanup, homonymie de compteurs entre systèmes distincts
+   (le « 32 » InventoryTracking de ce round n'a aucun rapport avec le « 32 » du validateur
+   FrenchTaxesRules), whitelist stricte et refus d'écriture non vide comme garde-fous de collecteur
+   réutilisables, convergence de collectes indépendantes comme signal fort mais non substituable à
+   une revérification directe.
+
+**Documents mis à jour** : [STATUS.md](STATUS.md) (ligne InventoryTracking, nouveaux `UNKNOWN`),
+[decisions/README.md](decisions/README.md) (décision 4, pointeur sans trancher), `RESOURCES.md`,
+[investigations/ecarts-jmeter-migrations/findings/README.md](investigations/ecarts-jmeter-migrations/findings/README.md),
+nouveau [finding 020](investigations/ecarts-jmeter-migrations/findings/020-attestation-campagne-round4-transport-local-candidat.md),
+[index des preuves](investigations/ecarts-jmeter-migrations/evidence/README.md) (trois dossiers
+2026-09-09 ajoutés, dont deux qui n'avaient encore jamais été indexés depuis sa régénération du
+2026-09-08), [documentation/guides/DEPANNAGE_JMETER.md](documentation/guides/DEPANNAGE_JMETER.md).
+Aucune décision du registre n'est rendue par cette intégration : ce sont des faits d'exécution
+rapportés et une méthode candidate, pas un arbitrage. Aucun système distant lu, modifié ou nettoyé
+dans ce processus.
+
 ## 2026-09-09 — Intégration de la suite Clienteling V26 GenerateJmx (rapporté, non revérifié)
 
 **Source : un document reçu dans `Downloads`**, copié sans modification avec SHA-256 dans
@@ -1239,3 +1299,60 @@ isolée ; relire la ref de validation FrenchTaxesRules puis exécuter `Export_Ru
 - Le backup LFS `AUTO_V26_00.bak` (156 663 808 octets, SHA-256 `8B95C2BA5BC7C501F257AB71E777092E62D2470075A2491455D133E2CA3E7A4C`) est prouvé résolu et extrait sur agent Windows 2025 (run `4447427`).
 - Run `4447443` bloqué au préflight car `target-attestation.json` était attendu d'un build externe inexistant.
 
+## 2026-09-09 — Intégration de la synthèse Clienteling V26 jusqu'au blocage JFrog
+
+- Source reçue : `C:\Users\jegour\Downloads\WI-2222897_synthese-technique-clienteling-v26-replay.md`, copiée textuellement avec SHA-256 `7B6EEEE3B5052CF2A6CD86E157871F76971A824EAFC9416E350117BDE413A6EC` dans [la preuve dédiée](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-clienteling-v26-replay/).
+- **Rapporté, non revérifié** : la séquence `14264` aurait franchi la matérialisation du `.cy2px`, PlatformDeploy, le backup, le CLI JFrog et atteint `download-packages.ps1`; le run `4452826` échoue au téléchargement de packages et n'atteint pas JMeter Cur/Fix.
+- Intégration canonique : [finding 022](investigations/ecarts-jmeter-migrations/findings/022-clienteling-v26-replay-jfrog-download-4452826.md), [STATUS.md](STATUS.md), [README.md](README.md), index des preuves et guide de dépannage. Aucun système distant, pipeline ou secret n'a été lu ou modifié.
+
+## 2026-09-10 — Inventaire live des branches AzDO créées par l'utilisateur
+
+`FACT` — lecture seule du projet `cegid/Retail` avec l'identité `rjegou@cegid.com` sur les 12 dépôts
+du périmètre. Le champ Azure DevOps `creator.uniqueName` des refs `refs/heads/*` retourne 48
+branches actuelles dans 10 dépôts ; `Y2_Core` et `Y2_SaaS_Packaging` ne retournent aucune ref
+correspondante. Les noms, HEAD et méthode sont consignés dans
+[l'inventaire daté](documentation/tracking/2026-09-10-azdo-branches-created-by-rjegou.md).
+
+`UNKNOWN` — les branches déjà supprimées ne sont pas couvertes par cette lecture des refs ; aucun
+journal d'audit de suppression n'a été collecté. Aucun système distant n'a été modifié.
+
+## 2026-09-10 — Investigation du routage Testing Manager InventoryTracking
+
+- Collecte AzDO live en lecture seule sur la définition `2072` et le dépôt `Y2_Plugins_InventoryTracking`.
+- Conclusion canonique : `TestAutos` existe dans le YAML historique et dépend de `Publish` (`master`/`releases/*`) ; il est absent des YAML de migration, qui pilotent séparément JMeter par `pipelineDevMode`.
+- Runs contrastés : `4440774` sans JMeter/TestAutos, `4440884` et `4447425` avec JMeter sans TestAutos, `4455588` avec TestAutos sur `releases/V5`.
+- Preuve et finding : [matrice live](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-10-inventorytracking-legacy-trigger-matrix/README.md), [finding 024](investigations/ecarts-jmeter-migrations/findings/024-inventorytracking-legacy-tests-branch-routing.md).
+- Aucun système distant ni artefact existant modifié ; le verdict final legacy reste `UNKNOWN` sans TRX/XML final.
+
+## 2026-09-10 — Intégration de la synthèse FrenchTaxesRules V22/V23
+
+- Source reçue : `C:\Users\jegour\Downloads\WI-2222897_synthese_technique_2026-09-10.md`, copiée sans modification dans [la preuve dédiée](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-10-frenchtaxesrules-v22-v23-validation/), SHA-256 `AEB9459F53E28B038DFB3F6B507E376E2C3055BC13D3F30F623584D7CFC70B3E`.
+- Intégration canonique : [finding 023](investigations/ecarts-jmeter-migrations/findings/023-frenchtaxesrules-v22-v23-packaging-validation-20260910.md), `STATUS.md`, `README.md`, le handoff, la décision V22 et les index.
+- Statut : les runs, refs, commits et résultats de la source restent `rapporté, non revérifié`. Aucun système distant, pipeline, publication ou secret n'a été lu ou modifié.
+
+## 2026-09-11 — Intégration de la fiche de récupération des logs Legacy FrenchTaxesRules
+
+- Source reçue : `C:\Users\jegour\Downloads\Fiche de synthèse — récupération des logs de tests Legacy.md`, empreinte SHA-256 `B8DD4A1B83DB5499456A4F7A0A8E8966C3146C66D9E6668B7103FBAC517FBCED`.
+- Intégration canonique : preuve documentaire `local-2026-09-11-frenchtaxesrules-legacy-log-recovery`, [finding 025](investigations/ecarts-jmeter-migrations/findings/025-frenchtaxesrules-legacy-log-recovery-4459782.md), `STATUS.md`, handoff et index des preuves.
+- Statut : la fiche rapporte `4459782` arrêté avant MSTest, sans TRX ou `.mstest.log`, et propose une hypothèse JFrog/PowerShell 5.1. Résultat et cause restent non revérifiés ; aucun système distant, pipeline, dépôt Legacy ou secret n'a été lu ou modifié.
+
+## 2026-09-11 — Complément de portée du symptôme Legacy PG2/PG3
+
+- Source : complément fourni dans la demande utilisateur, intégré comme preuve documentaire non revérifiée.
+- Le symptôme est rapporté sur `Y2-TSTAUTOXXPG3` avec `Y2_Plugins_InventoryTracking_V5` : arrêt sur `executeWorkflowPlugin`, sans `executeWF_PluginOneCore`, `executeIntegrationTest` ou `StartWorkflowAsync`, XML NAnt à `0` octet.
+- Le même `Artifactory_fct.ps1` et un SHA-256 identique sont rapportés entre PG2 et PG3 ; la valeur du hash n'est pas fournie.
+- Intégration canonique : [finding 025](investigations/ecarts-jmeter-migrations/findings/025-frenchtaxesrules-legacy-log-recovery-4459782.md), [preuve complémentaire](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-11-legacy-jfrog-cross-vm-symptom/README.md), `STATUS.md` et `HANDOFF.md`.
+- Aucun système distant, VM, dépôt Legacy, pipeline, secret ou fichier de preuve brute n'a été lu ou modifié.
+
+## 2026-09-11 — Intégration du routage SMB de `vm-RJE-priv`
+
+- Source : mémo fourni dans la demande utilisateur ; aucune connexion SMB n'a été ouverte pendant cette session.
+- Intégration canonique : section [Accès SMB à `vm-RJE-priv`](investigations/ecarts-jmeter-migrations/references/legacy_test_vm_technical_cheatsheet.md#accès-smb-à-vm-rje-priv) de la fiche technique VM Legacy.
+- Le chemin du fichier de mot de passe est documenté comme référence opérationnelle ; son contenu n'a pas été lu, copié, affiché ni versionné. La procédure impose une lecture en mémoire uniquement et une déconnexion par `Remove-PSDrive`.
+
+## 2026-09-11 — Intégration de la baseline Legacy FrenchTaxesRules master 10.95
+
+- Preuve locale vérifiée : `evidence/legacy/Y2_Plugins_FrenchTaxesRules/master/10.95-build-4462232/`.
+- Build `4462232`, plugin `10.95`, VM `Y2-TSTAUTOXXPG2` ; workflow Fix → Current avec Identity `26.0.7.221`, MSTest et TRX générés.
+- Compteurs TRX : 274 exécutés par campagne ; résultats élémentaires : Fix 253/1 KO, Current 253/44 KO. Les conteneurs expliquent les compteurs d'échecs 3 et 49.
+- Ajoutés : README de preuve, `MANIFEST.csv`, `SHA256SUMS.txt`, finding 026, index, matrice, `STATUS.md` et handoff. Aucun système externe ni dépôt plugin modifié.

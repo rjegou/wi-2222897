@@ -5,6 +5,39 @@
 - Compte : `CEGIDGROUP\SvcTestAutoRetail`.
 - Accès typique : RDP.
 
+### Accès SMB à `vm-RJE-priv`
+
+**FACT rapporté par le mémo utilisateur du 2026-09-11** : la VM `vm-RJE-priv`
+(`10.113.64.179`) est joignable en SMB sur TCP `445`, et le partage administratif
+`D$` est accessible avec le compte `CEGIDGROUP\jegour`.
+
+- Partage : `\\vm-RJE-priv\D$`.
+- Référence du mot de passe : `C:\Users\jegour\OneDrive - CEGID\Documents\vmMdp.txt`.
+- Le contenu de ce fichier est un secret : ne pas le lire dans une sortie, le copier,
+  le journaliser, le committer ou l'intégrer à un script.
+
+Connexion PowerShell 5.1, avec le mot de passe conservé uniquement en mémoire :
+
+```powershell
+$pwd = (Get-Content "C:\Users\jegour\OneDrive - CEGID\Documents\vmMdp.txt" -Raw).Trim()
+$sec = ConvertTo-SecureString $pwd -AsPlainText -Force
+$cred = New-Object PSCredential("CEGIDGROUP\jegour", $sec)
+
+New-PSDrive -Name VM -PSProvider FileSystem `
+    -Root "\\vm-RJE-priv\D$" -Credential $cred
+```
+
+Accès et déconnexion :
+
+```powershell
+Get-ChildItem "VM:\"
+Remove-PSDrive VM
+```
+
+Cette fiche documente le routage et la méthode fournis ; elle ne constitue pas une
+nouvelle preuve brute ni une autorisation de modifier la VM. Les collectes restent en
+lecture seule par défaut et doivent filtrer les secrets avant partage.
+
 ## Chemins clés
 
 | Usage | Chemin |

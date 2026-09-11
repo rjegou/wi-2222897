@@ -1,6 +1,6 @@
 # Index des preuves — enquête écarts JMeter / legacy
 
-**Index régénéré le 2026-09-08.** Il couvre **la totalité** des 178 dossiers de preuve, ce qui n'était pas le cas de l'index précédent (74 dossiers n'y étaient pas cités).
+**Index actualisé le 2026-09-10.** Il couvre **la totalité** des 185 dossiers de preuve, ce qui n'était pas le cas de l'index précédent (74 dossiers n'y étaient pas cités).
 
 ## Comment lire ce tableau
 
@@ -33,6 +33,7 @@ Un dossier dont la colonne « hors dépôt » est à `0` est intégralement pré
 | [`2026-09-07-brain-reprise-worker1-round6/`](2026-09-07-brain-reprise-worker1-round6/) | InventoryTracking build 4440884 — analyse primaire read-only | 27 | — |
 | [`2026-09-08-inventorytracking-azdo-access-diagnosis-round2/`](2026-09-08-inventorytracking-azdo-access-diagnosis-round2/) | InventoryTracking — validation AzDO Python/OpenSSL — builds 4440774/4440884 et résultats Cur/Fix | 22 | — |
 | [`2026-09-08-inventorytracking-azdo-independent/`](2026-09-08-inventorytracking-azdo-independent/) | InventoryTracking — tentative indépendante AzDO Schannel/CLI — accès bloqué | 9 | — |
+| [`local-2026-09-10-inventorytracking-legacy-trigger-matrix/`](local-2026-09-10-inventorytracking-legacy-trigger-matrix/) | InventoryTracking — matrice live YAML/runs expliquant l'absence variable de Testing Manager | 1 | — |
 | [`build-4444389-inventorytracking-docker-reprise-20260908/`](build-4444389-inventorytracking-docker-reprise-20260908/) | InventoryTracking — 4444389 terminal canceled, Docker Fix/Cur et provenance de reprise | 6 | — |
 | [`build-4444389-inventorytracking-docker-reprise/`](build-4444389-inventorytracking-docker-reprise/) | Extraits expurgés de timeline 4444389 — Docker Fix et annulation Cur | 1 | — |
 | [`build-4444720-inventorytracking-docker-init/`](build-4444720-inventorytracking-docker-init/) | InventoryTracking — build 4444720 — preflight réussi, initialisation conteneur bloquée; 4444700/4444703 annulés avant JMeter | 2 | — |
@@ -212,10 +213,21 @@ Un dossier dont la colonne « hors dépôt » est à `0` est intégralement pré
 | [`packages-current/`](packages-current/) | — | 0 | 2 fich. / 0.5 Mo |
 | [`packages-extracted/`](packages-extracted/) | — | 0 | 50 fich. / 1.9 Mo |
 | [`run-4447425-4447508-reprise-azdo-2026-09-08/`](run-4447425-4447508-reprise-azdo-2026-09-08/) | Reprise directe Azure DevOps — InventoryTracking, FrenchTaxesRules et Clienteling | 7 | — |
+| [`local-2026-09-09-bw3-audit-et-ftr-v26-execution-reelle/`](local-2026-09-09-bw3-audit-et-ftr-v26-execution-reelle/) | Audit BW3 et leçons FrenchTaxesRules V26 — exécution JMeter réelle rapportée (build 4448787) | 4 | — |
+| [`local-2026-09-09-clienteling-v26-generatejmx-testcampaign/`](local-2026-09-09-clienteling-v26-generatejmx-testcampaign/) | Clienteling V26 — GenerateJmx débloqué (Product.Version, BuildPlatform, OutputFiles, TestCampaign) | 3 | — |
+| [`local-2026-09-09-attestation-campagne-round4/`](local-2026-09-09-attestation-campagne-round4/) | Attestation de campagne round 4 (4 builds) et gabarit de transport local — collecteur bw hors dépôt | 21 | 4 fich. / 7.4 Mo |
+| [`local-2026-09-09-frenchtaxesrules-v26-synthese-technique/`](local-2026-09-09-frenchtaxesrules-v26-synthese-technique/) | Synthèse technique FrenchTaxesRules V26 — run 4452790 et correctifs rapportés | 1 | source Downloads |
+| [`local-2026-09-09-clienteling-v26-replay/`](local-2026-09-09-clienteling-v26-replay/) | Synthèse technique Clienteling V26 — replay jusqu'au téléchargement JFrog, run 4452826 | 2 | — |
+| [`local-2026-09-10-frenchtaxesrules-v22-v23-validation/`](local-2026-09-10-frenchtaxesrules-v22-v23-validation/) | Synthèse technique FrenchTaxesRules V22/V23 — validation de packaging rapportée et blocage V23 avant JMeter | 1 | — |
+| [`local-2026-09-11-frenchtaxesrules-legacy-log-recovery/`](local-2026-09-11-frenchtaxesrules-legacy-log-recovery/) | FrenchTaxesRules — récupération des logs Legacy du run 4459782, exécution MSTest rapportée non démarrée | 2 | — |
+| [`local-2026-09-11-legacy-jfrog-cross-vm-symptom/`](local-2026-09-11-legacy-jfrog-cross-vm-symptom/) | Complément de portée — symptôme JFrog Legacy rapporté sur PG2 et PG3, script commun `Artifactory_fct.ps1` | 1 | — |
 
 ## Total
 
-179 dossiers, dont 68 contiennent des artefacts bruts restés hors du dépôt (2939.3 Mo au total).
+184 dossiers, dont 69 contiennent des artefacts bruts restés hors du dépôt (2946.7 Mo au total). Les
+deux dossiers `local-2026-09-09-bw3-audit-et-ftr-v26-execution-reelle/` et
+`local-2026-09-09-clienteling-v26-generatejmx-testcampaign/`, créés après la régénération de cet index
+du 2026-09-08, n'y avaient encore jamais été listés ; ajoutés ici avec `local-2026-09-09-attestation-campagne-round4/`.
 
 ## Dossiers à retitrer (43)
 
@@ -267,6 +279,11 @@ Le `README.md` de ces dossiers ne commence pas par un titre décrivant le sujet 
 
 ## Règle de nommage pour la suite
 
+La baseline Legacy locale `FrenchTaxesRules/master` 10.95 / build `4462232` est archivée dans
+[`evidence/legacy/Y2_Plugins_FrenchTaxesRules/master/10.95-build-4462232/`](legacy/Y2_Plugins_FrenchTaxesRules/master/10.95-build-4462232/).
+Elle contient les TRX Fix/Current, la trace complète du workflow, le contexte du run, un manifeste
+et les empreintes SHA-256 ; voir [finding 026](../findings/026-frenchtaxesrules-legacy-baseline-4462232.md).
+
 - [`local-2026-09-08-api-console-review-round3/`](local-2026-09-08-api-console-review-round3/) — Revue indépendante API→Console FrenchTaxesRules; API 4444765 confirmée, candidat Console rejeté car DLL API embarquée historique; 1 | —
 - [`local-2026-09-08-console-2.0.43-build-4444888-round4/`](local-2026-09-08-console-2.0.43-build-4444888-round4/) — Revue du diff Console réel, correction puis réussite 4445025, nupkg/API embarquée rehashés; migration/JMX restent UNKNOWN; 3 | —
 - [`build-4445025-jmx-generation/`](build-4445025-jmx-generation/) — Génération réelle Console 2.0.43 : Export_Run, DocumentSignature et périmètre source 19/19 code 0; manifeste strict 19/32; handoff V26; 19 | —
@@ -282,6 +299,12 @@ Le `README.md` de ces dossiers ne commence pas par un titre décrivant le sujet 
 - [`local-2026-09-08-clienteling-14264-initialization-comparison-round11/`](local-2026-09-08-clienteling-14264-initialization-comparison-round11/) — Comparaison précise : Docker appartient aux jobs hébergés windows-2025 JMeter (queue 591), pas au job privé direct du diagnostic (queue 665); image/digest historiques prouvés, backup distinct UNKNOWN; 2 | —
 - [`local-2026-09-08-syntheses-techniques-reprise-handoff/`](local-2026-09-08-syntheses-techniques-reprise-handoff/) — Trois synthèses techniques de pause reçues hors processus et rangées telles que reçues, avec empreintes : préflight V26 4446410 et branche de validation FrenchTaxesRules, run InventoryTracking 4445575 et perte de `002-Device:Reassign`, agent windows-2025 4446303 et backup Clienteling V26 absent de l'arbre Git. **Non revérifiées** : ouvrent les findings 015 et 016; 4 | —
 - [`run-4447425-4447508-reprise-azdo-2026-09-08/`](run-4447425-4447508-reprise-azdo-2026-09-08/) — Reprise directe AzDO sans bw : exécution réelle InventoryTracking (run 4447425), résolution blocage Checkpoint.Authorization et exécution réelle FrenchTaxesRules (run 4447508), diagnostic attestation Clienteling; 1 | —
+- [`local-2026-09-09-bw3-audit-et-ftr-v26-execution-reelle/`](local-2026-09-09-bw3-audit-et-ftr-v26-execution-reelle/) — Deux documents reçus rapportant l'audit BW3 (validateur, collecte LIVE) et l'exécution JMeter Cur/Fix réelle rapportée de FrenchTaxesRules V26 (build 4448787, 51 échecs communs); rapporté, non revérifié; 4 | —
+- [`local-2026-09-09-clienteling-v26-generatejmx-testcampaign/`](local-2026-09-09-clienteling-v26-generatejmx-testcampaign/) — Document reçu rapportant le déblocage de GenerateJmx Clienteling V26 (Product.Version, BuildPlatform, OutputFiles, TestCampaign), aucun JMeter Cur/Fix revendiqué; rapporté, non revérifié; 3 | —
+- [`local-2026-09-09-attestation-campagne-round4/`](local-2026-09-09-attestation-campagne-round4/) — Copie de la couche documentaire d'un collecteur bw round 4 (re-collecte fraîche des 4 builds 4447425/4440884/4445575/4432554, JMX Git haché au sourceVersion, cleanup requalifié UNKNOWN) et d'un gabarit candidat de transport local dérivé des findings 017/018; empreintes SHA-256 confrontées avec succès; rapporté, non revérifié; 21 | 4 fich. / 7.4 Mo
+- [`local-2026-09-09-clienteling-v26-replay/`](local-2026-09-09-clienteling-v26-replay/) — Synthèse reçue rapportant la progression du replay Clienteling 14264 jusqu'au téléchargement de packages PlatformDeploy/JFrog (dernier run 4452826), sans JMeter Cur/Fix; rapporté, non revérifié; 2 | —
+- [`local-2026-09-11-frenchtaxesrules-legacy-log-recovery/`](local-2026-09-11-frenchtaxesrules-legacy-log-recovery/) — Fiche reçue rapportant le run Legacy FrenchTaxesRules `4459782` arrêté dans `executeWorkflowPlugin`, sans TRX ou `.mstest.log`; hypothèse `Invoke-WebRequest` sans `-UseBasicParsing`; rapporté, non revérifié; 2 | —
+- [`local-2026-09-11-legacy-jfrog-cross-vm-symptom/`](local-2026-09-11-legacy-jfrog-cross-vm-symptom/) — Complément utilisateur rapportant le même symptôme sur `Y2-TSTAUTOXXPG3` avec InventoryTracking V5 et un `Artifactory_fct.ps1` de SHA-256 identique à PG2; cause transversale et suspect PowerShell restent des inférences non revérifiées; 1 | —
 
 Les preuves de vérification locale du candidat Console et de l'état Full-Text round4
 sont indexées dans le dossier de travail parallèle : [candidat Console](../parallel/2026-09-08-parallel-1788841150349/bw1-tools/evidence/local-2026-09-08-console-candidate-round3/README.md), [état Full-Text round4](../parallel/2026-09-08-parallel-1788841150349/bw1-tools/evidence/local-2026-09-08-fulltext-state-round4/README.md) et [lecture live Full-Text round5](../parallel/2026-09-08-parallel-1788841150349/bw3-plugins/evidence/local-2026-09-08-fulltext-live-4442156-round5/README.md).

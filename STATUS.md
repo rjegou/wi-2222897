@@ -1,6 +1,6 @@
 # État consolidé — WI-2222897
 
-**Snapshot du 2026-09-08.** Ce fichier ne contient que l'**état courant**. Les 27 sections datées
+**Snapshot du 2026-09-11.** Ce fichier ne contient que l'**état courant**. Les 27 sections datées
 qui retraçaient l'historique jour par jour ont été déplacées sans perte dans
 [archive/status-history-2026-09.md](archive/status-history-2026-09.md).
 
@@ -93,24 +93,69 @@ le prochain test doit relancer la définition `14264` sur `28f71268…` avec `ap
 `consoleBuildId=4445025`, `consoleDefinitionId=2641`. Détail dans
 [finding 019](investigations/ecarts-jmeter-migrations/findings/019-clienteling-v26-generatejmx-testcampaign-outputfiles.md).
 
+## FrenchTaxesRules V22/V23 — validation rapportée du 2026-09-10
+
+**Rapporté, non revérifié.** Une synthèse technique reçue le 2026-09-10 rapporte que le trio
+`Y2.Core 22.0.0.2068` / `Y2.Core.Common 22.0.3.311` / `Y2.Plugin.Identity 22.0.6.117`, issu du
+packaging `22.0.23`, a été appliqué à V22 Fix avec AuthenticationServer `2.0.0.368` inchangé. Le
+run `4453591` est rapporté vert en V22 Cur et Fix, avec toutes les campagnes V22 jouées. Cela
+confirme la combinaison dans le compte rendu, mais pas la version minimale individuelle ni la
+cause exacte parmi Core/Common/Identity.
+
+La même source rapporte V23 Cur vert, tandis que V23 Fix s'arrête avant JMeter dans `Test Y2
+deployment` sur `sectionGroupName` dans `IdentityServerConfiguration.ExtractAdditionalConfig`.
+Le test discriminant annoncé remplace uniquement Identity `23.0.5.243` par `23.0.6.171` sur la
+branche `sandbox/WI-2222897-frenchtaxesrules-v23-identity-validation-20260910`, commit
+`07397fd…`; son résultat reste `UNKNOWN` tant que la ref et la timeline ne sont pas relues.
+Voir [finding 023](investigations/ecarts-jmeter-migrations/findings/023-frenchtaxesrules-v22-v23-packaging-validation-20260910.md)
+et la [preuve source](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-10-frenchtaxesrules-v22-v23-validation/README.md).
+
+## Legacy PG2/PG3 — arrêt rapporté avant le démarrage des tests
+
+**Rapporté, non revérifié.** Une fiche reçue le 2026-09-11 rapporte que le workflow `Y2_Plugins_FrenchTaxesRules_master`
+sur `Y2-TSTAUTOXXPG2` s'arrête dans `executeWorkflowPlugin`, avant `executeWF_PluginOneCore` et
+`executeIntegrationTest`, sans TRX ni `.mstest.log` dans le workspace. Elle propose comme hypothèse
+principale un blocage PowerShell 5.1 lors d'un `Invoke-WebRequest` JFrog sans `-UseBasicParsing`.
+Le run `4459782` ne constitue donc pas une baseline Legacy et ne permet pas de conclure sur une
+régression JMeter. Un complément rapporte le même arrêt sur `Y2-TSTAUTOXXPG3` avec
+`Y2_Plugins_InventoryTracking_V5`, le même XML NAnt à `0` octet et le même
+`Artifactory_fct.ps1` (SHA-256 rapporté identique entre PG2 et PG3). **INFERENCE rapportée** : le
+problème semble transversal aux VM Legacy et au code commun d'accès JFrog, avec
+`Invoke-WebRequest` PowerShell 5.1 sans `-UseBasicParsing` ni timeout explicite comme suspect
+principal. Ces éléments restent non revérifiés. Voir [finding 025](investigations/ecarts-jmeter-migrations/findings/025-frenchtaxesrules-legacy-log-recovery-4459782.md),
+la [collecte PG2](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-11-frenchtaxesrules-legacy-log-recovery/README.md)
+et le [complément PG2/PG3](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-11-legacy-jfrog-cross-vm-symptom/README.md).
+
+## Baseline Legacy FrenchTaxesRules master — 10.95 / build 4462232
+
+**FACT — preuve locale vérifiée.** La baseline de référence est désormais archivée dans
+[le dossier dédié](evidence/legacy/Y2_Plugins_FrenchTaxesRules/master/10.95-build-4462232/README.md).
+Le workflow Fix → Current trace Identity `26.0.7.221`, MSTest et la génération des TRX.
+Chaque campagne compte 274 tests exécutés selon le compteur TRX ; après exclusion des
+conteneurs, Fix compte 1 échec élémentaire et Current 44. La comparabilité détaillée avec
+JMeter reste **UNKNOWN** tant que les contrats, versions, données, paramètres et environnement
+ne sont pas alignés. Voir [finding 026](investigations/ecarts-jmeter-migrations/findings/026-frenchtaxesrules-legacy-baseline-4462232.md).
+
 ## Synthèse
 
-État par domaine au **2026-09-08**. Chaque ligne renvoie à la preuve qui la soutient.
+État par domaine au **2026-09-11**. Chaque ligne renvoie à la preuve qui la soutient.
 
 | Domaine | État | Preuve canonique | Suite sûre |
 |---|---|---|---|
 | Périmètre et critères du WI | documentés | [README.md](README.md), [synthèse du PBI](documentation/context/PBI_2222897_synthese_visio_Ludo.md) | relire le work item live si une décision dépend de son état actuel |
 | Procédure de migration | documentée, valeurs historiques signalées | [documentation/README.md](documentation/README.md) | revalider versions, chemins et prérequis avant exécution |
-| Inventaire plugins/branches | 19 couples recalculés depuis les dépôts le 2026-09-03 ; bilan intermédiaire intégré le 2026-09-07 ; FACT : utilisateur fixe Clienteling à master, releases/V6, releases/V7, releases/V8 le 2026-09-08 | [documentation/tracking/](documentation/tracking/README.md), [décision 1](decisions/README.md) | appliquer ce périmètre au prochain suivi ; la décision ne prouve pas la migration |
+| Inventaire plugins/branches | 19 couples recalculés depuis les dépôts le 2026-09-03 ; bilan intermédiaire intégré le 2026-09-07 ; FACT : utilisateur fixe Clienteling à master, releases/V6, releases/V7, releases/V8 le 2026-09-08 ; collecte AzDO du 2026-09-10 : 48 refs `heads` actuelles créées par `rjegou@cegid.com` sur 10 des 12 dépôts du périmètre | [documentation/tracking/](documentation/tracking/README.md), [décision 1](decisions/README.md), [inventaire AzDO 2026-09-10](documentation/tracking/2026-09-10-azdo-branches-created-by-rjegou.md) | utiliser l’inventaire daté pour les branches de travail ; les branches supprimées restent UNKNOWN |
 | Diagnostic des échecs | 9 des 9 couples suivis classés `TERMINE` ; chaque cas non passé est rattaché à une cause prouvée. InventoryTracking est validé avec couverture complète restaurée | [matrice de statut](investigations/ecarts-jmeter-migrations/cases/STATUS_MATRIX.md) | implémenter les causes prouvées ; ne pas rouvrir un verdict sans preuve contraire |
 | Comparaison legacy/JMeter | baseline V26 obtenue pour FrenchTaxesRules (253 scénarios) et Clienteling (2 131) ; **aucune baseline comparable pour V21–V25** | [matrice legacy](investigations/ecarts-jmeter-migrations/cases/LEGACY_COMPARISON_MATRIX.md) | ne reclasser qu'à scénario, contrat, versions, données et environnement identiques |
 | Générateur JMX (4 défauts) | FACT : Console candidate 2.0.43 du build 4445025/5037277 embarque la DLL API attendue et génère réellement les 19 plans source au code 0 ; l’inventaire nominatif 10 LegacyServices + 9 WebServices correspond à 19 sorties ; le compteur fixe 32 provient du commit de validateur c5aebe9 sans inventaire source ; aucun moteur JMeter lancé | [preuve génération 4445025](investigations/ecarts-jmeter-migrations/evidence/build-4445025-jmx-generation/README.md) et [inventaire round7](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-frenchtaxesrules-round7/README.md) | vérifier seulement un éventuel périmètre externe nominatif avant de corriger le validateur ; le jeu des 19 JMX est figé et rapporté identique au jeu local `.work\jfull\Tests`, et 18 d'entre eux sont rapportés poussés sur la branche de validation FrenchTaxesRules — aucune réduction JMeter Cur/Fix n'est pour autant mesurée |
 | SQL Full-Text (224 cas historiquement associés) | **FACT** : `4442156`, `4442254` et `4442685` sont terminés en échec ; SQL2019/SQL2025 n'achèvent pas la population dans la fenêtre observée. Full-Text installé et service SQL démarré sont prouvés, mais la cause racine reste **UNKNOWN**. Le lien avec 224 cas d'une nouvelle campagne Clienteling reste **UNKNOWN**. | [finding 014](investigations/ecarts-jmeter-migrations/findings/014-sql-fulltext-runtime-4442685.md), [collecte live round5](investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/bw3-plugins/evidence/local-2026-09-08-fulltext-live-4442156-round5/README.md) | diagnostic borné sur image isolée : DMV/services/FDHOST horodatés, attente explicite, `CONTAINSTABLE`, cleanup ; aucune modification d'image partagée |
-| InventoryTracking | **TERMINE / VALIDE.** Commit `be3c9ac3` corrige `002-Device_Reassign.jmx` (tag `<hashTree/>` manquant sous TC122). Run réel `4447425` terminé (`partiallySucceeded`) : **1991 tests exécutés** sur Cur et Fix (86/86 de `Device_Reassign` restaurés). Fix (run `6189957`) : 1651 passés, 340 échoués ; Cur (run `6189960`) : 1652 passés, 339 échoués. `TC122` est l'unique écart (Passed en Cur, Failed en Fix). Conformité 100% à la baseline `4440884`. Conteneurs arrêtés et nettoyés | [finding 017](investigations/ecarts-jmeter-migrations/findings/017-campagnes-reelles-azdo-inventorytracking-frenchtaxesrules-20260908.md) | mission InventoryTracking pleinement remplie ; résultats et artefacts archivés |
+| InventoryTracking | **TERMINE / VALIDE.** Commit `be3c9ac3` corrige `002-Device_Reassign.jmx` (tag `<hashTree/>` manquant sous TC122). Run réel `4447425` terminé (`partiallySucceeded`) : **1991 tests exécutés** sur Cur et Fix (86/86 de `Device_Reassign` restaurés). Fix (run `6189957`) : 1651 passés, 340 échoués ; Cur (run `6189960`) : 1652 passés, 339 échoués. `TC122` est l'unique écart (Passed en Cur, Failed en Fix). Conformité 100% à la baseline `4440884`. Pour `4447425` spécifiquement, la tâche `Stop Containers` est `succeeded` (lecture directe de la timeline, 2026-09-08) ; une re-collecte round 4 rapportée le 2026-09-09 recoupe les comptes Cur/Fix des builds `4447425`/`4440884`/`4445575` (1991/1991/1905) et l'inventaire JMX Git (32 blobs au `sourceVersion`), mais requalifie le cleanup en `UNKNOWN` de façon générale (grep de log, pas résultat de tâche) — sans contredire le fait spécifique établi pour `4447425` | [finding 017](investigations/ecarts-jmeter-migrations/findings/017-campagnes-reelles-azdo-inventorytracking-frenchtaxesrules-20260908.md), [finding 020](investigations/ecarts-jmeter-migrations/findings/020-attestation-campagne-round4-transport-local-candidat.md) | mission InventoryTracking pleinement remplie ; résultats et artefacts archivés ; ne pas présenter le cleanup comme prouvé pour `4440884`/`4445575`/`4432554` |
 | InventoryTracking — historique | cause du build initial prouvée ; migration `4de185bb` et correctif `ef3d8703` accessibles ; `4440884` a exécuté Cur/Fix, mais `4444389`, `4444720` et `4444887` n'ont produit aucun résultat JMeter ; `4444700/4444703` ont été annulés volontairement avant JMeter ; `4444887` initialise Cur/Fix puis échoue dans PlatformDeploy faute de package staging ; le candidat transport round7 est revu favorablement sur le mécanisme et ses tests locaux passent ; correction de provenance requise avant queue : distinguer `sourceBuildId=Build.BuildId` et `artifactName=$(componentVersion)_Software`, puis attester les hashes des quatre fichiers réellement transportés ; aucun test PlatformDeploy réel en conteneur n'est encore prouvé | [finding 013](investigations/ecarts-jmeter-migrations/findings/013-inventorytracking-xmlDiff-migration-build-4434070.md), [revue transport round8](investigations/ecarts-jmeter-migrations/evidence/build-5037140-inventorytracking-transport-review-round8/README.md), [revue patch round8](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-inventorytracking-transport-review-round8/README.md) | corriger/revoir la provenance BuildId/artifactName, conserver les hashes MSI/XML effectivement transportés sans exiger un hash d'archive, puis seulement préparer le run isolé |
+| InventoryTracking — routage Testing Manager | **FACT :** le job legacy `TestAutos` n'existe que dans le YAML historique et dépend de `Publish`, limité à `master`/`releases/*`. Les YAML de migration `ef3d8703`/`be3c9ac3` l'ont remplacé par une chaîne JMeter conditionnelle ; `4440774` a donc Build vert mais JMeter/TestAutos skipped, tandis que `4440884`/`4447425` ont JMeter sans TestAutos. | [finding 024](investigations/ecarts-jmeter-migrations/findings/024-inventorytracking-legacy-tests-branch-routing.md) | si Testing Manager est requis sur les branches de migration, définir explicitement le contrat de pipeline et prouver un TRX/XML final ; ne pas déduire le verdict legacy du job de soumission |
 | Pipeline NuGet JMeter 5224 | chaîne historique statique; Round7 de 14264 télécharge directement Apache JMeter 5.6.3 par job Cur/Fix et vérifie la SHA-512; contenu final de l'image Clienteling et cible runtime restent non prouvés | [preuves pipeline](evidence/azure-devops/pipeline-5224/README.md), [préconditions round5](investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-1788841150349/bw3-plugins/evidence/local-2026-09-08-jmeter-preconditions-round5/README.md), [contrat Round7](investigations/ecarts-jmeter-migrations/evidence/local-2026-09-08-clienteling-isolated-pipeline-round7/README.md) | obtenir l'attestation produite après provisionnement Cur/Fix et vérifier image/digest/backup/cleanup |
-| Rejeu métier Clienteling | **DIAGNOSTIC AVANCE, rapporté.** Le backup `AUTO_V26_00.bak` (156 663 808 o, SHA-256 `8B95C2BA…`) est matérialisé avec succès dans CI sur agent Windows 2025 (run `4447427`). Suite rapportée le 2026-09-09 : `Product.Version`/`BuildPlatform` rétablis, `GenerateJmx` atteint puis débloqué de deux fautes successives (`OutputFiles` manquants du manifeste, `TestPlan` fourni à la place d'un `TestCampaign`) ; HEAD isolée `28f71268…`. Aucun JMeter Cur/Fix encore atteint | [finding 016](investigations/ecarts-jmeter-migrations/findings/016-clienteling-v26-backup-lfs-absent.md), [finding 017](investigations/ecarts-jmeter-migrations/findings/017-campagnes-reelles-azdo-inventorytracking-frenchtaxesrules-20260908.md), [finding 019](investigations/ecarts-jmeter-migrations/findings/019-clienteling-v26-generatejmx-testcampaign-outputfiles.md) | relancer 14264 sur `28f71268…` (apiBuildId 4444962, consoleBuildId 4445025, consoleDefinitionId 2641) et vérifier GenerateJmx puis JMeter Cur/Fix |
-| Rejeu métier FrenchTaxesRules V26 | **JMETER EXECUTE (rapporté, non revérifié).** Blocage `Checkpoint.Authorization` résolu sur déf. `2054` (commit `b82c5452`). Run `4447508` avait échoué à `Launch Y2 deployment` (package non présent sur staging). Un document reçu le 2026-09-09 rapporte que le transport local a été raffiné (sous-dossier `localPackageRoot` limité aux 4 fichiers du manifest) et que le build `4448787` (`partiallySucceeded`) a exécuté JMeter Cur **et** Fix réellement : 253 tests chacun, **51 échecs communs strictement identiques** Cur/Fix ; `Export_Run` TC08-10 et `DocumentSignature_SignOne` TC02 absents de ces 51 échecs. Aucune lecture Azure DevOps indépendante n'a revérifié `4448787` dans ce processus | [finding 017](investigations/ecarts-jmeter-migrations/findings/017-campagnes-reelles-azdo-inventorytracking-frenchtaxesrules-20260908.md), [finding 018](investigations/ecarts-jmeter-migrations/findings/018-frenchtaxesrules-v26-jmeter-execution-4448787.md) | revérifier `4448787` par lecture directe AzDO, puis regrouper les 51 échecs communs par cause réelle via les détails REST des résultats (pas test par test) |
+| Rejeu métier Clienteling | **DIAGNOSTIC AVANCE, rapporté.** Le backup `AUTO_V26_00.bak` (156 663 808 o, SHA-256 `8B95C2BA…`) est matérialisé avec succès dans CI sur agent Windows 2025 (run `4447427`). Une synthèse ultérieure rapporte que le replay a franchi host/SQL/backup/CLI JFrog et atteint `download-packages.ps1` ; le dernier run cité `4452826` échoue sur le téléchargement de packages, avec diagnostic whitelisté vide. Aucun JMeter Cur/Fix n'est prouvé. | [finding 016](investigations/ecarts-jmeter-migrations/findings/016-clienteling-v26-backup-lfs-absent.md), [finding 019](investigations/ecarts-jmeter-migrations/findings/019-clienteling-v26-generatejmx-testcampaign-outputfiles.md), [finding 022](investigations/ecarts-jmeter-migrations/findings/022-clienteling-v26-replay-jfrog-download-4452826.md) | relire directement `4452826`/`4452739` et identifier le premier message non sensible du CLI avant toute correction ou relance |
+| Rejeu métier FrenchTaxesRules V26 | **JMeter rapporté, état contradictoire à revérifier.** `4448787` est rapporté avec Cur/Fix exécutés (253 tests chacun, 51 échecs communs) ; une autre synthèse rapporte `4452567` bloqué avant JMeter sur l'image Docker puis `4452790` bloqué avant JMeter sur l'absence de `*.cy2px`. Ces sources restent non revérifiées et ne permettent pas de conclure sur le résultat final V26 | [finding 018](investigations/ecarts-jmeter-migrations/findings/018-frenchtaxesrules-v26-jmeter-execution-4448787.md), [finding 021](investigations/ecarts-jmeter-migrations/findings/021-frenchtaxesrules-v26-run-4452790-cy2px.md) | relire directement les timelines/logs `4448787`, `4452567` et `4452790`, puis vérifier le producteur des `*.cy2px` avant tout nouveau rejeu |
+| FrenchTaxesRules V22/V23 | **Rapporté, non revérifié.** V22 Cur/Fix et les campagnes V22 seraient verts dans `4453591` après relèvement Core/Common/Identity ; V23 Cur serait vert, mais V23 Fix s'arrêterait avant JMeter sur `sectionGroupName` | [finding 023](investigations/ecarts-jmeter-migrations/findings/023-frenchtaxesrules-v22-v23-packaging-validation-20260910.md) | relire les runs/paramètres et la ref V23 Identity seule ; ne pas retenir de minima individuels ni compter V23 comme échec JMeter avant preuve |
 | Livrables globaux PBI | tableau de suivi rempli ; synthèse de reporting produite le 2026-09-08 ; notification Ludo/Lydie à confirmer | [reporting/](reporting/2026-09-08-synthese-onenote-pbi.md) | confirmer la notification et le processus PR/mail cadré par LBAU |
 | Décisions et suites | FACT : décisions 1, 2 et 6 rendues ; 4 à investiguer ; 5 fixe validation isolée avant décision de publication avec versions/destination ; Products reste ouvert | [decisions/README.md](decisions/README.md) | relever les minima V22 Fix ; mesurer le delta BeforeMigration, corriger et régénérer ; valider les packages en isolation. Aucune publication partagée autorisée |
 
@@ -167,10 +212,24 @@ Précautions ajoutées le 2026-09-06 à la demande utilisateur : NuGet d'essai e
   Cur/Fix exécutés, 253 tests chacun, 51 échecs communs) : ce chiffre n'est soutenu que par le document
   rapporté dans [finding 018](investigations/ecarts-jmeter-migrations/findings/018-frenchtaxesrules-v26-jmeter-execution-4448787.md) ;
   regroupement causal des 51 échecs communs, non encore fait.
+- vérification indépendante des builds `4452567` et `4452790` rapportés le 2026-09-09 pour FrenchTaxesRules
+  V26 : image Docker/manifest, tags consommés, commit `bd3688e4…`, push annoncé et absence des `*.cy2px`
+  restent à confirmer par lecture directe ; voir [finding 021](investigations/ecarts-jmeter-migrations/findings/021-frenchtaxesrules-v26-run-4452790-cy2px.md).
 - vérification indépendante des push `5138407`/`5138712` et des builds `4449477`/`4449640` rapportés
   le 2026-09-09 pour Clienteling V26 (`Product.Version`/`BuildPlatform`, correctifs `OutputFiles` et
   `TestCampaign` de `GenerateJmx`) : soutenus uniquement par le document rangé dans
   [finding 019](investigations/ecarts-jmeter-migrations/findings/019-clienteling-v26-generatejmx-testcampaign-outputfiles.md) ;
   résultat du rejeu sur HEAD `28f71268…` (GenerateJmx, JMeter Cur/Fix) non encore obtenu.
+- vérification indépendante de la séquence Clienteling rapportée dans les runs `4451986` à `4452826`
+  (tokenisation host/SQL, staging backup, CLI JFrog et blocage `download-packages.ps1`) : aucun
+  identifiant, package fautif ou JMeter Cur/Fix n'a été relu directement ; voir [finding 022](investigations/ecarts-jmeter-migrations/findings/022-clienteling-v26-replay-jfrog-download-4452826.md).
+- vérification indépendante de la re-collecte round 4 (4 builds `4447425`/`4440884`/`4445575`/`4432554`,
+  collecteur `scripts/invoke_bw3_collector.py`) rapportée le 2026-09-09 : les comptes Cur/Fix et
+  l'inventaire JMX Git convergent avec ce qui était déjà versionné, mais aucune lecture Azure DevOps
+  n'a été refaite par ce processus. Voir [finding 020](investigations/ecarts-jmeter-migrations/findings/020-attestation-campagne-round4-transport-local-candidat.md).
+- le gabarit candidat de transport local de package (même finding 020) reste sans couple cible : tous
+  ses paramètres (`sourceBuildId`, `artifactName`, `packageVersion`, `manifestPath`,
+  `localPackageRoot`, `deploymentTarget`, `sourceCommit`) sont `UNKNOWN` tant qu'un prochain couple
+  n'est pas sélectionné ; pertinent pour la [décision 4](decisions/README.md#4-qui-transporte-les-fixtures-dimages-clienteling-et-vers-quel-chemin) sans la trancher.
 
 Ne pas convertir ces points en actions de correction sans preuve nouvelle ou décision explicite.

@@ -14,6 +14,9 @@ aucun nettoyage partagé. Les instructions reproductibles sont versionnées dans
 
 Snapshot local : **2026-09-06**. Ce registre ne contient aucune valeur de secret.
 
+Ajout documentaire 2026-09-09 : la source temporaire `C:\Users\jegour\Downloads\WI-2222897_FrenchTaxesRules_V26_synthese_technique_2026-09-09.md` est référencée par
+`investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-frenchtaxesrules-v26-synthese-technique/` avec son empreinte SHA-256. Ne pas supprimer l'original avant d'avoir confirmé que la preuve versionnée suffit ; son contenu n'est pas une preuve Azure DevOps revérifiée.
+
 Ajout documentaire 2026-09-08 (reprise directe AzDO) : les runs Azure DevOps `4447425` (InventoryTracking), `4447499` / `4447508` (FrenchTaxesRules), `4447427` / `4447443` (Clienteling) ont tous atteint leur état terminal. Leurs conteneurs d'exécution et agents hôtes éphémères ont été automatiquement libérés par Azure Pipelines. Aucune ressource distante persistante (branche partagée, PR, image promue, package NuGet ou secret) n'a été créée ou n'est à dépolluer.
 
 Ajout documentaire 2026-09-08 : conserver les collectes `investigations/ecarts-jmeter-migrations/evidence/2026-09-08-inventorytracking-azdo-access-diagnosis-round2/` (réponses AzDO Python/OpenSSL, builds `4440774`/`4440884`, artefacts et résultats Cur/Fix) et `investigations/ecarts-jmeter-migrations/evidence/2026-09-08-inventorytracking-azdo-independent/` (échecs clients Schannel/CLI). Aucune ressource externe n'a été créée dans cette mise à jour.
@@ -292,3 +295,36 @@ Lot : investigations/ecarts-jmeter-migrations/parallel/2026-09-08-parallel-17888
 - Intégration documentaire faite dans [finding 019](investigations/ecarts-jmeter-migrations/findings/019-clienteling-v26-generatejmx-testcampaign-outputfiles.md),
   [STATUS.md](STATUS.md) et la section 7 de [DEPANNAGE_JMETER.md](documentation/guides/DEPANNAGE_JMETER.md).
 
+## 2026-09-09 — Rangement de l'attestation de campagne round 4 et du gabarit de transport local
+
+- Source reçue : clone de travail hors dépôt `C:\clones\wi-2222897-bw\relais-20260909-02\attestation\`
+  (espace « BW », non versionné, non sauvegardé par ce dépôt). Sa couche documentaire (`RESULT.md`,
+  manifestes, empreintes, collecteur `scripts/invoke_bw3_collector.py` et ses tests, README de
+  provenance des sous-dossiers) est copiée sans modification dans
+  `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-09-attestation-campagne-round4/`,
+  avec confrontation réussie des empreintes SHA-256 recalculées à celles déclarées par la source.
+- **Restent hors dépôt, volontairement** : les quatre `collector-report.json` bruts (≈ 7,4 Mo au
+  total) sous `C:\clones\wi-2222897-bw\relais-20260909-02\attestation\evidence\recollected2-build-<id>\`.
+  Poids trop faible pour justifier un déplacement dédié comme en section 3 d'
+  [EXTERNAL-ARTIFACTS.md](EXTERNAL-ARTIFACTS.md) ; conserver à cet emplacement, ne pas les recopier
+  ici.
+- Aucune ressource distante n'a été créée, lue, relancée ou nettoyée dans ce rangement. Le collecteur
+  source est en lecture seule (whitelist stricte de 4 builds, refuse le build `2054`, refuse d'écrire
+  dans un dossier de sortie non vide) et lit son PAT en mémoire depuis `azureToken.txt` sans le
+  journaliser ; aucun secret n'a été inspecté ni copié dans cette intégration.
+- En corrigeant l'index des preuves, deux dossiers créés le 2026-09-09 mais jamais listés depuis la
+  régénération de l'index du 2026-09-08 ont été ajoutés à
+  [evidence/README.md](investigations/ecarts-jmeter-migrations/evidence/README.md) :
+  `local-2026-09-09-bw3-audit-et-ftr-v26-execution-reelle/` et
+  `local-2026-09-09-clienteling-v26-generatejmx-testcampaign/`. Aucun contenu de ces deux dossiers n'a
+  été modifié, seul l'index l'était.
+- Intégration documentaire faite dans [finding 020](investigations/ecarts-jmeter-migrations/findings/020-attestation-campagne-round4-transport-local-candidat.md),
+  [STATUS.md](STATUS.md) et la [décision 4](decisions/README.md#4-qui-transporte-les-fixtures-dimages-clienteling-et-vers-quel-chemin).
+
+## 2026-09-11 — Fiche de récupération des logs Legacy FrenchTaxesRules
+
+- Source reçue : `C:\Users\jegour\Downloads\Fiche de synthèse — récupération des logs de tests Legacy.md`.
+  La copie documentaire et son empreinte sont conservées dans
+  `investigations/ecarts-jmeter-migrations/evidence/local-2026-09-11-frenchtaxesrules-legacy-log-recovery/`.
+- L'original Downloads peut être supprimé par l'utilisateur après vérification de l'empreinte ; aucun
+  artefact brut de la VM ni secret n'a été copié dans le dépôt.

@@ -6,6 +6,7 @@
 | [repos_to_migrate_updated.csv](repos_to_migrate_updated.csv) | recalcul du 2026-09-03 | base lisible issue de l'investigation des dépôts |
 | [2026-09-07-bilan-intermediaire-semaine-precedente.md](2026-09-07-bilan-intermediaire-semaine-precedente.md) | snapshot rapporté intégré le 2026-09-07 | bilan intermédiaire fourni par l'utilisateur ; états et liens à revalider |
 | [2026-09-07-inventorytracking-live-revalidation.md](2026-09-07-inventorytracking-live-revalidation.md) | revalidation live partielle | build de migration/XmlDiff établis par Worker 2; WI/PR et validation JMeter restent UNKNOWN |
+| [2026-09-10-azdo-branches-created-by-rjegou.md](2026-09-10-azdo-branches-created-by-rjegou.md) | collecte live Azure DevOps | 48 refs `heads` actuelles dont le `creator` est `rjegou@cegid.com`, sur 10 dépôts |
 
 Le CSV reprend volontairement les colonnes `Nom, Branches, Versions` du tableur source. Les ambiguïtés et décisions sont consignées dans [JOURNAL.md](../../JOURNAL.md).
 

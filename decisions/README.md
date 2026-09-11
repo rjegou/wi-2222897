@@ -81,6 +81,11 @@ et disponibles, leur consommation réelle et la disparition des 174 échecs rest
 Aucune configuration n'est modifiée par cette intégration documentaire. La décision n'établit pas
 une politique générale de fin de support de l'ancienne pile.
 
+**Rapporté, non revérifié — synthèse du 2026-09-10.** Le trio `22.0.0.2068` / `22.0.3.311` /
+`22.0.6.117` aurait rendu V22 Cur/Fix vert dans le run `4453591`. Cela renforce la piste de la
+combinaison candidate, sans trancher la version minimale individuelle ni remplacer la relecture
+directe du run. Voir [finding 023](../investigations/ecarts-jmeter-migrations/findings/023-frenchtaxesrules-v22-v23-packaging-validation-20260910.md).
+
 **Contexte historique des options, désormais tranchées pour cette mission :**
 
 **Constat.** `FACT` — le build 4429167 publie 174 cas non passés en V22 Fix (138 LegacyServices +
@@ -149,6 +154,13 @@ discriminant confirme qu'un chemin absolu factice se résout et que le placehold
 **Ce qui manque pour agir.** Le propriétaire du transport et le chemin final visible par IIS dans le
 conteneur. Écrire une copie ad hoc sans cette réponse créerait un doublon fragile si un mécanisme
 officiel existe ailleurs — paquet de test, montage, autre outil de déploiement.
+
+Un gabarit candidat révisable de transport local de package (sélection stricte d'un manifeste, copie
+limitée à ses `N` entrées, refus de chemin absolu/traversée) a été rapporté le 2026-09-09, dérivé
+uniquement des findings 017 et 018 sur InventoryTracking/FrenchTaxesRules. Il ne couvre pas Clienteling
+et tous ses paramètres restent `UNKNOWN` faute de couple cible sélectionné : ce n'est pas une réponse à
+cette décision, seulement une méthode disponible si elle est un jour appliquée à Clienteling. Voir
+[finding 020](../investigations/ecarts-jmeter-migrations/findings/020-attestation-campagne-round4-transport-local-candidat.md).
 
 **Cas concernés** : 8 × `Image:GetSerialNumberImage`, échec `CBR_005_0344`.
 
