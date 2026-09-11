@@ -1,0 +1,12 @@
+﻿PLUGIN=Y2_Plugins_FrenchTaxesRules
+BRANCH=master
+CORE=26.0
+PLUGIN_VERSION=10.95
+AZDO_BUILD=4462232
+VM=Y2-TSTAUTOXXPG2
+RUN_LABEL=26.0.test.10.95-20260911_021457
+
+FILES:
+- Fix.trx
+- Current.trx
+- workflow.log
